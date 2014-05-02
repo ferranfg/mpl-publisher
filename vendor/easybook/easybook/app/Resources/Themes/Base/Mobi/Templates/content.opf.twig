@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
+
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:title>{{ book.title }}</dc:title>
+        <dc:language>{{ book.language }}</dc:language>
+        <dc:identifier id="BookId" opf:scheme="{{ app.get('publishing.edition.id').scheme }}">{{ app.get('publishing.edition.id').value }}</dc:identifier>
+        <dc:creator opf:role="aut">{{ book.author }}</dc:creator>
+        <dc:publisher>{{ book.generator.name }} {{ book.generator.version }}</dc:publisher>
+        <dc:date opf:event="publication">{{ book.publication_date|date('Y') }}</dc:date>
+        <dc:date opf:event="creation">{{ book.publication_date|date('Y-m-d') }}</dc:date>
+        <meta name="cover" content="cover" />
+{#
+        <dc:subject>...</dc:subject>
+        <dc:subject>...</dc:subject>
+        <dc:description>...</dc:description>
+#}
+    </metadata>
+ 
+    <manifest>
+        <item id="titlepage" href="titlepage.html" media-type="application/xhtml+xml"/>
+{% for item in items %}
+        <item id="{{ item.page_name }}" href="{{ item.page_name }}.html" media-type="application/xhtml+xml" />
+{% endfor %}
+{% if edition.include_styles %}
+        <item id="stylesheet" href="css/easybook.css" media-type="text/css" />
+{% endif %}
+{% if has_custom_css %}
+        <item id="stylesheet-custom" href="css/styles.css" media-type="text/css" />
+{% endif %}
+{% for image in images %}
+        <item id="{{ image.id }}" href="{{ image.filePath }}" media-type="{{ image.mediaType }}" />
+{% endfor %}
+{% if cover %}
+        <item id="cover" href="{{ cover.filePath }}" media-type="{{ cover.mediaType }}"/>
+{% endif %}
+{% for font in fonts %}
+        <item id="{{ font.id }}" href="{{ font.filePath }}" media-type="{{ font.mediaType }}" />
+{% endfor %}
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+    </manifest>
+
+    <spine toc="ncx">
+        <itemref idref="titlepage" />
+{% for item in items %}
+        <itemref idref="{{ item.page_name }}" />
+{% endfor %}
+    </spine>
+
+    <guide>
+        <reference href="titlepage.html" type="cover" title="Cover"/>
+        <reference href="toc.html" type="toc" title="Table of contents"/>
+    </guide>
+
+</package>

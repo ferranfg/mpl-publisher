@@ -1,0 +1,154 @@
+{% block typography %}
+/* ==========================================================================
+   @typography
+   ========================================================================== */
+{% block custom %}
+/* @custom
+   -------------------------------------------------------------------------- */
+
+{{ include('css/font_alte_haas_grotesk.twig') }}
+{{ include('css/font_neuton.twig') }}
+{{ include('css/font_open_sans.twig') }}
+{{ include('css/font_tex_gyre_heros.twig') }}
+{{ include('css/font_inconsolata.twig') }}
+{% endblock %}
+{% block body %}
+/* @body
+   -------------------------------------------------------------------------- */
+body {
+    background: #FFF;
+    color: {{ color_black }};
+    font: 14pt/1.2 serif;
+}
+{% endblock %}
+{% block links %}
+/* @links
+   -------------------------------------------------------------------------- */
+a {
+    border-bottom: 1px solid #EFEFEF;
+    color: {{ color_black }};
+    text-decoration: none;
+}
+a::after {
+    border: none;
+    color: {{ color_gray }};
+    content: " (" attr(href) ") ";
+    font-style: normal;
+}
+a:contains("www")::after,
+a:contains("http://")::after,
+a:contains("https://")::after  {
+    border: none;
+    content: "";
+}
+{% endblock %}
+{% block headings %}
+/* @headings
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    line-height: 1;
+    margin: 1em 0 .25em 0;
+}
+
+h1 { font-size: 28pt; }
+h2 { font-size: 18pt; }
+h3 { font-size: 14pt; }
+h4 { font-size: 14pt; }
+h5 { font-size: 14pt; }
+h6 { font-size: 14pt; }
+
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+    margin-top: 4pt;
+}
+{% endblock %}
+{% block paragraphs %}
+/* @paragraphs
+   -------------------------------------------------------------------------- */
+p {
+    margin: 1em 0;
+    text-align: justify;
+}
+{% endblock %}
+{% block lists %}
+/* @lists
+   -------------------------------------------------------------------------- */
+ul, ol {
+    list-style-type: disc;
+    margin: 1em 0;
+    padding: 0 0 0 2em;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ul li, ol li {
+    margin: .5em 0;
+}
+
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+dl {
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 1em;
+}
+{% endblock %}
+{% block misc %}
+/* @misc
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6, p {
+    hyphens: auto;
+    hyphenate-patterns: url("{{ resources_dir }}/Dictionaries/hyph_{{ book.language }}.dic");
+}
+
+blockquote {
+    margin: 1em 0 1em 3em;
+}
+
+.left   { float: left;  }
+.right  { float: right; }
+.center { text-align: center; }
+
+
+.fn {
+    display: prince-footnote;
+    counter-increment: footnote;
+    font-size: 9pt !important;
+}
+.item.chapter h1, .item.appendix h1 {
+    counter-reset: footnote;
+}
+
+.fn::footnote-call {
+    content: "[" counter(footnote) "]";
+    font: bold 8pt tex-heros, sans-serif;
+    vertical-align: super;
+    line-height: none;
+}
+.fn::footnote-marker {
+    content: "[" counter(footnote) "]";
+    font: bold 9pt tex-heros, sans-serif;
+    padding: 0 4pt 0 8pt;
+}
+
+@page {
+    @footnotes {
+        border-top: thin solid {{ color_black }};
+        margin-top: 6pt;
+        padding: 6pt 0 0 12pt;
+    }
+}
+{% endblock %}
+{% endblock %}
