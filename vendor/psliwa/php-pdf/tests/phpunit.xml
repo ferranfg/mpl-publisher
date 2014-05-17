@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="bootstrap.php">
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../lib/PHPPdf</directory>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="PHPPdf">
+            <directory>PHPPdf</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

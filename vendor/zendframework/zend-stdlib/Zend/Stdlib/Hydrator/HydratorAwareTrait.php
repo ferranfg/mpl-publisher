@@ -9,6 +9,8 @@
 
 namespace Zend\Stdlib\Hydrator;
 
+use Zend\Stdlib\hydrator\HydratorInterface;
+
 trait HydratorAwareTrait
 {
     /**

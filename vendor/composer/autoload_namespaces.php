@@ -7,16 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib'),
+    'Zend\\ServiceManager\\' => array($vendorDir . '/zendframework/zend-servicemanager'),
     'Zend\\Memory\\' => array($vendorDir . '/zendframework/zend-memory'),
+    'Zend\\EventManager\\' => array($vendorDir . '/zendframework/zend-eventmanager'),
+    'Zend\\Cache\\' => array($vendorDir . '/zendframework/zend-cache'),
     'ZendPdf\\' => array($vendorDir . '/zendframework/zendpdf/library'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
-    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
-    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
-    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
-    'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
-    'Michelf' => array($vendorDir . '/michelf/php-markdown'),
-    'Easybook' => array($vendorDir . '/easybook/slugger/src', $vendorDir . '/easybook/easybook/src'),
+    'PHPPdf' => array($vendorDir . '/psliwa/php-pdf/lib'),
+    'Imagine' => array($vendorDir . '/psliwa/php-pdf/lib'),
 );

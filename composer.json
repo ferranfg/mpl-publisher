@@ -4,10 +4,30 @@
 	"keywords": ["wordpress", "ebook"],
 	"license": "MIT",
 	"require": {
-		"easybook/easybook": "dev-master"
+		"twig/twig": "1.15.*@dev",
+		"psliwa/php-pdf": "dev-master",
+		"Grandt/PHPePub": "dev-master"
+	},
+	"autoload": {
+		"classmap": [
+			"libs",
+			"vendor/Grandt/PHPePub"
+		]
 	},
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "stable",
+	"repositories": [{
+        "type": "package",
+        "package": {
+            "name": "Grandt/PHPePub",
+            "version": "dev-master",
+            "source": {
+                "url": "https://github.com/Grandt/PHPePub.git",
+                "type": "git",
+                "reference": "origin/master"
+            }
+        }
+    }]
 }

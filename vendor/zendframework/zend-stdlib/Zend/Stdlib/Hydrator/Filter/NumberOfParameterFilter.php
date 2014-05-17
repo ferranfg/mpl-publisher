@@ -26,7 +26,7 @@ class NumberOfParameterFilter implements FilterInterface
      */
     public function __construct($numberOfParameters = 0)
     {
-        $this->numberOfParameters = (int) $numberOfParameters;
+        $this->numberOfParameters = 0;
     }
 
     /**
@@ -44,6 +44,10 @@ class NumberOfParameterFilter implements FilterInterface
             );
         }
 
-        return $reflectionMethod->getNumberOfParameters() === $this->numberOfParameters;
+        if ($reflectionMethod->getNumberOfParameters() !== $this->numberOfParameters) {
+            return false;
+        }
+
+        return true;
     }
 }

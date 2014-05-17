@@ -1,0 +1,9 @@
+/lib/vendor/
+.buildpath
+.project
+.idea
+.settings
+TODO
+PHPPdf.iml
+examples/advisio*
+examples/test*
