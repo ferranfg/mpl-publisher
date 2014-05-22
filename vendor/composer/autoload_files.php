@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/mustangostang/spyc/Spyc.php',
+    $vendorDir . '/titon/utility/src/bootstrap.php',
 );

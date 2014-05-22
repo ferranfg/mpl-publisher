@@ -4,6 +4,7 @@ namespace MPL;
 
 use Twig_Loader_Filesystem;
 use Twig_Environment;
+use Twig_SimpleFunction;
 
 class PublisherController {
 
@@ -17,13 +18,24 @@ class PublisherController {
 
         $this->view = new Twig_Environment($loader);
 
-        $this->data['site_name'] = get_bloginfo('site_name');
-        $this->data['posts'] = get_posts();
-        $this->data['current_user'] = wp_get_current_user();
+        $__ = new Twig_SimpleFunction('__', function ($value)
+        {
+            return __($value, 'publisher');
+        });
+
+        $this->view->addFunction($__);
     }
 
     public function getIndex()
     {
+        $this->data['site_name'] = get_bloginfo('site_name');
+        $this->data['posts'] = get_posts();
+        $this->data['categories'] = get_categories();
+        $this->data['current_user'] = wp_get_current_user();
+        
+        $this->data['epubExists'] = file_exists(wp_upload_dir()['basedir'] . DIRECTORY_SEPARATOR . 'mpl-publisher.epub');
+        $this->data['epubDownload'] = wp_upload_dir()['baseurl'] . '/mpl-publisher.epub';
+
     	echo $this->view->render('index.php', $this->data);
     }
 
@@ -36,7 +48,7 @@ class PublisherController {
         $publisher->setAuthor($_POST['authors']);
         $publisher->setPublisher($_POST['editor']);
 
-        foreach ($this->data['posts'] as $id => $post)
+        foreach (get_posts() as $id => $post)
         {
             if (in_array($post->ID, $_POST['selected_posts']))
             {

@@ -15,7 +15,6 @@ return array(
     'Logger' => $vendorDir . '/Grandt/PHPePub/Logger.php',
     'MPL\\EpubPublisher' => $baseDir . '/libs/EpubPublisher.php',
     'MPL\\IPublisher' => $baseDir . '/libs/IPublisher.php',
-    'MPL\\PdfPublisher' => $baseDir . '/libs/PdfPublisher.php',
     'MPL\\PublisherController' => $baseDir . '/libs/PublisherController.php',
     'Manifest' => $vendorDir . '/Grandt/PHPePub/EPub.OPF.php',
     'MarcCode' => $vendorDir . '/Grandt/PHPePub/EPub.OPF.php',
