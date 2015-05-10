@@ -1,12 +1,11 @@
 {
 	"name": "ferranfg/mpl-publisher",
-	"description": "MPL - Publisher is a WordPress plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.",
-	"keywords": ["wordpress", "ebook"],
+	"description": "MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.",
+	"keywords": ["wordpress", "ebook", "epub"],
 	"license": "MIT",
 	"require": {
 		"twig/twig": "1.15.*@dev",
-		"psliwa/php-pdf": "dev-master",
-		"Grandt/PHPePub": "dev-master"
+		"grandt/phpepub": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -17,17 +16,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable",
-	"repositories": [{
-        "type": "package",
-        "package": {
-            "name": "Grandt/PHPePub",
-            "version": "dev-master",
-            "source": {
-                "url": "https://github.com/Grandt/PHPePub.git",
-                "type": "git",
-                "reference": "origin/master"
-            }
-        }
-    }]
+	"minimum-stability": "stable"
 }

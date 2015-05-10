@@ -51,9 +51,15 @@ class EpubPublisher implements IPublisher {
 		$this->epub->addChapter($title, $title . ".html", $xmlContent, true, EPub::EXTERNAL_REF_ADD, wp_upload_dir()['basedir']);
 	}
 
-	public function save($filename)
+	public function save($filename, $dir)
 	{
 		$this->epub->finalize();
-		$this->epub->saveBook($filename, wp_upload_dir()['basedir']);
+		$this->epub->saveBook($filename, $dir);
+	}
+
+	public function send($filename)
+	{
+		$this->epub->finalize();
+		$this->epub->sendBook($filename);
 	}
 }

@@ -10,13 +10,18 @@ class PublisherController {
 
     private $view;
 
+    private $loader;
+
+    private $basePath;
+
     public $data = array();
 
     public function __construct($basePath)
     {
-        $loader = new Twig_Loader_Filesystem($basePath . DIRECTORY_SEPARATOR . "views");
+        $this->basePath = $basePath;
+        $this->loader = new Twig_Loader_Filesystem($this->basePath . DIRECTORY_SEPARATOR . "views");
 
-        $this->view = new Twig_Environment($loader);
+        $this->view = new Twig_Environment($this->loader);
 
         $__ = new Twig_SimpleFunction('__', function ($value)
         {
@@ -32,21 +37,23 @@ class PublisherController {
         $this->data['posts'] = get_posts();
         $this->data['categories'] = get_categories();
         $this->data['current_user'] = wp_get_current_user();
-        
-        $this->data['epubExists'] = file_exists(wp_upload_dir()['basedir'] . DIRECTORY_SEPARATOR . 'mpl-publisher.epub');
-        $this->data['epubDownload'] = wp_upload_dir()['baseurl'] . '/mpl-publisher.epub';
+        $this->data['action'] = admin_url('admin-post.php');
+        $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
     	echo $this->view->render('index.php', $this->data);
     }
 
     public function postIndex()
     {
+        // http://codex.wordpress.org/Function_Reference/check_admin_referer
+        if (empty($_POST) || !check_admin_referer('publish_ebook', '_wpnonce')) return;
+
         $publisher = new EpubPublisher();
 
-        $publisher->setIdentifier($_POST['identifier']);
-        $publisher->setTitle($_POST['title']);
-        $publisher->setAuthor($_POST['authors']);
-        $publisher->setPublisher($_POST['editor']);
+        $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
+        $publisher->setTitle(sanitize_text_field($_POST['title']));
+        $publisher->setAuthor(sanitize_text_field($_POST['authors']));
+        $publisher->setPublisher(sanitize_text_field($_POST['editor']));
 
         foreach (get_posts() as $id => $post)
         {
@@ -56,8 +63,6 @@ class PublisherController {
             }
         }
 
-        $publisher->save('mpl-publisher');
-
-        return $this->getIndex();
+        return $publisher->send('mpl-publisher');
     }
 }

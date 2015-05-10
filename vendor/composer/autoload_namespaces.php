@@ -6,13 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib'),
-    'Zend\\ServiceManager\\' => array($vendorDir . '/zendframework/zend-servicemanager'),
-    'Zend\\Memory\\' => array($vendorDir . '/zendframework/zend-memory'),
-    'Zend\\EventManager\\' => array($vendorDir . '/zendframework/zend-eventmanager'),
-    'Zend\\Cache\\' => array($vendorDir . '/zendframework/zend-cache'),
-    'ZendPdf\\' => array($vendorDir . '/zendframework/zendpdf/library'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'PHPPdf' => array($vendorDir . '/psliwa/php-pdf/lib'),
-    'Imagine' => array($vendorDir . '/psliwa/php-pdf/lib'),
 );

@@ -11,19 +11,22 @@
 
 require 'vendor/autoload.php';
 
+$controller = new \MPL\PublisherController(__DIR__);
+
 add_action('init', function ()
 {
 	load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
 });
 
-add_action('admin_menu', function ()
+add_action('admin_menu', function () use ($controller)
 {
-    $controller = new \MPL\PublisherController(__DIR__);
-
     add_management_page('MPL - Publisher', 'Publisher', 'manage_options', 'publisher', function () use ($controller)
     {
-        if (isset($_POST['submit'])) return $controller->postIndex();
-
         return $controller->getIndex();
     });
+});
+
+add_action('admin_post_publish_ebook', function () use ($controller)
+{
+	return $controller->postIndex();
 });
