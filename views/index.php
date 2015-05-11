@@ -15,7 +15,7 @@
 
 				<h3>{{__("Contents")}}</h3>
 
-				<table class="wp-list-table widefat fixed posts" style="background-color:rgba(255, 255, 255, 0.6)">
+				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
 						<tr>
 							<th class="manage-column column-cb check-column">
@@ -24,9 +24,9 @@
 							<th class="manage-column column-name">{{__("Chapter")}}</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="chapter-list">
 						{% for post in posts %}
-							<tr>
+							<tr style="cursor: move">
 								<th scope="row" class="check-column">
 									<input type="checkbox" name="selected_posts[]" value="{{ post.ID }}" id="cb-select-{{ post.ID }}"  checked="checked">
 								</th>

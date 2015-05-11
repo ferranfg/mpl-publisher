@@ -55,14 +55,18 @@ class PublisherController {
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
 
-        foreach (get_posts() as $id => $post)
+        $query = new \WP_Query(array('post__in' => $_POST['selected_posts'], 'orderby' => 'post__in'));
+
+        if ($query->have_posts())
         {
-            if (in_array($post->ID, $_POST['selected_posts']))
+            while ($query->have_posts())
             {
-                $publisher->addChapter($post->post_title, $post->post_content);
+                $query->the_post();
+
+                $publisher->addChapter(get_the_title(), get_the_content());
             }
         }
 
-        return $publisher->send('mpl-publisher');
+        return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
     }
 }
