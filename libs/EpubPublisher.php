@@ -1,8 +1,8 @@
 <?php
 
-namespace MPL;
+namespace MPL\Publisher;
 
-use EPub;
+use PHPePub\Core\EPub;
 
 class EpubPublisher implements IPublisher {
 

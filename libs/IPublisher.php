@@ -1,6 +1,6 @@
 <?php
 
-namespace MPL;
+namespace MPL\Publisher;
 
 interface IPublisher {
 
