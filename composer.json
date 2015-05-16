@@ -4,17 +4,17 @@
 	"keywords": ["wordpress", "ebook", "epub"],
 	"license": "MIT",
 	"require": {
-		"twig/twig": "1.15.*@dev",
-		"grandt/phpepub": "dev-master"
+		"grandt/phpepub": "dev-master",
+		"illuminate/view": "^5.0",
+		"illuminate/events": "^5.1@dev"
 	},
 	"autoload": {
-		"classmap": [
-			"libs",
-			"vendor/Grandt/PHPePub"
-		]
+		"psr-4": {
+			"MPL\\Publisher\\": "libs"
+		}
 	},
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }

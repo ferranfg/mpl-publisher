@@ -1,34 +1,35 @@
 <?php
 
-namespace MPL;
+namespace MPL\Publisher;
 
-use Twig_Loader_Filesystem;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Illuminate\View\View;
+use Illuminate\View\Factory;
+use Illuminate\View\FileViewFinder;
+use Illuminate\View\Engines\EngineResolver;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Events\Dispatcher;
+use Illuminate\View\Engines\PhpEngine;
 
 class PublisherController {
 
-    private $view;
-
-    private $loader;
-
     private $basePath;
 
-    public $data = array();
+    private $viewPath;
 
     public function __construct($basePath)
     {
+        $DS = DIRECTORY_SEPARATOR;
+
         $this->basePath = $basePath;
-        $this->loader = new Twig_Loader_Filesystem($this->basePath . DIRECTORY_SEPARATOR . "views");
+        $this->viewPath = $basePath . $DS . 'views' . $DS;
+    }
 
-        $this->view = new Twig_Environment($this->loader);
+    private function view($file, $data = array())
+    {
+        $viewFinder = new FileViewFinder(new Filesystem, array($this->basePath));
+        $factory = new Factory(new EngineResolver, $viewFinder, new Dispatcher);
 
-        $__ = new Twig_SimpleFunction('__', function ($value)
-        {
-            return __($value, 'publisher');
-        });
-
-        $this->view->addFunction($__);
+        return new View($factory, new PhpEngine, $file, $this->viewPath . $file, $data);
     }
 
     public function getIndex()
@@ -40,7 +41,7 @@ class PublisherController {
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
-    	echo $this->view->render('index.php', $this->data);
+    	echo $this->view('index.php', $this->data);
     }
 
     public function postIndex()

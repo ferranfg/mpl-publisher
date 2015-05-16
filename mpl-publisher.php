@@ -11,7 +11,7 @@
 
 require 'vendor/autoload.php';
 
-$controller = new \MPL\PublisherController(__DIR__);
+$controller = new \MPL\Publisher\PublisherController(__DIR__);
 
 add_action('init', function ()
 {
