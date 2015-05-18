@@ -59,13 +59,23 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Changelog ==
 
-= 1.1.1 =
+= 1.2.0 =
+- New default book style
+- Added Spanish and Catalan translation
+- Replace Twig with illuminate/view as view engine
+- Fix duplicate ID chapter
+
+= 1.1.0 =
 - Sort individual chapters manually
 
-= 1.0 =
+= 1.0.0 =
 - Initial release.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+- New default style
+- Added Spanish and Catalan translation
 
 = 1.1.1 =
 - Sort individual chapters manually
