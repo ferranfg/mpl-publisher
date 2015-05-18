@@ -49,7 +49,7 @@ class PublisherController {
         // http://codex.wordpress.org/Function_Reference/check_admin_referer
         if (empty($_POST) || !check_admin_referer('publish_ebook', '_wpnonce')) return;
 
-        $publisher = new EpubPublisher();
+        $publisher = new EpubPublisher($this->basePath);
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
@@ -64,7 +64,7 @@ class PublisherController {
             {
                 $query->the_post();
 
-                $publisher->addChapter(get_the_title(), get_the_content());
+                $publisher->addChapter(get_the_ID(), get_the_title(), get_the_content());
             }
         }
 

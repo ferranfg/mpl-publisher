@@ -8,9 +8,24 @@ class EpubPublisher implements IPublisher {
 
 	private $epub;
 
-	public function __construct()
+	private $basePath;
+
+	public function __construct($basePath)
 	{
 		$this->epub = new EPub();
+
+		$DS = DIRECTORY_SEPARATOR;
+		$assetsPath = $basePath . $DS . 'assets' . $DS;
+
+		$stylePath = $assetsPath . 'css' . $DS;
+		$fontsPath = $assetsPath . 'fonts' . $DS;
+
+		$this->epub->addCSSFile("Style.css", "default", file_get_contents($stylePath . 'book.css'));
+
+		$this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/font-sfnt");
+		$this->epub->addFile("Merriweather-Bold.ttf", "merriweather-bold", file_get_contents($fontsPath . "Merriweather-Bold.ttf"), "application/font-sfnt");
+		$this->epub->addFile("Merriweather-Italic.ttf", "merriweather-italic", file_get_contents($fontsPath . "Merriweather-Italic.ttf"), "application/font-sfnt");
+		$this->epub->addFile("Lato-Bold.ttf", "lato-bold", file_get_contents($fontsPath . "Lato-Bold.ttf"), "application/font-sfnt");
 	}
 
 	public function setIdentifier($id)
@@ -33,7 +48,7 @@ class EpubPublisher implements IPublisher {
 		$this->epub->setPublisher($publisherName, null);
 	}
 
-	public function addChapter($title, $content)
+	public function addChapter($id, $title, $content)
 	{
         $content_start =
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -43,12 +58,14 @@ class EpubPublisher implements IPublisher {
         . "<head>"
         . "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n"
         . "<title>" . $title . "</title>\n"
+        . "<link href=\"../Styles/Style.css\" rel=\"stylesheet\" type=\"text/css\" />\n"
         . "</head>\n"
         . "<body>\n";
         $bookEnd = "</body>\n</html>\n";
-		$xmlContent = $content_start . $content . $bookEnd;
 
-		$this->epub->addChapter($title, $title . ".html", $xmlContent, true, EPub::EXTERNAL_REF_ADD, wp_upload_dir()['basedir']);
+		$xmlContent = $content_start . '<h1 class="chapter-title">' . $title . '</h1>' . $content . $bookEnd;
+
+		$this->epub->addChapter($title, $id . ".html", $xmlContent);
 	}
 
 	public function save($filename, $dir)

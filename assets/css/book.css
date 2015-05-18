@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../Fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../Fonts/Merriweather-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: normal;
+    font-style: italic;
+    src: url('../Fonts/Merriweather-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 500;
+    font-style: normal;
+    src: url('../Fonts/Lato-Bold.ttf');
+}
+
+body {
+	font-family: 'Merriweather', serif;
+	color:#222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+}
+
+h1.chapter-title {
+	margin: 2em 0 1em;
+	text-align: center;
+	font-size: 48px;
+}
+
+h2 {
+	color: #ba3925;
+	font-size: 24px;
+	margin: 36px 0 12px;
+}
+
+a {
+	color: #ba3925;
+}
+
+p {
+	font: normal 18px/30px 'Merriweather',serif;
+	margint-bottom: 24px;
+}
+
+p i, p em {
+	font-tr
+}
