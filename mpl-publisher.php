@@ -36,5 +36,5 @@ add_action('admin_enqueue_scripts', function ()
 	wp_enqueue_script('jquery-ui-sortable');
 	wp_enqueue_media();
 
-	wp_enqueue_script('mpl-publisher', plugin_dir_url(__FILE__) . 'assets/mpl-publisher.js');
+	wp_enqueue_script('mpl-publisher', plugin_dir_url(__FILE__) . 'assets/js/mpl-publisher.js');
 });

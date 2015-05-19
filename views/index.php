@@ -77,8 +77,10 @@
 
 					<div class="form-field">
 						<label for="book-cover"><?php _e("Cover image (Optional)", "publisher"); ?></label>
-						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
-						<p><?php _e("Recommended size is 750x350", "publisher"); ?></p>
+						<img src="" id="book-cover-placeholder" width="150" height="240" style="border:1px solid #aaa">
+						<input type="hidden" name="book-cover" id="book-cover" value="">
+						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
+						<p><?php _e("Recommended size is 1000x625", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[+ info]</a></p>
 					</div>
 
 					<div class="form-field">
@@ -97,29 +99,3 @@
 		</div>
 	</form>
 </div>
-
-<script type="text/javascript">
-jQuery(document).ready(function($){
-    $('#upload-btn').click(function(e) {
-        e.preventDefault();
-        var image = wp.media({ 
-            title: 'Upload Image',
-            // mutiple: true if you want to upload multiple files at once
-            multiple: false
-        }).open()
-        .on('select', function(e){
-            // This will return the selected image from the Media Uploader, the result is an object
-            var uploaded_image = image.state().get('selection').first();
-            // We convert uploaded_image to a JSON object to make accessing it easier
-            // Output to the console uploaded_image
-            console.log(uploaded_image);
-            var image_url = uploaded_image.toJSON().url;
-
-            console.log(image_url)
-
-            // Let's assign the url value to the input field
-            $('#image_url').val(image_url);
-        });
-    });
-});
-</script>
