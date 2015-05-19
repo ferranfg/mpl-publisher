@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-05-16 19:57+0100\n"
-"PO-Revision-Date: 2015-05-16 19:57+0100\n"
+"POT-Creation-Date: 2015-05-19 18:52+0100\n"
+"PO-Revision-Date: 2015-05-19 19:00+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
-"Language: es\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -57,21 +57,40 @@ msgstr "Separa múltiples autores con comas"
 msgid "Publisher Name (Optional)"
 msgstr "Editor (Opcional)"
 
-#: ../views/index.php:79
+#: ../views/index.php:79 ../views/index.php:80
+msgid "Cover image (Optional)"
+msgstr "Imagen de portada (Opcional)"
+
+#: ../views/index.php:82
+msgid "Upload Image"
+msgstr "Cargar Imagen"
+
+#: ../views/index.php:83
+msgid "Recommended size is 625x1000"
+msgstr "El tamaño recomendado es de 625x1000"
+
+#: ../views/index.php:87
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:83
+#: ../views/index.php:92
 msgid ""
-"Currently, only EPUB 2.0 is available. Future versions will include Mobi, "
-"PDF, etc."
+"Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
+"include Mobi, PDF, etc."
 msgstr ""
-"Actualmente, solo está disponible EPUB 2.0. Versiones futuras incluirán "
-"soporte para Mobi, PDF, etc."
+"Actualmente, solo EPUB2.0 y EPUB 3.0 están disponibles. Versiones futuras "
+"incluirán Mobi, PDF, etc."
 
-#: ../views/index.php:87
+#: ../views/index.php:96
 msgid "Publish"
 msgstr "Publicar"
+
+#~ msgid ""
+#~ "Currently, only EPUB 2.0 is available. Future versions will include Mobi, "
+#~ "PDF, etc."
+#~ msgstr ""
+#~ "Actualmente, solo está disponible EPUB 2.0. Versiones futuras incluirán "
+#~ "soporte para Mobi, PDF, etc."
 
 #~ msgid "Book title"
 #~ msgstr "Título del libro"

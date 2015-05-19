@@ -28,6 +28,8 @@ class EpubPublisher implements IPublisher {
 		$this->epub->addFile("Merriweather-Bold.ttf", "merriweather-bold", file_get_contents($fontsPath . "Merriweather-Bold.ttf"), "application/font-sfnt");
 		$this->epub->addFile("Merriweather-Italic.ttf", "merriweather-italic", file_get_contents($fontsPath . "Merriweather-Italic.ttf"), "application/font-sfnt");
 		$this->epub->addFile("Lato-Bold.ttf", "lato-bold", file_get_contents($fontsPath . "Lato-Bold.ttf"), "application/font-sfnt");
+
+		$this->epub->setGenerator("https://ferranfigueredo.com/mpl-publisher/");
 	}
 
 	public function setIdentifier($id)

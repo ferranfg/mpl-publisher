@@ -2,7 +2,7 @@
 Contributors: ferranfg
 Donate link: http://ferranfigueredo.com/
 Tags: ebook, epub, publish, writers
-Requires at least: 4.2.2
+Requires at least: 3.5.0
 Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
@@ -21,8 +21,8 @@ The plugin is still in an early development stage (check the features section an
 For now, these are the current features:
 
 - Select chapters (posts) to include in your eBook.
-- Set basic information about your book: Authors, ISBN, Publisher.
-- Download your eBook as EPUB2.0.
+- Set basic information about your book: Authors, ISBN, Publisher, Book Cover.
+- Download your eBook as EPUB2.0 or EPUB3.0
 - Sort your chapters individually.
 
 = Roadmap =
@@ -47,7 +47,7 @@ This section describes how to install the plugin and get it working.
 
 = Which output formats are supported? =
 
-Currently we only support EPUB2.0. You can choose it from the Output format's select menu
+Currently we only support EPUB2.0 and EPUB3.0. You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -58,6 +58,12 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 1. Default screen
 
 == Changelog ==
+
+= 1.3.0 =
+- Added EPUB3.0 as output format
+- Upload a Book Cover
+- Added meta information about the generator
+- Corrected Spanish and Catalan translations
 
 = 1.2.0 =
 - New default book style
@@ -73,12 +79,4 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-- New default style
-- Added Spanish and Catalan translation
-
-= 1.1.1 =
-- Sort individual chapters manually
-
-= 1.0 =
-- Initial release
+This release, allows you to upload a Book Cover. Also, you can choose EPUB3.0 as output format.
