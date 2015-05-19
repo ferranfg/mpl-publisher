@@ -10,9 +10,11 @@ class EpubPublisher implements IPublisher {
 
 	private $basePath;
 
-	public function __construct($basePath)
+	public function __construct($format, $basePath)
 	{
-		$this->epub = new EPub();
+		$version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
+
+		$this->epub = new EPub($version);
 
 		$DS = DIRECTORY_SEPARATOR;
 		$assetsPath = $basePath . $DS . 'assets' . $DS;
@@ -46,6 +48,11 @@ class EpubPublisher implements IPublisher {
 	public function setPublisher($publisherName)
 	{
 		$this->epub->setPublisher($publisherName, null);
+	}
+
+	function setCoverImage($fileName, $imageData = null, $mimetype = null)
+	{
+		return $this->epub->setCoverImage($fileName, $imageData, $mimetype);
 	}
 
 	public function addChapter($id, $title, $content)

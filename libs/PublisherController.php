@@ -49,12 +49,17 @@ class PublisherController {
         // http://codex.wordpress.org/Function_Reference/check_admin_referer
         if (empty($_POST) || !check_admin_referer('publish_ebook', '_wpnonce')) return;
 
-        $publisher = new EpubPublisher($this->basePath);
+        $publisher = new EpubPublisher($_POST['format'], $this->basePath);
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
+
+        if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
+        {
+            $publisher->setCoverImage("cover.jpg", file_get_contents(get_attached_file($imageId)));
+        }
 
         $query = new \WP_Query(array('post__in' => $_POST['selected_posts'], 'orderby' => 'post__in'));
 

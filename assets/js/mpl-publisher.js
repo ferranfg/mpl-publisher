@@ -10,8 +10,9 @@
 			// wp media object
 			var image = window.wp.media().open().on('select', function() {
 				var selected = image.state().get('selection').first();
-
-				$('#book-cover').val(selected.get('url'));
+				// hidden field
+				$('#book-cover').val(selected.get('id'));
+				// image next button
 				$('#book-cover-placeholder').attr('src', selected.get('url'));
 			});
 

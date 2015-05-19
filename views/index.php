@@ -77,8 +77,8 @@
 
 					<div class="form-field">
 						<label for="book-cover"><?php _e("Cover image (Optional)", "publisher"); ?></label>
-						<img src="" id="book-cover-placeholder" width="150" height="240" style="border:1px solid #aaa">
-						<input type="hidden" name="book-cover" id="book-cover" value="">
+						<img src="" id="book-cover-placeholder" width="115" height="184" style="background:#ddd">
+						<input type="hidden" name="cover" id="book-cover" value="">
 						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
 						<p><?php _e("Recommended size is 1000x625", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[+ info]</a></p>
 					</div>
@@ -86,9 +86,10 @@
 					<div class="form-field">
 						<label for="format"><?php _e("Output format", "publisher"); ?></label>
 						<select name="format" class="postform">
-							<option value="EpubPublisher">EPUB 2.0</option>
+							<option value="epub2">EPUB 2.0</option>
+							<option value="epub3">EPUB 3.0</option>
 						</select>
-						<p><?php _e("Currently, only EPUB 2.0 is available. Future versions will include Mobi, PDF, etc.", "publisher"); ?></p>
+						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include Mobi, PDF, etc.", "publisher"); ?></p>
 					</div>
 
 					<p class="submit">
