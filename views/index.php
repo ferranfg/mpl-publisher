@@ -4,7 +4,7 @@
 
 	<hr />
 
-	<form id="col-container" action="<?php echo $action; ?>" method="POST">
+	<form id="col-container" action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data">
 
 		<input type="hidden" name="action" value="publish_ebook">
 
@@ -72,7 +72,13 @@
 
 					<div class="form-field">
 						<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
-						<input name="editor" id="book-editor" type="text" value="" placeholder="<?php _e('Publisher Name (Optional)'); ?>">
+						<input name="editor" id="book-editor" type="text" value="" placeholder="<?php _e('Publisher Name (Optional)', 'publisher'); ?>">
+					</div>
+
+					<div class="form-field">
+						<label for="book-cover"><?php _e("Cover image (Optional)", "publisher"); ?></label>
+						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
+						<p><?php _e("Recommended size is 750x350", "publisher"); ?></p>
 					</div>
 
 					<div class="form-field">
@@ -91,3 +97,29 @@
 		</div>
 	</form>
 </div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    $('#upload-btn').click(function(e) {
+        e.preventDefault();
+        var image = wp.media({ 
+            title: 'Upload Image',
+            // mutiple: true if you want to upload multiple files at once
+            multiple: false
+        }).open()
+        .on('select', function(e){
+            // This will return the selected image from the Media Uploader, the result is an object
+            var uploaded_image = image.state().get('selection').first();
+            // We convert uploaded_image to a JSON object to make accessing it easier
+            // Output to the console uploaded_image
+            console.log(uploaded_image);
+            var image_url = uploaded_image.toJSON().url;
+
+            console.log(image_url)
+
+            // Let's assign the url value to the input field
+            $('#image_url').val(image_url);
+        });
+    });
+});
+</script>
