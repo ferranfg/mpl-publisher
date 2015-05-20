@@ -4,6 +4,8 @@
 
 	$(document).ready(function () {
 
+		$('.chosen').chosen();
+
 		$('#chapter-list').sortable();
 
 		$('#upload-btn').on('click', function(e) {

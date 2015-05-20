@@ -36,5 +36,8 @@ add_action('admin_enqueue_scripts', function ()
 	wp_enqueue_script('jquery-ui-sortable');
 	wp_enqueue_media();
 
+	wp_enqueue_script('chosen', plugin_dir_url(__FILE__) . 'assets/js/chosen.jquery.min.js');
+	wp_enqueue_style('chosen', plugin_dir_url(__FILE__) . 'assets/css/chosen.min.css');
+
 	wp_enqueue_script('mpl-publisher', plugin_dir_url(__FILE__) . 'assets/js/mpl-publisher.js');
 });
