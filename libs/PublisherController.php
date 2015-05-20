@@ -35,8 +35,9 @@ class PublisherController {
     public function getIndex()
     {
         $this->data['site_name'] = get_bloginfo('site_name');
-        $this->data['posts'] = get_posts();
+        $this->data['query'] = new \WP_Query('');
         $this->data['categories'] = get_categories();
+        $this->data['tags'] = get_tags();
         $this->data['current_user'] = wp_get_current_user();
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);

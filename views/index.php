@@ -15,6 +15,21 @@
 
 				<h3><?php _e("Contents", "publisher"); ?></h3>
 
+				<div class="clearfix" style="margin-bottom:5px">
+					<select name="cat" id="cat" class="chosen" multiple style="width:200px">
+						<option value="0" selected="selected">Todas las categorias</option>
+						<?php foreach ($categories as $category): ?>
+							<option value="<?php echo $category->cat_ID; ?>"><?php echo $category->name; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<select name="tag" id="tag" class="chosen" multiple style="width:200px">
+						<option value="0" selected="selected">Todos los tags</option>
+						<?php foreach ($tags as $tag): ?>
+							
+						<?php endforeach; ?>
+					</select>
+					<input type="submit" name="filter_action" id="post-query-submit" class="button" value="Filtrar">
+				</div>
 				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
 						<tr>
@@ -22,19 +37,23 @@
 								<input id="cb-select-all-1" type="checkbox" checked="checked">
 							</th>
 							<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
+							<th scope="col" id="categories" class="manage-column column-categories">Categorías</th>
 						</tr>
 					</thead>
 					<tbody id="chapter-list">
-						<?php foreach ($posts as $post): ?>
+						<?php while ($query->have_posts()): $query->the_post(); ?>
 							<tr style="cursor: move">
 								<th scope="row" class="check-column">
-									<input type="checkbox" name="selected_posts[]" value="<?php echo $post->ID; ?>" id="cb-select-<?php echo $post->ID; ?>"  checked="checked">
+									<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
 								</th>
 								<td class="name column-name">
-									<strong><a href="<?php echo $post->guid; ?>" target="_blank"><?php echo $post->post_title; ?></a></strong>
+									<strong><a href="<?php edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
+								</td>
+								<td class="name column-name">
+									<?php //echo wp_get_post_categories($post->ID); ?>
 								</td>
 							</tr>
-						<?php endforeach; ?>
+						<?php endwhile; ?>
 					</tbody>
 					<tfoot>
 						<tr>
