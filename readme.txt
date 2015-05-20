@@ -1,7 +1,7 @@
 === MPL - Publisher ===
 Contributors: ferranfg
 Donate link: http://ferranfigueredo.com/
-Tags: ebook, epub, publish, writers
+Tags: ebook, epub, publish, writers, self-publish, author
 Requires at least: 3.5.0
 Tested up to: 4.2.2
 Stable tag: trunk
@@ -56,6 +56,9 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 == Screenshots ==
 
 1. Default screen
+2. Android Amazon Kindle
+3. iPad iBooks
+4. iPad Amazon Kindle
 
 == Changelog ==
 
