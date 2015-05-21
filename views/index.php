@@ -16,19 +16,13 @@
 				<h3><?php _e("Contents", "publisher"); ?></h3>
 
 				<div class="clearfix" style="margin-bottom:5px">
-					<select name="cat" id="cat" class="chosen" multiple style="width:200px">
-						<option value="0" selected="selected">Todas las categorias</option>
+					<select name="cat" id="cat" class="chosen" multiple style="width:80%;height:29px;margin:0;padding:0">
+						<option value="0" selected="selected"><?php _e("All categories"); ?></option>
 						<?php foreach ($categories as $category): ?>
 							<option value="<?php echo $category->cat_ID; ?>"><?php echo $category->name; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<select name="tag" id="tag" class="chosen" multiple style="width:200px">
-						<option value="0" selected="selected">Todos los tags</option>
-						<?php foreach ($tags as $tag): ?>
-							
-						<?php endforeach; ?>
-					</select>
-					<input type="submit" name="filter_action" id="post-query-submit" class="button" value="Filtrar">
+					<input type="submit" name="filter_action" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" style="margin-top:0px">
 				</div>
 				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
@@ -37,7 +31,6 @@
 								<input id="cb-select-all-1" type="checkbox" checked="checked">
 							</th>
 							<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
-							<th scope="col" id="categories" class="manage-column column-categories">Categorías</th>
 						</tr>
 					</thead>
 					<tbody id="chapter-list">
@@ -47,10 +40,7 @@
 									<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
 								</th>
 								<td class="name column-name">
-									<strong><a href="<?php edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
-								</td>
-								<td class="name column-name">
-									<?php //echo wp_get_post_categories($post->ID); ?>
+									<strong><a href="<?php get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
 								</td>
 							</tr>
 						<?php endwhile; ?>
@@ -64,6 +54,7 @@
 						</tr>
 					</tfoot>
 				</table>
+				<?php echo paginate_links(); ?>
 			</div>
 		</div>
 
@@ -112,7 +103,7 @@
 					</div>
 
 					<p class="submit">
-						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Publish'); ?>">
+						<input type="submit" name="generate" id="submit" class="button button-primary" value="<?php _e('Publish'); ?>">
 					</p>
 				</div>
 			</div>
