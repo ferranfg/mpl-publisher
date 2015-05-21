@@ -11,9 +11,13 @@ interface IPublisher {
 	public function setAuthor($authorName);
 
 	public function setPublisher($publisherName);
+
+	public function setCoverImage($fileName, $imageData, $mimetype);
 	
-	public function addChapter($id, $title, $content);
+	public function addChapter($title, $content);
 
 	public function save($filename, $dir);
+
+	public function send($filename);
 
 }
