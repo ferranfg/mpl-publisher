@@ -23,17 +23,17 @@ For now, these are the current features:
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0 or EPUB3.0
-- Sort your chapters individually.
+- Basic filter and sort your chapters individually.
 
 = Roadmap =
 
 Future releases will include, at least, the next functionalities:
 
 - Multiple output formats (PDF Print-Ready and mobi).
-- Advanced search with filters to improve the chapter selection.
+- Advanced search with complex filters to improve the chapter selection.
 - Multiple design selection
 
-For further information, visit the plugin's homepage
+For further information, visit the [MPL-Publisher plugin's homepage](https://ferranfigueredo.com/mpl-publisher/)
 
 == Installation ==
 
@@ -62,6 +62,10 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Changelog ==
 
+= 1.4.0 =
+- Chapter's selection filtered by posts categories
+- Fix HTTPS image request
+
 = 1.3.0 =
 - Added EPUB3.0 as output format
 - Upload a Book Cover
@@ -82,4 +86,4 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Upgrade Notice ==
 
-This release, allows you to upload a Book Cover. Also, you can choose EPUB3.0 as output format.
+- Improved chapter selection with category filters
