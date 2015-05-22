@@ -70,28 +70,27 @@ class PublisherController {
 
     private function generateBook()
     {
-        $publisher = new EpubPublisher();
+        $publisher = new EpubPublisher($_POST['format'], $this->basePath);
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
 
-        if (isset($_POST['selected_posts']) and !empty($_POST['selected_posts']))
+        if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
         {
-            $query = new \WP_Query(array(
-                'post__in' => $_POST['selected_posts'],
-                'orderby' => 'post__in'
-            ));
+            $publisher->setCoverImage("cover.jpg", file_get_contents(get_attached_file($imageId)));
+        }
 
-            if ($query->have_posts())
+        $query = new \WP_Query(array('post__in' => $_POST['selected_posts'], 'orderby' => 'post__in'));
+
+        if ($query->have_posts())
+        {
+            while ($query->have_posts())
             {
-                while ($query->have_posts())
-                {
-                    $query->the_post();
+                $query->the_post();
 
-                    $publisher->addChapter(get_the_title(), get_the_content());
-                }
+                $publisher->addChapter(get_the_ID(), get_the_title(), get_the_content());
             }
         }
 

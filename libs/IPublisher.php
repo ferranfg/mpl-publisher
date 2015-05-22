@@ -14,7 +14,7 @@ interface IPublisher {
 
 	public function setCoverImage($fileName, $imageData, $mimetype);
 	
-	public function addChapter($title, $content);
+	public function addChapter($id, $title, $content);
 
 	public function save($filename, $dir);
 
