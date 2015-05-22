@@ -62,6 +62,13 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Changelog ==
 
+= 1.5.0 =
+- Add Book Description
+- Sets Blog Language as Book Language
+
+= 1.4.4 =
+- Fix "class not found" error
+
 = 1.4.0 =
 - Chapter's selection filtered by posts categories
 - Fix HTTPS image request

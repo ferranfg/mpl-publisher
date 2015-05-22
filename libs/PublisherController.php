@@ -34,9 +34,13 @@ class PublisherController {
 
     public function getIndex()
     {
-        $query = http_build_query(array_merge(array('posts_per_page' => '-1'), $_GET));
+        $query = http_build_query(array_merge(array(
+            'posts_per_page' => '-1',
+            'post_status' => 'publish'
+        ), $_GET));
 
         $this->data['site_name'] = get_bloginfo('site_name');
+        $this->data['site_description'] = get_bloginfo('site_description');
         $this->data['query'] = new \WP_Query($query);
         $this->data['categories'] = get_categories();
         $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
@@ -76,6 +80,8 @@ class PublisherController {
         $publisher->setTitle(sanitize_text_field($_POST['title']));
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
+        $publisher->setDescription(sanitize_text_field($_POST['description']));
+        $publisher->setLanguage(substr(get_locale(), 0, 2));
 
         if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
         {

@@ -75,14 +75,19 @@
 					<h3><?php _e("General details", "publisher"); ?></h3>
 
 					<div class="form-field">
-						<label for="book-identifier"><?php _e("Identifier (ISBN)", "publisher"); ?></label>
-						<input name="identifier" id="book-identifier" type="text" value="" placeholder="ej: 9788494138805 E">
-						<p><?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?></p>
+						<label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
+						<input name="title" id="book-title" type="text" value="<?php echo $site_name; ?>" placeholder="<?php _e('Book Title'); ?>">
 					</div>
 
 					<div class="form-field">
-						<label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
-						<input name="title" id="book-title" type="text" value="<?php echo $site_name; ?>" placeholder="<?php _e('Book Title'); ?>">
+						<label for="book-descripcion"><?php _e("Book Description", "publisher"); ?></label>
+						<textarea name="description" id="book-description" rows="6"><?php echo $site_description; ?></textarea>
+					</div>
+
+					<div class="form-field">
+						<label for="book-identifier"><?php _e("Identifier (ISBN)", "publisher"); ?></label>
+						<input name="identifier" id="book-identifier" type="text" value="" placeholder="ej: 9788494138805 E">
+						<p><?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?></p>
 					</div>					
 
 					<div class="form-field">

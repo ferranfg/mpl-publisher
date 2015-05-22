@@ -34,27 +34,37 @@ class EpubPublisher implements IPublisher {
 
 	public function setIdentifier($id)
 	{
-		$this->epub->setIdentifier($id, EPub::IDENTIFIER_URI);
+		return $this->epub->setIdentifier($id, EPub::IDENTIFIER_URI);
 	}
 
 	public function setTitle($title)
 	{
-		$this->epub->setTitle($title);
+		return $this->epub->setTitle($title);
 	}
 
 	public function setAuthor($authorName)
 	{
-		$this->epub->setAuthor($authorName, $authorName);
+		return $this->epub->setAuthor($authorName, $authorName);
 	}
 
 	public function setPublisher($publisherName)
 	{
-		$this->epub->setPublisher($publisherName, null);
+		return $this->epub->setPublisher($publisherName, null);
 	}
 
-	function setCoverImage($fileName, $imageData = null, $mimetype = null)
+	public function setCoverImage($fileName, $imageData = null, $mimetype = null)
 	{
 		return $this->epub->setCoverImage($fileName, $imageData, $mimetype);
+	}
+
+	public function setDescription($description)
+	{
+		return $this->epub->setDescription($description);
+	}
+
+	public function setLanguage($language)
+	{
+		return $this->epub->setLanguage($language);
 	}
 
 	public function addChapter($id, $title, $content)
@@ -74,7 +84,7 @@ class EpubPublisher implements IPublisher {
 
 		$xmlContent = $content_start . '<h1 class="chapter-title">' . $title . '</h1>' . $content . $bookEnd;
 
-		$this->epub->addChapter($title, $id . ".html", $xmlContent);
+		return $this->epub->addChapter($title, $id . ".html", $xmlContent);
 	}
 
 	public function save($filename, $dir)

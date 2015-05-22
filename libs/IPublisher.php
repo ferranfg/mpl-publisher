@@ -13,6 +13,10 @@ interface IPublisher {
 	public function setPublisher($publisherName);
 
 	public function setCoverImage($fileName, $imageData, $mimetype);
+
+	public function setDescription($description);
+
+	public function setLanguage($language);
 	
 	public function addChapter($id, $title, $content);
 
