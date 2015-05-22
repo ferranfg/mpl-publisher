@@ -32,10 +32,12 @@ class PublisherController {
         return new View($factory, new PhpEngine, $file, $this->viewPath . $file, $data);
     }
 
-    public function getIndex($query = "")
+    public function getIndex()
     {
+        $query = http_build_query(array_merge(array('posts_per_page' => '-1'), $_GET));
+
         $this->data['site_name'] = get_bloginfo('site_name');
-        $this->data['query'] = new \WP_Query('posts_per_page=1');
+        $this->data['query'] = new \WP_Query($query);
         $this->data['categories'] = get_categories();
         $this->data['current_user'] = wp_get_current_user();
         $this->data['action'] = admin_url('admin-post.php');
@@ -53,9 +55,20 @@ class PublisherController {
 
         if (isset($_POST['generate'])) return $this->generateBook();
 
-        $query = "";
+        $query = array();
 
-        return $this->getIndex($query);
+        if (isset($_POST['cat']) and !in_array(0, $_POST['ca']))
+        {
+            $query = array('cat' => $_POST['categories']);
+        }
+
+        echo "<pre>";
+        print_r($query);
+        echo "</pre>";
+
+        $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
+
+        //return wp_redirect(admin_url('tools.php?' . $params));
     }
 
     private function generateBook()
@@ -67,7 +80,7 @@ class PublisherController {
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
 
-        if (!isset($_POST['selected_posts']))
+        if (isset($_POST['selected_posts']) and !empty($_POST['selected_posts']))
         {
             $query = new \WP_Query(array(
                 'post__in' => $_POST['selected_posts'],

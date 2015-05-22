@@ -15,14 +15,14 @@
 
 				<h3><?php _e("Contents", "publisher"); ?></h3>
 
-				<div class="clearfix" style="margin-bottom:5px">
-					<select name="cat" id="cat" class="chosen" multiple style="width:80%;height:29px;margin:0;padding:0">
+				<div class="clearfix filter-bar">
+					<select name="cat[]" id="cat" class="chosen" multiple>
 						<option value="0" selected="selected"><?php _e("All categories"); ?></option>
 						<?php foreach ($categories as $category): ?>
 							<option value="<?php echo $category->cat_ID; ?>"><?php echo $category->name; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<input type="submit" name="filter_action" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" style="margin-top:0px">
+					<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
 				</div>
 				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
@@ -34,16 +34,23 @@
 						</tr>
 					</thead>
 					<tbody id="chapter-list">
-						<?php while ($query->have_posts()): $query->the_post(); ?>
-							<tr style="cursor: move">
-								<th scope="row" class="check-column">
-									<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
-								</th>
-								<td class="name column-name">
-									<strong><a href="<?php get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
-								</td>
+						<?php if ($query->have_posts()): ?>
+							<?php while ($query->have_posts()): $query->the_post(); ?>
+								<tr style="cursor: move">
+									<th scope="row" class="check-column">
+										<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
+									</th>
+									<td class="name column-name">
+										<strong><a href="<?php get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
+									</td>
+								</tr>
+							<?php endwhile; ?>
+						<?php else: ?>
+							<tr>
+								<th></th>
+								<td>No entries found</td>
 							</tr>
-						<?php endwhile; ?>
+						<?php endif; ?>
 					</tbody>
 					<tfoot>
 						<tr>

@@ -1,0 +1,10 @@
+.filter-bar { margin-bottom:5px; }
+.filter-bar #post-query-submit { margin-top:0; }
+
+.wp-admin select[multiple].chosen {
+	width:80%;
+	height:29px;
+	margin:0;
+	padding:0;
+}
+.chosen-container-multi .chosen-choices { border-color: #ddd; }
