@@ -16,10 +16,14 @@
 				<h3><?php _e("Contents", "publisher"); ?></h3>
 
 				<div class="clearfix filter-bar">
-					<select name="cat[]" id="cat" class="chosen" multiple>
-						<option value="0" selected="selected"><?php _e("All categories"); ?></option>
+					<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("Categories"); ?>">
+						<option value="0" <?php echo !$categories_selected ? "selected='selected'" : ''; ?>>
+							<?php _e("All categories"); ?>
+						</option>
 						<?php foreach ($categories as $category): ?>
-							<option value="<?php echo $category->cat_ID; ?>"><?php echo $category->name; ?></option>
+							<option value="<?php echo $category->cat_ID; ?>" <?php echo ($categories_selected and in_array($category->cat_ID, $categories_selected)) ? "selected='selected'" : ""; ?>>
+								<?php echo $category->name; ?>
+							</option>
 						<?php endforeach; ?>
 					</select>
 					<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
@@ -48,7 +52,7 @@
 						<?php else: ?>
 							<tr>
 								<th></th>
-								<td>No entries found</td>
+								<td></td>
 							</tr>
 						<?php endif; ?>
 					</tbody>

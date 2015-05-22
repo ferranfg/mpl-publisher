@@ -39,6 +39,7 @@ class PublisherController {
         $this->data['site_name'] = get_bloginfo('site_name');
         $this->data['query'] = new \WP_Query($query);
         $this->data['categories'] = get_categories();
+        $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
         $this->data['current_user'] = wp_get_current_user();
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
@@ -57,18 +58,14 @@ class PublisherController {
 
         $query = array();
 
-        if (isset($_POST['cat']) and !in_array(0, $_POST['ca']))
+        if (isset($_POST['cat']) and !in_array(0, $_POST['cat']))
         {
-            $query = array('cat' => $_POST['categories']);
+            $query = array('cat' => implode(',', $_POST['cat']));
         }
-
-        echo "<pre>";
-        print_r($query);
-        echo "</pre>";
 
         $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
 
-        //return wp_redirect(admin_url('tools.php?' . $params));
+        return wp_redirect(admin_url('tools.php?' . $params));
     }
 
     private function generateBook()
