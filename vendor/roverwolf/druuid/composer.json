@@ -1,0 +1,31 @@
+{
+    "name": "roverwolf/druuid",
+    "version": "0.0.7",
+    "type": "library",
+    "description": "A class for working with UUIDs",
+    "keywords": ["uuid"],
+    "homepage": "http://jkingweb.ca/code/php/lib.uuid/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "J. King",
+            "email": "jking@jkingweb.ca",
+            "homepage": "http://jkingweb.ca/"
+        }
+    ],
+    "repositories": {
+        "Github": {
+            "vcs": {
+                "url": "git://github.com/roverwolf/DrUUID.git"
+            }
+        }
+    },
+    "require": {
+        "php": ">=5.0"
+    },
+    "autoload": {
+        "classmap": [
+            "lib.uuid.php"
+        ]
+    }
+}
