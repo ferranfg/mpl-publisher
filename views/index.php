@@ -26,6 +26,16 @@
 							</option>
 						<?php endforeach; ?>
 					</select>
+					<select name="author[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
+						<option value="0" <?php echo !$authors_selected ? "selected='selected'" : ''; ?>>
+							<?php _e("All authors", "publisher"); ?>
+						</option>
+						<?php foreach ($authors as $author): ?>
+							<option value="<?php echo $author->ID; ?>" <?php echo ($authors_selected and in_array($author->ID, $authors_selected)) ? "selected='selected'" : ""; ?>>
+								<?php echo $author->data->display_name; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
 					<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
 				</div>
 				<table class="wp-list-table widefat fixed striped posts">

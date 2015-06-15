@@ -4,11 +4,13 @@
 .filter-bar #post-query-submit { margin-top:0; }
 
 .wp-admin select[multiple].chosen {
-	width:75%;
+	width:37.5%;
 	height:29px;
 	margin:0;
 	padding:0;
-	opacity: 0;
 }
-.chosen-container { width:75% !important; }
+.chosen-container {
+	width:37.5% !important;
+	vertical-align: top;
+}
 .chosen-container-multi .chosen-choices { border-color: #ddd; }
