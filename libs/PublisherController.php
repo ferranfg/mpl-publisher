@@ -48,6 +48,9 @@ class PublisherController {
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
+        $this->data['tags'] = get_tags();
+        $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
+
         wp_reset_postdata();
 
     	echo $this->view('index.php', $this->data);
@@ -66,6 +69,8 @@ class PublisherController {
         {
             $query = array('cat' => implode(',', $_POST['cat']));
         }
+
+        if (isset($_POST['tag'])) $query['tag'] = implode(',', $_POST['tag']);
 
         $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
 

@@ -28,6 +28,15 @@
 					</select>
 					<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
 				</div>
+				<div class="clearfix filter-bar">
+					<select name="tag[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
+						<?php foreach ($tags as $tag): ?>
+							<option value="<?php echo $tag->slug; ?>" <?php echo ($tags_selected and in_array($tag->slug, $tags_selected)) ? "selected='selected'" : ""; ?>>
+								<?php echo $tag->name; ?> (<?php echo $tag->count; ?>)
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
 						<tr>
