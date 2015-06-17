@@ -16,20 +16,14 @@
 				<h3><?php _e("Contents", "publisher"); ?></h3>
 
 				<div class="clearfix filter-bar">
-					<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("Categories"); ?>">
-						<option value="0" <?php echo !$categories_selected ? "selected='selected'" : ''; ?>>
-							<?php _e("All categories"); ?>
-						</option>
+					<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
 						<?php foreach ($categories as $category): ?>
 							<option value="<?php echo $category->cat_ID; ?>" <?php echo ($categories_selected and in_array($category->cat_ID, $categories_selected)) ? "selected='selected'" : ""; ?>>
-								<?php echo $category->name; ?>
+								<?php echo $category->name; ?> (<?php echo $category->count; ?>)
 							</option>
 						<?php endforeach; ?>
 					</select>
 					<select name="author[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
-						<option value="0" <?php echo !$authors_selected ? "selected='selected'" : ''; ?>>
-							<?php _e("All authors", "publisher"); ?>
-						</option>
 						<?php foreach ($authors as $author): ?>
 							<option value="<?php echo $author->ID; ?>" <?php echo ($authors_selected and in_array($author->ID, $authors_selected)) ? "selected='selected'" : ""; ?>>
 								<?php echo $author->data->display_name; ?>
@@ -38,6 +32,17 @@
 					</select>
 					<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
 				</div>
+				<?php if (count($tags)): ?>
+					<div class="clearfix filter-bar">
+						<select name="tag[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
+							<?php foreach ($tags as $tag): ?>
+								<option value="<?php echo $tag->slug; ?>" <?php echo ($tags_selected and in_array($tag->slug, $tags_selected)) ? "selected='selected'" : ""; ?>>
+									<?php echo $tag->name; ?> (<?php echo $tag->count; ?>)
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+				<?php endif; ?>
 				<table class="wp-list-table widefat fixed striped posts">
 					<thead>
 						<tr>

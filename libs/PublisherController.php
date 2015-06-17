@@ -44,8 +44,10 @@ class PublisherController {
         $this->data['query'] = new \WP_Query($query);
         $this->data['categories'] = $this->get_categories();
         $this->data['authors'] = $this->get_authors();
+        $this->data['tags'] = get_tags();
         $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
         $this->data['authors_selected'] = isset($_GET['author']) ? explode(',', $_GET['author']) : false;
+        $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
         $this->data['current_user'] = wp_get_current_user();
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
@@ -64,15 +66,9 @@ class PublisherController {
 
         $query = array();
 
-        if (isset($_POST['cat']) and !in_array(0, $_POST['cat']))
-        {
-            $query['cat'] = implode(',', $_POST['cat']);
-        }
-
-        if (isset($_POST['author']) and !in_array(0, $_POST['author']))
-        {
-            $query['author'] = implode(',', $_POST['author']);
-        }
+        if (isset($_POST['cat'])) $query['cat'] = implode(',', $_POST['cat']);
+        if (isset($_POST['author'])) $query['author'] = implode(',', $_POST['author']);
+        if (isset($_POST['tag'])) $query['tag'] = implode(',', $_POST['tag']);
 
         $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
 
