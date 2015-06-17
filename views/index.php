@@ -19,7 +19,7 @@
 					<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
 						<?php foreach ($categories as $category): ?>
 							<option value="<?php echo $category->cat_ID; ?>" <?php echo ($categories_selected and in_array($category->cat_ID, $categories_selected)) ? "selected='selected'" : ""; ?>>
-								<?php echo $category->name; ?> (<?php echo $category->count; ?>)
+								<?php echo $category->name; ?>
 							</option>
 						<?php endforeach; ?>
 					</select>
@@ -37,7 +37,7 @@
 						<select name="tag[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
 							<?php foreach ($tags as $tag): ?>
 								<option value="<?php echo $tag->slug; ?>" <?php echo ($tags_selected and in_array($tag->slug, $tags_selected)) ? "selected='selected'" : ""; ?>>
-									<?php echo $tag->name; ?> (<?php echo $tag->count; ?>)
+									<?php echo $tag->name; ?>
 								</option>
 							<?php endforeach; ?>
 						</select>

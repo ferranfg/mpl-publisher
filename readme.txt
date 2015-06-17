@@ -8,11 +8,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.
+MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBook. Choose your format: PDF, ePub, Mobi... etc.
 
 == Description ==
 
-MPL – Publisher is a WordPress plugin to convert your blog’s posts into an eBook. The plugin’s main purpose is to help writers to publish their own books the simplest possible way, easing the process of converting to the different digital formats.
+MPL â€“ Publisher is a WordPress plugin to convert your blogâ€™s posts into an eBook. The pluginâ€™s main purpose is to help writers to publish their own books the simplest possible way, easing the process of converting to the different digital formats.
 
 The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. You can contact me sending an email
 
@@ -21,7 +21,7 @@ The plugin is still in an early development stage (check the features section an
 For now, these are the current features:
 
 - Select chapters (posts) to include in your eBook.
-- Set basic information about your book: Authors, ISBN, Publisher, Book Cover.
+- Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0 or EPUB3.0
 - Basic filter and sort your chapters individually.
 
@@ -32,6 +32,11 @@ Future releases will include, at least, the next functionalities:
 - Multiple output formats (PDF Print-Ready and mobi).
 - Advanced search with complex filters to improve the chapter selection.
 - Multiple design selection
+
+= Requirements =
+
+- PHP 5.4.0 or higher
+- WordPress 3.5.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://ferranfigueredo.com/mpl-publisher/)
 
@@ -44,6 +49,16 @@ This section describes how to install the plugin and get it working.
 3. Navigate to Tools - Publisher in your admin menu
 
 == Frequently Asked Questions ==
+
+= I'm getting an error! =
+
+If you see something like:
+
+`Parse error: syntax error, unexpected '[' in ../wp-content/plugins/mpl-publisher/vendor/illuminate/support/helpers.php on line 365`
+
+This errors is related with the installed PHP version on your server. Please, make sure you follow the [recommended WordPress requirements](https://wordpress.org/about/requirements/)
+
+If you have any other error, please use the [MPL - Publisher support forum](https://wordpress.org/support/plugin/mpl-publisher)
 
 = Which output formats are supported? =
 
@@ -61,6 +76,12 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 4. iPad Amazon Kindle
 
 == Changelog ==
+
+= 1.6.0 =
+- Added authors filtering to chapter's selection
+- Added tag filtering to chapter's selection
+- Improve readme.txt description to provide server requirements information
+- Pending 1.5.0 spanish and catalan translations
 
 = 1.5.0 =
 - Add Book Description
@@ -93,4 +114,5 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Upgrade Notice ==
 
-- Improved chapter selection with category filters
+= 1.6.0 =
+Added authors and tags filtering to chapter's selection

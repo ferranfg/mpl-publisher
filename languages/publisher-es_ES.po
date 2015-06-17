@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-05-19 18:52+0100\n"
-"PO-Revision-Date: 2015-05-19 19:00+0100\n"
+"POT-Creation-Date: 2015-06-17 18:52+0100\n"
+"PO-Revision-Date: 2015-06-17 18:52+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -25,55 +25,75 @@ msgstr "Publisher"
 msgid "Contents"
 msgstr "Índice"
 
-#: ../views/index.php:24 ../views/index.php:44
+#: ../views/index.php:19
+msgid "All categories"
+msgstr "Todas las categorías"
+
+#: ../views/index.php:26
+msgid "All authors"
+msgstr "Todos los autores"
+
+#: ../views/index.php:33
+msgid "Filter"
+msgstr "Filtrar"
+
+#: ../views/index.php:37
+msgid "All tags"
+msgstr "Todas las etiquetas"
+
+#: ../views/index.php:52 ../views/index.php:79
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: ../views/index.php:54
+#: ../views/index.php:90
 msgid "General details"
 msgstr "Detalles generales"
 
-#: ../views/index.php:57
-msgid "Identifier (ISBN)"
-msgstr "Identificador (ISBN)"
-
-#: ../views/index.php:59
-msgid "If your book doesn't have an ISBN, use a unique identifier"
-msgstr "Si tu libro no dispone de ISBN, utiliza un identificador único."
-
-#: ../views/index.php:63 ../views/index.php:64
+#: ../views/index.php:93 ../views/index.php:94
 msgid "Book Title"
 msgstr "Título del libro"
 
-#: ../views/index.php:68 ../views/index.php:69
+#: ../views/index.php:98
+msgid "Book Description"
+msgstr "Descripción del libro"
+
+#: ../views/index.php:103
+msgid "Identifier (ISBN)"
+msgstr "Identificador (ISBN)"
+
+#: ../views/index.php:105
+msgid "If your book doesn't have an ISBN, use a unique identifier"
+msgstr "Si tu libro no dispone de ISBN, utiliza un identificador único."
+
+#: ../views/index.php:109 ../views/index.php:110
 msgid "Book authors"
 msgstr "Autores del libro"
 
-#: ../views/index.php:70
+#: ../views/index.php:111
 msgid "Separate multiple authors with commas"
 msgstr "Separa múltiples autores con comas"
 
-#: ../views/index.php:74 ../views/index.php:75
+#: ../views/index.php:115 ../views/index.php:116
 msgid "Publisher Name (Optional)"
 msgstr "Editor (Opcional)"
 
-#: ../views/index.php:79 ../views/index.php:80
+#: ../views/index.php:120 ../views/index.php:121
 msgid "Cover image (Optional)"
 msgstr "Imagen de portada (Opcional)"
 
-#: ../views/index.php:82
+#: ../views/index.php:123
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: ../views/index.php:83
+#: ../views/index.php:124
 msgid "Recommended size is 625x1000"
 msgstr "El tamaño recomendado es de 625x1000"
 
-#: ../views/index.php:87
+#: ../views/index.php:128
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:92
+#: ../views/index.php:133
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
 "include Mobi, PDF, etc."
@@ -81,7 +101,7 @@ msgstr ""
 "Actualmente, solo EPUB2.0 y EPUB 3.0 están disponibles. Versiones futuras "
 "incluirán Mobi, PDF, etc."
 
-#: ../views/index.php:96
+#: ../views/index.php:137
 msgid "Publish"
 msgstr "Publicar"
 
