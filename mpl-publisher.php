@@ -13,6 +13,11 @@ require 'vendor/autoload.php';
 
 $controller = new \MPL\Publisher\PublisherController(__DIR__);
 
+add_action('admin_notices', function ()
+{
+	
+});
+
 add_action('init', function ()
 {
 	load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');

@@ -1,12 +1,10 @@
 #col-right { overflow: visible; }
-
 .filter-bar { margin-bottom:5px; }
 .filter-bar #post-query-submit {
 	margin-top:0;
 	padding: 0 15px 1px;
 	height: 28px !important;
 }
-
 .wp-admin select[multiple].chosen {
 	width:37.5%;
 	height:29px;
