@@ -98,12 +98,12 @@
 
 					<div class="form-field">
 						<label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
-						<input name="title" id="book-title" type="text" value="<?php echo $site_name; ?>" placeholder="<?php _e('Book Title'); ?>">
+						<input name="title" id="book-title" type="text" value="<?php echo $title; ?>" placeholder="<?php _e('Book Title'); ?>">
 					</div>
 
 					<div class="form-field">
 						<label for="book-descripcion"><?php _e("Book Description", "publisher"); ?></label>
-						<textarea name="description" id="book-description" rows="6"><?php echo $site_description; ?></textarea>
+						<textarea name="description" id="book-description" rows="6"><?php echo $description; ?></textarea>
 					</div>
 
 					<div class="form-field">
@@ -141,7 +141,8 @@
 					</div>
 
 					<p class="submit">
-						<input type="submit" name="generate" id="submit" class="button button-primary" value="<?php _e('Publish'); ?>">
+						<input type="submit" name="save" id="save" class="button" value="<?php _e('Save changes', 'publisher'); ?>">
+						<input type="submit" name="generate" id="submit" class="button button-primary" value="<?php _e('Publish', 'publisher'); ?>">
 					</p>
 				</div>
 			</div>

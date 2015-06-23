@@ -16,6 +16,8 @@ class PublisherController {
 
     private $viewPath;
 
+    private $data = array();
+
     public function __construct($basePath)
     {
         $DS = DIRECTORY_SEPARATOR;
@@ -34,23 +36,40 @@ class PublisherController {
 
     public function getIndex()
     {
+        $options = get_option('mpl_publisher_options');
+
+        if (isset($options['save']))
+        {
+            $this->data = $options['save']['data'];
+        }
+        else
+        {
+            $this->data['title'] = get_bloginfo('site_name');
+            $this->data['description'] = get_bloginfo('site_description');
+            $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
+            $this->data['authors_selected'] = isset($_GET['author']) ? explode(',', $_GET['author']) : false;
+            $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
+        }
+
+        $this->data['categories'] = $this->get_categories();
+        $this->data['authors'] = $this->get_authors();
+        $this->data['tags'] = get_tags();
+        $this->data['current_user'] = wp_get_current_user();
+        $this->data['action'] = admin_url('admin-post.php');
+        $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
+
         $query = http_build_query(array_merge(array(
             'posts_per_page' => '-1',
             'post_status' => 'publish'
         ), $_GET));
 
-        $this->data['site_name'] = get_bloginfo('site_name');
-        $this->data['site_description'] = get_bloginfo('site_description');
         $this->data['query'] = new \WP_Query($query);
-        $this->data['categories'] = $this->get_categories();
-        $this->data['authors'] = $this->get_authors();
-        $this->data['tags'] = get_tags();
-        $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
-        $this->data['authors_selected'] = isset($_GET['author']) ? explode(',', $_GET['author']) : false;
-        $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
-        $this->data['current_user'] = wp_get_current_user();
-        $this->data['action'] = admin_url('admin-post.php');
-        $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
+
+        echo "<pre>";
+        print_r($options);
+        echo "</pre>";
+
+
 
         wp_reset_postdata();
 
@@ -63,6 +82,8 @@ class PublisherController {
         if (empty($_POST) || !check_admin_referer('publish_ebook', '_wpnonce')) return;
 
         if (isset($_POST['generate'])) return $this->generateBook();
+
+        if (isset($_POST['save'])) $this->saveOption('save', $_POST);
 
         $query = array();
 
@@ -114,5 +135,17 @@ class PublisherController {
         }
 
         return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
+    }
+
+    private function saveOption($key, $data)
+    {
+        $option = get_option('mpl_publisher_options');
+
+        $option[$key] = array(
+            'time' => time(),
+            'data' => $data
+        );
+
+        update_option('mpl_publisher_options', $option);
     }
 }
