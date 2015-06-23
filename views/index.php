@@ -122,22 +122,28 @@
 					</div>
 
 					<div class="tab-pane" id="book-settings">
-						<h3><?php _e("Book settings", "publisher"); ?></h3>
+						<h3><?php _e("Metadata settings", "publisher"); ?></h3>
 						<p><?php _e("The more metadata you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
 
 						<div class="form-field">
 							<label for="book-language"><?php _e("Language (Optional)", "publisher"); ?></label>
 							<input name="language" id="book-language" type="text" value="" placeholder="<?php _e('Language (Optional)', 'publisher'); ?>">
-							<p><?php echo _e("The primary language of the book, formatted as a three-letter ISO 639-2/B code", "publisher"); ?> <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes" target="_blank">[?]</a></p>
+							<p><?php echo _e("Formatted as a three-letter ISO 639-2/B code", "publisher"); ?> <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes" target="_blank">[?]</a></p>
+						</div>
+
+						<div class="form-field">
+							<label for="book-date"><?php _e("Publication date (Optional)", "publisher"); ?></label>
+							<input name="date" id="book-date" type="date" value="" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+							<p><?php echo _e("This information won't affect the book's availability", "publisher"); ?>
 						</div>
 
 						<div class="form-field">
 							<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
-							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image (Optional)", "publisher"); ?>" />
 							<input type="hidden" name="cover" id="book-cover" value="">
 							<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
 							<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
-						</div>
+						</div>						
 
 						<div class="form-field">
 							<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
