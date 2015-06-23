@@ -4,9 +4,10 @@
 
 	<hr />
 
-	<h2 class="nav-tab-wrapper">
-		<a class="nav-tab nav-tab-active" href=""><?php _e("General details", "publisher"); ?></a>
-	</h2>
+	<ul class="nav-tab-wrapper nav-tabs">
+		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
+	</ul>
 
 	<form id="col-container" action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data">
 
@@ -92,44 +93,59 @@
 
 		<div id="col-left">
 			<div class="col-wrap">
-				<div class="form-wrap">
-					<br />
-					<p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
+				<div class="form-wrap tab-content">
+					<div class="tab-pane active" id="book-details">
+						<h3><?php _e("Book details", "publisher"); ?></h3>
+						<p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
 
-					<div class="form-field">
-						<label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
-						<input name="title" id="book-title" type="text" value="<?php echo $site_name; ?>" placeholder="<?php _e('Book Title'); ?>">
+						<div class="form-field">
+							<label for="book-identifier"><?php _e("Identifier (ISBN)", "publisher"); ?></label>
+							<input name="identifier" id="book-identifier" type="text" value="" placeholder="ej: 9788494138805 E">
+							<p><?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?></p>
+						</div>
+
+						<div class="form-field">
+							<label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
+							<input name="title" id="book-title" type="text" value="<?php echo $site_name; ?>" placeholder="<?php _e('Book Title'); ?>">
+						</div>
+
+						<div class="form-field">
+							<label for="book-descripcion"><?php _e("Book Description", "publisher"); ?></label>
+							<textarea name="description" id="book-description" rows="6"><?php echo $site_description; ?></textarea>
+						</div>
+
+						<div class="form-field">
+							<label for="book-authors"><?php _e("Book authors", "publisher"); ?></label>
+							<input name="authors" id="book-authors" type="text" value="<?php echo $current_user->display_name; ?>" placeholder="<?php _e('Book authors'); ?>">
+							<p><?php _e("Separate multiple authors with commas", "publisher"); ?></p>
+						</div>
 					</div>
 
-					<div class="form-field">
-						<label for="book-descripcion"><?php _e("Book Description", "publisher"); ?></label>
-						<textarea name="description" id="book-description" rows="6"><?php echo $site_description; ?></textarea>
+					<div class="tab-pane" id="book-settings">
+						<h3><?php _e("Book settings", "publisher"); ?></h3>
+						<p><?php _e("The more metadata you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
+
+						<div class="form-field">
+							<label for="book-language"><?php _e("Language (Optional)", "publisher"); ?></label>
+							<input name="language" id="book-language" type="text" value="" placeholder="<?php _e('Language (Optional)', 'publisher'); ?>">
+							<p><?php echo _e("The primary language of the book, formatted as a three-letter ISO 639-2/B code", "publisher"); ?> <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes" target="_blank">[?]</a></p>
+						</div>
+
+						<div class="form-field">
+							<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
+							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+							<input type="hidden" name="cover" id="book-cover" value="">
+							<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
+							<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
+						</div>
+
+						<div class="form-field">
+							<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
+							<input name="editor" id="book-editor" type="text" value="" placeholder="<?php _e('Publisher Name (Optional)', 'publisher'); ?>">
+						</div>
 					</div>
 
-					<div class="form-field">
-						<label for="book-identifier"><?php _e("Identifier (ISBN)", "publisher"); ?></label>
-						<input name="identifier" id="book-identifier" type="text" value="" placeholder="ej: 9788494138805 E">
-						<p><?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?></p>
-					</div>					
-
-					<div class="form-field">
-						<label for="book-authors"><?php _e("Book authors", "publisher"); ?></label>
-						<input name="authors" id="book-authors" type="text" value="<?php echo $current_user->display_name; ?>" placeholder="<?php _e('Book authors'); ?>">
-						<p><?php _e("Separate multiple authors with commas", "publisher"); ?></p>
-					</div>
-
-					<div class="form-field">
-						<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
-						<input name="editor" id="book-editor" type="text" value="" placeholder="<?php _e('Publisher Name (Optional)', 'publisher'); ?>">
-					</div>
-
-					<div class="form-field">
-						<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
-						<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image (Optional)", "publisher"); ?>" />
-						<input type="hidden" name="cover" id="book-cover" value="">
-						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
-						<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[+ info]</a></p>
-					</div>
+					<hr />
 
 					<div class="form-field">
 						<label for="format"><?php _e("Output format", "publisher"); ?></label>
