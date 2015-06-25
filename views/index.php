@@ -49,6 +49,7 @@
 							</select>
 						</div>
 					<?php endif; ?>
+					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
 					<table class="wp-list-table widefat fixed striped posts">
 						<thead>
 							<tr>
@@ -86,7 +87,6 @@
 							</tr>
 						</tfoot>
 					</table>
-					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
 				</div>
 			</div>
 		</div>
@@ -110,7 +110,7 @@
 						</div>
 
 						<div class="form-field">
-							<label for="book-descripcion"><?php _e("Book Description", "publisher"); ?></label>
+							<label for="book-description"><?php _e("Book Description", "publisher"); ?></label>
 							<textarea name="description" id="book-description" rows="6"><?php echo $site_description; ?></textarea>
 						</div>
 
@@ -128,12 +128,12 @@
 						<div class="form-field">
 							<label for="book-language"><?php _e("Language (Optional)", "publisher"); ?></label>
 							<input name="language" id="book-language" type="text" value="" placeholder="<?php _e('Language (Optional)', 'publisher'); ?>">
-							<p><?php echo _e("Formatted as a three-letter ISO 639-2/B code", "publisher"); ?> <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes" target="_blank">[?]</a></p>
+							<p><?php echo _e("Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…", "publisher"); ?></p>
 						</div>
 
 						<div class="form-field">
 							<label for="book-date"><?php _e("Publication date (Optional)", "publisher"); ?></label>
-							<input name="date" id="book-date" type="date" value="" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+							<input name="date" id="book-date" type="text" value="" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
 							<p><?php echo _e("This information won't affect the book's availability", "publisher"); ?>
 						</div>
 

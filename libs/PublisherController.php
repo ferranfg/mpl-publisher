@@ -94,9 +94,10 @@ class PublisherController {
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
         $publisher->setDescription(sanitize_text_field($_POST['description']));
-        $publisher->setLanguage(sanitize_text_field($_POST['language']));
         $publisher->setDate(sanitize_text_field($_POST['date']));
-        $publisher->setLanguage(substr(get_locale(), 0, 2));
+
+        $language = isset($_POST['language']) ? sanitize_text_field($_POST['language']) : substr(get_locale(), 0, 2);
+        $publisher->setLanguage($language);
 
         if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
         {
