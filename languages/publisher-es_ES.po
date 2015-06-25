@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-06-23 16:47+0100\n"
-"PO-Revision-Date: 2015-06-23 16:49+0100\n"
+"POT-Creation-Date: 2015-06-25 16:20+0100\n"
+"PO-Revision-Date: 2015-06-25 16:20+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -68,7 +68,8 @@ msgid ""
 "help readers discover your books."
 msgstr ""
 "Introduce los detalles de tu libro, incluyendo título, descripción y "
-"autores. "
+"autores. Completa tantos campos como te sea posible, ya que estos datos "
+"podrían ayudar a los lectores a descubrir tus libros."
 
 #: ../views/index.php:102
 msgid "Identifier (ISBN)"
@@ -149,10 +150,10 @@ msgstr "Formato de salida"
 #: ../views/index.php:162
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
-"include Mobi, PDF, etc."
+"include PDF as output format."
 msgstr ""
 "Actualmente, solo EPUB2.0 y EPUB 3.0 están disponibles. Versiones futuras "
-"incluirán Mobi, PDF, etc."
+"incluirán PDF como formato de salida."
 
 #: ../views/index.php:166
 msgid "Publish"

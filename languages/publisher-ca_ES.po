@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-06-23 16:50+0100\n"
-"PO-Revision-Date: 2015-06-23 16:53+0100\n"
+"POT-Creation-Date: 2015-06-25 16:19+0100\n"
+"PO-Revision-Date: 2015-06-25 16:20+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: ca_ES\n"
@@ -55,7 +55,8 @@ msgstr "Capítol"
 
 #: ../views/index.php:89
 msgid "Drag your filtered results to sort your book's chapters"
-msgstr "Arrastra els resultats per ordenar els capítols del teu llibre"
+msgstr ""
+"Arrossega els resultats filtrats per ordenar els capítols del teu llibre"
 
 #: ../views/index.php:98
 msgid "Book details"
@@ -67,7 +68,9 @@ msgid ""
 "encourage you to complete as many fields as possible, as richer data could "
 "help readers discover your books."
 msgstr ""
-"Introdueix els detalls del teu llibre, incloent titol, descripció i autors."
+"Introdueix els detalls del teu llibre, incloent títol, descripció i autors. "
+"Completa tants camps com et sigui possible, ja que aquestes dades podrien "
+"ajudar per a descobrir els teus llibres."
 
 #: ../views/index.php:102
 msgid "Identifier (ISBN)"
@@ -148,10 +151,10 @@ msgstr "Format de sortida"
 #: ../views/index.php:162
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
-"include Mobi, PDF, etc."
+"include PDF as output format."
 msgstr ""
 "Actualment, només disponible EPUB2.0 i EPUB3.0 estan disponibles. Futures "
-"versions inclouran Mobi, PDF, etc."
+"versions inclouran PDF com format de sortida."
 
 #: ../views/index.php:166
 msgid "Publish"

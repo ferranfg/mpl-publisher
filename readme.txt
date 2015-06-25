@@ -19,7 +19,6 @@ The plugin is still in an early development stage (check the features section an
 = Features =
 
 For now, these are the current features:
-
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0 or EPUB3.0
@@ -28,9 +27,9 @@ For now, these are the current features:
 = Roadmap =
 
 Future releases will include, at least, the next functionalities:
-
-- Multiple output formats (PDF Print-Ready and mobi).
+- Multiple output formats (PDF Print-Ready pending).
 - Advanced search with complex filters to improve the chapter selection.
+- Add extra and edit current content
 - Multiple design selection
 
 = Requirements =
@@ -66,7 +65,7 @@ Currently we only support EPUB2.0 and EPUB3.0. You can choose it from the Output
 
 = What about other formats? =
 
-In future releases we will add support to other formats like PDF, mobi, etc. Keep updated.
+In future releases we will add support to other formats like PDF. Keep updated.
 
 == Screenshots ==
 
@@ -76,6 +75,12 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 4. iPad Amazon Kindle
 
 == Changelog ==
+
+= 1.7.0
+- Improved admin's page navigation using tabs
+- Add helping blocks to better understanding
+- Add book publication's date field and editable language field
+- Bug printing post's edit link
 
 = 1.6.0 =
 - Added authors filtering to chapter's selection
@@ -114,5 +119,5 @@ In future releases we will add support to other formats like PDF, mobi, etc. Kee
 
 == Upgrade Notice ==
 
-= 1.6.0 =
-Added authors and tags filtering to chapter's selection
+= 1.7.0 =
+- Add book publication's date field and editable language field

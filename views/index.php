@@ -159,7 +159,7 @@
 							<option value="epub2">EPUB 2.0</option>
 							<option value="epub3">EPUB 3.0</option>
 						</select>
-						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include Mobi, PDF, etc.", "publisher"); ?></p>
+						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>
 					</div>
 
 					<p class="submit">
