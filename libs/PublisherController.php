@@ -16,8 +16,6 @@ class PublisherController {
 
     private $viewPath;
 
-    private $data = array();
-
     public function __construct($basePath)
     {
         $DS = DIRECTORY_SEPARATOR;
@@ -36,40 +34,23 @@ class PublisherController {
 
     public function getIndex()
     {
-        $options = get_option('mpl_publisher_options');
+        $query = http_build_query(array_merge(array(
+            'posts_per_page' => '-1',
+            'post_status' => 'publish&private'
+        ), $_GET));
 
-        if (isset($options['save']))
-        {
-            $this->data = $options['save']['data'];
-        }
-        else
-        {
-            $this->data['title'] = get_bloginfo('site_name');
-            $this->data['description'] = get_bloginfo('site_description');
-            $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
-            $this->data['authors_selected'] = isset($_GET['author']) ? explode(',', $_GET['author']) : false;
-            $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
-        }
-
+        $this->data['site_name'] = get_bloginfo('site_name');
+        $this->data['site_description'] = get_bloginfo('site_description');
+        $this->data['query'] = new \WP_Query($query);
         $this->data['categories'] = $this->get_categories();
         $this->data['authors'] = $this->get_authors();
         $this->data['tags'] = get_tags();
+        $this->data['categories_selected'] = isset($_GET['cat']) ? explode(',', $_GET['cat']) : false;
+        $this->data['authors_selected'] = isset($_GET['author']) ? explode(',', $_GET['author']) : false;
+        $this->data['tags_selected'] = isset($_GET['tag']) ? explode(',', $_GET['tag']) : false;
         $this->data['current_user'] = wp_get_current_user();
         $this->data['action'] = admin_url('admin-post.php');
         $this->data['wp_nonce_field'] = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
-
-        $query = http_build_query(array_merge(array(
-            'posts_per_page' => '-1',
-            'post_status' => 'publish'
-        ), $_GET));
-
-        $this->data['query'] = new \WP_Query($query);
-
-        echo "<pre>";
-        print_r($options);
-        echo "</pre>";
-
-
 
         wp_reset_postdata();
 
@@ -115,7 +96,10 @@ class PublisherController {
         $publisher->setAuthor(sanitize_text_field($_POST['authors']));
         $publisher->setPublisher(sanitize_text_field($_POST['editor']));
         $publisher->setDescription(sanitize_text_field($_POST['description']));
-        $publisher->setLanguage(substr(get_locale(), 0, 2));
+        $publisher->setDate(sanitize_text_field($_POST['date']));
+
+        $language = isset($_POST['language']) ? sanitize_text_field($_POST['language']) : substr(get_locale(), 0, 2);
+        $publisher->setLanguage($language);
 
         if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
         {

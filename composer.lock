@@ -371,12 +371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "f39a0b1274ef1f055f6115ce82481487113a5bd6"
+                "reference": "9c27569a4e639e6ffbab1f56b4c862f23890a4de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/f39a0b1274ef1f055f6115ce82481487113a5bd6",
-                "reference": "f39a0b1274ef1f055f6115ce82481487113a5bd6",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/9c27569a4e639e6ffbab1f56b4c862f23890a4de",
+                "reference": "9c27569a4e639e6ffbab1f56b4c862f23890a4de",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +406,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-04 21:36:40"
+            "time": "2015-06-13 22:48:28"
         },
         {
             "name": "illuminate/contracts",
@@ -414,12 +414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "02c53f7d5100a32901ed54cd7beaa46d3d06c6e3"
+                "reference": "6abc7aedd7bd0229f94b4f895a86e434d743ecef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/02c53f7d5100a32901ed54cd7beaa46d3d06c6e3",
-                "reference": "02c53f7d5100a32901ed54cd7beaa46d3d06c6e3",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6abc7aedd7bd0229f94b4f895a86e434d743ecef",
+                "reference": "6abc7aedd7bd0229f94b4f895a86e434d743ecef",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-08 19:17:38"
+            "time": "2015-06-22 20:36:58"
         },
         {
             "name": "illuminate/events",
@@ -456,12 +456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "2e3d1930005f8094b31fc84155b21c1cc1ea02c1"
+                "reference": "25def2ddf2620fe7cff32f27eabe52700c34bee7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/2e3d1930005f8094b31fc84155b21c1cc1ea02c1",
-                "reference": "2e3d1930005f8094b31fc84155b21c1cc1ea02c1",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/25def2ddf2620fe7cff32f27eabe52700c34bee7",
+                "reference": "25def2ddf2620fe7cff32f27eabe52700c34bee7",
                 "shasum": ""
             },
             "require": {
@@ -493,7 +493,7 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-03 12:19:44"
+            "time": "2015-06-22 20:36:58"
         },
         {
             "name": "illuminate/filesystem",
@@ -501,12 +501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "969272400733e96b61971b47c7a718e585957186"
+                "reference": "9cb6b66e268d8e37efb4bae14e5ad57d160cf1ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/969272400733e96b61971b47c7a718e585957186",
-                "reference": "969272400733e96b61971b47c7a718e585957186",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/9cb6b66e268d8e37efb4bae14e5ad57d160cf1ff",
+                "reference": "9cb6b66e268d8e37efb4bae14e5ad57d160cf1ff",
                 "shasum": ""
             },
             "require": {
@@ -543,7 +543,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-12 12:26:04"
+            "time": "2015-06-22 20:36:58"
         },
         {
             "name": "illuminate/support",
@@ -551,12 +551,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "71fb24bd66de4111a0e959a85a916460cb9fc03f"
+                "reference": "f4a0804fcffaf071cd2056e7c3ef0752d7ebc44a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/71fb24bd66de4111a0e959a85a916460cb9fc03f",
-                "reference": "71fb24bd66de4111a0e959a85a916460cb9fc03f",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/f4a0804fcffaf071cd2056e7c3ef0752d7ebc44a",
+                "reference": "f4a0804fcffaf071cd2056e7c3ef0752d7ebc44a",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +596,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-12 12:26:04"
+            "time": "2015-06-22 20:36:58"
         },
         {
             "name": "illuminate/view",
@@ -604,12 +604,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "591a43e9fceb517b1f57cd339cdd06273d698c42"
+                "reference": "f327bc1b437f3babe2d478ef87f2dafe4361ef35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/591a43e9fceb517b1f57cd339cdd06273d698c42",
-                "reference": "591a43e9fceb517b1f57cd339cdd06273d698c42",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/f327bc1b437f3babe2d478ef87f2dafe4361ef35",
+                "reference": "f327bc1b437f3babe2d478ef87f2dafe4361ef35",
                 "shasum": ""
             },
             "require": {
@@ -642,7 +642,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-09 13:30:19"
+            "time": "2015-06-22 20:36:58"
         },
         {
             "name": "phpzip/phpzip",
@@ -752,12 +752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "798e9a9c69f3e2e9d8766e8633e404676a09f99c"
+                "reference": "588ded81facfb6462c43e6922509e3f8c889de05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/798e9a9c69f3e2e9d8766e8633e404676a09f99c",
-                "reference": "798e9a9c69f3e2e9d8766e8633e404676a09f99c",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/588ded81facfb6462c43e6922509e3f8c889de05",
+                "reference": "588ded81facfb6462c43e6922509e3f8c889de05",
                 "shasum": ""
             },
             "require": {
@@ -793,7 +793,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-04 20:21:09"
+            "time": "2015-06-18 16:14:27"
         }
     ],
     "packages-dev": [],
