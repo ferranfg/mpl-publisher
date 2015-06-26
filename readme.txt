@@ -19,6 +19,7 @@ The plugin is still in an early development stage (check the features section an
 = Features =
 
 For now, these are the current features:
+
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0 or EPUB3.0
@@ -27,6 +28,7 @@ For now, these are the current features:
 = Roadmap =
 
 Future releases will include, at least, the next functionalities:
+
 - Multiple output formats (PDF Print-Ready pending).
 - Advanced search with complex filters to improve the chapter selection.
 - Add extra and edit current content
@@ -76,7 +78,7 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
-= 1.7.0
+= 1.7.0 =
 - Improved admin's page navigation using tabs
 - Add helping blocks to better understanding
 - Add book publication's date field and editable language field
