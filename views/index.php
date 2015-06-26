@@ -145,7 +145,10 @@
 											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
 										</th>
 										<td class="name column-name">
-											<strong><a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
+											<strong>
+												<a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a>
+												<?php if (get_post_status() === "private"): ?> - <?php echo _e("Private", "publisher"); ?><?php endif; ?>
+											</strong>
 										</td>
 									</tr>
 								<?php endwhile; ?>
