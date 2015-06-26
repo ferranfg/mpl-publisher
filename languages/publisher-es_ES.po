@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-06-25 16:20+0100\n"
-"PO-Revision-Date: 2015-06-25 16:20+0100\n"
+"POT-Creation-Date: 2015-06-26 10:57+0100\n"
+"PO-Revision-Date: 2015-06-26 10:59+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -29,39 +29,11 @@ msgstr "Detalles generales"
 msgid "Settings"
 msgstr "Detalles"
 
-#: ../views/index.php:21
-msgid "Contents"
-msgstr "Índice"
-
-#: ../views/index.php:25
-msgid "All categories"
-msgstr "Todas las categorías"
-
-#: ../views/index.php:32
-msgid "All authors"
-msgstr "Todos los autores"
-
-#: ../views/index.php:39
-msgid "Filter"
-msgstr "Filtrar"
-
-#: ../views/index.php:43
-msgid "All tags"
-msgstr "Todas las etiquetas"
-
-#: ../views/index.php:58 ../views/index.php:85
-msgid "Chapter"
-msgstr "Capítulo"
-
-#: ../views/index.php:89
-msgid "Drag your filtered results to sort your book's chapters"
-msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
-
-#: ../views/index.php:98
+#: ../views/index.php:22
 msgid "Book details"
 msgstr "Información del libro"
 
-#: ../views/index.php:99
+#: ../views/index.php:23
 msgid ""
 "Enter your book details, including title, description, and authors. We "
 "encourage you to complete as many fields as possible, as richer data could "
@@ -71,35 +43,35 @@ msgstr ""
 "autores. Completa tantos campos como te sea posible, ya que estos datos "
 "podrían ayudar a los lectores a descubrir tus libros."
 
-#: ../views/index.php:102
+#: ../views/index.php:26
 msgid "Identifier (ISBN)"
 msgstr "Identificador (ISBN)"
 
-#: ../views/index.php:104
+#: ../views/index.php:28
 msgid "If your book doesn't have an ISBN, use a unique identifier"
 msgstr "Si tu libro no dispone de ISBN, utiliza un identificador único."
 
-#: ../views/index.php:108 ../views/index.php:109
+#: ../views/index.php:32 ../views/index.php:33
 msgid "Book Title"
 msgstr "Título del libro"
 
-#: ../views/index.php:113
+#: ../views/index.php:37
 msgid "Book Description"
 msgstr "Descripción del libro"
 
-#: ../views/index.php:118 ../views/index.php:119
+#: ../views/index.php:42 ../views/index.php:43
 msgid "Book authors"
 msgstr "Autores del libro"
 
-#: ../views/index.php:120
+#: ../views/index.php:44
 msgid "Separate multiple authors with commas"
 msgstr "Separa múltiples autores con comas"
 
-#: ../views/index.php:125
+#: ../views/index.php:49
 msgid "Metadata settings"
 msgstr "Metadatos"
 
-#: ../views/index.php:126
+#: ../views/index.php:50
 msgid ""
 "The more metadata you provide, the easier it will be for readers to discover "
 "your book."
@@ -107,47 +79,47 @@ msgstr ""
 "Cuanta más información adicional añadas, más fácil será para tus lectores "
 "encontrarte."
 
-#: ../views/index.php:129 ../views/index.php:130
+#: ../views/index.php:53 ../views/index.php:54
 msgid "Language (Optional)"
 msgstr "Idioma (Opcional)"
 
-#: ../views/index.php:131
-msgid "Formatted as a three-letter ISO 639-2/B code"
-msgstr "En formato de tres letras ISO 639-2/B"
+#: ../views/index.php:55
+msgid "Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…"
+msgstr "Utiliza los códigos de idioma RFC3066, como \"en\", \"es\", \"fr\"…"
 
-#: ../views/index.php:135
+#: ../views/index.php:59
 msgid "Publication date (Optional)"
 msgstr "Fecha de publicación (Opcional)"
 
-#: ../views/index.php:136
+#: ../views/index.php:60
 msgid "YYYY-MM-DD"
 msgstr "AAAA-MM-DD"
 
-#: ../views/index.php:137
+#: ../views/index.php:61
 msgid "This information won't affect the book's availability"
 msgstr "Esta información no afectará la disponibilidad del libro"
 
-#: ../views/index.php:141 ../views/index.php:142
+#: ../views/index.php:65 ../views/index.php:66
 msgid "Cover image (Optional)"
 msgstr "Imagen de portada (Opcional)"
 
-#: ../views/index.php:144
+#: ../views/index.php:68
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: ../views/index.php:145
+#: ../views/index.php:69
 msgid "Recommended size is 625x1000"
 msgstr "El tamaño recomendado es de 625x1000"
 
-#: ../views/index.php:149 ../views/index.php:150
+#: ../views/index.php:73 ../views/index.php:74
 msgid "Publisher Name (Optional)"
 msgstr "Editor (Opcional)"
 
-#: ../views/index.php:157
+#: ../views/index.php:81
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:162
+#: ../views/index.php:86
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
 "include PDF as output format."
@@ -155,9 +127,44 @@ msgstr ""
 "Actualmente, solo EPUB2.0 y EPUB 3.0 están disponibles. Versiones futuras "
 "incluirán PDF como formato de salida."
 
-#: ../views/index.php:166
+#: ../views/index.php:90 ../views/index.php:173
 msgid "Publish"
 msgstr "Publicar"
+
+#: ../views/index.php:99
+msgid "Contents"
+msgstr "Índice"
+
+#: ../views/index.php:103
+msgid "All categories"
+msgstr "Todas las categorías"
+
+#: ../views/index.php:110
+msgid "All authors"
+msgstr "Todos los autores"
+
+#: ../views/index.php:117
+msgid "Filter"
+msgstr "Filtrar"
+
+#: ../views/index.php:121
+msgid "All tags"
+msgstr "Todas las etiquetas"
+
+#: ../views/index.php:130
+msgid "Drag your filtered results to sort your book's chapters"
+msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
+
+#: ../views/index.php:137 ../views/index.php:167
+msgid "Chapter"
+msgstr "Capítulo"
+
+#: ../views/index.php:150
+msgid "Private"
+msgstr "Privado"
+
+#~ msgid "Formatted as a three-letter ISO 639-2/B code"
+#~ msgstr "En formato de tres letras ISO 639-2/B"
 
 #~ msgid "Cover image"
 #~ msgstr "Imagen de portada (Opcional)"

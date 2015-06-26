@@ -1,4 +1,38 @@
-#col-right { overflow: visible; }
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.hidden-xs {
+	display: none !important;
+}
+
+.visible-xs {
+	display: block !important;
+}
+
+@media screen and (min-width: 769px) {
+
+	.hidden-xs {
+		display: block !important;
+	}
+
+	.visible-xs {
+		display: none !important;
+	}
+}
+
+#col-left {
+	float: left;
+}
+
+#col-right {
+	overflow: visible;
+}
 
 .form-wrap label {
 	font-weight: 700;
@@ -6,6 +40,11 @@
 
 .form-wrap .form-field {
 	margin-bottom: 0;
+}
+
+.form-wrap > p.submit {
+	margin-top: 10px;
+	display: block;
 }
 
 .filter-bar { margin-bottom:5px; }

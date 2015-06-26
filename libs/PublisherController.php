@@ -36,7 +36,7 @@ class PublisherController {
     {
         $query = http_build_query(array_merge(array(
             'posts_per_page' => '-1',
-            'post_status' => 'publish'
+            'post_status' => 'publish&private'
         ), $_GET));
 
         $this->data['site_name'] = get_bloginfo('site_name');

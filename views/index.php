@@ -15,82 +15,6 @@
 
 		<?php echo $wp_nonce_field; ?>
 
-		<div id="col-right">
-			<div class="col-wrap">
-
-				<h3><?php _e("Contents", "publisher"); ?></h3>
-
-				<div class="form-wrap">
-					<div class="clearfix filter-bar">
-						<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
-							<?php foreach ($categories as $category): ?>
-								<option value="<?php echo $category->cat_ID; ?>" <?php echo ($categories_selected and in_array($category->cat_ID, $categories_selected)) ? "selected='selected'" : ""; ?>>
-									<?php echo $category->name; ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-						<select name="author[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
-							<?php foreach ($authors as $author): ?>
-								<option value="<?php echo $author->ID; ?>" <?php echo ($authors_selected and in_array($author->ID, $authors_selected)) ? "selected='selected'" : ""; ?>>
-									<?php echo $author->data->display_name; ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-						<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
-					</div>
-					<?php if (count($tags)): ?>
-						<div class="clearfix filter-bar">
-							<select name="tag[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
-								<?php foreach ($tags as $tag): ?>
-									<option value="<?php echo $tag->slug; ?>" <?php echo ($tags_selected and in_array($tag->slug, $tags_selected)) ? "selected='selected'" : ""; ?>>
-										<?php echo $tag->name; ?>
-									</option>
-								<?php endforeach; ?>
-							</select>
-						</div>
-					<?php endif; ?>
-					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
-					<table class="wp-list-table widefat fixed striped posts">
-						<thead>
-							<tr>
-								<th class="manage-column column-cb check-column">
-									<input id="cb-select-all-1" type="checkbox" checked="checked">
-								</th>
-								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
-							</tr>
-						</thead>
-						<tbody id="chapter-list">
-							<?php if ($query->have_posts()): ?>
-								<?php while ($query->have_posts()): $query->the_post(); ?>
-									<tr style="cursor: move">
-										<th scope="row" class="check-column">
-											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
-										</th>
-										<td class="name column-name">
-											<strong><a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a></strong>
-										</td>
-									</tr>
-								<?php endwhile; ?>
-							<?php else: ?>
-								<tr>
-									<th></th>
-									<td></td>
-								</tr>
-							<?php endif; ?>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th class="manage-column column-cb check-column">
-									<input id="cb-select-all-2" type="checkbox" checked="checked">
-								</th>
-								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-			</div>
-		</div>
-
 		<div id="col-left">
 			<div class="col-wrap">
 				<div class="form-wrap tab-content">
@@ -162,11 +86,96 @@
 						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>
 					</div>
 
-					<p class="submit">
-						<input type="submit" name="generate" id="submit" class="button button-primary" value="<?php _e('Publish'); ?>">
+					<p class="submit hidden-xs">
+						<input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish'); ?>">
 					</p>
 				</div>
 			</div>
 		</div>
+
+		<div id="col-right">
+			<div class="col-wrap">
+
+				<h3><?php _e("Contents", "publisher"); ?></h3>
+
+				<div class="form-wrap">
+					<div class="clearfix filter-bar">
+						<select name="cat[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
+							<?php foreach ($categories as $category): ?>
+								<option value="<?php echo $category->cat_ID; ?>" <?php echo ($categories_selected and in_array($category->cat_ID, $categories_selected)) ? "selected='selected'" : ""; ?>>
+									<?php echo $category->name; ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+						<select name="author[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
+							<?php foreach ($authors as $author): ?>
+								<option value="<?php echo $author->ID; ?>" <?php echo ($authors_selected and in_array($author->ID, $authors_selected)) ? "selected='selected'" : ""; ?>>
+									<?php echo $author->data->display_name; ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+						<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
+					</div>
+					<?php if (count($tags)): ?>
+						<div class="clearfix filter-bar">
+							<select name="tag[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
+								<?php foreach ($tags as $tag): ?>
+									<option value="<?php echo $tag->slug; ?>" <?php echo ($tags_selected and in_array($tag->slug, $tags_selected)) ? "selected='selected'" : ""; ?>>
+										<?php echo $tag->name; ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					<?php endif; ?>
+					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
+					<table class="wp-list-table widefat fixed striped posts">
+						<thead>
+							<tr>
+								<th class="manage-column column-cb check-column">
+									<input id="cb-select-all-1" type="checkbox" checked="checked">
+								</th>
+								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
+							</tr>
+						</thead>
+						<tbody id="chapter-list">
+							<?php if ($query->have_posts()): ?>
+								<?php while ($query->have_posts()): $query->the_post(); ?>
+									<tr style="cursor: move">
+										<th scope="row" class="check-column">
+											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
+										</th>
+										<td class="name column-name">
+											<strong>
+												<a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a>
+												<?php if (get_post_status() === "private"): ?> - <?php echo _e("Private", "publisher"); ?><?php endif; ?>
+											</strong>
+										</td>
+									</tr>
+								<?php endwhile; ?>
+							<?php else: ?>
+								<tr>
+									<th></th>
+									<td></td>
+								</tr>
+							<?php endif; ?>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="manage-column column-cb check-column">
+									<input id="cb-select-all-2" type="checkbox" checked="checked">
+								</th>
+								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
+							</tr>
+						</tfoot>
+					</table>
+
+					<p class="submit visible-xs">
+						<input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish'); ?>">
+					</p>
+				</div>
+			</div>
+		</div>
+
+		
 	</form>
 </div>
