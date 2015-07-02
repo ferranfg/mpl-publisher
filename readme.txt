@@ -1,20 +1,20 @@
 === MPL - Publisher ===
 Contributors: ferranfg
 Donate link: http://ferranfigueredo.com/
-Tags: ebook, epub, publish, writers, self-publish, author
+Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
 Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBook. Choose your format: PDF, ePub, Mobi... etc.
+MPL - Publisher is a plugin to create an ebook from your WordPress posts. You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi
 
 == Description ==
 
-MPL – Publisher is a WordPress plugin to convert your blog’s posts into an eBook. The plugin’s main purpose is to help writers to publish their own books the simplest possible way, easing the process of converting to the different digital formats.
+MPL - Publisher is a plugin to create an ebook from your WordPress posts. The plugin’s main purpose is to help writers solving the *how to create an ebook* problem the simplest possible way, easing the process of converting your ebook to ePub, pdf, kindle books, Mobi... etc.
 
-The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. You can contact me sending an email
+The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have.
 
 = Features =
 
