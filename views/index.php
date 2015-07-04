@@ -9,6 +9,10 @@
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 	</ul>
 
+	<?php if (isset($message)): ?>
+		<div class="notice notice-success is-dismissible"><p><?php echo $message; ?></p></div>
+	<?php endif; ?>
+
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
 
 		<input type="hidden" name="action" value="publish_ebook">
@@ -133,7 +137,7 @@
 						<thead>
 							<tr>
 								<th class="manage-column column-cb check-column">
-									<input id="cb-select-all-1" type="checkbox" checked="checked">
+									<input id="cb-select-all-1" type="checkbox">
 								</th>
 								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
 							</tr>
@@ -143,7 +147,7 @@
 								<?php while ($query->have_posts()): $query->the_post(); ?>
 									<tr style="cursor: move">
 										<th scope="row" class="check-column">
-											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>"  checked="checked">
+											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
 										</th>
 										<td class="name column-name">
 											<strong>
@@ -163,7 +167,7 @@
 						<tfoot>
 							<tr>
 								<th class="manage-column column-cb check-column">
-									<input id="cb-select-all-2" type="checkbox" checked="checked">
+									<input id="cb-select-all-2" type="checkbox">
 								</th>
 								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
 							</tr>
