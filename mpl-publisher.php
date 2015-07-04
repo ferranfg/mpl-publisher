@@ -2,8 +2,8 @@
 /**
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://ferranfigueredo.com/mpl-publisher/
- * Description: MPL - Publisher is a WordPress plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.
- * Version: 1.7.0
+ * Description: MPL - Publisher is a plugin to create an ebook from your WordPress posts. You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi
+ * Version: 1.8.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -12,11 +12,6 @@
 require 'vendor/autoload.php';
 
 $controller = new \MPL\Publisher\PublisherController(__DIR__);
-
-add_action('admin_notices', function ()
-{
-	
-});
 
 add_action('init', function ()
 {

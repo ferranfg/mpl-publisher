@@ -39,7 +39,7 @@ class PublisherController {
         $data   = $this->getBookDefaults();
         $status = $this->getStatus();
 
-        $filter = array();
+        $filter = $_GET;
 
         if ($status and isset($status['data']))
         {

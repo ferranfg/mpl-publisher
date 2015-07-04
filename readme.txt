@@ -78,6 +78,12 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+= 1.8.0 =
+- Now you can save your changes for future publications
+- The chapter's list shows also your private posts
+- Review plugin's description and tags to improve visibility
+- Fix mobile/responsive button display
+
 = 1.7.0 =
 - Improved admin's page navigation using tabs
 - Add helping blocks to better understanding
@@ -121,5 +127,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.7.0 =
-- Add book publication's date field and editable language field
+= 1.8.0 =
+- Now you can save your changes for future publications!
