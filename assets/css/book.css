@@ -53,10 +53,18 @@ a {
 }
 
 p {
-	font: normal 18px/30px 'Merriweather',serif;
+	font: normal 18px/30px 'Merriweather', serif;
 	margint-bottom: 24px;
 }
 
 p i, p em {
-	font-tr
+	font-style: italic;
 }
+
+/* https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages */
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}

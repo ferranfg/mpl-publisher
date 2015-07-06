@@ -158,7 +158,7 @@ class PublisherController {
     private function saveStatus($data)
     {
         return update_option($this->statusOptionName, array(
-            'time' => time(),
+            'time' => current_time('timestamp'),
             'data' => $data
         ));
     }
