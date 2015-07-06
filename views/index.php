@@ -7,11 +7,10 @@
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
+		<?php if (isset($message)): ?>
+			<li><em><?php echo $message; ?></em></li>
+		<?php endif; ?>
 	</ul>
-
-	<?php if (isset($message)): ?>
-		<div class="notice notice-success is-dismissible"><p><?php echo $message; ?></p></div>
-	<?php endif; ?>
 
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
 
@@ -27,9 +26,11 @@
 						<p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
 
 						<div class="form-field">
-							<label for="book-identifier"><?php _e("Identifier (ISBN)", "publisher"); ?></label>
+							<label for="book-identifier">
+								<?php _e("Identifier (ISBN)", "publisher"); ?>
+								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?>"></span>
+							</label>
 							<input name="identifier" id="book-identifier" type="text" value="<?php echo $identifier; ?>" placeholder="ej: 9788494138805 E">
-							<p><?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?></p>
 						</div>
 
 						<div class="form-field">
@@ -43,9 +44,11 @@
 						</div>
 
 						<div class="form-field">
-							<label for="book-authors"><?php _e("Book authors", "publisher"); ?></label>
+							<label for="book-authors">
+								<?php _e("Book authors", "publisher"); ?>
+								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Separate multiple authors with commas", "publisher"); ?>"></span>
+							</label>
 							<input name="authors" id="book-authors" type="text" value="<?php echo $authors; ?>" placeholder="<?php _e('Book authors'); ?>">
-							<p><?php _e("Separate multiple authors with commas", "publisher"); ?></p>
 						</div>
 					</div>
 
@@ -54,15 +57,19 @@
 						<p><?php _e("The more metadata you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
 
 						<div class="form-field">
-							<label for="book-language"><?php _e("Language (Optional)", "publisher"); ?></label>
+							<label for="book-language">
+								<?php _e("Language (Optional)", "publisher"); ?>
+								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
+							</label>
 							<input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language (Optional)', 'publisher'); ?>">
-							<p><?php echo _e("Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…", "publisher"); ?></p>
 						</div>
 
 						<div class="form-field">
-							<label for="book-date"><?php _e("Publication date (Optional)", "publisher"); ?></label>
+							<label for="book-date">
+								<?php _e("Publication date (Optional)", "publisher"); ?>
+								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
+							</label>
 							<input name="date" id="book-date" type="text" value="<?php echo $date; ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
-							<p><?php echo _e("This information won't affect the book's availability", "publisher"); ?>
 						</div>
 
 						<div class="form-field">

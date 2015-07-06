@@ -39,7 +39,7 @@ add_action('admin_enqueue_scripts', function ()
 	wp_enqueue_script('chosen', plugin_dir_url(__FILE__) . 'assets/js/chosen.jquery.min.js');
 	wp_enqueue_style('chosen', plugin_dir_url(__FILE__) . 'assets/css/chosen.min.css');
 
-	wp_enqueue_script('tab', plugin_dir_url(__FILE__) . 'assets/js/tab.js');
+	wp_enqueue_script('bootstrap', plugin_dir_url(__FILE__) . 'assets/js/bootstrap.js');
 
 	$own = get_plugin_data(__FILE__);
 

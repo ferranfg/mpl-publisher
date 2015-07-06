@@ -20,6 +20,8 @@
 
 			e.preventDefault();
 		});
+
+		$("[data-toggle=tooltip]").tooltip();
 	});
 
 })(window.jQuery);
