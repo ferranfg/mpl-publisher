@@ -15,21 +15,32 @@ $controller = new \MPL\Publisher\PublisherController(__DIR__);
 
 add_action('init', function ()
 {
-	// http://localhost/wordpress/wp-admin/post-new.php?post_type=mpl_chapter
-
-	register_post_type( 'mpl_chapter', array(
+	register_post_type('mpl_chapter', array(
         'labels' => array(
-            'add_new_item' 	=> __('MPL - Publisher | Add Book Chapter', 'publisher'),
-            'edit_item'		=> __('MPL - Publisher | Edit Book Chapter', 'publisher'),
+            'add_new_item' 	=> __('Add New Book Chapter', 'publisher'),
+            'edit_item'     => __('Edit Book Chapter', 'publisher'),
         ),
-        'public' => true,
-        'show_in_menu' => false,
-        'supports' => array( 'title', 'editor', 'author', 'revisions' ),
-        'taxonomies' => array( '' ),
-        'has_archive' => true
+        'public'        => true,
+        'show_in_menu'  => false,
+        'supports'      => array('title', 'editor', 'author', 'revisions')
     ));
 
 	load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
+});
+
+add_action('add_meta_boxes', function ()
+{
+    add_meta_box('mpl_chapter_back', "&nbsp;", function ()
+    {
+        echo '<p class="mpl"><a href="' . admin_url('tools.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
+    },
+    'mpl_chapter', 'side', 'high');
+
+    add_meta_box('mpl_chapter_help', __("How Chapters Works", "publisher"), function ()
+    {
+        echo '<p>' . __("MPL - Publisher allow authors to create content without") . '</p>';
+    },
+    'mpl_chapter', 'side', 'high');
 });
 
 add_action('admin_menu', function () use ($controller)

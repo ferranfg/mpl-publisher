@@ -1,8 +1,6 @@
-<div class="wrap">
+<div class="wrap mpl">
 
 	<h2>MPL - Publisher</h2>
-
-	<hr />
 
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
@@ -116,7 +114,7 @@
 		<div id="col-right">
 			<div class="col-wrap">
 
-				<h3><?php _e("Contents", "publisher"); ?></h3>
+				<h3><?php _e("Text", "publisher"); ?></h3>
 
 				<div class="form-wrap">
 					<div class="clearfix filter-bar">
@@ -154,7 +152,8 @@
 								<th class="manage-column column-cb check-column">
 									<input id="cb-select-all-1" type="checkbox">
 								</th>
-								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
+								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
+								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
 						</thead>
 						<tbody id="chapter-list">
@@ -165,17 +164,26 @@
 											<input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
 										</th>
 										<td class="name column-name">
+											<?php if (get_post_type() === "mpl_chapter"): ?>
+												<span class="dashicons dashicons-book" data-toggle="tooltip" title="Chapter"></span>
+											<?php else: ?>
+												<span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="Post"></span>
+											<?php endif; ?>
 											<strong>
-												<a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php the_title(); ?></a>
+												<a href="<?php echo get_edit_post_link(); ?>"><?php the_title(); ?></a>
 												<?php if (get_post_status() === "private"): ?> - <?php echo _e("Private", "publisher"); ?><?php endif; ?>
 											</strong>
+										</td>
+										<td class="text-right">
+											<a href="<?php echo get_edit_post_link(); ?>"><?php _e("Edit", "publisher"); ?></a>
 										</td>
 									</tr>
 								<?php endwhile; ?>
 							<?php else: ?>
 								<tr>
-									<th></th>
-									<td></td>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
 								</tr>
 							<?php endif; ?>
 						</tbody>
@@ -184,7 +192,8 @@
 								<th class="manage-column column-cb check-column">
 									<input id="cb-select-all-2" type="checkbox">
 								</th>
-								<th class="manage-column column-name"><?php _e("Chapter", "publisher"); ?></th>
+								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
+								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
 						</tfoot>
 					</table>
