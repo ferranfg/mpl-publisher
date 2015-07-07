@@ -36,9 +36,9 @@ add_action('add_meta_boxes', function ()
     },
     'mpl_chapter', 'side', 'high');
 
-    add_meta_box('mpl_chapter_help', __("How Chapters Works", "publisher"), function ()
+    add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
     {
-        echo '<p>' . __("MPL - Publisher allow authors to create content without") . '</p>';
+        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.") . '</p>';
     },
     'mpl_chapter', 'side', 'high');
 });
