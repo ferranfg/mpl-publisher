@@ -103,6 +103,7 @@ class PublisherController {
             'language'      => '',
             'date'          => '',
             'editor'        => '',
+            'copyright'     => '',
             'cat_selected'  => false,
             'author_selected' => false,
             'tag_selected'  => false,
@@ -139,6 +140,8 @@ class PublisherController {
         {
             $publisher->setCoverImage('cover.jpg', file_get_contents(get_attached_file($imageId)));
         }
+
+        $publisher->setRights(sanitize_text_field($_POST['copyright']));
 
         $query = new \WP_Query(array('post__in' => $_POST['selected_posts'], 'orderby' => 'post__in'));
 

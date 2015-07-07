@@ -1,6 +1,6 @@
 <div class="wrap">
 
-	<h2><?php _e("Publisher", "publisher"); ?></h2>
+	<h2>MPL - Publisher</h2>
 
 	<hr />
 
@@ -40,7 +40,7 @@
 
 						<div class="form-field">
 							<label for="book-description"><?php _e("Book Description", "publisher"); ?></label>
-							<textarea name="description" id="book-description" rows="6"><?php echo $description; ?></textarea>
+							<textarea name="description" id="book-description" rows="8"><?php echo $description; ?></textarea>
 						</div>
 
 						<div class="form-field">
@@ -74,7 +74,7 @@
 
 						<div class="form-field">
 							<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
-							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image (Optional)", "publisher"); ?>" />
+							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
 							<input type="hidden" name="cover" id="book-cover" value="">
 							<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
 							<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
@@ -83,6 +83,14 @@
 						<div class="form-field">
 							<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
 							<input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name (Optional)', 'publisher'); ?>">
+						</div>
+
+						<div class="form-field">
+							<label for="book-copyright">
+								<?php _e("Copyright Information (Optional)", "publisher"); ?>
+								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
+							</label>
+							<textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information (Optional)', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
 						</div>
 					</div>
 

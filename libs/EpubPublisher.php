@@ -72,6 +72,11 @@ class EpubPublisher implements IPublisher {
 		return $this->epub->setDate(strtotime($date));
 	}
 
+	public function setRights($rightsText)
+	{
+		return $this->epub->setRights($rightsText);
+	}
+
 	public function addChapter($id, $title, $content)
 	{
         $content_start =

@@ -20,7 +20,7 @@ add_action('init', function ()
 
 add_action('admin_menu', function () use ($controller)
 {
-    add_management_page('MPL - Publisher', 'Publisher', 'manage_options', 'publisher', function () use ($controller)
+    add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function () use ($controller)
     {
         return $controller->getIndex();
     });

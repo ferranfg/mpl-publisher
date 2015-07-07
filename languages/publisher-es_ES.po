@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-06 20:01+0100\n"
-"PO-Revision-Date: 2015-07-06 20:02+0100\n"
+"POT-Creation-Date: 2015-07-07 11:09+0100\n"
+"PO-Revision-Date: 2015-07-07 11:11+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -21,10 +21,6 @@ msgstr ""
 #, php-format
 msgid "Last edition date %s"
 msgstr "Fecha de última edición %s"
-
-#: ../views/index.php:3
-msgid "Publisher"
-msgstr "Publisher"
 
 #: ../views/index.php:8
 msgid "General details"
@@ -104,8 +100,12 @@ msgstr "Esta información no afectará la disponibilidad del libro"
 msgid "YYYY-MM-DD"
 msgstr "AAAA-MM-DD"
 
-#: ../views/index.php:76 ../views/index.php:77
+#: ../views/index.php:76
 msgid "Cover image (Optional)"
+msgstr "Imagen de portada (Opcional)"
+
+#: ../views/index.php:77
+msgid "Cover image"
 msgstr "Imagen de portada (Opcional)"
 
 #: ../views/index.php:79
@@ -120,11 +120,24 @@ msgstr "El tamaño recomendado es de 625x1000"
 msgid "Publisher Name (Optional)"
 msgstr "Editor (Opcional)"
 
-#: ../views/index.php:92
+#: ../views/index.php:90 ../views/index.php:93
+msgid "Copyright Information (Optional)"
+msgstr "Derechos de autor (Opcional)"
+
+#: ../views/index.php:91
+msgid ""
+"Copyright information includes a statement about various property rights "
+"associated with the resource, including intellectual property rights"
+msgstr ""
+"La información sobre derechos de autor incluye un enunciado acerca de los "
+"diversos derechos de propiedad asociados a los recursos, incluidos los "
+"derechos de propiedad intelectual"
+
+#: ../views/index.php:100
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:97
+#: ../views/index.php:105
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
 "include PDF as output format."
@@ -132,54 +145,61 @@ msgstr ""
 "Actualmente, solo EPUB2.0 y EPUB 3.0 están disponibles. Versiones futuras "
 "incluirán PDF como formato de salida."
 
-#: ../views/index.php:101 ../views/index.php:185
+#: ../views/index.php:109 ../views/index.php:193
 msgid "Publish"
 msgstr "Publicar"
 
-#: ../views/index.php:102 ../views/index.php:186
+#: ../views/index.php:110 ../views/index.php:194
 msgid "Save changes"
 msgstr "Guardar cambios"
 
-#: ../views/index.php:111
+#: ../views/index.php:119
 msgid "Contents"
 msgstr "Índice"
 
-#: ../views/index.php:115
+#: ../views/index.php:123
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: ../views/index.php:122
+#: ../views/index.php:130
 msgid "All authors"
 msgstr "Todos los autores"
 
-#: ../views/index.php:129
+#: ../views/index.php:137
 msgid "Filter"
 msgstr "Filtrar"
 
-#: ../views/index.php:133
+#: ../views/index.php:141
 msgid "All tags"
 msgstr "Todas las etiquetas"
 
-#: ../views/index.php:142
+#: ../views/index.php:150
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: ../views/index.php:149 ../views/index.php:179
+#: ../views/index.php:157 ../views/index.php:187
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: ../views/index.php:162
+#: ../views/index.php:170
 msgid "Private"
 msgstr "Privado"
+
+#~ msgid "Language"
+#~ msgstr "Idioma"
+
+#~ msgid "Publisher Name"
+#~ msgstr "Editor"
+
+#, fuzzy
+#~ msgid "MPL - Publisher"
+#~ msgstr "Publisher"
 
 #~ msgid "Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…"
 #~ msgstr "Utiliza los códigos de idioma RFC3066, como \"en\", \"es\", \"fr\"…"
 
 #~ msgid "Formatted as a three-letter ISO 639-2/B code"
 #~ msgstr "En formato de tres letras ISO 639-2/B"
-
-#~ msgid "Cover image"
-#~ msgstr "Imagen de portada (Opcional)"
 
 #~ msgid ""
 #~ "Currently, only EPUB 2.0 is available. Future versions will include Mobi, "

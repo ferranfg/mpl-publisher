@@ -19,6 +19,8 @@ interface IPublisher {
 	public function setLanguage($language);
 
 	public function setDate($date);
+
+	public function setRights($rightsText);
 	
 	public function addChapter($id, $title, $content);
 
