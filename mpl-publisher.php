@@ -15,6 +15,20 @@ $controller = new \MPL\Publisher\PublisherController(__DIR__);
 
 add_action('init', function ()
 {
+	// http://localhost/wordpress/wp-admin/post-new.php?post_type=mpl_chapter
+
+	register_post_type( 'mpl_chapter', array(
+        'labels' => array(
+            'add_new_item' 	=> __('MPL - Publisher | Add Book Chapter', 'publisher'),
+            'edit_item'		=> __('MPL - Publisher | Edit Book Chapter', 'publisher'),
+        ),
+        'public' => true,
+        'show_in_menu' => false,
+        'supports' => array( 'title', 'editor', 'author', 'revisions' ),
+        'taxonomies' => array( '' ),
+        'has_archive' => true
+    ));
+
 	load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
 });
 

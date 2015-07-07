@@ -47,7 +47,7 @@ class PublisherController {
 
             $format = get_option('date_format') . ' ' . get_option('time_format');
 
-            $data['message'] = sprintf(__('Last edition date %s' , "publisher"), date($format, $status['time']));
+            $data['message'] = sprintf(__('Last modification: %s' , "publisher"), date($format, $status['time']));
 
             if (!empty($data['cat_selected']))    $filter['cat']    = implode(',', $data['cat_selected']);
             if (!empty($data['author_selected'])) $filter['author'] = implode(',', $data['author_selected']);
@@ -56,7 +56,8 @@ class PublisherController {
 
         $query = http_build_query(array_merge(array(
             'posts_per_page' => '-1',
-            'post_status'    => 'publish,private'
+            'post_status'    => 'publish,private',
+            'post_type'      => array('post', 'mpl_chapter')
         ), $filter));
 
         $data['query'] = new \WP_Query($query);

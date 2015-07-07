@@ -107,7 +107,7 @@
 
 					<p class="submit hidden-xs">
 						<input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish', "publisher"); ?>">
-						<input type="submit" name="save" class="button" value="<?php _e('Save changes', "publisher"); ?>">
+						<input type="submit" name="save" class="button" value="<?php _e('Save Information', "publisher"); ?>">
 					</p>
 				</div>
 			</div>
@@ -191,7 +191,7 @@
 
 					<p class="submit visible-xs">
 						<input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish', "publisher"); ?>">
-						<input type="submit" name="save" class="button" value="<?php _e('Save changes', "publisher"); ?>">
+						<input type="submit" name="save" class="button" value="<?php _e('Save Information', "publisher"); ?>">
 					</p>
 				</div>
 			</div>
