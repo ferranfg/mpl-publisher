@@ -103,6 +103,7 @@ class PublisherController {
             'authors'       => wp_get_current_user()->display_name,
             'language'      => '',
             'date'          => '',
+            'cover'         => false,
             'editor'        => '',
             'copyright'     => '',
             'cat_selected'  => false,

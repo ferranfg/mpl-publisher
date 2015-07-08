@@ -72,8 +72,13 @@
 
 						<div class="form-field">
 							<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
-							<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
-							<input type="hidden" name="cover" id="book-cover" value="">
+							<?php $coverSrc = wp_get_attachment_image_src($cover, 'full'); ?>
+							<?php if (count($coverSrc) == 4 and isset($coverSrc[0])):  ?>
+								<img src="<?php echo $coverSrc[0]; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+							<?php else: ?>
+								<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+							<?php endif; ?>
+							<input type="hidden" name="cover" id="book-cover" value="<?php echo $cover; ?>">
 							<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
 							<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
 						</div>						
