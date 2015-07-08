@@ -15,17 +15,20 @@ $controller = new \MPL\Publisher\PublisherController(__DIR__);
 
 add_action('init', function ()
 {
+    load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
+
 	register_post_type('mpl_chapter', array(
         'labels' => array(
+            'add_new'       => __('Add New Book Chapter', 'publisher'),
             'add_new_item' 	=> __('Add New Book Chapter', 'publisher'),
+            'new_item'      => __('Add New Book Chapter', 'publisher'),
             'edit_item'     => __('Edit Book Chapter', 'publisher'),
+            'view_item'     => __('View Book Chapter', 'publisher')
         ),
         'public'        => true,
         'show_in_menu'  => false,
         'supports'      => array('title', 'editor', 'author', 'revisions')
     ));
-
-	load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
 });
 
 add_action('add_meta_boxes', function ()
@@ -38,9 +41,11 @@ add_action('add_meta_boxes', function ()
 
     add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
     {
-        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.") . '</p>';
+        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
     },
     'mpl_chapter', 'side', 'high');
+
+    remove_meta_box('slugdiv', 'mpl_chapter', 'normal');
 });
 
 add_action('admin_menu', function () use ($controller)

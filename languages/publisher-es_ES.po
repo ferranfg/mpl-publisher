@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-07 20:45+0100\n"
-"PO-Revision-Date: 2015-07-07 20:46+0100\n"
+"POT-Creation-Date: 2015-07-08 09:32+0100\n"
+"PO-Revision-Date: 2015-07-08 09:33+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -22,23 +22,28 @@ msgstr ""
 msgid "Last modification: %s"
 msgstr "Última modificación: %s"
 
-#: ../mpl-publisher.php:20 ../views/index.php:156 ../views/index.php:196
+#: ../mpl-publisher.php:22 ../mpl-publisher.php:23 ../mpl-publisher.php:24
+#: ../views/index.php:156 ../views/index.php:196
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
-#: ../mpl-publisher.php:21
+#: ../mpl-publisher.php:25
 msgid "Edit Book Chapter"
 msgstr "Editar Capítulo"
 
-#: ../mpl-publisher.php:35
+#: ../mpl-publisher.php:26
+msgid "View Book Chapter"
+msgstr "Ver Capítulo"
+
+#: ../mpl-publisher.php:38
 msgid "Back to Book Settings"
 msgstr "Volver a Detalles Generales"
 
-#: ../mpl-publisher.php:39
+#: ../mpl-publisher.php:42
 msgid "How book chapters works"
 msgstr "Cómo funcionan los capítulos"
 
-#: ../mpl-publisher.php:41
+#: ../mpl-publisher.php:44
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
@@ -208,6 +213,14 @@ msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 msgid "Contents"
 msgstr "Índice"
 
+#: ../views/index.php:168
+msgid "Chapter"
+msgstr "Capítulo"
+
+#: ../views/index.php:170
+msgid "Post"
+msgstr "Entrada"
+
 #: ../views/index.php:174
 msgid "Private"
 msgstr "Privado"
@@ -221,9 +234,6 @@ msgstr "Editar"
 
 #~ msgid "Save changes"
 #~ msgstr "Guardar cambios"
-
-#~ msgid "Chapter"
-#~ msgstr "Capítulo"
 
 #~ msgid "Language"
 #~ msgstr "Idioma"

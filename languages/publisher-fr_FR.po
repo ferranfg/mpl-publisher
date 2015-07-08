@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-07 20:46+0100\n"
-"PO-Revision-Date: 2015-07-07 20:58+0100\n"
+"POT-Creation-Date: 2015-07-08 09:33+0100\n"
+"PO-Revision-Date: 2015-07-08 09:34+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: fr\n"
@@ -20,30 +20,39 @@ msgstr ""
 #: ../libs/PublisherController.php:50
 #, php-format
 msgid "Last modification: %s"
-msgstr ""
+msgstr "Dernière modification : %s"
 
-#: ../mpl-publisher.php:20 ../views/index.php:156 ../views/index.php:196
+#: ../mpl-publisher.php:22 ../mpl-publisher.php:23 ../mpl-publisher.php:24
+#: ../views/index.php:156 ../views/index.php:196
 msgid "Add New Book Chapter"
-msgstr ""
+msgstr "Ajouter un nouveau chapître"
 
-#: ../mpl-publisher.php:21
+#: ../mpl-publisher.php:25
 msgid "Edit Book Chapter"
-msgstr ""
+msgstr "Modifier le chapitre"
 
-#: ../mpl-publisher.php:35
+#: ../mpl-publisher.php:26
+msgid "View Book Chapter"
+msgstr "Voir le chapitre"
+
+#: ../mpl-publisher.php:38
 msgid "Back to Book Settings"
-msgstr ""
+msgstr "Retour aux paramètres du livre"
 
-#: ../mpl-publisher.php:39
+#: ../mpl-publisher.php:42
 msgid "How book chapters works"
-msgstr ""
+msgstr "Comment fonctionnent les chapitres"
 
-#: ../mpl-publisher.php:41
+#: ../mpl-publisher.php:44
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
 "publish your chapter and it will be visible only from the Book Settings page."
 msgstr ""
+"MPL-Publisher permet aux auteurs d'écrire du contenu personalisé dans leurs "
+"livres sans qu'il soit nécessairement d'accès public. Vous avez juste à "
+"rédiger votre chapitre, et il sera visible uniquement depuis la page de "
+"configuration du livre."
 
 #: ../views/index.php:6
 msgid "General details"
@@ -146,13 +155,16 @@ msgstr "Nom de l'éditeur (facultatif)"
 
 #: ../views/index.php:88 ../views/index.php:91
 msgid "Copyright Information (Optional)"
-msgstr ""
+msgstr "Informations de copyright (facultatif)"
 
 #: ../views/index.php:89
 msgid ""
 "Copyright information includes a statement about various property rights "
 "associated with the resource, including intellectual property rights"
 msgstr ""
+"Les informations de copyright contiennent une définition des divers droits "
+"de propriété attachés à la resource, dont les droits de propriété "
+"intellectuelle."
 
 #: ../views/index.php:98
 msgid "Output format"
@@ -172,11 +184,11 @@ msgstr "Publiez"
 
 #: ../views/index.php:108 ../views/index.php:203
 msgid "Save Information"
-msgstr ""
+msgstr "Sauvegarder les informations"
 
 #: ../views/index.php:117
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: ../views/index.php:121
 msgid "All categories"
@@ -202,13 +214,21 @@ msgstr "Faites glisser vos chapitres afin d'organiser votre livre"
 msgid "Contents"
 msgstr "Contenus"
 
+#: ../views/index.php:168
+msgid "Chapter"
+msgstr "Chapitre"
+
+#: ../views/index.php:170
+msgid "Post"
+msgstr "Article"
+
 #: ../views/index.php:174
 msgid "Private"
 msgstr "Privé"
 
 #: ../views/index.php:178
 msgid "Edit"
-msgstr ""
+msgstr "Editer"
 
 #~ msgid "Last edition date %s"
 #~ msgstr "Date de la dernière édition %s"
@@ -218,9 +238,6 @@ msgstr ""
 
 #~ msgid "Save changes"
 #~ msgstr "Enregistrez les modifications"
-
-#~ msgid "Chapter"
-#~ msgstr "Chapitre"
 
 #~ msgid "Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…"
 #~ msgstr ""

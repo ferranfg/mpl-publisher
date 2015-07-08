@@ -165,9 +165,9 @@
 										</th>
 										<td class="name column-name">
 											<?php if (get_post_type() === "mpl_chapter"): ?>
-												<span class="dashicons dashicons-book" data-toggle="tooltip" title="Chapter"></span>
+												<span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
 											<?php else: ?>
-												<span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="Post"></span>
+												<span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
 											<?php endif; ?>
 											<strong>
 												<a href="<?php echo get_edit_post_link(); ?>"><?php the_title(); ?></a>
