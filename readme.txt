@@ -80,7 +80,7 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 = 1.9.0 =
 - Added French translation. Thanks to [zebulong](https://profiles.wordpress.org/zebulong)
-- You can add specific content as a chapter to your book without the need to be a existing published post
+- You can add specific content as a chapter to your book without needing to be an existing published post
 - Added Copyright information field about your book
 - Added default CSS classes to book.css to ensure styles on images once the book is published
 - Added multiple tooltips to increase information about how the plugin works
@@ -138,4 +138,4 @@ In future releases we will add support to other formats like PDF. Keep updated.
 == Upgrade Notice ==
 
 = 1.9.0 =
-- You can add specific content as a chapter to your book without the need to be a existing published post
+- You can add specific content as a chapter to your book without needing to be an existing published post

@@ -19,6 +19,8 @@ add_action('init', function ()
 
 	register_post_type('mpl_chapter', array(
         'labels' => array(
+            'name'          => __('Book Chapters', 'publisher'),
+            'singular_name' => __('Book Chapter', 'publisher'),
             'add_new'       => __('Add New Book Chapter', 'publisher'),
             'add_new_item' 	=> __('Add New Book Chapter', 'publisher'),
             'new_item'      => __('Add New Book Chapter', 'publisher'),
