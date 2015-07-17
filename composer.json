@@ -6,7 +6,10 @@
 	"require": {
 		"grandt/phpepub": "dev-master",
 		"illuminate/view": "^5.0",
-		"illuminate/events": "^5.1@dev"
+		"illuminate/events": "^5.1@dev",
+		"phpzip/phpzip": ">=2.0.7",
+		"league/html-to-markdown": "^3.0@dev",
+		"symfony/yaml": "^3.0@dev"
 	},
 	"autoload": {
 		"psr-4": {

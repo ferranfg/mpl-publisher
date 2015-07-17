@@ -52,9 +52,9 @@ class EpubPublisher implements IPublisher {
 		return $this->epub->setPublisher($publisherName, null);
 	}
 
-	public function setCoverImage($fileName, $imageData = null, $mimetype = null)
+	public function setCoverImage($fileName, $imageData = null)
 	{
-		return $this->epub->setCoverImage($fileName, $imageData, $mimetype);
+		return $this->epub->setCoverImage($fileName, $imageData);
 	}
 
 	public function setDescription($description)

@@ -12,7 +12,7 @@ interface IPublisher {
 
 	public function setPublisher($publisherName);
 
-	public function setCoverImage($fileName, $imageData, $mimetype);
+	public function setCoverImage($fileName, $imageData);
 
 	public function setDescription($description);
 

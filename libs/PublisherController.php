@@ -91,7 +91,7 @@ class PublisherController {
 
         $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
 
-        return wp_redirect(admin_url('tools.php?' . $params));
+        // return wp_redirect(admin_url('tools.php?' . $params));
     }
 
     private function getBookDefaults()
@@ -126,7 +126,9 @@ class PublisherController {
 
     private function generateBook()
     {
-        $publisher = new EpubPublisher($_POST['format'], $this->basePath);
+        // $publisher = new EpubPublisher($_POST['format'], $this->basePath);
+
+        $publisher = new MarkdownPublisher();
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
@@ -145,7 +147,13 @@ class PublisherController {
 
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
 
-        $query = new \WP_Query(array('post__in' => $_POST['selected_posts'], 'orderby' => 'post__in'));
+        $query = new \WP_Query(array(
+            'post__in'       => $_POST['selected_posts'],
+            'orderby'        => 'post__in',
+            'posts_per_page' => '-1',
+            'post_status'    => 'publish,private',
+            'post_type'      => array('post', 'mpl_chapter')
+        ));
 
         if ($query->have_posts())
         {
@@ -153,7 +161,7 @@ class PublisherController {
             {
                 $query->the_post();
 
-                $publisher->addChapter(get_the_ID(), get_the_title(), get_the_content());
+                $publisher->addChapter(get_the_ID(), get_the_title(), wpautop(get_the_content()));
             }
         }
 

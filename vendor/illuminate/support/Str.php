@@ -245,10 +245,11 @@ class Str
      */
     public static function randomBytes($length = 16)
     {
-        if (function_exists('random_bytes')) {
+        if (PHP_MAJOR_VERSION >= 7) {
             $bytes = random_bytes($length);
         } elseif (function_exists('openssl_random_pseudo_bytes')) {
             $bytes = openssl_random_pseudo_bytes($length, $strong);
+
             if ($bytes === false || $strong === false) {
                 throw new RuntimeException('Unable to generate random string.');
             }
@@ -389,6 +390,8 @@ class Str
 
         if (!ctype_lower($value)) {
             $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
+
+            $value = preg_replace('/\s+/', '', $value);
         }
 
         return static::$snakeCache[$key] = $value;
