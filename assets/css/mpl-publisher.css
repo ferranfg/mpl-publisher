@@ -79,8 +79,8 @@
 .mpl .chosen-container#tag_chosen { width: 75.4% !important; }
 .mpl .chosen-container-multi .chosen-choices { border-color: #ddd; }
 
-.mpl .widefat thead th.check-column,
-.mpl .widefat tfoot th.check-column {
+.mpl .widefat thead td.check-column,
+.mpl .widefat tfoot td.check-column {
 	vertical-align: middle;
 	padding-top: 3px;
 }
@@ -123,6 +123,19 @@
 
 .mpl .tab-content > .tab-pane { display: none; }
 .mpl .tab-content > .tab-pane.active { display: block; }
+
+.mpl .theme-browser .theme {
+  width: 45.6%;
+}
+
+.mpl .theme-browser .theme .theme-screenshot:after {
+  padding-top: 0;
+  margin-top: -5px;
+}
+
+.mpl .theme-browser .theme .theme-screenshot img {
+  position: static;
+}
 
 .mpl .tooltip {
   position: absolute;

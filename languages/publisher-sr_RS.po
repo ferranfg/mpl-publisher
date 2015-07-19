@@ -1,0 +1,261 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MPL - Publisher\n"
+"POT-Creation-Date: 2015-07-19 10:29+0100\n"
+"PO-Revision-Date: 2015-07-19 10:31+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
+"Language: sr_RS\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../vendor\n"
+
+#: ../libs/PublisherController.php:50
+#, php-format
+msgid "Last modification: %s"
+msgstr "Poslednja modifikacija: %s"
+
+#: ../mpl-publisher.php:22
+msgid "Book Chapters"
+msgstr "Poglavlja knjiga"
+
+#: ../mpl-publisher.php:23
+msgid "Book Chapter"
+msgstr "Poglavlje knjige"
+
+#: ../mpl-publisher.php:24 ../mpl-publisher.php:25 ../mpl-publisher.php:26
+#: ../views/index.php:162 ../views/index.php:202
+msgid "Add New Book Chapter"
+msgstr "Dodajte novo poglavlje knjige"
+
+#: ../mpl-publisher.php:27
+msgid "Edit Book Chapter"
+msgstr "Izmenite poglavlje knjige"
+
+#: ../mpl-publisher.php:28
+msgid "View Book Chapter"
+msgstr "Pregledajte poglavlje knjige"
+
+#: ../mpl-publisher.php:40
+msgid "Back to Book Settings"
+msgstr "Nazad na podešavanja za knjige"
+
+#: ../mpl-publisher.php:44
+msgid "How book chapters works"
+msgstr "Kako poglavlja knjiga funkcionišu"
+
+#: ../mpl-publisher.php:46
+msgid ""
+"MPL - Publisher allows authors to write custom content specific for your "
+"book without the needed to be accessible from the public. You just have to "
+"publish your chapter and it will be visible only from the Book Settings page."
+msgstr ""
+"MPL - Izdavač dozvoljava autorima da  pišu uobičajeni sadržaj specifičan za "
+"vašu knjigu bez potrebe da bude dostupna za javnost. Vi samo treba da "
+"objavite vaše poglavlje i ono će biti vidljivo samo sa stranice Podešavanja "
+"za knjigu."
+
+#: ../views/index.php:6
+msgid "General details"
+msgstr "Opšti detalji"
+
+#: ../views/index.php:7
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: ../views/index.php:23
+msgid "Book details"
+msgstr "detalji o knjizi"
+
+#: ../views/index.php:24
+msgid ""
+"Enter your book details, including title, description, and authors. We "
+"encourage you to complete as many fields as possible, as richer data could "
+"help readers discover your books."
+msgstr ""
+"Unesite detalje o svojoj knjizi, uključujući naslov, opis i autore. Mi vas "
+"podstičemo da dovršite što je više polja moguće, što je moguće bogatiji "
+"podaci mogu da pomognu čitaocima da otkriju vaše knjige."
+
+#: ../views/index.php:28
+msgid "Identifier (ISBN)"
+msgstr "Identifikator (ISBN)"
+
+#: ../views/index.php:29
+msgid "If your book doesn't have an ISBN, use a unique identifier"
+msgstr "Ukoliko vaša knjiga nema ISBN, koristite jedinstveni identifikator"
+
+#: ../views/index.php:35 ../views/index.php:36
+msgid "Book Title"
+msgstr "Naslov knjige"
+
+#: ../views/index.php:40
+msgid "Book Description"
+msgstr "Opis knjige"
+
+#: ../views/index.php:46 ../views/index.php:49
+msgid "Book authors"
+msgstr "Autori knjige"
+
+#: ../views/index.php:47
+msgid "Separate multiple authors with commas"
+msgstr "Odvojite višestruke autore zarezima"
+
+#: ../views/index.php:54
+msgid "Metadata settings"
+msgstr "Podešavanja meta podataka"
+
+#: ../views/index.php:55
+msgid ""
+"The more metadata you provide, the easier it will be for readers to discover "
+"your book."
+msgstr ""
+"Što više meta podataka obezbedite, lakše će biti za čitaoce da otkriju vašu "
+"knjigu."
+
+#: ../views/index.php:59 ../views/index.php:62
+msgid "Language (Optional)"
+msgstr "Jezik (opciono)"
+
+#: ../views/index.php:60
+msgid "Use the RFC3066 Language codes, such as en, es, fr…"
+msgstr "Koristite RFC3066 jezičke kodove, kao što je en, es, fr..."
+
+#: ../views/index.php:67
+msgid "Publication date (Optional)"
+msgstr "Datum objavljivanja (opciono)"
+
+#: ../views/index.php:68
+msgid "This information won't affect the book's availability"
+msgstr "Ova informacija neće uticati na dostupnost knjige"
+
+#: ../views/index.php:70
+msgid "YYYY-MM-DD"
+msgstr "YYYY-MM-DD"
+
+#: ../views/index.php:74
+msgid "Cover image (Optional)"
+msgstr "Slika na naslovnoj strani (opciono)"
+
+#: ../views/index.php:77 ../views/index.php:79
+msgid "Cover image"
+msgstr "Slika na naslovnoj strani"
+
+#: ../views/index.php:82
+msgid "Upload Image"
+msgstr "Upload-ujte sliku"
+
+#: ../views/index.php:83
+msgid "Recommended size is 625x1000"
+msgstr "Preporučena veličina 625X1000"
+
+#: ../views/index.php:87 ../views/index.php:88
+msgid "Publisher Name (Optional)"
+msgstr "Ime izdavača (opciono)"
+
+#: ../views/index.php:93 ../views/index.php:96
+msgid "Copyright Information (Optional)"
+msgstr "Informacije o autorskim pravima (opciono)"
+
+#: ../views/index.php:94
+msgid ""
+"Copyright information includes a statement about various property rights "
+"associated with the resource, including intellectual property rights"
+msgstr ""
+"Informacije o autorskim pravima uključuju tvrdnju o različitim pravima "
+"svojine udružene sa izvorom, uključujući prava o intelektualnoj svojini"
+
+#: ../views/index.php:103
+msgid "Output format"
+msgstr "Format izlaza"
+
+#: ../views/index.php:109
+msgid ""
+"Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
+"include PDF as output format."
+msgstr ""
+"Trenutno su dostupni samo EPUB2.0 i EPUB3.0. Buduće verzije će uključivati "
+"PDF kao izlazni format."
+
+#: ../views/index.php:113 ../views/index.php:208
+msgid "Publish"
+msgstr "Objavite"
+
+#: ../views/index.php:114 ../views/index.php:209
+msgid "Save Information"
+msgstr "Sačuvajte informacije"
+
+#: ../views/index.php:123
+msgid "Text"
+msgstr "Tekst"
+
+#: ../views/index.php:127
+msgid "All categories"
+msgstr "Sve kategorije"
+
+#: ../views/index.php:134
+msgid "All authors"
+msgstr "Svi autori"
+
+#: ../views/index.php:141
+msgid "Filter"
+msgstr "Filter"
+
+#: ../views/index.php:145
+msgid "All tags"
+msgstr "Svi tagovi"
+
+#: ../views/index.php:154
+msgid "Drag your filtered results to sort your book's chapters"
+msgstr ""
+"Prevucite svoje filtrirane rezultate da biste sortirali poglavlja vaše knjige"
+
+#: ../views/index.php:161 ../views/index.php:201
+msgid "Contents"
+msgstr "Sadržaji"
+
+#: ../views/index.php:174
+msgid "Chapter"
+msgstr "Poglavlje"
+
+#: ../views/index.php:176
+msgid "Post"
+msgstr "Post"
+
+#: ../views/index.php:180
+msgid "Private"
+msgstr "Privatno"
+
+#: ../views/index.php:184
+msgid "Edit"
+msgstr "Izmenite"
+
+#~ msgid "Last edition date %s"
+#~ msgstr "Date de la dernière édition %s"
+
+#~ msgid "Publisher"
+#~ msgstr "Publisher"
+
+#~ msgid "Save changes"
+#~ msgstr "Enregistrez les modifications"
+
+#~ msgid "Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…"
+#~ msgstr ""
+#~ "Utilisez un code de langue du RFC3066 tel que \"en\", \"es\",\"fr\"..."
+
+#~ msgid "Formatted as a three-letter ISO 639-2/B code"
+#~ msgstr "Au format trois-lettres ISO 639-2/B"
+
+#~ msgid ""
+#~ "Currently, only EPUB 2.0 is available. Future versions will include Mobi, "
+#~ "PDF, etc."
+#~ msgstr ""
+#~ "Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. "
+#~ "Les versions futures inclurons les formats Mobi, PDF, etc."

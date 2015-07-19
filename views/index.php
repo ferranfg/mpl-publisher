@@ -5,6 +5,7 @@
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
 		<?php if (isset($message)): ?>
 			<li><em><?php echo $message; ?></em></li>
 		<?php endif; ?>
@@ -19,7 +20,7 @@
 		<div id="col-left">
 			<div class="col-wrap">
 				<div class="form-wrap tab-content">
-					<div class="tab-pane active" id="book-details">
+					<div class="tab-pane clearfix active" id="book-details">
 						<h3><?php _e("Book details", "publisher"); ?></h3>
 						<p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
 
@@ -50,7 +51,7 @@
 						</div>
 					</div>
 
-					<div class="tab-pane" id="book-settings">
+					<div class="tab-pane clearfix" id="book-settings">
 						<h3><?php _e("Metadata settings", "publisher"); ?></h3>
 						<p><?php _e("The more metadata you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
 
@@ -94,6 +95,18 @@
 								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
 							</label>
 							<textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information (Optional)', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
+						</div>
+					</div>
+
+					<div class="tab-pane clearfix" id="book-appearance">
+						<h3><?php _e("Appearance", "publisher"); ?></h3>
+						<div class="theme-browser">
+							<div class="theme">
+								<div class="theme-screenshot">
+									<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.jpg'; ?>" />
+								</div>
+								<h3 class="theme-name">Default</h3>
+							</div>
 						</div>
 					</div>
 
@@ -155,9 +168,9 @@
 					<table class="wp-list-table widefat fixed striped posts">
 						<thead>
 							<tr>
-								<th class="manage-column column-cb check-column">
+								<td class="manage-column column-cb check-column">
 									<input id="cb-select-all-1" type="checkbox">
-								</th>
+								</td>
 								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
 								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
@@ -195,9 +208,9 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<th class="manage-column column-cb check-column">
+								<td class="manage-column column-cb check-column">
 									<input id="cb-select-all-2" type="checkbox">
-								</th>
+								</td>
 								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
 								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>

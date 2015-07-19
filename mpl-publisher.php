@@ -13,9 +13,12 @@ require 'vendor/autoload.php';
 
 $controller = new \MPL\Publisher\PublisherController(__DIR__);
 
+define('MPL_BASEPATH', basename(dirname(__FILE__)));
+define('MPL_BASEURL', plugin_dir_url(__FILE__));
+
 add_action('init', function ()
 {
-    load_plugin_textdomain('publisher', false, basename(dirname(__FILE__)) . '/languages');
+    load_plugin_textdomain('publisher', false, MPL_BASEPATH . '/languages');
 
 	register_post_type('mpl_chapter', array(
         'labels' => array(
@@ -68,13 +71,13 @@ add_action('admin_enqueue_scripts', function ()
 	wp_enqueue_script('jquery-ui-sortable');
 	wp_enqueue_media();
 
-	wp_enqueue_script('chosen', plugin_dir_url(__FILE__) . 'assets/js/chosen.jquery.min.js');
-	wp_enqueue_style('chosen', plugin_dir_url(__FILE__) . 'assets/css/chosen.min.css');
+	wp_enqueue_script('chosen', MPL_BASEURL . 'assets/js/chosen.jquery.min.js');
+	wp_enqueue_style('chosen', MPL_BASEURL . 'assets/css/chosen.min.css');
 
-	wp_enqueue_script('bootstrap', plugin_dir_url(__FILE__) . 'assets/js/bootstrap.js');
+	wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
 
 	$own = get_plugin_data(__FILE__);
 
-	wp_enqueue_style('mpl-publisher', plugin_dir_url(__FILE__) . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
-	wp_enqueue_script('mpl-publisher', plugin_dir_url(__FILE__) . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+	wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
+	wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
 });
