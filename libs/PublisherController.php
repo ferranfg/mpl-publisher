@@ -54,10 +54,11 @@ class PublisherController {
             if (!empty($data['tag_selected']))    $filter['tag']    = implode(',', $data['tag_selected']);
         }
 
+        $filter['post_type'] = !empty($data['post_type']) ? $data['post_type'] : array('post', 'mpl_chapter');
+
         $query = http_build_query(array_merge(array(
             'posts_per_page' => '-1',
-            'post_status'    => 'publish,private',
-            'post_type'      => array('post', 'mpl_chapter')
+            'post_status'    => 'publish,private'
         ), $filter));
 
         $data['query'] = new \WP_Query($query);
@@ -83,34 +84,27 @@ class PublisherController {
 
         if (isset($_POST['generate'])) return $this->generateBook();
 
-        $query = array();
-
-        if (isset($_POST['cat_selected']))    $query['cat']    = implode(',', $_POST['cat_selected']);
-        if (isset($_POST['author_selected'])) $query['author'] = implode(',', $_POST['author_selected']);
-        if (isset($_POST['tag_selected']))    $query['tag']    = implode(',', $_POST['tag_selected']);
-
-        $params = http_build_query(array_merge(array('page' => 'publisher'), $query));
-
-        // return wp_redirect(admin_url('tools.php?' . $params));
+        return wp_redirect(admin_url('tools.php?page=publisher'));
     }
 
     private function getBookDefaults()
     {
         return array(
-            'identifier'    => '',
-            'title'         => get_bloginfo('site_name'),
-            'description'   => get_bloginfo('site_description'),
-            'authors'       => wp_get_current_user()->display_name,
-            'language'      => '',
-            'date'          => '',
-            'cover'         => false,
-            'editor'        => '',
-            'copyright'     => '',
-            'cat_selected'  => false,
-            'author_selected' => false,
-            'tag_selected'  => false,
-            'selected_posts' => false,
-            'format'        => 'epub2'
+            'identifier'  => '',
+            'title'       => get_bloginfo('site_name'),
+            'description' => get_bloginfo('site_description'),
+            'authors'     => wp_get_current_user()->display_name,
+            'language'    => '',
+            'date'        => '',
+            'cover'       => false,
+            'editor'      => '',
+            'copyright'   => '',
+            'cat_selected'    => array(),
+            'author_selected' => array(),
+            'tag_selected'    => array(),
+            'post_type'       => array(),
+            'selected_posts'  => false,
+            'format'          => 'epub2'
         );
     }
 
@@ -162,8 +156,8 @@ class PublisherController {
             'post__in'       => $_POST['selected_posts'],
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
-            'post_status'    => 'publish,private',
-            'post_type'      => array('post', 'mpl_chapter')
+            'post_status'    => 'any',
+            'post_type'      => 'any'
         ));
 
         if ($query->have_posts())

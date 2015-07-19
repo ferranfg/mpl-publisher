@@ -1,13 +1,13 @@
 <div class="wrap mpl">
 
-	<h2>MPL - Publisher</h2>
+	<h2 id="mpl-logo"><img src="https://mpl.ferranfigueredo.com/mpl-logo-30x30.png"> MPL - Publisher</h2>
 
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
 		<?php if (isset($message)): ?>
-			<li><em><?php echo $message; ?></em></li>
+			<li><em class="hidden-xs"><?php echo $message; ?></em></li>
 		<?php endif; ?>
 	</ul>
 
@@ -99,13 +99,13 @@
 					</div>
 
 					<div class="tab-pane clearfix" id="book-appearance">
-						<h3><?php _e("Appearance", "publisher"); ?></h3>
+						<h3><?php _e("Themes", "publisher"); ?></h3>
 						<div class="theme-browser">
-							<div class="theme">
+							<div class="theme active">
 								<div class="theme-screenshot">
-									<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.jpg'; ?>" />
+									<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.png'; ?>" />
 								</div>
-								<h3 class="theme-name">Default</h3>
+								<h3 class="theme-name"><?php _e("Default", "publisher"); ?></h3>
 							</div>
 						</div>
 					</div>
@@ -139,31 +139,39 @@
 					<div class="clearfix filter-bar">
 						<select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
 							<?php foreach ($blog_categories as $category): ?>
-								<option value="<?php echo $category->cat_ID; ?>" <?php echo ($cat_selected and in_array($category->cat_ID, $cat_selected)) ? "selected='selected'" : ""; ?>>
+								<option value="<?php echo $category->cat_ID; ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
 									<?php echo $category->name; ?>
 								</option>
 							<?php endforeach; ?>
 						</select>
 						<select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
 							<?php foreach ($blog_authors as $author): ?>
-								<option value="<?php echo $author->ID; ?>" <?php echo ($author_selected and in_array($author->ID, $author_selected)) ? "selected='selected'" : ""; ?>>
+								<option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
 									<?php echo $author->data->display_name; ?>
 								</option>
 							<?php endforeach; ?>
 						</select>
 						<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
 					</div>
-					<?php if (count($blog_tags)): ?>
-						<div class="clearfix filter-bar">
+					<div class="clearfix filter-bar">
+						<?php if (count($blog_tags)): ?>
 							<select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
 								<?php foreach ($blog_tags as $tag): ?>
-									<option value="<?php echo $tag->slug; ?>" <?php echo ($tag_selected and in_array($tag->slug, $tag_selected)) ? "selected='selected'" : ""; ?>>
+									<option value="<?php echo $tag->slug; ?>" <?php echo in_array($tag->slug, $tag_selected) ? "selected='selected'" : ""; ?>>
 										<?php echo $tag->name; ?>
 									</option>
 								<?php endforeach; ?>
 							</select>
-						</div>
-					<?php endif; ?>
+						<?php endif; ?>
+						<select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
+							<option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
+								<?php _e("Post", "publisher"); ?>
+							</option>
+							<option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
+								<?php _e("Book Chapter", "publisher"); ?>
+							</option>
+						</select>
+					</div>
 					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
 					<table class="wp-list-table widefat fixed striped posts">
 						<thead>

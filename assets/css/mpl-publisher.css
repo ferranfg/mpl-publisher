@@ -30,6 +30,10 @@
 	}
 }
 
+.mpl #mpl-logo img {
+  vertical-align: top;
+}
+
 .mpl a .dashicons {
   text-decoration: none;
 }
@@ -76,7 +80,6 @@
 	width:37.5% !important;
 	vertical-align: top;
 }
-.mpl .chosen-container#tag_chosen { width: 75.4% !important; }
 .mpl .chosen-container-multi .chosen-choices { border-color: #ddd; }
 
 .mpl .widefat thead td.check-column,
@@ -124,8 +127,14 @@
 .mpl .tab-content > .tab-pane { display: none; }
 .mpl .tab-content > .tab-pane.active { display: block; }
 
+.mpl .theme-browser {
+  margin-left: -4%;
+}
+
 .mpl .theme-browser .theme {
-  width: 45.6%;
+  width: 46%;
+  margin-right: 0;
+  margin-left: 4%;
 }
 
 .mpl .theme-browser .theme .theme-screenshot:after {
