@@ -15,8 +15,19 @@ class MarkdownPublisher implements IPublisher {
 
 	private $config = array(
 		'book' => array(
-			'contents' => array(
-
+			'generator' => array("name" => "mpl-publisher"),
+			'contents' => array(),
+			'editions' => array(
+				'epub' => array(
+					'format' => 'epub'
+				),
+				'mobi' => array(
+					'extends' => 'ebook',
+					'format' => 'mobi'
+				),
+				'pdf' => array(
+					'format' => 'pdf'
+				)
 			)
 		)
 	);
@@ -25,10 +36,10 @@ class MarkdownPublisher implements IPublisher {
 	{
 		$this->converter = new HtmlConverter();
 
-		$this->zip = new \PHPZip\Zip\Stream\ZipStream('ZipStreamExample1.zip');
+		$this->zip = new \PHPZip\Zip\Stream\ZipStream('mpl-publisher.zip');
 
 		$this->zip->addDirectory("Contents");
-		$this->zip->addDirectory("Resources");
+		$this->zip->addDirectory("Resources/Templates");
 	}
 
 	public function setIdentifier($id)
@@ -53,39 +64,66 @@ class MarkdownPublisher implements IPublisher {
 
 	public function setCoverImage($fileName, $imageData)
 	{
-
+		$this->zip->addFile($imageData, "Resources/Templates/{$fileName}");
+		
+		$this->config['book']['contents'][] = array(
+			"element" => "cover",
+			"content" => $fileName
+		);
 	}
 
 	public function setDescription($description)
 	{
+		if (trim($description) == "") return;
 
+		$this->zip->addFile($description, "Contents/introduction.md");
+
+		$this->config['book']['contents'][] = array(
+			"element" => "introduction",
+			"content" => "introduction.md"
+		);
 	}
 
 	public function setLanguage($language)
 	{
-
+		$this->config['book']['language'] = $language;
 	}
 
 	public function setDate($date)
 	{
-
+		$this->config['book']['publication_date'] = $date;
 	}
 
 	public function setRights($rightsText)
 	{
+		if (trim($rightsText) == "") return;
 
+		$this->zip->addFile($rightsText, "Contents/license.md");
+
+		$this->config['book']['contents'][] = array(
+			"element" => "license",
+			"content" => "license.md"
+		);
 	}
 	
 	public function addChapter($id, $title, $content)
 	{
-		$markdown = $this->converter->convert('<h1 class="chapter-title">' . $title . '</h1>' . $content);
+		if (trim($content) == "") return;
 
-		$this->zip->addFile($markdown, "Contents/{$this->count}-{$title}.md");
+		if ($this->count == 0) $this->config['book']['contents'][] = array(
+			"element" => "toc"
+		);
+
+		$markdown = $this->converter->convert($content);
+		$chapterTitle = $this->count . '-' . sanitize_title($title) . '.md';
+
+		$this->zip->addFile($markdown, "Contents/" . $chapterTitle);
 
 		$this->config['book']['contents'][] = array(
 			"element" => "chapter",
 			"number"  => $this->count,
-			"content" => "{$this->count}-{$title}.md"
+			"content" => $chapterTitle,
+			"title"	  => $title
 		);
 
 		$this->count++;

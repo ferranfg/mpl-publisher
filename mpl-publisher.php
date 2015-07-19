@@ -54,13 +54,13 @@ add_action('admin_menu', function () use ($controller)
 {
     add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function () use ($controller)
     {
-        return $controller->getIndex();
+        $controller->getIndex();
     });
 });
 
 add_action('admin_post_publish_ebook', function () use ($controller)
 {
-	return $controller->postIndex();
+	$controller->postIndex();
 });
 
 add_action('admin_enqueue_scripts', function ()

@@ -104,6 +104,7 @@
 						<select name="format" id="format">
 							<option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
 							<option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
+							<option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
 						</select>
 						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>
 					</div>

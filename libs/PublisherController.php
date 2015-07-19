@@ -126,9 +126,20 @@ class PublisherController {
 
     private function generateBook()
     {
-        // $publisher = new EpubPublisher($_POST['format'], $this->basePath);
+        $publisher = false;
 
-        $publisher = new MarkdownPublisher();
+        switch ($_POST['format'])
+        {
+            case 'epub2':
+            case 'epub3':
+                $publisher = new EpubPublisher($_POST['format'], $this->basePath);                
+                break;
+            case 'markd':
+                $publisher = new MarkdownPublisher();
+                break;
+        }
+
+        if (!$publisher) return;        
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
