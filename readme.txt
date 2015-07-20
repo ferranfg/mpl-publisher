@@ -78,6 +78,13 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+= 1.10.0 =
+- Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)
+- Added Appearance's tab to preview and choose your book design
+- New filter with content type selection
+- Download book as a zip file with chapters in markdown format
+- Fix automatic line breaks into HTML paragraphs
+
 = 1.9.0 =
 - Added French translation. Thanks to [zebulong](https://profiles.wordpress.org/zebulong)
 - You can add specific content as a chapter to your book without needing to be an existing published post

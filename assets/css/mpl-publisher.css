@@ -82,8 +82,8 @@
 }
 .mpl .chosen-container-multi .chosen-choices { border-color: #ddd; }
 
-.mpl .widefat thead td.check-column,
-.mpl .widefat tfoot td.check-column {
+.mpl .widefat thead th.check-column,
+.mpl .widefat tfoot th.check-column {
 	vertical-align: middle;
 	padding-top: 3px;
 }

@@ -1,6 +1,6 @@
 <div class="wrap mpl">
 
-	<h2 id="mpl-logo"><img src="https://mpl.ferranfigueredo.com/mpl-logo-30x30.png"> MPL - Publisher</h2>
+	<h2 id="mpl-logo"><img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-30x30.png"> MPL - Publisher</h2>
 
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
@@ -176,9 +176,9 @@
 					<table class="wp-list-table widefat fixed striped posts">
 						<thead>
 							<tr>
-								<td class="manage-column column-cb check-column">
+								<th class="manage-column column-cb check-column">
 									<input id="cb-select-all-1" type="checkbox">
-								</td>
+								</th>
 								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
 								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
@@ -216,9 +216,9 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<td class="manage-column column-cb check-column">
+								<th class="manage-column column-cb check-column">
 									<input id="cb-select-all-2" type="checkbox">
-								</td>
+								</th>
 								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
 								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
