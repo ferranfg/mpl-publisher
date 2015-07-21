@@ -24,12 +24,12 @@ class EpubPublisher implements IPublisher {
 
 		$this->epub->addCSSFile("Style.css", "default", file_get_contents($stylePath . 'book.css'));
 
-		$this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/font-sfnt");
-		$this->epub->addFile("Merriweather-Bold.ttf", "merriweather-bold", file_get_contents($fontsPath . "Merriweather-Bold.ttf"), "application/font-sfnt");
-		$this->epub->addFile("Merriweather-Italic.ttf", "merriweather-italic", file_get_contents($fontsPath . "Merriweather-Italic.ttf"), "application/font-sfnt");
-		$this->epub->addFile("Lato-Bold.ttf", "lato-bold", file_get_contents($fontsPath . "Lato-Bold.ttf"), "application/font-sfnt");
+		$this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/x-font-ttf");
+		$this->epub->addFile("Merriweather-Bold.ttf", "merriweather-bold", file_get_contents($fontsPath . "Merriweather-Bold.ttf"), "application/x-font-ttf");
+		$this->epub->addFile("Merriweather-Italic.ttf", "merriweather-italic", file_get_contents($fontsPath . "Merriweather-Italic.ttf"), "application/x-font-ttf");
+		$this->epub->addFile("Lato-Bold.ttf", "lato-bold", file_get_contents($fontsPath . "Lato-Bold.ttf"), "application/x-font-ttf");
 
-		$this->epub->setGenerator("https://ferranfigueredo.com/mpl-publisher/");
+		$this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://ferranfigueredo.com/mpl-publisher/");
 	}
 
 	public function setIdentifier($id)

@@ -9,12 +9,12 @@
  * License: MIT
  */
 
+define('MPL_BASEPATH', __DIR__);
+define('MPL_BASEURL', plugin_dir_url(__FILE__));
+
 require 'vendor/autoload.php';
 
-$controller = new \MPL\Publisher\PublisherController(__DIR__);
-
-define('MPL_BASEPATH', basename(dirname(__FILE__)));
-define('MPL_BASEURL', plugin_dir_url(__FILE__));
+$controller = new \MPL\Publisher\PublisherController();
 
 add_action('init', function ()
 {

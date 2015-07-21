@@ -12,26 +12,14 @@ use Illuminate\View\Engines\PhpEngine;
 
 class PublisherController {
 
-    private $basePath;
-
-    private $viewPath;
-
     private $statusOptionName = 'mpl_publisher_status';
-
-    public function __construct($basePath)
-    {
-        $DS = DIRECTORY_SEPARATOR;
-
-        $this->basePath = $basePath;
-        $this->viewPath = $basePath . $DS . 'views' . $DS;
-    }
 
     private function view($file, $data = array())
     {
-        $viewFinder = new FileViewFinder(new Filesystem, array($this->basePath));
+        $viewFinder = new FileViewFinder(new Filesystem, array(MPL_BASEPATH));
         $factory    = new Factory(new EngineResolver, $viewFinder, new Dispatcher);
 
-        return new View($factory, new PhpEngine, $file, $this->viewPath . $file, $data);
+        return new View($factory, new PhpEngine, $file, MPL_BASEPATH . "/views/" . $file, $data);
     }
 
     public function getIndex()
@@ -126,14 +114,14 @@ class PublisherController {
         {
             case 'epub2':
             case 'epub3':
-                $publisher = new EpubPublisher($_POST['format'], $this->basePath);                
+                $publisher = new EpubPublisher($_POST['format'], MPL_BASEPATH);
                 break;
             case 'markd':
                 $publisher = new MarkdownPublisher();
                 break;
         }
 
-        if (!$publisher) return;        
+        if (!$publisher) return;
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
