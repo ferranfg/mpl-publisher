@@ -14,8 +14,6 @@ define('MPL_BASEURL', plugin_dir_url(__FILE__));
 
 require 'vendor/autoload.php';
 
-$controller = new \MPL\Publisher\PublisherController();
-
 add_action('init', function ()
 {
     load_plugin_textdomain('publisher', false, MPL_BASEPATH . '/languages');
@@ -36,6 +34,11 @@ add_action('init', function ()
     ));
 });
 
+add_action('widgets_init', function()
+{
+    register_widget('\MPL\Publisher\DownloadWidget');
+});
+
 add_action('add_meta_boxes', function ()
 {
     add_meta_box('mpl_chapter_back', "&nbsp;", function ()
@@ -53,16 +56,20 @@ add_action('add_meta_boxes', function ()
     remove_meta_box('slugdiv', 'mpl_chapter', 'normal');
 });
 
-add_action('admin_menu', function () use ($controller)
+add_action('admin_menu', function ()
 {
-    add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function () use ($controller)
+    add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
     {
+        $controller = new \MPL\Publisher\PublisherController();
+
         $controller->getIndex();
     });
 });
 
-add_action('admin_post_publish_ebook', function () use ($controller)
+add_action('admin_post_publish_ebook', function ()
 {
+    $controller = new \MPL\Publisher\PublisherController();
+
 	$controller->postIndex();
 });
 
@@ -80,4 +87,9 @@ add_action('admin_enqueue_scripts', function ()
 
 	wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
 	wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+});
+
+add_action('wp_enqueue_scripts', function ()
+{
+    wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-widget.css');
 });

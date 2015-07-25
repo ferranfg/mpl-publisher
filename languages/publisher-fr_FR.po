@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-20 19:20+0100\n"
-"PO-Revision-Date: 2015-07-20 19:20+0100\n"
+"POT-Creation-Date: 2015-07-25 11:11+0100\n"
+"PO-Revision-Date: 2015-07-25 11:12+0100\n"
 "Last-Translator: Zebulong <fdereu@free.fr>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: fr\n"
@@ -17,41 +17,45 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
-#: ../libs/PublisherController.php:50
+#: ../libs/DownloadWidget.php:16
+msgid "A box with information about your eBook"
+msgstr ""
+
+#: ../libs/PublisherBase.php:33
 #, php-format
 msgid "Last modification: %s"
 msgstr "Dernière modification : %s"
 
-#: ../mpl-publisher.php:25
+#: ../mpl-publisher.php:23
 msgid "Book Chapters"
 msgstr "Chapitres"
 
-#: ../mpl-publisher.php:26 ../views/index.php:171
+#: ../mpl-publisher.php:24 ../views/index.php:191
 msgid "Book Chapter"
 msgstr "Chapitre"
 
-#: ../mpl-publisher.php:27 ../mpl-publisher.php:28 ../mpl-publisher.php:29
-#: ../views/index.php:183 ../views/index.php:223
+#: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
+#: ../views/index.php:203 ../views/index.php:243
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapître"
 
-#: ../mpl-publisher.php:30
+#: ../mpl-publisher.php:28
 msgid "Edit Book Chapter"
 msgstr "Modifier le chapitre"
 
-#: ../mpl-publisher.php:31
+#: ../mpl-publisher.php:29
 msgid "View Book Chapter"
 msgstr "Voir le chapitre"
 
-#: ../mpl-publisher.php:43
+#: ../mpl-publisher.php:46
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: ../mpl-publisher.php:47
+#: ../mpl-publisher.php:50
 msgid "How book chapters works"
 msgstr "Comment fonctionnent les chapitres"
 
-#: ../mpl-publisher.php:49
+#: ../mpl-publisher.php:52
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
@@ -71,14 +75,18 @@ msgid "Settings"
 msgstr "Paramètres"
 
 #: ../views/index.php:8
+msgid "Links"
+msgstr ""
+
+#: ../views/index.php:9
 msgid "Appearance"
 msgstr "Apparence"
 
-#: ../views/index.php:24
+#: ../views/index.php:25
 msgid "Book details"
 msgstr "Détails du livre"
 
-#: ../views/index.php:25
+#: ../views/index.php:26
 msgid ""
 "Enter your book details, including title, description, and authors. We "
 "encourage you to complete as many fields as possible, as richer data could "
@@ -88,36 +96,36 @@ msgstr ""
 "renseignez autant que possible les champs utiles au lecteur pour connaître "
 "vos livres."
 
-#: ../views/index.php:29
+#: ../views/index.php:30
 msgid "Identifier (ISBN)"
 msgstr "Numéro ISBN"
 
-#: ../views/index.php:30
+#: ../views/index.php:31
 msgid "If your book doesn't have an ISBN, use a unique identifier"
 msgstr ""
 "Si vous ne disposez pas d'un n° ISBN, utilisez un identificateur unique"
 
-#: ../views/index.php:36 ../views/index.php:37
+#: ../views/index.php:37 ../views/index.php:38
 msgid "Book Title"
 msgstr "Titre du livre"
 
-#: ../views/index.php:41
+#: ../views/index.php:42
 msgid "Book Description"
 msgstr "Description du livre"
 
-#: ../views/index.php:47 ../views/index.php:50
+#: ../views/index.php:48 ../views/index.php:51
 msgid "Book authors"
 msgstr "Auteur(s) du livre"
 
-#: ../views/index.php:48
+#: ../views/index.php:49
 msgid "Separate multiple authors with commas"
 msgstr "Séparez les auteurs multiples par des virgules"
 
-#: ../views/index.php:55
+#: ../views/index.php:56
 msgid "Metadata settings"
 msgstr "Informations complémentaires"
 
-#: ../views/index.php:56
+#: ../views/index.php:57
 msgid ""
 "The more metadata you provide, the easier it will be for readers to discover "
 "your book."
@@ -125,31 +133,27 @@ msgstr ""
 "Plus vous fournissez d'informations, plus les lecteurs peuvent connaître "
 "votre livre facilement"
 
-#: ../views/index.php:60 ../views/index.php:63
-msgid "Language (Optional)"
-msgstr "Langue (facultatif)"
+#: ../views/index.php:61 ../views/index.php:64
+msgid "Language"
+msgstr ""
 
-#: ../views/index.php:61
+#: ../views/index.php:62
 msgid "Use the RFC3066 Language codes, such as en, es, fr…"
 msgstr "Utilisez un code de langue du RFC3066 tel que en, es, fr..."
 
-#: ../views/index.php:68
-msgid "Publication date (Optional)"
-msgstr "Date d'édition (facultatif)"
-
 #: ../views/index.php:69
+msgid "Publication date"
+msgstr ""
+
+#: ../views/index.php:70
 msgid "This information won't affect the book's availability"
 msgstr "Cette donnée n'affecte pas la disponibilité du livre"
 
-#: ../views/index.php:71
+#: ../views/index.php:72
 msgid "YYYY-MM-DD"
 msgstr "YYYY-MM-DD"
 
-#: ../views/index.php:75
-msgid "Cover image (Optional)"
-msgstr "Image de couverture (facultatif)"
-
-#: ../views/index.php:78 ../views/index.php:80
+#: ../views/index.php:76 ../views/index.php:78 ../views/index.php:80
 msgid "Cover image"
 msgstr "Image de couverture (facultatif)"
 
@@ -162,12 +166,12 @@ msgid "Recommended size is 625x1000"
 msgstr "La taille recommandée est de 625 pixels par 1000"
 
 #: ../views/index.php:88 ../views/index.php:89
-msgid "Publisher Name (Optional)"
-msgstr "Nom de l'éditeur (facultatif)"
+msgid "Publisher Name"
+msgstr ""
 
 #: ../views/index.php:94 ../views/index.php:97
-msgid "Copyright Information (Optional)"
-msgstr "Informations de copyright (facultatif)"
+msgid "Copyright Information"
+msgstr ""
 
 #: ../views/index.php:95
 msgid ""
@@ -179,18 +183,44 @@ msgstr ""
 "intellectuelle."
 
 #: ../views/index.php:102
+msgid "External links"
+msgstr ""
+
+#: ../views/index.php:103
+msgid ""
+"Links will appear on your MPL-Download eBook widget extending your book's "
+"informations."
+msgstr ""
+
+#: ../views/index.php:103
+msgid "Edit Widgets"
+msgstr ""
+
+#: ../views/index.php:106 ../views/index.php:107
+msgid "Amazon URL"
+msgstr ""
+
+#: ../views/index.php:111 ../views/index.php:112
+msgid "iBooks URL"
+msgstr ""
+
+#: ../views/index.php:116 ../views/index.php:117
+msgid "Other URL"
+msgstr ""
+
+#: ../views/index.php:122
 msgid "Themes"
 msgstr "Thèmes"
 
-#: ../views/index.php:108
+#: ../views/index.php:128
 msgid "Default"
 msgstr "Par défaut"
 
-#: ../views/index.php:116
+#: ../views/index.php:136
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: ../views/index.php:122
+#: ../views/index.php:142
 msgid ""
 "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
 "include PDF as output format."
@@ -198,61 +228,92 @@ msgstr ""
 "Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. Les "
 "versions futures inclurons le format PDF"
 
-#: ../views/index.php:126 ../views/index.php:229
+#: ../views/index.php:146 ../views/index.php:249
 msgid "Publish"
 msgstr "Publiez"
 
-#: ../views/index.php:127 ../views/index.php:230
+#: ../views/index.php:147 ../views/index.php:250
 msgid "Save Information"
 msgstr "Sauvegarder les informations"
 
-#: ../views/index.php:136
+#: ../views/index.php:156
 msgid "Text"
 msgstr "Texte"
 
-#: ../views/index.php:140
+#: ../views/index.php:160
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: ../views/index.php:147
+#: ../views/index.php:167
 msgid "All authors"
 msgstr "Tous les auteurs"
 
-#: ../views/index.php:154
+#: ../views/index.php:174
 msgid "Filter"
 msgstr "Filtrez"
 
-#: ../views/index.php:158
+#: ../views/index.php:178
 msgid "All tags"
 msgstr "Toutes les étiquettes"
 
-#: ../views/index.php:166
+#: ../views/index.php:186
 msgid "All types"
 msgstr "Tous les types"
 
-#: ../views/index.php:168 ../views/index.php:197
+#: ../views/index.php:188 ../views/index.php:217
 msgid "Post"
 msgstr "Article"
 
-#: ../views/index.php:175
+#: ../views/index.php:195
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Faites glisser vos chapitres afin d'organiser votre livre"
 
-#: ../views/index.php:182 ../views/index.php:222
+#: ../views/index.php:202 ../views/index.php:242
 msgid "Contents"
 msgstr "Contenus"
 
-#: ../views/index.php:195
+#: ../views/index.php:215
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: ../views/index.php:201
+#: ../views/index.php:221
 msgid "Private"
 msgstr "Privé"
 
-#: ../views/index.php:205
+#: ../views/index.php:225
 msgid "Edit"
 msgstr "Editer"
+
+#: ../views/widget-form.php:1
+msgid "Title"
+msgstr ""
+
+#: ../views/widget-form.php:3
+msgid "Include external links"
+msgstr ""
+
+#: ../views/widget-form.php:3
+msgid "Edit links"
+msgstr ""
+
+#: ../views/widget-form.php:5
+msgid "Include download button"
+msgstr ""
+
+#~ msgid "Language (Optional)"
+#~ msgstr "Langue (facultatif)"
+
+#~ msgid "Publication date (Optional)"
+#~ msgstr "Date d'édition (facultatif)"
+
+#~ msgid "Cover image (Optional)"
+#~ msgstr "Image de couverture (facultatif)"
+
+#~ msgid "Publisher Name (Optional)"
+#~ msgstr "Nom de l'éditeur (facultatif)"
+
+#~ msgid "Copyright Information (Optional)"
+#~ msgstr "Informations de copyright (facultatif)"
 
 #~ msgid "Last edition date %s"
 #~ msgstr "Date de la dernière édition %s"

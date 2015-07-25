@@ -5,6 +5,7 @@
 	<ul class="nav-tab-wrapper nav-tabs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
 		<?php if (isset($message)): ?>
 			<li><em class="hidden-xs"><?php echo $message; ?></em></li>
@@ -57,25 +58,24 @@
 
 						<div class="form-field">
 							<label for="book-language">
-								<?php _e("Language (Optional)", "publisher"); ?>
+								<?php _e("Language", "publisher"); ?>
 								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
 							</label>
-							<input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language (Optional)', 'publisher'); ?>">
+							<input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
 						</div>
 
 						<div class="form-field">
 							<label for="book-date">
-								<?php _e("Publication date (Optional)", "publisher"); ?>
+								<?php _e("Publication date", "publisher"); ?>
 								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
 							</label>
 							<input name="date" id="book-date" type="text" value="<?php echo $date; ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
 						</div>
 
 						<div class="form-field">
-							<label><?php _e("Cover image (Optional)", "publisher"); ?></label>
-							<?php $coverSrc = wp_get_attachment_image_src($cover, 'full'); ?>
-							<?php if (count($coverSrc) == 4 and isset($coverSrc[0])):  ?>
-								<img src="<?php echo $coverSrc[0]; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+							<label><?php _e("Cover image", "publisher"); ?></label>
+							<?php if ($coverSrc):  ?>
+								<img src="<?php echo $coverSrc; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
 							<?php else: ?>
 								<img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
 							<?php endif; ?>
@@ -85,16 +85,36 @@
 						</div>						
 
 						<div class="form-field">
-							<label for="book-editor"><?php _e("Publisher Name (Optional)", "publisher"); ?></label>
-							<input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name (Optional)', 'publisher'); ?>">
+							<label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
+							<input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
 						</div>
 
 						<div class="form-field">
 							<label for="book-copyright">
-								<?php _e("Copyright Information (Optional)", "publisher"); ?>
+								<?php _e("Copyright Information", "publisher"); ?>
 								<span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
 							</label>
-							<textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information (Optional)', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
+							<textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
+						</div>
+					</div>
+
+					<div class="tab-pane clearfix" id="book-links">
+						<h3><?php _e("External links", "publisher"); ?></h3>
+						<p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
+
+						<div class="form-field">
+							<label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
+							<input name="landingUrl" id="book-landing" type="text" value="<?php echo $landingUrl; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
+						</div>
+
+						<div class="form-field">
+							<label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?></label>
+							<input name="amazonUrl" id="book-amazon" type="text" value="<?php echo $amazonUrl; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
+						</div>
+
+						<div class="form-field">
+							<label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?></label>
+							<input name="ibooksUrl" id="book-ibooks" type="text" value="<?php echo $ibooksUrl; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
 						</div>
 					</div>
 
