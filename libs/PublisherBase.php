@@ -86,8 +86,10 @@ class PublisherBase {
         return get_users('orderby=post_count&order=DESC&who=authors');
     }
 
-    public function generateBook()
+    public function generateBook($forceGenerate = false)
     {
+        if ($forceGenerate) $_POST = $this->data;
+
         $publisher = false;
 
         switch ($_POST['format'])

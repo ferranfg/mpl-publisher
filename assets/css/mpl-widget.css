@@ -1,18 +1,19 @@
-.widget.mpl-publisher section {
+.widget_mpl_publisher > section {
 	text-align: center;
 	line-height: 1.42857143;
 	font-weight: 400;
 }
 
-.widget.mpl-publisher h5 {
+.widget_mpl_publisher > section > h5 {
 	margin: 5px 0;
 }
 
-.widget.mpl-publisher p {
+.widget_mpl_publisher > section > form,
+.widget_mpl_publisher > section > p {
 	margin: 0 0 5px;
 }
 
-.widget.mpl-publisher .btn {
+.widget_mpl_publisher > section button.btn {
 	padding: 8px 10px 9px;
 	display: inline-block;
 	margin-bottom: 0;
@@ -31,14 +32,15 @@
 	border-radius: 4px;
 }
 
-.widget.mpl-publisher .btn-default {
+.widget_mpl_publisher > section button.btn-default {
 	border-color: #ee4035;
 	background-color: #ee4035;
 	color: #fff;
 }
 
-.widget.mpl-publisher .btn-default:hover {
+.widget_mpl_publisher > section button.btn-default:hover {
 	border-color: #be362d;
 	background-color: #be362d;
 	color: #fff;
+	text-decoration: none;
 }
