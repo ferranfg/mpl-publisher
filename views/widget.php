@@ -34,7 +34,7 @@
 	<?php if (isset($instance['external']) and $instance['external'] and ($ibooksUrl || $amazonUrl)): ?>
 		<p class="book-links">
 			<?php if ($amazonUrl): ?>
-				<a href="<?php echo $amazonUrl; ?>/&tag=mipr0d-21">
+				<a href="<?php echo $amazonUrl . (!$affiliate ? "/&tag=mipr0d-21" : ""); ?>">
 					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/amazon-apps-store-us-black.png" />
 				</a>
 			<?php endif; ?>

@@ -21,7 +21,21 @@
 			e.preventDefault();
 		});
 
-		$("[data-toggle=tooltip]").tooltip();
+		$('[data-toggle=tooltip]').tooltip();
+
+		$('.nav-tab-select').on('change', function () {
+			// Triggers the original tab change
+			$('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
+		});
+
+		$('#book-amazon').on('change', function () {
+			// If not empty text field
+			if ($.trim($(this).val()) !== '') {
+				$('#affiliate-form-field').slideDown();
+			} else {
+				$('#affiliate-form-field').slideUp();
+			}
+		});
 	});
 
 })(window.jQuery);

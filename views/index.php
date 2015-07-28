@@ -2,15 +2,22 @@
 
 	<h2 id="mpl-logo"><img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-30x30.png"> MPL - Publisher</h2>
 
-	<ul class="nav-tab-wrapper nav-tabs">
+	<ul class="nav-tab-wrapper nav-tabs hidden-xs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
 		<?php if (isset($message)): ?>
-			<li><em class="hidden-xs"><?php echo $message; ?></em></li>
+			<li><em><?php echo $message; ?></em></li>
 		<?php endif; ?>
 	</ul>
+
+	<select class="nav-tabs nav-tab-select visible-xs">
+		<option value="0"><?php _e("General details", "publisher"); ?></option>
+		<option value="1"><?php _e("Settings", "publisher"); ?></option>
+		<option value="2"><?php _e("Links", "publisher"); ?></option>
+		<option value="3"><?php _e("Appearance", "publisher"); ?></option>
+	</select>
 
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
 
@@ -115,6 +122,13 @@
 						<div class="form-field">
 							<label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?></label>
 							<input name="ibooksUrl" id="book-ibooks" type="text" value="<?php echo $ibooksUrl; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
+						</div>
+
+						<div class="form-field" id="affiliate-form-field" style="display: <?php echo $amazonUrl ? "block" : "none"; ?>">
+							<label for="book-affiliate">
+								<input type="checkbox" name="affiliate" id="book-affiliate" <?php echo $affiliate ? "checked='checked'" : ""; ?> />
+								<?php _e("Remove affiliate tracking from external links", "publisher"); ?> <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Affiliate tracking won't affect your book prices and will help to track your sales from MPL-Publisher", "publisher"); ?>"></span>
+							</label>
 						</div>
 					</div>
 

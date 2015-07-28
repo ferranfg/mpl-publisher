@@ -91,6 +91,7 @@ In future releases we will add support to other formats like PDF. Keep updated.
 - Add MPL-Download eBook widget to promote your book with your readers
 - Shortcode to include your MPL-Download eBook using `[mpl]`
 - Added a "Links" tab to include related pages with your book, like Amazon or iBooks
+- Improved tab navigation on responsive mobile
 
 = 1.10.0 =
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)
