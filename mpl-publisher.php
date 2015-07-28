@@ -34,28 +34,6 @@ add_action('init', function ()
     ));
 });
 
-add_action('widgets_init', function()
-{
-    register_widget('\MPL\Publisher\DownloadWidget');
-});
-
-add_action('add_meta_boxes', function ()
-{
-    add_meta_box('mpl_chapter_back', "&nbsp;", function ()
-    {
-        echo '<p class="mpl"><a href="' . admin_url('tools.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
-    },
-    'mpl_chapter', 'side', 'high');
-
-    add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
-    {
-        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
-    },
-    'mpl_chapter', 'side', 'high');
-
-    remove_meta_box('slugdiv', 'mpl_chapter', 'normal');
-});
-
 add_action('admin_menu', function ()
 {
     add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
@@ -92,4 +70,33 @@ add_action('admin_enqueue_scripts', function ()
 add_action('wp_enqueue_scripts', function ()
 {
     wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-widget.css');
+});
+
+add_action('add_meta_boxes', function ()
+{
+    add_meta_box('mpl_chapter_back', "&nbsp;", function ()
+    {
+        echo '<p class="mpl"><a href="' . admin_url('tools.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
+    },
+    'mpl_chapter', 'side', 'high');
+
+    add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
+    {
+        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
+    },
+    'mpl_chapter', 'side', 'high');
+
+    remove_meta_box('slugdiv', 'mpl_chapter', 'normal');
+});
+
+add_action('widgets_init', function()
+{
+    register_widget('\MPL\Publisher\DownloadWidget');
+});
+
+add_shortcode('mpl', function ($attr, $content)
+{
+    $download = new \MPL\Publisher\DownloadWidget();
+
+    return $download->shortcode($attr, $content);
 });

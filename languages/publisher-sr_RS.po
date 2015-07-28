@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-25 11:12+0100\n"
-"PO-Revision-Date: 2015-07-25 11:12+0100\n"
+"POT-Creation-Date: 2015-07-27 08:38+0100\n"
+"PO-Revision-Date: 2015-07-27 08:38+0100\n"
 "Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
 "Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
 "Language: sr_RS\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
-#: ../libs/DownloadWidget.php:16
+#: ../libs/DownloadWidget.php:21
 msgid "A box with information about your eBook"
 msgstr ""
 
@@ -195,15 +195,15 @@ msgid "Edit Widgets"
 msgstr ""
 
 #: ../views/index.php:106 ../views/index.php:107
-msgid "Amazon URL"
+msgid "Landing Page URL"
 msgstr ""
 
 #: ../views/index.php:111 ../views/index.php:112
-msgid "iBooks URL"
+msgid "Amazon URL"
 msgstr ""
 
 #: ../views/index.php:116 ../views/index.php:117
-msgid "Other URL"
+msgid "iBooks URL"
 msgstr ""
 
 #: ../views/index.php:122
@@ -283,20 +283,28 @@ msgstr "Privatno"
 msgid "Edit"
 msgstr "Izmenite"
 
-#: ../views/widget-form.php:1
+#: ../views/widget-form.php:3
 msgid "Title"
 msgstr ""
 
-#: ../views/widget-form.php:3
+#: ../views/widget-form.php:9
 msgid "Include external links"
 msgstr ""
 
-#: ../views/widget-form.php:3
+#: ../views/widget-form.php:9
 msgid "Edit links"
 msgstr ""
 
-#: ../views/widget-form.php:5
+#: ../views/widget-form.php:12
 msgid "Include download button"
+msgstr ""
+
+#: ../views/widget.php:26
+msgid "By"
+msgstr ""
+
+#: ../views/widget.php:31
+msgid "Get your eBook!"
 msgstr ""
 
 #~ msgid "Language (Optional)"

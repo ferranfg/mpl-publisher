@@ -23,7 +23,10 @@ For now, these are the current features:
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0 or EPUB3.0
+- Add a widget to your sidebar to promote your book with your readers
+- Promote your book using the shortcode `[mpl]` and their available options
 - Basic filter and sort your chapters individually.
+- Add aditional book chapters and edit current content
 
 = Roadmap =
 
@@ -31,7 +34,6 @@ Future releases will include, at least, the next functionalities:
 
 - Multiple output formats (PDF Print-Ready pending).
 - Advanced search with complex filters to improve the chapter selection.
-- Add extra and edit current content
 - Multiple design selection
 
 = Requirements =
@@ -48,6 +50,12 @@ This section describes how to install the plugin and get it working.
 1. Upload the uncompressed folder `mpl-publisher` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Navigate to Tools - Publisher in your admin menu
+
+To include a shortcode in your pages or posts
+
+1. Add the `[mpl]` shortcode into 
+2. Available options are `[mpl download=true]` to include a download button and `[mpl external=true]` to include your book's external links
+3. Modify your shortcode's title usign `[mpl]Download my book[/mpl]`
 
 == Frequently Asked Questions ==
 
@@ -72,11 +80,17 @@ In future releases we will add support to other formats like PDF. Keep updated.
 == Screenshots ==
 
 1. Default screen
-2. Android Amazon Kindle
+2. Sidebar widget and shortcode
 3. iPad iBooks
 4. iPad Amazon Kindle
+5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.11.0 =
+- Add MPL-Download eBook widget to promote your book with your readers
+- Shortcode to include your MPL-Download eBook using `[mpl]`
+- Added a "Links" tab to include related pages with your book, like Amazon or iBooks
 
 = 1.10.0 =
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)

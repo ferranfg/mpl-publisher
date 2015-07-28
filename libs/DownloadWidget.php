@@ -12,7 +12,10 @@ class DownloadWidget extends WP_Widget {
 	{
 		$this->base = new PublisherBase();
 
-		if (isset($_POST['mpl-publisher-download'])) $this->base->generateBook(true);
+		if (isset($_POST['download_ebook']) and wp_verify_nonce($_POST['_wpnonce'], 'download_ebook'))
+		{
+			$this->base->generateBook(true);
+		}
 
 		parent::__construct('mpl_publisher', 'MPL - Download eBook', array(
 			'description' => __('A box with information about your eBook', 'publisher')
@@ -46,11 +49,35 @@ class DownloadWidget extends WP_Widget {
 		echo $this->base->view('widget-form.php', $data);
 	}
 
-	public function widget($args, $instance)
+	public function widget($args, $instance, $return = false)
 	{
 		$this->base->data['args'] = $args;
 		$this->base->data['instance'] = $instance;
 
-		echo $this->base->view('widget.php', $this->base->data);
+		$this->base->data['wp_nonce_field'] = wp_nonce_field('download_ebook', '_wpnonce', true, false);
+
+		$widget = $this->base->view('widget.php', $this->base->data);
+
+		if ($return) return $widget;
+
+		echo $widget;
+	}
+
+	public function shortcode($attr, $content)
+	{
+		$args = array(
+	        'before_widget' => '<div class="widget_mpl_publisher shortcode_mpl_publisher">',
+	        'after_widget'  => '</div>',
+	        'before_title'  => '<h4>',
+	        'after_title'   => '</h4>'
+	    );
+
+	    $instance = array_merge(array(
+	        'title'     => $content,
+	        'download'  => false,
+	        'external'  => false
+	    ), $attr ? $attr : array());
+
+	    return $this->widget($args, $instance, true);
 	}
 }

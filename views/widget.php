@@ -8,10 +8,10 @@
 	<?php if ($coverSrc): ?>
 		<?php if ($landingUrl): ?>
 			<a href="<?php echo $landingUrl; ?>" title="<?php echo $title; ?>">
-				<img src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
+				<img class="book-cover" src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
 			</a>
 		<?php else: ?>
-			<img src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
+			<img class="book-cover" src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
 		<?php endif; ?>
 	<?php endif; ?>
 	<h5 itemprop="name">
@@ -27,13 +27,14 @@
 	<?php endif; ?>
 	<?php if (isset($instance['download']) and $instance['download']): ?>
 		<form method="post" action="">
-			<button type="submit" name="mpl-publisher-download" class="btn btn-default"><?php _e("Get your eBook!", "publisher"); ?></button>
+			<?php echo $wp_nonce_field; ?>
+			<button type="submit" name="download_ebook" class="btn btn-default"><?php _e("Get your eBook!", "publisher"); ?></button>
 		</form>
 	<?php endif; ?>
 	<?php if (isset($instance['external']) and $instance['external'] and ($ibooksUrl || $amazonUrl)): ?>
-		<p>
+		<p class="book-links">
 			<?php if ($amazonUrl): ?>
-				<a href="<?php echo $amazonUrl; ?>">
+				<a href="<?php echo $amazonUrl; ?>/&tag=mipr0d-21">
 					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/amazon-apps-store-us-black.png" />
 				</a>
 			<?php endif; ?>
