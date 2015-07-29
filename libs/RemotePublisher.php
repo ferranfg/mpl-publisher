@@ -4,14 +4,14 @@ namespace MPL\Publisher;
 
 use League\HTMLToMarkdown\HtmlConverter;
 use Symfony\Component\Yaml\Yaml;
+use PHPZip\Zip\File\Zip;
 
-class MarkdownPublisher implements IPublisher {
+class RemotePublisher implements IPublisher {
 
 	private $converter;
-
 	private $zip;
-
 	private $count = 1;
+	private $format;
 
 	private $config = array(
 		'book' => array(
@@ -32,14 +32,16 @@ class MarkdownPublisher implements IPublisher {
 		)
 	);
 
-	public function __construct()
+	public function __construct($format = 'zip')
 	{
 		$this->converter = new HtmlConverter();
 
-		$this->zip = new \PHPZip\Zip\File\Zip('mpl-publisher.zip');
+		$this->zip = new Zip('mpl-publisher.zip');
 
 		$this->zip->addDirectory("Contents");
 		$this->zip->addDirectory("Resources/Templates");
+
+		$this->format = $format;
 	}
 
 	public function setIdentifier($id)
@@ -129,15 +131,22 @@ class MarkdownPublisher implements IPublisher {
 		$this->count++;
 	}
 
-	public function save($filename, $dir)
-	{
-
-	}
-
 	public function send($filename)
 	{
 		$this->zip->addFile(Yaml::dump($this->config), "config.yml");
 
-		return $this->zip->sendZip($filename . ".zip");
+		$remote = wp_remote_post(MPL_API_URL . 'services/convert', array(
+			'timeout' 	 => 15,
+			'sslverify'  => false,
+			'user-agent' => 'MPL-Publisher/' . MPL_VERSION . '; ' . home_url(),
+			'body' 		 => array(
+				'file'   => $this->zip->getZipData()
+			)
+		));
+
+		$response = new Zip('response');
+		$response->addFile($remote['body'], $filename . '.zip');
+
+		return $response->sendZip($filename . ".zip");
 	}
 }

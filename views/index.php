@@ -124,7 +124,7 @@
 							<input name="ibooksUrl" id="book-ibooks" type="text" value="<?php echo $ibooksUrl; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
 						</div>
 
-						<div class="form-field" id="affiliate-form-field" style="display: <?php echo $amazonUrl ? "block" : "none"; ?>">
+						<div class="form-field" id="affiliate-form-field" style="display: <?php echo ($amazonUrl || $ibooksUrl) ? "block" : "none"; ?>">
 							<label for="book-affiliate">
 								<input type="checkbox" name="affiliate" id="book-affiliate" <?php echo $affiliate ? "checked='checked'" : ""; ?> />
 								<?php _e("Remove affiliate tracking from external links", "publisher"); ?> <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Affiliate tracking won't affect your book prices and will help to track your sales from MPL-Publisher", "publisher"); ?>"></span>
@@ -151,6 +151,7 @@
 						<select name="format" id="format">
 							<option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
 							<option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
+							<option value="kndle" <?php echo $format == "kndle" ? "selected='selected'" : ''; ?>>Kindle/Mobi</option>
 							<option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
 						</select>
 						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>

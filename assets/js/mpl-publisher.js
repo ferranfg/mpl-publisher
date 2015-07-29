@@ -28,7 +28,7 @@
 			$('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
 		});
 
-		$('#book-amazon').on('change', function () {
+		$('#book-amazon, #book-ibooks').on('change', function () {
 			// If not empty text field
 			if ($.trim($(this).val()) !== '') {
 				$('#affiliate-form-field').slideDown();

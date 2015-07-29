@@ -100,7 +100,8 @@ class PublisherBase {
                 $publisher = new EpubPublisher($_POST['format'], MPL_BASEPATH);
                 break;
             case 'markd':
-                $publisher = new MarkdownPublisher();
+            case 'kndle':
+                $publisher = new RemotePublisher();
                 break;
         }
 

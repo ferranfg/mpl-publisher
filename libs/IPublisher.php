@@ -24,8 +24,6 @@ interface IPublisher {
 	
 	public function addChapter($id, $title, $content);
 
-	public function save($filename, $dir);
-
 	public function send($filename);
 
 }

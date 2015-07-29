@@ -39,7 +39,7 @@
 				</a>
 			<?php endif; ?>
 			<?php if ($ibooksUrl): ?>
-				<a href="<?php echo $ibooksUrl; ?>">
+				<a href="<?php echo $ibooksUrl . (!$affiliate ? "/&at=1010l65B" : ""); ?>">
 					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/iBooks_icon_large.png" />
 				</a>
 			<?php endif; ?>

@@ -97,12 +97,6 @@ class EpubPublisher implements IPublisher {
 		return $this->epub->addChapter($title, $id . ".html", $xmlContent);
 	}
 
-	public function save($filename, $dir)
-	{
-		$this->epub->finalize();
-		$this->epub->saveBook($filename, $dir);
-	}
-
 	public function send($filename)
 	{
 		$this->epub->finalize();
