@@ -32,7 +32,7 @@ For now, these are the current features:
 
 Future releases will include, at least, the next functionalities:
 
-- Multiple output formats (PDF Print-Ready pending).
+- Multiple output formats (PDF Print-Ready and Mobi pending).
 - Advanced search with complex filters to improve the chapter selection.
 - Multiple design selection
 
@@ -90,8 +90,9 @@ In future releases we will add support to other formats like PDF. Keep updated.
 = 1.11.0 =
 - Add MPL-Download eBook widget to promote your book with your readers
 - Shortcode to include your MPL-Download eBook using `[mpl]`
-- Added a "Links" tab to include related pages with your book, like Amazon or iBooks
+- Added a "Links" tab to include related pages with your book, like Amazon or iBooks links
 - Improved tab navigation on responsive mobile
+- Fix language load_plugin_textdomain path
 
 = 1.10.0 =
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)

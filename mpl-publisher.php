@@ -16,7 +16,7 @@ require 'vendor/autoload.php';
 
 add_action('init', function ()
 {
-    load_plugin_textdomain('publisher', false, MPL_BASEPATH . '/languages');
+    load_plugin_textdomain('publisher', false, 'mpl-publisher/languages');
 
 	register_post_type('mpl_chapter', array(
         'labels' => array(
