@@ -36,7 +36,7 @@ class MarkdownPublisher implements IPublisher {
 	{
 		$this->converter = new HtmlConverter();
 
-		$this->zip = new \PHPZip\Zip\Stream\ZipStream('mpl-publisher.zip');
+		$this->zip = new \PHPZip\Zip\File\Zip('mpl-publisher.zip');
 
 		$this->zip->addDirectory("Contents");
 		$this->zip->addDirectory("Resources/Templates");
@@ -138,7 +138,6 @@ class MarkdownPublisher implements IPublisher {
 	{
 		$this->zip->addFile(Yaml::dump($this->config), "config.yml");
 
-		$this->zip->closeStream();
-		$this->zip->finalize();
+		return $this->zip->sendZip($filename . ".zip");
 	}
 }

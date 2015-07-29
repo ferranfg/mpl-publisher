@@ -91,10 +91,10 @@
 							<p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
 						</div>
 
-						<?php /* <div class="form-field">
+						<div class="form-field">
 							<label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
 							<input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
-						</div> */ ?>
+						</div>
 
 						<div class="form-field">
 							<label for="book-copyright">
@@ -266,7 +266,7 @@
 				</div>
 			</div>
 		</div>
-
-		
 	</form>
 </div>
+
+<script src="//load.sumome.com/" data-sumo-site-id="98842527d5789072b38573b7bbe0b78a2ba328e085ba2b695dedf5204ea0a29c" async="async"></script>
