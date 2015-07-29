@@ -101,7 +101,8 @@ class PublisherBase {
                 break;
             case 'markd':
             case 'kndle':
-                $publisher = new RemotePublisher();
+            case 'pdfpr':
+                $publisher = new RemotePublisher($_POST['format']);
                 break;
         }
 

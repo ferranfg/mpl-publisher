@@ -64,10 +64,8 @@ add_action('admin_enqueue_scripts', function ()
 
 	wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
 
-	$own = get_plugin_data(__FILE__);
-
-	wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
-	wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+	wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . MPL_VERSION);
+	wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . MPL_VERSION);
 });
 
 add_action('wp_enqueue_scripts', function ()

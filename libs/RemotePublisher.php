@@ -10,38 +10,49 @@ class RemotePublisher implements IPublisher {
 
 	private $converter;
 	private $zip;
-	private $count = 1;
-	private $format;
+	private $ext = '.zip';
+	private $edition = false;
+	private $num = 1;
 
 	private $config = array(
 		'book' => array(
 			'generator' => array("name" => "mpl-publisher"),
 			'contents' => array(),
 			'editions' => array(
-				'epub' => array(
+				'ebook' => array(
 					'format' => 'epub'
 				),
-				'mobi' => array(
-					'extends' => 'ebook',
-					'format' => 'mobi'
+				'kindle' => array(
+					'extends' => 'epub',
+					'format'  => 'mobi'
 				),
-				'pdf' => array(
+				'print' => array(
 					'format' => 'pdf'
 				)
 			)
 		)
 	);
 
-	public function __construct($format = 'zip')
+	public function __construct($format = 'markd')
 	{
 		$this->converter = new HtmlConverter();
 
-		$this->zip = new Zip('mpl-publisher.zip');
+		$this->zip = new Zip('remote');
 
 		$this->zip->addDirectory("Contents");
 		$this->zip->addDirectory("Resources/Templates");
 
-		$this->format = $format;
+		switch ($format)
+		{
+			case 'kndle':
+				$this->edition = 'kindle';
+				$this->ext 	   = '.mobi';
+				break;
+			case 'pdfpr':
+				$this->edition = 'print';
+				$this->ext     = '.pdf';
+				break;
+		}
 	}
 
 	public function setIdentifier($id)
@@ -112,40 +123,45 @@ class RemotePublisher implements IPublisher {
 	{
 		if (trim($content) == "") return;
 
-		if ($this->count == 0) $this->config['book']['contents'][] = array(
+		if ($this->num == 0) $this->config['book']['contents'][] = array(
 			"element" => "toc"
 		);
 
 		$markdown = $this->converter->convert($content);
-		$chapterTitle = $this->count . '-' . sanitize_title($title) . '.md';
+		$chapterTitle = $this->num . '-' . sanitize_title($title) . '.md';
 
 		$this->zip->addFile($markdown, "Contents/" . $chapterTitle);
 
 		$this->config['book']['contents'][] = array(
 			"element" => "chapter",
-			"number"  => $this->count,
+			"number"  => $this->num,
 			"content" => $chapterTitle,
 			"title"	  => $title
 		);
 
-		$this->count++;
+		$this->num++;
 	}
 
 	public function send($filename)
 	{
 		$this->zip->addFile(Yaml::dump($this->config), "config.yml");
 
-		$remote = wp_remote_post(MPL_API_URL . 'services/convert', array(
-			'timeout' 	 => 15,
-			'sslverify'  => false,
-			'user-agent' => 'MPL-Publisher/' . MPL_VERSION . '; ' . home_url(),
-			'body' 		 => array(
-				'file'   => $this->zip->getZipData()
-			)
-		));
+		$response = $this->zip;
 
-		$response = new Zip('response');
-		$response->addFile($remote['body'], $filename . '.zip');
+		if ($this->edition)
+		{
+			$remote = wp_remote_post(MPL_API_URL . 'services/convert', array(
+				'timeout' 	 => 15,
+				'user-agent' => 'MPL-Publisher/' . MPL_VERSION . '; ' . home_url(),
+				'body' 		 => array(
+					'edition' => $this->edition,
+					'file'    => $this->zip->getZipData()
+				)
+			));
+
+			$response = new Zip('response');
+			$response->addFile($remote['body'], $filename . $this->ext);
+		}
 
 		return $response->sendZip($filename . ".zip");
 	}
