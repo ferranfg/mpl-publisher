@@ -25,7 +25,7 @@
 
 		$('.nav-tab-select').on('change', function () {
 			// Triggers the original tab change
-			$('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
+			$('.nav-tab-wrapper li').find('[data-target="' + $(this).val() + '"]').tab('show');
 		});
 
 		$('#book-amazon, #book-ibooks').on('change', function () {

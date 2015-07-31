@@ -125,6 +125,19 @@
 	background: #f1f1f1;
 }
 
+.mpl .nav-tab.premium {
+  background: #ee4035;
+  border-color: #ee4035;
+}
+
+.mpl .nav-tab.premium:hover {
+  background: #be362d;
+}
+
+.mpl .nav-tab.premium > a {
+  color: #fff;
+}
+
 .mpl .tab-content > .tab-pane { display: none; }
 .mpl .tab-content > .tab-pane.active { display: block; }
 

@@ -3,20 +3,24 @@
 	<h2 id="mpl-logo"><img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-30x30.png"> MPL - Publisher</h2>
 
 	<ul class="nav-tab-wrapper nav-tabs hidden-xs">
-		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
-		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
-		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
-		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
+		<li class="nav-tab active"><a href="#" data-target="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#" data-target="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#" data-target="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
+		<li class="nav-tab"><a href="#" data-target="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
+		<?php do_action('mpl_navtab', 'hidden-xs'); ?>
+		<li class="nav-tab premium"><a href="#" data-target="#mpl-premium" data-toggle="tab"><?php _e("MPL - Premium", "publisher"); ?></a></li>
 		<?php if (isset($message)): ?>
 			<li><em><?php echo $message; ?></em></li>
 		<?php endif; ?>
 	</ul>
 
 	<select class="nav-tabs nav-tab-select visible-xs">
-		<option value="0"><?php _e("General details", "publisher"); ?></option>
-		<option value="1"><?php _e("Settings", "publisher"); ?></option>
-		<option value="2"><?php _e("Links", "publisher"); ?></option>
-		<option value="3"><?php _e("Appearance", "publisher"); ?></option>
+		<option value="#book-details"><?php _e("General details", "publisher"); ?></option>
+		<option value="#book-settings"><?php _e("Settings", "publisher"); ?></option>
+		<option value="#book-links"><?php _e("Links", "publisher"); ?></option>
+		<option value="#book-appearance"><?php _e("Appearance", "publisher"); ?></option>
+		<?php do_action('mpl_navtab', 'visible-xs'); ?>
+		<option value="#mpl-premium"><?php _e("MPL - Premium", "publisher"); ?></option>
 	</select>
 
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
@@ -144,6 +148,21 @@
 						</div>
 					</div>
 
+					<?php do_action('mpl_tabcontent'); ?>
+
+					<div class="tab-pane clearfix" id="mpl-premium">
+						<div>
+							<script
+								src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+								data-key="pk_test_Z7vPOEAikvn14GAAMo5ZPGBk"
+								data-amount="2000"
+								data-name="MPL-Publisher"
+								data-description="2 widgets ($20.00)"
+								data-image="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo.png">
+							</script>
+						</div>
+					</div>
+
 					<hr />
 
 					<div class="form-field">
@@ -151,7 +170,7 @@
 						<select name="format" id="format">
 							<option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
 							<option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
-							<option value="kndle" <?php echo $format == "kndle" ? "selected='selected'" : ''; ?>>Kindle/Mobi</option>
+							<option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
 						</select>
 						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>
 					</div>
@@ -170,41 +189,43 @@
 				<h3><?php _e("Text", "publisher"); ?></h3>
 
 				<div class="form-wrap">
-					<div class="clearfix filter-bar">
-						<select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
-							<?php foreach ($blog_categories as $category): ?>
-								<option value="<?php echo $category->cat_ID; ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
-									<?php echo $category->name; ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-						<select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
-							<?php foreach ($blog_authors as $author): ?>
-								<option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
-									<?php echo $author->data->display_name; ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-						<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
-					</div>
-					<div class="clearfix filter-bar">
-						<?php if (count($blog_tags)): ?>
-							<select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
-								<?php foreach ($blog_tags as $tag): ?>
-									<option value="<?php echo $tag->slug; ?>" <?php echo in_array($tag->slug, $tag_selected) ? "selected='selected'" : ""; ?>>
-										<?php echo $tag->name; ?>
+					<div class="filter-container">
+						<div class="clearfix filter-bar">
+							<select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
+								<?php foreach ($blog_categories as $category): ?>
+									<option value="<?php echo $category->cat_ID; ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
+										<?php echo $category->name; ?>
 									</option>
 								<?php endforeach; ?>
 							</select>
-						<?php endif; ?>
-						<select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
-							<option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
-								<?php _e("Post", "publisher"); ?>
-							</option>
-							<option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
-								<?php _e("Book Chapter", "publisher"); ?>
-							</option>
-						</select>
+							<select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
+								<?php foreach ($blog_authors as $author): ?>
+									<option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
+										<?php echo $author->data->display_name; ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+							<input type="submit" name="filter" id="post-query-submit" class="button" value="<?php _e('Filter'); ?>" />
+						</div>
+						<div class="clearfix filter-bar">
+							<?php if (count($blog_tags)): ?>
+								<select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
+									<?php foreach ($blog_tags as $tag): ?>
+										<option value="<?php echo $tag->slug; ?>" <?php echo in_array($tag->slug, $tag_selected) ? "selected='selected'" : ""; ?>>
+											<?php echo $tag->name; ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+							<?php endif; ?>
+							<select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
+								<option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
+									<?php _e("Post", "publisher"); ?>
+								</option>
+								<option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
+									<?php _e("Book Chapter", "publisher"); ?>
+								</option>
+							</select>
+						</div>
 					</div>
 					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
 					<table class="wp-list-table widefat fixed striped posts">

@@ -9,7 +9,7 @@
  * License: MIT
  */
 
-define('MPL_API_URL', 'https://miproximolibro.com/');
+define('MPL_API_URL', 'http://miproximolibro.dev/api/');
 define('MPL_VERSION', '1.12.0');
 
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
@@ -20,6 +20,18 @@ require 'vendor/autoload.php';
 add_action('init', function ()
 {
     load_plugin_textdomain('publisher', false, 'mpl-publisher/languages');
+
+    $post = wp_remote_post(MPL_API_URL . 'login');
+
+    echo "<pre>";
+    print_r($post);
+    echo "</pre>";
+
+    $get = wp_remote_get(MPL_API_URL . 'check');
+
+    echo "<pre>";
+    print_r($get);
+    echo "</pre>";
 
 	register_post_type('mpl_chapter', array(
         'labels' => array(
