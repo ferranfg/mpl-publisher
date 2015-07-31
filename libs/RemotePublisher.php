@@ -9,9 +9,13 @@ use PHPZip\Zip\File\Zip;
 class RemotePublisher implements IPublisher {
 
 	private $converter;
+
 	private $zip;
-	private $ext = '.zip';
-	private $edition = false;
+
+	private $ext;
+
+	private $edition;
+
 	private $num = 1;
 
 	private $config = array(
@@ -23,7 +27,7 @@ class RemotePublisher implements IPublisher {
 					'format' => 'epub'
 				),
 				'kindle' => array(
-					'extends' => 'epub',
+					'extends' => 'ebook',
 					'format'  => 'mobi'
 				),
 				'print' => array(
@@ -44,6 +48,11 @@ class RemotePublisher implements IPublisher {
 
 		switch ($format)
 		{
+			case 'epub2':
+			case 'epub3':
+				$this->edition = 'ebook';
+				$this->ext 	   = '.epub';
+				break;
 			case 'kndle':
 				$this->edition = 'kindle';
 				$this->ext 	   = '.mobi';
@@ -52,6 +61,9 @@ class RemotePublisher implements IPublisher {
 				$this->edition = 'print';
 				$this->ext     = '.pdf';
 				break;
+			default:
+				$this->edition = false;
+				$this->ext 	   = '.zip';
 		}
 	}
 
@@ -77,7 +89,7 @@ class RemotePublisher implements IPublisher {
 
 	public function setCoverImage($fileName, $imageData)
 	{
-		$this->zip->addFile($imageData, "Resources/Templates/{$fileName}");
+		$this->zip->addFile($imageData, "Contents/{$fileName}");
 		
 		$this->config['book']['contents'][] = array(
 			"element" => "cover",
@@ -127,7 +139,7 @@ class RemotePublisher implements IPublisher {
 			"element" => "toc"
 		);
 
-		$markdown = $this->converter->convert($content);
+		$markdown 	  = $this->converter->convert($content);
 		$chapterTitle = $this->num . '-' . sanitize_title($title) . '.md';
 
 		$this->zip->addFile($markdown, "Contents/" . $chapterTitle);
@@ -148,19 +160,25 @@ class RemotePublisher implements IPublisher {
 
 		$response = $this->zip;
 
-		if ($this->edition)
+		if ($this->edition and $this->zip)
 		{
+			$request = array(
+				'edition' => $this->edition,
+				'name'	  => $filename,
+				'file'    => $this->zip->getZipData()
+			);
+
 			$remote = wp_remote_post(MPL_API_URL . 'services/convert', array(
 				'timeout' 	 => 15,
-				'user-agent' => 'MPL-Publisher/' . MPL_VERSION . '; ' . home_url(),
-				'body' 		 => array(
-					'edition' => $this->edition,
-					'file'    => $this->zip->getZipData()
-				)
+				'user-agent' => 'MPL/' . MPL_VERSION . '; ' . home_url(),
+				'body' 		 => $request
 			));
 
-			$response = new Zip('response');
-			$response->addFile($remote['body'], $filename . $this->ext);
+			if (!is_wp_error($remote) and $remote['response']['code'] == 200)
+			{
+				$response = new Zip('response');
+				$response->addFile($remote['body'], $filename . $this->ext);
+			}
 		}
 
 		return $response->sendZip($filename . ".zip");

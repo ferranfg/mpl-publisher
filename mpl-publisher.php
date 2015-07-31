@@ -9,7 +9,7 @@
  * License: MIT
  */
 
-define('MPL_API_URL', 'http://miproximolibro.dev/');
+define('MPL_API_URL', 'https://miproximolibro.com/');
 define('MPL_VERSION', '1.12.0');
 
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
