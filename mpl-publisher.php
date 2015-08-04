@@ -43,7 +43,14 @@ add_action('admin_menu', function ()
     {
         $controller = new \MPL\Publisher\PublisherController();
 
-        $controller->getIndex();
+        if (isset($_GET['index']))
+        {
+            $controller->getView($_GET['index']);
+        }
+        else
+        {
+            $controller->getIndex();
+        }
     });
 });
 
@@ -51,7 +58,7 @@ add_action('admin_post_publish_ebook', function ()
 {
     $controller = new \MPL\Publisher\PublisherController();
 
-	$controller->postIndex();
+	$controller->postView();
 });
 
 add_action('admin_enqueue_scripts', function ()
