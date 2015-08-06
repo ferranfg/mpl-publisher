@@ -68,6 +68,7 @@ class PublisherBase {
             'amazonUrl'	  => false,
             'ibooksUrl'	  => false,
             'affiliate'   => false,
+            'customCss'   => '',
             'cat_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
@@ -121,6 +122,7 @@ class PublisherBase {
             $publisher->setCoverImage('cover.jpg', file_get_contents(get_attached_file($imageId)));
         }
 
+        $publisher->setCustomCSS(sanitize_text_field($_POST['customCss']));
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
 
         $query = new \WP_Query(array(

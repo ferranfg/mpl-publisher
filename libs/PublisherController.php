@@ -33,7 +33,7 @@ class PublisherController extends PublisherBase {
         $this->saveStatus($_POST);
 
         if (isset($_POST['generate'])) return $this->generateBook();
-
+        
         return wp_redirect(admin_url('tools.php?page=publisher'));
     }
 }

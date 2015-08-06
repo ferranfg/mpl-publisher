@@ -134,13 +134,22 @@
 
 					<div class="tab-pane clearfix" id="book-appearance">
 						<h3><?php _e("Themes", "publisher"); ?></h3>
-						<div class="theme-browser">
-							<div class="theme active">
-								<div class="theme-screenshot">
-									<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.png'; ?>" />
+						<div class="clearfix">
+							<div class="theme-browser">
+								<div class="theme active">
+									<div class="theme-screenshot">
+										<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.png'; ?>" />
+									</div>
+									<h3 class="theme-name"><?php _e("Default", "publisher"); ?></h3>
 								</div>
-								<h3 class="theme-name"><?php _e("Default", "publisher"); ?></h3>
 							</div>
+						</div>
+
+						<h3><?php _e("Custom Theme", "publisher"); ?></h3>
+						<p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes."); ?>
+
+						<div class="form-field" id="template">
+							<textarea rows="12" name="customCss" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
 						</div>
 					</div>
 

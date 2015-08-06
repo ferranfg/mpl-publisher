@@ -15,21 +15,9 @@ class EpubPublisher implements IPublisher {
 		$version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 
 		$this->epub = new EPub($version);
-
-		$DS = DIRECTORY_SEPARATOR;
-		$assetsPath = $basePath . $DS . 'assets' . $DS;
-
-		$stylePath = $assetsPath . 'css' . $DS;
-		$fontsPath = $assetsPath . 'fonts' . $DS;
-
-		$this->epub->addCSSFile("Style.css", "default", file_get_contents($stylePath . 'book.css'));
-
-		$this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/x-font-ttf");
-		$this->epub->addFile("Merriweather-Bold.ttf", "merriweather-bold", file_get_contents($fontsPath . "Merriweather-Bold.ttf"), "application/x-font-ttf");
-		$this->epub->addFile("Merriweather-Italic.ttf", "merriweather-italic", file_get_contents($fontsPath . "Merriweather-Italic.ttf"), "application/x-font-ttf");
-		$this->epub->addFile("Lato-Bold.ttf", "lato-bold", file_get_contents($fontsPath . "Lato-Bold.ttf"), "application/x-font-ttf");
-
 		$this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://ferranfigueredo.com/mpl-publisher/");
+
+		$this->basePath = $basePath;
 	}
 
 	public function setIdentifier($id)
@@ -55,6 +43,23 @@ class EpubPublisher implements IPublisher {
 	public function setCoverImage($fileName, $imageData = null)
 	{
 		return $this->epub->setCoverImage($fileName, $imageData);
+	}
+
+	public function setCustomCSS($contentCSS = "")
+	{
+		if (trim($contentCSS) == "")
+		{
+			$contentCSS = file_get_contents($this->basePath . "/assets/css/book.css");
+
+			$fontsPath  = $this->basePath . "/assets/fonts/";
+
+			$this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/x-font-ttf");
+			$this->epub->addFile("Merriweather-Bold.ttf", 	 "merriweather-bold",    file_get_contents($fontsPath . "Merriweather-Bold.ttf"), 	 "application/x-font-ttf");
+			$this->epub->addFile("Merriweather-Italic.ttf",  "merriweather-italic",  file_get_contents($fontsPath . "Merriweather-Italic.ttf"),  "application/x-font-ttf");
+			$this->epub->addFile("Lato-Bold.ttf", 		     "lato-bold",            file_get_contents($fontsPath . "Lato-Bold.ttf"), 		     "application/x-font-ttf");
+		}
+
+		$this->epub->addCSSFile("Style.css", "default", $contentCSS);
 	}
 
 	public function setDescription($description)

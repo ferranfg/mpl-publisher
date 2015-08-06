@@ -14,6 +14,8 @@ interface IPublisher {
 
 	public function setCoverImage($fileName, $imageData);
 
+	public function setCustomCSS($content);
+
 	public function setDescription($description);
 
 	public function setLanguage($language);
