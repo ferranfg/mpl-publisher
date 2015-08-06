@@ -18,10 +18,10 @@ class PublisherBase {
 
     public $filter;
 
-    public function __construct()
+    protected function setBookIndex($index = null)
     {
-		$this->data = $this->getBookDefaults();
-        $status 	= $this->getStatus();
+		$this->data  = $this->getBookDefaults();
+        $status 	 = $this->getStatus($index);
 
         $this->filter = $_GET;
 
@@ -54,6 +54,7 @@ class PublisherBase {
     public function getBookDefaults()
     {
         return array(
+            'id'          => uniqid(),
             'identifier'  => '',
             'title'       => get_bloginfo('site_name'),
             'description' => get_bloginfo('site_description'),
@@ -144,16 +145,27 @@ class PublisherBase {
         return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
     }
 
-    public function saveStatus($data)
+    public function saveStatus($data, $index = 0)
     {
-        return update_option($this->statusOptionName, array(
+        $status = $this->getStatus(null);
+
+        $status[$index] = array(
             'time' => current_time('timestamp'),
             'data' => $data
-        ));
+        );
+
+        return update_option($this->statusOptionName, $status);
     }
 
-    public function getStatus()
+    public function getStatus($index = null)
     {
-        return get_option($this->statusOptionName);
+        $status = get_option($this->statusOptionName, array());
+
+        if (isset($status['time'])) // Old Options Params
+        {
+            $status = array($status);
+        }
+
+        return (is_null($index)) ? $status : (isset($status[$index]) ? $status[$index] : array());
     }
 }
