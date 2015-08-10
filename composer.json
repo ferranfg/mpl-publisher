@@ -9,7 +9,8 @@
 		"illuminate/events": "^5.1@dev",
 		"phpzip/phpzip": ">=2.0.7",
 		"league/html-to-markdown": "^3.0@dev",
-		"symfony/yaml": "^3.0@dev"
+		"symfony/yaml": "^3.0@dev",
+		"phpoffice/phpword": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

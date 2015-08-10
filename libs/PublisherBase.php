@@ -96,11 +96,14 @@ class PublisherBase {
         {
             case 'epub2':
             case 'epub3':
-                $publisher = new EpubPublisher($_POST['format'], MPL_BASEPATH);
+                $publisher = new EpubPublisher(MPL_BASEPATH, $_POST['format']);
+                break;
+            case 'wdocx':
+                $publisher = new WordPublisher(MPL_BASEPATH);
                 break;
             case 'markd':
                 $publisher = new MarkdownPublisher();
-                break;
+                break;            
         }
 
         if (!$publisher) return;

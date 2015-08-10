@@ -14,6 +14,7 @@ return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
+    'PhpOffice\\PhpWord\\' => array($vendorDir . '/phpoffice/phpword/src/PhpWord'),
     'PHPePub\\' => array($vendorDir . '/grandt/phpepub/src/PHPePub'),
     'PHPZip\\Zip\\' => array($vendorDir . '/phpzip/phpzip/src/Zip'),
     'MPL\\Publisher\\' => array($baseDir . '/libs'),

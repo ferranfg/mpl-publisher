@@ -134,11 +134,6 @@ class MarkdownPublisher implements IPublisher {
 		$this->count++;
 	}
 
-	public function save($filename, $dir)
-	{
-
-	}
-
 	public function send($filename)
 	{
 		$this->zip->addFile(Yaml::dump($this->config), "config.yml");

@@ -120,7 +120,7 @@
 						</div>
 
 						<div class="form-field">
-							<label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?></label>
+							<label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
 							<input name="ibooksUrl" id="book-ibooks" type="text" value="<?php echo $ibooksUrl; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
 						</div>
 
@@ -160,9 +160,10 @@
 						<select name="format" id="format">
 							<option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
 							<option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
+							<option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
 							<option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
 						</select>
-						<p><?php _e("Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will include PDF as output format.", "publisher"); ?></p>
+						<p><?php _e("Microsoft Word (docx) format is still under development and open to any issues you may have. Use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
 					</div>
 
 					<p class="submit hidden-xs">

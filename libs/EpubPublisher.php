@@ -8,7 +8,7 @@ class EpubPublisher implements IPublisher {
 
 	private $basePath;
 
-	public function __construct($format, $basePath)
+	public function __construct($basePath, $format == 'epub2')
 	{
 		$version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 
@@ -98,12 +98,6 @@ class EpubPublisher implements IPublisher {
 		$xmlContent = $content_start . '<h1 class="chapter-title">' . $title . '</h1>' . $content . $bookEnd;
 
 		return $this->epub->addChapter($title, $id . ".html", $xmlContent);
-	}
-
-	public function save($filename, $dir)
-	{
-		$this->epub->finalize();
-		$this->epub->saveBook($filename, $dir);
 	}
 
 	public function send($filename)

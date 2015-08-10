@@ -311,24 +311,173 @@
         ]
     },
     {
+        "name": "symfony/yaml",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Yaml.git",
+            "reference": "d067e47c2be88b62c3e50d1362d959efc46ffefc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/d067e47c2be88b62c3e50d1362d959efc46ffefc",
+            "reference": "d067e47c2be88b62c3e50d1362d959efc46ffefc",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~2.8|~3.0"
+        },
+        "time": "2015-08-01 06:48:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Yaml\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "phpoffice/phpword",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/PHPWord.git",
+            "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/3f136501b3dfea94766a704e17782c8a942a7b9b",
+            "reference": "3f136501b3dfea94766a704e17782c8a942a7b9b",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "dompdf/dompdf": "0.6.*",
+            "mpdf/mpdf": "5.*",
+            "phpdocumentor/phpdocumentor": "2.*",
+            "phploc/phploc": "2.*",
+            "phpmd/phpmd": "2.*",
+            "phpunit/phpunit": "3.7.*",
+            "sebastian/phpcpd": "2.*",
+            "squizlabs/php_codesniffer": "1.*",
+            "tecnick.com/tcpdf": "6.*"
+        },
+        "suggest": {
+            "dompdf/dompdf": "Used to write PDF",
+            "ext-gd2": "Used to add images",
+            "ext-xmlwriter": "Used to write DOCX and ODT",
+            "ext-xsl": "Used to apply XSL style sheet to main document part of OOXML template",
+            "ext-zip": "Used to write DOCX and ODT"
+        },
+        "time": "2015-01-03 09:42:48",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpOffice\\PhpWord\\": "src/PhpWord"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://blog.rootslabs.net"
+            },
+            {
+                "name": "Gabriel Bull",
+                "email": "me@gabrielbull.com",
+                "homepage": "http://gabrielbull.com/"
+            },
+            {
+                "name": "Ivan Lanin",
+                "homepage": "http://ivan.lanin.org"
+            },
+            {
+                "name": "Roman Syroeshko",
+                "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
+            }
+        ],
+        "description": "PHPWord - A pure PHP library for reading and writing word processing documents (DOCX, ODT, RTF, HTML, PDF)",
+        "homepage": "http://phpoffice.github.io",
+        "keywords": [
+            "ISO IEC 29500",
+            "OOXML",
+            "Office Open XML",
+            "OpenDocument",
+            "OpenXML",
+            "PhpOffice",
+            "PhpWord",
+            "Rich Text Format",
+            "WordprocessingML",
+            "doc",
+            "docx",
+            "html",
+            "odt",
+            "office",
+            "pdf",
+            "php",
+            "reader",
+            "rtf",
+            "template",
+            "template processor",
+            "word",
+            "writer"
+        ]
+    },
+    {
         "name": "illuminate/contracts",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
-            "reference": "c6e080c1aea66555a4bd96ec36fe1b9d29ceca8e"
+            "reference": "549a9a82664aa31952c2c1c46ac5f7b8c5ab6d16"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/c6e080c1aea66555a4bd96ec36fe1b9d29ceca8e",
-            "reference": "c6e080c1aea66555a4bd96ec36fe1b9d29ceca8e",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/549a9a82664aa31952c2c1c46ac5f7b8c5ab6d16",
+            "reference": "549a9a82664aa31952c2c1c46ac5f7b8c5ab6d16",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2015-07-16 04:11:06",
+        "time": "2015-08-01 01:46:57",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -356,17 +505,17 @@
     },
     {
         "name": "danielstjules/stringy",
-        "version": "1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "1.x-dev",
+        "version_normalized": "1.9999999.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/danielstjules/Stringy.git",
-            "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
+            "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
-            "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+            "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
+            "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
             "shasum": ""
         },
         "require": {
@@ -376,7 +525,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2015-02-10 06:19:18",
+        "time": "2015-07-23 00:54:12",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -488,12 +637,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "d4e67b89b789dbcce4dba1724797ebbc37bd0793"
+            "reference": "cb959a05055f2144fe7d9642e671a2b2494183ff"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/d4e67b89b789dbcce4dba1724797ebbc37bd0793",
-            "reference": "d4e67b89b789dbcce4dba1724797ebbc37bd0793",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/cb959a05055f2144fe7d9642e671a2b2494183ff",
+            "reference": "cb959a05055f2144fe7d9642e671a2b2494183ff",
             "shasum": ""
         },
         "require": {
@@ -505,16 +654,16 @@
         },
         "suggest": {
             "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
-            "symfony/var-dumper": "Required to use the dd function (2.8.*)."
+            "symfony/var-dumper": "Required to use the dd function (3.0.*)."
         },
-        "time": "2015-07-12 02:28:00",
+        "time": "2015-08-06 13:15:15",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Support\\": ""
@@ -543,26 +692,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
-            "reference": "9c27569a4e639e6ffbab1f56b4c862f23890a4de"
+            "reference": "817ae489c9441ce80b6452914db083cb8a976d20"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/container/zipball/9c27569a4e639e6ffbab1f56b4c862f23890a4de",
-            "reference": "9c27569a4e639e6ffbab1f56b4c862f23890a4de",
+            "url": "https://api.github.com/repos/illuminate/container/zipball/817ae489c9441ce80b6452914db083cb8a976d20",
+            "reference": "817ae489c9441ce80b6452914db083cb8a976d20",
             "shasum": ""
         },
         "require": {
             "illuminate/contracts": "5.2.*",
             "php": ">=5.5.9"
         },
-        "time": "2015-06-13 22:48:28",
+        "time": "2015-08-01 01:46:57",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Container\\": ""
@@ -588,12 +737,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/events.git",
-            "reference": "126cd80e9d36e983ccfc9bc82f2daaa3fee8914c"
+            "reference": "84258751765f644d6367f7b740fc7971f69dc639"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/events/zipball/126cd80e9d36e983ccfc9bc82f2daaa3fee8914c",
-            "reference": "126cd80e9d36e983ccfc9bc82f2daaa3fee8914c",
+            "url": "https://api.github.com/repos/illuminate/events/zipball/84258751765f644d6367f7b740fc7971f69dc639",
+            "reference": "84258751765f644d6367f7b740fc7971f69dc639",
             "shasum": ""
         },
         "require": {
@@ -602,14 +751,14 @@
             "illuminate/support": "5.2.*",
             "php": ">=5.5.9"
         },
-        "time": "2015-06-29 14:53:02",
+        "time": "2015-08-08 23:05:25",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Events\\": ""
@@ -656,7 +805,7 @@
                 "dev-master": "3.0-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\Finder\\": ""
@@ -686,12 +835,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/filesystem.git",
-            "reference": "1361a3c9fb44d524c71fda3e399880ab0c86f728"
+            "reference": "e4df311158480d9c3355a394a70cafd6be206e0a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/1361a3c9fb44d524c71fda3e399880ab0c86f728",
-            "reference": "1361a3c9fb44d524c71fda3e399880ab0c86f728",
+            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e4df311158480d9c3355a394a70cafd6be206e0a",
+            "reference": "e4df311158480d9c3355a394a70cafd6be206e0a",
             "shasum": ""
         },
         "require": {
@@ -705,14 +854,14 @@
             "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
             "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
         },
-        "time": "2015-07-16 20:34:27",
+        "time": "2015-08-01 01:46:57",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Filesystem\\": ""
@@ -738,12 +887,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/view.git",
-            "reference": "2484913663463a27db415b136b2dfa8526df9a50"
+            "reference": "c72f80a1d86060ae30e3661a6304f232087b78af"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/view/zipball/2484913663463a27db415b136b2dfa8526df9a50",
-            "reference": "2484913663463a27db415b136b2dfa8526df9a50",
+            "url": "https://api.github.com/repos/illuminate/view/zipball/c72f80a1d86060ae30e3661a6304f232087b78af",
+            "reference": "c72f80a1d86060ae30e3661a6304f232087b78af",
             "shasum": ""
         },
         "require": {
@@ -754,14 +903,14 @@
             "illuminate/support": "5.2.*",
             "php": ">=5.5.9"
         },
-        "time": "2015-07-16 04:11:06",
+        "time": "2015-08-01 01:46:57",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\View\\": ""
@@ -782,17 +931,17 @@
     },
     {
         "name": "league/html-to-markdown",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "3.1.1",
+        "version_normalized": "3.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/html-to-markdown.git",
-            "reference": "30c08b596b59ec01fdf58fd311e5c6df7829ac7a"
+            "reference": "17ff71f6d784ae460005ab2a1a88ff76e06f1a4a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/30c08b596b59ec01fdf58fd311e5c6df7829ac7a",
-            "reference": "30c08b596b59ec01fdf58fd311e5c6df7829ac7a",
+            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/17ff71f6d784ae460005ab2a1a88ff76e06f1a4a",
+            "reference": "17ff71f6d784ae460005ab2a1a88ff76e06f1a4a",
             "shasum": ""
         },
         "require": {
@@ -804,14 +953,14 @@
             "phpunit/phpunit": "4.*",
             "scrutinizer/ocular": "~1.1"
         },
-        "time": "2015-07-14 12:49:26",
+        "time": "2015-07-23 12:31:52",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.0-dev"
+                "dev-master": "3.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "League\\HTMLToMarkdown\\": "src/"
@@ -841,56 +990,5 @@
             "html",
             "markdown"
         ]
-    },
-    {
-        "name": "symfony/yaml",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/Yaml.git",
-            "reference": "6a39d07f534ad980872a864d339ff979173467cf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Yaml/zipball/6a39d07f534ad980872a864d339ff979173467cf",
-            "reference": "6a39d07f534ad980872a864d339ff979173467cf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "symfony/phpunit-bridge": "~2.8|~3.0"
-        },
-        "time": "2015-07-01 20:40:29",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Yaml\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com"
     }
 ]
