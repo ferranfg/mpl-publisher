@@ -115,7 +115,7 @@
 						</div>
 
 						<div class="form-field">
-							<label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?></label>
+							<label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
 							<input name="amazonUrl" id="book-amazon" type="text" value="<?php echo $amazonUrl; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
 						</div>
 
@@ -216,13 +216,13 @@
 						</select>
 					</div>
 					<p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
-					<table class="wp-list-table widefat fixed striped posts">
+					<table class="wp-list-table widefat striped posts">
 						<thead>
 							<tr>
 								<th class="manage-column column-cb check-column">
 									<input id="cb-select-all-1" type="checkbox">
 								</th>
-								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
+								<th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></span></th>
 								<th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
 							</tr>
 						</thead>

@@ -1,6 +1,4 @@
-<?php
-
-namespace MPL\Publisher;
+<?php namespace MPL\Publisher;
 
 use League\HTMLToMarkdown\HtmlConverter;
 use Symfony\Component\Yaml\Yaml;

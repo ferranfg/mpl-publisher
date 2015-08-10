@@ -1,6 +1,4 @@
-<?php
-
-namespace MPL\Publisher;
+<?php namespace MPL\Publisher;
 
 use Illuminate\View\View;
 use Illuminate\View\Factory;

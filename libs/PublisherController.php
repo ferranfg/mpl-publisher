@@ -1,6 +1,4 @@
-<?php
-
-namespace MPL\Publisher;
+<?php namespace MPL\Publisher;
 
 class PublisherController extends PublisherBase {
 

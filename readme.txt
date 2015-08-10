@@ -27,6 +27,7 @@ For now, these are the current features:
 - Promote your book using the shortcode `[mpl]` and their available options
 - Basic filter and sort your chapters individually.
 - Add aditional book chapters and edit current content
+- Use 
 
 = Roadmap =
 
