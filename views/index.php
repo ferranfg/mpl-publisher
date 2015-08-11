@@ -146,7 +146,7 @@
 						</div>
 
 						<h3><?php _e("Custom Theme", "publisher"); ?></h3>
-						<p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes."); ?>
+						<p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?>
 
 						<div class="form-field" id="template">
 							<textarea rows="12" name="customCss" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
