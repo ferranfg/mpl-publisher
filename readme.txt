@@ -14,7 +14,7 @@ MPL - Publisher is a plugin to create an ebook from your WordPress posts. You ca
 
 MPL - Publisher is a plugin to create an ebook from your WordPress posts. The plugin’s main purpose is to help writers solving the *how to create an ebook* problem the simplest possible way, easing the process of converting your ebook to ePub, pdf, kindle books, Mobi... etc.
 
-The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have.
+The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. Use the [MPL-Publisher Support Forum](https://wordpress.org/support/plugin/mpl-publisher)
 
 = Features =
 
@@ -22,12 +22,12 @@ For now, these are the current features:
 
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0 or EPUB3.0
+- Download your eBook as EPUB2.0, EPUB3.0 or Microsoft Word (docx)
 - Add a widget to your sidebar to promote your book with your readers
 - Promote your book using the shortcode `[mpl]` and their available options
 - Basic filter and sort your chapters individually.
 - Add aditional book chapters and edit current content
-- Use 
+- Include your custom CSS styles into your books
 
 = Roadmap =
 
@@ -72,7 +72,7 @@ If you have any other error, please use the [MPL - Publisher support forum](http
 
 = Which output formats are supported? =
 
-Currently we only support EPUB2.0 and EPUB3.0. You can choose it from the Output format's select menu.
+Currently we only support EPUB2.0, EPUB3.0 and Microsoft Word (docx). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -87,6 +87,10 @@ In future releases we will add support to other formats like PDF. Keep updated.
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.12.0 =
+- Added Microsoft Word (docx) as output format
+- Custom CSS textarea under the Appearance tab
 
 = 1.11.0 =
 - Add MPL-Download eBook widget to promote your book with your readers
@@ -161,5 +165,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.9.0 =
-- You can add specific content as a chapter to your book without needing to be an existing published post
+= 1.12.0 =
+- Download your book as Microsoft Word (docx) format!

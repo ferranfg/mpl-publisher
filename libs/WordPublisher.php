@@ -100,21 +100,27 @@ class WordPublisher implements IPublisher {
 
 	public function send($filename)
 	{
+		$filepath = $this->basePath . '/' . $filename . '.docx';
+
 		$toc = $this->word->addSection();
 		$toc->addTOC();
+
+		$writer = IOFactory::createWriter($this->word, 'Word2007');
+		$writer->save($filepath);
 
 		// http://phpword.readthedocs.org/en/latest/recipes.html#download-the-produced-file-automatically
 		header("Content-Description: File Transfer");
 		header('Content-Disposition: attachment; filename="' . $filename . '.docx"');
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: ' . filesize($filepath));
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header('Expires: 0');
 
-		$writer = IOFactory::createWriter($this->word, 'Word2007');
-		$writer->save("php://output");
+		readfile($filepath);
 
 		unlink($this->coverFile);
+		unlink($filepath);
 	}
 
 	private function addHeader($section)
