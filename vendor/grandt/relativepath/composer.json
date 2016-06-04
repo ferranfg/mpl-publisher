@@ -16,6 +16,13 @@
     "require": {
         "php": ">=5.0"
     },
+    "repositories": {
+        "Github": {
+            "vcs": {
+                "url": "git://github.com/Grandt/PHPRelativePath.git"
+            }
+        }
+    },
     "autoload": {
         "classmap": [
             "RelativePath.php"

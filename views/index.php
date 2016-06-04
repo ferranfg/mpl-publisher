@@ -278,5 +278,3 @@
 		</div>
 	</form>
 </div>
-
-<script src="//load.sumome.com/" data-sumo-site-id="98842527d5789072b38573b7bbe0b78a2ba328e085ba2b695dedf5204ea0a29c" async="async"></script>

@@ -3,8 +3,11 @@ include 'vendor/autoload.php';
 
 use PHPePub\Core\EPub;
 use PHPePub\Core\EPubChapterSplitter;
-use PHPePub\Core\Structure\OPF\DublinCore;
 use PHPePub\Core\Logger;
+use PHPePub\Core\Structure\OPF\DublinCore;
+use PHPePub\Core\Structure\OPF\MetaValue;
+use PHPePub\Helpers\CalibreHelper;
+use PHPePub\Helpers\URLHelper;
 use PHPZip\Zip\File\Zip;
 
 error_reporting(E_ALL | E_STRICT);
@@ -40,8 +43,8 @@ $book = new EPub();
 $log->logLine("new EPub()");
 $log->logLine("EPub class version.: " . EPub::VERSION);
 $log->logLine("Zip version........: " . Zip::VERSION);
-$log->logLine("getCurrentServerURL: " . $book->getCurrentServerURL());
-$log->logLine("getCurrentPageURL..: " . $book->getCurrentPageURL());
+$log->logLine("getCurrentServerURL: " . URLHelper::getCurrentServerURL());
+$log->logLine("getCurrentPageURL..: " . URLHelper::getCurrentPageURL());
 
 // Title and Identifier are mandatory!
 $book->setTitle("Test book");
@@ -60,9 +63,8 @@ $book->setSubject("Test book");
 $book->setSubject("keywords");
 $book->setSubject("Chapter levels");
 
-// Insert custom meta data to the book, in this cvase, Calibre series index information.
-$book->addCustomMetadata("calibre:series", "PHPePub Test books");
-$book->addCustomMetadata("calibre:series_index", "1");
+// Insert custom meta data to the book, in this case, Calibre series index information.
+CalibreHelper::setCalibreMetadata($book, "PHPePub Test books", "1");
 
 $log->logLine("Set up parameters");
 
@@ -89,6 +91,17 @@ $book->addChapter("Notices", "Cover.html", $cover);
 $book->buildTOC(NULL, "toc", "Table of Contents", TRUE, TRUE);
 //    function buildTOC($cssFileName = NULL, $tocCSSClass = "toc", $title = "Table of Contents", $addReferences = TRUE, $addToIndex = FALSE, $tocFileName = "TOC.xhtml") {
 
+$book->addFileToMETAINF("com.apple.ibooks.display-options.xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<display_options>\n    <platform name=\"*\">\n        <option name=\"fixed-layout\">true</option>\n        <option name=\"interactive\">true</option>\n        <option name=\"specified-fonts\">true</option>\n    </platform>\n</display_options>");
+
+// add a custom metadata to use on the MetaValue entries.
+// Using DublinCore as an example, even if it is automatically included.
+$book->addCustomNamespace("dc", "http://purl.org/dc/elements/1.1/"); // StaticData::$namespaces["dc"]);
+// This is to show how to use meta data, normally you'd use the $book->setAuthor
+$metaValue = new MetaValue("dc:creator", "Jane Doe Johnson");
+$metaValue->addOpfAttr("file-as", "Johnson, Jane Doe");
+$metaValue->addOpfAttr("role", "aut");
+
+$book->addCustomMetaValue($metaValue);
 
 $chapter1 = $content_start . "<h1>Chapter 1</h1>\n"
     . "<h2>Lorem ipsum</h2>\n"
@@ -213,9 +226,21 @@ $log->logLine("new EPubChapterSplitter()");
  *  "Chapter " is '#^<.+?>Chapter #'
  * Essentially, the search string is looking for lines starting with...
  */
-$log->logLine("Add Chapter 5");
-$html2 = $splitter->splitChapter($chapter5, true, "Chapter ");/* '#^<.+?>Chapter \d*#i'); */
+
 $log->logLine("Split chapter 5");
+// $html2 = $splitter->splitChapter($chapter5, true, "#^\<.+?\>Chapter \d*#i");
+// $html2 = $splitter->splitChapter($chapter5, true, "Chapter ");
+$searchString = '/<h1/i';
+$html2 = $splitter->splitChapter($chapter5, true, $searchString);
+
+// $html2 is an array where the keys are the entire line, including start and end tags of the hit.
+// and the value is the segment for the match.
+// The returned array can just be parsed to the addChapter like this:
+//     $book->addChapter($cName, "Chapter005.html", $html2, true);
+// and EPub will add the parts automatically.
+// However, often you'd want to try to get a measure of control over the process
+
+$log->logLine("Add Chapter 5");
 
 $idx = 0;
 while (list($k, $v) = each($html2)) {
@@ -223,18 +248,16 @@ while (list($k, $v) = each($html2)) {
     // Because we used a string search in the splitter, the returned hits are put in the key part of the array.
     // The entire HTML tag of the line matching the chapter search.
 
-    // find the text inside the tags
-    preg_match('#^<(\w+)\ *.*?>(.+)</\ *\1>$#i', $k, $cName);
+    // Strip start and end tags. This Regexp will keep the tag name as well as the data between them.
+    preg_match('#^<(\w+)\s*.*?>(.+)</\s*\1>$#i', $k, $cName);
 
-    // because of the back reference, the tag name is in $cName[1], and the content is in $cName[2]
-    // Change any line breaks in the chapter name to " - "
-    $cName = preg_replace('#<br.+?>#i', " - ", $cName[2]);
-    // Remove any other tags
-    $cName = preg_replace('#<.+?>#i', " ", $cName);
-    // clean the chapter name by removing any double spaces left behind to single space.
-    $cName = preg_replace('#\s+#i', " ", $cName);
+    // This is simply to clean up the chapter name, it can't contain any HTML.
+    // Because of the back reference, the tag name is in $cName[1], and the content is in $cName[2], this is to be the chapter name in the TOC.
+    $cName = preg_replace('#<br.+?>#i', " - ", $cName[2]);  // Change any line breaks in the chapter name to " - "
+    $cName = preg_replace('#<.+?>#i', " ", $cName);         // Remove any other tags
+    $cName = preg_replace('#\s+#i', " ", $cName);           // clean the chapter name by removing any double spaces left behind to single space.
 
-    $book->addChapter($cName, "Chapter005_" . $idx . ".html", $v, true);
+    $book->addChapter(trim($cName), "Chapter005_" . $idx . ".html", $v, true);
 }
 
 // Notice that Chapter 1 have an image reference in paragraph 2?

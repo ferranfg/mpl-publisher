@@ -9,16 +9,16 @@ use PHPePub\Core\Structure\NCX\NavPoint;
  * ePub NCX file structure
  *
  * @author    A. Grandt <php@grandt.com>
- * @copyright 2009-2014 A. Grandt
+ * @copyright 2009- A. Grandt
  * @license   GNU LGPL, Attribution required for commercial implementations, requested for everything else.
- * @version   3.30
  */
 class Ncx {
-    const _VERSION = 3.30;
-
     const MIMETYPE = "application/x-dtbncx+xml";
 
     private $bookVersion = EPub::BOOK_VERSION_EPUB2;
+
+    /** @var EPub $parentBook */
+    private $parentBook = null;
 
     private $navMap = null;
     private $uid = null;
@@ -65,11 +65,18 @@ class Ncx {
      * @return void
      */
     function __destruct() {
-        unset($this->bookVersion, $this->navMap, $this->uid, $this->meta);
+        unset($this->parentBook, $this->bookVersion, $this->navMap, $this->uid, $this->meta);
         unset($this->docTitle, $this->docAuthor, $this->currentLevel, $this->lastLevel);
         unset($this->languageCode, $this->writingDirection, $this->chapterList, $this->referencesTitle);
         unset($this->referencesClass, $this->referencesId, $this->referencesList, $this->referencesName);
         unset($this->referencesOrder);
+    }
+
+    /**
+     * @param EPub $parentBook
+     */
+    public function setBook($parentBook) {
+        $this->parentBook = $parentBook;
     }
 
     /**
@@ -315,9 +322,15 @@ class Ncx {
             . "\t<head>\n"
             . "\t\t<title>" . $this->docTitle . "</title>\n"
             . "\t\t<meta http-equiv=\"default-style\" content=\"text/html; charset=utf-8\"/>\n";
+
+        if ($this->parentBook !== null) {
+            $end .= $this->parentBook->getViewportMetaLine();
+        }
+
         if ($cssFileName !== null) {
             $end .= "\t\t<link rel=\"stylesheet\" href=\"" . $cssFileName . "\" type=\"text/css\"/>\n";
         }
+
         $end .= "\t</head>\n"
             . "\t<body epub:type=\"frontmatter toc\">\n"
             . "\t\t<header>\n"

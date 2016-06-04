@@ -8,23 +8,7 @@ org.eclipse.*
 
 # PHPStorm files #
 #################
-.idea
 .idea/*
-
-# NetBeans files #
-##################
-nbproject
-nbproject/*
-nbproject/private/
-nbproject/private/*
-
-# Composer files #
-#################
-vendor
-vendor/*
-*.lock
-/tests/*.lock
-/*.phar
 
 # Compiled source #
 ###################
@@ -54,26 +38,15 @@ vendor/*
 *.sql
 *.sqlite
 
-# Windows and OS generated files #
-##################################
-.DS_Store
+# OS generated files #
+######################
+.DS_Store?
 ehthumbs.db
 Icon?
 Thumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+/testData
 
 # Test generated files #
-########################
+#####################################
 tests/screenshots/*
-tests/*.lock
-tests/*.phar
-tests/vendor
 tests/vendor/*
-
-legacy/*.lock
-legacy/vendor
-legacy/vendor/*
-
-testData
-testData/*

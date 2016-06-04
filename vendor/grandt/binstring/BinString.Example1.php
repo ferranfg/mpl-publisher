@@ -30,31 +30,53 @@
     <body>
         <h1>BinString test</h1>
         <?php
-            error_reporting(E_ALL | E_STRICT);
-            ini_set('error_reporting', E_ALL | E_STRICT);
-            ini_set('display_errors', 1);
+        use com\grandt\BinString;
 
-            include 'BinString.php';
-            $binstr = new \com\grandt\BinString();
+        error_reporting(E_ALL | E_STRICT);
+        ini_set('error_reporting', E_ALL | E_STRICT);
+        ini_set('display_errors', 1);
 
-            $mbStr = "\x74\x65\x73\x74\xC3\x86\xC3\xB8\xC3\xA5";
-            $mbStr_lower = "\x74\x65\x73\x74\xC3\xA6\xC3\xB8\xC3\xA5";
-            $mbStr_upper = "\x54\x45\x53\x54\xC3\x86\xC3\x98\xC3\x85";
+        include 'BinString.php';
+        $binstr = new BinString();
 
-            $isoStr = "\x74\x65\x73\x74\xC6\xF8\xE5";
-            $isoStr_lower = "\x74\x65\x73\x74\xE6\xF8\xE5";
-            $isoStr_upper = "\x54\x45\x53\x54\xC6\xD8\xC5";
+        $mbStr = "\x74\x65\x73\x74\xC3\x86\xC3\xB8\xC3\xA5";
+        $mbStr_lower = "\x74\x65\x73\x74\xC3\xA6\xC3\xB8\xC3\xA5";
+        $mbStr_upper = "\x54\x45\x53\x54\xC3\x86\xC3\x98\xC3\x85";
 
-            $mbNeedle = "\xC3\xB8";
-            $isoNeedle = "\xF8";
+        $isoStr = "\x74\x65\x73\x74\xC6\xF8\xE5";
+        $isoStr_lower = "\x74\x65\x73\x74\xE6\xF8\xE5";
+        $isoStr_upper = "\x54\x45\x53\x54\xC6\xD8\xC5";
 
-            function test($result, $expected) {
-                return $result == $expected ? "<span class=\"pass\">PASS<br /></span>received: $result" : "<span class=\"fail\">FAIL<br />received: $result<br />expected: $expected</span>"; 
+        $mbNeedle = "\xC3\xB8";
+        $isoNeedle = "\xF8";
+
+        function test($result, $expected) {
+            if ($result == $expected) {
+                if (is_bool($result)) {
+                    $result = $result ? "<em>true</em>" : "<em>false</em>";
+                }
+                return "<span class=\"pass\">PASS<br /></span>received: $result";
+            } else {
+                if (is_bool($result)) {
+                    $result = $result ? "<em>true</em>" : "<em>false</em>";
+                }
+                return "<span class=\"fail\">FAIL<br />received: $result<br />expected: $expected</span>";
             }
-            
-            function test_enc($result, $expected) {
-                return $result == $expected ? "<span class=\"pass\">PASS<br /></span>received: " . mb_convert_encoding($result, 'utf8', 'latin1')  : "<span class=\"fail\">FAIL<br />received: " . mb_convert_encoding($result, 'utf8', 'latin1') . "<br />expected: " . mb_convert_encoding($expected, 'utf8', 'latin1') . "</span>"; 
+        }
+
+        function test_enc($result, $expected) {
+            if ($result == $expected) {
+                if (is_bool($result)) {
+                    $result = $result ? "<em>true</em>" : "<em>false</em>";
+                }
+                return "<span class=\"pass\">PASS<br /></span>received: " . mb_convert_encoding($result, 'utf8', 'latin1');
+            } else {
+                if (is_bool($result)) {
+                    $result = $result ? "<em>true</em>" : "<em>false</em>";
+                }
+                return "<span class=\"fail\">FAIL<br />received: " . mb_convert_encoding($result, 'utf8', 'latin1') . "<br />expected: " . mb_convert_encoding($expected, 'utf8', 'latin1') . "</span>";
             }
+        }
         ?>
         <p>The idea is that the standard column should be identical to the BinString column on systems without mbstring.func_overload enabled.</p>
         <p class="expectFail">Cells with a pink background are expected to fail, as they are either parsing mb strings to non mb aware functions, where they can't convert or deal with those utf8 characters, or they are just containing characters the function can't handle, due to having the wrong locale.</p>
@@ -108,7 +130,76 @@
                 <td><?= test(mb_strrpos($isoStr, $isoNeedle, 0, 'latin1'), 5) ?></td>
                 <td><?= test($binstr->_strrpos($isoStr, $isoNeedle), 5) ?></td>
             </tr>
+            <?php
+            if ($binstr->getPHPVersionId() >= 50200) {
+                ?>
+                <tr class="new">
+                    <td rowspan="2">stripos()</td><td>yes</td>
+                    <td><?= test(stripos($mbStr, $mbNeedle), 6) ?></td>
+                    <td><?= test(mb_stripos($mbStr, $mbNeedle, 0, 'utf8'), 5) ?></td>
+                    <td><?= test($binstr->_stripos($mbStr, $mbNeedle), 6) ?></td>
+                </tr>
+                <tr>
+                    <td>no</td>
+                    <td><?= test(stripos($isoStr, $isoNeedle), 5) ?></td>
+                    <td><?= test(mb_stripos($isoStr, $isoNeedle, 0, 'latin1'), 5) ?></td>
+                    <td><?= test($binstr->_stripos($isoStr, $isoNeedle), 5) ?></td>
+                </tr>
 
+                <tr class="new">
+                    <td rowspan="2">strripos()</td><td>yes</td>
+                    <td><?= test(strripos($mbStr, $mbNeedle), 6) ?></td>
+                    <td><?= test(mb_strripos($mbStr, $mbNeedle, 0, 'utf8'), 5) ?></td>
+                    <td><?= test($binstr->_strripos($mbStr, $mbNeedle), 6) ?></td>
+                </tr>
+                <tr>
+                    <td>no</td>
+                    <td class="expectFail"><?= test(strripos($isoStr, $isoNeedle), 5) ?></td>
+                    <td><?= test(mb_strripos($isoStr, $isoNeedle, 0, 'latin1'), 5) ?></td>
+                    <td class="expectFail"><?= test($binstr->_strripos($isoStr, $isoNeedle), 5) ?></td>
+                </tr>
+
+                <tr class="new">
+                    <td rowspan="2">strstr()</td><td>yes</td>
+                    <td><?= test(strstr($mbStr, "\xC3\xB8\xC3\xA5"), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td><?= test(mb_strstr($mbStr, "\xC3\xB8\xC3\xA5", null, 'utf8'), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td><?= test($binstr->_strstr($mbStr, "\xC3\xB8\xC3\xA5"), "\xC3\xB8\xC3\xA5") ?></td>
+                </tr>
+                <tr>
+                    <td>no</td>
+                    <td><?= test_enc(strstr($isoStr, "\xF8\xE5"), "\xF8\xE5") ?></td>
+                    <td><?= test_enc(mb_strstr($isoStr, "\xF8\xE5", null, 'latin1'), "\xF8\xE5") ?></td>
+                    <td><?= test_enc($binstr->_strstr($isoStr, "\xF8\xE5"), "\xF8\xE5") ?></td>
+                </tr>
+
+                <tr class="new">
+                    <td rowspan="2">stristr()</td><td>yes</td>
+                    <td><?= test(stristr($mbStr, "\xC3\xB8\xC3\xA5"), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td><?= test(mb_stristr($mbStr, "\xC3\xB8\xC3\xA5", null, 'utf8'), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td><?= test($binstr->_stristr($mbStr, "\xC3\xB8\xC3\xA5"), "\xC3\xB8\xC3\xA5") ?></td>
+                </tr>
+                <tr>
+                    <td>no</td>
+                    <td><?= test_enc(stristr($isoStr, "\xF8\xE5"), "\xF8\xE5") ?></td>
+                    <td><?= test_enc(mb_stristr($isoStr, "\xF8\xE5", null, 'latin1'), "\xF8\xE5") ?></td>
+                    <td><?= test_enc($binstr->_stristr($isoStr, "\xF8\xE5"), "\xF8\xE5") ?></td>
+                </tr>
+
+                <tr class="new">
+                    <td rowspan="2">strrchr()</td><td>yes</td>
+                    <td class="expectFail"><?= test(strrchr($mbStr, "\xC3\xB8"), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td><?= test(mb_strrchr($mbStr, "\xC3\xB8", null, 'utf8'), "\xC3\xB8\xC3\xA5") ?></td>
+                    <td class="expectFail"><?= test($binstr->_strrchr($mbStr, "\xC3\xB8"), "\xC3\xB8\xC3\xA5") ?></td>
+                </tr>
+                <tr>
+                    <td>no</td>
+                    <td><?= test_enc(strrchr($isoStr, "\xF8"), "\xF8\xE5") ?></td>
+                    <td><?= test_enc(mb_strrchr($isoStr, "\xF8", null, 'latin1'), "\xF8\xE5") ?></td>
+                    <td><?= test_enc($binstr->_strrchr($isoStr, "\xF8"), "\xF8\xE5") ?></td>
+                </tr>
+            <?php
+            }
+            ?>
             <tr class="new">
                 <td rowspan="2">substr()</td><td>yes</td>
                 <td><?= test(substr($mbStr, 6), "\xC3\xB8\xC3\xA5") ?></td>
@@ -199,6 +290,22 @@
                 <td>UNTESTED</td>
                 <td>UNTESTED</td>
                 <td>UNTESTED</td>
+            </tr>
+
+            <tr class="new">
+                <td>startsWith()</td>
+                <td>no</td>
+                <td><?= test($binstr->startsWith("TestFileName.html", "test"), false) ?></td>
+                <td><?= test($binstr->startsWith("TestFileName.html", ".html"), false) ?></td>
+                <td><?= test($binstr->startsWith("TestFileName.html", "Test"), true) ?></td>
+            </tr>
+
+            <tr class="new">
+                <td>endsWith()</td>
+                <td>no</td>
+                <td><?= test($binstr->endsWith("TestFileName.html", ".xhtml"), false) ?></td>
+                <td><?= test($binstr->endsWith("TestFileName.html", ".Test"), false) ?></td>
+                <td><?= test($binstr->endsWith("TestFileName.html", ".html"), true) ?></td>
             </tr>
         </table>
     </body>

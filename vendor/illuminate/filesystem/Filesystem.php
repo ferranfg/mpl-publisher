@@ -13,7 +13,7 @@ class Filesystem
     use Macroable;
 
     /**
-     * Determine if a file exists.
+     * Determine if a file or directory exists.
      *
      * @param  string  $path
      * @return bool
@@ -27,17 +27,45 @@ class Filesystem
      * Get the contents of a file.
      *
      * @param  string  $path
+     * @param  bool  $lock
      * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function get($path)
+    public function get($path, $lock = false)
     {
         if ($this->isFile($path)) {
-            return file_get_contents($path);
+            return $lock ? $this->sharedGet($path) : file_get_contents($path);
         }
 
         throw new FileNotFoundException("File does not exist at path {$path}");
+    }
+
+    /**
+     * Get contents of a file with shared access.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function sharedGet($path)
+    {
+        $contents = '';
+
+        $handle = fopen($path, 'r');
+
+        if ($handle) {
+            try {
+                if (flock($handle, LOCK_SH)) {
+                    while (! feof($handle)) {
+                        $contents .= fread($handle, 1048576);
+                    }
+                }
+            } finally {
+                fclose($handle);
+            }
+        }
+
+        return $contents;
     }
 
     /**
@@ -170,6 +198,28 @@ class Filesystem
     }
 
     /**
+     * Extract the trailing name component from a file path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function basename($path)
+    {
+        return pathinfo($path, PATHINFO_BASENAME);
+    }
+
+    /**
+     * Extract the parent directory from a file path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function dirname($path)
+    {
+        return pathinfo($path, PATHINFO_DIRNAME);
+    }
+
+    /**
      * Extract the file extension from a file path.
      *
      * @param  string  $path
@@ -295,11 +345,12 @@ class Filesystem
      * Get all of the files from the given directory (recursive).
      *
      * @param  string  $directory
+     * @param  bool  $hidden
      * @return array
      */
-    public function allFiles($directory)
+    public function allFiles($directory, $hidden = false)
     {
-        return iterator_to_array(Finder::create()->files()->in($directory), false);
+        return iterator_to_array(Finder::create()->files()->ignoreDotFiles(! $hidden)->in($directory), false);
     }
 
     /**

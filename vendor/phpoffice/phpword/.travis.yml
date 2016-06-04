@@ -5,24 +5,27 @@ php:
     - 5.4
     - 5.5
     - 5.6
+    - 7.0
     - hhvm
 
 matrix:
     allow_failures:
-        - php: 5.2
+        - php: 7.0
         - php: hhvm
 
 env:
     global:
         - secure: "Sq+6bVtnPsu0mWX8DWQ+9bGAjxMcGorksUiHc4YIXEJsuDfVmVlH8tTD547IeCjDAx9MxXerZ2Z4HSjxTB70VEnJPvZMHI/EZn4Ny31YLHEthdZbV5Gd1h0TGp8VOzPKGShvGrtGBX6MvMfgpK4zuieVWbSfdKeecm8ZNLMpUd4="
 
-before_script:
+before_install:
     ## Packages
-    - sudo apt-get -qq update > /dev/null
-    - sudo apt-get -qq install graphviz > /dev/null
+    - sudo apt-get update -qq
+    - sudo apt-get install -y graphviz
+
+before_script:
     ## Composer
     - composer self-update
-    - composer install --prefer-source --dev
+    - composer install --prefer-source
     ## PHPDocumentor
     - mkdir -p build/docs
     - mkdir -p build/coverage
@@ -30,8 +33,6 @@ before_script:
 script:
     ## PHP_CodeSniffer
     - ./vendor/bin/phpcs src/ tests/ --standard=PSR2 -n --ignore=src/PhpWord/Shared/PCLZip
-    ## PHP Copy/Paste Detector
-    - ./vendor/bin/phpcpd src/ tests/ --verbose
     ## PHP Mess Detector
     - ./vendor/bin/phpmd src/,tests/ text ./phpmd.xml.dist --exclude pclzip.lib.php
     ## PHPUnit

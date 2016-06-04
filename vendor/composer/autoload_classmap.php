@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
     'RelativePath' => $vendorDir . '/grandt/relativepath/RelativePath.php',
     'UUID' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDException' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',

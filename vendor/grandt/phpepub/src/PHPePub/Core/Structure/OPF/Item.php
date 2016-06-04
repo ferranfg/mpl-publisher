@@ -5,10 +5,12 @@ use PHPePub\Core\EPub;
 
 /**
  * ePub OPF Item structure
+ *
+ * @author    A. Grandt <php@grandt.com>
+ * @copyright 2014- A. Grandt
+ * @license   GNU LGPL 2.1
  */
 class Item {
-    const _VERSION = 3.30;
-
     private $id = null;
     private $href = null;
     private $mediaType = null;
@@ -17,6 +19,8 @@ class Item {
     private $requiredModules = null;
     private $fallback = null;
     private $fallbackStyle = null;
+
+    private $indexPoints = array();
 
     /**
      * Class constructor.
@@ -148,5 +152,41 @@ class Item {
         }
 
         return $item . "/>\n";
+    }
+
+    /**
+     * @return array
+     */
+    public function getIndexPoints() {
+        return $this->indexPoints;
+    }
+
+    /**
+     * @param string $indexPoint
+     */
+    public function addIndexPoint($indexPoint) {
+        $this->indexPoints[] = $indexPoint;
+    }
+
+    /**
+     * @param string $indexPoint
+     * @return bool
+     */
+    public function hasIndexPoint($indexPoint) {
+        return in_array($indexPoint, $this->indexPoints);
+    }
+
+    /**
+     * @return null
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @return null
+     */
+    public function getHref() {
+        return $this->href;
     }
 }

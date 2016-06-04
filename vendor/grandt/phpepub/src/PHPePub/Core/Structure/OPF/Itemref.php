@@ -3,15 +3,20 @@ namespace PHPePub\Core\Structure\OPF;
 
 /**
  * ePub OPF Itemref structure
+ *
+ * @author    A. Grandt <php@grandt.com>
+ * @copyright 2014- A. Grandt
+ * @license   GNU LGPL 2.1
  */
 class Itemref {
-    const _VERSION = 3.30;
-
     private $idref = null;
     private $linear = true;
 
     /**
      * Class constructor.
+     *
+     * @param      $idref
+     * @param bool $linear
      */
     function __construct($idref, $linear = true) {
         $this->setIdref($idref);

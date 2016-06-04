@@ -1,6 +1,6 @@
 {
     "name": "grandt/binstring",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "type": "library",
     "description": "A class for working around the use of mbstring.func_override",
     "keywords": ["mbstring", "binary strings"],

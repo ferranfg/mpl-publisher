@@ -2,7 +2,7 @@
 
 namespace Illuminate\Support;
 
-use BadMethodCallException;
+use Illuminate\Console\Events\ArtisanStarting;
 
 abstract class ServiceProvider
 {
@@ -44,13 +44,6 @@ abstract class ServiceProvider
     {
         $this->app = $app;
     }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    abstract public function register();
 
     /**
      * Merge the given configuration with the existing configuration.
@@ -95,6 +88,19 @@ abstract class ServiceProvider
     }
 
     /**
+     * Register a database migration path.
+     *
+     * @param  array|string  $paths
+     * @return void
+     */
+    protected function loadMigrationsFrom($paths)
+    {
+        foreach ((array) $paths as $path) {
+            $this->app['migrator']->path($path);
+        }
+    }
+
+    /**
      * Register paths to be published by the publish command.
      *
      * @param  array  $paths
@@ -103,7 +109,7 @@ abstract class ServiceProvider
      */
     protected function publishes(array $paths, $group = null)
     {
-        $class = get_class($this);
+        $class = static::class;
 
         if (! array_key_exists($class, static::$publishes)) {
             static::$publishes[$class] = [];
@@ -134,7 +140,7 @@ abstract class ServiceProvider
                 return [];
             }
 
-            return array_intersect(static::$publishes[$provider], static::$publishGroups[$group]);
+            return array_intersect_key(static::$publishes[$provider], static::$publishGroups[$group]);
         }
 
         if ($group && array_key_exists($group, static::$publishGroups)) {
@@ -161,7 +167,7 @@ abstract class ServiceProvider
     /**
      * Register the package's custom Artisan commands.
      *
-     * @param  array  $commands
+     * @param  array|mixed  $commands
      * @return void
      */
     public function commands($commands)
@@ -173,8 +179,8 @@ abstract class ServiceProvider
         // give us the Artisan console instance which we will give commands to.
         $events = $this->app['events'];
 
-        $events->listen('artisan.start', function ($artisan) use ($commands) {
-            $artisan->resolveCommands($commands);
+        $events->listen(ArtisanStarting::class, function ($event) use ($commands) {
+            $event->artisan->resolveCommands($commands);
         });
     }
 
@@ -216,21 +222,5 @@ abstract class ServiceProvider
     public static function compiles()
     {
         return [];
-    }
-
-    /**
-     * Dynamically handle missing method calls.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
-     */
-    public function __call($method, $parameters)
-    {
-        if ($method == 'boot') {
-            return;
-        }
-
-        throw new BadMethodCallException("Call to undefined method [{$method}]");
     }
 }

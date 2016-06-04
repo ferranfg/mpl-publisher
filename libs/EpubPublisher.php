@@ -1,4 +1,6 @@
-<?php namespace MPL\Publisher;
+<?php
+
+namespace MPL\Publisher;
 
 use PHPePub\Core\EPub;
 

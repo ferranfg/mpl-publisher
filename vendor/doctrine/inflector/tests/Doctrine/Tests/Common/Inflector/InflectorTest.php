@@ -16,53 +16,131 @@ class InflectorTest extends DoctrineTestCase
     {
         Inflector::reset();
         
-        // in the format array('singular', 'plural') 
+        // In the format array('singular', 'plural')
         return array(
-            array('categoria', 'categorias'),
-            array('house', 'houses'),
-            array('powerhouse', 'powerhouses'),
-            array('Bus', 'Buses'),
-            array('bus', 'buses'),
-            array('menu', 'menus'),
-            array('news', 'news'),
-            array('food_menu', 'food_menus'),
-            array('Menu', 'Menus'),
-            array('FoodMenu', 'FoodMenus'),
-            array('quiz', 'quizzes'),
-            array('matrix_row', 'matrix_rows'),
-            array('matrix', 'matrices'),
-            array('vertex', 'vertices'),
-            array('index', 'indices'),
-            array('Alias', 'Aliases'),
-            array('Media', 'Media'),
-            array('NodeMedia', 'NodeMedia'),
-            array('alumnus', 'alumni'),
-            array('bacillus', 'bacilli'),
-            array('cactus', 'cacti'),
-            array('focus', 'foci'),
-            array('fungus', 'fungi'),
-            array('nucleus', 'nuclei'),
-            array('octopus', 'octopuses'),
-            array('radius', 'radii'),
-            array('stimulus', 'stimuli'),
-            array('syllabus', 'syllabi'),
-            array('terminus', 'termini'),
-            array('virus', 'viri'),
-            array('person', 'people'),
-            array('glove', 'gloves'),
-            array('crisis', 'crises'),
-            array('tax', 'taxes'),
-            array('wave', 'waves'),
-            array('bureau', 'bureaus'),
-            array('cafe', 'cafes'),
-            array('roof', 'roofs'),
-            array('foe', 'foes'),
-            array('cookie', 'cookies'),
-            array('identity', 'identities'),
-            array('criterion', 'criteria'),
-            array('curve', 'curves'),
-            array('hero', 'heroes'),
             array('', ''),
+            array('Alias', 'Aliases'),
+            array('alumnus', 'alumni'),
+            array('analysis', 'analyses'),
+            array('aquarium', 'aquaria'),
+            array('arch', 'arches'),
+            array('atlas', 'atlases'),
+            array('axe', 'axes'),
+            array('baby', 'babies'),
+            array('bacillus', 'bacilli'),
+            array('bacterium', 'bacteria'),
+            array('bureau', 'bureaus'),
+            array('bus', 'buses'),
+            array('Bus', 'Buses'),
+            array('cactus', 'cacti'),
+            array('cafe', 'cafes'),
+            array('calf', 'calves'),
+            array('categoria', 'categorias'),
+            array('chateau', 'chateaux'),
+            array('cherry', 'cherries'),
+            array('child', 'children'),
+            array('church', 'churches'),
+            array('circus', 'circuses'),
+            array('city', 'cities'),
+            array('cod', 'cod'),
+            array('cookie', 'cookies'),
+            array('copy', 'copies'),
+            array('crisis', 'crises'),
+            array('criterion', 'criteria'),
+            array('curriculum', 'curricula'),
+            array('curve', 'curves'),
+            array('deer', 'deer'),
+            array('demo', 'demos'),
+            array('dictionary', 'dictionaries'),
+            array('domino', 'dominoes'),
+            array('dwarf', 'dwarves'),
+            array('echo', 'echoes'),
+            array('elf', 'elves'),
+            array('emphasis', 'emphases'),
+            array('family', 'families'),
+            array('fax', 'faxes'),
+            array('fish', 'fish'),
+            array('flush', 'flushes'),
+            array('fly', 'flies'),
+            array('focus', 'foci'),
+            array('foe', 'foes'),
+            array('food_menu', 'food_menus'),
+            array('FoodMenu', 'FoodMenus'),
+            array('foot', 'feet'),
+            array('fungus', 'fungi'),
+            array('glove', 'gloves'),
+            array('half', 'halves'),
+            array('hero', 'heroes'),
+            array('hippopotamus', 'hippopotami'),
+            array('hoax', 'hoaxes'),
+            array('house', 'houses'),
+            array('human', 'humans'),
+            array('identity', 'identities'),
+            array('index', 'indices'),
+            array('iris', 'irises'),
+            array('kiss', 'kisses'),
+            array('knife', 'knives'),
+            array('leaf', 'leaves'),
+            array('life', 'lives'),
+            array('loaf', 'loaves'),
+            array('man', 'men'),
+            array('matrix', 'matrices'),
+            array('matrix_row', 'matrix_rows'),
+            array('medium', 'media'),
+            array('memorandum', 'memoranda'),
+            array('menu', 'menus'),
+            array('Menu', 'Menus'),
+            array('mess', 'messes'),
+            array('moose', 'moose'),
+            array('motto', 'mottoes'),
+            array('mouse', 'mice'),
+            array('neurosis', 'neuroses'),
+            array('news', 'news'),
+            array('NodeMedia', 'NodeMedia'),
+            array('nucleus', 'nuclei'),
+            array('oasis', 'oases'),
+            array('octopus', 'octopuses'),
+            array('pass', 'passes'),
+            array('person', 'people'),
+            array('plateau', 'plateaux'),
+            array('potato', 'potatoes'),
+            array('powerhouse', 'powerhouses'),
+            array('quiz', 'quizzes'),
+            array('radius', 'radii'),
+            array('reflex', 'reflexes'),
+            array('roof', 'roofs'),
+            array('runner-up', 'runners-up'),
+            array('scarf', 'scarves'),
+            array('scratch', 'scratches'),
+            array('series', 'series'),
+            array('sheep', 'sheep'),
+            array('shelf', 'shelves'),
+            array('shoe', 'shoes'),
+            array('son-in-law', 'sons-in-law'),
+            array('species', 'species'),
+            array('splash', 'splashes'),
+            array('spy', 'spies'),
+            array('stimulus', 'stimuli'),
+            array('stitch', 'stitches'),
+            array('story', 'stories'),
+            array('syllabus', 'syllabi'),
+            array('tax', 'taxes'),
+            array('terminus', 'termini'),
+            array('thesis', 'theses'),
+            array('thief', 'thieves'),
+            array('tomato', 'tomatoes'),
+            array('tooth', 'teeth'),
+            array('tornado', 'tornadoes'),
+            array('try', 'tries'),
+            array('vertex', 'vertices'),
+            array('virus', 'viri'),
+            array('volcano', 'volcanoes'),
+            array('wash', 'washes'),
+            array('watch', 'watches'),
+            array('wave', 'waves'),
+            array('wharf', 'wharves'),
+            array('wife', 'wives'),
+            array('woman', 'women'),
         );
     }
 
@@ -206,6 +284,112 @@ class InflectorTest extends DoctrineTestCase
         $this->assertEquals(Inflector::pluralize('Atlas'), 'Atlas');
         $this->assertEquals(Inflector::singularize('Alcoois'), 'Alcool');
         $this->assertEquals(Inflector::singularize('Atlas'), 'Atlas');
+    }
+
+    /**
+     * Test basic ucwords functionality.
+     *
+     * @return void
+     */
+    public function testUcwords()
+    {
+        $this->assertSame('Top-O-The-Morning To All_of_you!', Inflector::ucwords( 'top-o-the-morning to all_of_you!'));
+    }
+
+    /**
+     * Test ucwords functionality with custom delimeters.
+     *
+     * @return void
+     */
+    public function testUcwordsWithCustomDelimeters()
+    {
+        $this->assertSame('Top-O-The-Morning To All_Of_You!', Inflector::ucwords( 'top-o-the-morning to all_of_you!', '-_ '));
+    }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsTableize
+     * @return void
+     */
+    public function testTableize($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::tableize($word));
+    }
+
+    /**
+     * Strings which are used for testTableize.
+     *
+     * @return array
+     */
+    public function dataStringsTableize()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('foo_bar', 'FooBar'),
+            array('f0o_bar', 'F0oBar'),
+        );
+    }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsClassify
+     * @return void
+     */
+    public function testClassify($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::classify($word));
+    }
+
+    /**
+     * Strings which are used for testClassify.
+     *
+     * @return array
+     */
+    public function dataStringsClassify()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('FooBar', 'foo_bar'),
+            array('FooBar', 'foo bar'),
+            array('F0oBar', 'f0o bar'),
+            array('F0oBar', 'f0o  bar'),
+            array('FooBar', 'foo_bar_'),
+        );
+    }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsCamelize
+     * @return void
+     */
+    public function testCamelize($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::camelize($word));
+    }
+
+    /**
+     * Strings which are used for testCamelize.
+     *
+     * @return array
+     */
+    public function dataStringsCamelize()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('fooBar', 'foo_bar'),
+            array('fooBar', 'foo bar'),
+            array('f0oBar', 'f0o bar'),
+            array('f0oBar', 'f0o  bar'),
+        );
     }
 }
 

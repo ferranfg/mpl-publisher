@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2014 PHPWord contributors
+ * @copyright   2010-2015 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -378,8 +378,11 @@ abstract class AbstractElement
      * @param mixed $value
      * @param array $enum
      * @param mixed $default
+     *
      * @return mixed
+     *
      * @throws \InvalidArgumentException
+     *
      * @todo Merge with the same method in AbstractStyle
      */
     protected function setEnumVal($value = null, $enum = array(), $default = null)

@@ -1,7 +1,9 @@
-<?php namespace MPL\Publisher;
+<?php
 
-use League\HTMLToMarkdown\HtmlConverter;
+namespace MPL\Publisher;
+
 use Symfony\Component\Yaml\Yaml;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class MarkdownPublisher implements IPublisher {
 

@@ -64,6 +64,8 @@ abstract class Facade
     {
         static::$resolvedInstance[$name] = $mock = static::createMockByName($name);
 
+        $mock->shouldAllowMockingProtectedMethods();
+
         if (isset(static::$app)) {
             static::$app->instance($name, $mock);
         }
@@ -99,7 +101,7 @@ abstract class Facade
     /**
      * Get the mockable class for the bound instance.
      *
-     * @return string
+     * @return string|null
      */
     protected static function getMockableClass()
     {
@@ -133,7 +135,7 @@ abstract class Facade
     /**
      * Resolve the facade root instance from the container.
      *
-     * @param  string  $name
+     * @param  string|object  $name
      * @return mixed
      */
     protected static function resolveFacadeInstance($name)
@@ -197,29 +199,17 @@ abstract class Facade
      * @param  string  $method
      * @param  array   $args
      * @return mixed
+     *
+     * @throws \RuntimeException
      */
     public static function __callStatic($method, $args)
     {
         $instance = static::getFacadeRoot();
 
-        switch (count($args)) {
-            case 0:
-                return $instance->$method();
-
-            case 1:
-                return $instance->$method($args[0]);
-
-            case 2:
-                return $instance->$method($args[0], $args[1]);
-
-            case 3:
-                return $instance->$method($args[0], $args[1], $args[2]);
-
-            case 4:
-                return $instance->$method($args[0], $args[1], $args[2], $args[3]);
-
-            default:
-                return call_user_func_array([$instance, $method], $args);
+        if (! $instance) {
+            throw new RuntimeException('A facade root has not been set.');
         }
+
+        return $instance->$method(...$args);
     }
 }

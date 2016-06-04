@@ -85,7 +85,7 @@
 .mpl .widefat thead th.check-column,
 .mpl .widefat tfoot th.check-column {
 	vertical-align: middle;
-	padding-top: 3px;
+	padding: 3px 0 0 3px;
 }
 
 .mpl .widefat tbody .dashicons {
@@ -101,17 +101,21 @@
 
 .mpl .nav-tabs li {
   display: inline-block;
+  margin-bottom: -1px;
+  line-height: 35px;
 }
 
 .mpl .nav-tab {
   font-weight: 700;
 	padding: 0;
+  margin-left: 0;
+  margin-right: 0.5em;
 }
 
 .mpl .nav-tab > a {
 	color: #000;
 	text-decoration: none;
-	padding: 4px 14px 6px;
+	padding: 0 14px;
 	display: block;
 }
 

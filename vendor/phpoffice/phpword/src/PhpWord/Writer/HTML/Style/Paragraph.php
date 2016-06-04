@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2014 PHPWord contributors
+ * @copyright   2010-2015 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -38,8 +38,9 @@ class Paragraph extends AbstractStyle
         $css = array();
 
         // Alignment
-        $align = $style->getAlign();
-        $css['text-align'] = $this->getValueIf(!is_null($align), $align);
+        if ('' !== $style->getAlignment()) {
+            $css['text-align'] = $style->getAlignment(); // todo: convert OpenXml to Html values
+        }
 
         // Spacing
         $spacing = $style->getSpace();

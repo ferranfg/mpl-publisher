@@ -4,13 +4,14 @@
 	"keywords": ["wordpress", "ebook", "epub"],
 	"license": "MIT",
 	"require": {
-		"grandt/phpepub": "dev-master",
-		"illuminate/view": "^5.0",
-		"illuminate/events": "^5.1@dev",
-		"phpzip/phpzip": ">=2.0.7",
-		"league/html-to-markdown": "^3.0@dev",
-		"symfony/yaml": "^3.0@dev",
-		"phpoffice/phpword": "dev-master"
+		"php": ">=5.4.0",
+		"grandt/phpepub": "^4.0",
+		"illuminate/view": "^5.2",
+		"illuminate/events": "^5.2",
+		"phpzip/phpzip": "^2.0",
+		"league/html-to-markdown": "^4.2",
+		"symfony/yaml": "^3.1",
+		"phpoffice/phpword": "dev-develop"
 	},
 	"autoload": {
 		"psr-4": {

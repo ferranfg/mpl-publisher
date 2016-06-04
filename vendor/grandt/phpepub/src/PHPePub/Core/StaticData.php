@@ -4,10 +4,9 @@ namespace PHPePub\Core;
 /**
  * This should be a complete list of all HTML entities, mapped to their UTF-8 character codes.
  *
- * @author    A. Grandt
- * @copyright A. Grandt 2009-2013
- * @license   GNU LGPL, Attribution required for commercial implementations, requested for everything else.
- * @version   3.30
+ * @author    A. Grandt <php@grandt.com>
+ * @copyright 2009- A. Grandt
+ * @license   GNU LGPL 2.1
  */
 class StaticData {
 
@@ -280,4 +279,9 @@ class StaticData {
     public static $opsContentTypes = array("application/xhtml+xml", "application/x-dtbook+xml", "application/xml", "application/x-dtbncx+xml", "text/x-oeb1-document");
 
     public static $forbiddenCharacters = array("?", "[", "]", "/", "\\", "=", "<", ">", ":", ";", ",", "'", "\"", "&", "$", "#", "*", "(", ")", "|", "~", "`", "!", "{", "}", "%");
+
+    public static $namespaces = array("xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+                                      "opf" => "http://www.idpf.org/2007/opf",
+                                      "dcterms" => "http://purl.org/dc/terms/",
+                                      "dc" => "http://purl.org/dc/elements/1.1/");
 }

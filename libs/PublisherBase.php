@@ -1,12 +1,14 @@
-<?php namespace MPL\Publisher;
+<?php
+
+namespace MPL\Publisher;
 
 use Illuminate\View\View;
 use Illuminate\View\Factory;
-use Illuminate\View\FileViewFinder;
-use Illuminate\View\Engines\EngineResolver;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Events\Dispatcher;
+use Illuminate\View\FileViewFinder;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Engines\PhpEngine;
+use Illuminate\View\Engines\EngineResolver;
 
 class PublisherBase {
 

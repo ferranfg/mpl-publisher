@@ -2,6 +2,7 @@
 include 'vendor/autoload.php';
 
 use PHPePub\Core\EPub;
+use PHPePub\Helpers\CalibreHelper;
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('error_reporting', E_ALL | E_STRICT);
@@ -22,6 +23,9 @@ $book->setPublisher("John and Jane Doe Publications", "http://JohnJaneDoePublica
 $book->setDate(time()); // Strictly not needed as the book date defaults to time().
 $book->setRights("Copyright and licence information specific for the book."); // As this is generated, this _could_ contain the name or licence information of the user who purchased the book, if needed. If this is used that way, the identifier must also be made unique for the book.
 $book->setSourceURL("http://JohnJaneDoePublications.com/books/TestBook.html");
+
+// Insert custom meta data to the book, in this case, Calibre series index information.
+CalibreHelper::setCalibreMetadata($book, "PHPePub Test books", "4");
 
 $book->isGifImagesEnabled = TRUE;
 
@@ -50,6 +54,7 @@ $chapter = $content_start . "<p><img src='demo/512x700_g1.gif' alt='Image' /></p
         . "<p><img src='demo/rxhVVUP.gif' alt='Animated Gif' /></p>\n"
         . "<p><img src='demo/512x700_2.jpg' alt='none' /></p>\n"
         . "<p><img src='demo/512x700_3.jpg' alt='Demo 2' /></p>\n"
+        . "<p><img src='demo/test.svg' alt='Demo SVG 1' /></p>\n"
         . $bookEnd;
 
 $book->setCoverImage('demo/512x700_1.jpg');

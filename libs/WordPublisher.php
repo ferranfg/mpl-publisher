@@ -1,8 +1,10 @@
-<?php namespace MPL\Publisher;
+<?php
 
-use \PhpOffice\PhpWord\PhpWord;
-use \PhpOffice\PhpWord\Shared\Html;
-use \PhpOffice\PhpWord\IOFactory;
+namespace MPL\Publisher;
+
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Shared\Html;
 
 class WordPublisher implements IPublisher {
 

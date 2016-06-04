@@ -14,11 +14,11 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=5.6.4",
         "ext-mbstring": "*",
-        "illuminate/contracts": "5.2.*",
         "doctrine/inflector": "~1.0",
-        "danielstjules/stringy": "~1.8"
+        "illuminate/contracts": "5.4.*",
+        "paragonie/random_compat": "~1.4"
     },
     "autoload": {
         "psr-4": {
@@ -30,12 +30,14 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "5.2-dev"
+            "dev-master": "5.4-dev"
         }
     },
     "suggest": {
-        "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
-        "symfony/var-dumper": "Required to use the dd function (3.0.*)."
+        "illuminate/filesystem": "Required to use the composer class (5.2.*).",
+        "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
+        "symfony/process": "Required to use the composer class (3.2.*).",
+        "symfony/var-dumper": "Required to use the dd function (3.2.*)."
     },
     "minimum-stability": "dev"
 }
