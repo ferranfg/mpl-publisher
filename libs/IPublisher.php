@@ -4,28 +4,28 @@ namespace MPL\Publisher;
 
 interface IPublisher {
 
-	public function setIdentifier($id);
+    public function setIdentifier($id);
 
-	public function setTitle($title);
+    public function setTitle($title);
 
-	public function setAuthor($authorName);
+    public function setAuthor($authorName);
 
-	public function setPublisher($publisherName);
+    public function setPublisher($publisherName);
 
-	public function setCoverImage($fileName, $imageData);
+    public function setCoverImage($fileName, $imageData);
 
-	public function setCustomCSS($content);
+    public function setCustomCSS($content);
 
-	public function setDescription($description);
+    public function setDescription($description);
 
-	public function setLanguage($language);
+    public function setLanguage($language);
 
-	public function setDate($date);
+    public function setDate($date);
 
-	public function setRights($rightsText);
-	
-	public function addChapter($id, $title, $content);
+    public function setRights($rightsText);
 
-	public function send($filename);
+    public function addChapter($id, $title, $content);
+
+    public function send($filename);
 
 }

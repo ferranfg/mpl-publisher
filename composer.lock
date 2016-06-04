@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6fa9a9ab6bcfd41c2c06ba87c990768f",
-    "content-hash": "923ac7e40939385abb76f3bef633fd71",
+    "hash": "6e33e5b7aa157dc37ce7b18851fcf94e",
+    "content-hash": "9b2a2d03a85e90391e17d516fc1bc057",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -749,12 +749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPWord.git",
-                "reference": "4954f2801265051adbb94fd0731e84d38168ea88"
+                "reference": "a2d307936dd559dfb87931bba1d47c3f30730211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/4954f2801265051adbb94fd0731e84d38168ea88",
-                "reference": "4954f2801265051adbb94fd0731e84d38168ea88",
+                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/a2d307936dd559dfb87931bba1d47c3f30730211",
+                "reference": "a2d307936dd559dfb87931bba1d47c3f30730211",
                 "shasum": ""
             },
             "require": {
@@ -842,7 +842,7 @@
                 "word",
                 "writer"
             ],
-            "time": "2016-05-30 12:21:29"
+            "time": "2016-06-04 16:56:06"
         },
         {
             "name": "phpzip/phpzip",
@@ -1103,6 +1103,52 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-05-29 09:50:57"
+        },
+        {
+            "name": "wallabag/php-mobi",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wallabag/php-mobi.git",
+                "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wallabag/php-mobi/zipball/1cd7d022fe6be838535d6bba917d19cc48dcf487",
+                "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "replace": {
+                "wallabag/phpmobi": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "MOBIClass/MOBI.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lœuillet",
+                    "email": "nicolas@loeuillet.org",
+                    "homepage": "http://www.cdetc.fr"
+                },
+                {
+                    "name": "Sander Kromwijk",
+                    "email": "s.kromwijk@gmail.co",
+                    "role": "Original developer"
+                }
+            ],
+            "description": "A Mobipocket file (.mobi) creator in PHP.",
+            "homepage": "https://github.com/wallabag/phpMobi",
+            "time": "2015-10-16 08:42:42"
         },
         {
             "name": "zendframework/zend-hydrator",

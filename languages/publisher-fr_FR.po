@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-07-29 08:26+0100\n"
-"PO-Revision-Date: 2015-07-29 08:27+0100\n"
+"POT-Creation-Date: 2016-06-04 19:28+0200\n"
+"PO-Revision-Date: 2016-06-04 19:28+0200\n"
 "Last-Translator: Zebulong <fdereu@free.fr>\n"
-"Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
+"Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -30,12 +30,12 @@ msgstr "Dernière modification : %s"
 msgid "Book Chapters"
 msgstr "Chapitres"
 
-#: ../mpl-publisher.php:24 ../views/index.php:205
+#: ../mpl-publisher.php:24 ../views/index.php:216
 msgid "Book Chapter"
 msgstr "Chapitre"
 
 #: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:217 ../views/index.php:257
+#: ../views/index.php:228 ../views/index.php:268
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapître"
 
@@ -165,6 +165,10 @@ msgstr "Téléversez une image"
 msgid "Recommended size is 625x1000"
 msgstr "La taille recommandée est de 625 pixels par 1000"
 
+#: ../views/index.php:95 ../views/index.php:96
+msgid "Publisher Name"
+msgstr "Nom de l'éditeur"
+
 #: ../views/index.php:101 ../views/index.php:104
 msgid "Copyright Information"
 msgstr "Information de copyright"
@@ -220,75 +224,83 @@ msgstr ""
 msgid "Themes"
 msgstr "Thèmes"
 
-#: ../views/index.php:142
+#: ../views/index.php:143
 msgid "Default"
 msgstr "Par défaut"
 
-#: ../views/index.php:150
+#: ../views/index.php:148
+msgid "Custom Theme"
+msgstr ""
+
+#: ../views/index.php:149
+msgid ""
+"You can publish your book with your custom CSS, overriding the default file "
+"included with our themes."
+msgstr ""
+
+#: ../views/index.php:159
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: ../views/index.php:156
+#: ../views/index.php:167
 msgid ""
-"Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
-"include PDF as output format."
+"Microsoft Word (docx) format is still under development and open to any "
+"issues you may have. Use the"
 msgstr ""
-"Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. Les "
-"versions futures inclurons le format PDF"
 
-#: ../views/index.php:160 ../views/index.php:263
+#: ../views/index.php:171 ../views/index.php:274
 msgid "Publish"
 msgstr "Publiez"
 
-#: ../views/index.php:161 ../views/index.php:264
+#: ../views/index.php:172 ../views/index.php:275
 msgid "Save Information"
 msgstr "Sauvegarder les informations"
 
-#: ../views/index.php:170
+#: ../views/index.php:181
 msgid "Text"
 msgstr "Texte"
 
-#: ../views/index.php:174
+#: ../views/index.php:185
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: ../views/index.php:181
+#: ../views/index.php:192
 msgid "All authors"
 msgstr "Tous les auteurs"
 
-#: ../views/index.php:188
+#: ../views/index.php:199
 msgid "Filter"
 msgstr "Filtrez"
 
-#: ../views/index.php:192
+#: ../views/index.php:203
 msgid "All tags"
 msgstr "Toutes les étiquettes"
 
-#: ../views/index.php:200
+#: ../views/index.php:211
 msgid "All types"
 msgstr "Tous les types"
 
-#: ../views/index.php:202 ../views/index.php:231
+#: ../views/index.php:213 ../views/index.php:242
 msgid "Post"
 msgstr "Article"
 
-#: ../views/index.php:209
+#: ../views/index.php:220
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Faites glisser vos chapitres afin d'organiser votre livre"
 
-#: ../views/index.php:216 ../views/index.php:256
+#: ../views/index.php:227 ../views/index.php:267
 msgid "Contents"
 msgstr "Contenus"
 
-#: ../views/index.php:229
+#: ../views/index.php:240
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: ../views/index.php:235
+#: ../views/index.php:246
 msgid "Private"
 msgstr "Privé"
 
-#: ../views/index.php:239
+#: ../views/index.php:250
 msgid "Edit"
 msgstr "Editer"
 
@@ -316,8 +328,12 @@ msgstr "Par"
 msgid "Get your eBook!"
 msgstr "Obtenez votre livre !"
 
-#~ msgid "Publisher Name"
-#~ msgstr "Nom de l'éditeur"
+#~ msgid ""
+#~ "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
+#~ "include PDF as output format."
+#~ msgstr ""
+#~ "Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. "
+#~ "Les versions futures inclurons le format PDF"
 
 #~ msgid "Language (Optional)"
 #~ msgstr "Langue (facultatif)"

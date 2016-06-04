@@ -160,6 +160,7 @@
 						<select name="format" id="format">
 							<option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
 							<option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
+							<option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Mobi</option>
 							<option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
 							<option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
 						</select>

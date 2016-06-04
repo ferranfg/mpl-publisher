@@ -99,16 +99,19 @@ class PublisherBase {
             case 'epub2':
             case 'epub3':
                 $publisher = new EpubPublisher(MPL_BASEPATH, $_POST['format']);
-                break;
+            break;
+            case 'mobi':
+                $publisher = new MobiPublisher();
+            break;
             case 'wdocx':
                 $publisher = new WordPublisher(MPL_BASEPATH);
-                break;
+            break;
             case 'markd':
                 $publisher = new MarkdownPublisher();
-                break;            
+            break;            
         }
 
-        if (!$publisher) return;
+        if ( ! $publisher) return;
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));

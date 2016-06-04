@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2015-08-10 17:37+0100\n"
-"PO-Revision-Date: 2015-08-10 17:39+0100\n"
-"Last-Translator: Ferran Figueredo <ferran@only-apartments.com>\n"
-"Language-Team: Ferran Figueredo <contacto@ferranfigueredo.com>\n"
+"POT-Creation-Date: 2016-06-04 19:17+0200\n"
+"PO-Revision-Date: 2016-06-04 19:17+0200\n"
+"Last-Translator: Ferran Figueredo <hola@ferranfigueredo.com>\n"
+"Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -17,11 +17,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
-#: ../libs/DownloadWidget.php:19
+#: ../libs/DownloadWidget.php:21
 msgid "A box with information about your eBook"
 msgstr "Una caja con información sobre tu eBook"
 
-#: ../libs/PublisherBase.php:31
+#: ../libs/PublisherBase.php:33
 #, php-format
 msgid "Last modification: %s"
 msgstr "Última modificación: %s"
@@ -30,12 +30,12 @@ msgstr "Última modificación: %s"
 msgid "Book Chapters"
 msgstr "Capítulos"
 
-#: ../mpl-publisher.php:24 ../views/index.php:215
+#: ../mpl-publisher.php:24 ../views/index.php:216
 msgid "Book Chapter"
 msgstr "Capítulo"
 
 #: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:227 ../views/index.php:267
+#: ../views/index.php:228 ../views/index.php:268
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:166
+#: ../views/index.php:167
 msgid ""
 "Microsoft Word (docx) format is still under development and open to any "
 "issues you may have. Use the"
@@ -253,59 +253,59 @@ msgstr ""
 "El formato Microsoft Word (docx) se encuentra todavía en desarrollo y "
 "abierto a cualquier comentario que puedas tener. Utiliza el"
 
-#: ../views/index.php:170 ../views/index.php:273
+#: ../views/index.php:171 ../views/index.php:274
 msgid "Publish"
 msgstr "Publicar"
 
-#: ../views/index.php:171 ../views/index.php:274
+#: ../views/index.php:172 ../views/index.php:275
 msgid "Save Information"
 msgstr "Guardar Información"
 
-#: ../views/index.php:180
+#: ../views/index.php:181
 msgid "Text"
 msgstr "Texto"
 
-#: ../views/index.php:184
+#: ../views/index.php:185
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: ../views/index.php:191
+#: ../views/index.php:192
 msgid "All authors"
 msgstr "Todos los autores"
 
-#: ../views/index.php:198
+#: ../views/index.php:199
 msgid "Filter"
 msgstr "Filtrar"
 
-#: ../views/index.php:202
+#: ../views/index.php:203
 msgid "All tags"
 msgstr "Todas las etiquetas"
 
-#: ../views/index.php:210
+#: ../views/index.php:211
 msgid "All types"
 msgstr "Todos los tipos"
 
-#: ../views/index.php:212 ../views/index.php:241
+#: ../views/index.php:213 ../views/index.php:242
 msgid "Post"
 msgstr "Entrada"
 
-#: ../views/index.php:219
+#: ../views/index.php:220
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: ../views/index.php:226 ../views/index.php:266
+#: ../views/index.php:227 ../views/index.php:267
 msgid "Contents"
 msgstr "Índice"
 
-#: ../views/index.php:239
+#: ../views/index.php:240
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: ../views/index.php:245
+#: ../views/index.php:246
 msgid "Private"
 msgstr "Privado"
 
-#: ../views/index.php:249
+#: ../views/index.php:250
 msgid "Edit"
 msgstr "Editar"
 

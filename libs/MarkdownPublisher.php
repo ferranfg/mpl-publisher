@@ -15,7 +15,7 @@ class MarkdownPublisher implements IPublisher {
 
 	private $config = array(
 		'book' => array(
-			'generator' => array("name" => "mpl-publisher"),
+			'generator' => array('name' => 'mpl-publisher'),
 			'contents' => array(),
 			'editions' => array(
 				'epub' => array(
@@ -38,8 +38,8 @@ class MarkdownPublisher implements IPublisher {
 
 		$this->zip = new \PHPZip\Zip\File\Zip('mpl-publisher.zip');
 
-		$this->zip->addDirectory("Contents");
-		$this->zip->addDirectory("Resources/Templates");
+		$this->zip->addDirectory('Contents');
+		$this->zip->addDirectory('Resources/Templates');
 	}
 
 	public function setIdentifier($id)
@@ -64,30 +64,30 @@ class MarkdownPublisher implements IPublisher {
 
 	public function setCoverImage($fileName, $imageData)
 	{
-		$this->zip->addFile($imageData, "Resources/Templates/{$fileName}");
+		$this->zip->addFile($imageData, 'Resources/Templates/' . $fileName);
 		
 		$this->config['book']['contents'][] = array(
-			"element" => "cover",
-			"content" => $fileName
+			'element' => 'cover',
+			'content' => $fileName
 		);
 	}
 
 	public function setCustomCss($content)
 	{
-		if (trim($content) == "") return;
+		if (trim($content) == '') return;
 
-		$this->zip->addFile($content, "Resources/Templates/Style.css");
+		$this->zip->addFile($content, 'Resources/Templates/Style.css');
 	}
 
 	public function setDescription($description)
 	{
-		if (trim($description) == "") return;
+		if (trim($description) == '') return;
 
-		$this->zip->addFile($description, "Contents/introduction.md");
+		$this->zip->addFile($description, 'Contents/introduction.md');
 
 		$this->config['book']['contents'][] = array(
-			"element" => "introduction",
-			"content" => "introduction.md"
+			'element' => 'introduction',
+			'content' => 'introduction.md'
 		);
 	}
 
@@ -103,34 +103,34 @@ class MarkdownPublisher implements IPublisher {
 
 	public function setRights($rightsText)
 	{
-		if (trim($rightsText) == "") return;
+		if (trim($rightsText) == '') return;
 
-		$this->zip->addFile($rightsText, "Contents/license.md");
+		$this->zip->addFile($rightsText, 'Contents/license.md');
 
 		$this->config['book']['contents'][] = array(
-			"element" => "license",
-			"content" => "license.md"
+			'element' => 'license',
+			'content' => 'license.md'
 		);
 	}
 	
 	public function addChapter($id, $title, $content)
 	{
-		if (trim($content) == "") return;
+		if (trim($content) == '') return;
 
 		if ($this->count == 0) $this->config['book']['contents'][] = array(
-			"element" => "toc"
+			'element' => 'toc'
 		);
 
 		$markdown = $this->converter->convert($content);
 		$chapterTitle = $this->count . '-' . sanitize_title($title) . '.md';
 
-		$this->zip->addFile($markdown, "Contents/" . $chapterTitle);
+		$this->zip->addFile($markdown, 'Contents/' . $chapterTitle);
 
 		$this->config['book']['contents'][] = array(
-			"element" => "chapter",
-			"number"  => $this->count,
-			"content" => $chapterTitle,
-			"title"	  => $title
+			'element' => 'chapter',
+			'number'  => $this->count,
+			'content' => $chapterTitle,
+			'title'	  => $title
 		);
 
 		$this->count++;
@@ -138,8 +138,8 @@ class MarkdownPublisher implements IPublisher {
 
 	public function send($filename)
 	{
-		$this->zip->addFile(Yaml::dump($this->config), "config.yml");
+		$this->zip->addFile(Yaml::dump($this->config), 'config.yml');
 
-		return $this->zip->sendZip($filename . ".zip");
+		return $this->zip->sendZip($filename . '.zip');
 	}
 }
