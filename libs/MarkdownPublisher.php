@@ -2,6 +2,7 @@
 
 namespace MPL\Publisher;
 
+use PHPZip\Zip\File\Zip;
 use Symfony\Component\Yaml\Yaml;
 use League\HTMLToMarkdown\HtmlConverter;
 
@@ -36,7 +37,7 @@ class MarkdownPublisher implements IPublisher {
 	{
 		$this->converter = new HtmlConverter();
 
-		$this->zip = new \PHPZip\Zip\File\Zip('mpl-publisher.zip');
+		$this->zip = new Zip('mpl-publisher.zip');
 
 		$this->zip->addDirectory('Contents');
 		$this->zip->addDirectory('Resources/Templates');

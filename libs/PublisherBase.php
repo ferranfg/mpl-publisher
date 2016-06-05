@@ -35,9 +35,10 @@ class PublisherBase {
 			$coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
 			if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
 
-            if (!empty($this->data['cat_selected']))    $this->filter['cat']    = implode(',', $this->data['cat_selected']);
-            if (!empty($this->data['author_selected'])) $this->filter['author'] = implode(',', $this->data['author_selected']);
-            if (!empty($this->data['tag_selected']))    $this->filter['tag']    = implode(',', $this->data['tag_selected']);
+            if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
+            if (!empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
+            if (!empty($this->data['tag_selected']))    $this->filter['tag']         = implode(',', $this->data['tag_selected']);
+            if (!empty($this->data['status_selected'])) $this->filter['post_status'] = implode(',', $this->data['status_selected']);
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'mpl_chapter');
@@ -72,6 +73,7 @@ class PublisherBase {
             'cat_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
+            'status_selected' => array(),
             'post_type'       => array(),
             'selected_posts'  => false,
             'format'          => 'epub2'

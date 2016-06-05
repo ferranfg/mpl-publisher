@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2016-06-04 19:17+0200\n"
-"PO-Revision-Date: 2016-06-04 19:17+0200\n"
+"POT-Creation-Date: 2016-06-05 15:56+0200\n"
+"PO-Revision-Date: 2016-06-05 15:57+0200\n"
 "Last-Translator: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language: es_ES\n"
@@ -30,12 +30,12 @@ msgstr "Última modificación: %s"
 msgid "Book Chapters"
 msgstr "Capítulos"
 
-#: ../mpl-publisher.php:24 ../views/index.php:216
+#: ../mpl-publisher.php:24 ../views/index.php:221
 msgid "Book Chapter"
 msgstr "Capítulo"
 
 #: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:228 ../views/index.php:268
+#: ../views/index.php:235 ../views/index.php:275
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
@@ -253,11 +253,11 @@ msgstr ""
 "El formato Microsoft Word (docx) se encuentra todavía en desarrollo y "
 "abierto a cualquier comentario que puedas tener. Utiliza el"
 
-#: ../views/index.php:171 ../views/index.php:274
+#: ../views/index.php:171 ../views/index.php:281
 msgid "Publish"
 msgstr "Publicar"
 
-#: ../views/index.php:172 ../views/index.php:275
+#: ../views/index.php:172 ../views/index.php:282
 msgid "Save Information"
 msgstr "Guardar Información"
 
@@ -265,47 +265,47 @@ msgstr "Guardar Información"
 msgid "Text"
 msgstr "Texto"
 
-#: ../views/index.php:185
+#: ../views/index.php:186
+msgid "All statuses"
+msgstr "Todos los estados"
+
+#: ../views/index.php:193
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: ../views/index.php:192
-msgid "All authors"
-msgstr "Todos los autores"
-
-#: ../views/index.php:199
-msgid "Filter"
-msgstr "Filtrar"
-
-#: ../views/index.php:203
+#: ../views/index.php:201
 msgid "All tags"
 msgstr "Todas las etiquetas"
 
-#: ../views/index.php:211
+#: ../views/index.php:209
+msgid "All authors"
+msgstr "Todos los autores"
+
+#: ../views/index.php:216
 msgid "All types"
 msgstr "Todos los tipos"
 
-#: ../views/index.php:213 ../views/index.php:242
+#: ../views/index.php:218 ../views/index.php:249
 msgid "Post"
 msgstr "Entrada"
 
-#: ../views/index.php:220
+#: ../views/index.php:225
+msgid "Filter"
+msgstr "Filtrar"
+
+#: ../views/index.php:227
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: ../views/index.php:227 ../views/index.php:267
+#: ../views/index.php:234 ../views/index.php:274
 msgid "Contents"
 msgstr "Índice"
 
-#: ../views/index.php:240
+#: ../views/index.php:247
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: ../views/index.php:246
-msgid "Private"
-msgstr "Privado"
-
-#: ../views/index.php:250
+#: ../views/index.php:257
 msgid "Edit"
 msgstr "Editar"
 
@@ -332,6 +332,9 @@ msgstr "Por"
 #: ../views/widget.php:31
 msgid "Get your eBook!"
 msgstr "Descarga tu eBook!"
+
+#~ msgid "Private"
+#~ msgstr "Privado"
 
 #~ msgid ""
 #~ "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "

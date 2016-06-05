@@ -7,8 +7,7 @@ class PublisherController extends PublisherBase {
     public function getIndex()
     {
         $query = http_build_query(array_merge(array(
-            'posts_per_page' => '-1',
-            'post_status'    => 'publish,private'
+            'posts_per_page' => '-1'
         ), $this->filter));
 
         $this->data['query'] = new \WP_Query($query);
@@ -16,6 +15,7 @@ class PublisherController extends PublisherBase {
         $this->data['blog_categories'] = $this->getCategories();
         $this->data['blog_authors']    = $this->getAuthors();
         $this->data['blog_tags']       = get_tags();
+        $this->data['blog_statuses']   = get_post_stati();
         
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);

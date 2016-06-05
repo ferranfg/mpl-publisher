@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: http://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
-Tested up to: 4.2.2
+Tested up to: 4.5.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -87,6 +87,13 @@ In future releases we will add support to other formats like PDF. Keep updated.
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.13.0 =
+- Added MOBI as output format (Basic field, not ready to production)
+- Fix [Draft Book Posts?](https://wordpress.org/support/topic/draft-book-posts?replies=1) issue
+- Fix "Read More" issue (Posts where printing only excerpts on the genereated eBook)
+- Fix plugin page navbar and table styles
+- Update plugin dependencies
 
 = 1.12.0 =
 - Added Microsoft Word (docx) as output format
