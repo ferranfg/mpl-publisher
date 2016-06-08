@@ -2,6 +2,8 @@
 
 namespace MPL\Publisher;
 
+use WP_Query;
+
 class PublisherController extends PublisherBase {
 
     public function getIndex()
@@ -10,7 +12,7 @@ class PublisherController extends PublisherBase {
             'posts_per_page' => '-1'
         ), $this->filter));
 
-        $this->data['query'] = new \WP_Query($query);
+        $this->data['query'] = new WP_Query($query);
 
         $this->data['blog_categories'] = $this->getCategories();
         $this->data['blog_authors']    = $this->getAuthors();
@@ -22,18 +24,18 @@ class PublisherController extends PublisherBase {
 
         wp_reset_postdata();
 
-    	echo $this->view('index.php', $this->data);
+        echo $this->view('index.php', $this->data);
     }
 
     public function postIndex()
     {
         // http://codex.wordpress.org/Function_Reference/check_admin_referer
-        if (empty($_POST) || !check_admin_referer('publish_ebook', '_wpnonce')) return;
+        if (empty($_POST) || ! check_admin_referer('publish_ebook', '_wpnonce')) return;
 
-        $this->saveStatus($_POST);
+        $this->saveBook($_POST['book_id'], $_POST);
 
         if (isset($_POST['generate'])) return $this->generateBook();
         
-        return wp_redirect(admin_url('tools.php?page=publisher'));
+        return wp_redirect(admin_url("tools.php?page=publisher&book_id={$_POST['book_id']}"));
     }
 }

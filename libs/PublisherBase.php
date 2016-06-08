@@ -2,6 +2,7 @@
 
 namespace MPL\Publisher;
 
+use WP_Query;
 use Illuminate\View\View;
 use Illuminate\View\Factory;
 use Illuminate\Events\Dispatcher;
@@ -20,10 +21,12 @@ class PublisherBase {
 
     public function __construct()
     {
-		$this->data = $this->getBookDefaults();
-        $status 	= $this->getStatus();
+        if ( ! array_key_exists('book_id', $_GET)) wp_redirect(admin_url('tools.php?page=publisher&book_id=book_0'));
 
         $this->filter = $_GET;
+        $this->data   = $this->getBookDefaults();
+        $stored       = $this->getStored();
+        $status       = $this->getStatus($_GET['book_id']);
 
         if ($status and isset($status['data']))
         {
@@ -32,8 +35,8 @@ class PublisherBase {
             $format = get_option('date_format') . ' ' . get_option('time_format');
             $this->data['message'] = sprintf(__('Last modification: %s' , "publisher"), date($format, $status['time']));
 
-			$coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
-			if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
+            $coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
+            if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
 
             if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
             if (!empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
@@ -42,6 +45,8 @@ class PublisherBase {
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'mpl_chapter');
+
+        $this->data['blog_books'] = ($stored and array_key_exists('books', $stored)) ? $stored['books'] : array();
     }
 
     public function view($file, $data = array())
@@ -62,12 +67,12 @@ class PublisherBase {
             'language'    => '',
             'date'        => '',
             'cover'       => false,
-            'coverSrc'	  => false,
+            'coverSrc'    => false,
             'editor'      => '',
             'copyright'   => '',
             'landingUrl'  => false,
-            'amazonUrl'	  => false,
-            'ibooksUrl'	  => false,
+            'amazonUrl'   => false,
+            'ibooksUrl'   => false,
             'affiliate'   => false,
             'customCss'   => '',
             'cat_selected'    => array(),
@@ -133,7 +138,7 @@ class PublisherBase {
         $publisher->setCustomCSS(sanitize_text_field($_POST['customCss']));
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
 
-        $query = new \WP_Query(array(
+        $query = new WP_Query(array(
             'post__in'       => $_POST['selected_posts'],
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
@@ -154,16 +159,34 @@ class PublisherBase {
         return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
     }
 
-    public function saveStatus($data)
+    public function saveBook($bookId, $data)
     {
-        return update_option($this->statusOptionName, array(
+        $stored = $this->getStored();
+
+        if ( ! array_key_exists('books', $stored)) $stored['books'] = array();
+
+        $stored['books'][$bookId] = array(
             'time' => current_time('timestamp'),
             'data' => $data
-        ));
+        );
+
+        return update_option($this->statusOptionName, $stored);
     }
 
-    public function getStatus()
+    public function getStored()
     {
         return get_option($this->statusOptionName);
+    }
+
+    public function getStatus($bookId)
+    {
+        $stored = $this->getStored();
+
+        if ($stored and array_key_exists('books', $stored)) return $stored['books'][$bookId];
+
+        // @Deprecated 1.13.0
+        if ($stored and array_key_exists('data', $stored)) return $stored;
+
+        return $stored;
     }
 }

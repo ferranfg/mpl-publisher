@@ -25,8 +25,15 @@
   text-align: right !important;
 }
 
-@media screen and (min-width: 769px) {
+.mpl .float-right {
+  float: right;
+}
 
+.mpl .float-left {
+  float: left;
+}
+
+@media screen and (min-width: 769px) {
   .mpl .hidden-xs {
     display: block !important;
   }
@@ -70,32 +77,28 @@
   display: block;
 }
 
-.mpl .filter-bar {
-  float: left;
-  width: 80%;
-}
 .mpl #post-query-submit {
-  float: right;
-  width: 18%;
   margin-top:0;
-  padding: 0 0 1px;
+  padding: 0 14px 1px;
   height: 28px !important;
   margin: 0;
 }
 .mpl select[multiple].chosen {
-  width:50%;
+  width:33%;
   float: left;
   height:29px;
   margin:0 0 5px !important;
 }
 .mpl .chosen-container {
-  width:50% !important;
+  width:33% !important;
   float: left;
   padding: 0 2px;
   margin:0 0 5px;
   vertical-align: top;
 }
-.mpl .chosen-container-multi .chosen-choices { border-color: #ddd; }
+.mpl .chosen-container-multi .chosen-choices {
+  border-color: #ddd;
+}
 
 .mpl .widefat thead th.check-column,
 .mpl .widefat tfoot th.check-column {
