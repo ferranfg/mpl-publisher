@@ -9,11 +9,27 @@
 
 namespace Zend\Stdlib\Hydrator\Strategy;
 
-use Zend\Hydrator\Strategy\DefaultStrategy as BaseDefaultStrategy;
-
-/**
- * @deprecated Use Zend\Hydrator\Strategy\DefaultStrategy from zendframework/zend-hydrator instead.
- */
-class DefaultStrategy extends BaseDefaultStrategy implements StrategyInterface
+class DefaultStrategy implements StrategyInterface
 {
+    /**
+     * Converts the given value so that it can be extracted by the hydrator.
+     *
+     * @param mixed $value The original value.
+     * @return mixed Returns the value that should be extracted.
+     */
+    public function extract($value)
+    {
+        return $value;
+    }
+
+    /**
+     * Converts the given value so that it can be hydrated by the hydrator.
+     *
+     * @param mixed $value The original value.
+     * @return mixed Returns the value that should be hydrated.
+     */
+    public function hydrate($value)
+    {
+        return $value;
+    }
 }

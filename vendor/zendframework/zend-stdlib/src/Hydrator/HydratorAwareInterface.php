@@ -9,11 +9,20 @@
 
 namespace Zend\Stdlib\Hydrator;
 
-use Zend\Hydrator\HydratorAwareInterface as BaseHydratorAwareInterface;
-
-/**
- * @deprecated Use Zend\Hydrator\HydratorAwareInterface from zendframework/zend-hydrator instead.
- */
-interface HydratorAwareInterface extends BaseHydratorAwareInterface
+interface HydratorAwareInterface
 {
+    /**
+     * Set hydrator
+     *
+     * @param  HydratorInterface $hydrator
+     * @return HydratorAwareInterface
+     */
+    public function setHydrator(HydratorInterface $hydrator);
+
+    /**
+     * Retrieve hydrator
+     *
+     * @return HydratorInterface
+     */
+    public function getHydrator();
 }

@@ -21,19 +21,17 @@ class PublisherBase {
 
     public function __construct()
     {
-        if ( ! array_key_exists('book_id', $_GET)) wp_redirect(admin_url('tools.php?page=publisher&book_id=book_0'));
-
         $this->filter = $_GET;
         $this->data   = $this->getBookDefaults();
-        $stored       = $this->getStored();
-        $status       = $this->getStatus($_GET['book_id']);
+
+        $status = $this->getStatus();
 
         if ($status and isset($status['data']))
         {
             $this->data = array_merge($this->data, $status['data']);
 
             $format = get_option('date_format') . ' ' . get_option('time_format');
-            $this->data['message'] = sprintf(__('Last modification: %s' , "publisher"), date($format, $status['time']));
+            $this->data['message'] = sprintf(__('Submitted on %s' , "publisher"), date($format, $status['time']));
 
             $coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
             if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
@@ -45,8 +43,6 @@ class PublisherBase {
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'mpl_chapter');
-
-        $this->data['blog_books'] = ($stored and array_key_exists('books', $stored)) ? $stored['books'] : array();
     }
 
     public function view($file, $data = array())
@@ -139,7 +135,7 @@ class PublisherBase {
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
 
         $query = new WP_Query(array(
-            'post__in'       => $_POST['selected_posts'],
+            'post__in'       => isset($_POST['selected_posts']) ? $_POST['selected_posts'] : [0],
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
             'post_status'    => 'any',
@@ -159,34 +155,17 @@ class PublisherBase {
         return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
     }
 
-    public function saveBook($bookId, $data)
+    public function saveStatus($data)
     {
-        $stored = $this->getStored();
-
-        if ( ! array_key_exists('books', $stored)) $stored['books'] = array();
-
-        $stored['books'][$bookId] = array(
+        return update_option($this->statusOptionName, array(
             'time' => current_time('timestamp'),
             'data' => $data
-        );
-
-        return update_option($this->statusOptionName, $stored);
+        ));
     }
 
-    public function getStored()
+    public function getStatus()
     {
         return get_option($this->statusOptionName);
     }
 
-    public function getStatus($bookId)
-    {
-        $stored = $this->getStored();
-
-        if ($stored and array_key_exists('books', $stored)) return $stored['books'][$bookId];
-
-        // @Deprecated 1.13.0
-        if ($stored and array_key_exists('data', $stored)) return $stored;
-
-        return $stored;
-    }
 }

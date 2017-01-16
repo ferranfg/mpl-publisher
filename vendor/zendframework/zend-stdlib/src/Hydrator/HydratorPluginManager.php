@@ -9,45 +9,66 @@
 
 namespace Zend\Stdlib\Hydrator;
 
-use Zend\Hydrator\HydratorPluginManager as BaseHydratorPluginManager;
+use Zend\ServiceManager\AbstractPluginManager;
+use Zend\Stdlib\Exception;
 
 /**
  * Plugin manager implementation for hydrators.
  *
  * Enforces that adapters retrieved are instances of HydratorInterface
- *
- * @deprecated Use Zend\Hydrator\HydratorPluginManager from zendframework/zend-hydrator instead.
  */
-class HydratorPluginManager extends BaseHydratorPluginManager
+class HydratorPluginManager extends AbstractPluginManager
 {
+    /**
+     * Whether or not to share by default
+     *
+     * @var bool
+     */
+    protected $shareByDefault = false;
+
     /**
      * Default aliases
      *
      * @var array
      */
-    protected $aliases = [
+    protected $aliases = array(
         'delegatinghydrator' => 'Zend\Stdlib\Hydrator\DelegatingHydrator',
-    ];
+    );
 
     /**
      * Default set of adapters
      *
      * @var array
      */
-    protected $invokableClasses = [
+    protected $invokableClasses = array(
         'arrayserializable' => 'Zend\Stdlib\Hydrator\ArraySerializable',
         'classmethods'      => 'Zend\Stdlib\Hydrator\ClassMethods',
         'objectproperty'    => 'Zend\Stdlib\Hydrator\ObjectProperty',
         'reflection'        => 'Zend\Stdlib\Hydrator\Reflection'
-    ];
+    );
 
     /**
      * Default factory-based adapters
      *
      * @var array
      */
-    protected $factories = [
+    protected $factories = array(
         'Zend\Stdlib\Hydrator\DelegatingHydrator' => 'Zend\Stdlib\Hydrator\DelegatingHydratorFactory',
-        'zendstdlibhydratordelegatinghydrator'    => 'Zend\Stdlib\Hydrator\DelegatingHydratorFactory',
-    ];
+    );
+
+    /**
+     * {@inheritDoc}
+     */
+    public function validatePlugin($plugin)
+    {
+        if ($plugin instanceof HydratorInterface) {
+            // we're okay
+            return;
+        }
+
+        throw new Exception\RuntimeException(sprintf(
+            'Plugin of type %s is invalid; must implement Zend\Stdlib\Hydrator\HydratorInterface',
+            (is_object($plugin) ? get_class($plugin) : gettype($plugin))
+        ));
+    }
 }

@@ -9,11 +9,21 @@
 
 namespace Zend\Stdlib\Hydrator\NamingStrategy;
 
-use Zend\Hydrator\NamingStrategy\IdentityNamingStrategy as BaseIdentityNamingStrategy;
-
-/**
- * @deprecated Use Zend\Hydrator\NamingStrategy\IdentityNamingStrategy from zendframework/zend-hydrator instead.
- */
-class IdentityNamingStrategy extends BaseIdentityNamingStrategy implements NamingStrategyInterface
+final class IdentityNamingStrategy implements NamingStrategyInterface
 {
+    /**
+     * {@inheritDoc}
+     */
+    public function hydrate($name)
+    {
+        return $name;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function extract($name)
+    {
+        return $name;
+    }
 }

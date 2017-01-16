@@ -28,19 +28,19 @@ class Count extends AbstractValidator
     /**
      * @var array Error message templates
      */
-    protected $messageTemplates = [
+    protected $messageTemplates = array(
         self::TOO_MANY => "Too many files, maximum '%max%' are allowed but '%count%' are given",
         self::TOO_FEW  => "Too few files, minimum '%min%' are expected but '%count%' are given",
-    ];
+    );
 
     /**
      * @var array Error message template variables
      */
-    protected $messageVariables = [
-        'min'   => ['options' => 'min'],
-        'max'   => ['options' => 'max'],
+    protected $messageVariables = array(
+        'min'   => array('options' => 'min'),
+        'max'   => array('options' => 'max'),
         'count' => 'count'
-    ];
+    );
 
     /**
      * Actual filecount
@@ -60,10 +60,10 @@ class Count extends AbstractValidator
      *
      * @var array
      */
-    protected $options = [
+    protected $options = array(
         'min' => null,  // Minimum file count, if null there is no minimum file count
         'max' => null,  // Maximum file count, if null there is no maximum file count
-    ];
+    );
 
     /**
      * Sets validator options
@@ -80,16 +80,13 @@ class Count extends AbstractValidator
      */
     public function __construct($options = null)
     {
-        if (1 < func_num_args()) {
-            $args = func_get_args();
-            $options = [
-                'min' => array_shift($args),
-                'max' => array_shift($args),
-            ];
+        if (is_string($options) || is_numeric($options)) {
+            $options = array('max' => $options);
         }
 
-        if (is_string($options) || is_numeric($options)) {
-            $options = ['max' => $options];
+        if (1 < func_num_args()) {
+            $options['min'] = func_get_arg(0);
+            $options['max'] = func_get_arg(1);
         }
 
         parent::__construct($options);
@@ -114,11 +111,11 @@ class Count extends AbstractValidator
      */
     public function setMin($min)
     {
-        if (is_array($min) && isset($min['min'])) {
+        if (is_array($min) and isset($min['min'])) {
             $min = $min['min'];
         }
 
-        if (! is_numeric($min)) {
+        if (!is_string($min) and !is_numeric($min)) {
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
@@ -152,11 +149,11 @@ class Count extends AbstractValidator
      */
     public function setMax($max)
     {
-        if (is_array($max) && isset($max['max'])) {
+        if (is_array($max) and isset($max['max'])) {
             $max = $max['max'];
         }
 
-        if (! is_numeric($max)) {
+        if (!is_string($max) and !is_numeric($max)) {
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
@@ -180,7 +177,7 @@ class Count extends AbstractValidator
     public function addFile($file)
     {
         if (is_string($file)) {
-            $file = [$file];
+            $file = array($file);
         }
 
         if (is_array($file)) {

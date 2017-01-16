@@ -1,33 +1,14 @@
 <div class="wrap mpl">
 
 	<h1 id="mpl-logo">
-		<img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-30x30.png"> MPL - Publisher
-		<a href='<?php echo admin_url("tools.php?page=publisher&book_id=book_" . count($blog_books)); ?>' class="page-title-action">Add New Book</a>
+		<img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher
 	</h1>
-
-	<?php if (count($blog_books)): $b = 0; ?>
-		<div class="clearfix">
-			<ul class="subsubsub">
-				<?php foreach ($blog_books as $bookId => $book): $b++; ?>
-					<li>
-						<a class="<?php echo $_GET['book_id'] == $bookId ? 'current' : ''; ?>" href="<?php echo admin_url("tools.php?page=publisher&book_id={$bookId}"); ?>">
-							<?php echo $book['data']['title']; ?> <span class="count">(<?php echo _e($book['data']['format'], "publisher"); ?>)</span>
-						</a>
-						<?php if ($b < count($blog_books)): ?> | <?php endif; ?>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	<?php endif; ?>
 
 	<ul class="nav-tab-wrapper nav-tabs hidden-xs">
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
-		<?php if (isset($message)): ?>
-			<li><em><?php echo $message; ?></em></li>
-		<?php endif; ?>
 	</ul>
 
 	<select class="nav-tabs nav-tab-select visible-xs">
@@ -40,7 +21,6 @@
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
 
 		<input type="hidden" name="action"  value="publish_ebook">
-		<input type="hidden" name="book_id" value="<?php echo $_GET['book_id']; ?>">
 
 		<?php echo $wp_nonce_field; ?>
 

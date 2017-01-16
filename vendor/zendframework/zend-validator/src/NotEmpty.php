@@ -14,24 +14,24 @@ use Zend\Stdlib\ArrayUtils;
 
 class NotEmpty extends AbstractValidator
 {
-    const BOOLEAN       = 0b000000000001;
-    const INTEGER       = 0b000000000010;
-    const FLOAT         = 0b000000000100;
-    const STRING        = 0b000000001000;
-    const ZERO          = 0b000000010000;
-    const EMPTY_ARRAY   = 0b000000100000;
-    const NULL          = 0b000001000000;
-    const PHP           = 0b000001111111;
-    const SPACE         = 0b000010000000;
-    const OBJECT        = 0b000100000000;
-    const OBJECT_STRING = 0b001000000000;
-    const OBJECT_COUNT  = 0b010000000000;
-    const ALL           = 0b011111111111;
+    const BOOLEAN       = 0x001;
+    const INTEGER       = 0x002;
+    const FLOAT         = 0x004;
+    const STRING        = 0x008;
+    const ZERO          = 0x010;
+    const EMPTY_ARRAY   = 0x020;
+    const NULL          = 0x040;
+    const PHP           = 0x07F;
+    const SPACE         = 0x080;
+    const OBJECT        = 0x100;
+    const OBJECT_STRING = 0x200;
+    const OBJECT_COUNT  = 0x400;
+    const ALL           = 0x7FF;
 
     const INVALID  = 'notEmptyInvalid';
     const IS_EMPTY = 'isEmpty';
 
-    protected $constants = [
+    protected $constants = array(
         self::BOOLEAN       => 'boolean',
         self::INTEGER       => 'integer',
         self::FLOAT         => 'float',
@@ -45,36 +45,36 @@ class NotEmpty extends AbstractValidator
         self::OBJECT_STRING => 'objectstring',
         self::OBJECT_COUNT  => 'objectcount',
         self::ALL           => 'all',
-    ];
+    );
 
     /**
      * Default value for types; value = 0b000111101001
      *
      * @var array
      */
-    protected $defaultType = [
+    protected $defaultType = array(
         self::OBJECT,
         self::SPACE,
         self::NULL,
         self::EMPTY_ARRAY,
         self::STRING,
         self::BOOLEAN
-    ];
+    );
 
     /**
      * @var array
      */
-    protected $messageTemplates = [
+    protected $messageTemplates = array(
         self::IS_EMPTY => "Value is required and can't be empty",
         self::INVALID  => "Invalid type given. String, integer, float, boolean or array expected",
-    ];
+    );
 
     /**
      * Options for this validator
      *
      * @var array
      */
-    protected $options = [];
+    protected $options = array();
 
     /**
      * Constructor
@@ -91,7 +91,7 @@ class NotEmpty extends AbstractValidator
 
         if (!is_array($options)) {
             $options = func_get_args();
-            $temp    = [];
+            $temp    = array();
             if (!empty($options)) {
                 $temp['type'] = array_shift($options);
             }
@@ -250,7 +250,7 @@ class NotEmpty extends AbstractValidator
 
         // EMPTY_ARRAY (array())
         if ($type & self::EMPTY_ARRAY) {
-            if (is_array($value) && ($value == [])) {
+            if (is_array($value) && ($value == array())) {
                 $this->error(self::IS_EMPTY);
                 return false;
             }

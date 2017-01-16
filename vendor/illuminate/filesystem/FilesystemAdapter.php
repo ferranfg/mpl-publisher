@@ -3,15 +3,18 @@
 namespace Illuminate\Filesystem;
 
 use RuntimeException;
+use Illuminate\Http\File;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Adapter\Local as LocalAdapter;
-use Illuminate\Contracts\Filesystem\Filesystem as FilesystemContract;
 use Illuminate\Contracts\Filesystem\Cloud as CloudFilesystemContract;
+use Illuminate\Contracts\Filesystem\Filesystem as FilesystemContract;
 use Illuminate\Contracts\Filesystem\FileNotFoundException as ContractFileNotFoundException;
 
 class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
@@ -67,22 +70,59 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
      *
      * @param  string  $path
      * @param  string|resource  $contents
-     * @param  string  $visibility
+     * @param  array  $options
      * @return bool
      */
-    public function put($path, $contents, $visibility = null)
+    public function put($path, $contents, $options = [])
     {
-        if ($visibility = $this->parseVisibility($visibility)) {
-            $config = ['visibility' => $visibility];
-        } else {
-            $config = [];
+        if (is_string($options)) {
+            $options = ['visibility' => $options];
+        }
+
+        if ($contents instanceof File || $contents instanceof UploadedFile) {
+            return $this->putFile($path, $contents, $options);
         }
 
         if (is_resource($contents)) {
-            return $this->driver->putStream($path, $contents, $config);
+            return $this->driver->putStream($path, $contents, $options);
         } else {
-            return $this->driver->put($path, $contents, $config);
+            return $this->driver->put($path, $contents, $options);
         }
+    }
+
+    /**
+     * Store the uploaded file on the disk.
+     *
+     * @param  string  $path
+     * @param  \Illuminate\Http\UploadedFile  $file
+     * @param  array  $options
+     * @return string|false
+     */
+    public function putFile($path, $file, $options = [])
+    {
+        return $this->putFileAs($path, $file, $file->hashName(), $options);
+    }
+
+    /**
+     * Store the uploaded file on the disk with a given name.
+     *
+     * @param  string  $path
+     * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile  $file
+     * @param  string  $name
+     * @param  array  $options
+     * @return string|false
+     */
+    public function putFileAs($path, $file, $name, $options = [])
+    {
+        $stream = fopen($file->getRealPath(), 'r+');
+
+        $result = $this->put($path = trim($path.'/'.$name, '/'), $stream, $options);
+
+        if (is_resource($stream)) {
+            fclose($stream);
+        }
+
+        return $result ? $path : false;
     }
 
     /**
@@ -117,6 +157,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
      *
      * @param  string  $path
      * @param  string  $data
+     * @param  string  $separator
      * @return int
      */
     public function prepend($path, $data, $separator = PHP_EOL)
@@ -133,6 +174,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
      *
      * @param  string  $path
      * @param  string  $data
+     * @param  string  $separator
      * @return int
      */
     public function append($path, $data, $separator = PHP_EOL)
@@ -154,15 +196,19 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     {
         $paths = is_array($paths) ? $paths : func_get_args();
 
+        $success = true;
+
         foreach ($paths as $path) {
             try {
-                $this->driver->delete($path);
+                if (! $this->driver->delete($path)) {
+                    $success = false;
+                }
             } catch (FileNotFoundException $e) {
-                //
+                $success = false;
             }
         }
 
-        return true;
+        return $success;
     }
 
     /**
@@ -232,15 +278,37 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     {
         $adapter = $this->driver->getAdapter();
 
-        if ($adapter instanceof AwsS3Adapter) {
+        if (method_exists($adapter, 'getUrl')) {
+            return $adapter->getUrl($path);
+        } elseif ($adapter instanceof AwsS3Adapter) {
             $path = $adapter->getPathPrefix().$path;
 
             return $adapter->getClient()->getObjectUrl($adapter->getBucket(), $path);
         } elseif ($adapter instanceof LocalAdapter) {
-            return '/storage/'.$path;
+            return $this->getLocalUrl($path);
         } else {
             throw new RuntimeException('This driver does not support retrieving URLs.');
         }
+    }
+
+    /**
+     * Get the URL for the file at the given path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    protected function getLocalUrl($path)
+    {
+        $config = $this->driver->getConfig();
+
+        if ($config->has('url')) {
+            return trim($config->get('url'), '/').'/'.ltrim($path, '/');
+        }
+
+        $path = '/storage/'.$path;
+
+        return Str::contains($path, '/storage/public') ?
+                    Str::replaceFirst('/public', '', $path) : $path;
     }
 
     /**

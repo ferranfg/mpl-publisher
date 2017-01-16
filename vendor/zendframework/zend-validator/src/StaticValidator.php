@@ -47,22 +47,14 @@ class StaticValidator
     /**
      * @param  mixed    $value
      * @param  string   $classBaseName
-     * @param  array    $options OPTIONAL associative array of options to pass as
-     *     the sole argument to the validator constructor.
+     * @param  array    $args          OPTIONAL
      * @return bool
-     * @throws Exception\InvalidArgumentException for an invalid $options argument.
      */
-    public static function execute($value, $classBaseName, array $options = [])
+    public static function execute($value, $classBaseName, array $args = array())
     {
-        if ($options && array_values($options) === $options) {
-            throw new Exception\InvalidArgumentException(
-                'Invalid options provided via $options argument; must be an associative array'
-            );
-        }
-
         $plugins = static::getPluginManager();
 
-        $validator = $plugins->get($classBaseName, $options);
+        $validator = $plugins->get($classBaseName, $args);
         return $validator->isValid($value);
     }
 }

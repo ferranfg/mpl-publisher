@@ -51,14 +51,16 @@ class Filesystem
     {
         $contents = '';
 
-        $handle = fopen($path, 'r');
+        $handle = fopen($path, 'rb');
 
         if ($handle) {
             try {
                 if (flock($handle, LOCK_SH)) {
-                    while (! feof($handle)) {
-                        $contents .= fread($handle, 1048576);
-                    }
+                    clearstatcache(true, $path);
+
+                    $contents = fread($handle, $this->size($path) ?: 1);
+
+                    flock($handle, LOCK_UN);
                 }
             } finally {
                 fclose($handle);
@@ -138,6 +140,22 @@ class Filesystem
     }
 
     /**
+     * Get or set UNIX mode of a file or directory.
+     *
+     * @param  string  $path
+     * @param  int  $mode
+     * @return mixed
+     */
+    public function chmod($path, $mode = null)
+    {
+        if ($mode) {
+            return chmod($path, $mode);
+        }
+
+        return substr(sprintf('%o', fileperms($path)), -4);
+    }
+
+    /**
      * Delete the file at a given path.
      *
      * @param  string|array  $paths
@@ -184,6 +202,24 @@ class Filesystem
     public function copy($path, $target)
     {
         return copy($path, $target);
+    }
+
+    /**
+     * Create a hard link to the target file or directory.
+     *
+     * @param  string  $target
+     * @param  string  $link
+     * @return void
+     */
+    public function link($target, $link)
+    {
+        if (! windows_os()) {
+            return symlink($target, $link);
+        }
+
+        $mode = $this->isDirectory($target) ? 'J' : 'H';
+
+        exec("mklink /{$mode} \"{$link}\" \"{$target}\"");
     }
 
     /**
@@ -283,6 +319,17 @@ class Filesystem
     public function isDirectory($directory)
     {
         return is_dir($directory);
+    }
+
+    /**
+     * Determine if the given path is readable.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    public function isReadable($path)
+    {
+        return is_readable($path);
     }
 
     /**
@@ -386,6 +433,25 @@ class Filesystem
         }
 
         return mkdir($path, $mode, $recursive);
+    }
+
+    /**
+     * Move a directory.
+     *
+     * @param  string  $from
+     * @param  string  $to
+     * @param  bool  $overwrite
+     * @return bool
+     */
+    public function moveDirectory($from, $to, $overwrite = false)
+    {
+        if ($overwrite && $this->isDirectory($to)) {
+            if (! $this->deleteDirectory($to)) {
+                return false;
+            }
+        }
+
+        return @rename($from, $to) === true;
     }
 
     /**

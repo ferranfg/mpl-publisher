@@ -60,6 +60,7 @@ add_action('admin_enqueue_scripts', function ()
 	wp_enqueue_style('chosen', MPL_BASEURL . 'assets/css/chosen.min.css');
 
 	wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
+    wp_enqueue_script('chart', MPL_BASEURL . 'assets/js/chart.min.js');
 
 	$own = get_plugin_data(__FILE__);
 

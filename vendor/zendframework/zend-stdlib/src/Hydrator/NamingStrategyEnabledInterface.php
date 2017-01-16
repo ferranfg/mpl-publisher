@@ -9,11 +9,36 @@
 
 namespace Zend\Stdlib\Hydrator;
 
-use Zend\Hydrator\NamingStrategyEnabledInterface as BaseNamingStrategyEnabledInterface;
+use Zend\Stdlib\Hydrator\NamingStrategy\NamingStrategyInterface;
 
-/**
- * @deprecated Use Zend\Hydrator\NamingStrategy\NamingStrategyEnabledInterface from zendframework/zend-hydrator instead.
- */
-interface NamingStrategyEnabledInterface extends BaseNamingStrategyEnabledInterface
+interface NamingStrategyEnabledInterface
 {
+    /**
+     * Adds the given naming strategy
+     *
+     * @param NamingStrategyInterface $strategy The naming to register.
+     * @return NamingStrategyEnabledInterface
+     */
+    public function setNamingStrategy(NamingStrategyInterface $strategy);
+
+    /**
+     * Gets the naming strategy.
+     *
+     * @return NamingStrategyInterface
+     */
+    public function getNamingStrategy();
+
+    /**
+     * Checks if a naming strategy exists.
+     *
+     * @return bool
+     */
+    public function hasNamingStrategy();
+
+    /**
+     * Removes the naming with the given name.
+     *
+     * @return NamingStrategyEnabledInterface
+     */
+    public function removeNamingStrategy();
 }

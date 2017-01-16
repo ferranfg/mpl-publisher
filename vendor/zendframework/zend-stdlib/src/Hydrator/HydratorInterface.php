@@ -10,11 +10,7 @@
 namespace Zend\Stdlib\Hydrator;
 
 use Zend\Stdlib\Extractor\ExtractionInterface;
-use Zend\Hydrator\HydratorInterface as BaseHydratorInterface;
 
-/**
- * @deprecated Use Zend\Hydrator\HydratorInterface from zendframework/zend-hydrator instead.
- */
-interface HydratorInterface extends BaseHydratorInterface, HydrationInterface, ExtractionInterface
+interface HydratorInterface extends HydrationInterface, ExtractionInterface
 {
 }

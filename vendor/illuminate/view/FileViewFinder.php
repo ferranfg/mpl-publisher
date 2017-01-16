@@ -40,7 +40,7 @@ class FileViewFinder implements ViewFinderInterface
      *
      * @var array
      */
-    protected $extensions = ['blade.php', 'php'];
+    protected $extensions = ['blade.php', 'php', 'css'];
 
     /**
      * Create a new file view loader instance.
@@ -162,6 +162,17 @@ class FileViewFinder implements ViewFinderInterface
     }
 
     /**
+     * Prepend a location to the finder.
+     *
+     * @param  string  $location
+     * @return void
+     */
+    public function prependLocation($location)
+    {
+        array_unshift($this->paths, $location);
+    }
+
+    /**
      * Add a namespace hint to the finder.
      *
      * @param  string  $namespace
@@ -198,6 +209,18 @@ class FileViewFinder implements ViewFinderInterface
     }
 
     /**
+     * Replace the namespace hints for the given namespace.
+     *
+     * @param  string  $namespace
+     * @param  string|array  $hints
+     * @return void
+     */
+    public function replaceNamespace($namespace, $hints)
+    {
+        $this->hints[$namespace] = (array) $hints;
+    }
+
+    /**
      * Register an extension with the view finder.
      *
      * @param  string  $extension
@@ -213,7 +236,7 @@ class FileViewFinder implements ViewFinderInterface
     }
 
     /**
-     * Returns whether or not the view specify a hint information.
+     * Returns whether or not the view name has any hint information.
      *
      * @param  string  $name
      * @return bool
@@ -221,6 +244,16 @@ class FileViewFinder implements ViewFinderInterface
     public function hasHintInformation($name)
     {
         return strpos($name, static::HINT_PATH_DELIMITER) > 0;
+    }
+
+    /**
+     * Flush the cache of located views.
+     *
+     * @return void
+     */
+    public function flush()
+    {
+        $this->views = [];
     }
 
     /**

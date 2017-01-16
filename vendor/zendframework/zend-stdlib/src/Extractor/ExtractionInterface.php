@@ -9,11 +9,13 @@
 
 namespace Zend\Stdlib\Extractor;
 
-use Zend\Hydrator\ExtractionInterface as BaseExtractionInterface;
-
-/**
- * @deprecated Use Zend\Hydrator\ExtractionInterface from zendframework/zend-hydrator instead.
- */
-interface ExtractionInterface extends BaseExtractionInterface
+interface ExtractionInterface
 {
+    /**
+     * Extract values from an object
+     *
+     * @param  object $object
+     * @return array
+     */
+    public function extract($object);
 }

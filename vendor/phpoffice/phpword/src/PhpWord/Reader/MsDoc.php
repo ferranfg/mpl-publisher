@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2015 PHPWord contributors
+ * @copyright   2010-2016 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -19,8 +19,8 @@ namespace PhpOffice\PhpWord\Reader;
 
 use PhpOffice\Common\Drawing;
 use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\OLERead;
 use PhpOffice\PhpWord\Style;
+use PhpOffice\PhpWord\Shared\OLERead;
 
 /**
  * Reader for Word97

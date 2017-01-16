@@ -32,10 +32,10 @@ class PublisherController extends PublisherBase {
         // http://codex.wordpress.org/Function_Reference/check_admin_referer
         if (empty($_POST) || ! check_admin_referer('publish_ebook', '_wpnonce')) return;
 
-        $this->saveBook($_POST['book_id'], $_POST);
+        $this->saveStatus($_POST);
 
         if (isset($_POST['generate'])) return $this->generateBook();
-        
-        return wp_redirect(admin_url("tools.php?page=publisher&book_id={$_POST['book_id']}"));
+
+        return wp_redirect(admin_url('tools.php?page=publisher'));
     }
 }

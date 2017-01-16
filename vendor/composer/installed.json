@@ -57,18 +57,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/php-fig/log.git",
-            "reference": "d8e60a5619fff77f9669da8997697443ef1a1d7e"
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/d8e60a5619fff77f9669da8997697443ef1a1d7e",
-            "reference": "d8e60a5619fff77f9669da8997697443ef1a1d7e",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-01-06 21:40:42",
+        "time": "2016-10-10 12:19:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -106,12 +106,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/debug.git",
-            "reference": "28ce1b215ab42960e7ebdd14baab045dba5d058a"
+            "reference": "fa5b1b68e9a368c366dbfbaf33fa0abb1560ad4b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/debug/zipball/28ce1b215ab42960e7ebdd14baab045dba5d058a",
-            "reference": "28ce1b215ab42960e7ebdd14baab045dba5d058a",
+            "url": "https://api.github.com/repos/symfony/debug/zipball/fa5b1b68e9a368c366dbfbaf33fa0abb1560ad4b",
+            "reference": "fa5b1b68e9a368c366dbfbaf33fa0abb1560ad4b",
             "shasum": ""
         },
         "require": {
@@ -125,11 +125,11 @@
             "symfony/class-loader": "~2.8|~3.0",
             "symfony/http-kernel": "~2.8|~3.0"
         },
-        "time": "2016-05-24 10:08:27",
+        "time": "2016-12-19 16:13:57",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
@@ -165,18 +165,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
-            "reference": "cad66c5fde7c33b228f15a8c57c6f9589789f2b1"
+            "reference": "1f4600e6077463b819e95fcf211ed72bb2708707"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/cad66c5fde7c33b228f15a8c57c6f9589789f2b1",
-            "reference": "cad66c5fde7c33b228f15a8c57c6f9589789f2b1",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/1f4600e6077463b819e95fcf211ed72bb2708707",
+            "reference": "1f4600e6077463b819e95fcf211ed72bb2708707",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6.4"
         },
-        "time": "2016-06-03 12:19:39",
+        "time": "2016-12-23 19:33:04",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -196,11 +196,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate Contracts package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "paragonie/random_compat",
@@ -328,28 +328,30 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "37a2a6c98ae5ebb7c4d3a839d058f261b8a46cd5"
+            "reference": "4d5fe4a4de07d7adc837dcf58fdfa4bc094d3595"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/37a2a6c98ae5ebb7c4d3a839d058f261b8a46cd5",
-            "reference": "37a2a6c98ae5ebb7c4d3a839d058f261b8a46cd5",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/4d5fe4a4de07d7adc837dcf58fdfa4bc094d3595",
+            "reference": "4d5fe4a4de07d7adc837dcf58fdfa4bc094d3595",
             "shasum": ""
         },
         "require": {
             "doctrine/inflector": "~1.0",
             "ext-mbstring": "*",
             "illuminate/contracts": "5.4.*",
-            "paragonie/random_compat": "~1.4",
+            "paragonie/random_compat": "~1.4|~2.0",
             "php": ">=5.6.4"
+        },
+        "replace": {
+            "tightenco/collect": "self.version"
         },
         "suggest": {
             "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
-            "symfony/process": "Required to use the composer class (3.2.*).",
-            "symfony/var-dumper": "Required to use the dd function (3.2.*)."
+            "symfony/process": "Required to use the composer class (~3.2).",
+            "symfony/var-dumper": "Required to use the dd function (~3.2)."
         },
-        "time": "2016-06-03 22:26:58",
+        "time": "2016-12-24 20:12:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -372,11 +374,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate Support package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "symfony/finder",
@@ -385,22 +387,22 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/finder.git",
-            "reference": "4a4ef9f7c26c095372c81d7412cf2c0f086783e2"
+            "reference": "941debb585000c27e9ca92e70a65620d7a4d4502"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/finder/zipball/4a4ef9f7c26c095372c81d7412cf2c0f086783e2",
-            "reference": "4a4ef9f7c26c095372c81d7412cf2c0f086783e2",
+            "url": "https://api.github.com/repos/symfony/finder/zipball/941debb585000c27e9ca92e70a65620d7a4d4502",
+            "reference": "941debb585000c27e9ca92e70a65620d7a4d4502",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2016-05-13 18:13:23",
+        "time": "2016-12-13 09:39:51",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
@@ -436,26 +438,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/filesystem.git",
-            "reference": "79474123eaf4569c6524c8784a48f1922e1d9d18"
+            "reference": "80d76c299ab7c4ffd76f5a8885cfd4b7edf3d090"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/79474123eaf4569c6524c8784a48f1922e1d9d18",
-            "reference": "79474123eaf4569c6524c8784a48f1922e1d9d18",
+            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/80d76c299ab7c4ffd76f5a8885cfd4b7edf3d090",
+            "reference": "80d76c299ab7c4ffd76f5a8885cfd4b7edf3d090",
             "shasum": ""
         },
         "require": {
             "illuminate/contracts": "5.4.*",
             "illuminate/support": "5.4.*",
             "php": ">=5.6.4",
-            "symfony/finder": "3.2.*"
+            "symfony/finder": "~3.2"
         },
         "suggest": {
             "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
             "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
             "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
         },
-        "time": "2016-06-01 13:50:01",
+        "time": "2016-12-23 13:31:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -475,11 +477,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate Filesystem package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "illuminate/container",
@@ -488,19 +490,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
-            "reference": "c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e"
+            "reference": "ca281669fa3997d74045551821ae749649a7144e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/container/zipball/c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e",
-            "reference": "c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e",
+            "url": "https://api.github.com/repos/illuminate/container/zipball/ca281669fa3997d74045551821ae749649a7144e",
+            "reference": "ca281669fa3997d74045551821ae749649a7144e",
             "shasum": ""
         },
         "require": {
             "illuminate/contracts": "5.4.*",
             "php": ">=5.6.4"
         },
-        "time": "2016-06-01 13:50:01",
+        "time": "2016-12-24 17:08:30",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -520,11 +522,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate Container package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "illuminate/events",
@@ -533,12 +535,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/events.git",
-            "reference": "a015c930d9aafaf48e2fbf91d23fd70904f6e733"
+            "reference": "ec481d40d89131eb26186f005df0a818bad3cf96"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/events/zipball/a015c930d9aafaf48e2fbf91d23fd70904f6e733",
-            "reference": "a015c930d9aafaf48e2fbf91d23fd70904f6e733",
+            "url": "https://api.github.com/repos/illuminate/events/zipball/ec481d40d89131eb26186f005df0a818bad3cf96",
+            "reference": "ec481d40d89131eb26186f005df0a818bad3cf96",
             "shasum": ""
         },
         "require": {
@@ -547,7 +549,7 @@
             "illuminate/support": "5.4.*",
             "php": ">=5.6.4"
         },
-        "time": "2016-06-01 13:50:01",
+        "time": "2016-12-23 13:31:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -567,11 +569,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate Events package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "illuminate/view",
@@ -580,12 +582,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/view.git",
-            "reference": "21027fba180349ac072db6495ea0f1923388516b"
+            "reference": "a7d46e4b2a28da5a39c32b15963eeb7b42f09396"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/view/zipball/21027fba180349ac072db6495ea0f1923388516b",
-            "reference": "21027fba180349ac072db6495ea0f1923388516b",
+            "url": "https://api.github.com/repos/illuminate/view/zipball/a7d46e4b2a28da5a39c32b15963eeb7b42f09396",
+            "reference": "a7d46e4b2a28da5a39c32b15963eeb7b42f09396",
             "shasum": ""
         },
         "require": {
@@ -595,9 +597,9 @@
             "illuminate/filesystem": "5.4.*",
             "illuminate/support": "5.4.*",
             "php": ">=5.6.4",
-            "symfony/debug": "3.2.*"
+            "symfony/debug": "~3.2"
         },
-        "time": "2016-06-01 13:50:01",
+        "time": "2016-12-23 13:31:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -617,11 +619,11 @@
         "authors": [
             {
                 "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
+                "email": "taylor@laravel.com"
             }
         ],
         "description": "The Illuminate View package.",
-        "homepage": "http://laravel.com"
+        "homepage": "https://laravel.com"
     },
     {
         "name": "grandt/relativepath",
@@ -772,123 +774,6 @@
         ]
     },
     {
-        "name": "league/html-to-markdown",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/thephpleague/html-to-markdown.git",
-            "reference": "4e4d46079f59995a37145c19cc688e6fb8c981ab"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/4e4d46079f59995a37145c19cc688e6fb8c981ab",
-            "reference": "4e4d46079f59995a37145c19cc688e6fb8c981ab",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-xml": "*",
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mikehaertl/php-shellcommand": "~1.1.0",
-            "phpunit/phpunit": "4.*",
-            "scrutinizer/ocular": "~1.1"
-        },
-        "time": "2016-05-18 12:57:10",
-        "bin": [
-            "bin/html-to-markdown"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.3-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "League\\HTMLToMarkdown\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Colin O'Dell",
-                "email": "colinodell@gmail.com",
-                "homepage": "http://www.colinodell.com",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Nick Cernis",
-                "email": "nick@cern.is",
-                "homepage": "http://modernnerd.net",
-                "role": "Original Author"
-            }
-        ],
-        "description": "An HTML-to-markdown conversion helper for PHP",
-        "homepage": "https://github.com/thephpleague/html-to-markdown",
-        "keywords": [
-            "html",
-            "markdown"
-        ]
-    },
-    {
-        "name": "symfony/yaml",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/yaml.git",
-            "reference": "737c6a22a9a2f6ac3d4c62a0b97720e139c4a093"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/737c6a22a9a2f6ac3d4c62a0b97720e139c4a093",
-            "reference": "737c6a22a9a2f6ac3d4c62a0b97720e139c4a093",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2016-05-29 09:50:57",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Yaml\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com"
-    },
-    {
         "name": "grandt/phpepub",
         "version": "4.0.7.1",
         "version_normalized": "4.0.7.1",
@@ -979,252 +864,6 @@
         ]
     },
     {
-        "name": "phpoffice/common",
-        "version": "0.2.5",
-        "version_normalized": "0.2.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/PHPOffice/Common.git",
-            "reference": "0525632c0becdd89a3f3895f95f549a43fae2761"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/PHPOffice/Common/zipball/0525632c0becdd89a3f3895f95f549a43fae2761",
-            "reference": "0525632c0becdd89a3f3895f95f549a43fae2761",
-            "shasum": ""
-        },
-        "require": {
-            "pclzip/pclzip": "^2.8",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpdocumentor/phpdocumentor": "2.*",
-            "phploc/phploc": "2.*",
-            "phpmd/phpmd": "2.*",
-            "phpunit/phpunit": "3.7.*",
-            "sebastian/phpcpd": "2.*",
-            "squizlabs/php_codesniffer": "2.*"
-        },
-        "time": "2016-03-03 15:05:43",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PhpOffice\\Common\\": "src/Common/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL"
-        ],
-        "authors": [
-            {
-                "name": "Mark Baker"
-            },
-            {
-                "name": "Franck Lefevre",
-                "homepage": "http://rootslabs.net"
-            }
-        ],
-        "description": "PHPOffice Common",
-        "homepage": "http://phpoffice.github.io",
-        "keywords": [
-            "common",
-            "component",
-            "office",
-            "php"
-        ]
-    },
-    {
-        "name": "zendframework/zend-stdlib",
-        "version": "dev-release-2.7",
-        "version_normalized": "dev-release-2.7",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-stdlib.git",
-            "reference": "0e44eb46788f65e09e077eb7f44d2659143bcc1f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/0e44eb46788f65e09e077eb7f44d2659143bcc1f",
-            "reference": "0e44eb46788f65e09e077eb7f44d2659143bcc1f",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.5 || ^7.0",
-            "zendframework/zend-hydrator": "~1.1"
-        },
-        "require-dev": {
-            "athletic/athletic": "~0.1",
-            "fabpot/php-cs-fixer": "1.7.*",
-            "phpunit/phpunit": "~4.0",
-            "zendframework/zend-config": "~2.5",
-            "zendframework/zend-eventmanager": "~2.5",
-            "zendframework/zend-filter": "~2.5",
-            "zendframework/zend-inputfilter": "~2.5",
-            "zendframework/zend-serializer": "~2.5",
-            "zendframework/zend-servicemanager": "~2.5"
-        },
-        "suggest": {
-            "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
-            "zendframework/zend-filter": "To support naming strategy hydrator usage",
-            "zendframework/zend-serializer": "Zend\\Serializer component",
-            "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
-        },
-        "time": "2016-04-12 21:17:31",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-release-2.7": "2.7-dev",
-                "dev-master": "3.0-dev",
-                "dev-develop": "3.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Stdlib\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "homepage": "https://github.com/zendframework/zend-stdlib",
-        "keywords": [
-            "stdlib",
-            "zf2"
-        ]
-    },
-    {
-        "name": "zendframework/zend-hydrator",
-        "version": "dev-release-1.1",
-        "version_normalized": "dev-release-1.1",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-hydrator.git",
-            "reference": "22652e1661a5a10b3f564cf7824a2206cf5a4a65"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/22652e1661a5a10b3f564cf7824a2206cf5a4a65",
-            "reference": "22652e1661a5a10b3f564cf7824a2206cf5a4a65",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.5 || ^7.0",
-            "zendframework/zend-stdlib": "^2.7 || ^3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0",
-            "squizlabs/php_codesniffer": "^2.0@dev",
-            "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
-            "zendframework/zend-filter": "^2.6",
-            "zendframework/zend-inputfilter": "^2.6",
-            "zendframework/zend-serializer": "^2.6.1",
-            "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
-        },
-        "suggest": {
-            "zendframework/zend-eventmanager": "^2.6.2 || ^3.0, to support aggregate hydrator usage",
-            "zendframework/zend-filter": "^2.6, to support naming strategy hydrator usage",
-            "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
-            "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
-        },
-        "time": "2016-02-18 22:38:26",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-release-1.0": "1.0-dev",
-                "dev-release-1.1": "1.1-dev",
-                "dev-master": "2.0-dev",
-                "dev-develop": "2.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Hydrator\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "homepage": "https://github.com/zendframework/zend-hydrator",
-        "keywords": [
-            "hydrator",
-            "zf2"
-        ]
-    },
-    {
-        "name": "zendframework/zend-validator",
-        "version": "2.5.4",
-        "version_normalized": "2.5.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-validator.git",
-            "reference": "31edd30df3c0faca721ef9dd2c1b768f3b6a7c5f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/31edd30df3c0faca721ef9dd2c1b768f3b6a7c5f",
-            "reference": "31edd30df3c0faca721ef9dd2c1b768f3b6a7c5f",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.5 || ^7.0",
-            "zendframework/zend-stdlib": "~2.5"
-        },
-        "require-dev": {
-            "fabpot/php-cs-fixer": "1.7.*",
-            "phpunit/phpunit": "~4.0",
-            "zendframework/zend-cache": "~2.5",
-            "zendframework/zend-config": "~2.5",
-            "zendframework/zend-db": "~2.5",
-            "zendframework/zend-filter": "~2.5",
-            "zendframework/zend-http": "~2.5",
-            "zendframework/zend-i18n": "~2.5",
-            "zendframework/zend-math": "~2.5",
-            "zendframework/zend-servicemanager": "~2.5",
-            "zendframework/zend-session": "~2.5",
-            "zendframework/zend-uri": "~2.5"
-        },
-        "suggest": {
-            "zendframework/zend-db": "Zend\\Db component",
-            "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
-            "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
-            "zendframework/zend-i18n-resources": "Translations of validator messages",
-            "zendframework/zend-math": "Zend\\Math component",
-            "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
-            "zendframework/zend-session": "Zend\\Session component",
-            "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
-        },
-        "time": "2016-02-17 17:13:10",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.5-dev",
-                "dev-develop": "2.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Validator\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "provides a set of commonly needed validators",
-        "homepage": "https://github.com/zendframework/zend-validator",
-        "keywords": [
-            "validator",
-            "zf2"
-        ]
-    },
-    {
         "name": "wallabag/php-mobi",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -1273,26 +912,378 @@
         "homepage": "https://github.com/wallabag/phpMobi"
     },
     {
+        "name": "league/html-to-markdown",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/html-to-markdown.git",
+            "reference": "5283e61c469458b16a63260f959c8a1ca71f0443"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/5283e61c469458b16a63260f959c8a1ca71f0443",
+            "reference": "5283e61c469458b16a63260f959c8a1ca71f0443",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-xml": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mikehaertl/php-shellcommand": "~1.1.0",
+            "phpunit/phpunit": "4.*",
+            "scrutinizer/ocular": "~1.1"
+        },
+        "time": "2016-12-09 14:03:15",
+        "bin": [
+            "bin/html-to-markdown"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\HTMLToMarkdown\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Colin O'Dell",
+                "email": "colinodell@gmail.com",
+                "homepage": "http://www.colinodell.com",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Nick Cernis",
+                "email": "nick@cern.is",
+                "homepage": "http://modernnerd.net",
+                "role": "Original Author"
+            }
+        ],
+        "description": "An HTML-to-markdown conversion helper for PHP",
+        "homepage": "https://github.com/thephpleague/html-to-markdown",
+        "keywords": [
+            "html",
+            "markdown"
+        ]
+    },
+    {
+        "name": "symfony/yaml",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "f8c054eea2921142bed49cc957260652f80958e3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/f8c054eea2921142bed49cc957260652f80958e3",
+            "reference": "f8c054eea2921142bed49cc957260652f80958e3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "symfony/console": "~2.8|~3.0"
+        },
+        "suggest": {
+            "symfony/console": "For validating YAML files using the lint command"
+        },
+        "time": "2016-12-13 09:39:51",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Yaml\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "phpoffice/common",
+        "version": "v0.2.6",
+        "version_normalized": "0.2.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/Common.git",
+            "reference": "c9be70c80637c28c728be78e66aad4878a34f8dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/Common/zipball/c9be70c80637c28c728be78e66aad4878a34f8dd",
+            "reference": "c9be70c80637c28c728be78e66aad4878a34f8dd",
+            "shasum": ""
+        },
+        "require": {
+            "pclzip/pclzip": "^2.8",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "2.*",
+            "phploc/phploc": "2.*",
+            "phpmd/phpmd": "2.*",
+            "phpunit/phpunit": "3.7.*",
+            "sebastian/phpcpd": "2.*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2016-07-07 17:26:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpOffice\\Common\\": "src/Common/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://rootslabs.net"
+            }
+        ],
+        "description": "PHPOffice Common",
+        "homepage": "http://phpoffice.github.io",
+        "keywords": [
+            "common",
+            "component",
+            "office",
+            "php"
+        ]
+    },
+    {
+        "name": "zendframework/zend-stdlib",
+        "version": "2.4.11",
+        "version_normalized": "2.4.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/zend-stdlib.git",
+            "reference": "d8ecb629a72da9f91bd95c5af006384823560b42"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/d8ecb629a72da9f91bd95c5af006384823560b42",
+            "reference": "d8ecb629a72da9f91bd95c5af006384823560b42",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23"
+        },
+        "require-dev": {
+            "fabpot/php-cs-fixer": "1.7.*",
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "dev-master",
+            "zendframework/zend-eventmanager": "self.version",
+            "zendframework/zend-filter": "self.version",
+            "zendframework/zend-serializer": "self.version",
+            "zendframework/zend-servicemanager": "self.version"
+        },
+        "suggest": {
+            "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+            "zendframework/zend-filter": "To support naming strategy hydrator usage",
+            "zendframework/zend-serializer": "Zend\\Serializer component",
+            "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+        },
+        "time": "2015-07-21 13:55:46",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev",
+                "dev-develop": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Stdlib\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "homepage": "https://github.com/zendframework/zend-stdlib",
+        "keywords": [
+            "stdlib",
+            "zf2"
+        ]
+    },
+    {
+        "name": "zendframework/zend-validator",
+        "version": "2.4.11",
+        "version_normalized": "2.4.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/zend-validator.git",
+            "reference": "81415511fe729e6de19a61936313cef43c80d337"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/81415511fe729e6de19a61936313cef43c80d337",
+            "reference": "81415511fe729e6de19a61936313cef43c80d337",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23",
+            "zendframework/zend-stdlib": "~2.4.0"
+        },
+        "require-dev": {
+            "fabpot/php-cs-fixer": "1.7.*",
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "dev-master",
+            "zendframework/zend-config": "~2.4.0",
+            "zendframework/zend-db": "~2.4.0",
+            "zendframework/zend-filter": "~2.4.0",
+            "zendframework/zend-i18n": "~2.4.0",
+            "zendframework/zend-math": "~2.4.0",
+            "zendframework/zend-servicemanager": "~2.4.0",
+            "zendframework/zend-session": "~2.4.0",
+            "zendframework/zend-uri": "~2.4.0"
+        },
+        "suggest": {
+            "zendframework/zend-db": "Zend\\Db component",
+            "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
+            "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
+            "zendframework/zend-math": "Zend\\Math component",
+            "zendframework/zend-resources": "Translations of validator messages",
+            "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
+            "zendframework/zend-session": "Zend\\Session component",
+            "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
+        },
+        "time": "2015-09-08 21:04:17",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev",
+                "dev-develop": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Validator\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "provides a set of commonly needed validators",
+        "homepage": "https://github.com/zendframework/zend-validator",
+        "keywords": [
+            "validator",
+            "zf2"
+        ]
+    },
+    {
+        "name": "zendframework/zend-escaper",
+        "version": "2.4.11",
+        "version_normalized": "2.4.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/zend-escaper.git",
+            "reference": "13f468ff824f3c83018b90aff892a1b3201383a9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/13f468ff824f3c83018b90aff892a1b3201383a9",
+            "reference": "13f468ff824f3c83018b90aff892a1b3201383a9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23"
+        },
+        "require-dev": {
+            "fabpot/php-cs-fixer": "1.7.*",
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2015-05-07 14:55:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev",
+                "dev-develop": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Escaper\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "homepage": "https://github.com/zendframework/zend-escaper",
+        "keywords": [
+            "escaper",
+            "zf2"
+        ]
+    },
+    {
         "name": "phpoffice/phpword",
         "version": "dev-develop",
         "version_normalized": "dev-develop",
         "source": {
             "type": "git",
             "url": "https://github.com/PHPOffice/PHPWord.git",
-            "reference": "a2d307936dd559dfb87931bba1d47c3f30730211"
+            "reference": "6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/a2d307936dd559dfb87931bba1d47c3f30730211",
-            "reference": "a2d307936dd559dfb87931bba1d47c3f30730211",
+            "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3",
+            "reference": "6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3",
             "shasum": ""
         },
         "require": {
             "ext-xml": "*",
             "php": ">=5.3.3",
             "phpoffice/common": "0.2.*",
-            "zendframework/zend-stdlib": "~2.5",
-            "zendframework/zend-validator": "2.5.*"
+            "zendframework/zend-escaper": "2.4.*",
+            "zendframework/zend-stdlib": "2.4.*",
+            "zendframework/zend-validator": "2.4.*"
         },
         "require-dev": {
             "dompdf/dompdf": "0.6.*",
@@ -1300,21 +1291,18 @@
             "phpdocumentor/phpdocumentor": "2.*",
             "phploc/phploc": "2.*",
             "phpmd/phpmd": "2.*",
-            "phpoffice/common": "0.2.*",
             "phpunit/phpunit": "3.7.*",
             "squizlabs/php_codesniffer": "1.*",
-            "tecnickcom/tcpdf": "6.*",
-            "zendframework/zend-stdlib": "~2.5",
-            "zendframework/zend-validator": "2.5.*"
+            "tecnickcom/tcpdf": "6.*"
         },
         "suggest": {
             "dompdf/dompdf": "Allows writing PDF",
             "ext-gd2": "Allows adding images",
-            "ext-xmlwriter": "Allows writing DOCX and ODT",
-            "ext-xsl": "Allows applying XSL style sheet to main document part of OOXML template",
-            "ext-zip": "Allows writing DOCX and ODT"
+            "ext-xmlwriter": "Allows writing OOXML and ODF",
+            "ext-xsl": "Allows applying XSL style sheet to headers, to main document part, and to footers of an OOXML template",
+            "ext-zip": "Allows writing OOXML and ODF"
         },
-        "time": "2016-06-04 16:56:06",
+        "time": "2016-12-13 15:56:57",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1348,7 +1336,7 @@
                 "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
             }
         ],
-        "description": "PHPWord - A pure PHP library for reading and writing word processing documents (DOCX, ODT, RTF, HTML, PDF)",
+        "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
         "homepage": "http://phpoffice.github.io",
         "keywords": [
             "ISO IEC 29500",
@@ -1363,6 +1351,7 @@
             "doc",
             "docx",
             "html",
+            "odf",
             "odt",
             "office",
             "pdf",

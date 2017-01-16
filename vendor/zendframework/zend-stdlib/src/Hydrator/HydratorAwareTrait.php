@@ -9,12 +9,39 @@
 
 namespace Zend\Stdlib\Hydrator;
 
-use Zend\Hydrator\HydratorAwareTrait as BaseHydratorAwareTrait;
-
-/**
- * @deprecated Use Zend\Hydrator\HydratorAwareTrait from zendframework/zend-hydrator instead.
- */
 trait HydratorAwareTrait
 {
-    use BaseHydratorAwareTrait;
+    /**
+     * Hydrator instance
+     *
+     * @var HydratorInterface
+     * @access protected
+     */
+    protected $hydrator = null;
+
+    /**
+     * Set hydrator
+     *
+     * @param  HydratorInterface $hydrator
+     * @return self
+     * @access public
+     */
+    public function setHydrator(HydratorInterface $hydrator)
+    {
+        $this->hydrator = $hydrator;
+
+        return $this;
+    }
+
+    /**
+     * Retrieve hydrator
+     *
+     * @param void
+     * @return null|HydratorInterface
+     * @access public
+     */
+    public function getHydrator()
+    {
+        return $this->hydrator;
+    }
 }
