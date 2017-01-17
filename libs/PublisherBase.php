@@ -144,12 +144,10 @@ class PublisherBase {
 
         if ($query->have_posts())
         {
-            while ($query->have_posts())
-            {
-                $query->the_post();
-
-                $publisher->addChapter(get_the_ID(), get_the_title(), wpautop(get_the_content()));
-            }
+            while ($query->have_posts()): $query->the_post();
+                $post = get_post(get_the_ID());
+                $publisher->addChapter($post->ID, $post->post_title, wpautop($post->post_content));
+            endwhile;
         }
 
         return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
