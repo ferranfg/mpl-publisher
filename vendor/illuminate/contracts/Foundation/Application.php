@@ -23,6 +23,7 @@ interface Application extends Container
     /**
      * Get or check the current application environment.
      *
+     * @param  mixed
      * @return string
      */
     public function environment();

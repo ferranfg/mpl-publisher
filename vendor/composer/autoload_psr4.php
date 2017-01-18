@@ -10,6 +10,7 @@ return array(
     'grandt\\ResizeGif\\Files\\' => array($vendorDir . '/grandt/phpresizegif/src/ResizeGif/Files'),
     'grandt\\ResizeGif\\Debug\\' => array($vendorDir . '/grandt/phpresizegif/src/ResizeGif/Debug'),
     'grandt\\ResizeGif\\' => array($vendorDir . '/grandt/phpresizegif/src/ResizeGif'),
+    'ZipMerge\\' => array($vendorDir . '/grandt/phpzipmerge/src/ZipMerge'),
     'Zend\\Validator\\' => array($vendorDir . '/zendframework/zend-validator/src'),
     'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib/src'),
     'Zend\\Escaper\\' => array($vendorDir . '/zendframework/zend-escaper/src'),

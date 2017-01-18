@@ -14,6 +14,6 @@ class Log extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Psr\Log\LoggerInterface';
+        return 'log';
     }
 }

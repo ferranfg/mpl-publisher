@@ -111,7 +111,7 @@ class Finder implements \IteratorAggregate, \Countable
      *   $finder->depth('> 1') // the Finder will start matching at level 1.
      *   $finder->depth('< 3') // the Finder will descend at most 3 levels of directories below the starting point.
      *
-     * @param string|int $level The depth level expression
+     * @param int $level The depth level expression
      *
      * @return Finder|SplFileInfo[] The current Finder instance
      *
@@ -283,7 +283,7 @@ class Finder implements \IteratorAggregate, \Countable
      * $finder->size('<= 1Ki');
      * $finder->size(4);
      *
-     * @param string|int $size A size range string or an integer
+     * @param string $size A size range string
      *
      * @return Finder|SplFileInfo[] The current Finder instance
      *

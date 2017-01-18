@@ -1,9 +1,9 @@
 === MPL - Publisher ===
 Contributors: ferranfg
-Donate link: http://ferranfigueredo.com/
+Donate link: https://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
-Tested up to: 4.5.2
+Tested up to: 4.7.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,7 +42,7 @@ Future releases will include, at least, the next functionalities:
 - PHP 5.4.0 or higher
 - WordPress 3.5.0 or higher
 
-For further information, visit the [MPL-Publisher plugin's homepage](https://ferranfigueredo.com/mpl-publisher/)
+For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
 
 == Installation ==
 

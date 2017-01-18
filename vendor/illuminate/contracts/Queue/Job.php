@@ -55,19 +55,11 @@ interface Job
     public function getName();
 
     /**
-     * Get the resolved name of the queued job class.
-     *
-     * @return string
-     */
-    public function resolveName();
-
-    /**
      * Call the failed method on the job instance.
      *
-     * @param  \Throwable  $e
      * @return void
      */
-    public function failed($e);
+    public function failed();
 
     /**
      * Get the name of the queue the job belongs to.

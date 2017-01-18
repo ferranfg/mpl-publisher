@@ -4,7 +4,6 @@ namespace Illuminate\View\Compilers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\View\Factory as ViewFactory;
 
 class BladeCompiler extends Compiler implements CompilerInterface
 {
@@ -253,7 +252,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
     {
         $pattern = sprintf('/%s--(.*?)--%s/s', $this->contentTags[0], $this->contentTags[1]);
 
-        return preg_replace($pattern, '', $value);
+        return preg_replace($pattern, '<?php /*$1*/ ?>', $value);
     }
 
     /**
@@ -324,7 +323,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
             if (Str::contains($match[1], '@')) {
                 $match[0] = isset($match[3]) ? $match[1].$match[3] : $match[1];
             } elseif (isset($this->customDirectives[$match[1]])) {
-                $match[0] = $this->callCustomDirective($match[1], Arr::get($match, 3));
+                $match[0] = call_user_func($this->customDirectives[$match[1]], Arr::get($match, 3));
             } elseif (method_exists($this, $method = 'compile'.ucfirst($match[1]))) {
                 $match[0] = $this->$method(Arr::get($match, 3));
             }
@@ -403,16 +402,6 @@ class BladeCompiler extends Compiler implements CompilerInterface
     public function compileEchoDefaults($value)
     {
         return preg_replace('/^(?=\$)(.+?)(?:\s+or\s+)(.+?)$/s', 'isset($1) ? $1 : $2', $value);
-    }
-
-    /**
-     * Replace the @parent directive to a placeholder.
-     *
-     * @return string
-     */
-    protected function compileParent()
-    {
-        return ViewFactory::parentPlaceholder();
     }
 
     /**
@@ -524,7 +513,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
      */
     protected function compileUnless($expression)
     {
-        return "<?php if (! $expression): ?>";
+        return "<?php if ( ! $expression): ?>";
     }
 
     /**
@@ -546,24 +535,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
      */
     protected function compileLang($expression)
     {
-        if (is_null($expression)) {
-            return '<?php $__env->startTranslation(); ?>';
-        } elseif ($expression[1] === '[') {
-            return "<?php \$__env->startTranslation{$expression}; ?>";
-        } else {
-            return "<?php echo app('translator')->get$expression; ?>";
-        }
-    }
-
-    /**
-     * Compile the endlang statements into valid PHP.
-     *
-     * @param  string  $expression
-     * @return string
-     */
-    protected function compileEndlang()
-    {
-        return '<?php echo $__env->renderTranslation(); ?>';
+        return "<?php echo app('translator')->get$expression; ?>";
     }
 
     /**
@@ -607,17 +579,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
      */
     protected function compileForeach($expression)
     {
-        preg_match('/\( *(.*) +as *(.*)\)$/is', $expression, $matches);
-
-        $iteratee = trim($matches[1]);
-
-        $iteration = trim($matches[2]);
-
-        $initLoop = "\$__currentLoopData = {$iteratee}; \$__env->addLoop(\$__currentLoopData);";
-
-        $iterateLoop = '$__env->incrementLoopIndices(); $loop = $__env->getFirstLoop();';
-
-        return "<?php {$initLoop} foreach(\$__currentLoopData as {$iteration}): {$iterateLoop} ?>";
+        return "<?php foreach{$expression}: ?>";
     }
 
     /**
@@ -652,17 +614,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
     {
         $empty = '$__empty_'.++$this->forelseCounter;
 
-        preg_match('/\( *(.*) +as *(.*)\)$/is', $expression, $matches);
-
-        $iteratee = trim($matches[1]);
-
-        $iteration = trim($matches[2]);
-
-        $initLoop = "\$__currentLoopData = {$iteratee}; \$__env->addLoop(\$__currentLoopData);";
-
-        $iterateLoop = '$__env->incrementLoopIndices(); $loop = $__env->getFirstLoop();';
-
-        return "<?php {$empty} = true; {$initLoop} foreach(\$__currentLoopData as {$iteration}): {$iterateLoop} {$empty} = false; ?>";
+        return "<?php {$empty} = true; foreach{$expression}: {$empty} = false; ?>";
     }
 
     /**
@@ -741,7 +693,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
     {
         $empty = '$__empty_'.$this->forelseCounter--;
 
-        return "<?php endforeach; \$__env->popLoop(); \$loop = \$__env->getFirstLoop(); if ({$empty}): ?>";
+        return "<?php endforeach; if ({$empty}): ?>";
     }
 
     /**
@@ -796,7 +748,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
      */
     protected function compileEndforeach($expression)
     {
-        return '<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>';
+        return '<?php endforeach; ?>';
     }
 
     /**
@@ -920,50 +872,6 @@ class BladeCompiler extends Compiler implements CompilerInterface
     }
 
     /**
-     * Compile the component statements into valid PHP.
-     *
-     * @param  string  $expression
-     * @return string
-     */
-    protected function compileComponent($expression)
-    {
-        return "<?php \$__env->startComponent{$expression}; ?>";
-    }
-
-    /**
-     * Compile the end component statements into valid PHP.
-     *
-     * @param  string  $expression
-     * @return string
-     */
-    protected function compileEndComponent($expression)
-    {
-        return '<?php echo $__env->renderComponent(); ?>';
-    }
-
-    /**
-     * Compile the slot statements into valid PHP.
-     *
-     * @param  string  $expression
-     * @return string
-     */
-    protected function compileSlot($expression)
-    {
-        return "<?php \$__env->slot{$expression}; ?>";
-    }
-
-    /**
-     * Compile the end slot statements into valid PHP.
-     *
-     * @param  string  $expression
-     * @return string
-     */
-    protected function compileEndSlot($expression)
-    {
-        return '<?php $__env->endSlot(); ?>';
-    }
-
-    /**
      * Compile the stack statements into the content.
      *
      * @param  string  $expression
@@ -1002,7 +910,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
      * @param  string  $expression
      * @return string
      */
-    public function stripParentheses($expression)
+    protected function stripParentheses($expression)
     {
         if (Str::startsWith($expression, '(')) {
             $expression = substr($expression, 1, -1);
@@ -1030,22 +938,6 @@ class BladeCompiler extends Compiler implements CompilerInterface
     public function extend(callable $compiler)
     {
         $this->extensions[] = $compiler;
-    }
-
-    /**
-     * Call the given directive with the given value.
-     *
-     * @param  string  $name
-     * @param  string|null  $value
-     * @return string
-     */
-    protected function callCustomDirective($name, $value)
-    {
-        if (Str::startsWith($value, '(') && Str::endsWith($value, ')')) {
-            $value = Str::substr($value, 1, -1);
-        }
-
-        return call_user_func($this->customDirectives[$name], trim($value));
     }
 
     /**

@@ -65,20 +65,6 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
     }
 
     /**
-     * Determine if a key and message combination already exists.
-     *
-     * @param  string  $key
-     * @param  string  $message
-     * @return bool
-     */
-    protected function isUnique($key, $message)
-    {
-        $messages = (array) $this->messages;
-
-        return ! isset($messages[$key]) || ! in_array($message, $messages[$key]);
-    }
-
-    /**
      * Merge a new array of messages into the bag.
      *
      * @param  \Illuminate\Contracts\Support\MessageProvider|array  $messages
@@ -96,12 +82,26 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
     }
 
     /**
+     * Determine if a key and message combination already exists.
+     *
+     * @param  string  $key
+     * @param  string  $message
+     * @return bool
+     */
+    protected function isUnique($key, $message)
+    {
+        $messages = (array) $this->messages;
+
+        return ! isset($messages[$key]) || ! in_array($message, $messages[$key]);
+    }
+
+    /**
      * Determine if messages exist for all of the given keys.
      *
      * @param  array|string  $key
      * @return bool
      */
-    public function has($key)
+    public function has($key = null)
     {
         if (is_null($key)) {
             return $this->any();
@@ -146,7 +146,7 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
     {
         $messages = is_null($key) ? $this->all($format) : $this->get($key, $format);
 
-        return head(array_flatten($messages)) ?: '';
+        return count($messages) > 0 ? $messages[0] : '';
     }
 
     /**
@@ -159,39 +159,13 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
     public function get($key, $format = null)
     {
         // If the message exists in the container, we will transform it and return
-        // the message. Otherwise, we'll check if the key is implicit & collect
-        // all the messages that match a given key and output it as an array.
+        // the message. Otherwise, we'll return an empty array since the entire
+        // methods is to return back an array of messages in the first place.
         if (array_key_exists($key, $this->messages)) {
-            return $this->transform(
-                $this->messages[$key], $this->checkFormat($format), $key
-            );
-        }
-
-        if (Str::contains($key, '*')) {
-            return $this->getMessagesForWildcardKey($key, $format);
+            return $this->transform($this->messages[$key], $this->checkFormat($format), $key);
         }
 
         return [];
-    }
-
-    /**
-     * Get the messages for a wildcard key.
-     *
-     * @param  string  $key
-     * @param  string|null  $format
-     * @return array
-     */
-    protected function getMessagesForWildcardKey($key, $format)
-    {
-        return collect($this->messages)
-                ->filter(function ($messages, $messageKey) use ($key) {
-                    return Str::is($key, $messageKey);
-                })
-                ->map(function ($messages, $messageKey) use ($format) {
-                    return $this->transform(
-                        $messages, $this->checkFormat($format), $messageKey
-                    );
-                })->all();
     }
 
     /**

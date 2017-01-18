@@ -23,37 +23,35 @@ abstract class Facade
     protected static $resolvedInstance;
 
     /**
-     * Convert the facade into a Mockery spy.
+     * Hotswap the underlying instance behind the facade.
      *
+     * @param  mixed  $instance
      * @return void
      */
-    public static function spy()
+    public static function swap($instance)
     {
-        $name = static::getFacadeAccessor();
+        static::$resolvedInstance[static::getFacadeAccessor()] = $instance;
 
-        if (static::isMock()) {
-            $mock = static::$resolvedInstance[$name];
-        } else {
-            $class = static::getMockableClass($name);
-
-            static::swap($class ? Mockery::spy($class) : Mockery::spy());
-        }
+        static::$app->instance(static::getFacadeAccessor(), $instance);
     }
 
     /**
      * Initiate a mock expectation on the facade.
      *
+     * @param  mixed
      * @return \Mockery\Expectation
      */
     public static function shouldReceive()
     {
         $name = static::getFacadeAccessor();
 
-        $mock = static::isMock()
-                    ? static::$resolvedInstance[$name]
-                    : static::createFreshMockInstance($name);
+        if (static::isMock()) {
+            $mock = static::$resolvedInstance[$name];
+        } else {
+            $mock = static::createFreshMockInstance($name);
+        }
 
-        return $mock->shouldReceive(...func_get_args());
+        return call_user_func_array([$mock, 'shouldReceive'], func_get_args());
     }
 
     /**
@@ -64,18 +62,22 @@ abstract class Facade
      */
     protected static function createFreshMockInstance($name)
     {
-        return tap(static::createMockByName($name), function ($mock) use ($name) {
-            static::swap($mock);
+        static::$resolvedInstance[$name] = $mock = static::createMockByName($name);
 
-            $mock->shouldAllowMockingProtectedMethods();
-        });
+        $mock->shouldAllowMockingProtectedMethods();
+
+        if (isset(static::$app)) {
+            static::$app->instance($name, $mock);
+        }
+
+        return $mock;
     }
 
     /**
      * Create a fresh mock instance for the given class.
      *
      * @param  string  $name
-     * @return \Mockery\MockInterface
+     * @return \Mockery\Expectation
      */
     protected static function createMockByName($name)
     {
@@ -93,8 +95,7 @@ abstract class Facade
     {
         $name = static::getFacadeAccessor();
 
-        return isset(static::$resolvedInstance[$name]) &&
-               static::$resolvedInstance[$name] instanceof MockInterface;
+        return isset(static::$resolvedInstance[$name]) && static::$resolvedInstance[$name] instanceof MockInterface;
     }
 
     /**
@@ -106,21 +107,6 @@ abstract class Facade
     {
         if ($root = static::getFacadeRoot()) {
             return get_class($root);
-        }
-    }
-
-    /**
-     * Hotswap the underlying instance behind the facade.
-     *
-     * @param  mixed  $instance
-     * @return void
-     */
-    public static function swap($instance)
-    {
-        static::$resolvedInstance[static::getFacadeAccessor()] = $instance;
-
-        if (isset(static::$app)) {
-            static::$app->instance(static::getFacadeAccessor(), $instance);
         }
     }
 
@@ -224,6 +210,19 @@ abstract class Facade
             throw new RuntimeException('A facade root has not been set.');
         }
 
-        return $instance->$method(...$args);
+        switch (count($args)) {
+            case 0:
+                return $instance->$method();
+            case 1:
+                return $instance->$method($args[0]);
+            case 2:
+                return $instance->$method($args[0], $args[1]);
+            case 3:
+                return $instance->$method($args[0], $args[1], $args[2]);
+            case 4:
+                return $instance->$method($args[0], $args[1], $args[2], $args[3]);
+            default:
+                return call_user_func_array([$instance, $method], $args);
+        }
     }
 }

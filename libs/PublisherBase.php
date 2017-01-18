@@ -107,7 +107,7 @@ class PublisherBase {
                 $publisher = new MobiPublisher();
             break;
             case 'wdocx':
-                $publisher = new WordPublisher(MPL_BASEPATH);
+                $publisher = new WordPublisher(wp_upload_dir()['path']);
             break;
             case 'markd':
                 $publisher = new MarkdownPublisher();

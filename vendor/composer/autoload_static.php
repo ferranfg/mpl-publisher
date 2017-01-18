@@ -22,6 +22,7 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         ),
         'Z' => 
         array (
+            'ZipMerge\\' => 9,
             'Zend\\Validator\\' => 15,
             'Zend\\Stdlib\\' => 12,
             'Zend\\Escaper\\' => 13,
@@ -75,6 +76,10 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         'grandt\\ResizeGif\\' => 
         array (
             0 => __DIR__ . '/..' . '/grandt/phpresizegif/src/ResizeGif',
+        ),
+        'ZipMerge\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/grandt/phpzipmerge/src/ZipMerge',
         ),
         'Zend\\Validator\\' => 
         array (

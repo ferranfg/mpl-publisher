@@ -3,6 +3,7 @@
 namespace MPL\Publisher;
 
 use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Shared\Html;
 
@@ -10,7 +11,7 @@ class WordPublisher implements IPublisher {
 
 	private $word;
 
-	private $basePath;
+	private $tempPath;
 
 	private $config;
 
@@ -18,13 +19,15 @@ class WordPublisher implements IPublisher {
 
 	private $coverFile;
 
-	public function __construct($basePath)
+	public function __construct($tempPath)
 	{
 		$this->word     = new PhpWord();
 		$this->config   = $this->word->getDocInfo();
-		$this->basePath = $basePath;
+		$this->tempPath = $tempPath;
 
-		$this->config->setCompany("MPL-Publisher by Ferran Figueredo, https://ferranfigueredo.com/mpl-publisher/");
+		Settings::setTempDir($this->tempPath);
+
+		$this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/');
 	}
 
 	public function setIdentifier($id)
@@ -55,7 +58,7 @@ class WordPublisher implements IPublisher {
 
 	public function setCoverImage($filename, $imageData)
 	{
-		$this->coverFile = $this->basePath . "/" . $filename;
+		$this->coverFile = $this->tempPath . '/' . $filename;
 
 		$image = file_put_contents($this->coverFile, $imageData);
 		$cover = $this->word->addSection();
@@ -102,7 +105,7 @@ class WordPublisher implements IPublisher {
 
 	public function send($filename)
 	{
-		$filepath = $this->basePath . '/' . $filename . '.docx';
+		$filepath = $this->tempPath . '/' . $filename . '.docx';
 
 		$toc = $this->word->addSection();
 		$toc->addTOC();
@@ -112,8 +115,8 @@ class WordPublisher implements IPublisher {
 
 		// http://phpword.readthedocs.org/en/latest/recipes.html#download-the-produced-file-automatically
 		// https://github.com/PHPOffice/PHPWord/issues/449
-		header("Content-Description: File Transfer");
-		header('Content-Disposition: attachment; filename="' . $filename . '.docx"');
+		header('Content-Description: File Transfer');
+		header('Content-Disposition: attachment; filename=' . $filename . '.docx');
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 		header('Content-Transfer-Encoding: binary');
 		header('Content-Length: ' . filesize($filepath));
