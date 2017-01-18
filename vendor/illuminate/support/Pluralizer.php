@@ -32,7 +32,6 @@ class Pluralizer
         'nutrition',
         'offspring',
         'plankton',
-        'pokemon',
         'police',
         'rice',
         'series',
@@ -51,7 +50,7 @@ class Pluralizer
      */
     public static function plural($value, $count = 2)
     {
-        if ((int) $count === 1 || static::uncountable($value)) {
+        if ($count === 1 || static::uncountable($value)) {
             return $value;
         }
 

@@ -970,117 +970,6 @@
         "homepage": "http://laravel.com"
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "v1.x-dev",
-        "version_normalized": "1.9999999.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "1115ffa06bad72d01735d91f51eb022db556e205"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/1115ffa06bad72d01735d91f51eb022db556e205",
-            "reference": "1115ffa06bad72d01735d91f51eb022db556e205",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2016-04-03 05:47:09",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
-        "name": "illuminate/support",
-        "version": "5.2.x-dev",
-        "version_normalized": "5.2.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/support.git",
-            "reference": "ba979ee49a0be1a694bebecc4e7b35df03cedda9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/ba979ee49a0be1a694bebecc4e7b35df03cedda9",
-            "reference": "ba979ee49a0be1a694bebecc4e7b35df03cedda9",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/inflector": "~1.0",
-            "ext-mbstring": "*",
-            "illuminate/contracts": "5.2.*",
-            "paragonie/random_compat": "~1.4",
-            "php": ">=5.5.9"
-        },
-        "replace": {
-            "tightenco/collect": "self.version"
-        },
-        "suggest": {
-            "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
-            "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
-            "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
-            "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
-        },
-        "time": "2016-12-03 18:52:25",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Illuminate\\Support\\": ""
-            },
-            "files": [
-                "helpers.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Illuminate Support package.",
-        "homepage": "http://laravel.com"
-    },
-    {
         "name": "symfony/finder",
         "version": "3.0.x-dev",
         "version_normalized": "3.0.9999999.9999999-dev",
@@ -1426,5 +1315,113 @@
             "word",
             "writer"
         ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "v2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2016-11-07 23:38:38",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "illuminate/support",
+        "version": "v5.2.21",
+        "version_normalized": "5.2.21.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/support.git",
+            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/inflector": "~1.0",
+            "ext-mbstring": "*",
+            "illuminate/contracts": "5.2.*",
+            "php": ">=5.5.9"
+        },
+        "suggest": {
+            "illuminate/filesystem": "Required to use the composer class (5.2.*).",
+            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
+            "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
+            "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
+            "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
+            "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
+        },
+        "time": "2016-02-22 20:29:02",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Support\\": ""
+            },
+            "files": [
+                "helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "The Illuminate Support package.",
+        "homepage": "http://laravel.com"
     }
 ]

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "88abc711eb8b5a2e24d76bae9399532d",
-    "content-hash": "2e9fe5e4aa3dfc402dde97b22cd6f1ee",
+    "hash": "81e01fbf92cffdb40189189d2e7e4853",
+    "content-hash": "dd03f81cc1944eeb62a5f6ae4a463e98",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -494,31 +494,28 @@
         },
         {
             "name": "illuminate/support",
-            "version": "5.2.x-dev",
+            "version": "v5.2.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "ba979ee49a0be1a694bebecc4e7b35df03cedda9"
+                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/ba979ee49a0be1a694bebecc4e7b35df03cedda9",
-                "reference": "ba979ee49a0be1a694bebecc4e7b35df03cedda9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
                 "illuminate/contracts": "5.2.*",
-                "paragonie/random_compat": "~1.4",
                 "php": ">=5.5.9"
-            },
-            "replace": {
-                "tightenco/collect": "self.version"
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (5.2.*).",
                 "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
+                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
                 "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
                 "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
                 "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
@@ -544,12 +541,12 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
+                    "email": "taylorotwell@gmail.com"
                 }
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-12-03 18:52:25"
+            "time": "2016-02-22 20:29:02"
         },
         {
             "name": "illuminate/view",
@@ -665,16 +662,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.x-dev",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "1115ffa06bad72d01735d91f51eb022db556e205"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/1115ffa06bad72d01735d91f51eb022db556e205",
-                "reference": "1115ffa06bad72d01735d91f51eb022db556e205",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -709,7 +706,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-04-03 05:47:09"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "pclzip/pclzip",

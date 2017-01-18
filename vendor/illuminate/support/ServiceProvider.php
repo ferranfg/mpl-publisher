@@ -104,7 +104,7 @@ abstract class ServiceProvider
      */
     protected function publishes(array $paths, $group = null)
     {
-        $class = static::class;
+        $class = get_class($this);
 
         if (! array_key_exists($class, static::$publishes)) {
             static::$publishes[$class] = [];

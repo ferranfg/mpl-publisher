@@ -7,9 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
 {
     public static $files = array (
-        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'f9f43f7522ae63283deb4b9d9aa8fb82' => __DIR__ . '/..' . '/wallabag/php-mobi/MOBIClass/MOBI.php',
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
     );
 
     public static $prefixLengthsPsr4 = array (

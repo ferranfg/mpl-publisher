@@ -12,7 +12,8 @@
 		"league/html-to-markdown": "4.4.0",
 		"symfony/yaml": "3.2.2",
 		"phpoffice/phpword": "dev-develop",
-		"wallabag/php-mobi": "1.0.1"
+		"wallabag/php-mobi": "1.0.1",
+		"paragonie/random_compat": "2.0.4"
 	},
 	"autoload": {
 		"psr-4": {
