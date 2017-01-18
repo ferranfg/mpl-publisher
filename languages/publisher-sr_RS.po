@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2016-06-04 19:28+0200\n"
-"PO-Revision-Date: 2016-06-04 19:28+0200\n"
+"POT-Creation-Date: 2017-01-18 15:22+0100\n"
+"PO-Revision-Date: 2017-01-18 15:22+0100\n"
 "Last-Translator: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language: sr_RS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -21,21 +21,21 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr ""
 
-#: ../libs/PublisherBase.php:33
+#: ../libs/PublisherBase.php:34
 #, php-format
-msgid "Last modification: %s"
-msgstr "Poslednja modifikacija: %s"
+msgid "Submitted on %s"
+msgstr ""
 
 #: ../mpl-publisher.php:23
 msgid "Book Chapters"
 msgstr "Poglavlja knjiga"
 
-#: ../mpl-publisher.php:24 ../views/index.php:216
+#: ../mpl-publisher.php:24 ../views/index.php:219
 msgid "Book Chapter"
 msgstr "Poglavlje knjige"
 
 #: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:228 ../views/index.php:268
+#: ../views/index.php:234 ../views/index.php:274
 msgid "Add New Book Chapter"
 msgstr "Dodajte novo poglavlje knjige"
 
@@ -66,27 +66,27 @@ msgstr ""
 "objavite vaše poglavlje i ono će biti vidljivo samo sa stranice Podešavanja "
 "za knjigu."
 
-#: ../views/index.php:6 ../views/index.php:16
+#: ../views/index.php:8 ../views/index.php:15
 msgid "General details"
 msgstr "Opšti detalji"
 
-#: ../views/index.php:7 ../views/index.php:17
+#: ../views/index.php:9 ../views/index.php:16
 msgid "Settings"
 msgstr "Podešavanja"
 
-#: ../views/index.php:8 ../views/index.php:18
+#: ../views/index.php:10 ../views/index.php:17
 msgid "Links"
 msgstr ""
 
-#: ../views/index.php:9 ../views/index.php:19
+#: ../views/index.php:11 ../views/index.php:18
 msgid "Appearance"
 msgstr "Pojavlivanje"
 
-#: ../views/index.php:32
+#: ../views/index.php:31
 msgid "Book details"
 msgstr "detalji o knjizi"
 
-#: ../views/index.php:33
+#: ../views/index.php:32
 msgid ""
 "Enter your book details, including title, description, and authors. We "
 "encourage you to complete as many fields as possible, as richer data could "
@@ -96,35 +96,35 @@ msgstr ""
 "podstičemo da dovršite što je više polja moguće, što je moguće bogatiji "
 "podaci mogu da pomognu čitaocima da otkriju vaše knjige."
 
-#: ../views/index.php:37
+#: ../views/index.php:36
 msgid "Identifier (ISBN)"
 msgstr "Identifikator (ISBN)"
 
-#: ../views/index.php:38
+#: ../views/index.php:37
 msgid "If your book doesn't have an ISBN, use a unique identifier"
 msgstr "Ukoliko vaša knjiga nema ISBN, koristite jedinstveni identifikator"
 
-#: ../views/index.php:44 ../views/index.php:45
+#: ../views/index.php:43 ../views/index.php:44
 msgid "Book Title"
 msgstr "Naslov knjige"
 
-#: ../views/index.php:49
+#: ../views/index.php:48
 msgid "Book Description"
 msgstr "Opis knjige"
 
-#: ../views/index.php:55 ../views/index.php:58
+#: ../views/index.php:54 ../views/index.php:57
 msgid "Book authors"
 msgstr "Autori knjige"
 
-#: ../views/index.php:56
+#: ../views/index.php:55
 msgid "Separate multiple authors with commas"
 msgstr "Odvojite višestruke autore zarezima"
 
-#: ../views/index.php:63
+#: ../views/index.php:62
 msgid "Metadata settings"
 msgstr "Podešavanja meta podataka"
 
-#: ../views/index.php:64
+#: ../views/index.php:63
 msgid ""
 "The more metadata you provide, the easier it will be for readers to discover "
 "your book."
@@ -132,47 +132,47 @@ msgstr ""
 "Što više meta podataka obezbedite, lakše će biti za čitaoce da otkriju vašu "
 "knjigu."
 
-#: ../views/index.php:68 ../views/index.php:71
+#: ../views/index.php:67 ../views/index.php:70
 msgid "Language"
 msgstr ""
 
-#: ../views/index.php:69
+#: ../views/index.php:68
 msgid "Use the RFC3066 Language codes, such as en, es, fr…"
 msgstr "Koristite RFC3066 jezičke kodove, kao što je en, es, fr..."
 
-#: ../views/index.php:76
+#: ../views/index.php:75
 msgid "Publication date"
 msgstr ""
 
-#: ../views/index.php:77
+#: ../views/index.php:76
 msgid "This information won't affect the book's availability"
 msgstr "Ova informacija neće uticati na dostupnost knjige"
 
-#: ../views/index.php:79
+#: ../views/index.php:78
 msgid "YYYY-MM-DD"
 msgstr "YYYY-MM-DD"
 
-#: ../views/index.php:83 ../views/index.php:85 ../views/index.php:87
+#: ../views/index.php:82 ../views/index.php:84 ../views/index.php:86
 msgid "Cover image"
 msgstr "Slika na naslovnoj strani"
 
-#: ../views/index.php:90
+#: ../views/index.php:89
 msgid "Upload Image"
 msgstr "Upload-ujte sliku"
 
-#: ../views/index.php:91
+#: ../views/index.php:90
 msgid "Recommended size is 625x1000"
 msgstr "Preporučena veličina 625X1000"
 
-#: ../views/index.php:95 ../views/index.php:96
+#: ../views/index.php:94 ../views/index.php:95
 msgid "Publisher Name"
 msgstr ""
 
-#: ../views/index.php:101 ../views/index.php:104
+#: ../views/index.php:100 ../views/index.php:103
 msgid "Copyright Information"
 msgstr ""
 
-#: ../views/index.php:102
+#: ../views/index.php:101
 msgid ""
 "Copyright information includes a statement about various property rights "
 "associated with the resource, including intellectual property rights"
@@ -180,124 +180,124 @@ msgstr ""
 "Informacije o autorskim pravima uključuju tvrdnju o različitim pravima "
 "svojine udružene sa izvorom, uključujući prava o intelektualnoj svojini"
 
-#: ../views/index.php:109
+#: ../views/index.php:108
 msgid "External links"
 msgstr ""
 
-#: ../views/index.php:110
+#: ../views/index.php:109
 msgid ""
 "Links will appear on your MPL-Download eBook widget extending your book's "
 "informations."
 msgstr ""
 
-#: ../views/index.php:110
+#: ../views/index.php:109
 msgid "Edit Widgets"
 msgstr ""
 
-#: ../views/index.php:113 ../views/index.php:114
+#: ../views/index.php:112 ../views/index.php:113
 msgid "Landing Page URL"
 msgstr ""
 
-#: ../views/index.php:118 ../views/index.php:119
+#: ../views/index.php:117 ../views/index.php:118
 msgid "Amazon URL"
 msgstr ""
 
-#: ../views/index.php:123 ../views/index.php:124
+#: ../views/index.php:122 ../views/index.php:123
 msgid "iBooks URL"
 msgstr ""
 
-#: ../views/index.php:130
+#: ../views/index.php:129
 msgid "Remove affiliate tracking from external links"
 msgstr ""
 
-#: ../views/index.php:130
+#: ../views/index.php:129
 msgid ""
 "Affiliate tracking won't affect your book prices and will help to track your "
 "sales from MPL-Publisher"
 msgstr ""
 
-#: ../views/index.php:136
+#: ../views/index.php:135
 msgid "Themes"
 msgstr "Teme"
 
-#: ../views/index.php:143
+#: ../views/index.php:142
 msgid "Default"
 msgstr "Podrazumevani"
 
-#: ../views/index.php:148
+#: ../views/index.php:147
 msgid "Custom Theme"
 msgstr ""
 
-#: ../views/index.php:149
+#: ../views/index.php:148
 msgid ""
 "You can publish your book with your custom CSS, overriding the default file "
 "included with our themes."
 msgstr ""
 
-#: ../views/index.php:159
+#: ../views/index.php:158
 msgid "Output format"
 msgstr "Format izlaza"
 
-#: ../views/index.php:167
+#: ../views/index.php:166
 msgid ""
-"Microsoft Word (docx) format is still under development and open to any "
-"issues you may have. Use the"
+"Microsoft Word (docx) and MOBI formats are still under development and open "
+"to any issues you may have. Use the"
 msgstr ""
 
-#: ../views/index.php:171 ../views/index.php:274
+#: ../views/index.php:170 ../views/index.php:280
 msgid "Publish"
 msgstr "Objavite"
 
-#: ../views/index.php:172 ../views/index.php:275
+#: ../views/index.php:171 ../views/index.php:281
 msgid "Save Information"
 msgstr "Sačuvajte informacije"
 
-#: ../views/index.php:181
+#: ../views/index.php:180
 msgid "Text"
 msgstr "Tekst"
 
-#: ../views/index.php:185
+#: ../views/index.php:184
+msgid "All statuses"
+msgstr ""
+
+#: ../views/index.php:191
 msgid "All categories"
 msgstr "Sve kategorije"
 
-#: ../views/index.php:192
-msgid "All authors"
-msgstr "Svi autori"
-
 #: ../views/index.php:199
-msgid "Filter"
-msgstr "Filter"
-
-#: ../views/index.php:203
 msgid "All tags"
 msgstr "Svi tagovi"
 
-#: ../views/index.php:211
+#: ../views/index.php:207
+msgid "All authors"
+msgstr "Svi autori"
+
+#: ../views/index.php:214
 msgid "All types"
 msgstr "Svi tipovi"
 
-#: ../views/index.php:213 ../views/index.php:242
+#: ../views/index.php:216 ../views/index.php:248
 msgid "Post"
 msgstr "Post"
 
-#: ../views/index.php:220
+#: ../views/index.php:223
+msgid "Filter content"
+msgstr ""
+
+#: ../views/index.php:226
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Prevucite svoje filtrirane rezultate da biste sortirali poglavlja vaše knjige"
 
-#: ../views/index.php:227 ../views/index.php:267
+#: ../views/index.php:233 ../views/index.php:273
 msgid "Contents"
 msgstr "Sadržaji"
 
-#: ../views/index.php:240
+#: ../views/index.php:246
 msgid "Chapter"
 msgstr "Poglavlje"
 
-#: ../views/index.php:246
-msgid "Private"
-msgstr "Privatno"
-
-#: ../views/index.php:250
+#: ../views/index.php:256
 msgid "Edit"
 msgstr "Izmenite"
 
@@ -324,6 +324,15 @@ msgstr ""
 #: ../views/widget.php:31
 msgid "Get your eBook!"
 msgstr ""
+
+#~ msgid "Last modification: %s"
+#~ msgstr "Poslednja modifikacija: %s"
+
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Private"
+#~ msgstr "Privatno"
 
 #~ msgid ""
 #~ "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2016-06-05 15:56+0200\n"
-"PO-Revision-Date: 2016-06-05 15:57+0200\n"
+"POT-Creation-Date: 2017-01-18 15:21+0100\n"
+"PO-Revision-Date: 2017-01-18 15:21+0100\n"
 "Last-Translator: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -21,21 +21,21 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Una caja con información sobre tu eBook"
 
-#: ../libs/PublisherBase.php:33
+#: ../libs/PublisherBase.php:34
 #, php-format
-msgid "Last modification: %s"
-msgstr "Última modificación: %s"
+msgid "Submitted on %s"
+msgstr "Enviado el %s"
 
 #: ../mpl-publisher.php:23
 msgid "Book Chapters"
 msgstr "Capítulos"
 
-#: ../mpl-publisher.php:24 ../views/index.php:221
+#: ../mpl-publisher.php:24 ../views/index.php:219
 msgid "Book Chapter"
 msgstr "Capítulo"
 
 #: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:235 ../views/index.php:275
+#: ../views/index.php:234 ../views/index.php:274
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
@@ -66,27 +66,27 @@ msgstr ""
 "publicar el capítulo y éste será visible únicamente desde la página de "
 "Detalles Generales"
 
-#: ../views/index.php:6 ../views/index.php:16
+#: ../views/index.php:8 ../views/index.php:15
 msgid "General details"
 msgstr "Detalles generales"
 
-#: ../views/index.php:7 ../views/index.php:17
+#: ../views/index.php:9 ../views/index.php:16
 msgid "Settings"
 msgstr "Detalles"
 
-#: ../views/index.php:8 ../views/index.php:18
+#: ../views/index.php:10 ../views/index.php:17
 msgid "Links"
 msgstr "Enlaces"
 
-#: ../views/index.php:9 ../views/index.php:19
+#: ../views/index.php:11 ../views/index.php:18
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: ../views/index.php:32
+#: ../views/index.php:31
 msgid "Book details"
 msgstr "Información del libro"
 
-#: ../views/index.php:33
+#: ../views/index.php:32
 msgid ""
 "Enter your book details, including title, description, and authors. We "
 "encourage you to complete as many fields as possible, as richer data could "
@@ -96,35 +96,35 @@ msgstr ""
 "autores. Completa tantos campos como te sea posible, ya que estos datos "
 "podrían ayudar a los lectores a descubrir tus libros."
 
-#: ../views/index.php:37
+#: ../views/index.php:36
 msgid "Identifier (ISBN)"
 msgstr "Identificador (ISBN)"
 
-#: ../views/index.php:38
+#: ../views/index.php:37
 msgid "If your book doesn't have an ISBN, use a unique identifier"
 msgstr "Si tu libro no dispone de ISBN, utiliza un identificador único."
 
-#: ../views/index.php:44 ../views/index.php:45
+#: ../views/index.php:43 ../views/index.php:44
 msgid "Book Title"
 msgstr "Título del libro"
 
-#: ../views/index.php:49
+#: ../views/index.php:48
 msgid "Book Description"
 msgstr "Descripción del libro"
 
-#: ../views/index.php:55 ../views/index.php:58
+#: ../views/index.php:54 ../views/index.php:57
 msgid "Book authors"
 msgstr "Autores del libro"
 
-#: ../views/index.php:56
+#: ../views/index.php:55
 msgid "Separate multiple authors with commas"
 msgstr "Separa múltiples autores con comas"
 
-#: ../views/index.php:63
+#: ../views/index.php:62
 msgid "Metadata settings"
 msgstr "Metadatos"
 
-#: ../views/index.php:64
+#: ../views/index.php:63
 msgid ""
 "The more metadata you provide, the easier it will be for readers to discover "
 "your book."
@@ -132,47 +132,47 @@ msgstr ""
 "Cuanta más información adicional añadas, más fácil será para tus lectores "
 "encontrarte."
 
-#: ../views/index.php:68 ../views/index.php:71
+#: ../views/index.php:67 ../views/index.php:70
 msgid "Language"
 msgstr "Idioma"
 
-#: ../views/index.php:69
+#: ../views/index.php:68
 msgid "Use the RFC3066 Language codes, such as en, es, fr…"
 msgstr "Utiliza los códigos de idioma RFC3066, como en, es, fr…"
 
-#: ../views/index.php:76
+#: ../views/index.php:75
 msgid "Publication date"
 msgstr "Fecha de publicación"
 
-#: ../views/index.php:77
+#: ../views/index.php:76
 msgid "This information won't affect the book's availability"
 msgstr "Esta información no afectará la disponibilidad del libro"
 
-#: ../views/index.php:79
+#: ../views/index.php:78
 msgid "YYYY-MM-DD"
 msgstr "AAAA-MM-DD"
 
-#: ../views/index.php:83 ../views/index.php:85 ../views/index.php:87
+#: ../views/index.php:82 ../views/index.php:84 ../views/index.php:86
 msgid "Cover image"
 msgstr "Imagen de portada (Opcional)"
 
-#: ../views/index.php:90
+#: ../views/index.php:89
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: ../views/index.php:91
+#: ../views/index.php:90
 msgid "Recommended size is 625x1000"
 msgstr "El tamaño recomendado es de 625x1000"
 
-#: ../views/index.php:95 ../views/index.php:96
+#: ../views/index.php:94 ../views/index.php:95
 msgid "Publisher Name"
 msgstr "Editor"
 
-#: ../views/index.php:101 ../views/index.php:104
+#: ../views/index.php:100 ../views/index.php:103
 msgid "Copyright Information"
 msgstr "Información de derechos"
 
-#: ../views/index.php:102
+#: ../views/index.php:101
 msgid ""
 "Copyright information includes a statement about various property rights "
 "associated with the resource, including intellectual property rights"
@@ -181,11 +181,11 @@ msgstr ""
 "diversos derechos de propiedad asociados a los recursos, incluidos los "
 "derechos de propiedad intelectual"
 
-#: ../views/index.php:109
+#: ../views/index.php:108
 msgid "External links"
 msgstr "Enlaces externos"
 
-#: ../views/index.php:110
+#: ../views/index.php:109
 msgid ""
 "Links will appear on your MPL-Download eBook widget extending your book's "
 "informations."
@@ -193,27 +193,27 @@ msgstr ""
 "Los enlaces aparecerán en tu widget MPL-Download eBook extendiendo la "
 "información sobre tu libro"
 
-#: ../views/index.php:110
+#: ../views/index.php:109
 msgid "Edit Widgets"
 msgstr "Editar Widgets"
 
-#: ../views/index.php:113 ../views/index.php:114
+#: ../views/index.php:112 ../views/index.php:113
 msgid "Landing Page URL"
 msgstr "URL Página Promocional"
 
-#: ../views/index.php:118 ../views/index.php:119
+#: ../views/index.php:117 ../views/index.php:118
 msgid "Amazon URL"
 msgstr "URL Amazon"
 
-#: ../views/index.php:123 ../views/index.php:124
+#: ../views/index.php:122 ../views/index.php:123
 msgid "iBooks URL"
 msgstr "URL iBooks"
 
-#: ../views/index.php:130
+#: ../views/index.php:129
 msgid "Remove affiliate tracking from external links"
 msgstr "Eliminar tracking de afiliación de los enlaces externos"
 
-#: ../views/index.php:130
+#: ../views/index.php:129
 msgid ""
 "Affiliate tracking won't affect your book prices and will help to track your "
 "sales from MPL-Publisher"
@@ -221,19 +221,19 @@ msgstr ""
 "El tracking de afiliación no afectará al precio de tu libro a ayudará al "
 "seguimiento de tus ventas desde MPL-Publisher"
 
-#: ../views/index.php:136
+#: ../views/index.php:135
 msgid "Themes"
 msgstr "Temas"
 
-#: ../views/index.php:143
+#: ../views/index.php:142
 msgid "Default"
 msgstr "Predeterminado"
 
-#: ../views/index.php:148
+#: ../views/index.php:147
 msgid "Custom Theme"
 msgstr "Tema personalizado"
 
-#: ../views/index.php:149
+#: ../views/index.php:148
 msgid ""
 "You can publish your book with your custom CSS, overriding the default file "
 "included with our themes."
@@ -241,71 +241,69 @@ msgstr ""
 "Puedes publicar tu libro con estilos personalizados, sobrescribiendo los "
 "estilos predeterminados de nuestros temas."
 
-#: ../views/index.php:159
+#: ../views/index.php:158
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: ../views/index.php:167
+#: ../views/index.php:166
 msgid ""
-"Microsoft Word (docx) format is still under development and open to any "
-"issues you may have. Use the"
+"Microsoft Word (docx) and MOBI formats are still under development and open "
+"to any issues you may have. Use the"
 msgstr ""
-"El formato Microsoft Word (docx) se encuentra todavía en desarrollo y "
-"abierto a cualquier comentario que puedas tener. Utiliza el"
 
-#: ../views/index.php:171 ../views/index.php:281
+#: ../views/index.php:170 ../views/index.php:280
 msgid "Publish"
 msgstr "Publicar"
 
-#: ../views/index.php:172 ../views/index.php:282
+#: ../views/index.php:171 ../views/index.php:281
 msgid "Save Information"
 msgstr "Guardar Información"
 
-#: ../views/index.php:181
+#: ../views/index.php:180
 msgid "Text"
 msgstr "Texto"
 
-#: ../views/index.php:186
+#: ../views/index.php:184
 msgid "All statuses"
 msgstr "Todos los estados"
 
-#: ../views/index.php:193
+#: ../views/index.php:191
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: ../views/index.php:201
+#: ../views/index.php:199
 msgid "All tags"
 msgstr "Todas las etiquetas"
 
-#: ../views/index.php:209
+#: ../views/index.php:207
 msgid "All authors"
 msgstr "Todos los autores"
 
-#: ../views/index.php:216
+#: ../views/index.php:214
 msgid "All types"
 msgstr "Todos los tipos"
 
-#: ../views/index.php:218 ../views/index.php:249
+#: ../views/index.php:216 ../views/index.php:248
 msgid "Post"
 msgstr "Entrada"
 
-#: ../views/index.php:225
-msgid "Filter"
-msgstr "Filtrar"
+#: ../views/index.php:223
+msgid "Filter content"
+msgstr "Filtrar contenido"
 
-#: ../views/index.php:227
+#: ../views/index.php:226
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: ../views/index.php:234 ../views/index.php:274
+#: ../views/index.php:233 ../views/index.php:273
 msgid "Contents"
 msgstr "Índice"
 
-#: ../views/index.php:247
+#: ../views/index.php:246
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: ../views/index.php:257
+#: ../views/index.php:256
 msgid "Edit"
 msgstr "Editar"
 
@@ -332,6 +330,19 @@ msgstr "Por"
 #: ../views/widget.php:31
 msgid "Get your eBook!"
 msgstr "Descarga tu eBook!"
+
+#~ msgid "Last modification: %s"
+#~ msgstr "Última modificación: %s"
+
+#~ msgid ""
+#~ "Microsoft Word (docx) format is still under development and open to any "
+#~ "issues you may have. Use the"
+#~ msgstr ""
+#~ "El formato Microsoft Word (docx) se encuentra todavía en desarrollo y "
+#~ "abierto a cualquier comentario que puedas tener. Utiliza el"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrar"
 
 #~ msgid "Private"
 #~ msgstr "Privado"
