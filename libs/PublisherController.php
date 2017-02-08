@@ -16,8 +16,11 @@ class PublisherController extends PublisherBase {
 
         $this->data['blog_categories'] = $this->getCategories();
         $this->data['blog_authors']    = $this->getAuthors();
-        $this->data['blog_tags']       = get_tags();
-        $this->data['blog_statuses']   = get_post_stati();
+        $this->data['blog_tags']       = $this->getTags();
+        $this->data['blog_statuses']   = $this->getStatuses();
+        $this->data['blog_years']      = $this->getYears();
+
+        $this->data['book_themes']     = $this->getThemes();
         
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);

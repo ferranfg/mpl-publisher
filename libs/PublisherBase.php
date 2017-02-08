@@ -40,6 +40,7 @@ class PublisherBase {
             if (!empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
             if (!empty($this->data['tag_selected']))    $this->filter['tag']         = implode(',', $this->data['tag_selected']);
             if (!empty($this->data['status_selected'])) $this->filter['post_status'] = implode(',', $this->data['status_selected']);
+            if (!empty($this->data['year_selected']))   $this->filter['year']        = implode(',', $this->data['year_selected']);
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'mpl_chapter');
@@ -76,8 +77,10 @@ class PublisherBase {
             'tag_selected'    => array(),
             'status_selected' => array(),
             'post_type'       => array(),
+            'year_selected'   => array(),
             'selected_posts'  => false,
-            'format'          => 'epub2'
+            'format'          => 'epub2',
+            'theme_id'        => 0
         );
     }
 
@@ -89,6 +92,31 @@ class PublisherBase {
     public function getAuthors()
     {
         return get_users('orderby=post_count&order=DESC&who=authors');
+    }
+
+    public function getTags()
+    {
+        return get_tags();
+    }
+
+    public function getStatuses()
+    {
+        return get_post_stati();
+    }
+
+    public function getYears()
+    {
+        $archive = wp_get_archives(array(
+            'type' => 'yearly',
+            'echo' => false,
+            'format' => 'custom',
+            'before' => '',
+            'after' => '%'
+        ));
+
+        $stripped = preg_replace('/\s+/', '', strip_tags($archive));
+
+        return array_filter(explode('%', $stripped));
     }
 
     public function generateBook($forceGenerate = false)
@@ -164,6 +192,16 @@ class PublisherBase {
     public function getStatus()
     {
         return get_option($this->statusOptionName);
+    }
+
+    public function getThemes()
+    {
+        return apply_filters('mpl_publisher_get_themes', array(
+            array(
+                'name'  => __('Default', 'publisher'),
+                'image' => MPL_BASEURL . 'assets/imgs/default.png'
+            )
+        ));
     }
 
 }

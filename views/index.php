@@ -9,6 +9,7 @@
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
+		<?php do_action('mpl_publisher_before_tabs'); ?>
 	</ul>
 
 	<select class="nav-tabs nav-tab-select visible-xs">
@@ -16,6 +17,7 @@
 		<option value="1"><?php _e("Settings", "publisher"); ?></option>
 		<option value="2"><?php _e("Links", "publisher"); ?></option>
 		<option value="3"><?php _e("Appearance", "publisher"); ?></option>
+		<?php do_action('mpl_publisher_before_tabs_responsive'); ?>
 	</select>
 
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
@@ -133,14 +135,20 @@
 
 					<div class="tab-pane clearfix" id="book-appearance">
 						<h3><?php _e("Themes", "publisher"); ?></h3>
+
 						<div class="clearfix">
 							<div class="theme-browser">
-								<div class="theme active">
-									<div class="theme-screenshot">
-										<img src="<?php echo MPL_BASEURL . 'assets/imgs/default.png'; ?>" />
+								<?php foreach ($book_themes as $id => $theme): ?>
+									<div class="theme active">
+										<div class="theme-screenshot blank"></div>
+										<div class="theme-screenshot">
+											<img src="<?php echo $theme['image']; ?>" />
+										</div>
+										<h2 class="theme-name" style="height: 48px">
+											<span><?php _e($theme['name'], "publisher"); ?></span>
+										</h2>
 									</div>
-									<h3 class="theme-name"><?php _e("Default", "publisher"); ?></h3>
-								</div>
+								<?php endforeach; ?>
 							</div>
 						</div>
 
@@ -218,6 +226,13 @@
 							<option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
 								<?php _e("Book Chapter", "publisher"); ?>
 							</option>
+						</select>
+						<select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
+							<?php foreach ($blog_years as $year): ?>
+								<option value="<?php echo $year; ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
+									<?php echo $year; ?>
+								</option>
+							<?php endforeach; ?>
 						</select>
 						<div class="chosen-container text-right">
 							<button type="submit" name="filter" id="post-query-submit" class="button"><?php _e('Filter content'); ?></button>
