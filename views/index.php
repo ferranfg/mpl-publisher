@@ -139,16 +139,14 @@
 						<div class="clearfix">
 							<div class="theme-browser">
 								<?php foreach ($book_themes as $id => $theme): ?>
-									<div class="theme active">
-										<div class="theme-screenshot blank"></div>
+									<div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>">
 										<div class="theme-screenshot">
 											<img src="<?php echo $theme['image']; ?>" />
 										</div>
-										<h2 class="theme-name" style="height: 48px">
-											<span><?php _e($theme['name'], "publisher"); ?></span>
-										</h2>
+										<h2 class="theme-name"><?php _e($theme['name'], "publisher"); ?></h2>
 									</div>
 								<?php endforeach; ?>
+								<input type="hidden" name="theme_id" value="<?php echo $theme_id; ?>">
 							</div>
 						</div>
 

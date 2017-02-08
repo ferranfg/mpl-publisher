@@ -36,6 +36,16 @@
 				$('#affiliate-form-field').slideUp();
 			}
 		});
+
+		var $themes = $('[data-toggle="book-theme"]');
+		// On click updates hidden field
+		$themes.on('click', function () {
+			$themes.removeClass('active');
+			// Mark current theme as selected
+			var $el = $(this).addClass('active');
+			// Updates hidden field
+			$('input[name="theme_id"]').val($el.data('theme-id'));
+		});
 	});
 
 })(window.jQuery);

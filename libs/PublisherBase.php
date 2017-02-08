@@ -72,6 +72,7 @@ class PublisherBase {
             'ibooksUrl'   => false,
             'affiliate'   => false,
             'customCss'   => '',
+            'theme_id'    => 0,
             'cat_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
@@ -79,8 +80,7 @@ class PublisherBase {
             'post_type'       => array(),
             'year_selected'   => array(),
             'selected_posts'  => false,
-            'format'          => 'epub2',
-            'theme_id'        => 0
+            'format'          => 'epub2'
         );
     }
 
