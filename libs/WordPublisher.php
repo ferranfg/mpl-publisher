@@ -66,7 +66,7 @@ class WordPublisher implements IPublisher {
 		$cover->addImage($this->coverFile);
 	}
 
-	public function setCustomCSS($content)
+	public function setTheme($theme, $customCSS)
 	{
 
 	}

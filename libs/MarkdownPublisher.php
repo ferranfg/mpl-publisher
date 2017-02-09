@@ -73,11 +73,19 @@ class MarkdownPublisher implements IPublisher {
 		);
 	}
 
-	public function setCustomCss($content)
+	public function setTheme($theme, $contentCSS)
 	{
-		if (trim($content) == '') return;
+		if (trim($contentCSS) == '')
+		{
+			$contentCSS = file_get_contents($theme['style']);
 
-		$this->zip->addFile($content, 'Resources/Templates/Style.css');
+			foreach ($theme['fonts'] as $name => $path) $this->zip->addFile(
+				file_get_contents($path),
+				"Resources/Fonts/{$name}.ttf"
+			);
+		}
+
+		$this->zip->addFile($contentCSS, 'Resources/Templates/Style.css');
 	}
 
 	public function setDescription($description)

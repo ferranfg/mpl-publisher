@@ -8,16 +8,12 @@ class EpubPublisher implements IPublisher {
 
     private $epub;
 
-    private $basePath;
-
-    public function __construct($basePath, $format = 'epub2')
+    public function __construct($format = 'epub2')
     {
         $version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 
         $this->epub = new EPub($version);
         $this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/");
-
-        $this->basePath = $basePath;
     }
 
     public function setIdentifier($id)
@@ -40,23 +36,23 @@ class EpubPublisher implements IPublisher {
         return $this->epub->setPublisher($publisherName, null);
     }
 
-    public function setCoverImage($fileName, $imageData = null)
+    public function setCoverImage($fileName, $imageData)
     {
         return $this->epub->setCoverImage($fileName, $imageData);
     }
 
-    public function setCustomCSS($contentCSS = "")
+    public function setTheme($theme, $contentCSS)
     {
         if (trim($contentCSS) == "")
         {
-            $contentCSS = file_get_contents($this->basePath . "/assets/css/book.css");
+            $contentCSS = file_get_contents($theme['style']);
 
-            $fontsPath  = $this->basePath . "/assets/fonts/";
-
-            $this->epub->addFile("Merriweather-Regular.ttf", "merriweather-regular", file_get_contents($fontsPath . "Merriweather-Regular.ttf"), "application/x-font-ttf");
-            $this->epub->addFile("Merriweather-Bold.ttf",    "merriweather-bold",    file_get_contents($fontsPath . "Merriweather-Bold.ttf"),    "application/x-font-ttf");
-            $this->epub->addFile("Merriweather-Italic.ttf",  "merriweather-italic",  file_get_contents($fontsPath . "Merriweather-Italic.ttf"),  "application/x-font-ttf");
-            $this->epub->addFile("Lato-Bold.ttf",            "lato-bold",            file_get_contents($fontsPath . "Lato-Bold.ttf"),            "application/x-font-ttf");
+            foreach ($theme['fonts'] as $name => $path) $this->epub->addFile(
+                "{$name}.ttf",
+                "{$name}",
+                file_get_contents($path),
+                "application/x-font-ttf"
+            );
         }
 
         $this->epub->addCSSFile("Style.css", "default", $contentCSS);

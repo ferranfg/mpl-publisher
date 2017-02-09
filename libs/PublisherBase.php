@@ -84,6 +84,21 @@ class PublisherBase {
         );
     }
 
+    public function getThemeDefaults()
+    {
+        return array(
+            'name'  => __('Default', 'publisher'),
+            'image' => MPL_BASEURL . 'assets/imgs/default.png',
+            'style' => MPL_BASEPATH . '/assets/css/book.css',
+            'fonts' => array(
+                'merriweather-regular' => MPL_BASEPATH . '/assets/fonts/merriweather-regular.ttf',
+                'merriweather-bold'    => MPL_BASEPATH . '/assets/fonts/merriweather-bold.ttf',
+                'merriweather-italic'  => MPL_BASEPATH . '/assets/fonts/merriweather-italic.ttf',
+                'lato-bold'            => MPL_BASEPATH . '/assets/fonts/lato-bold.ttf'
+            )
+        );
+    }
+
     public function getCategories()
     {
         return get_categories('orderby=post_count&order=DESC');
@@ -129,7 +144,7 @@ class PublisherBase {
         {
             case 'epub2':
             case 'epub3':
-                $publisher = new EpubPublisher(MPL_BASEPATH, $_POST['format']);
+                $publisher = new EpubPublisher($_POST['format']);
             break;
             case 'mobi':
                 $publisher = new MobiPublisher();
@@ -159,8 +174,13 @@ class PublisherBase {
             $publisher->setCoverImage('cover.jpg', file_get_contents(get_attached_file($imageId)));
         }
 
-        $publisher->setCustomCSS(sanitize_text_field($_POST['customCss']));
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
+        $publisher->setTheme(
+            $this->getTheme(
+                sanitize_text_field($_POST['theme_id'])
+            ),
+            sanitize_text_field($_POST['custom_css'])
+        );
 
         $query = new WP_Query(array(
             'post__in'       => isset($_POST['selected_posts']) ? $_POST['selected_posts'] : [0],
@@ -197,11 +217,17 @@ class PublisherBase {
     public function getThemes()
     {
         return apply_filters('mpl_publisher_get_themes', array(
-            array(
-                'name'  => __('Default', 'publisher'),
-                'image' => MPL_BASEURL . 'assets/imgs/default.png'
-            )
+            $this->getThemeDefaults()
         ));
+    }
+
+    public function getTheme($themeId)
+    {
+        $themes = $this->getThemes();
+
+        if ( count($themes) and array_key_exists($themeId, $themes)) return $themes[$themeId];
+
+        return $this->getThemeDefaults();
     }
 
 }
