@@ -4,7 +4,10 @@
 		<img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher
 	</h1>
 
+	<?php do_action('mpl_publisher_after_navbar'); ?>
+
 	<ul class="nav-tab-wrapper nav-tabs hidden-xs">
+		<?php do_action('mpl_publisher_after_tabs'); ?>
 		<li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
 		<li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
@@ -13,6 +16,7 @@
 	</ul>
 
 	<select class="nav-tabs nav-tab-select visible-xs">
+		<?php do_action('mpl_publisher_after_tabs_responsive'); ?>
 		<option value="0"><?php _e("General details", "publisher"); ?></option>
 		<option value="1"><?php _e("Settings", "publisher"); ?></option>
 		<option value="2"><?php _e("Links", "publisher"); ?></option>
@@ -20,15 +24,20 @@
 		<?php do_action('mpl_publisher_before_tabs_responsive'); ?>
 	</select>
 
+	<?php do_action('mpl_publisher_before_navbar'); ?>
+
 	<form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
 
-		<input type="hidden" name="action"  value="publish_ebook">
+		<input type="hidden" name="action" value="publish_ebook">
 
 		<?php echo $wp_nonce_field; ?>
 
 		<div id="col-left">
 			<div class="col-wrap">
 				<div class="form-wrap tab-content">
+
+					<?php do_action('mpl_publisher_before_tabs_content'); ?>
+
 					<div class="tab-pane clearfix active" id="book-details">
 						<h3><?php _e("Book details", "publisher"); ?></h3>
 						<p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
@@ -157,6 +166,8 @@
 							<textarea rows="12" name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
 						</div>
 					</div>
+
+					<?php do_action('mpl_publisher_after_tabs_content'); ?>
 
 					<hr />
 

@@ -203,6 +203,8 @@ class PublisherBase {
 
     public function saveStatus($data)
     {
+        do_action('mpl_publisher_save_status', $data);
+
         return update_option($this->statusOptionName, array(
             'time' => current_time('timestamp'),
             'data' => $data
@@ -211,7 +213,7 @@ class PublisherBase {
 
     public function getStatus()
     {
-        return get_option($this->statusOptionName);
+        return apply_filters('mpl_publisher_get_status', get_option($this->statusOptionName));
     }
 
     public function getThemes()
