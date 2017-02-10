@@ -138,6 +138,8 @@ class PublisherBase {
     {
         if ($forceGenerate) $_POST = $this->data;
 
+        $_POST = apply_filters('mpl_publisher_generate_book', $_POST);
+
         $publisher = false;
 
         switch ($_POST['format'])
@@ -203,11 +205,9 @@ class PublisherBase {
 
     public function saveStatus($data)
     {
-        do_action('mpl_publisher_save_status', $data);
-
         return update_option($this->statusOptionName, array(
             'time' => current_time('timestamp'),
-            'data' => $data
+            'data' => apply_filters('mpl_publisher_save_status', $data)
         ));
     }
 

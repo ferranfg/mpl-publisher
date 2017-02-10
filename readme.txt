@@ -88,6 +88,12 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+= 1.14.0 =
+- Allow filter posts by year (https://wordpress.org/support/topic/filter-posts-by-yearmonth/)
+- Allow multiple themes loading and selection
+- Added hooks for plugin extensions (pending documentation)
+- Fix Markdown generation to include CSS files and fonts
+
 = 1.13.0 =
 - Added MOBI as output format (Basic field, not ready to production)
 - Fix [Draft Book Posts?](https://wordpress.org/support/topic/draft-book-posts?replies=1) issue
