@@ -178,5 +178,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.12.0 =
-- Download your book as Microsoft Word (docx) format!
+= 1.14.0 =
+- Added MOBI as output format and multiple themes to be added!

@@ -50,8 +50,9 @@ class PublisherBase {
     {
         $viewFinder = new FileViewFinder(new Filesystem, array(MPL_BASEPATH));
         $factory    = new Factory(new EngineResolver, $viewFinder, new Dispatcher);
+        $files      = new Filesystem;
 
-        return new View($factory, new PhpEngine, $file, MPL_BASEPATH . "/views/" . $file, $data);
+        return new View($factory, new PhpEngine($files), $file, MPL_BASEPATH . "/views/" . $file, $data);
     }
 
     public function getBookDefaults()
