@@ -1,27 +1,27 @@
 {
-	"name": "ferranfg/mpl-publisher",
-	"description": "MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.",
-	"keywords": ["wordpress", "ebook", "epub"],
-	"license": "MIT",
-	"require": {
-		"php": ">=5.4.0",
-		"grandt/phpepub": "4.0.7.1",
-		"illuminate/view": "5.2.45",
-		"illuminate/events": "5.2.45",
-		"phpzip/phpzip": "2.0.8",
-		"league/html-to-markdown": "4.4.0",
-		"symfony/yaml": "3.2.2",
-		"phpoffice/phpword": "dev-develop",
-		"wallabag/php-mobi": "1.0.1",
-		"paragonie/random_compat": "2.0.4"
-	},
-	"autoload": {
-		"psr-4": {
-			"MPL\\Publisher\\": "libs"
-		}
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev"
+    "name": "ferranfg/mpl-publisher",
+    "description": "MPL - Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.",
+    "keywords": ["wordpress", "ebook", "epub"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "grandt/phpepub": "4.0.7.1",
+        "illuminate/view": "8.12.1",
+        "illuminate/events": "8.12.1",
+        "phpzip/phpzip": "2.0.8",
+        "league/html-to-markdown": "4.10.0",
+        "symfony/yaml": "5.1.8",
+        "phpoffice/phpword": "0.17.0",
+        "wallabag/php-mobi": "1.1.0",
+        "paragonie/random_compat": "2.0.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "MPL\\Publisher\\": "libs"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
 }
