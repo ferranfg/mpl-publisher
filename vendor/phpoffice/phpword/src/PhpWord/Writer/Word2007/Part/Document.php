@@ -10,8 +10,8 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
- * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2016 PHPWord contributors
+ * @see         https://github.com/PHPOffice/PHPWord
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -56,7 +56,6 @@ class Document extends AbstractPart
 
         $xmlWriter->startElement('w:body');
 
-
         if ($sectionCount > 0) {
             foreach ($sections as $section) {
                 $currentSection++;
@@ -83,7 +82,6 @@ class Document extends AbstractPart
      *
      * @param \PhpOffice\Common\XMLWriter $xmlWriter
      * @param \PhpOffice\PhpWord\Element\Section $section
-     * @return void
      */
     private function writeSection(XMLWriter $xmlWriter, Section $section)
     {
@@ -99,7 +97,6 @@ class Document extends AbstractPart
      *
      * @param \PhpOffice\Common\XMLWriter $xmlWriter
      * @param \PhpOffice\PhpWord\Element\Section $section
-     * @return void
      */
     private function writeSectionSettings(XMLWriter $xmlWriter, Section $section)
     {
@@ -126,6 +123,32 @@ class Document extends AbstractPart
         // Different first page
         if ($section->hasDifferentFirstPage()) {
             $xmlWriter->startElement('w:titlePg');
+            $xmlWriter->endElement();
+        }
+
+        // Footnote properties
+        if ($section->getFootnoteProperties() !== null) {
+            $xmlWriter->startElement('w:footnotePr');
+            if ($section->getFootnoteProperties()->getPos() != null) {
+                $xmlWriter->startElement('w:pos');
+                $xmlWriter->writeAttribute('w:val', $section->getFootnoteProperties()->getPos());
+                $xmlWriter->endElement();
+            }
+            if ($section->getFootnoteProperties()->getNumFmt() != null) {
+                $xmlWriter->startElement('w:numFmt');
+                $xmlWriter->writeAttribute('w:val', $section->getFootnoteProperties()->getNumFmt());
+                $xmlWriter->endElement();
+            }
+            if ($section->getFootnoteProperties()->getNumStart() != null) {
+                $xmlWriter->startElement('w:numStart');
+                $xmlWriter->writeAttribute('w:val', $section->getFootnoteProperties()->getNumStart());
+                $xmlWriter->endElement();
+            }
+            if ($section->getFootnoteProperties()->getNumRestart() != null) {
+                $xmlWriter->startElement('w:numRestart');
+                $xmlWriter->writeAttribute('w:val', $section->getFootnoteProperties()->getNumRestart());
+                $xmlWriter->endElement();
+            }
             $xmlWriter->endElement();
         }
 

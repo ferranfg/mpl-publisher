@@ -11,8 +11,6 @@ return array(
     'grandt\\ResizeGif\\Debug\\' => array($vendorDir . '/grandt/phpresizegif/src/ResizeGif/Debug'),
     'grandt\\ResizeGif\\' => array($vendorDir . '/grandt/phpresizegif/src/ResizeGif'),
     'ZipMerge\\' => array($vendorDir . '/grandt/phpzipmerge/src/ZipMerge'),
-    'Zend\\Validator\\' => array($vendorDir . '/zendframework/zend-validator/src'),
-    'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib/src'),
     'Zend\\Escaper\\' => array($vendorDir . '/zendframework/zend-escaper/src'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
@@ -30,4 +28,6 @@ return array(
     'Illuminate\\Events\\' => array($vendorDir . '/illuminate/events'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
+    'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Common/Inflector'),
 );

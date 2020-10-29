@@ -10,8 +10,8 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
- * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2016 PHPWord contributors
+ * @see         https://github.com/PHPOffice/PHPWord
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -26,8 +26,6 @@ class Font extends AbstractStyle
 {
     /**
      * Write style.
-     *
-     * @return void
      */
     public function write()
     {
@@ -76,6 +74,9 @@ class Font extends AbstractStyle
         // Small caps, all caps
         $xmlWriter->writeAttributeIf($style->isSmallCaps(), 'fo:font-variant', 'small-caps');
         $xmlWriter->writeAttributeIf($style->isAllCaps(), 'fo:text-transform', 'uppercase');
+
+        //Hidden text
+        $xmlWriter->writeAttributeIf($style->isHidden(), 'text:display', 'none');
 
         // Superscript/subscript
         $xmlWriter->writeAttributeIf($style->isSuperScript(), 'style:text-position', 'super');

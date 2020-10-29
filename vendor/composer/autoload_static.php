@@ -8,8 +8,8 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
 {
     public static $files = array (
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
-        'f9f43f7522ae63283deb4b9d9aa8fb82' => __DIR__ . '/..' . '/wallabag/php-mobi/MOBIClass/MOBI.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'f9f43f7522ae63283deb4b9d9aa8fb82' => __DIR__ . '/..' . '/wallabag/php-mobi/MOBIClass/MOBI.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -23,8 +23,6 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         'Z' => 
         array (
             'ZipMerge\\' => 9,
-            'Zend\\Validator\\' => 15,
-            'Zend\\Stdlib\\' => 12,
             'Zend\\Escaper\\' => 13,
         ),
         'S' => 
@@ -58,6 +56,11 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
+        'D' => 
+        array (
+            'Doctrine\\Inflector\\' => 19,
+            'Doctrine\\Common\\Inflector\\' => 26,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -80,14 +83,6 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         'ZipMerge\\' => 
         array (
             0 => __DIR__ . '/..' . '/grandt/phpzipmerge/src/ZipMerge',
-        ),
-        'Zend\\Validator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-validator/src',
-        ),
-        'Zend\\Stdlib\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
         ),
         'Zend\\Escaper\\' => 
         array (
@@ -157,15 +152,13 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'D' => 
+        'Doctrine\\Inflector\\' => 
         array (
-            'Doctrine\\Common\\Inflector\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
-            ),
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
     );
 
@@ -187,7 +180,6 @@ class ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit1fa2d328e6596ac3799bc0e042bbc29e::$classMap;
 
         }, null, ClassLoader::class);

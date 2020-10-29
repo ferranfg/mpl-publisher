@@ -1,136 +1,41 @@
 [
     {
-        "name": "grandt/phpresizegif",
-        "version": "1.0.3",
-        "version_normalized": "1.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Grandt/PHPResizeGif.git",
-            "reference": "775f6810fcda2fd1d8ca881d44a80c8d310ae7fe"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Grandt/PHPResizeGif/zipball/775f6810fcda2fd1d8ca881d44a80c8d310ae7fe",
-            "reference": "775f6810fcda2fd1d8ca881d44a80c8d310ae7fe",
-            "shasum": ""
-        },
-        "require": {
-            "grandt/binstring": ">=0.2.0",
-            "php": ">=5.3.0"
-        },
-        "time": "2015-05-10 10:52:24",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "grandt\\ResizeGif\\": "src/ResizeGif",
-                "grandt\\ResizeGif\\Files\\": "src/ResizeGif/Files",
-                "grandt\\ResizeGif\\Structure\\": "src/ResizeGif/Structure",
-                "grandt\\ResizeGif\\Debug\\": "src/ResizeGif/Debug"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "A. Grandt",
-                "email": "php@grandt.com",
-                "homepage": "http://grandt.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "GIF89a compliant Gif resizer, including transparency and optimized gifs with sub sized elements.",
-        "homepage": "https://github.com/Grandt/PHPResizeGif",
-        "keywords": [
-            "GIF89a",
-            "animated gif",
-            "gif",
-            "resize"
-        ]
-    },
-    {
-        "name": "psr/log",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-fig/log.git",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2016-10-10 12:19:37",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Psr\\Log\\": "Psr/Log/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "PHP-FIG",
-                "homepage": "http://www.php-fig.org/"
-            }
-        ],
-        "description": "Common interface for logging libraries",
-        "homepage": "https://github.com/php-fig/log",
-        "keywords": [
-            "log",
-            "psr",
-            "psr-3"
-        ]
-    },
-    {
         "name": "doctrine/inflector",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "1.4.x-dev",
+        "version_normalized": "1.4.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/inflector.git",
-            "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392"
+            "reference": "319a8e5f362b0d22d487194c0349eed59ee0ba37"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/inflector/zipball/803a2ed9fea02f9ca47cd45395089fe78769a392",
-            "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392",
+            "url": "https://api.github.com/repos/doctrine/inflector/zipball/319a8e5f362b0d22d487194c0349eed59ee0ba37",
+            "reference": "319a8e5f362b0d22d487194c0349eed59ee0ba37",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.2"
+            "php": "^7.2 || ^8.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "4.*"
+            "doctrine/coding-standard": "^7.0",
+            "phpstan/phpstan": "^0.11",
+            "phpstan/phpstan-phpunit": "^0.11",
+            "phpstan/phpstan-strict-rules": "^0.11",
+            "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
         },
-        "time": "2016-05-12 17:23:41",
+        "time": "2020-09-26T19:41:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.1.x-dev"
+                "dev-master": "2.0.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Inflector\\": "lib/"
+            "psr-4": {
+                "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector",
+                "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -138,6 +43,10 @@
             "MIT"
         ],
         "authors": [
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
             {
                 "name": "Roman Borschel",
                 "email": "roman@code-factory.org"
@@ -145,10 +54,6 @@
             {
                 "name": "Benjamin Eberlei",
                 "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
             },
             {
                 "name": "Jonathan Wage",
@@ -159,56 +64,33 @@
                 "email": "schmittjoh@gmail.com"
             }
         ],
-        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-        "homepage": "http://www.doctrine-project.org",
+        "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
+        "homepage": "https://www.doctrine-project.org/projects/inflector.html",
         "keywords": [
             "inflection",
-            "pluralize",
-            "singularize",
-            "string"
-        ]
-    },
-    {
-        "name": "grandt/relativepath",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Grandt/PHPRelativePath.git",
-            "reference": "19541133c24143b6295688472c54dd6ed15a5462"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Grandt/PHPRelativePath/zipball/19541133c24143b6295688472c54dd6ed15a5462",
-            "reference": "19541133c24143b6295688472c54dd6ed15a5462",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.0"
-        },
-        "time": "2015-05-14 08:18:23",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "RelativePath.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
+            "inflector",
+            "lowercase",
+            "manipulation",
+            "php",
+            "plural",
+            "singular",
+            "strings",
+            "uppercase",
+            "words"
         ],
-        "authors": [
+        "funding": [
             {
-                "name": "A. Grandt",
-                "email": "php@grandt.com",
-                "role": "Developer"
+                "url": "https://www.doctrine-project.org/sponsorship.html",
+                "type": "custom"
+            },
+            {
+                "url": "https://www.patreon.com/phpdoctrine",
+                "type": "patreon"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                "type": "tidelift"
             }
-        ],
-        "description": "A class for cleaning up/collapsing relative paths. Like real_path, but without the need for the path to exist on the filesystem.",
-        "homepage": "https://github.com/Grandt/PHPRelativePath",
-        "keywords": [
-            "file path"
         ]
     },
     {
@@ -229,7 +111,7 @@
         "require": {
             "php": ">=5.0"
         },
-        "time": "2015-08-13 06:14:41",
+        "time": "2015-08-13T06:14:41+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -277,7 +159,7 @@
             "php": ">=5.3.0",
             "phpzip/phpzip": "~2.0.7"
         },
-        "time": "2016-03-16 15:48:26",
+        "time": "2016-03-16T15:48:26+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -308,27 +190,34 @@
         ]
     },
     {
-        "name": "pclzip/pclzip",
-        "version": "2.8.2",
-        "version_normalized": "2.8.2.0",
+        "name": "grandt/phpresizegif",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ivanlanin/pclzip.git",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
+            "url": "https://github.com/Grandt/PHPResizeGif.git",
+            "reference": "775f6810fcda2fd1d8ca881d44a80c8d310ae7fe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
+            "url": "https://api.github.com/repos/Grandt/PHPResizeGif/zipball/775f6810fcda2fd1d8ca881d44a80c8d310ae7fe",
+            "reference": "775f6810fcda2fd1d8ca881d44a80c8d310ae7fe",
             "shasum": ""
         },
-        "time": "2014-06-05 11:42:24",
+        "require": {
+            "grandt/binstring": ">=0.2.0",
+            "php": ">=5.3.0"
+        },
+        "time": "2015-05-10T10:52:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "classmap": [
-                "pclzip.lib.php"
-            ]
+            "psr-4": {
+                "grandt\\ResizeGif\\": "src/ResizeGif",
+                "grandt\\ResizeGif\\Files\\": "src/ResizeGif/Files",
+                "grandt\\ResizeGif\\Structure\\": "src/ResizeGif/Structure",
+                "grandt\\ResizeGif\\Debug\\": "src/ResizeGif/Debug"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -336,290 +225,19 @@
         ],
         "authors": [
             {
-                "name": "Vincent Blavet"
+                "name": "A. Grandt",
+                "email": "php@grandt.com",
+                "homepage": "http://grandt.com",
+                "role": "Developer"
             }
         ],
-        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
-        "homepage": "http://www.phpconcept.net/pclzip",
+        "description": "GIF89a compliant Gif resizer, including transparency and optimized gifs with sub sized elements.",
+        "homepage": "https://github.com/Grandt/PHPResizeGif",
         "keywords": [
-            "php",
-            "zip"
-        ]
-    },
-    {
-        "name": "wallabag/php-mobi",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/wallabag/php-mobi.git",
-            "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/wallabag/php-mobi/zipball/1cd7d022fe6be838535d6bba917d19cc48dcf487",
-            "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "replace": {
-            "wallabag/phpmobi": "*"
-        },
-        "time": "2015-10-16 08:42:42",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "MOBIClass/MOBI.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Lœuillet",
-                "email": "nicolas@loeuillet.org",
-                "homepage": "http://www.cdetc.fr"
-            },
-            {
-                "name": "Sander Kromwijk",
-                "email": "s.kromwijk@gmail.co",
-                "role": "Original developer"
-            }
-        ],
-        "description": "A Mobipocket file (.mobi) creator in PHP.",
-        "homepage": "https://github.com/wallabag/phpMobi"
-    },
-    {
-        "name": "phpoffice/common",
-        "version": "v0.2.6",
-        "version_normalized": "0.2.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/PHPOffice/Common.git",
-            "reference": "c9be70c80637c28c728be78e66aad4878a34f8dd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/PHPOffice/Common/zipball/c9be70c80637c28c728be78e66aad4878a34f8dd",
-            "reference": "c9be70c80637c28c728be78e66aad4878a34f8dd",
-            "shasum": ""
-        },
-        "require": {
-            "pclzip/pclzip": "^2.8",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpdocumentor/phpdocumentor": "2.*",
-            "phploc/phploc": "2.*",
-            "phpmd/phpmd": "2.*",
-            "phpunit/phpunit": "3.7.*",
-            "sebastian/phpcpd": "2.*",
-            "squizlabs/php_codesniffer": "2.*"
-        },
-        "time": "2016-07-07 17:26:55",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PhpOffice\\Common\\": "src/Common/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL"
-        ],
-        "authors": [
-            {
-                "name": "Mark Baker"
-            },
-            {
-                "name": "Franck Lefevre",
-                "homepage": "http://rootslabs.net"
-            }
-        ],
-        "description": "PHPOffice Common",
-        "homepage": "http://phpoffice.github.io",
-        "keywords": [
-            "common",
-            "component",
-            "office",
-            "php"
-        ]
-    },
-    {
-        "name": "zendframework/zend-stdlib",
-        "version": "2.4.11",
-        "version_normalized": "2.4.11.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-stdlib.git",
-            "reference": "d8ecb629a72da9f91bd95c5af006384823560b42"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/d8ecb629a72da9f91bd95c5af006384823560b42",
-            "reference": "d8ecb629a72da9f91bd95c5af006384823560b42",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.23"
-        },
-        "require-dev": {
-            "fabpot/php-cs-fixer": "1.7.*",
-            "phpunit/phpunit": "~4.0",
-            "satooshi/php-coveralls": "dev-master",
-            "zendframework/zend-eventmanager": "self.version",
-            "zendframework/zend-filter": "self.version",
-            "zendframework/zend-serializer": "self.version",
-            "zendframework/zend-servicemanager": "self.version"
-        },
-        "suggest": {
-            "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
-            "zendframework/zend-filter": "To support naming strategy hydrator usage",
-            "zendframework/zend-serializer": "Zend\\Serializer component",
-            "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
-        },
-        "time": "2015-07-21 13:55:46",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev",
-                "dev-develop": "2.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Stdlib\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "homepage": "https://github.com/zendframework/zend-stdlib",
-        "keywords": [
-            "stdlib",
-            "zf2"
-        ]
-    },
-    {
-        "name": "zendframework/zend-validator",
-        "version": "2.4.11",
-        "version_normalized": "2.4.11.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-validator.git",
-            "reference": "81415511fe729e6de19a61936313cef43c80d337"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/81415511fe729e6de19a61936313cef43c80d337",
-            "reference": "81415511fe729e6de19a61936313cef43c80d337",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.23",
-            "zendframework/zend-stdlib": "~2.4.0"
-        },
-        "require-dev": {
-            "fabpot/php-cs-fixer": "1.7.*",
-            "phpunit/phpunit": "~4.0",
-            "satooshi/php-coveralls": "dev-master",
-            "zendframework/zend-config": "~2.4.0",
-            "zendframework/zend-db": "~2.4.0",
-            "zendframework/zend-filter": "~2.4.0",
-            "zendframework/zend-i18n": "~2.4.0",
-            "zendframework/zend-math": "~2.4.0",
-            "zendframework/zend-servicemanager": "~2.4.0",
-            "zendframework/zend-session": "~2.4.0",
-            "zendframework/zend-uri": "~2.4.0"
-        },
-        "suggest": {
-            "zendframework/zend-db": "Zend\\Db component",
-            "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
-            "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
-            "zendframework/zend-math": "Zend\\Math component",
-            "zendframework/zend-resources": "Translations of validator messages",
-            "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
-            "zendframework/zend-session": "Zend\\Session component",
-            "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
-        },
-        "time": "2015-09-08 21:04:17",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev",
-                "dev-develop": "2.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Validator\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "provides a set of commonly needed validators",
-        "homepage": "https://github.com/zendframework/zend-validator",
-        "keywords": [
-            "validator",
-            "zf2"
-        ]
-    },
-    {
-        "name": "zendframework/zend-escaper",
-        "version": "2.4.11",
-        "version_normalized": "2.4.11.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/zendframework/zend-escaper.git",
-            "reference": "13f468ff824f3c83018b90aff892a1b3201383a9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/13f468ff824f3c83018b90aff892a1b3201383a9",
-            "reference": "13f468ff824f3c83018b90aff892a1b3201383a9",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.23"
-        },
-        "require-dev": {
-            "fabpot/php-cs-fixer": "1.7.*",
-            "phpunit/phpunit": "~4.0",
-            "satooshi/php-coveralls": "dev-master"
-        },
-        "time": "2015-05-07 14:55:31",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev",
-                "dev-develop": "2.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Zend\\Escaper\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "homepage": "https://github.com/zendframework/zend-escaper",
-        "keywords": [
-            "escaper",
-            "zf2"
+            "GIF89a",
+            "animated gif",
+            "gif",
+            "resize"
         ]
     },
     {
@@ -628,7 +246,7 @@
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/Grandt/PHPZipMerge.git",
+            "url": "git@github.com:Grandt/PHPZipMerge.git",
             "reference": "0b1273d3c2dbfe244904158b1dbd65a663264fb9"
         },
         "dist": {
@@ -642,7 +260,7 @@
             "grandt/relativepath": ">=1.0.1",
             "php": ">=5.3.0"
         },
-        "time": "2015-08-18 13:49:33",
+        "time": "2015-08-18T13:49:33+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -681,6 +299,668 @@
         ]
     },
     {
+        "name": "grandt/relativepath",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Grandt/PHPRelativePath.git",
+            "reference": "19541133c24143b6295688472c54dd6ed15a5462"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Grandt/PHPRelativePath/zipball/19541133c24143b6295688472c54dd6ed15a5462",
+            "reference": "19541133c24143b6295688472c54dd6ed15a5462",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0"
+        },
+        "time": "2015-05-14T08:18:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "RelativePath.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "A. Grandt",
+                "email": "php@grandt.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A class for cleaning up/collapsing relative paths. Like real_path, but without the need for the path to exist on the filesystem.",
+        "homepage": "https://github.com/Grandt/PHPRelativePath",
+        "keywords": [
+            "file path"
+        ]
+    },
+    {
+        "name": "illuminate/container",
+        "version": "5.2.x-dev",
+        "version_normalized": "5.2.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/container.git",
+            "reference": "5139cebc8293b6820b91aef6f4b4e18bde33c9b2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/container/zipball/5139cebc8293b6820b91aef6f4b4e18bde33c9b2",
+            "reference": "5139cebc8293b6820b91aef6f4b4e18bde33c9b2",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/contracts": "5.2.*",
+            "php": ">=5.5.9"
+        },
+        "time": "2016-08-01T13:49:14+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Container\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Illuminate Container package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "illuminate/contracts",
+        "version": "5.2.x-dev",
+        "version_normalized": "5.2.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/contracts.git",
+            "reference": "66eb2baef315664740c9f87d6f3f5b7347a05da9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/66eb2baef315664740c9f87d6f3f5b7347a05da9",
+            "reference": "66eb2baef315664740c9f87d6f3f5b7347a05da9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2017-08-12T11:45:44+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Contracts\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Illuminate Contracts package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "illuminate/events",
+        "version": "v5.2.45",
+        "version_normalized": "5.2.45.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/events.git",
+            "reference": "9c16e022d9c4b9f875bf447f4384bd1b952c69b9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/events/zipball/9c16e022d9c4b9f875bf447f4384bd1b952c69b9",
+            "reference": "9c16e022d9c4b9f875bf447f4384bd1b952c69b9",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/container": "5.2.*",
+            "illuminate/contracts": "5.2.*",
+            "illuminate/support": "5.2.*",
+            "php": ">=5.5.9"
+        },
+        "time": "2016-08-01T13:49:14+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Events\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Illuminate Events package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "illuminate/filesystem",
+        "version": "5.2.x-dev",
+        "version_normalized": "5.2.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/filesystem.git",
+            "reference": "c41e104ebf13cb4901c773a1c30bbdf7ddf0949a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/c41e104ebf13cb4901c773a1c30bbdf7ddf0949a",
+            "reference": "c41e104ebf13cb4901c773a1c30bbdf7ddf0949a",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/contracts": "5.2.*",
+            "illuminate/support": "5.2.*",
+            "php": ">=5.5.9",
+            "symfony/finder": "2.8.*|3.0.*"
+        },
+        "suggest": {
+            "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
+            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
+            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
+        },
+        "time": "2016-12-03T18:52:25+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Filesystem\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Illuminate Filesystem package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "illuminate/support",
+        "version": "v5.2.21",
+        "version_normalized": "5.2.21.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/support.git",
+            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/inflector": "~1.0",
+            "ext-mbstring": "*",
+            "illuminate/contracts": "5.2.*",
+            "php": ">=5.5.9"
+        },
+        "suggest": {
+            "illuminate/filesystem": "Required to use the composer class (5.2.*).",
+            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
+            "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
+            "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
+            "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
+            "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
+        },
+        "time": "2016-02-22T20:29:02+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Support\\": ""
+            },
+            "files": [
+                "helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "The Illuminate Support package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "illuminate/view",
+        "version": "v5.2.45",
+        "version_normalized": "5.2.45.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/view.git",
+            "reference": "a3f9252c7d0dce3c2a9e70e40e9397f62850aa23"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/view/zipball/a3f9252c7d0dce3c2a9e70e40e9397f62850aa23",
+            "reference": "a3f9252c7d0dce3c2a9e70e40e9397f62850aa23",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/container": "5.2.*",
+            "illuminate/contracts": "5.2.*",
+            "illuminate/events": "5.2.*",
+            "illuminate/filesystem": "5.2.*",
+            "illuminate/support": "5.2.*",
+            "php": ">=5.5.9",
+            "symfony/debug": "2.8.*|3.0.*"
+        },
+        "time": "2016-08-01T13:49:14+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\View\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Illuminate View package.",
+        "homepage": "http://laravel.com"
+    },
+    {
+        "name": "league/html-to-markdown",
+        "version": "4.4.0",
+        "version_normalized": "4.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/html-to-markdown.git",
+            "reference": "13bd919efe19577084d73d14f8733244128eeaba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/13bd919efe19577084d73d14f8733244128eeaba",
+            "reference": "13bd919efe19577084d73d14f8733244128eeaba",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-xml": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mikehaertl/php-shellcommand": "~1.1.0",
+            "phpunit/phpunit": "4.*",
+            "scrutinizer/ocular": "~1.1"
+        },
+        "time": "2016-12-28T22:51:42+00:00",
+        "bin": [
+            "bin/html-to-markdown"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\HTMLToMarkdown\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Colin O'Dell",
+                "email": "colinodell@gmail.com",
+                "homepage": "http://www.colinodell.com",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Nick Cernis",
+                "email": "nick@cern.is",
+                "homepage": "http://modernnerd.net",
+                "role": "Original Author"
+            }
+        ],
+        "description": "An HTML-to-markdown conversion helper for PHP",
+        "homepage": "https://github.com/thephpleague/html-to-markdown",
+        "keywords": [
+            "html",
+            "markdown"
+        ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "v2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2016-11-07T23:38:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "pclzip/pclzip",
+        "version": "2.8.2",
+        "version_normalized": "2.8.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ivanlanin/pclzip.git",
+            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
+            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
+            "shasum": ""
+        },
+        "time": "2014-06-05T11:42:24+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "pclzip.lib.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Blavet"
+            }
+        ],
+        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
+        "homepage": "http://www.phpconcept.net/pclzip",
+        "keywords": [
+            "php",
+            "zip"
+        ]
+    },
+    {
+        "name": "phpoffice/common",
+        "version": "0.2.9",
+        "version_normalized": "0.2.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/Common.git",
+            "reference": "edb5d32b1e3400a35a5c91e2539ed6f6ce925e4d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/Common/zipball/edb5d32b1e3400a35a5c91e2539ed6f6ce925e4d",
+            "reference": "edb5d32b1e3400a35a5c91e2539ed6f6ce925e4d",
+            "shasum": ""
+        },
+        "require": {
+            "pclzip/pclzip": "^2.8",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "2.*",
+            "phploc/phploc": "2.*",
+            "phpmd/phpmd": "2.*",
+            "phpunit/phpunit": "^4.8.36 || ^7.0",
+            "sebastian/phpcpd": "2.*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2018-07-13T14:12:34+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpOffice\\Common\\": "src/Common/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://rootslabs.net"
+            }
+        ],
+        "description": "PHPOffice Common",
+        "homepage": "http://phpoffice.github.io",
+        "keywords": [
+            "common",
+            "component",
+            "office",
+            "php"
+        ]
+    },
+    {
+        "name": "phpoffice/phpword",
+        "version": "dev-develop",
+        "version_normalized": "dev-develop",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/PHPWord.git",
+            "reference": "ec1b3d35ee459f86466507a01f4167d99e6bb5ac"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/ec1b3d35ee459f86466507a01f4167d99e6bb5ac",
+            "reference": "ec1b3d35ee459f86466507a01f4167d99e6bb5ac",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "php": "^5.3.3 || ^7.0",
+            "phpoffice/common": "^0.2.9",
+            "zendframework/zend-escaper": "^2.2"
+        },
+        "require-dev": {
+            "dompdf/dompdf": "0.8.*",
+            "ext-gd": "*",
+            "ext-zip": "*",
+            "friendsofphp/php-cs-fixer": "^2.2",
+            "mpdf/mpdf": "5.7.4 || 6.* || 7.*",
+            "php-coveralls/php-coveralls": "1.1.0 || ^2.0",
+            "phploc/phploc": "2.* || 3.* || 4.*",
+            "phpmd/phpmd": "2.*",
+            "phpunit/phpunit": "^4.8.36 || ^7.0",
+            "squizlabs/php_codesniffer": "^2.9",
+            "tecnickcom/tcpdf": "6.*"
+        },
+        "suggest": {
+            "dompdf/dompdf": "Allows writing PDF",
+            "ext-gd2": "Allows adding images",
+            "ext-xmlwriter": "Allows writing OOXML and ODF",
+            "ext-xsl": "Allows applying XSL style sheet to headers, to main document part, and to footers of an OOXML template",
+            "ext-zip": "Allows writing OOXML and ODF"
+        },
+        "time": "2020-08-30T17:56:35+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.18-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpOffice\\PhpWord\\": "src/PhpWord"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Gabriel Bull",
+                "email": "me@gabrielbull.com",
+                "homepage": "http://gabrielbull.com/"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "https://rootslabs.net/blog/"
+            },
+            {
+                "name": "Ivan Lanin",
+                "homepage": "http://ivan.lanin.org"
+            },
+            {
+                "name": "Roman Syroeshko",
+                "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
+            },
+            {
+                "name": "Antoine de Troostembergh"
+            }
+        ],
+        "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
+        "homepage": "http://phpoffice.github.io",
+        "keywords": [
+            "ISO IEC 29500",
+            "OOXML",
+            "Office Open XML",
+            "OpenDocument",
+            "OpenXML",
+            "PhpOffice",
+            "PhpWord",
+            "Rich Text Format",
+            "WordprocessingML",
+            "doc",
+            "docx",
+            "html",
+            "odf",
+            "odt",
+            "office",
+            "pdf",
+            "php",
+            "reader",
+            "rtf",
+            "template",
+            "template processor",
+            "word",
+            "writer"
+        ]
+    },
+    {
         "name": "phpzip/phpzip",
         "version": "2.0.8",
         "version_normalized": "2.0.8.0",
@@ -701,7 +981,7 @@
             "grandt/relativepath": ">=1.0.2",
             "php": ">=5.3.0"
         },
-        "time": "2015-11-16 16:30:51",
+        "time": "2015-11-16T16:30:51+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -744,44 +1024,34 @@
         ]
     },
     {
-        "name": "league/html-to-markdown",
-        "version": "4.4.0",
-        "version_normalized": "4.4.0.0",
+        "name": "psr/log",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/thephpleague/html-to-markdown.git",
-            "reference": "13bd919efe19577084d73d14f8733244128eeaba"
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "dd738d0b4491f32725492cf345f6b501f5922fec"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/13bd919efe19577084d73d14f8733244128eeaba",
-            "reference": "13bd919efe19577084d73d14f8733244128eeaba",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/dd738d0b4491f32725492cf345f6b501f5922fec",
+            "reference": "dd738d0b4491f32725492cf345f6b501f5922fec",
             "shasum": ""
         },
         "require": {
-            "ext-dom": "*",
-            "ext-xml": "*",
-            "php": ">=5.3.3"
+            "php": ">=5.3.0"
         },
-        "require-dev": {
-            "mikehaertl/php-shellcommand": "~1.1.0",
-            "phpunit/phpunit": "4.*",
-            "scrutinizer/ocular": "~1.1"
-        },
-        "time": "2016-12-28 22:51:42",
-        "bin": [
-            "bin/html-to-markdown"
-        ],
+        "time": "2020-09-18T06:44:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "4.5-dev"
+                "dev-master": "1.1.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "League\\HTMLToMarkdown\\": "src/"
+                "Psr\\Log\\": "Psr/Log/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -790,81 +1060,17 @@
         ],
         "authors": [
             {
-                "name": "Colin O'Dell",
-                "email": "colinodell@gmail.com",
-                "homepage": "http://www.colinodell.com",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Nick Cernis",
-                "email": "nick@cern.is",
-                "homepage": "http://modernnerd.net",
-                "role": "Original Author"
+                "name": "PHP-FIG",
+                "homepage": "https://www.php-fig.org/"
             }
         ],
-        "description": "An HTML-to-markdown conversion helper for PHP",
-        "homepage": "https://github.com/thephpleague/html-to-markdown",
+        "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
         "keywords": [
-            "html",
-            "markdown"
+            "log",
+            "psr",
+            "psr-3"
         ]
-    },
-    {
-        "name": "symfony/yaml",
-        "version": "v3.2.2",
-        "version_normalized": "3.2.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/yaml.git",
-            "reference": "50eadbd7926e31842893c957eca362b21592a97d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
-            "reference": "50eadbd7926e31842893c957eca362b21592a97d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "symfony/console": "~2.8|~3.0"
-        },
-        "suggest": {
-            "symfony/console": "For validating YAML files using the lint command"
-        },
-        "time": "2017-01-03 13:51:32",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Yaml\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/debug",
@@ -892,7 +1098,7 @@
             "symfony/class-loader": "~2.8|~3.0",
             "symfony/http-kernel": "~2.8|~3.0"
         },
-        "time": "2016-07-30 07:22:48",
+        "time": "2016-07-30T07:22:48+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -926,50 +1132,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "illuminate/contracts",
-        "version": "5.2.x-dev",
-        "version_normalized": "5.2.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/contracts.git",
-            "reference": "22bde7b048a33c702d9737fc1446234fff9b1363"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/22bde7b048a33c702d9737fc1446234fff9b1363",
-            "reference": "22bde7b048a33c702d9737fc1446234fff9b1363",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2016-08-08 11:46:08",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Illuminate\\Contracts\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Illuminate Contracts package.",
-        "homepage": "http://laravel.com"
-    },
-    {
         "name": "symfony/finder",
         "version": "3.0.x-dev",
         "version_normalized": "3.0.9999999.9999999-dev",
@@ -987,7 +1149,7 @@
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2016-06-29 05:40:00",
+        "time": "2016-06-29T05:40:00+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1021,43 +1183,44 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "illuminate/filesystem",
-        "version": "5.2.x-dev",
-        "version_normalized": "5.2.9999999.9999999-dev",
+        "name": "symfony/yaml",
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/illuminate/filesystem.git",
-            "reference": "c41e104ebf13cb4901c773a1c30bbdf7ddf0949a"
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "50eadbd7926e31842893c957eca362b21592a97d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/filesystem/zipball/c41e104ebf13cb4901c773a1c30bbdf7ddf0949a",
-            "reference": "c41e104ebf13cb4901c773a1c30bbdf7ddf0949a",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
+            "reference": "50eadbd7926e31842893c957eca362b21592a97d",
             "shasum": ""
         },
         "require": {
-            "illuminate/contracts": "5.2.*",
-            "illuminate/support": "5.2.*",
-            "php": ">=5.5.9",
-            "symfony/finder": "2.8.*|3.0.*"
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "symfony/console": "~2.8|~3.0"
         },
         "suggest": {
-            "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
-            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
-            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
+            "symfony/console": "For validating YAML files using the lint command"
         },
-        "time": "2016-12-03 18:52:25",
+        "time": "2017-01-03T13:51:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.2-dev"
+                "dev-master": "3.2-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Illuminate\\Filesystem\\": ""
-            }
+                "Symfony\\Component\\Yaml\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -1065,363 +1228,111 @@
         ],
         "authors": [
             {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "The Illuminate Filesystem package.",
-        "homepage": "http://laravel.com"
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com"
     },
     {
-        "name": "illuminate/container",
-        "version": "5.2.x-dev",
-        "version_normalized": "5.2.9999999.9999999-dev",
+        "name": "wallabag/php-mobi",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/illuminate/container.git",
-            "reference": "5139cebc8293b6820b91aef6f4b4e18bde33c9b2"
+            "url": "https://github.com/wallabag/php-mobi.git",
+            "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/container/zipball/5139cebc8293b6820b91aef6f4b4e18bde33c9b2",
-            "reference": "5139cebc8293b6820b91aef6f4b4e18bde33c9b2",
+            "url": "https://api.github.com/repos/wallabag/php-mobi/zipball/1cd7d022fe6be838535d6bba917d19cc48dcf487",
+            "reference": "1cd7d022fe6be838535d6bba917d19cc48dcf487",
             "shasum": ""
         },
         "require": {
-            "illuminate/contracts": "5.2.*",
-            "php": ">=5.5.9"
+            "php": ">=5.3.0"
         },
-        "time": "2016-08-01 13:49:14",
+        "replace": {
+            "wallabag/phpmobi": "*"
+        },
+        "time": "2015-10-16T08:42:42+00:00",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.2-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Illuminate\\Container\\": ""
-            }
+            "files": [
+                "MOBIClass/MOBI.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "Apache-2.0"
         ],
         "authors": [
             {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Illuminate Container package.",
-        "homepage": "http://laravel.com"
-    },
-    {
-        "name": "illuminate/events",
-        "version": "v5.2.45",
-        "version_normalized": "5.2.45.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/events.git",
-            "reference": "9c16e022d9c4b9f875bf447f4384bd1b952c69b9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/events/zipball/9c16e022d9c4b9f875bf447f4384bd1b952c69b9",
-            "reference": "9c16e022d9c4b9f875bf447f4384bd1b952c69b9",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/container": "5.2.*",
-            "illuminate/contracts": "5.2.*",
-            "illuminate/support": "5.2.*",
-            "php": ">=5.5.9"
-        },
-        "time": "2016-08-01 13:49:14",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Illuminate\\Events\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
+                "name": "Nicolas Lœuillet",
+                "email": "nicolas@loeuillet.org",
+                "homepage": "http://www.cdetc.fr"
+            },
             {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
+                "name": "Sander Kromwijk",
+                "email": "s.kromwijk@gmail.co",
+                "role": "Original developer"
             }
         ],
-        "description": "The Illuminate Events package.",
-        "homepage": "http://laravel.com"
+        "description": "A Mobipocket file (.mobi) creator in PHP.",
+        "homepage": "https://github.com/wallabag/phpMobi"
     },
     {
-        "name": "illuminate/view",
-        "version": "v5.2.45",
-        "version_normalized": "5.2.45.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/view.git",
-            "reference": "a3f9252c7d0dce3c2a9e70e40e9397f62850aa23"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/view/zipball/a3f9252c7d0dce3c2a9e70e40e9397f62850aa23",
-            "reference": "a3f9252c7d0dce3c2a9e70e40e9397f62850aa23",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/container": "5.2.*",
-            "illuminate/contracts": "5.2.*",
-            "illuminate/events": "5.2.*",
-            "illuminate/filesystem": "5.2.*",
-            "illuminate/support": "5.2.*",
-            "php": ">=5.5.9",
-            "symfony/debug": "2.8.*|3.0.*"
-        },
-        "time": "2016-08-01 13:49:14",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Illuminate\\View\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Illuminate View package.",
-        "homepage": "http://laravel.com"
-    },
-    {
-        "name": "phpoffice/phpword",
+        "name": "zendframework/zend-escaper",
         "version": "dev-develop",
         "version_normalized": "dev-develop",
         "source": {
             "type": "git",
-            "url": "https://github.com/PHPOffice/PHPWord.git",
-            "reference": "6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3"
+            "url": "https://github.com/zendframework/zend-escaper.git",
+            "reference": "14166bbd4ef24a0099e2f9e411c574866a4b9fa1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3",
-            "reference": "6da9d8a0bf0363dac1a8a39ecf8b60db3d6814b3",
+            "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/14166bbd4ef24a0099e2f9e411c574866a4b9fa1",
+            "reference": "14166bbd4ef24a0099e2f9e411c574866a4b9fa1",
             "shasum": ""
         },
         "require": {
-            "ext-xml": "*",
-            "php": ">=5.3.3",
-            "phpoffice/common": "0.2.*",
-            "zendframework/zend-escaper": "2.4.*",
-            "zendframework/zend-stdlib": "2.4.*",
-            "zendframework/zend-validator": "2.4.*"
+            "php": "^5.6 || ^7.0"
         },
         "require-dev": {
-            "dompdf/dompdf": "0.6.*",
-            "mpdf/mpdf": "5.*",
-            "phpdocumentor/phpdocumentor": "2.*",
-            "phploc/phploc": "2.*",
-            "phpmd/phpmd": "2.*",
-            "phpunit/phpunit": "3.7.*",
-            "squizlabs/php_codesniffer": "1.*",
-            "tecnickcom/tcpdf": "6.*"
+            "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+            "zendframework/zend-coding-standard": "~1.0.0"
         },
-        "suggest": {
-            "dompdf/dompdf": "Allows writing PDF",
-            "ext-gd2": "Allows adding images",
-            "ext-xmlwriter": "Allows writing OOXML and ODF",
-            "ext-xsl": "Allows applying XSL style sheet to headers, to main document part, and to footers of an OOXML template",
-            "ext-zip": "Allows writing OOXML and ODF"
-        },
-        "time": "2016-12-13 15:56:57",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PhpOffice\\PhpWord\\": "src/PhpWord"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Mark Baker"
-            },
-            {
-                "name": "Franck Lefevre",
-                "homepage": "http://blog.rootslabs.net"
-            },
-            {
-                "name": "Gabriel Bull",
-                "email": "me@gabrielbull.com",
-                "homepage": "http://gabrielbull.com/"
-            },
-            {
-                "name": "Ivan Lanin",
-                "homepage": "http://ivan.lanin.org"
-            },
-            {
-                "name": "Roman Syroeshko",
-                "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
-            }
-        ],
-        "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
-        "homepage": "http://phpoffice.github.io",
-        "keywords": [
-            "ISO IEC 29500",
-            "OOXML",
-            "Office Open XML",
-            "OpenDocument",
-            "OpenXML",
-            "PhpOffice",
-            "PhpWord",
-            "Rich Text Format",
-            "WordprocessingML",
-            "doc",
-            "docx",
-            "html",
-            "odf",
-            "odt",
-            "office",
-            "pdf",
-            "php",
-            "reader",
-            "rtf",
-            "template",
-            "template processor",
-            "word",
-            "writer"
-        ]
-    },
-    {
-        "name": "paragonie/random_compat",
-        "version": "v2.0.4",
-        "version_normalized": "2.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
-            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2016-11-07 23:38:38",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
-        "name": "illuminate/support",
-        "version": "v5.2.21",
-        "version_normalized": "5.2.21.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/support.git",
-            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
-            "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/inflector": "~1.0",
-            "ext-mbstring": "*",
-            "illuminate/contracts": "5.2.*",
-            "php": ">=5.5.9"
-        },
-        "suggest": {
-            "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
-            "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
-            "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
-            "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
-            "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
-        },
-        "time": "2016-02-22 20:29:02",
+        "time": "2019-09-05T20:05:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.2-dev"
+                "dev-master": "2.6.x-dev",
+                "dev-develop": "2.7.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Illuminate\\Support\\": ""
-            },
-            "files": [
-                "helpers.php"
-            ]
+                "Zend\\Escaper\\": "src/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3-Clause"
         ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
-            }
+        "description": "Securely and safely escape HTML, HTML attributes, JavaScript, CSS, and URLs",
+        "keywords": [
+            "ZendFramework",
+            "escaper",
+            "zf"
         ],
-        "description": "The Illuminate Support package.",
-        "homepage": "http://laravel.com"
+        "abandoned": "laminas/laminas-escaper"
     }
 ]
