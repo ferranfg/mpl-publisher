@@ -32,7 +32,6 @@ class TextRun extends AbstractElement
     public function write()
     {
         $writer = new Container($this->parentWriter, $this->element);
-        $this->getStyles();
 
         $content = '';
         $content .= $this->writeOpening();

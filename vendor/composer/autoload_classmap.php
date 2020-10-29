@@ -6,14 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
     'RelativePath' => $vendorDir . '/grandt/relativepath/RelativePath.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UUID' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDException' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDStorage' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDStorageException' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDStorageStable' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
     'UUIDStorageVolatile' => $vendorDir . '/grandt/phpepub/src/lib.uuid.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'com\\grandt\\BinString' => $vendorDir . '/grandt/binstring/BinString.php',
     'com\\grandt\\BinStringStatic' => $vendorDir . '/grandt/binstring/BinStringStatic.php',
 );

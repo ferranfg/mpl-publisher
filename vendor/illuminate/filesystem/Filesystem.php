@@ -4,9 +4,14 @@ namespace Illuminate\Filesystem;
 
 use ErrorException;
 use FilesystemIterator;
-use Symfony\Component\Finder\Finder;
-use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Traits\Macroable;
+use RuntimeException;
+use SplFileObject;
+use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Mime\MimeTypes;
 
 class Filesystem
 {
@@ -24,6 +29,17 @@ class Filesystem
     }
 
     /**
+     * Determine if a file or directory is missing.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    public function missing($path)
+    {
+        return ! $this->exists($path);
+    }
+
+    /**
      * Get the contents of a file.
      *
      * @param  string  $path
@@ -38,7 +54,7 @@ class Filesystem
             return $lock ? $this->sharedGet($path) : file_get_contents($path);
         }
 
-        throw new FileNotFoundException("File does not exist at path {$path}");
+        throw new FileNotFoundException("File does not exist at path {$path}.");
     }
 
     /**
@@ -74,28 +90,86 @@ class Filesystem
      * Get the returned value of a file.
      *
      * @param  string  $path
+     * @param  array  $data
      * @return mixed
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function getRequire($path)
+    public function getRequire($path, array $data = [])
     {
         if ($this->isFile($path)) {
-            return require $path;
+            $__path = $path;
+            $__data = $data;
+
+            return (static function () use ($__path, $__data) {
+                extract($__data, EXTR_SKIP);
+
+                return require $__path;
+            })();
         }
 
-        throw new FileNotFoundException("File does not exist at path {$path}");
+        throw new FileNotFoundException("File does not exist at path {$path}.");
     }
 
     /**
      * Require the given file once.
      *
-     * @param  string  $file
+     * @param  string  $path
+     * @param  array  $data
      * @return mixed
      */
-    public function requireOnce($file)
+    public function requireOnce($path, array $data = [])
     {
-        require_once $file;
+        if ($this->isFile($path)) {
+            $__path = $path;
+            $__data = $data;
+
+            return (static function () use ($__path, $__data) {
+                extract($__data, EXTR_SKIP);
+
+                return require_once $__path;
+            })();
+        }
+
+        throw new FileNotFoundException("File does not exist at path {$path}.");
+    }
+
+    /**
+     * Get the contents of a file one line at a time.
+     *
+     * @param  string  $path
+     * @return \Illuminate\Support\LazyCollection
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function lines($path)
+    {
+        if (! $this->isFile($path)) {
+            throw new FileNotFoundException(
+                "File does not exist at path {$path}."
+            );
+        }
+
+        return LazyCollection::make(function () use ($path) {
+            $file = new SplFileObject($path);
+
+            $file->setFlags(SplFileObject::DROP_NEW_LINE);
+
+            while (! $file->eof()) {
+                yield $file->fgets();
+            }
+        });
+    }
+
+    /**
+     * Get the MD5 hash of the file at the given path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function hash($path)
+    {
+        return md5_file($path);
     }
 
     /**
@@ -104,11 +178,35 @@ class Filesystem
      * @param  string  $path
      * @param  string  $contents
      * @param  bool  $lock
-     * @return int
+     * @return int|bool
      */
     public function put($path, $contents, $lock = false)
     {
         return file_put_contents($path, $contents, $lock ? LOCK_EX : 0);
+    }
+
+    /**
+     * Write the contents of a file, replacing it atomically if it already exists.
+     *
+     * @param  string  $path
+     * @param  string  $content
+     * @return void
+     */
+    public function replace($path, $content)
+    {
+        // If the path already exists and is a symlink, get the real path...
+        clearstatcache(true, $path);
+
+        $path = realpath($path) ?: $path;
+
+        $tempPath = tempnam(dirname($path), basename($path));
+
+        // Fix permissions of tempPath because `tempnam()` creates it with permissions set to 0600...
+        chmod($tempPath, 0777 - umask());
+
+        file_put_contents($tempPath, $content);
+
+        rename($tempPath, $path);
     }
 
     /**
@@ -137,6 +235,22 @@ class Filesystem
     public function append($path, $data)
     {
         return file_put_contents($path, $data, FILE_APPEND);
+    }
+
+    /**
+     * Get or set UNIX mode of a file or directory.
+     *
+     * @param  string  $path
+     * @param  int|null  $mode
+     * @return mixed
+     */
+    public function chmod($path, $mode = null)
+    {
+        if ($mode) {
+            return chmod($path, $mode);
+        }
+
+        return substr(sprintf('%o', fileperms($path)), -4);
     }
 
     /**
@@ -189,6 +303,44 @@ class Filesystem
     }
 
     /**
+     * Create a symlink to the target file or directory. On Windows, a hard link is created if the target is a file.
+     *
+     * @param  string  $target
+     * @param  string  $link
+     * @return void
+     */
+    public function link($target, $link)
+    {
+        if (! windows_os()) {
+            return symlink($target, $link);
+        }
+
+        $mode = $this->isDirectory($target) ? 'J' : 'H';
+
+        exec("mklink /{$mode} ".escapeshellarg($link).' '.escapeshellarg($target));
+    }
+
+    /**
+     * Create a relative symlink to the target file or directory.
+     *
+     * @param  string  $target
+     * @param  string  $link
+     * @return void
+     */
+    public function relativeLink($target, $link)
+    {
+        if (! class_exists(SymfonyFilesystem::class)) {
+            throw new RuntimeException(
+                'To enable support for relative links, please install the symfony/filesystem package.'
+            );
+        }
+
+        $relativeTarget = (new SymfonyFilesystem)->makePathRelative($target, dirname($link));
+
+        $this->link($relativeTarget, $link);
+    }
+
+    /**
      * Extract the file name from a file path.
      *
      * @param  string  $path
@@ -230,6 +382,23 @@ class Filesystem
     public function extension($path)
     {
         return pathinfo($path, PATHINFO_EXTENSION);
+    }
+
+    /**
+     * Guess the file extension from the mime-type of a given file.
+     *
+     * @param  string  $path
+     * @return string|null
+     */
+    public function guessExtension($path)
+    {
+        if (! class_exists(MimeTypes::class)) {
+            throw new RuntimeException(
+                'To enable support for guessing extensions, please install the symfony/mime package.'
+            );
+        }
+
+        return (new MimeTypes)->getExtensions($this->mimeType($path))[0] ?? null;
     }
 
     /**
@@ -288,6 +457,17 @@ class Filesystem
     }
 
     /**
+     * Determine if the given path is readable.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    public function isReadable($path)
+    {
+        return is_readable($path);
+    }
+
+    /**
      * Determine if the given path is writable.
      *
      * @param  string  $path
@@ -313,7 +493,7 @@ class Filesystem
      * Find path names matching a given pattern.
      *
      * @param  string  $pattern
-     * @param  int     $flags
+     * @param  int  $flags
      * @return array
      */
     public function glob($pattern, $flags = 0)
@@ -325,22 +505,15 @@ class Filesystem
      * Get an array of all files in a directory.
      *
      * @param  string  $directory
-     * @return array
+     * @param  bool  $hidden
+     * @return \Symfony\Component\Finder\SplFileInfo[]
      */
-    public function files($directory)
+    public function files($directory, $hidden = false)
     {
-        $glob = glob($directory.'/*');
-
-        if ($glob === false) {
-            return [];
-        }
-
-        // To get the appropriate files, we'll simply glob the directory and filter
-        // out any "files" that are not truly files so we do not end up with any
-        // directories in our list, but only true files within the directory.
-        return array_filter($glob, function ($file) {
-            return filetype($file) == 'file';
-        });
+        return iterator_to_array(
+            Finder::create()->files()->ignoreDotFiles(! $hidden)->in($directory)->depth(0)->sortByName(),
+            false
+        );
     }
 
     /**
@@ -348,11 +521,14 @@ class Filesystem
      *
      * @param  string  $directory
      * @param  bool  $hidden
-     * @return array
+     * @return \Symfony\Component\Finder\SplFileInfo[]
      */
     public function allFiles($directory, $hidden = false)
     {
-        return iterator_to_array(Finder::create()->files()->ignoreDotFiles(! $hidden)->in($directory), false);
+        return iterator_to_array(
+            Finder::create()->files()->ignoreDotFiles(! $hidden)->in($directory)->sortByName(),
+            false
+        );
     }
 
     /**
@@ -365,7 +541,7 @@ class Filesystem
     {
         $directories = [];
 
-        foreach (Finder::create()->in($directory)->directories()->depth(0) as $dir) {
+        foreach (Finder::create()->in($directory)->directories()->depth(0)->sortByName() as $dir) {
             $directories[] = $dir->getPathname();
         }
 
@@ -373,12 +549,27 @@ class Filesystem
     }
 
     /**
+     * Ensure a directory exists.
+     *
+     * @param  string  $path
+     * @param  int  $mode
+     * @param  bool  $recursive
+     * @return void
+     */
+    public function ensureDirectoryExists($path, $mode = 0755, $recursive = true)
+    {
+        if (! $this->isDirectory($path)) {
+            $this->makeDirectory($path, $mode, $recursive);
+        }
+    }
+
+    /**
      * Create a directory.
      *
      * @param  string  $path
-     * @param  int     $mode
-     * @param  bool    $recursive
-     * @param  bool    $force
+     * @param  int  $mode
+     * @param  bool  $recursive
+     * @param  bool  $force
      * @return bool
      */
     public function makeDirectory($path, $mode = 0755, $recursive = false, $force = false)
@@ -400,10 +591,8 @@ class Filesystem
      */
     public function moveDirectory($from, $to, $overwrite = false)
     {
-        if ($overwrite && $this->isDirectory($to)) {
-            if (! $this->deleteDirectory($to)) {
-                return false;
-            }
+        if ($overwrite && $this->isDirectory($to) && ! $this->deleteDirectory($to)) {
+            return false;
         }
 
         return @rename($from, $to) === true;
@@ -414,7 +603,7 @@ class Filesystem
      *
      * @param  string  $directory
      * @param  string  $destination
-     * @param  int     $options
+     * @param  int|null  $options
      * @return bool
      */
     public function copyDirectory($directory, $destination, $options = null)
@@ -428,9 +617,7 @@ class Filesystem
         // If the destination directory does not actually exist, we will go ahead and
         // create it recursively, which just gets the destination prepared to copy
         // the files over. Once we make the directory we'll proceed the copying.
-        if (! $this->isDirectory($destination)) {
-            $this->makeDirectory($destination, 0777, true);
-        }
+        $this->ensureDirectoryExists($destination, 0777);
 
         $items = new FilesystemIterator($directory, $options);
 
@@ -467,7 +654,7 @@ class Filesystem
      * The directory itself may be optionally preserved.
      *
      * @param  string  $directory
-     * @param  bool    $preserve
+     * @param  bool  $preserve
      * @return bool
      */
     public function deleteDirectory($directory, $preserve = false)
@@ -499,6 +686,27 @@ class Filesystem
         }
 
         return true;
+    }
+
+    /**
+     * Remove all of the directories within a given directory.
+     *
+     * @param  string  $directory
+     * @return bool
+     */
+    public function deleteDirectories($directory)
+    {
+        $allDirectories = $this->directories($directory);
+
+        if (! empty($allDirectories)) {
+            foreach ($allDirectories as $directoryName) {
+                $this->deleteDirectory($directoryName);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     /**

@@ -198,7 +198,7 @@ class Paragraph extends Border
     {
         $key = Text::removeUnderscorePrefix($key);
         if ('indent' == $key || 'hanging' == $key) {
-            $value = $value * 720;  // 720 twips is 0.5 inch
+            $value = $value * 720;
         }
 
         return parent::setStyleValue($key, $value);

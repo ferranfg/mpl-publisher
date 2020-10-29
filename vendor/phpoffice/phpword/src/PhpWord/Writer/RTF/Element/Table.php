@@ -58,7 +58,6 @@ class Table extends AbstractElement
                 $content .= $this->writeRow($rows[$i]);
                 $content .= '\row' . PHP_EOL;
             }
-            $content .= '\pard' . PHP_EOL;
         }
 
         return $content;

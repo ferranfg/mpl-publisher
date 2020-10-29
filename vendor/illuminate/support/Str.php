@@ -2,8 +2,12 @@
 
 namespace Illuminate\Support;
 
-use RuntimeException;
 use Illuminate\Support\Traits\Macroable;
+use Ramsey\Uuid\Codec\TimestampFirstCombCodec;
+use Ramsey\Uuid\Generator\CombGenerator;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidFactory;
+use voku\helper\ASCII;
 
 class Str
 {
@@ -31,18 +35,124 @@ class Str
     protected static $studlyCache = [];
 
     /**
+     * The callback that should be used to generate UUIDs.
+     *
+     * @var callable
+     */
+    protected static $uuidFactory;
+
+    /**
+     * Get a new stringable object from the given string.
+     *
+     * @param  string  $string
+     * @return \Illuminate\Support\Stringable
+     */
+    public static function of($string)
+    {
+        return new Stringable($string);
+    }
+
+    /**
+     * Return the remainder of a string after the first occurrence of a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function after($subject, $search)
+    {
+        return $search === '' ? $subject : array_reverse(explode($search, $subject, 2))[0];
+    }
+
+    /**
+     * Return the remainder of a string after the last occurrence of a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function afterLast($subject, $search)
+    {
+        if ($search === '') {
+            return $subject;
+        }
+
+        $position = strrpos($subject, (string) $search);
+
+        if ($position === false) {
+            return $subject;
+        }
+
+        return substr($subject, $position + strlen($search));
+    }
+
+    /**
      * Transliterate a UTF-8 value to ASCII.
      *
      * @param  string  $value
+     * @param  string  $language
      * @return string
      */
-    public static function ascii($value)
+    public static function ascii($value, $language = 'en')
     {
-        foreach (static::charsArray() as $key => $val) {
-            $value = str_replace($val, $key, $value);
+        return ASCII::to_ascii((string) $value, $language);
+    }
+
+    /**
+     * Get the portion of a string before the first occurrence of a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function before($subject, $search)
+    {
+        if ($search === '') {
+            return $subject;
         }
 
-        return preg_replace('/[^\x20-\x7E]/u', '', $value);
+        $result = strstr($subject, (string) $search, true);
+
+        return $result === false ? $subject : $result;
+    }
+
+    /**
+     * Get the portion of a string before the last occurrence of a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function beforeLast($subject, $search)
+    {
+        if ($search === '') {
+            return $subject;
+        }
+
+        $pos = mb_strrpos($subject, $search);
+
+        if ($pos === false) {
+            return $subject;
+        }
+
+        return static::substr($subject, 0, $pos);
+    }
+
+    /**
+     * Get the portion of a string between two given values.
+     *
+     * @param  string  $subject
+     * @param  string  $from
+     * @param  string  $to
+     * @return string
+     */
+    public static function between($subject, $from, $to)
+    {
+        if ($from === '' || $to === '') {
+            return $subject;
+        }
+
+        return static::beforeLast(static::after($subject, $from), $to);
     }
 
     /**
@@ -64,13 +174,13 @@ class Str
      * Determine if a given string contains a given substring.
      *
      * @param  string  $haystack
-     * @param  string|array  $needles
+     * @param  string|string[]  $needles
      * @return bool
      */
     public static function contains($haystack, $needles)
     {
         foreach ((array) $needles as $needle) {
-            if ($needle != '' && strpos($haystack, $needle) !== false) {
+            if ($needle !== '' && mb_strpos($haystack, $needle) !== false) {
                 return true;
             }
         }
@@ -79,16 +189,34 @@ class Str
     }
 
     /**
+     * Determine if a given string contains all array values.
+     *
+     * @param  string  $haystack
+     * @param  string[]  $needles
+     * @return bool
+     */
+    public static function containsAll($haystack, array $needles)
+    {
+        foreach ($needles as $needle) {
+            if (! static::contains($haystack, $needle)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Determine if a given string ends with a given substring.
      *
      * @param  string  $haystack
-     * @param  string|array  $needles
+     * @param  string|string[]  $needles
      * @return bool
      */
     public static function endsWith($haystack, $needles)
     {
         foreach ((array) $needles as $needle) {
-            if ((string) $needle === substr($haystack, -strlen($needle))) {
+            if ($needle !== '' && substr($haystack, -strlen($needle)) === (string) $needle) {
                 return true;
             }
         }
@@ -107,40 +235,97 @@ class Str
     {
         $quoted = preg_quote($cap, '/');
 
-        return preg_replace('/(?:'.$quoted.')+$/', '', $value).$cap;
+        return preg_replace('/(?:'.$quoted.')+$/u', '', $value).$cap;
     }
 
     /**
      * Determine if a given string matches a given pattern.
      *
-     * @param  string  $pattern
+     * @param  string|array  $pattern
      * @param  string  $value
      * @return bool
      */
     public static function is($pattern, $value)
     {
-        if ($pattern == $value) {
-            return true;
+        $patterns = Arr::wrap($pattern);
+
+        if (empty($patterns)) {
+            return false;
         }
 
-        $pattern = preg_quote($pattern, '#');
+        foreach ($patterns as $pattern) {
+            // If the given value is an exact match we can of course return true right
+            // from the beginning. Otherwise, we will translate asterisks and do an
+            // actual pattern match against the two strings to see if they match.
+            if ($pattern == $value) {
+                return true;
+            }
 
-        // Asterisks are translated into zero-or-more regular expression wildcards
-        // to make it convenient to check if the strings starts with the given
-        // pattern such as "library/*", making any string check convenient.
-        $pattern = str_replace('\*', '.*', $pattern);
+            $pattern = preg_quote($pattern, '#');
 
-        return (bool) preg_match('#^'.$pattern.'\z#', $value);
+            // Asterisks are translated into zero-or-more regular expression wildcards
+            // to make it convenient to check if the strings starts with the given
+            // pattern such as "library/*", making any string check convenient.
+            $pattern = str_replace('\*', '.*', $pattern);
+
+            if (preg_match('#^'.$pattern.'\z#u', $value) === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine if a given string is 7 bit ASCII.
+     *
+     * @param  string  $value
+     * @return bool
+     */
+    public static function isAscii($value)
+    {
+        return ASCII::is_ascii((string) $value);
+    }
+
+    /**
+     * Determine if a given string is a valid UUID.
+     *
+     * @param  string  $value
+     * @return bool
+     */
+    public static function isUuid($value)
+    {
+        if (! is_string($value)) {
+            return false;
+        }
+
+        return preg_match('/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iD', $value) > 0;
+    }
+
+    /**
+     * Convert a string to kebab case.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function kebab($value)
+    {
+        return static::snake($value, '-');
     }
 
     /**
      * Return the length of the given string.
      *
      * @param  string  $value
+     * @param  string|null  $encoding
      * @return int
      */
-    public static function length($value)
+    public static function length($value, $encoding = null)
     {
+        if ($encoding) {
+            return mb_strlen($value, $encoding);
+        }
+
         return mb_strlen($value);
     }
 
@@ -148,7 +333,7 @@ class Str
      * Limit the number of characters in a string.
      *
      * @param  string  $value
-     * @param  int     $limit
+     * @param  int  $limit
      * @param  string  $end
      * @return string
      */
@@ -176,7 +361,7 @@ class Str
      * Limit the number of words in a string.
      *
      * @param  string  $value
-     * @param  int     $words
+     * @param  int  $words
      * @param  string  $end
      * @return string
      */
@@ -184,7 +369,7 @@ class Str
     {
         preg_match('/^\s*+(?:\S++\s*+){1,'.$words.'}/u', $value, $matches);
 
-        if (! isset($matches[0]) || strlen($value) === strlen($matches[0])) {
+        if (! isset($matches[0]) || static::length($value) === static::length($matches[0])) {
             return $value;
         }
 
@@ -192,13 +377,52 @@ class Str
     }
 
     /**
-     * Parse a Class@method style callback into class and method.
+     * Pad both sides of a string with another.
+     *
+     * @param  string  $value
+     * @param  int  $length
+     * @param  string  $pad
+     * @return string
+     */
+    public static function padBoth($value, $length, $pad = ' ')
+    {
+        return str_pad($value, $length, $pad, STR_PAD_BOTH);
+    }
+
+    /**
+     * Pad the left side of a string with another.
+     *
+     * @param  string  $value
+     * @param  int  $length
+     * @param  string  $pad
+     * @return string
+     */
+    public static function padLeft($value, $length, $pad = ' ')
+    {
+        return str_pad($value, $length, $pad, STR_PAD_LEFT);
+    }
+
+    /**
+     * Pad the right side of a string with another.
+     *
+     * @param  string  $value
+     * @param  int  $length
+     * @param  string  $pad
+     * @return string
+     */
+    public static function padRight($value, $length, $pad = ' ')
+    {
+        return str_pad($value, $length, $pad, STR_PAD_RIGHT);
+    }
+
+    /**
+     * Parse a Class[@]method style callback into class and method.
      *
      * @param  string  $callback
-     * @param  string  $default
-     * @return array
+     * @param  string|null  $default
+     * @return array<int, string|null>
      */
-    public static function parseCallback($callback, $default)
+    public static function parseCallback($callback, $default = null)
     {
         return static::contains($callback, '@') ? explode('@', $callback, 2) : [$callback, $default];
     }
@@ -207,7 +431,7 @@ class Str
      * Get the plural form of an English word.
      *
      * @param  string  $value
-     * @param  int     $count
+     * @param  int  $count
      * @return string
      */
     public static function plural($value, $count = 2)
@@ -216,12 +440,26 @@ class Str
     }
 
     /**
+     * Pluralize the last word of an English, studly caps case string.
+     *
+     * @param  string  $value
+     * @param  int  $count
+     * @return string
+     */
+    public static function pluralStudly($value, $count = 2)
+    {
+        $parts = preg_split('/(.)(?=[A-Z])/u', $value, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        $lastWord = array_pop($parts);
+
+        return implode('', $parts).self::plural($lastWord, $count);
+    }
+
+    /**
      * Generate a more truly "random" alpha-numeric string.
      *
      * @param  int  $length
      * @return string
-     *
-     * @throws \RuntimeException
      */
     public static function random($length = 16)
     {
@@ -239,63 +477,24 @@ class Str
     }
 
     /**
-     * Generate a more truly "random" bytes.
+     * Replace a given value in the string sequentially with an array.
      *
-     * @param  int  $length
+     * @param  string  $search
+     * @param  array<int|string, string>  $replace
+     * @param  string  $subject
      * @return string
-     *
-     * @throws \RuntimeException
-     *
-     * @deprecated since version 5.2. Use random_bytes instead.
      */
-    public static function randomBytes($length = 16)
+    public static function replaceArray($search, array $replace, $subject)
     {
-        if (PHP_MAJOR_VERSION >= 7 || defined('RANDOM_COMPAT_READ_BUFFER')) {
-            $bytes = random_bytes($length);
-        } elseif (function_exists('openssl_random_pseudo_bytes')) {
-            $bytes = openssl_random_pseudo_bytes($length, $strong);
+        $segments = explode($search, $subject);
 
-            if ($bytes === false || $strong === false) {
-                throw new RuntimeException('Unable to generate random string.');
-            }
-        } else {
-            throw new RuntimeException('OpenSSL extension or paragonie/random_compat is required for PHP 5 users.');
+        $result = array_shift($segments);
+
+        foreach ($segments as $segment) {
+            $result .= (array_shift($replace) ?? $search).$segment;
         }
 
-        return $bytes;
-    }
-
-    /**
-     * Generate a "random" alpha-numeric string.
-     *
-     * Should not be considered sufficient for cryptography, etc.
-     *
-     * @param  int  $length
-     * @return string
-     */
-    public static function quickRandom($length = 16)
-    {
-        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        return substr(str_shuffle(str_repeat($pool, $length)), 0, $length);
-    }
-
-    /**
-     * Compares two strings using a constant-time algorithm.
-     *
-     * Note: This method will leak length information.
-     *
-     * Note: Adapted from Symfony\Component\Security\Core\Util\StringUtils.
-     *
-     * @param  string  $knownString
-     * @param  string  $userInput
-     * @return bool
-     *
-     * @deprecated since version 5.2. Use hash_equals instead.
-     */
-    public static function equals($knownString, $userInput)
-    {
-        return hash_equals($knownString, $userInput);
+        return $result;
     }
 
     /**
@@ -308,6 +507,10 @@ class Str
      */
     public static function replaceFirst($search, $replace, $subject)
     {
+        if ($search == '') {
+            return $subject;
+        }
+
         $position = strpos($subject, $search);
 
         if ($position !== false) {
@@ -327,6 +530,10 @@ class Str
      */
     public static function replaceLast($search, $replace, $subject)
     {
+        if ($search === '') {
+            return $subject;
+        }
+
         $position = strrpos($subject, $search);
 
         if ($position !== false) {
@@ -334,6 +541,20 @@ class Str
         }
 
         return $subject;
+    }
+
+    /**
+     * Begin a string with a single instance of a given value.
+     *
+     * @param  string  $value
+     * @param  string  $prefix
+     * @return string
+     */
+    public static function start($value, $prefix)
+    {
+        $quoted = preg_quote($prefix, '/');
+
+        return $prefix.preg_replace('/^(?:'.$quoted.')+/u', '', $value);
     }
 
     /**
@@ -374,19 +595,23 @@ class Str
      *
      * @param  string  $title
      * @param  string  $separator
+     * @param  string|null  $language
      * @return string
      */
-    public static function slug($title, $separator = '-')
+    public static function slug($title, $separator = '-', $language = 'en')
     {
-        $title = static::ascii($title);
+        $title = $language ? static::ascii($title, $language) : $title;
 
         // Convert all dashes/underscores into separator
-        $flip = $separator == '-' ? '_' : '-';
+        $flip = $separator === '-' ? '_' : '-';
 
         $title = preg_replace('!['.preg_quote($flip).']+!u', $separator, $title);
 
+        // Replace @ with the word 'at'
+        $title = str_replace('@', $separator.'at'.$separator, $title);
+
         // Remove all characters that are not the separator, letters, numbers, or whitespace.
-        $title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', mb_strtolower($title));
+        $title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', static::lower($title));
 
         // Replace all separator characters and whitespace by a single separator
         $title = preg_replace('!['.preg_quote($separator).'\s]+!u', $separator, $title);
@@ -403,32 +628,32 @@ class Str
      */
     public static function snake($value, $delimiter = '_')
     {
-        $key = $value.$delimiter;
+        $key = $value;
 
-        if (isset(static::$snakeCache[$key])) {
-            return static::$snakeCache[$key];
+        if (isset(static::$snakeCache[$key][$delimiter])) {
+            return static::$snakeCache[$key][$delimiter];
         }
 
         if (! ctype_lower($value)) {
-            $value = preg_replace('/\s+/', '', $value);
+            $value = preg_replace('/\s+/u', '', ucwords($value));
 
-            $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
+            $value = static::lower(preg_replace('/(.)(?=[A-Z])/u', '$1'.$delimiter, $value));
         }
 
-        return static::$snakeCache[$key] = $value;
+        return static::$snakeCache[$key][$delimiter] = $value;
     }
 
     /**
      * Determine if a given string starts with a given substring.
      *
      * @param  string  $haystack
-     * @param  string|array  $needles
+     * @param  string|string[]  $needles
      * @return bool
      */
     public static function startsWith($haystack, $needles)
     {
         foreach ((array) $needles as $needle) {
-            if ($needle != '' && strpos($haystack, $needle) === 0) {
+            if ((string) $needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0) {
                 return true;
             }
         }
@@ -469,6 +694,24 @@ class Str
     }
 
     /**
+     * Returns the number of substring occurrences.
+     *
+     * @param  string  $haystack
+     * @param  string  $needle
+     * @param  int  $offset
+     * @param  int|null  $length
+     * @return int
+     */
+    public static function substrCount($haystack, $needle, $offset = 0, $length = null)
+    {
+        if (! is_null($length)) {
+            return substr_count($haystack, $needle, $offset, $length);
+        } else {
+            return substr_count($haystack, $needle, $offset);
+        }
+    }
+
+    /**
      * Make a string's first character uppercase.
      *
      * @param  string  $string
@@ -480,136 +723,60 @@ class Str
     }
 
     /**
-     * Returns the replacements for the ascii method.
+     * Generate a UUID (version 4).
      *
-     * Note: Adapted from Stringy\Stringy.
-     *
-     * @see https://github.com/danielstjules/Stringy/blob/2.2.0/LICENSE.txt
-     *
-     * @return array
+     * @return \Ramsey\Uuid\UuidInterface
      */
-    protected static function charsArray()
+    public static function uuid()
     {
-        static $charsArray;
+        return static::$uuidFactory
+                    ? call_user_func(static::$uuidFactory)
+                    : Uuid::uuid4();
+    }
 
-        if (isset($charsArray)) {
-            return $charsArray;
+    /**
+     * Generate a time-ordered UUID (version 4).
+     *
+     * @return \Ramsey\Uuid\UuidInterface
+     */
+    public static function orderedUuid()
+    {
+        if (static::$uuidFactory) {
+            return call_user_func(static::$uuidFactory);
         }
 
-        return $charsArray = [
-            '0'    => ['°', '₀'],
-            '1'    => ['¹', '₁'],
-            '2'    => ['²', '₂'],
-            '3'    => ['³', '₃'],
-            '4'    => ['⁴', '₄'],
-            '5'    => ['⁵', '₅'],
-            '6'    => ['⁶', '₆'],
-            '7'    => ['⁷', '₇'],
-            '8'    => ['⁸', '₈'],
-            '9'    => ['⁹', '₉'],
-            'a'    => ['à', 'á', 'ả', 'ã', 'ạ', 'ă', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ', 'â', 'ấ', 'ầ', 'ẩ', 'ẫ', 'ậ', 'ā', 'ą', 'å', 'α', 'ά', 'ἀ', 'ἁ', 'ἂ', 'ἃ', 'ἄ', 'ἅ', 'ἆ', 'ἇ', 'ᾀ', 'ᾁ', 'ᾂ', 'ᾃ', 'ᾄ', 'ᾅ', 'ᾆ', 'ᾇ', 'ὰ', 'ά', 'ᾰ', 'ᾱ', 'ᾲ', 'ᾳ', 'ᾴ', 'ᾶ', 'ᾷ', 'а', 'أ', 'အ', 'ာ', 'ါ', 'ǻ', 'ǎ', 'ª', 'ა', 'अ'],
-            'b'    => ['б', 'β', 'Ъ', 'Ь', 'ب', 'ဗ', 'ბ'],
-            'c'    => ['ç', 'ć', 'č', 'ĉ', 'ċ'],
-            'd'    => ['ď', 'ð', 'đ', 'ƌ', 'ȡ', 'ɖ', 'ɗ', 'ᵭ', 'ᶁ', 'ᶑ', 'д', 'δ', 'د', 'ض', 'ဍ', 'ဒ', 'დ'],
-            'e'    => ['é', 'è', 'ẻ', 'ẽ', 'ẹ', 'ê', 'ế', 'ề', 'ể', 'ễ', 'ệ', 'ë', 'ē', 'ę', 'ě', 'ĕ', 'ė', 'ε', 'έ', 'ἐ', 'ἑ', 'ἒ', 'ἓ', 'ἔ', 'ἕ', 'ὲ', 'έ', 'е', 'ё', 'э', 'є', 'ə', 'ဧ', 'ေ', 'ဲ', 'ე', 'ए'],
-            'f'    => ['ф', 'φ', 'ف', 'ƒ', 'ფ'],
-            'g'    => ['ĝ', 'ğ', 'ġ', 'ģ', 'г', 'ґ', 'γ', 'ج', 'ဂ', 'გ'],
-            'h'    => ['ĥ', 'ħ', 'η', 'ή', 'ح', 'ه', 'ဟ', 'ှ', 'ჰ'],
-            'i'    => ['í', 'ì', 'ỉ', 'ĩ', 'ị', 'î', 'ï', 'ī', 'ĭ', 'į', 'ı', 'ι', 'ί', 'ϊ', 'ΐ', 'ἰ', 'ἱ', 'ἲ', 'ἳ', 'ἴ', 'ἵ', 'ἶ', 'ἷ', 'ὶ', 'ί', 'ῐ', 'ῑ', 'ῒ', 'ΐ', 'ῖ', 'ῗ', 'і', 'ї', 'и', 'ဣ', 'ိ', 'ီ', 'ည်', 'ǐ', 'ი', 'इ'],
-            'j'    => ['ĵ', 'ј', 'Ј', 'ჯ'],
-            'k'    => ['ķ', 'ĸ', 'к', 'κ', 'Ķ', 'ق', 'ك', 'က', 'კ', 'ქ'],
-            'l'    => ['ł', 'ľ', 'ĺ', 'ļ', 'ŀ', 'л', 'λ', 'ل', 'လ', 'ლ'],
-            'm'    => ['м', 'μ', 'م', 'မ', 'მ'],
-            'n'    => ['ñ', 'ń', 'ň', 'ņ', 'ŉ', 'ŋ', 'ν', 'н', 'ن', 'န', 'ნ'],
-            'o'    => ['ó', 'ò', 'ỏ', 'õ', 'ọ', 'ô', 'ố', 'ồ', 'ổ', 'ỗ', 'ộ', 'ơ', 'ớ', 'ờ', 'ở', 'ỡ', 'ợ', 'ø', 'ō', 'ő', 'ŏ', 'ο', 'ὀ', 'ὁ', 'ὂ', 'ὃ', 'ὄ', 'ὅ', 'ὸ', 'ό', 'о', 'و', 'θ', 'ို', 'ǒ', 'ǿ', 'º', 'ო', 'ओ'],
-            'p'    => ['п', 'π', 'ပ', 'პ'],
-            'q'    => ['ყ'],
-            'r'    => ['ŕ', 'ř', 'ŗ', 'р', 'ρ', 'ر', 'რ'],
-            's'    => ['ś', 'š', 'ş', 'с', 'σ', 'ș', 'ς', 'س', 'ص', 'စ', 'ſ', 'ს'],
-            't'    => ['ť', 'ţ', 'т', 'τ', 'ț', 'ت', 'ط', 'ဋ', 'တ', 'ŧ', 'თ', 'ტ'],
-            'u'    => ['ú', 'ù', 'ủ', 'ũ', 'ụ', 'ư', 'ứ', 'ừ', 'ử', 'ữ', 'ự', 'û', 'ū', 'ů', 'ű', 'ŭ', 'ų', 'µ', 'у', 'ဉ', 'ု', 'ူ', 'ǔ', 'ǖ', 'ǘ', 'ǚ', 'ǜ', 'უ', 'उ'],
-            'v'    => ['в', 'ვ', 'ϐ'],
-            'w'    => ['ŵ', 'ω', 'ώ', 'ဝ', 'ွ'],
-            'x'    => ['χ', 'ξ'],
-            'y'    => ['ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ', 'ÿ', 'ŷ', 'й', 'ы', 'υ', 'ϋ', 'ύ', 'ΰ', 'ي', 'ယ'],
-            'z'    => ['ź', 'ž', 'ż', 'з', 'ζ', 'ز', 'ဇ', 'ზ'],
-            'aa'   => ['ع', 'आ'],
-            'ae'   => ['ä', 'æ', 'ǽ'],
-            'ai'   => ['ऐ'],
-            'at'   => ['@'],
-            'ch'   => ['ч', 'ჩ', 'ჭ'],
-            'dj'   => ['ђ', 'đ'],
-            'dz'   => ['џ', 'ძ'],
-            'ei'   => ['ऍ'],
-            'gh'   => ['غ', 'ღ'],
-            'ii'   => ['ई'],
-            'ij'   => ['ĳ'],
-            'kh'   => ['х', 'خ', 'ხ'],
-            'lj'   => ['љ'],
-            'nj'   => ['њ'],
-            'oe'   => ['ö', 'œ'],
-            'oi'   => ['ऑ'],
-            'oii'  => ['ऒ'],
-            'ps'   => ['ψ'],
-            'sh'   => ['ш', 'შ'],
-            'shch' => ['щ'],
-            'ss'   => ['ß'],
-            'sx'   => ['ŝ'],
-            'th'   => ['þ', 'ϑ', 'ث', 'ذ', 'ظ'],
-            'ts'   => ['ц', 'ც', 'წ'],
-            'ue'   => ['ü'],
-            'uu'   => ['ऊ'],
-            'ya'   => ['я'],
-            'yu'   => ['ю'],
-            'zh'   => ['ж', 'ჟ'],
-            '(c)'  => ['©'],
-            'A'    => ['Á', 'À', 'Ả', 'Ã', 'Ạ', 'Ă', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ', 'Â', 'Ấ', 'Ầ', 'Ẩ', 'Ẫ', 'Ậ', 'Å', 'Ā', 'Ą', 'Α', 'Ά', 'Ἀ', 'Ἁ', 'Ἂ', 'Ἃ', 'Ἄ', 'Ἅ', 'Ἆ', 'Ἇ', 'ᾈ', 'ᾉ', 'ᾊ', 'ᾋ', 'ᾌ', 'ᾍ', 'ᾎ', 'ᾏ', 'Ᾰ', 'Ᾱ', 'Ὰ', 'Ά', 'ᾼ', 'А', 'Ǻ', 'Ǎ'],
-            'B'    => ['Б', 'Β', 'ब'],
-            'C'    => ['Ç', 'Ć', 'Č', 'Ĉ', 'Ċ'],
-            'D'    => ['Ď', 'Ð', 'Đ', 'Ɖ', 'Ɗ', 'Ƌ', 'ᴅ', 'ᴆ', 'Д', 'Δ'],
-            'E'    => ['É', 'È', 'Ẻ', 'Ẽ', 'Ẹ', 'Ê', 'Ế', 'Ề', 'Ể', 'Ễ', 'Ệ', 'Ë', 'Ē', 'Ę', 'Ě', 'Ĕ', 'Ė', 'Ε', 'Έ', 'Ἐ', 'Ἑ', 'Ἒ', 'Ἓ', 'Ἔ', 'Ἕ', 'Έ', 'Ὲ', 'Е', 'Ё', 'Э', 'Є', 'Ə'],
-            'F'    => ['Ф', 'Φ'],
-            'G'    => ['Ğ', 'Ġ', 'Ģ', 'Г', 'Ґ', 'Γ'],
-            'H'    => ['Η', 'Ή', 'Ħ'],
-            'I'    => ['Í', 'Ì', 'Ỉ', 'Ĩ', 'Ị', 'Î', 'Ï', 'Ī', 'Ĭ', 'Į', 'İ', 'Ι', 'Ί', 'Ϊ', 'Ἰ', 'Ἱ', 'Ἳ', 'Ἴ', 'Ἵ', 'Ἶ', 'Ἷ', 'Ῐ', 'Ῑ', 'Ὶ', 'Ί', 'И', 'І', 'Ї', 'Ǐ', 'ϒ'],
-            'K'    => ['К', 'Κ'],
-            'L'    => ['Ĺ', 'Ł', 'Л', 'Λ', 'Ļ', 'Ľ', 'Ŀ', 'ल'],
-            'M'    => ['М', 'Μ'],
-            'N'    => ['Ń', 'Ñ', 'Ň', 'Ņ', 'Ŋ', 'Н', 'Ν'],
-            'O'    => ['Ó', 'Ò', 'Ỏ', 'Õ', 'Ọ', 'Ô', 'Ố', 'Ồ', 'Ổ', 'Ỗ', 'Ộ', 'Ơ', 'Ớ', 'Ờ', 'Ở', 'Ỡ', 'Ợ', 'Ø', 'Ō', 'Ő', 'Ŏ', 'Ο', 'Ό', 'Ὀ', 'Ὁ', 'Ὂ', 'Ὃ', 'Ὄ', 'Ὅ', 'Ὸ', 'Ό', 'О', 'Θ', 'Ө', 'Ǒ', 'Ǿ'],
-            'P'    => ['П', 'Π'],
-            'R'    => ['Ř', 'Ŕ', 'Р', 'Ρ', 'Ŗ'],
-            'S'    => ['Ş', 'Ŝ', 'Ș', 'Š', 'Ś', 'С', 'Σ'],
-            'T'    => ['Ť', 'Ţ', 'Ŧ', 'Ț', 'Т', 'Τ'],
-            'U'    => ['Ú', 'Ù', 'Ủ', 'Ũ', 'Ụ', 'Ư', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự', 'Û', 'Ū', 'Ů', 'Ű', 'Ŭ', 'Ų', 'У', 'Ǔ', 'Ǖ', 'Ǘ', 'Ǚ', 'Ǜ'],
-            'V'    => ['В'],
-            'W'    => ['Ω', 'Ώ', 'Ŵ'],
-            'X'    => ['Χ', 'Ξ'],
-            'Y'    => ['Ý', 'Ỳ', 'Ỷ', 'Ỹ', 'Ỵ', 'Ÿ', 'Ῠ', 'Ῡ', 'Ὺ', 'Ύ', 'Ы', 'Й', 'Υ', 'Ϋ', 'Ŷ'],
-            'Z'    => ['Ź', 'Ž', 'Ż', 'З', 'Ζ'],
-            'AE'   => ['Ä', 'Æ', 'Ǽ'],
-            'CH'   => ['Ч'],
-            'DJ'   => ['Ђ'],
-            'DZ'   => ['Џ'],
-            'GX'   => ['Ĝ'],
-            'HX'   => ['Ĥ'],
-            'IJ'   => ['Ĳ'],
-            'JX'   => ['Ĵ'],
-            'KH'   => ['Х'],
-            'LJ'   => ['Љ'],
-            'NJ'   => ['Њ'],
-            'OE'   => ['Ö', 'Œ'],
-            'PS'   => ['Ψ'],
-            'SH'   => ['Ш'],
-            'SHCH' => ['Щ'],
-            'SS'   => ['ẞ'],
-            'TH'   => ['Þ'],
-            'TS'   => ['Ц'],
-            'UE'   => ['Ü'],
-            'YA'   => ['Я'],
-            'YU'   => ['Ю'],
-            'ZH'   => ['Ж'],
-            ' '    => ["\xC2\xA0", "\xE2\x80\x80", "\xE2\x80\x81", "\xE2\x80\x82", "\xE2\x80\x83", "\xE2\x80\x84", "\xE2\x80\x85", "\xE2\x80\x86", "\xE2\x80\x87", "\xE2\x80\x88", "\xE2\x80\x89", "\xE2\x80\x8A", "\xE2\x80\xAF", "\xE2\x81\x9F", "\xE3\x80\x80"],
-        ];
+        $factory = new UuidFactory();
+
+        $factory->setRandomGenerator(new CombGenerator(
+            $factory->getRandomGenerator(),
+            $factory->getNumberConverter()
+        ));
+
+        $factory->setCodec(new TimestampFirstCombCodec(
+            $factory->getUuidBuilder()
+        ));
+
+        return $factory->uuid4();
+    }
+
+    /**
+     * Set the callable that will be used to generate UUIDs.
+     *
+     * @param  callable|null  $factory
+     * @return void
+     */
+    public static function createUuidsUsing(callable $factory = null)
+    {
+        static::$uuidFactory = $factory;
+    }
+
+    /**
+     * Indicate that UUIDs should be created normally and not using a custom factory.
+     *
+     * @return void
+     */
+    public static function createUuidsNormally()
+    {
+        static::$uuidFactory = null;
     }
 }

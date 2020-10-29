@@ -2,8 +2,13 @@
 
 namespace Illuminate\Support;
 
-use BadMethodCallException;
-use Illuminate\Console\Events\ArtisanStarting;
+use Closure;
+use Illuminate\Console\Application as Artisan;
+use Illuminate\Contracts\Foundation\CachesConfiguration;
+use Illuminate\Contracts\Foundation\CachesRoutes;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Database\Eloquent\Factory as ModelFactory;
+use Illuminate\View\Compilers\BladeCompiler;
 
 abstract class ServiceProvider
 {
@@ -15,25 +20,32 @@ abstract class ServiceProvider
     protected $app;
 
     /**
-     * Indicates if loading of the provider is deferred.
+     * All of the registered booting callbacks.
      *
-     * @var bool
+     * @var array
      */
-    protected $defer = false;
+    protected $bootingCallbacks = [];
+
+    /**
+     * All of the registered booted callbacks.
+     *
+     * @var array
+     */
+    protected $bootedCallbacks = [];
 
     /**
      * The paths that should be published.
      *
      * @var array
      */
-    protected static $publishes = [];
+    public static $publishes = [];
 
     /**
      * The paths that should be published by group.
      *
      * @var array
      */
-    protected static $publishGroups = [];
+    public static $publishGroups = [];
 
     /**
      * Create a new service provider instance.
@@ -47,11 +59,60 @@ abstract class ServiceProvider
     }
 
     /**
-     * Register the service provider.
+     * Register any application services.
      *
      * @return void
      */
-    abstract public function register();
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Register a booting callback to be run before the "boot" method is called.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function booting(Closure $callback)
+    {
+        $this->bootingCallbacks[] = $callback;
+    }
+
+    /**
+     * Register a booted callback to be run after the "boot" method is called.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function booted(Closure $callback)
+    {
+        $this->bootedCallbacks[] = $callback;
+    }
+
+    /**
+     * Call the registered booting callbacks.
+     *
+     * @return void
+     */
+    public function callBootingCallbacks()
+    {
+        foreach ($this->bootingCallbacks as $callback) {
+            $this->app->call($callback);
+        }
+    }
+
+    /**
+     * Call the registered booted callbacks.
+     *
+     * @return void
+     */
+    public function callBootedCallbacks()
+    {
+        foreach ($this->bootedCallbacks as $callback) {
+            $this->app->call($callback);
+        }
+    }
 
     /**
      * Merge the given configuration with the existing configuration.
@@ -62,25 +123,65 @@ abstract class ServiceProvider
      */
     protected function mergeConfigFrom($path, $key)
     {
-        $config = $this->app['config']->get($key, []);
+        if (! ($this->app instanceof CachesConfiguration && $this->app->configurationIsCached())) {
+            $config = $this->app->make('config');
 
-        $this->app['config']->set($key, array_merge(require $path, $config));
+            $config->set($key, array_merge(
+                require $path, $config->get($key, [])
+            ));
+        }
+    }
+
+    /**
+     * Load the given routes file if routes are not already cached.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    protected function loadRoutesFrom($path)
+    {
+        if (! ($this->app instanceof CachesRoutes && $this->app->routesAreCached())) {
+            require $path;
+        }
     }
 
     /**
      * Register a view file namespace.
      *
-     * @param  string  $path
+     * @param  string|array  $path
      * @param  string  $namespace
      * @return void
      */
     protected function loadViewsFrom($path, $namespace)
     {
-        if (is_dir($appPath = $this->app->basePath().'/resources/views/vendor/'.$namespace)) {
-            $this->app['view']->addNamespace($namespace, $appPath);
-        }
+        $this->callAfterResolving('view', function ($view) use ($path, $namespace) {
+            if (isset($this->app->config['view']['paths']) &&
+                is_array($this->app->config['view']['paths'])) {
+                foreach ($this->app->config['view']['paths'] as $viewPath) {
+                    if (is_dir($appPath = $viewPath.'/vendor/'.$namespace)) {
+                        $view->addNamespace($namespace, $appPath);
+                    }
+                }
+            }
 
-        $this->app['view']->addNamespace($namespace, $path);
+            $view->addNamespace($namespace, $path);
+        });
+    }
+
+    /**
+     * Register the given view components with a custom prefix.
+     *
+     * @param  string  $prefix
+     * @param  array  $components
+     * @return void
+     */
+    protected function loadViewComponentsAs($prefix, array $components)
+    {
+        $this->callAfterResolving(BladeCompiler::class, function ($blade) use ($prefix, $components) {
+            foreach ($components as $alias => $component) {
+                $blade->component($component, is_string($alias) ? $alias : null, $prefix);
+            }
+        });
     }
 
     /**
@@ -92,71 +193,193 @@ abstract class ServiceProvider
      */
     protected function loadTranslationsFrom($path, $namespace)
     {
-        $this->app['translator']->addNamespace($namespace, $path);
+        $this->callAfterResolving('translator', function ($translator) use ($path, $namespace) {
+            $translator->addNamespace($namespace, $path);
+        });
+    }
+
+    /**
+     * Register a JSON translation file path.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    protected function loadJsonTranslationsFrom($path)
+    {
+        $this->callAfterResolving('translator', function ($translator) use ($path) {
+            $translator->addJsonPath($path);
+        });
+    }
+
+    /**
+     * Register database migration paths.
+     *
+     * @param  array|string  $paths
+     * @return void
+     */
+    protected function loadMigrationsFrom($paths)
+    {
+        $this->callAfterResolving('migrator', function ($migrator) use ($paths) {
+            foreach ((array) $paths as $path) {
+                $migrator->path($path);
+            }
+        });
+    }
+
+    /**
+     * Register Eloquent model factory paths.
+     *
+     * @deprecated Will be removed in a future Laravel version.
+     *
+     * @param  array|string  $paths
+     * @return void
+     */
+    protected function loadFactoriesFrom($paths)
+    {
+        $this->callAfterResolving(ModelFactory::class, function ($factory) use ($paths) {
+            foreach ((array) $paths as $path) {
+                $factory->load($path);
+            }
+        });
+    }
+
+    /**
+     * Setup an after resolving listener, or fire immediately if already resolved.
+     *
+     * @param  string  $name
+     * @param  callable  $callback
+     * @return void
+     */
+    protected function callAfterResolving($name, $callback)
+    {
+        $this->app->afterResolving($name, $callback);
+
+        if ($this->app->resolved($name)) {
+            $callback($this->app->make($name), $this->app);
+        }
     }
 
     /**
      * Register paths to be published by the publish command.
      *
      * @param  array  $paths
-     * @param  string  $group
+     * @param  mixed  $groups
      * @return void
      */
-    protected function publishes(array $paths, $group = null)
+    protected function publishes(array $paths, $groups = null)
     {
-        $class = get_class($this);
-
-        if (! array_key_exists($class, static::$publishes)) {
-            static::$publishes[$class] = [];
-        }
+        $this->ensurePublishArrayInitialized($class = static::class);
 
         static::$publishes[$class] = array_merge(static::$publishes[$class], $paths);
 
-        if ($group) {
-            if (! array_key_exists($group, static::$publishGroups)) {
-                static::$publishGroups[$group] = [];
-            }
-
-            static::$publishGroups[$group] = array_merge(static::$publishGroups[$group], $paths);
+        foreach ((array) $groups as $group) {
+            $this->addPublishGroup($group, $paths);
         }
+    }
+
+    /**
+     * Ensure the publish array for the service provider is initialized.
+     *
+     * @param  string  $class
+     * @return void
+     */
+    protected function ensurePublishArrayInitialized($class)
+    {
+        if (! array_key_exists($class, static::$publishes)) {
+            static::$publishes[$class] = [];
+        }
+    }
+
+    /**
+     * Add a publish group / tag to the service provider.
+     *
+     * @param  string  $group
+     * @param  array  $paths
+     * @return void
+     */
+    protected function addPublishGroup($group, $paths)
+    {
+        if (! array_key_exists($group, static::$publishGroups)) {
+            static::$publishGroups[$group] = [];
+        }
+
+        static::$publishGroups[$group] = array_merge(
+            static::$publishGroups[$group], $paths
+        );
     }
 
     /**
      * Get the paths to publish.
      *
-     * @param  string  $provider
-     * @param  string  $group
+     * @param  string|null  $provider
+     * @param  string|null  $group
      * @return array
      */
     public static function pathsToPublish($provider = null, $group = null)
     {
-        if ($provider && $group) {
-            if (empty(static::$publishes[$provider]) || empty(static::$publishGroups[$group])) {
-                return [];
-            }
+        if (! is_null($paths = static::pathsForProviderOrGroup($provider, $group))) {
+            return $paths;
+        }
 
+        return collect(static::$publishes)->reduce(function ($paths, $p) {
+            return array_merge($paths, $p);
+        }, []);
+    }
+
+    /**
+     * Get the paths for the provider or group (or both).
+     *
+     * @param  string|null  $provider
+     * @param  string|null  $group
+     * @return array
+     */
+    protected static function pathsForProviderOrGroup($provider, $group)
+    {
+        if ($provider && $group) {
+            return static::pathsForProviderAndGroup($provider, $group);
+        } elseif ($group && array_key_exists($group, static::$publishGroups)) {
+            return static::$publishGroups[$group];
+        } elseif ($provider && array_key_exists($provider, static::$publishes)) {
+            return static::$publishes[$provider];
+        } elseif ($group || $provider) {
+            return [];
+        }
+    }
+
+    /**
+     * Get the paths for the provider and group.
+     *
+     * @param  string  $provider
+     * @param  string  $group
+     * @return array
+     */
+    protected static function pathsForProviderAndGroup($provider, $group)
+    {
+        if (! empty(static::$publishes[$provider]) && ! empty(static::$publishGroups[$group])) {
             return array_intersect_key(static::$publishes[$provider], static::$publishGroups[$group]);
         }
 
-        if ($group && array_key_exists($group, static::$publishGroups)) {
-            return static::$publishGroups[$group];
-        }
+        return [];
+    }
 
-        if ($provider && array_key_exists($provider, static::$publishes)) {
-            return static::$publishes[$provider];
-        }
+    /**
+     * Get the service providers available for publishing.
+     *
+     * @return array
+     */
+    public static function publishableProviders()
+    {
+        return array_keys(static::$publishes);
+    }
 
-        if ($group || $provider) {
-            return [];
-        }
-
-        $paths = [];
-
-        foreach (static::$publishes as $class => $publish) {
-            $paths = array_merge($paths, $publish);
-        }
-
-        return $paths;
+    /**
+     * Get the groups available for publishing.
+     *
+     * @return array
+     */
+    public static function publishableGroups()
+    {
+        return array_keys(static::$publishGroups);
     }
 
     /**
@@ -169,13 +392,8 @@ abstract class ServiceProvider
     {
         $commands = is_array($commands) ? $commands : func_get_args();
 
-        // To register the commands with Artisan, we will grab each of the arguments
-        // passed into the method and listen for Artisan "start" event which will
-        // give us the Artisan console instance which we will give commands to.
-        $events = $this->app['events'];
-
-        $events->listen(ArtisanStarting::class, function ($event) use ($commands) {
-            $event->artisan->resolveCommands($commands);
+        Artisan::starting(function ($artisan) use ($commands) {
+            $artisan->resolveCommands($commands);
         });
     }
 
@@ -206,34 +424,6 @@ abstract class ServiceProvider
      */
     public function isDeferred()
     {
-        return $this->defer;
-    }
-
-    /**
-     * Get a list of files that should be compiled for the package.
-     *
-     * @return array
-     */
-    public static function compiles()
-    {
-        return [];
-    }
-
-    /**
-     * Dynamically handle missing method calls.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
-     *
-     * @throws \BadMethodCallException
-     */
-    public function __call($method, $parameters)
-    {
-        if ($method == 'boot') {
-            return;
-        }
-
-        throw new BadMethodCallException("Call to undefined method [{$method}]");
+        return $this instanceof DeferrableProvider;
     }
 }

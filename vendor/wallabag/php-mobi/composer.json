@@ -2,7 +2,7 @@
     "name": "wallabag/php-mobi",
     "type": "library",
     "description": "A Mobipocket file (.mobi) creator in PHP.",
-    "homepage": "https://github.com/wallabag/phpMobi",
+    "homepage": "https://github.com/wallabag/php-mobi",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -16,11 +16,9 @@
             "homepage": "http://www.cdetc.fr"
         }
     ],
-    "replace": {
-        "wallabag/phpMobi": "*"
-    },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "symfony/polyfill-mbstring": "^1.12"
     },
     "autoload": {
         "files": ["MOBIClass/MOBI.php"]
