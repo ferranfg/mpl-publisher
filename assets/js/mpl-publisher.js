@@ -1,51 +1,56 @@
 (function ($) {
 
-	'use strict';
+    'use strict';
 
-	$(document).ready(function () {
+    window.HW_config = {
+        selector: ".release-notes",
+        account: "7NBro7"
+    };
 
-		$('.chosen').chosen();
+    $(document).ready(function () {
 
-		$('#chapter-list').sortable();
+        $('.chosen').chosen();
 
-		$('#upload-btn').on('click', function(e) {
-			// wp media object
-			var image = window.wp.media().open().on('select', function() {
-				var selected = image.state().get('selection').first();
-				// hidden field
-				$('#book-cover').val(selected.get('id'));
-				// image next button
-				$('#book-cover-placeholder').attr('src', selected.get('url'));
-			});
+        $('#chapter-list').sortable();
 
-			e.preventDefault();
-		});
+        $('#upload-btn').on('click', function(e) {
+            // wp media object
+            var image = window.wp.media().open().on('select', function() {
+                var selected = image.state().get('selection').first();
+                // hidden field
+                $('#book-cover').val(selected.get('id'));
+                // image next button
+                $('#book-cover-placeholder').attr('src', selected.get('url'));
+            });
 
-		$('[data-toggle=tooltip]').tooltip();
+            e.preventDefault();
+        });
 
-		$('.nav-tab-select').on('change', function () {
-			// Triggers the original tab change
-			$('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
-		});
+        $('[data-toggle=tooltip]').tooltip();
 
-		$('#book-amazon').on('change', function () {
-			// If not empty text field
-			if ($.trim($(this).val()) !== '') {
-				$('#affiliate-form-field').slideDown();
-			} else {
-				$('#affiliate-form-field').slideUp();
-			}
-		});
+        $('.nav-tab-select').on('change', function () {
+            // Triggers the original tab change
+            $('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
+        });
 
-		var $themes = $('[data-toggle="book-theme"]');
-		// On click updates hidden field
-		$themes.on('click', function () {
-			$themes.removeClass('active');
-			// Mark current theme as selected
-			var $el = $(this).addClass('active');
-			// Updates hidden field
-			$('input[name="theme_id"]').val($el.data('theme-id'));
-		});
-	});
+        $('#book-amazon').on('change', function () {
+            // If not empty text field
+            if ($.trim($(this).val()) !== '') {
+                $('#affiliate-form-field').slideDown();
+            } else {
+                $('#affiliate-form-field').slideUp();
+            }
+        });
+
+        var $themes = $('[data-toggle="book-theme"]');
+        // On click updates hidden field
+        $themes.on('click', function () {
+            $themes.removeClass('active');
+            // Mark current theme as selected
+            var $el = $(this).addClass('active');
+            // Updates hidden field
+            $('input[name="theme_id"]').val($el.data('theme-id'));
+        });
+    });
 
 })(window.jQuery);

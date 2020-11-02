@@ -34,12 +34,12 @@ class MobiPublisher implements IPublisher {
 
     public function setPublisher($publisherName)
     {
-
+        $this->content->set('publisher', $publisherName);
     }
 
     public function setCoverImage($fileName, $imageData)
     {
-
+        $this->content->set('cover', $imageData);
     }
 
     public function setTheme($theme, $customCSS)
@@ -49,28 +49,27 @@ class MobiPublisher implements IPublisher {
 
     public function setDescription($description)
     {
-
+        $this->content->set('description', $description);
     }
 
     public function setLanguage($language)
     {
-
+        $this->content->set('language', $language);
     }
 
     public function setDate($date)
     {
-
+        $this->content->set('date', $date);
     }
 
     public function setRights($rightsText)
     {
-
+        $this->content->set('copyright', $rightsText);
     }
     
     public function addChapter($id, $title, $content)
     {
         $this->content->appendChapterTitle($title);
-        
     }
 
     public function send($filename)

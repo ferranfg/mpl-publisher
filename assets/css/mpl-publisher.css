@@ -47,6 +47,10 @@
   vertical-align: top;
 }
 
+.mpl .release-notes {
+  position: absolute;
+}
+
 .mpl a .dashicons {
   text-decoration: none;
 }
@@ -80,7 +84,8 @@
 .mpl #post-query-submit {
   margin-top:0;
   padding: 0 14px 1px;
-  height: 28px !important;
+  height: 34px !important;
+  width: 100%;
   margin: 0;
 }
 .mpl select[multiple].chosen {

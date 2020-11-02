@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
-Tested up to: 4.7.1
+Tested up to: 5.5.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -22,8 +22,8 @@ For now, these are the current features:
 
 - Select chapters (posts) to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0 or Microsoft Word (docx)
-- Add a widget to your sidebar to promote your book with your readers
+- Download your eBook as EPUB2.0, EPUB3.0, Mobi, Markdown or Microsoft Word (docx)
+- Add a widget to your sidebar to promote your book within your readers
 - Promote your book using the shortcode `[mpl]` and their available options
 - Basic filter and sort your chapters individually.
 - Add aditional book chapters and edit current content

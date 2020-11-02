@@ -18,7 +18,7 @@ add_action('init', function ()
 {
     load_plugin_textdomain('publisher', false, MPL_BASEPATH . '/languages');
 
-	register_post_type('mpl_chapter', array(
+    register_post_type('mpl_chapter', array(
         'labels' => array(
             'name'          => __('Book Chapters', 'publisher'),
             'singular_name' => __('Book Chapter', 'publisher'),
@@ -48,23 +48,25 @@ add_action('admin_post_publish_ebook', function ()
 {
     $controller = new \MPL\Publisher\PublisherController();
 
-	$controller->postIndex();
+    $controller->postIndex();
 });
 
 add_action('admin_enqueue_scripts', function ()
 {
-	wp_enqueue_script('jquery-ui-sortable');
-	wp_enqueue_media();
+    wp_enqueue_script('jquery-ui-sortable');
+    wp_enqueue_media();
 
-	wp_enqueue_script('chosen', MPL_BASEURL . 'assets/js/chosen.jquery.min.js');
-	wp_enqueue_style('chosen', MPL_BASEURL . 'assets/css/chosen.min.css');
+    wp_enqueue_script('chosen', MPL_BASEURL . 'assets/js/chosen.jquery.min.js');
+    wp_enqueue_style('chosen', MPL_BASEURL . 'assets/css/chosen.min.css');
 
-	wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
+    wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
 
-	$own = get_plugin_data(__FILE__);
+    $own = get_plugin_data(__FILE__);
 
-	wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
-	wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+    wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
+    wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+
+    wp_enqueue_script('headwayapp', 'https://cdn.headwayapp.co/widget.js');
 });
 
 add_action('wp_enqueue_scripts', function ()
