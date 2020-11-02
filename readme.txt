@@ -88,11 +88,14 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+1.15.0
+- Update to Wordpress 5.5
+
 = 1.14.0 =
 - Allow filter posts by year (https://wordpress.org/support/topic/filter-posts-by-yearmonth/)
-- Added hooks for plugin extensions
+- Allow multiple themes loading and selection
+- Added hooks for plugin extensions (pending documentation)
 - Fix Markdown generation to include CSS files and fonts
-- Update to Wordpress 5.5
 
 = 1.13.0 =
 - Added MOBI as output format (Basic field, not ready to production)
@@ -178,5 +181,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.14.0 =
-- Added MOBI as output format and multiple themes to be added!
+= 1.15.0 =
+- Updated to latest Wordpress version
