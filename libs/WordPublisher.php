@@ -90,7 +90,7 @@ class WordPublisher implements IPublisher {
 
     public function setRights($rightsText)
     {
-        $this->config->setKeywords
+        //
     }
     
     public function addChapter($id, $title, $content)

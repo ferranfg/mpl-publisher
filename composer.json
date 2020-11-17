@@ -6,11 +6,11 @@
     "require": {
         "php": ">=5.4.0",
         "grandt/phpepub": "4.0.7.1",
-        "illuminate/view": "8.12.1",
-        "illuminate/events": "8.12.1",
+        "illuminate/view": "^5.8",
+        "illuminate/events": "^5.8",
         "phpzip/phpzip": "2.0.8",
         "league/html-to-markdown": "4.10.0",
-        "symfony/yaml": "5.1.8",
+        "symfony/yaml": "^4.4",
         "phpoffice/phpword": "0.17.0",
         "wallabag/php-mobi": "1.1.0",
         "paragonie/random_compat": "2.0.19"

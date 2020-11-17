@@ -88,7 +88,10 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
-1.15.0
+= 1.15.1 =
+- Fixed error related with PHP min version
+
+= 1.15.0 =
 - Update to Wordpress 5.5
 
 = 1.14.0 =
@@ -181,5 +184,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.15.0 =
-- Updated to latest Wordpress version
+= 1.15.1 =
+- Fixed error related with PHP min version
