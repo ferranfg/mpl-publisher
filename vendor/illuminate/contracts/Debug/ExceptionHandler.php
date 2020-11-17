@@ -2,45 +2,41 @@
 
 namespace Illuminate\Contracts\Debug;
 
-use Throwable;
+use Exception;
 
 interface ExceptionHandler
 {
     /**
      * Report or log an exception.
      *
-     * @param  \Throwable  $e
+     * @param  \Exception  $e
      * @return void
-     *
-     * @throws \Throwable
      */
-    public function report(Throwable $e);
+    public function report(Exception $e);
 
     /**
      * Determine if the exception should be reported.
      *
-     * @param  \Throwable  $e
+     * @param  \Exception  $e
      * @return bool
      */
-    public function shouldReport(Throwable $e);
+    public function shouldReport(Exception $e);
 
     /**
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $e
+     * @param  \Exception  $e
      * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
      */
-    public function render($request, Throwable $e);
+    public function render($request, Exception $e);
 
     /**
      * Render an exception to the console.
      *
      * @param  \Symfony\Component\Console\Output\OutputInterface  $output
-     * @param  \Throwable  $e
+     * @param  \Exception  $e
      * @return void
      */
-    public function renderForConsole($output, Throwable $e);
+    public function renderForConsole($output, Exception $e);
 }

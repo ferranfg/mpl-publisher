@@ -2,17 +2,14 @@
 
 namespace Illuminate\Support;
 
-use Doctrine\Inflector\CachedWordInflector;
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\Rules\English;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Common\Inflector\Inflector;
 
 class Pluralizer
 {
     /**
      * Uncountable word forms.
      *
-     * @var string[]
+     * @var array
      */
     public static $uncountable = [
         'audio',
@@ -64,7 +61,7 @@ class Pluralizer
      * Get the plural form of an English word.
      *
      * @param  string  $value
-     * @param  int  $count
+     * @param  int     $count
      * @return string
      */
     public static function plural($value, $count = 2)
@@ -73,7 +70,7 @@ class Pluralizer
             return $value;
         }
 
-        $plural = static::inflector()->pluralize($value);
+        $plural = Inflector::pluralize($value);
 
         return static::matchCase($plural, $value);
     }
@@ -86,7 +83,7 @@ class Pluralizer
      */
     public static function singular($value)
     {
-        $singular = static::inflector()->singularize($value);
+        $singular = Inflector::singularize($value);
 
         return static::matchCase($singular, $value);
     }
@@ -114,34 +111,11 @@ class Pluralizer
         $functions = ['mb_strtolower', 'mb_strtoupper', 'ucfirst', 'ucwords'];
 
         foreach ($functions as $function) {
-            if ($function($comparison) === $comparison) {
-                return $function($value);
+            if (call_user_func($function, $comparison) === $comparison) {
+                return call_user_func($function, $value);
             }
         }
 
         return $value;
-    }
-
-    /**
-     * Get the inflector instance.
-     *
-     * @return \Doctrine\Inflector\Inflector
-     */
-    public static function inflector()
-    {
-        static $inflector;
-
-        if (is_null($inflector)) {
-            $inflector = new Inflector(
-                new CachedWordInflector(new RulesetInflector(
-                    English\Rules::getSingularRuleset()
-                )),
-                new CachedWordInflector(new RulesetInflector(
-                    English\Rules::getPluralRuleset()
-                ))
-            );
-        }
-
-        return $inflector;
     }
 }

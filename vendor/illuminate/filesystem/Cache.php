@@ -31,10 +31,9 @@ class Cache extends AbstractCache
     /**
      * Create a new cache instance.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository  $repository
-     * @param  string  $key
-     * @param  int|null  $expire
-     * @return void
+     * @param \Illuminate\Contracts\Cache\Repository  $repository
+     * @param string  $key
+     * @param int|null  $expire
      */
     public function __construct(Repository $repository, $key = 'flysystem', $expire = null)
     {

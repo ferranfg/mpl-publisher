@@ -5,7 +5,7 @@ namespace Illuminate\View;
 class ViewName
 {
     /**
-     * Normalize the given view name.
+     * Normalize the given event name.
      *
      * @param  string  $name
      * @return string

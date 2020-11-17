@@ -2,8 +2,8 @@
 
 namespace Illuminate\Events;
 
-use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
 
 class EventServiceProvider extends ServiceProvider
 {

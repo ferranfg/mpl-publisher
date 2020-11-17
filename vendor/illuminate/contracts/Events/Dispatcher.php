@@ -7,11 +7,11 @@ interface Dispatcher
     /**
      * Register an event listener with the dispatcher.
      *
-     * @param  \Closure|string|array  $events
-     * @param  \Closure|string|null  $listener
+     * @param  string|array  $events
+     * @param  mixed  $listener
      * @return void
      */
-    public function listen($events, $listener = null);
+    public function listen($events, $listener);
 
     /**
      * Determine if a given event has listeners.

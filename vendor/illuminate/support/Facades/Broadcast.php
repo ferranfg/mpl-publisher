@@ -5,10 +5,9 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Contracts\Broadcasting\Factory as BroadcastingFactoryContract;
 
 /**
- * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string  $callback, array $options = [])
- * @method static mixed auth(\Illuminate\Http\Request $request)
  * @method static void connection($name = null);
- * @method static void routes(array $attributes = null)
+ * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string  $callback)
+ * @method static mixed auth(\Illuminate\Http\Request $request)
  *
  * @see \Illuminate\Contracts\Broadcasting\Factory
  */

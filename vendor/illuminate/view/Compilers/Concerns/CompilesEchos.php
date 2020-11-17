@@ -10,7 +10,7 @@ trait CompilesEchos
      * @param  string  $value
      * @return string
      */
-    public function compileEchos($value)
+    protected function compileEchos($value)
     {
         foreach ($this->getEchoMethods() as $method) {
             $value = $this->$method($value);
