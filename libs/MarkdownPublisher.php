@@ -79,10 +79,10 @@ class MarkdownPublisher implements IPublisher {
         {
             $contentCSS = file_get_contents($theme['style']);
 
-            foreach ($theme['fonts'] as $name => $path) $this->zip->addFile(
-                file_get_contents($path),
-                "Resources/Fonts/{$name}.ttf"
-            );
+            foreach ($theme['fonts'] as $name => $path)
+            {
+                $this->zip->addFile(file_get_contents($path), "Resources/Fonts/{$name}.ttf");
+            }
         }
 
         $this->zip->addFile($contentCSS, 'Resources/Templates/Style.css');
@@ -139,7 +139,7 @@ class MarkdownPublisher implements IPublisher {
             'element' => 'chapter',
             'number'  => $this->count,
             'content' => $chapterTitle,
-            'title'	  => $title
+            'title'   => $title
         );
 
         $this->count++;

@@ -3,6 +3,7 @@
 namespace MPL\Publisher;
 
 use WP_Query;
+use Exception;
 
 class PublisherController extends PublisherBase {
 
@@ -25,6 +26,9 @@ class PublisherController extends PublisherBase {
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
+        $this->data['premium_version'] = file_exists(MPL_BASEPATH . '/mpl-publisher.json');
+        $this->data['admin_notice']    = array_key_exists('msg', $_GET) ? $_GET['msg'] : null;
+
         wp_reset_postdata();
 
         echo $this->view('index.php', $this->data);
@@ -37,8 +41,17 @@ class PublisherController extends PublisherBase {
 
         $this->saveStatus($_POST);
 
-        if (isset($_POST['generate'])) return $this->generateBook();
+        $params = ['page' => 'publisher'];
 
-        return wp_redirect(admin_url('tools.php?page=publisher'));
+        try
+        {
+            if (isset($_POST['generate'])) return $this->generateBook();
+        }
+        catch (Exception $e)
+        {
+            $params['msg'] = $e->getMessage();
+        }
+
+        return wp_safe_redirect(admin_url('tools.php?' . http_build_query($params)));
     }
 }

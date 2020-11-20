@@ -8,7 +8,7 @@ class EpubPublisher implements IPublisher {
 
     private $epub;
 
-    public function __construct($format = 'epub2')
+    public function setFormat($format = 'epub2')
     {
         $version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 

@@ -88,6 +88,12 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+= 1.16.0 =
+- [MPL-Publisher Premium](https://mpl-publisher.ferranfigueredo.com) ⭐ it's available!
+- Added Audiobook (mp3) as output format
+- Pages can now be attached as book chapters
+- UX improvements and lots of emojis
+
 = 1.15.1 =
 - Fixed error related with PHP min version
 
@@ -184,5 +190,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.15.1 =
-- Fixed error related with PHP min version
+= 1.16.0 =
+- You can now export your blog as an audiobook!

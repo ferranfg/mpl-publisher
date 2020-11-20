@@ -31,9 +31,11 @@ class PublisherBase {
             $this->data = array_merge($this->data, $status['data']);
 
             $format = get_option('date_format') . ' ' . get_option('time_format');
+
             $this->data['message'] = sprintf(__('Submitted on %s' , "publisher"), date($format, $status['time']));
 
             $coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
+
             if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
 
             if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
@@ -43,7 +45,7 @@ class PublisherBase {
             if (!empty($this->data['year_selected']))   $this->filter['year']        = implode(',', $this->data['year_selected']);
         }
 
-        $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'mpl_chapter');
+        $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'page', 'mpl_chapter');
     }
 
     public function view($file, $data = array())
@@ -62,7 +64,7 @@ class PublisherBase {
             'title'       => get_bloginfo('site_name'),
             'description' => get_bloginfo('site_description'),
             'authors'     => wp_get_current_user()->display_name,
-            'language'    => '',
+            'language'    => get_locale(),
             'date'        => '',
             'cover'       => false,
             'coverSrc'    => false,
@@ -123,11 +125,11 @@ class PublisherBase {
     public function getYears()
     {
         $archive = wp_get_archives(array(
-            'type' => 'yearly',
-            'echo' => false,
+            'type'   => 'yearly',
+            'echo'   => false,
             'format' => 'custom',
             'before' => '',
-            'after' => '%'
+            'after'  => '%'
         ));
 
         $stripped = preg_replace('/\s+/', '', strip_tags($archive));
@@ -147,17 +149,24 @@ class PublisherBase {
         {
             case 'epub2':
             case 'epub3':
-                $publisher = new EpubPublisher($_POST['format']);
+                $publisher = new EpubPublisher();
+                $publisher->setFormat($_POST['format']);
             break;
             case 'mobi':
                 $publisher = new MobiPublisher();
             break;
             case 'wdocx':
-                $publisher = new WordPublisher(wp_upload_dir()['path']);
+                $publisher = new WordPublisher();
+                $publisher->setTmpPath(get_temp_dir());
             break;
             case 'markd':
                 $publisher = new MarkdownPublisher();
-            break;            
+            break;
+            case 'audio':
+                $publisher = new AudiobookPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
+                $publisher->setTmpPath(get_temp_dir());
+            break;
         }
 
         if ( ! $publisher) return;
@@ -195,15 +204,18 @@ class PublisherBase {
 
         if ($query->have_posts())
         {
+            $chapter = 1;
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
-                $publisher->addChapter($post->ID, $post->post_title, wpautop($post->post_content));
+                $content = strip_tags($post->post_content);
+                $publisher->addChapter($chapter, $post->post_title, wpautop($content));
+                $chapter++;
             endwhile;
         }
 
-        return $publisher->send(get_bloginfo('name') . ' - ' . wp_get_current_user()->display_name);
+        return $publisher->send(sanitize_text_field($_POST['title']));
     }
-
+    
     public function saveStatus($data)
     {
         return update_option($this->statusOptionName, array(
@@ -219,16 +231,14 @@ class PublisherBase {
 
     public function getThemes()
     {
-        return apply_filters('mpl_publisher_get_themes', array(
-            $this->getThemeDefaults()
-        ));
+        return apply_filters('mpl_publisher_get_themes', array($this->getThemeDefaults()));
     }
 
     public function getTheme($themeId)
     {
         $themes = $this->getThemes();
 
-        if ( count($themes) and array_key_exists($themeId, $themes)) return $themes[$themeId];
+        if (count($themes) and array_key_exists($themeId, $themes)) return $themes[$themeId];
 
         return $this->getThemeDefaults();
     }

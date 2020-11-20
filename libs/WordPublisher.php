@@ -19,15 +19,19 @@ class WordPublisher implements IPublisher {
 
     private $coverFile;
 
-    public function __construct($tempPath)
+    public function __construct()
     {
-        $this->word     = new PhpWord();
-        $this->config   = $this->word->getDocInfo();
+        $this->word   = new PhpWord();
+        $this->config = $this->word->getDocInfo();
+
+        $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/');
+    }
+
+    public function setTmpPath($tempPath)
+    {
         $this->tempPath = $tempPath;
 
         Settings::setTempDir($this->tempPath);
-
-        $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/');
     }
 
     public function setIdentifier($id)

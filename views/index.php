@@ -1,17 +1,29 @@
 <div class="wrap mpl">
 
     <h1 id="mpl-logo">
-        <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <span class="release-notes"></span>
+        <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($premium_version): ?>⭐<?php endif; ?><span class="release-notes"></span>
     </h1>
+
+    <?php if ($admin_notice): ?>
+        <div class="notice notice-warning is-dismissible">
+            <p><?php echo $admin_notice; ?></p>
+        </div>
+    <?php endif; ?>
+
+    <?php if ( ! $premium_version): ?>
+        <hr />
+        <p>� <?php _e("To get all the available formats and more cool features, download our", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com" target="_blank">MPL-Publisher Premium</a> ⭐</p>
+        <hr />
+    <?php endif; ?>
 
     <?php do_action('mpl_publisher_after_navbar'); ?>
 
     <ul class="nav-tab-wrapper nav-tabs hidden-xs">
         <?php do_action('mpl_publisher_after_tabs'); ?>
-        <li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("General details", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Settings", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-links" data-toggle="tab"><?php _e("Links", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Appearance", "publisher"); ?></a></li>
+        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">� <?php _e("General details", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Settings", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-links" data-toggle="tab">� <?php _e("Links", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">� <?php _e("Appearance", "publisher"); ?></a></li>
         <?php do_action('mpl_publisher_before_tabs'); ?>
     </ul>
 
@@ -163,7 +175,7 @@
                         <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?>
 
                         <div class="form-field" id="template">
-                            <textarea rows="12" name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
+                            <textarea rows="6" name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
                         </div>
                     </div>
 
@@ -179,6 +191,7 @@
                             <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Mobi</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
+                            <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)</option>
                         </select>
                         <p><?php _e("Microsoft Word (docx) and MOBI formats are still under development and open to any issues you may have. Use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
                     </div>
@@ -232,6 +245,9 @@
                             <option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
                                 <?php _e("Post", "publisher"); ?>
                             </option>
+                            <option value="page" <?php echo in_array('page', $post_type) ? "selected='selected'": ""; ?>>
+                                <?php _e("Page", "publisher"); ?>
+                            </option>
                             <option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
                                 <?php _e("Book Chapter", "publisher"); ?>
                             </option>
@@ -244,7 +260,7 @@
                             <?php endforeach; ?>
                         </select>
                         <div class="chosen-container text-right">
-                            <button type="submit" name="filter" id="post-query-submit" class="button"><?php _e('Filter content'); ?></button>
+                            <button type="submit" name="filter" id="post-query-submit" class="button">� <?php _e('Filter content'); ?></button>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
@@ -255,7 +271,7 @@
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></span></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">� <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </thead>
                         <tbody id="chapter-list">
@@ -266,8 +282,10 @@
                                             <input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
                                         </th>
                                         <td class="name column-name">
-                                            <?php if (get_post_type() === "mpl_chapter"): ?>
+                                            <?php if (get_post_type() == 'mpl_chapter'): ?>
                                                 <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
+                                            <?php elseif (get_post_type() == 'page'): ?>
+                                                <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
                                             <?php else: ?>
                                                 <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
                                             <?php endif; ?>
@@ -295,7 +313,7 @@
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button"><?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">� <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </tfoot>
                     </table>

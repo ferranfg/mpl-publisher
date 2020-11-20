@@ -44,7 +44,7 @@ class MobiPublisher implements IPublisher {
 
     public function setTheme($theme, $customCSS)
     {
-
+        //
     }
 
     public function setDescription($description)
