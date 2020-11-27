@@ -162,6 +162,11 @@ class PublisherBase {
             case 'markd':
                 $publisher = new MarkdownPublisher();
             break;
+            case 'print':
+                $publisher = new PrintPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
+                $publisher->setTmpPath(get_temp_dir());
+            break;
             case 'audio':
                 $publisher = new AudiobookPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
@@ -188,9 +193,7 @@ class PublisherBase {
 
         $publisher->setRights(sanitize_text_field($_POST['copyright']));
         $publisher->setTheme(
-            $this->getTheme(
-                sanitize_text_field($_POST['theme_id'])
-            ),
+            $this->getTheme(sanitize_text_field($_POST['theme_id'])),
             sanitize_text_field($_POST['custom_css'])
         );
 

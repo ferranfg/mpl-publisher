@@ -191,6 +191,7 @@
                             <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Mobi</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
+                            <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File</option>
                             <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)</option>
                         </select>
                         <p><?php _e("Microsoft Word (docx) and MOBI formats are still under development and open to any issues you may have. Use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>

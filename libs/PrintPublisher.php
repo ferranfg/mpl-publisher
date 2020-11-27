@@ -2,13 +2,13 @@
 
 namespace MPL\Publisher;
 
-class AudiobookPublisher extends PremiumPublisher implements IPublisher
+class PrintPublisher extends PremiumPublisher implements IPublisher
 {
     private $title;
 
     private $language;
 
-    private $content;
+    private $chapters = [];
 
     public function setIdentifier($id)
     {
@@ -62,16 +62,15 @@ class AudiobookPublisher extends PremiumPublisher implements IPublisher
 
     public function addChapter($id, $title, $content)
     {
-        $this->content .= "{$id}. {$title}. {$content}. ";
+        array_push($this->chapters, ['id' => $id, 'title' => $title, 'content' => $content]);
     }
 
     public function send($filename)
     {
-        return $this->request('audiobook', $filename . '.mp3', [
+        return $this->request('print', $filename . '.pdf', [
             'language' => $this->language,
             'title' => $this->title,
-            'content' => $this->content
+            'chapters' => $this->chapters
         ]);
     }
-
 }

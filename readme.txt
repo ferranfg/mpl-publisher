@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
-Tested up to: 5.5.3
+Tested up to: 5.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -87,6 +87,9 @@ In future releases we will add support to other formats like PDF. Keep updated.
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.17.0 =
+- Added PDF print-ready as output format
 
 = 1.16.0 =
 - [MPL-Publisher Premium](https://mpl-publisher.ferranfigueredo.com) ⭐ it's available!
@@ -190,5 +193,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.16.0 =
-- You can now export your blog as an audiobook!
+= 1.17.0 =
+- You can now export your blog as an Audiobook and as a PDF file!
