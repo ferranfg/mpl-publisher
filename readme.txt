@@ -88,6 +88,9 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Changelog ==
 
+= 1.17.1 =
+- Fix annoying count error. Thanks [lholfve](https://wordpress.org/support/topic/warning-count-parameter-must-be/)!
+
 = 1.17.0 =
 - Added PDF print-ready as output format
 
@@ -193,5 +196,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.17.0 =
+= 1.17.1 =
 - You can now export your blog as an Audiobook and as a PDF file!

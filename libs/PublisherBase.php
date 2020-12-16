@@ -36,7 +36,10 @@ class PublisherBase {
 
             $coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
 
-            if (count($coverSrc) == 4 and isset($coverSrc[0])) $this->data['coverSrc'] = $coverSrc[0];
+            if (is_array($coverSrc) and count($coverSrc) == 4 and array_key_exists(0, $coverSrc))
+            {
+                $this->data['coverSrc'] = $coverSrc[0];
+            }
 
             if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
             if (!empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
