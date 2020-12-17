@@ -33,6 +33,33 @@
   float: left;
 }
 
+.mpl .mt-30 {
+  margin-top: 30px;
+}
+
+.mpl .mb-20 {
+  margin-bottom: 20px;
+}
+
+.mpl .alert {
+  position: relative;
+  padding: .75em 1.25em;
+  border: 1px solid transparent;
+  border-radius: .25em;
+}
+
+.mpl .alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.mpl .alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
 @media screen and (min-width: 769px) {
   .mpl .hidden-xs {
     display: block !important;
@@ -79,6 +106,11 @@
 .mpl .form-wrap > p.submit {
   margin-top: 10px;
   display: block;
+}
+
+.mpl #format {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .mpl #post-query-submit {

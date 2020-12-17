@@ -52,6 +52,6 @@ class PublisherController extends PublisherBase {
             $params['msg'] = $e->getMessage();
         }
 
-        return wp_safe_redirect(admin_url('tools.php?' . http_build_query($params)));
+        return wp_safe_redirect(admin_url('admin.php?' . http_build_query($params)));
     }
 }

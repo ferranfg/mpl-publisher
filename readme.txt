@@ -50,7 +50,7 @@ This section describes how to install the plugin and get it working.
 
 1. Upload the uncompressed folder `mpl-publisher` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Navigate to Tools - Publisher in your admin menu
+3. Navigate to MPL-Publisher in your admin menu
 
 To include a shortcode in your pages or posts
 
@@ -72,11 +72,11 @@ If you have any other error, please use the [MPL - Publisher support forum](http
 
 = Which output formats are supported? =
 
-Currently we only support EPUB2.0, EPUB3.0 and Microsoft Word (docx). You can choose it from the Output format's select menu.
+Currently we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, PDF and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
-In future releases we will add support to other formats like PDF. Keep updated.
+In future releases we will add further improvements to our current formats. Keep updated.
 
 == Screenshots ==
 
@@ -87,6 +87,11 @@ In future releases we will add support to other formats like PDF. Keep updated.
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.18.0 =
+- Move menu position outside the "Tools" section
+- Limit query results to avoid more than 150 results
+- Minor usability improvements on publish actions
 
 = 1.17.1 =
 - Fix annoying count error. Thanks [lholfve](https://wordpress.org/support/topic/warning-count-parameter-must-be/)!
@@ -196,5 +201,5 @@ In future releases we will add support to other formats like PDF. Keep updated.
 
 == Upgrade Notice ==
 
-= 1.17.1 =
+= 1.18.0 =
 - You can now export your blog as an Audiobook and as a PDF file!

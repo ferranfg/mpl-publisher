@@ -12,7 +12,7 @@
 
     <?php if ( ! $premium_version): ?>
         <hr />
-        <p>� <?php _e("To get all the available formats and more cool features, download our", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com" target="_blank">MPL-Publisher Premium</a> ⭐</p>
+        <p>📚 <?php _e("To get all the available formats and more cool features, download our", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
         <hr />
     <?php endif; ?>
 
@@ -20,10 +20,10 @@
 
     <ul class="nav-tab-wrapper nav-tabs hidden-xs">
         <?php do_action('mpl_publisher_after_tabs'); ?>
-        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">� <?php _e("General details", "publisher"); ?></a></li>
+        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("General details", "publisher"); ?></a></li>
         <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Settings", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-links" data-toggle="tab">� <?php _e("Links", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">� <?php _e("Appearance", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
         <?php do_action('mpl_publisher_before_tabs'); ?>
     </ul>
 
@@ -181,7 +181,7 @@
 
                     <?php do_action('mpl_publisher_after_tabs_content'); ?>
 
-                    <hr />
+                    <hr class="mt-30 mb-20" />
 
                     <div class="form-field">
                         <label for="format"><?php _e("Output format", "publisher"); ?></label>
@@ -198,8 +198,8 @@
                     </div>
 
                     <p class="submit hidden-xs">
-                        <input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish', "publisher"); ?>">
-                        <input type="submit" name="save" class="button" value="<?php _e('Save Information', "publisher"); ?>">
+                        <button type="submit" name="generate" class="button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>
@@ -261,7 +261,7 @@
                             <?php endforeach; ?>
                         </select>
                         <div class="chosen-container text-right">
-                            <button type="submit" name="filter" id="post-query-submit" class="button">� <?php _e('Filter content'); ?></button>
+                            <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <?php _e('Filter content'); ?></button>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
@@ -272,40 +272,54 @@
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></span></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">� <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </thead>
                         <tbody id="chapter-list">
-                            <?php if ($query->have_posts()): ?>
-                                <?php while ($query->have_posts()): $query->the_post(); ?>
-                                    <tr style="cursor: move">
-                                        <th scope="row" class="check-column">
-                                            <input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
-                                        </th>
-                                        <td class="name column-name">
-                                            <?php if (get_post_type() == 'mpl_chapter'): ?>
-                                                <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
-                                            <?php elseif (get_post_type() == 'page'): ?>
-                                                <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
-                                            <?php else: ?>
-                                                <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
-                                            <?php endif; ?>
-                                            <strong>
-                                                <a href="<?php echo get_edit_post_link(); ?>"><?php the_title(); ?></a>
-                                                <?php if (get_post_status() != "publish"): ?> — <span class="post-state"><?php echo get_post_status_object(get_post_status())->label; ?></span><?php endif; ?>
-                                            </strong>
-                                        </td>
-                                        <td class="text-right" style="display:table-cell">
-                                            <a href="<?php echo get_edit_post_link(); ?>"><?php _e("Edit", "publisher"); ?></a>
+                            <?php if ($query->found_posts > mpl_max_posts()): ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="alert alert-info">
+                                            ℹ️ <?php _e("Your current search has too many results and it's not available yet. Please, use our filters to limit your request.", "publisher"); ?>
+                                            <?php _e("Current results", "publisher"); ?>: <b><?php echo $query->found_posts; ?></b>.
+                                            <?php _e("Max results", "publisher"); ?>: <b><?php echo mpl_max_posts(); ?></b>.
+                                        </div>
+                                    </th>
+                                </tr>
+                            <?php else: ?>
+                                <?php if ($query->have_posts()): ?>
+                                    <?php while ($query->have_posts()): $query->the_post(); ?>
+                                        <tr style="cursor: move">
+                                            <th scope="row" class="check-column">
+                                                <input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
+                                            </th>
+                                            <td class="name column-name">
+                                                <?php if (get_post_type() == 'mpl_chapter'): ?>
+                                                    <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
+                                                <?php elseif (get_post_type() == 'page'): ?>
+                                                    <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
+                                                <?php endif; ?>
+                                                <strong>
+                                                    <a href="<?php echo get_edit_post_link(); ?>"><?php the_title(); ?></a>
+                                                    <?php if (get_post_status() != "publish"): ?> — <span class="post-state"><?php echo get_post_status_object(get_post_status())->label; ?></span><?php endif; ?>
+                                                </strong>
+                                            </td>
+                                            <td class="text-right" style="display:table-cell">
+                                                <a href="<?php echo get_edit_post_link(); ?>"><?php _e("Edit", "publisher"); ?></a>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="alert alert-warning">
+                                                😞 <?php _e("Your search did not match any posts.", "publisher"); ?>
+                                            </div>
                                         </td>
                                     </tr>
-                                <?php endwhile; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                </tr>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </tbody>
                         <tfoot>
@@ -314,14 +328,14 @@
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">� <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </tfoot>
                     </table>
 
                     <p class="submit visible-xs">
-                        <input type="submit" name="generate" class="button button-primary" value="<?php _e('Publish', "publisher"); ?>">
-                        <input type="submit" name="save" class="button" value="<?php _e('Save Information', "publisher"); ?>">
+                        <button type="submit" name="generate" class="button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>

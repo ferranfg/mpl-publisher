@@ -3,7 +3,7 @@
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
  * Description: MPL - Publisher is a plugin to create an ebook from your WordPress posts. You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi
- * Version: 1.17.1
+ * Version: 1.18.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -12,6 +12,7 @@
 define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
 define('MPL_ENDPOINT', 'https://api.ferranfigueredo.com');
+define('MPL_MAX_POSTS', 150);
 
 require 'vendor/autoload.php';
 
@@ -37,12 +38,12 @@ add_action('init', function ()
 
 add_action('admin_menu', function ()
 {
-    add_management_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
+    add_menu_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
     {
         $controller = new \MPL\Publisher\PublisherController();
 
         $controller->getIndex();
-    });
+    }, 'dashicons-book', 76);
 });
 
 add_action('admin_post_publish_ebook', function ()
@@ -79,7 +80,7 @@ add_action('add_meta_boxes', function ()
 {
     add_meta_box('mpl_chapter_back', "&nbsp;", function ()
     {
-        echo '<p class="mpl"><a href="' . admin_url('tools.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
+        echo '<p class="mpl"><a href="' . admin_url('admin.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
     },
     'mpl_chapter', 'side', 'high');
 
@@ -103,3 +104,22 @@ add_shortcode('mpl', function ($attr, $content)
 
     return $download->shortcode($attr, $content);
 });
+
+if ( ! function_exists('mpl_is_premium'))
+{
+    /**
+     * https://mpl-publisher.ferranfigueredo.com :)
+     */
+    function mpl_is_premium()
+    {
+        return file_exists(MPL_BASEPATH . '/mpl-publisher.json');
+    }
+}
+
+if ( ! function_exists('mpl_max_posts'))
+{
+    function mpl_max_posts()
+    {
+        return MPL_MAX_POSTS;
+    }
+}

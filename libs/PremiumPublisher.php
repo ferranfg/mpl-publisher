@@ -15,7 +15,7 @@ class PremiumPublisher
 
     public function getToken()
     {
-        if (file_exists(MPL_BASEPATH . '/mpl-publisher.json'))
+        if (mpl_is_premium())
         {
             $options = json_decode(file_get_contents(MPL_BASEPATH . '/mpl-publisher.json'), true);
 
