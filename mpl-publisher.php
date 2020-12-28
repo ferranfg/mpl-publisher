@@ -16,6 +16,8 @@ define('MPL_MAX_POSTS', 150);
 
 require 'vendor/autoload.php';
 
+use Illuminate\Support\Str;
+
 add_action('init', function ()
 {
     load_plugin_textdomain('publisher', false, MPL_BASEPATH . '/languages');
@@ -109,7 +111,7 @@ add_filter('admin_footer_text', function ($text)
 {
     global $current_screen;
 
-    if ( ! empty($current_screen->id) and strpos($current_screen->id, 'publisher') != false)
+    if ( ! empty($current_screen->id) and Str::contains($current_screen->id, 'publisher'))
     {
         $url  = 'https://wordpress.org/support/plugin/mpl-publisher/reviews/?filter=5#new-post';
         $text = sprintf(
