@@ -105,6 +105,35 @@ add_shortcode('mpl', function ($attr, $content)
     return $download->shortcode($attr, $content);
 });
 
+add_filter('admin_footer_text', function ($text)
+{
+    global $current_screen;
+
+    if ( ! empty($current_screen->id) and strpos($current_screen->id, 'publisher') != false)
+    {
+        $url  = 'https://wordpress.org/support/plugin/mpl-publisher/reviews/?filter=5#new-post';
+        $text = sprintf(
+            wp_kses(
+                /* translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link. */
+                __('Please rate %1$s <a href="%2$s" target="_blank" rel="noopener noreferrer" style="text-decoration:none">⭐⭐⭐⭐⭐</a> on <a href="%3$s" target="_blank" rel="noopener">WordPress.org</a> to help us spread the word. Thank you!', 'publisher'),
+                array(
+                    'a' => array(
+                        'href'   => array(),
+                        'target' => array(),
+                        'rel'    => array(),
+                        'style'  => array()
+                    ),
+                )
+            ),
+            '<strong>MPL-Publisher</strong>',
+            $url,
+            $url
+        );
+    }
+
+    return $text;
+});
+
 if ( ! function_exists('mpl_is_premium'))
 {
     /**
