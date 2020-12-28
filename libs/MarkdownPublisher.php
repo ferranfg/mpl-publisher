@@ -3,6 +3,7 @@
 namespace MPL\Publisher;
 
 use PHPZip\Zip\File\Zip;
+use Illuminate\Support\Str;
 use Symfony\Component\Yaml\Yaml;
 use League\HTMLToMarkdown\HtmlConverter;
 
@@ -131,7 +132,7 @@ class MarkdownPublisher implements IPublisher {
         );
 
         $markdown = $this->converter->convert($content);
-        $chapterTitle = $this->count . '-' . sanitize_title($title) . '.md';
+        $chapterTitle = $this->count . '-' . Str::slug($title) . '.md';
 
         $this->zip->addFile($markdown, 'Contents/' . $chapterTitle);
 

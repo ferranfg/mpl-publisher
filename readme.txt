@@ -88,6 +88,11 @@ In future releases we will add further improvements to our current formats. Keep
 
 == Changelog ==
 
+= 1.19.0 =
+- Fix EPUB 2.0 and EPUB 3.0 validation errors
+- Change default content sorting to OLDER chapters first
+- Premium publishers (PDF and Audiobook) generation improvements
+
 = 1.18.0 =
 - Move menu position outside the "Tools" section
 - Limit query results to avoid more than 150 results
@@ -201,5 +206,5 @@ In future releases we will add further improvements to our current formats. Keep
 
 == Upgrade Notice ==
 
-= 1.18.0 =
+= 1.19.0 =
 - You can now export your blog as an Audiobook and as a PDF file!
