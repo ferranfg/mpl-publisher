@@ -3,22 +3,27 @@
 namespace MPL\Publisher;
 
 use PHPePub\Core\EPub;
+use PHPePub\Helpers\StringHelper;
 
 class EpubPublisher implements IPublisher {
 
     private $epub;
 
+    private $format;
+
     public function setFormat($format = 'epub2')
     {
-        $version = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
+        $this->format = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 
-        $this->epub = new EPub($version);
+        $this->epub = new EPub($this->format);
         $this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/");
     }
 
     public function setIdentifier($id)
     {
-        return $this->epub->setIdentifier($id, EPub::IDENTIFIER_URI);
+        if ($id == "") $id = (string) StringHelper::createUUID();
+
+        return $this->epub->setIdentifier($id, EPub::IDENTIFIER_UUID);
     }
 
     public function setTitle($title)
@@ -51,7 +56,7 @@ class EpubPublisher implements IPublisher {
                 "{$name}.ttf",
                 "{$name}",
                 file_get_contents($path),
-                "application/x-font-ttf"
+                "font/ttf"
             );
         }
 
@@ -80,15 +85,18 @@ class EpubPublisher implements IPublisher {
 
     public function addChapter($id, $title, $content)
     {
+        $doctype = $this->format == EPub::BOOK_VERSION_EPUB3 ?
+            "<!DOCTYPE html>\n" :
+            "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
+
         $content_start =
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-        . "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"\n"
-        . "    \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
+        . $doctype
         . "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
         . "<head>"
         . "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n"
         . "<title>" . $title . "</title>\n"
-        . "<link href=\"../Styles/Style.css\" rel=\"stylesheet\" type=\"text/css\" />\n"
+        . "<link href=\"./Style.css\" rel=\"stylesheet\" type=\"text/css\" />\n"
         . "</head>\n"
         . "<body>\n";
         $bookEnd = "</body>\n</html>\n";

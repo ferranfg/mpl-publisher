@@ -2,28 +2,28 @@
     font-family: 'Merriweather';
     font-weight: normal;
     font-style: normal;
-    src: url('../Fonts/merriweather-regular.ttf');
+    src: url('./merriweather-regular.ttf');
 }
 
 @font-face {
     font-family: 'Merriweather';
     font-weight: 700;
     font-style: normal;
-    src: url('../Fonts/merriweather-bold.ttf');
+    src: url('./merriweather-bold.ttf');
 }
 
 @font-face {
     font-family: 'Merriweather';
     font-weight: normal;
     font-style: italic;
-    src: url('../Fonts/merriweather-italic.ttf');
+    src: url('./merriweather-italic.ttf');
 }
 
 @font-face {
     font-family: 'Lato';
     font-weight: 500;
     font-style: normal;
-    src: url('../Fonts/lato-bold.ttf');
+    src: url('./lato-bold.ttf');
 }
 
 body {

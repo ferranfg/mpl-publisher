@@ -211,10 +211,16 @@ class PublisherBase {
         if ($query->have_posts())
         {
             $chapter = 1;
+
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
-                $content = strip_tags($post->post_content);
-                $publisher->addChapter($chapter, $post->post_title, wpautop($content));
+
+                $publisher->addChapter(
+                    $chapter,
+                    $post->post_title,
+                    wpautop($post->post_content)
+                );
+
                 $chapter++;
             endwhile;
         }
