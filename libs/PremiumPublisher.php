@@ -4,6 +4,7 @@ namespace MPL\Publisher;
 
 use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Str;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\ClientException;
 
@@ -54,6 +55,9 @@ class PremiumPublisher
                 RequestOptions::JSON => $params,
                 RequestOptions::SINK => $filepath
             ]);
+
+            if (Str::endsWith($filename, 'pdf')) header("Content-type: application/pdf");
+            if (Str::endsWith($filename, 'mp3')) header("Content-type: audio/mpeg");
 
             header('Content-Description: File Transfer');
             header('Content-Disposition: attachment; filename=' . $filename);
