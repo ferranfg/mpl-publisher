@@ -95,7 +95,7 @@ class EpubPublisher implements IPublisher {
 
         $xmlContent = $content_start . '<h1 class="chapter-title">' . $title . '</h1>' . $content . $bookEnd;
 
-        return $this->epub->addChapter($title, $id . ".html", $xmlContent);
+        return $this->epub->addChapter($title, $id . ".xhtml", $xmlContent);
     }
 
     public function send($filename)
