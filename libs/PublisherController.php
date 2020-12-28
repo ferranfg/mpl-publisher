@@ -10,7 +10,8 @@ class PublisherController extends PublisherBase {
     public function getIndex()
     {
         $query = http_build_query(array_merge(array(
-            'posts_per_page' => '-1'
+            'posts_per_page' => '-1',
+            'order' => 'ASC'
         ), $this->filter));
 
         $this->data['query'] = new WP_Query($query);
