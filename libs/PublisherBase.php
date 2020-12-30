@@ -215,11 +215,51 @@ class PublisherBase {
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
 
-                $publisher->addChapter(
-                    $chapter,
-                    $post->post_title,
-                    wpautop($post->post_content)
-                );
+                $content = strip_shortcodes($post->post_content);
+                $content = wp_kses($content, array(
+                    // Headings
+                    'h1' => array(),
+                    'h2' => array(),
+                    'h3' => array(),
+                    'h4' => array(),
+                    'h5' => array(),
+                    'h6' => array(),
+                    // Global
+                    'a' => array(
+                        'href' => array(),
+                        'title' => array(),
+                    ),
+                    'img' => array(
+                        'src' => array(),
+                        'alt' => array(),
+                    ),
+                    'blockquote' => array(),
+                    'hr' => array(),
+                    // Styles
+                    'u' => array(),
+                    'i' => array(),
+                    'b' => array(),
+                    'em' => array(),
+                    'small' => array(),
+                    'strong' => array(),
+                    'strike' => array(),
+                    // Lists
+                    'ul' => array(),
+                    'ol' => array(),
+                    'li' => array(),
+                    // Tables
+                    'table' => array(),
+                    'tbody' => array(),
+                    'thead' => array(),
+                    'tfooter' => array(),
+                    'tr' => array(),
+                    'td' => array(),
+                    'th' => array()
+                ));
+                $content = wpautop($content);
+                $content = str_replace('&nbsp;', ' ', $content);
+
+                $publisher->addChapter($chapter, $post->post_title, $content);
 
                 $chapter++;
             endwhile;

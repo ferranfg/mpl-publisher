@@ -90,6 +90,7 @@ In future releases we will add further improvements to our current formats. Keep
 
 = 1.19.0 =
 - Fix EPUB 2.0 and EPUB 3.0 validation errors
+- Clean HTML tags from content to prevent design errors
 - Change default content sorting to OLDER chapters first
 - Premium publishers (PDF and Audiobook) generation improvements
 

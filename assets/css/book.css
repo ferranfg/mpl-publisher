@@ -27,38 +27,38 @@
 }
 
 body {
-	font-family: 'Merriweather', serif;
-	color:#222;
+    font: normal 18px 'Merriweather', serif;
+    color:#222;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 500;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
 }
 
 h1.chapter-title {
-	margin: 2em 0 1em;
-	text-align: center;
-	font-size: 48px;
+    margin: 2em 0 1em;
+    text-align: center;
+    font-size: 48px;
 }
 
 h2 {
-	color: #ba3925;
-	font-size: 24px;
-	margin: 36px 0 12px;
+    color: #ba3925;
+    font-size: 24px;
+    margin: 36px 0 12px;
 }
 
 a {
-	color: #ba3925;
+    color: #ba3925;
 }
 
 p {
-	font: normal 18px/30px 'Merriweather', serif;
-	margin-bottom: 24px;
+    line-height: 30px;
+    margin-bottom: 24px;
 }
 
 p i, p em {
-	font-style: italic;
+    font-style: italic;
 }
 
 /* https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages */

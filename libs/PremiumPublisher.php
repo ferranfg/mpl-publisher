@@ -4,15 +4,14 @@ namespace MPL\Publisher;
 
 use Exception;
 use GuzzleHttp\Client;
-use Illuminate\Support\Str;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\ClientException;
 
 class PremiumPublisher
 {
-    private $email;
+    protected $tempPath;
 
-    private $tempPath;
+    protected $params = array();
 
     public function getToken()
     {
@@ -26,23 +25,74 @@ class PremiumPublisher
         return null;
     }
 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
     public function setTmpPath($tempPath)
     {
         $this->tempPath = $tempPath;
     }
 
-    public function request($endpoint, $filename, $params = [])
+    public function setEmail($email)
+    {
+        $this->params['email'] = $email;
+    }
+
+    public function setIdentifier($id)
+    {
+        $this->params['identifier'] = $id;
+    }
+
+    public function setTitle($title)
+    {
+        $this->params['title'] = $title;
+    }
+
+    public function setAuthor($authorName)
+    {
+        $this->params['author'] = $authorName;
+    }
+
+    public function setPublisher($publisherName)
+    {
+        $this->params['publisher'] = $publisherName;
+    }
+
+    public function setCoverImage($fileName, $imageData)
+    {
+        $mime_type = mpl_mime_content_type($fileName);
+        $encoded64 = base64_encode($imageData);
+
+        $this->params['cover_name'] = $fileName;
+        $this->params['cover_image'] = "data:{$mime_type};base64,{$encoded64}";
+    }
+
+    public function setTheme($theme, $contentCSS)
+    {
+        $this->params['theme'] = $theme;
+        $this->params['css_content'] = $contentCSS;
+    }
+
+    public function setDescription($description)
+    {
+        $this->params['description'] = $description;
+    }
+
+    public function setLanguage($language)
+    {
+        $this->params['language'] = $language;
+    }
+
+    public function setDate($date)
+    {
+        $this->params['date'] = $date;
+    }
+
+    public function setRights($rightsText)
+    {
+        $this->params['rights'] = $rightsText;
+    }
+
+    public function request($endpoint, $filename)
     {
         $filepath = $this->tempPath . '/' . $filename;
-
-        $params = array_merge($params, [
-            'email' => $this->email
-        ]);
 
         try
         {
@@ -52,12 +102,9 @@ class PremiumPublisher
                     'Content-Type' => 'application/json',
                     'Authorization' => 'Bearer ' . $this->getToken()
                 ],
-                RequestOptions::JSON => $params,
+                RequestOptions::JSON => $this->params,
                 RequestOptions::SINK => $filepath
             ]);
-
-            if (Str::endsWith($filename, 'pdf')) header("Content-type: application/pdf");
-            if (Str::endsWith($filename, 'mp3')) header("Content-type: audio/mpeg");
 
             header('Content-Description: File Transfer');
             header('Content-Disposition: attachment; filename=' . $filename);
