@@ -1,7 +1,7 @@
-<div class="wrap mpl">
+<div class="wrap mpl" id="mpl-wrapper">
 
     <h1 id="mpl-logo">
-        <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($premium_version): ?>⭐<?php endif; ?><span class="release-notes"></span>
+        <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($premium_version): ?>Premium ⭐<?php endif; ?><span class="release-notes"></span>
     </h1>
 
     <?php if ($admin_notice): ?>
@@ -188,13 +188,13 @@
                         <select name="format" id="format">
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
                             <option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
-                            <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Mobi</option>
+                            <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon Mobi</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
-                            <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File</option>
-                            <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)</option>
+                            <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File<?php if ( ! $premium_version) echo ' - Premium only'; ?></option>
+                            <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)<?php if ( ! $premium_version) echo ' - Premium only'; ?></option>
                         </select>
-                        <p><?php _e("Microsoft Word (docx) and MOBI formats are still under development and open to any issues you may have. Use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
+                        <p><?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best). If you encounter any format error, please use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
                     </div>
 
                     <p class="submit hidden-xs">
@@ -212,6 +212,17 @@
 
                 <div class="form-wrap">
                     <div class="clearfix filter-bar">
+                        <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
+                            <option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
+                                <?php _e("Post", "publisher"); ?>
+                            </option>
+                            <option value="page" <?php echo in_array('page', $post_type) ? "selected='selected'": ""; ?>>
+                                <?php _e("Page", "publisher"); ?>
+                            </option>
+                            <option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
+                                <?php _e("Book Chapter", "publisher"); ?>
+                            </option>
+                        </select>
                         <select name="status_selected[]" id="status" class="chosen" multiple data-placeholder="<?php _e("All statuses", "publisher"); ?>">
                             <?php foreach ($blog_statuses as $status => $statusName): ?>
                                 <option value="<?php echo $status; ?>" <?php echo in_array($status, $status_selected) ? "selected='selected'" : ""; ?>>
@@ -226,6 +237,28 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <select name="month_selected[]" id="month" class="chosen" multiple data-placeholder="<?php _e("All months", "publisher"); ?>">
+                            <?php foreach ($blog_months as $key => $month): ?>
+                                <option value="<?php echo $key; ?>" <?php echo in_array($key, $month_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo $month; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
+                            <?php foreach ($blog_years as $year): ?>
+                                <option value="<?php echo $year; ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo $year; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <?php /*
+                        <select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
+                            <?php foreach ($blog_authors as $author): ?>
+                                <option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo $author->data->display_name; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                         <?php if (count($blog_tags)): ?>
                             <select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
                                 <?php foreach ($blog_tags as $tag): ?>
@@ -235,31 +268,7 @@
                                 <?php endforeach; ?>
                             </select>
                         <?php endif; ?>
-                        <select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
-                            <?php foreach ($blog_authors as $author): ?>
-                                <option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $author->data->display_name; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
-                            <option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Post", "publisher"); ?>
-                            </option>
-                            <option value="page" <?php echo in_array('page', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Page", "publisher"); ?>
-                            </option>
-                            <option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Book Chapter", "publisher"); ?>
-                            </option>
-                        </select>
-                        <select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
-                            <?php foreach ($blog_years as $year): ?>
-                                <option value="<?php echo $year; ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $year; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        */ ?>
                         <div class="chosen-container text-right">
                             <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <?php _e('Filter content'); ?></button>
                         </div>

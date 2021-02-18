@@ -70,6 +70,8 @@ class MobiPublisher implements IPublisher {
     public function addChapter($id, $title, $content)
     {
         $this->content->appendChapterTitle($title);
+        $this->content->appendChapter($content);
+        $this->content->appendPageBreak();
     }
 
     public function send($filename)

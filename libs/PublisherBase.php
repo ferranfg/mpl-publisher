@@ -46,6 +46,7 @@ class PublisherBase {
             if (!empty($this->data['tag_selected']))    $this->filter['tag']         = implode(',', $this->data['tag_selected']);
             if (!empty($this->data['status_selected'])) $this->filter['post_status'] = implode(',', $this->data['status_selected']);
             if (!empty($this->data['year_selected']))   $this->filter['year']        = implode(',', $this->data['year_selected']);
+            if (!empty($this->data['month_selected']))  $this->filter['month']       = implode(',', $this->data['month_selected']);
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'page', 'mpl_chapter');
@@ -85,6 +86,7 @@ class PublisherBase {
             'status_selected' => array(),
             'post_type'       => array(),
             'year_selected'   => array(),
+            'month_selected'  => array(),
             'selected_posts'  => false,
             'format'          => 'epub2'
         );
@@ -125,6 +127,24 @@ class PublisherBase {
         return get_post_stati();
     }
 
+    public function getMonths()
+    {
+        return [
+            1 => __('January', 'publisher'),
+            2 => __('February', 'publisher'),
+            3 => __('March', 'publisher'),
+            4 => __('April', 'publisher'),
+            5 => __('May', 'publisher'),
+            6 => __('June', 'publisher'),
+            7 => __('July', 'publisher'),
+            8 => __('August', 'publisher'),
+            9 => __('September', 'publisher'),
+            10 => __('October', 'publisher'),
+            11 => __('November', 'publisher'),
+            12 => __('December', 'publisher')
+        ];
+    }
+
     public function getYears()
     {
         $archive = wp_get_archives(array(
@@ -138,6 +158,27 @@ class PublisherBase {
         $stripped = preg_replace('/\s+/', '', strip_tags($archive));
 
         return array_filter(explode('%', $stripped));
+    }
+
+    public function getQuery()
+    {
+        if (array_key_exists('month', $this->filter))
+        {
+            $this->filter['date_query'] = ['relation' => 'OR'];
+
+            array_map(function($key)
+            {
+                array_push($this->filter['date_query'], ['month' => $key]);
+
+            }, explode(',', $this->filter['month']));
+        }
+
+        $query = http_build_query(array_merge(array(
+            'posts_per_page' => '-1',
+            'order' => 'ASC'
+        ), $this->filter));
+
+        return new WP_Query($query);
     }
 
     public function generateBook($forceGenerate = false)
@@ -214,50 +255,7 @@ class PublisherBase {
 
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
-
-                $content = strip_shortcodes($post->post_content);
-                $content = wp_kses($content, array(
-                    // Headings
-                    'h1' => array(),
-                    'h2' => array(),
-                    'h3' => array(),
-                    'h4' => array(),
-                    'h5' => array(),
-                    'h6' => array(),
-                    // Global
-                    'a' => array(
-                        'href' => array(),
-                        'title' => array(),
-                    ),
-                    'img' => array(
-                        'src' => array(),
-                        'alt' => array(),
-                    ),
-                    'blockquote' => array(),
-                    'hr' => array(),
-                    // Styles
-                    'u' => array(),
-                    'i' => array(),
-                    'b' => array(),
-                    'em' => array(),
-                    'small' => array(),
-                    'strong' => array(),
-                    'strike' => array(),
-                    // Lists
-                    'ul' => array(),
-                    'ol' => array(),
-                    'li' => array(),
-                    // Tables
-                    'table' => array(),
-                    'tbody' => array(),
-                    'thead' => array(),
-                    'tfooter' => array(),
-                    'tr' => array(),
-                    'td' => array(),
-                    'th' => array()
-                ));
-                $content = wpautop($content);
-                $content = str_replace('&nbsp;', ' ', $content);
+                $content = $this->parseText($post->post_content);
 
                 $publisher->addChapter($chapter, $post->post_title, $content);
 
@@ -293,6 +291,63 @@ class PublisherBase {
         if (count($themes) and array_key_exists($themeId, $themes)) return $themes[$themeId];
 
         return $this->getThemeDefaults();
+    }
+
+    private function parseText($post_content)
+    {
+        // Remove shortcodes
+        $content = strip_shortcodes($post_content);
+        // Remove HTML comments
+        $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
+        // Remove properties from allowed HTML tags (except <p>)
+        $content = wp_kses($content, array(
+            // Headings
+            'h1' => array(),
+            'h2' => array(),
+            'h3' => array(),
+            'h4' => array(),
+            'h5' => array(),
+            'h6' => array(),
+            // Global
+            'a' => array(
+                'href' => array(),
+                'title' => array(),
+            ),
+            'img' => array(
+                'src' => array(),
+                'alt' => array()
+            ),
+            'blockquote' => array(),
+            'hr' => array(),
+            // Styles
+            'u' => array(),
+            'i' => array(),
+            'b' => array(),
+            'em' => array(),
+            'small' => array(),
+            'strong' => array(),
+            'strike' => array(),
+            // Lists
+            'ul' => array(),
+            'ol' => array(),
+            'li' => array(),
+            // Tables
+            'table' => array(),
+            'tbody' => array(),
+            'thead' => array(),
+            'tfooter' => array(),
+            'tr' => array(),
+            'td' => array(),
+            'th' => array()
+        ));
+        // Use autop to generate p
+        $content = wpautop($content);
+        // Remove new lines: https://stackoverflow.com/a/3760830
+        $content = preg_replace('/\s+/', ' ', $content);
+        // Remove unnecesary spaces
+        $content = str_replace('&nbsp;', ' ', $content);
+
+        return $content;
     }
 
 }

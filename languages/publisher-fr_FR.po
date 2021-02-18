@@ -1,383 +1,469 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2017-01-18 15:22+0100\n"
-"PO-Revision-Date: 2017-01-18 15:22+0100\n"
-"Last-Translator: Zebulong <fdereu@free.fr>\n"
-"Language-Team: Ferran Figueredo <hola@ferranfigueredo.com>\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-02-17 09:53+0100\n"
+"PO-Revision-Date: 2021-02-17 09:54+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: mpl-publisher.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: ..\n"
-"X-Poedit-SearchPathExcluded-0: ../vendor\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: ../libs/DownloadWidget.php:21
+#: libs/DownloadWidget.php:21
 msgid "A box with information about your eBook"
-msgstr "Une boîte avec des informations sur votre ebook"
+msgstr "Une boîte avec des informations sur votre eBook"
 
-#: ../libs/PublisherBase.php:34
+#: libs/PublisherBase.php:35
 #, php-format
 msgid "Submitted on %s"
-msgstr ""
+msgstr "Soumis sur %s"
 
-#: ../mpl-publisher.php:23
+#: libs/PublisherBase.php:98
+msgid "Default"
+msgstr "Par défaut"
+
+#: libs/PublisherBase.php:133
+msgid "January"
+msgstr "Janvier"
+
+#: libs/PublisherBase.php:134
+msgid "February"
+msgstr "Février"
+
+#: libs/PublisherBase.php:135
+msgid "March"
+msgstr "Mars"
+
+#: libs/PublisherBase.php:136
+msgid "April"
+msgstr "Avril"
+
+#: libs/PublisherBase.php:137
+msgid "May"
+msgstr "Mai"
+
+#: libs/PublisherBase.php:138
+msgid "June"
+msgstr "Juin"
+
+#: libs/PublisherBase.php:139
+msgid "July"
+msgstr "Juillet"
+
+#: libs/PublisherBase.php:140
+msgid "August"
+msgstr "Août"
+
+#: libs/PublisherBase.php:141
+msgid "September"
+msgstr "Septembre"
+
+#: libs/PublisherBase.php:142
+msgid "October"
+msgstr "Octobre"
+
+#: libs/PublisherBase.php:143
+msgid "November"
+msgstr "Novembre"
+
+#: libs/PublisherBase.php:144
+msgid "December"
+msgstr "Décembre"
+
+#: mpl-publisher.php:27
 msgid "Book Chapters"
-msgstr "Chapitres"
+msgstr "Chapitres de livres"
 
-#: ../mpl-publisher.php:24 ../views/index.php:219
+#: mpl-publisher.php:28 views/index.php:223
 msgid "Book Chapter"
-msgstr "Chapitre"
+msgstr "Chapitre du livre"
 
-#: ../mpl-publisher.php:25 ../mpl-publisher.php:26 ../mpl-publisher.php:27
-#: ../views/index.php:234 ../views/index.php:274
+#: mpl-publisher.php:29 mpl-publisher.php:30 mpl-publisher.php:31
+#: views/index.php:284 views/index.php:340
 msgid "Add New Book Chapter"
-msgstr "Ajouter un nouveau chapître"
+msgstr "Ajouter un nouveau chapitre de livre"
 
-#: ../mpl-publisher.php:28
+#: mpl-publisher.php:32
 msgid "Edit Book Chapter"
-msgstr "Modifier le chapitre"
+msgstr "Modifier le chapitre du livre"
 
-#: ../mpl-publisher.php:29
+#: mpl-publisher.php:33
 msgid "View Book Chapter"
-msgstr "Voir le chapitre"
+msgstr "Voir le chapitre livre"
 
-#: ../mpl-publisher.php:79
+#: mpl-publisher.php:86
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: ../mpl-publisher.php:83
+#: mpl-publisher.php:90
 msgid "How book chapters works"
-msgstr "Comment fonctionnent les chapitres"
+msgstr "Fonctionnement des chapitres de livres"
 
-#: ../mpl-publisher.php:85
+#: mpl-publisher.php:92
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
 "publish your chapter and it will be visible only from the Book Settings page."
 msgstr ""
-"MPL-Publisher permet aux auteurs d'écrire du contenu personalisé dans leurs "
-"livres sans qu'il soit nécessairement d'accès public. Vous avez juste à "
-"rédiger votre chapitre, et il sera visible uniquement depuis la page de "
-"configuration du livre."
+"MPL - Publisher permet aux auteurs d’écrire du contenu personnalisé "
+"spécifique à votre livre sans avoir besoin d’être accessible au public. Vous "
+"n’avez qu’à publier votre chapitre et il ne sera visible qu’à partir de la "
+"page Paramètres du livre."
 
-#: ../views/index.php:8 ../views/index.php:15
+#. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
+#: mpl-publisher.php:121
+#, php-format
+msgid ""
+"Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
+"\" style=\"text-decoration:none\">⭐⭐⭐⭐⭐</a> on <a href=\"%3$s\" target="
+"\"_blank\" rel=\"noopener\">WordPress.org</a> to help us spread the word. "
+"Thank you!"
+msgstr ""
+"S’il %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\" "
+"style=\"text-decoration:none\">vous ⭐⭐⭐⭐⭐</a> noter <a href=\"%3$s\" target="
+"\"_blank\" rel=\"noopener\">WordPress.org pour</a> nous aider à passer le "
+"mot. Merci!"
+
+#: views/index.php:15
+msgid "To get all the available formats and more cool features, download our"
+msgstr ""
+"Pour obtenir tous les formats disponibles et les fonctionnalités plus cool, "
+"téléchargez notre"
+
+#: views/index.php:23 views/index.php:32
 msgid "General details"
 msgstr "Détails généraux"
 
-#: ../views/index.php:9 ../views/index.php:16
+#: views/index.php:24 views/index.php:33
 msgid "Settings"
 msgstr "Paramètres"
 
-#: ../views/index.php:10 ../views/index.php:17
+#: views/index.php:25 views/index.php:34
 msgid "Links"
 msgstr "Liens"
 
-#: ../views/index.php:11 ../views/index.php:18
+#: views/index.php:26 views/index.php:35
 msgid "Appearance"
 msgstr "Apparence"
 
-#: ../views/index.php:31
+#: views/index.php:54
 msgid "Book details"
 msgstr "Détails du livre"
 
-#: ../views/index.php:32
+#: views/index.php:55
 msgid ""
 "Enter your book details, including title, description, and authors. We "
 "encourage you to complete as many fields as possible, as richer data could "
 "help readers discover your books."
 msgstr ""
-"Entrez les détails de votre livre : Titre, description, auteurs, et "
-"renseignez autant que possible les champs utiles au lecteur pour connaître "
-"vos livres."
+"Entrez les détails de votre livre, y compris le titre, la description et les "
+"auteurs. Nous vous encourageons à remplir autant de champs que possible, car "
+"des données plus riches pourraient aider les lecteurs à découvrir vos livres."
 
-#: ../views/index.php:36
+#: views/index.php:59
 msgid "Identifier (ISBN)"
-msgstr "Numéro ISBN"
+msgstr "Identificateur (ISBN)"
 
-#: ../views/index.php:37
+#: views/index.php:60
 msgid "If your book doesn't have an ISBN, use a unique identifier"
-msgstr ""
-"Si vous ne disposez pas d'un n° ISBN, utilisez un identificateur unique"
+msgstr "Si votre livre n’a pas d’ISBN, utilisez un identificateur unique"
 
-#: ../views/index.php:43 ../views/index.php:44
+#: views/index.php:66 views/index.php:67
 msgid "Book Title"
 msgstr "Titre du livre"
 
-#: ../views/index.php:48
+#: views/index.php:71
 msgid "Book Description"
 msgstr "Description du livre"
 
-#: ../views/index.php:54 ../views/index.php:57
+#: views/index.php:77 views/index.php:80
 msgid "Book authors"
-msgstr "Auteur(s) du livre"
+msgstr "Auteurs du livre"
 
-#: ../views/index.php:55
+#: views/index.php:78
 msgid "Separate multiple authors with commas"
-msgstr "Séparez les auteurs multiples par des virgules"
+msgstr "Séparer plusieurs auteurs avec virgules"
 
-#: ../views/index.php:62
+#: views/index.php:85
 msgid "Metadata settings"
-msgstr "Informations complémentaires"
+msgstr "Champs supplémentaires"
 
-#: ../views/index.php:63
+#: views/index.php:86
 msgid ""
 "The more metadata you provide, the easier it will be for readers to discover "
 "your book."
 msgstr ""
-"Plus vous fournissez d'informations, plus les lecteurs peuvent connaître "
-"votre livre facilement"
+"Plus vous fournissez de métadonnées, plus il sera facile pour les lecteurs "
+"de découvrir votre livre."
 
-#: ../views/index.php:67 ../views/index.php:70
+#: views/index.php:90 views/index.php:93
 msgid "Language"
 msgstr "Langue"
 
-#: ../views/index.php:68
+#: views/index.php:91
 msgid "Use the RFC3066 Language codes, such as en, es, fr…"
-msgstr "Utilisez un code de langue du RFC3066 tel que en, es, fr..."
+msgstr "Utilisez les codes linguistiques RFC3066, tels que en, es, fr..."
 
-#: ../views/index.php:75
+#: views/index.php:98
 msgid "Publication date"
 msgstr "Date de publication"
 
-#: ../views/index.php:76
+#: views/index.php:99
 msgid "This information won't affect the book's availability"
-msgstr "Cette donnée n'affectrae pas la disponibilité du livre"
+msgstr "Ces informations n’affecteront pas la disponibilité du livre"
 
-#: ../views/index.php:78
+#: views/index.php:101
 msgid "YYYY-MM-DD"
-msgstr "YYYY-MM-DD"
+msgstr "AAAA-MM-JJ"
 
-#: ../views/index.php:82 ../views/index.php:84 ../views/index.php:86
+#: views/index.php:105 views/index.php:107 views/index.php:109
 msgid "Cover image"
 msgstr "Image de couverture"
 
-#: ../views/index.php:89
+#: views/index.php:112
 msgid "Upload Image"
-msgstr "Téléversez une image"
+msgstr "Télécharger une image"
 
-#: ../views/index.php:90
+#: views/index.php:113
 msgid "Recommended size is 625x1000"
-msgstr "La taille recommandée est de 625 pixels par 1000"
+msgstr "La taille recommandée est 625x1000"
 
-#: ../views/index.php:94 ../views/index.php:95
+#: views/index.php:117 views/index.php:118
 msgid "Publisher Name"
-msgstr "Nom de l'éditeur"
+msgstr "Nom de l’éditeur"
 
-#: ../views/index.php:100 ../views/index.php:103
+#: views/index.php:123 views/index.php:126
 msgid "Copyright Information"
-msgstr "Information de copyright"
+msgstr "Informations de Copyright"
 
-#: ../views/index.php:101
+#: views/index.php:124
 msgid ""
 "Copyright information includes a statement about various property rights "
 "associated with the resource, including intellectual property rights"
 msgstr ""
-"Les informations de copyright contiennent une définition des divers droits "
-"de propriété attachés à la resource, dont les droits de propriété "
-"intellectuelle."
+"L’information sur le droit d’auteur comprend une déclaration sur divers "
+"droits de propriété associés à la ressource, y compris les droits de "
+"propriété intellectuelle"
 
-#: ../views/index.php:108
+#: views/index.php:131
 msgid "External links"
 msgstr "Liens externes"
 
-#: ../views/index.php:109
+#: views/index.php:132
 msgid ""
 "Links will appear on your MPL-Download eBook widget extending your book's "
 "informations."
 msgstr ""
-"Les liens apparaîtront dans le widget de téléchargement d'ebook en extension "
-"des données de votre livre"
+"Les liens s’afficheront sur votre widget EBook MPL-Download étendant les "
+"informations de votre livre."
 
-#: ../views/index.php:109
+#: views/index.php:132
 msgid "Edit Widgets"
 msgstr "Modifier les widgets"
 
-#: ../views/index.php:112 ../views/index.php:113
+#: views/index.php:135 views/index.php:136
 msgid "Landing Page URL"
-msgstr "URL de la page d'arrivée"
+msgstr "URL de la page de destination"
 
-#: ../views/index.php:117 ../views/index.php:118
+#: views/index.php:140 views/index.php:141
 msgid "Amazon URL"
-msgstr "URL d'Amazon"
+msgstr "Amazon URL"
 
-#: ../views/index.php:122 ../views/index.php:123
+#: views/index.php:145 views/index.php:146
 msgid "iBooks URL"
-msgstr "URL d'iBooks"
+msgstr "URL iBooks"
 
-#: ../views/index.php:129
+#: views/index.php:152
 msgid "Remove affiliate tracking from external links"
-msgstr ""
+msgstr "Supprimer le suivi des affiliés à partir de liens externes"
 
-#: ../views/index.php:129
+#: views/index.php:152
 msgid ""
 "Affiliate tracking won't affect your book prices and will help to track your "
 "sales from MPL-Publisher"
 msgstr ""
+"Le suivi des affiliés n’affectera pas les prix de vos livres et vous aidera "
+"à suivre vos ventes auprès de MPL-Publisher"
 
-#: ../views/index.php:135
+#: views/index.php:158
 msgid "Themes"
 msgstr "Thèmes"
 
-#: ../views/index.php:142
-msgid "Default"
-msgstr "Par défaut"
-
-#: ../views/index.php:147
+#: views/index.php:174
 msgid "Custom Theme"
-msgstr ""
+msgstr "Thème personnalisé"
 
-#: ../views/index.php:148
+#: views/index.php:175
 msgid ""
 "You can publish your book with your custom CSS, overriding the default file "
 "included with our themes."
 msgstr ""
+"Vous pouvez publier votre livre avec votre CSS personnalisé, en dominant le "
+"fichier par défaut inclus dans nos thèmes."
 
-#: ../views/index.php:158
+#: views/index.php:187
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: ../views/index.php:166
+#: views/index.php:197
 msgid ""
-"Microsoft Word (docx) and MOBI formats are still under development and open "
-"to any issues you may have. Use the"
+"Output result will be affected by the complexity of your content (ie. "
+"\"plain text\" works best). If you encounter any format error, please use the"
 msgstr ""
+"Le résultat sera affecté par la complexité de votre contenu (c.-à-d. «texte "
+"clair» fonctionne le mieux). Si vous rencontrez une erreur de format, "
+"veuillez utiliser le"
 
-#: ../views/index.php:170 ../views/index.php:280
-msgid "Publish"
-msgstr "Publiez"
+#: views/index.php:201 views/index.php:346
+msgid "Publish eBook"
+msgstr "Publier eBook"
 
-#: ../views/index.php:171 ../views/index.php:281
-msgid "Save Information"
-msgstr "Sauvegarder les informations"
+#: views/index.php:202 views/index.php:347
+msgid "Save"
+msgstr "Sauvegarder"
 
-#: ../views/index.php:180
+#: views/index.php:211
 msgid "Text"
 msgstr "Texte"
 
-#: ../views/index.php:184
-msgid "All statuses"
-msgstr ""
-
-#: ../views/index.php:191
-msgid "All categories"
-msgstr "Toutes les catégories"
-
-#: ../views/index.php:199
-msgid "All tags"
-msgstr "Toutes les étiquettes"
-
-#: ../views/index.php:207
-msgid "All authors"
-msgstr "Tous les auteurs"
-
-#: ../views/index.php:214
+#: views/index.php:215
 msgid "All types"
 msgstr "Tous les types"
 
-#: ../views/index.php:216 ../views/index.php:248
+#: views/index.php:217 views/index.php:311
 msgid "Post"
 msgstr "Article"
 
-#: ../views/index.php:223
+#: views/index.php:220 views/index.php:309
+msgid "Page"
+msgstr "Page"
+
+#: views/index.php:226
+msgid "All statuses"
+msgstr "Tous les statuts"
+
+#: views/index.php:233
+msgid "All categories"
+msgstr "Toutes les catégories"
+
+#: views/index.php:240
+msgid "All months"
+msgstr "Tous les mois"
+
+#: views/index.php:247
+msgid "All years"
+msgstr "Toutes les années"
+
+#: views/index.php:273
 msgid "Filter content"
-msgstr ""
+msgstr "Filtrer le contenu"
 
-#: ../views/index.php:226
+#: views/index.php:276
 msgid "Drag your filtered results to sort your book's chapters"
-msgstr "Faites glisser vos chapitres afin d'organiser votre livre"
+msgstr ""
+"Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: ../views/index.php:233 ../views/index.php:273
+#: views/index.php:283 views/index.php:339
 msgid "Contents"
 msgstr "Contenus"
 
-#: ../views/index.php:246
+#: views/index.php:292
+msgid ""
+"Your current search has too many results and it's not available yet. Please, "
+"use our filters to limit your request."
+msgstr ""
+"Votre recherche actuelle a trop de résultats et elle n’est pas encore "
+"disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
+
+#: views/index.php:293
+msgid "Current results"
+msgstr "Résultats actuels"
+
+#: views/index.php:294
+msgid "Max results"
+msgstr "Résultats max"
+
+#: views/index.php:307
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: ../views/index.php:256
+#: views/index.php:319
 msgid "Edit"
-msgstr "Editer"
+msgstr "Modifier"
 
-#: ../views/widget-form.php:3
+#: views/index.php:327
+msgid "Your search did not match any posts."
+msgstr "Votre recherche ne correspondait à aucun poste."
+
+#: views/widget-form.php:3
 msgid "Title"
 msgstr "Titre"
 
-#: ../views/widget-form.php:9
+#: views/widget-form.php:9
 msgid "Include external links"
-msgstr "Inclure les liens externes"
+msgstr "Inclure des liens externes"
 
-#: ../views/widget-form.php:9
+#: views/widget-form.php:9
 msgid "Edit links"
 msgstr "Modifier les liens"
 
-#: ../views/widget-form.php:12
+#: views/widget-form.php:12
 msgid "Include download button"
-msgstr "Inclure le bouton téléchargement"
+msgstr "Inclure le bouton de téléchargement"
 
-#: ../views/widget.php:26
+#: views/widget.php:26
 msgid "By"
 msgstr "Par"
 
-#: ../views/widget.php:31
+#: views/widget.php:31
 msgid "Get your eBook!"
-msgstr "Obtenez votre livre !"
+msgstr "Obtenez votre eBook!"
 
-#~ msgid "Last modification: %s"
-#~ msgstr "Dernière modification : %s"
+#. Plugin Name of the plugin/theme
+msgid "MPL - Publisher"
+msgstr "MPL - Publisher"
 
-#~ msgid "Filter"
-#~ msgstr "Filtrez"
+#. Plugin URI of the plugin/theme
+msgid "https://mpl-publisher.ferranfigueredo.com/"
+msgstr "https://mpl-publisher.ferranfigueredo.com/"
 
-#~ msgid "Private"
-#~ msgstr "Privé"
+#. Description of the plugin/theme
+msgid ""
+"MPL - Publisher is a plugin to create an ebook from your WordPress posts. "
+"You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi"
+msgstr ""
+"MPL - Publisher est un plugin pour créer un ebook à partir de vos "
+"publications WordPress. Vous pouvez publier votre ebook comme: ePub, pdf, "
+"livres kindle, ebook iPad, Mobi"
 
-#~ msgid ""
-#~ "Currently, only EPUB2.0 and EPUB3.0 are available. Future versions will "
-#~ "include PDF as output format."
-#~ msgstr ""
-#~ "Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. "
-#~ "Les versions futures inclurons le format PDF"
+#. Author of the plugin/theme
+msgid "Ferran Figueredo"
+msgstr "Ferran Figueredo"
 
-#~ msgid "Language (Optional)"
-#~ msgstr "Langue (facultatif)"
-
-#~ msgid "Publication date (Optional)"
-#~ msgstr "Date d'édition (facultatif)"
-
-#~ msgid "Cover image (Optional)"
-#~ msgstr "Image de couverture (facultatif)"
-
-#~ msgid "Publisher Name (Optional)"
-#~ msgstr "Nom de l'éditeur (facultatif)"
-
-#~ msgid "Copyright Information (Optional)"
-#~ msgstr "Informations de copyright (facultatif)"
-
-#~ msgid "Last edition date %s"
-#~ msgstr "Date de la dernière édition %s"
-
-#~ msgid "Publisher"
-#~ msgstr "Publisher"
-
-#~ msgid "Save changes"
-#~ msgstr "Enregistrez les modifications"
-
-#~ msgid "Use the RFC3066 Language codes, such as \"en\", \"es\", \"fr\"…"
-#~ msgstr ""
-#~ "Utilisez un code de langue du RFC3066 tel que \"en\", \"es\",\"fr\"..."
-
-#~ msgid "Formatted as a three-letter ISO 639-2/B code"
-#~ msgstr "Au format trois-lettres ISO 639-2/B"
+#. Author URI of the plugin/theme
+msgid "https://ferranfigueredo.com"
+msgstr "https://ferranfigueredo.com"
 
 #~ msgid ""
-#~ "Currently, only EPUB 2.0 is available. Future versions will include Mobi, "
-#~ "PDF, etc."
+#~ "Microsoft Word (docx) and MOBI formats are still under development and "
+#~ "open to any issues you may have. Use the"
 #~ msgstr ""
-#~ "Pour le moment, seuls les formats EPUB2.0 et EPUB3.0 sont disponibles. "
-#~ "Les versions futures inclurons les formats Mobi, PDF, etc."
+#~ "Microsoft Word (docx) et MOBI formats sont encore en cours de "
+#~ "développement et ouvert à tous les problèmes que vous pourriez avoir. "
+#~ "Utilisez le"
+
+#~ msgid "All authors"
+#~ msgstr "Tous les auteurs"

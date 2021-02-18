@@ -9,18 +9,14 @@ class PublisherController extends PublisherBase {
 
     public function getIndex()
     {
-        $query = http_build_query(array_merge(array(
-            'posts_per_page' => '-1',
-            'order' => 'ASC'
-        ), $this->filter));
-
-        $this->data['query'] = new WP_Query($query);
+        $this->data['query'] = $this->getQuery();
 
         $this->data['blog_categories'] = $this->getCategories();
         $this->data['blog_authors']    = $this->getAuthors();
         $this->data['blog_tags']       = $this->getTags();
         $this->data['blog_statuses']   = $this->getStatuses();
         $this->data['blog_years']      = $this->getYears();
+        $this->data['blog_months']     = $this->getMonths();
 
         $this->data['book_themes']     = $this->getThemes();
         

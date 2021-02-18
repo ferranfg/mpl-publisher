@@ -13,6 +13,7 @@ class MOBIFile extends ContentProvider
     const H3 = 2;
     const IMAGE = 3;
     const PAGEBREAK = 4;
+    const CHAPTER = 5;
 
     private $settings = array('title' => 'Unknown Title', 'toc' => true);
     private $parts = array();
@@ -70,6 +71,9 @@ class MOBIFile extends ContentProvider
                     break;
                 case self::IMAGE:
                     $str .= '<img recindex='.str_pad($data + 1, 10, '0', STR_PAD_LEFT).' />';
+                    break;
+                case self::CHAPTER:
+                    $str .= $data;
                     break;
             }
         }
@@ -160,9 +164,22 @@ class MOBIFile extends ContentProvider
         $this->parts[] = array(self::H3, $title);
     }
 
+    /**
+     * Append a page break.
+     */
     public function appendPageBreak()
     {
         $this->parts[] = array(self::PAGEBREAK, null);
+    }
+
+    /**
+     * Append a whole chapter content.
+     *
+     * @param string $title The title to insert.
+     */
+    public function appendChapter($content)
+    {
+        $this->parts[] = array(self::CHAPTER, $content);
     }
 
     /**

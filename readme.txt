@@ -8,34 +8,39 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher is a plugin to create an ebook from your WordPress posts. You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi
+MPL – Publisher 📚 is the best way to publish an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to self-publish my ebook" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
 
 == Description ==
 
-MPL - Publisher is a plugin to create an ebook from your WordPress posts. The plugin’s main purpose is to help writers solving the *how to create an ebook* problem the simplest possible way, easing the process of converting your ebook to ePub, pdf, kindle books, Mobi... etc.
+MPL – Publisher 📚 is the best way to publish an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to self-publish my ebook" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
 
-The plugin is still in an early development stage (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. Use the [MPL-Publisher Support Forum](https://wordpress.org/support/plugin/mpl-publisher)
+Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with kindle direct publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
+
+It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazom or .ePub for the other stores.
+
+With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
+
+The plugin is full of features (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. Use the MPL-Publisher Support Forum.
 
 = Features =
 
 For now, these are the current features:
 
-- Select chapters (posts) to include in your eBook.
+- Select chapters (posts, pages and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Mobi, Markdown or Microsoft Word (docx)
-- Add a widget to your sidebar to promote your book within your readers
-- Promote your book using the shortcode `[mpl]` and their available options
+- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (docx), Mobi, PDF and Audiobook (mp3).
+- Add a widget to your sidebar to promote your book with your readers.
+- Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
-- Add aditional book chapters and edit current content
-- Include your custom CSS styles into your books
+- Add aditional book chapters and edit current content.
+- Include your custom CSS styles into your books.
 
 = Roadmap =
 
 Future releases will include, at least, the next functionalities:
 
-- Multiple output formats (PDF Print-Ready and Mobi pending).
-- Advanced search with complex filters to improve the chapter selection.
-- Multiple design selection
+- Multiple professional designs available.
+- Sell directly your ebook to your own audience.
 
 = Requirements =
 
@@ -87,6 +92,15 @@ In future releases we will add further improvements to our current formats. Keep
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.20.1 =
+- Fix MOBI file generation
+- Update emojis with open-sourced Tweemojis
+
+= 1.20.0 =
+- Updated search filters (filter posts and chapters by month)
+- Added spanish, french and catalan translations
+- Premium publishers (PDF and Audiobook) generation improvements
 
 = 1.19.0 =
 - Fix EPUB 2.0 and EPUB 3.0 validation errors
@@ -207,5 +221,5 @@ In future releases we will add further improvements to our current formats. Keep
 
 == Upgrade Notice ==
 
-= 1.19.0 =
-- You can now export your blog as an Audiobook and as a PDF file!
+= 1.20.1 =
+- Fix MOBI generation errors
