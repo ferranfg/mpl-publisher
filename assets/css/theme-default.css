@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: normal;
+    font-style: normal;
+    src: url('./merriweather-regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: 700;
+    font-style: normal;
+    src: url('./merriweather-bold.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    font-weight: normal;
+    font-style: italic;
+    src: url('./merriweather-italic.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 500;
+    font-style: normal;
+    src: url('./lato-bold.ttf');
+}
+
+body {
+    font: normal 18px 'Merriweather', serif;
+    color:#222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}
+
+h1.chapter-title {
+    margin: 2em 0 1em;
+    text-align: center;
+    font-size: 48px;
+}
+
+h2 {
+    color: #ba3925;
+    font-size: 24px;
+    margin: 36px 0 12px;
+}
+
+a {
+    color: #ba3925;
+}
+
+p {
+    line-height: 30px;
+    margin-bottom: 24px;
+}
+
+p i, p em {
+    font-style: italic;
+}
+
+/* https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages */
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}

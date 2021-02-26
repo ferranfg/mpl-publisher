@@ -33,15 +33,6 @@
             $('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
         });
 
-        $('#book-amazon').on('change', function () {
-            // If not empty text field
-            if ($.trim($(this).val()) !== '') {
-                $('#affiliate-form-field').slideDown();
-            } else {
-                $('#affiliate-form-field').slideUp();
-            }
-        });
-
         var $themes = $('[data-toggle="book-theme"]');
 
         // On click updates hidden field
@@ -53,7 +44,9 @@
             $('input[name="theme_id"]').val($el.data('theme-id'));
         });
 
-        twemoji.parse($('#mpl-wrapper').get(0));
+        if (typeof twemoji === 'object' && $('#mpl-wrapper').length) {
+            twemoji.parse($('#mpl-wrapper').get(0));
+        }
     });
 
 })(window.jQuery);

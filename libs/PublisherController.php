@@ -23,7 +23,7 @@ class PublisherController extends PublisherBase {
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
-        $this->data['premium_version'] = file_exists(MPL_BASEPATH . '/mpl-publisher.json');
+        $this->data['mpl_is_premium']  = mpl_is_premium();
         $this->data['admin_notice']    = array_key_exists('msg', $_GET) ? $_GET['msg'] : null;
 
         wp_reset_postdata();
@@ -39,6 +39,8 @@ class PublisherController extends PublisherBase {
         $this->saveStatus($_POST);
 
         $params = ['page' => 'publisher'];
+
+        if (isset($_POST['save'])) $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
 
         try
         {

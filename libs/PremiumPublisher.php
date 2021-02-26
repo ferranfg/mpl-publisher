@@ -136,7 +136,7 @@ class PremiumPublisher
                 }
             }
 
-            throw new Exception(implode(" ", $msg));
+            throw new Exception("⚠️ " . implode(" ", $msg));
         }
     }
 }

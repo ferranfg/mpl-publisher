@@ -3,6 +3,7 @@
 namespace MPL\Publisher;
 
 use WP_Query;
+use Exception;
 use Illuminate\View\View;
 use Illuminate\View\Factory;
 use Illuminate\Events\Dispatcher;
@@ -12,8 +13,6 @@ use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\Engines\EngineResolver;
 
 class PublisherBase {
-
-    public $statusOptionName = 'mpl_publisher_status';
 
     public $data;
 
@@ -77,7 +76,6 @@ class PublisherBase {
             'landingUrl'  => false,
             'amazonUrl'   => false,
             'ibooksUrl'   => false,
-            'affiliate'   => false,
             'customCss'   => '',
             'theme_id'    => 0,
             'cat_selected'    => array(),
@@ -88,22 +86,39 @@ class PublisherBase {
             'year_selected'   => array(),
             'month_selected'  => array(),
             'selected_posts'  => false,
-            'format'          => 'epub2'
+            'format'          => 'epub2',
+            'license'         => ''
         );
     }
 
-    public function getThemeDefaults()
+    public function getDefaultThemes()
     {
         return array(
-            'name'  => __('Default', 'publisher'),
-            'image' => MPL_BASEURL . 'assets/imgs/default.png',
-            'style' => MPL_BASEPATH . '/assets/css/book.css',
-            'fonts' => array(
-                'merriweather-regular' => MPL_BASEPATH . '/assets/fonts/merriweather-regular.ttf',
-                'merriweather-bold'    => MPL_BASEPATH . '/assets/fonts/merriweather-bold.ttf',
-                'merriweather-italic'  => MPL_BASEPATH . '/assets/fonts/merriweather-italic.ttf',
-                'lato-bold'            => MPL_BASEPATH . '/assets/fonts/lato-bold.ttf'
-            )
+            array(
+                'id'    => 'default',
+                'name'  => __('Lato & Merriweather', 'publisher'),
+                'image' => MPL_BASEURL . 'assets/imgs/theme-default.png',
+                'style' => MPL_BASEPATH . '/assets/css/theme-default.css',
+                'fonts' => array(
+                    'merriweather-regular' => MPL_BASEPATH . '/assets/fonts/merriweather-regular.ttf',
+                    'merriweather-bold'    => MPL_BASEPATH . '/assets/fonts/merriweather-bold.ttf',
+                    'merriweather-italic'  => MPL_BASEPATH . '/assets/fonts/merriweather-italic.ttf',
+                    'lato-bold'            => MPL_BASEPATH . '/assets/fonts/lato-bold.ttf'
+                )
+            ),
+            array(
+                'id'    => 'crimson',
+                'name'  => __('Montserrat & Crimson', 'publisher'),
+                'image' => MPL_BASEURL . 'assets/imgs/theme-crimson.png',
+                'style' => MPL_BASEPATH . '/assets/css/theme-crimson.css',
+                'fonts' => array(
+                    'crimson-regular' => MPL_BASEPATH . '/assets/fonts/crimson-regular.ttf',
+                    'crimson-bold'    => MPL_BASEPATH . '/assets/fonts/crimson-bold.ttf',
+                    'crimson-italic'  => MPL_BASEPATH . '/assets/fonts/crimson-italic.ttf',
+                    'montserrat-bold' => MPL_BASEPATH . '/assets/fonts/montserrat-bold.ttf'
+                )
+            ),
+
         );
     }
 
@@ -218,7 +233,7 @@ class PublisherBase {
             break;
         }
 
-        if ( ! $publisher) return;
+        if ( ! $publisher) throw new Exception('⚠️ ' . __('No valid output format selected.', 'publisher'));
 
         $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
         $publisher->setTitle(sanitize_text_field($_POST['title']));
@@ -242,6 +257,7 @@ class PublisherBase {
         );
 
         $query = new WP_Query(array(
+            'ignore_sticky_posts' => 1,
             'post__in'       => isset($_POST['selected_posts']) ? $_POST['selected_posts'] : [0],
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
@@ -262,13 +278,17 @@ class PublisherBase {
                 $chapter++;
             endwhile;
         }
+        else
+        {
+            throw new Exception('⚠️ ' . __('Please, select at least one chapter to publish your book.', 'publisher'));
+        }
 
         return $publisher->send(sanitize_text_field($_POST['title']));
     }
     
     public function saveStatus($data)
     {
-        return update_option($this->statusOptionName, array(
+        return update_option(MPL_OPTION_NAME, array(
             'time' => current_time('timestamp'),
             'data' => apply_filters('mpl_publisher_save_status', $data)
         ));
@@ -276,21 +296,21 @@ class PublisherBase {
 
     public function getStatus()
     {
-        return apply_filters('mpl_publisher_get_status', get_option($this->statusOptionName));
+        return apply_filters('mpl_publisher_get_status', get_option(MPL_OPTION_NAME));
     }
 
     public function getThemes()
     {
-        return apply_filters('mpl_publisher_get_themes', array($this->getThemeDefaults()));
+        return apply_filters('mpl_publisher_get_themes', $this->getDefaultThemes());
     }
 
     public function getTheme($themeId)
     {
         $themes = $this->getThemes();
 
-        if (count($themes) and array_key_exists($themeId, $themes)) return $themes[$themeId];
+        if (array_key_exists($themeId, $themes)) return $themes[$themeId];
 
-        return $this->getThemeDefaults();
+        return reset($themes);
     }
 
     private function parseText($post_content)
@@ -315,9 +335,12 @@ class PublisherBase {
             ),
             'img' => array(
                 'src' => array(),
-                'alt' => array()
+                'alt' => array(),
+                'class' => array()
             ),
             'blockquote' => array(),
+            'q' => array(),
+            'cite' => array(),
             'hr' => array(),
             // Styles
             'u' => array(),
