@@ -5,13 +5,13 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
-        "grandt/phpepub": "4.0.7.1",
+        "wallabag/phpepub": "4.0.7.2",
         "illuminate/view": "^5.8",
         "illuminate/events": "^5.8",
         "phpzip/phpzip": "2.0.8",
         "league/html-to-markdown": "4.10.0",
         "symfony/yaml": "^4.4",
-        "phpoffice/phpword": "0.17.0",
+        "phpoffice/phpword": "0.18.0",
         "wallabag/php-mobi": "1.1.0",
         "paragonie/random_compat": "2.0.19",
         "guzzlehttp/guzzle": "6.5.x-dev"

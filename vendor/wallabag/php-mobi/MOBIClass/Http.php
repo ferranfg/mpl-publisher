@@ -14,7 +14,7 @@ class Http
     }
 
     public static function FullRequest(
-            $verb = 'GET',             /* HTTP Request Method (GET and POST supported) */
+            $verb,                     /* HTTP Request Method (GET and POST supported) */
             $ip,                       /* Target IP/Hostname */
             $port = 80,                /* Target TCP port */
             $uri = '/',                /* Target URI */

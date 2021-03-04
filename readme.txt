@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
 Requires at least: 3.5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,6 +26,7 @@ The plugin is full of features (check the features section and roadmap to future
 
 For now, these are the current features:
 
+- Unlimited books and unlimited exports.
 - Select chapters (posts, pages and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (docx), Mobi, PDF and Audiobook (mp3).
@@ -44,8 +45,8 @@ Future releases will include, at least, the next functionalities:
 
 = Requirements =
 
-- PHP 5.4.0 or higher
-- WordPress 3.5.0 or higher
+- PHP 7.1.3 or higher
+- WordPress 5.0.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
 
@@ -92,6 +93,19 @@ In future releases we will add further improvements to our current formats. Keep
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.22.0 =
+- Tested up to WordPress 5.7 and PHP 8.0 (and bugfixing)
+- Optimize database query when loading chapters
+
+= 1.21.0 =
+- Added new book theme! Check it out at our "🎨 Appeareance" tab
+- Premium ⭐ version doesn't require a direct FTP upload anymore
+- Better usability messages on saving and error ✅
+- Improvements on our print-ready PDF premium formatting 📘
+
+= 1.20.2 =
+- Hotfix changes using emoji library
 
 = 1.20.1 =
 - Fix MOBI file generation
@@ -221,5 +235,5 @@ In future releases we will add further improvements to our current formats. Keep
 
 == Upgrade Notice ==
 
-= 1.20.1 =
-- Fix MOBI generation errors
+= 1.22.0 =
+- Tested up to WordPress 5.7 and PHP 8.0. Bugfixing 🎉🥳

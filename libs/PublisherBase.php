@@ -189,7 +189,7 @@ class PublisherBase {
         }
 
         $query = http_build_query(array_merge(array(
-            'posts_per_page' => '-1',
+            'posts_per_page' => mpl_max_posts(),
             'order' => 'ASC'
         ), $this->filter));
 
@@ -262,7 +262,8 @@ class PublisherBase {
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
             'post_status'    => 'any',
-            'post_type'      => 'any'
+            'post_type'      => 'any',
+            'no_found_rows'  => true
         ));
 
         if ($query->have_posts())

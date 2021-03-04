@@ -180,7 +180,7 @@
 
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
-                        <p><?php _e("If you already bought our premium version, you received a license key on the confirmation email. Please, paste the value on the following field and click \"� Save\" to activate your premium version.", "publisher"); ?></p>
+                        <p><?php _e("If you already bought our premium version, you received a license key on the confirmation email. Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
 
                         <div class="form-field">
                             <label for="book-license"><?php _e("License key", "publisher"); ?></label>

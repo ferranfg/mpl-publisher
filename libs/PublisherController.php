@@ -2,7 +2,6 @@
 
 namespace MPL\Publisher;
 
-use WP_Query;
 use Exception;
 
 class PublisherController extends PublisherBase {
@@ -19,7 +18,7 @@ class PublisherController extends PublisherBase {
         $this->data['blog_months']     = $this->getMonths();
 
         $this->data['book_themes']     = $this->getThemes();
-        
+
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 

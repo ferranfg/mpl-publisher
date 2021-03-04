@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-02-26 17:31+0100\n"
+"POT-Creation-Date: 2021-03-04 18:27+0100\n"
 "PO-Revision-Date: 2021-01-12 18:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -91,11 +91,11 @@ msgstr ""
 msgid "No valid output format selected."
 msgstr ""
 
-#: libs/PublisherBase.php:283
+#: libs/PublisherBase.php:284
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 
-#: libs/PublisherController.php:43
+#: libs/PublisherController.php:42
 msgid "Changes successfully saved."
 msgstr ""
 
