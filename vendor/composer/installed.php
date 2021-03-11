@@ -275,6 +275,16 @@
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
+    'simplehtmldom/simplehtmldom' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => '31ce157e7ba0c6ca35f94faedf031a945c3f6427',
+    ),
     'symfony/debug' => 
     array (
       'pretty_version' => '4.4.x-dev',
