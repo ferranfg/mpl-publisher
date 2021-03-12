@@ -5,18 +5,18 @@
 <?php endif; ?>
 
 <section itemscope="" itemtype="http://schema.org/Book">
-	<?php if ($coverSrc): ?>
-		<?php if ($landingUrl): ?>
-			<a href="<?php echo $landingUrl; ?>" title="<?php echo $title; ?>">
-				<img class="book-cover" src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
+	<?php if ($cover_src): ?>
+		<?php if ($landing_url): ?>
+			<a href="<?php echo $landing_url; ?>" title="<?php echo $title; ?>">
+				<img class="book-cover" src="<?php echo $cover_src; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
 			</a>
 		<?php else: ?>
-			<img class="book-cover" src="<?php echo $coverSrc; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
+			<img class="book-cover" src="<?php echo $cover_src; ?>" width="95" height="152" alt="<?php echo $title; ?>" itemprop="image" />
 		<?php endif; ?>
 	<?php endif; ?>
 	<h5 itemprop="name">
-		<?php if ($landingUrl): ?>
-			<a href="<?php echo $landingUrl; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
+		<?php if ($landing_url): ?>
+			<a href="<?php echo $landing_url; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
 		<?php else: ?>
 			<?php echo $title; ?>
 		<?php endif; ?>
@@ -31,15 +31,15 @@
 			<button type="submit" name="download_ebook" class="btn btn-default"><?php _e("Get your eBook!", "publisher"); ?></button>
 		</form>
 	<?php endif; ?>
-	<?php if (isset($instance['external']) and $instance['external'] and ($ibooksUrl || $amazonUrl)): ?>
+	<?php if (isset($instance['external']) and $instance['external'] and ($ibooks_url || $amazon_url)): ?>
 		<p class="book-links">
-			<?php if ($amazonUrl): ?>
-				<a href="<?php echo $amazonUrl; ?>">
+			<?php if ($amazon_url): ?>
+				<a href="<?php echo $amazon_url; ?>">
 					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/amazon-apps-store-us-black.png" />
 				</a>
 			<?php endif; ?>
-			<?php if ($ibooksUrl): ?>
-				<a href="<?php echo $ibooksUrl; ?>">
+			<?php if ($ibooks_url): ?>
+				<a href="<?php echo $ibooks_url; ?>">
 					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/iBooks_icon_large.png" />
 				</a>
 			<?php endif; ?>

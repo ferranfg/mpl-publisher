@@ -54,31 +54,31 @@ class MarkdownPublisher implements IPublisher {
         $this->config['book']['title'] = $title;
     }
 
-    public function setAuthor($authorName)
+    public function setAuthor($author_name)
     {
-        $this->config['book']['author'] = $authorName;
+        $this->config['book']['author'] = $author_name;
     }
 
-    public function setPublisher($publisherName)
+    public function setPublisher($publisher_name)
     {
-        $this->config['book']['publisher'] = $publisherName;
+        $this->config['book']['publisher'] = $publisher_name;
     }
 
-    public function setCoverImage($fileName, $imageData)
+    public function setCoverImage($filename, $image_data)
     {
-        $this->zip->addFile($imageData, 'Resources/Templates/' . $fileName);
+        $this->zip->addFile($image_data, 'Resources/Templates/' . $filename);
         
         $this->config['book']['contents'][] = array(
             'element' => 'cover',
-            'content' => $fileName
+            'content' => $filename
         );
     }
 
-    public function setTheme($theme, $contentCSS)
+    public function setTheme($theme, $content_css)
     {
-        if (trim($contentCSS) == '')
+        if (trim($content_css) == '')
         {
-            $contentCSS = file_get_contents($theme['style']);
+            $content_css = file_get_contents($theme['style']);
 
             foreach ($theme['fonts'] as $name => $path)
             {
@@ -86,7 +86,7 @@ class MarkdownPublisher implements IPublisher {
             }
         }
 
-        $this->zip->addFile($contentCSS, 'Resources/Templates/Style.css');
+        $this->zip->addFile($content_css, 'Resources/Templates/Style.css');
     }
 
     public function setDescription($description)
@@ -111,11 +111,11 @@ class MarkdownPublisher implements IPublisher {
         $this->config['book']['publication_date'] = $date;
     }
 
-    public function setRights($rightsText)
+    public function setRights($rights_text)
     {
-        if (trim($rightsText) == '') return;
+        if (trim($rights_text) == '') return;
 
-        $this->zip->addFile($rightsText, 'Contents/license.md');
+        $this->zip->addFile($rights_text, 'Contents/license.md');
 
         $this->config['book']['contents'][] = array(
             'element' => 'license',

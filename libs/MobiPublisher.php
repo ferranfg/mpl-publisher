@@ -27,22 +27,22 @@ class MobiPublisher implements IPublisher {
         $this->content->set('title', $title);
     }
 
-    public function setAuthor($authorName)
+    public function setAuthor($author_name)
     {
-        $this->content->set('author', $authorName);
+        $this->content->set('author', $author_name);
     }
 
-    public function setPublisher($publisherName)
+    public function setPublisher($publisher_name)
     {
-        $this->content->set('publisher', $publisherName);
+        $this->content->set('publisher', $publisher_name);
     }
 
-    public function setCoverImage($fileName, $imageData)
+    public function setCoverImage($filename, $image_data)
     {
-        $this->content->set('cover', $imageData);
+        $this->content->set('cover', $image_data);
     }
 
-    public function setTheme($theme, $customCSS)
+    public function setTheme($theme, $custom_css)
     {
         //
     }
@@ -62,9 +62,9 @@ class MobiPublisher implements IPublisher {
         $this->content->set('date', $date);
     }
 
-    public function setRights($rightsText)
+    public function setRights($rights_text)
     {
-        $this->content->set('copyright', $rightsText);
+        $this->content->set('copyright', $rights_text);
     }
     
     public function addChapter($id, $title, $content)

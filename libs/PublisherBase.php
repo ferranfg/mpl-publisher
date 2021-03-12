@@ -6,6 +6,7 @@ use WP_Query;
 use Exception;
 use Illuminate\View\View;
 use Illuminate\View\Factory;
+use simplehtmldom\HtmlDocument;
 use Illuminate\Events\Dispatcher;
 use Illuminate\View\FileViewFinder;
 use Illuminate\Filesystem\Filesystem;
@@ -33,11 +34,11 @@ class PublisherBase {
 
             $this->data['message'] = sprintf(__('Submitted on %s' , "publisher"), date($format, $status['time']));
 
-            $coverSrc = wp_get_attachment_image_src($this->data['cover'], 'full');
+            $cover_src = wp_get_attachment_image_src($this->data['cover'], 'full');
 
-            if (is_array($coverSrc) and count($coverSrc) == 4 and array_key_exists(0, $coverSrc))
+            if (is_array($cover_src) and count($cover_src) == 4 and array_key_exists(0, $cover_src))
             {
-                $this->data['coverSrc'] = $coverSrc[0];
+                $this->data['cover_src'] = $cover_src[0];
             }
 
             if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
@@ -70,13 +71,14 @@ class PublisherBase {
             'language'    => get_locale(),
             'date'        => '',
             'cover'       => false,
-            'coverSrc'    => false,
+            'cover_src'   => false,
             'editor'      => '',
             'copyright'   => '',
-            'landingUrl'  => false,
-            'amazonUrl'   => false,
-            'ibooksUrl'   => false,
-            'customCss'   => '',
+            'landing_url' => false,
+            'amazon_url'  => false,
+            'ibooks_url'  => false,
+            'custom_css'  => '',
+            'images_load' => 'default',
             'theme_id'    => 0,
             'cat_selected'    => array(),
             'author_selected' => array(),
@@ -272,7 +274,11 @@ class PublisherBase {
 
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
+
+                // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($post->post_content);
+                // Embeds images as base64 into the book content
+                if ($_POST['images_load'] == 'embed') $content = $this->parseImages($content);
 
                 $publisher->addChapter($chapter, $post->post_title, $content);
 
@@ -372,6 +378,28 @@ class PublisherBase {
         $content = str_replace('&nbsp;', ' ', $content);
 
         return $content;
+    }
+
+    private function parseImages($content)
+    {
+        if ( ! extension_loaded('iconv')) return $content;
+
+        $html = new HtmlDocument($content);
+
+        foreach ($html->find('img') as $image)
+        {
+            $post_id = attachment_url_to_postid($image->src);
+
+            if ($post_id)
+            {
+                $encoded64 = file_get_contents(get_attached_file($post_id));
+                $mime_type = mpl_mime_content_type($image->src);
+
+                $image->src = "data:{$mime_type};base64," . base64_encode($encoded64);
+            }
+        }
+
+        return (string) $html;
     }
 
 }

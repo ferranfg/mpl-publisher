@@ -8,13 +8,13 @@ interface IPublisher {
 
     public function setTitle($title);
 
-    public function setAuthor($authorName);
+    public function setAuthor($author_name);
 
-    public function setPublisher($publisherName);
+    public function setPublisher($publisher_name);
 
-    public function setCoverImage($fileName, $imageData);
+    public function setCoverImage($filename, $image_data);
 
-    public function setTheme($theme, $contentCSS);
+    public function setTheme($theme, $content_css);
 
     public function setDescription($description);
 
@@ -22,7 +22,7 @@ interface IPublisher {
 
     public function setDate($date);
 
-    public function setRights($rightsText);
+    public function setRights($rights_text);
 
     public function addChapter($id, $title, $content);
 

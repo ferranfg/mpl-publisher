@@ -31,26 +31,26 @@ class EpubPublisher implements IPublisher {
         return $this->epub->setTitle($title);
     }
 
-    public function setAuthor($authorName)
+    public function setAuthor($author_name)
     {
-        return $this->epub->setAuthor($authorName, $authorName);
+        return $this->epub->setAuthor($author_name, $author_name);
     }
 
-    public function setPublisher($publisherName)
+    public function setPublisher($publisher_name)
     {
-        return $this->epub->setPublisher($publisherName, null);
+        return $this->epub->setPublisher($publisher_name, null);
     }
 
-    public function setCoverImage($fileName, $imageData)
+    public function setCoverImage($filename, $image_data)
     {
-        return $this->epub->setCoverImage($fileName, $imageData);
+        return $this->epub->setCoverImage($filename, $image_data);
     }
 
-    public function setTheme($theme, $contentCSS)
+    public function setTheme($theme, $content_css)
     {
-        if (trim($contentCSS) == "")
+        if (trim($content_css) == "")
         {
-            $contentCSS = file_get_contents($theme['style']);
+            $content_css = file_get_contents($theme['style']);
 
             foreach ($theme['fonts'] as $name => $path) $this->epub->addFile(
                 "{$name}.ttf",
@@ -60,7 +60,7 @@ class EpubPublisher implements IPublisher {
             );
         }
 
-        $this->epub->addCSSFile("Style.css", "default", $contentCSS);
+        $this->epub->addCSSFile("Style.css", "default", $content_css);
     }
 
     public function setDescription($description)
@@ -78,9 +78,9 @@ class EpubPublisher implements IPublisher {
         return $this->epub->setDate(strtotime($date));
     }
 
-    public function setRights($rightsText)
+    public function setRights($rights_text)
     {
-        return $this->epub->setRights($rightsText);
+        return $this->epub->setRights($rights_text);
     }
 
     public function addChapter($id, $title, $content)

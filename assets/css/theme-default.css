@@ -27,7 +27,7 @@
 }
 
 body {
-    font: normal 18px 'Merriweather', serif;
+    font: normal 1rem 'Merriweather', serif;
     color:#222;
 }
 
@@ -39,13 +39,13 @@ h1, h2, h3, h4, h5, h6 {
 h1.chapter-title {
     margin: 2em 0 1em;
     text-align: center;
-    font-size: 48px;
+    font-size: 2.2rem;
 }
 
 h2 {
     color: #ba3925;
-    font-size: 24px;
-    margin: 36px 0 12px;
+    font-size: 1.4rem;
+    margin: 1.8rem 0 1rem;
 }
 
 a {
@@ -53,8 +53,8 @@ a {
 }
 
 p {
-    line-height: 30px;
-    margin-bottom: 24px;
+    line-height: 1.6rem;
+    margin-bottom: 1.6rem;
 }
 
 p i, p em {

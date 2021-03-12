@@ -1,4 +1,4 @@
-=== MPL - Publisher ===
+=== MPL-Publisher - Self-publish your eBook ===
 Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
@@ -8,11 +8,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL – Publisher 📚 is the best way to publish an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to self-publish my ebook" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
+MPL – Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
 
 == Description ==
 
-MPL – Publisher 📚 is the best way to publish an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to self-publish my ebook" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
+MPL – Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with kindle direct publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
@@ -93,6 +93,11 @@ In future releases we will add further improvements to our current formats. Keep
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.23.0 =
+- Added experimental feature to embed images into book contents
+- Use `rem` instead of `px` on book styles
+- Fix error on saving premium license key
 
 = 1.22.0 =
 - Tested up to WordPress 5.7 and PHP 8.0 (and bugfixing)
@@ -235,5 +240,5 @@ In future releases we will add further improvements to our current formats. Keep
 
 == Upgrade Notice ==
 
-= 1.22.0 =
+= 1.23.0 =
 - Tested up to WordPress 5.7 and PHP 8.0. Bugfixing 🎉🥳

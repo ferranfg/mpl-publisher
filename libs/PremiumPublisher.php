@@ -13,18 +13,6 @@ class PremiumPublisher
 
     protected $params = array();
 
-    public function getToken()
-    {
-        if (mpl_is_premium())
-        {
-            $options = json_decode(file_get_contents(MPL_BASEPATH . '/mpl-publisher.json'), true);
-
-            if (array_key_exists('token', $options)) return $options['token'];
-        }
-
-        return null;
-    }
-
     public function setTmpPath($tempPath)
     {
         $this->tempPath = $tempPath;
@@ -45,29 +33,29 @@ class PremiumPublisher
         $this->params['title'] = $title;
     }
 
-    public function setAuthor($authorName)
+    public function setAuthor($author_name)
     {
-        $this->params['author'] = $authorName;
+        $this->params['author'] = $author_name;
     }
 
-    public function setPublisher($publisherName)
+    public function setPublisher($publisher_name)
     {
-        $this->params['publisher'] = $publisherName;
+        $this->params['publisher'] = $publisher_name;
     }
 
-    public function setCoverImage($fileName, $imageData)
+    public function setCoverImage($filename, $image_data)
     {
-        $mime_type = mpl_mime_content_type($fileName);
-        $encoded64 = base64_encode($imageData);
+        $mime_type = mpl_mime_content_type($filename);
+        $encoded64 = base64_encode($image_data);
 
-        $this->params['cover_name'] = $fileName;
+        $this->params['cover_name'] = $filename;
         $this->params['cover_image'] = "data:{$mime_type};base64,{$encoded64}";
     }
 
-    public function setTheme($theme, $contentCSS)
+    public function setTheme($theme, $content_css)
     {
         $this->params['theme'] = $theme;
-        $this->params['css_content'] = $contentCSS;
+        $this->params['css_content'] = $content_css;
     }
 
     public function setDescription($description)
@@ -85,14 +73,15 @@ class PremiumPublisher
         $this->params['date'] = $date;
     }
 
-    public function setRights($rightsText)
+    public function setRights($rights_text)
     {
-        $this->params['rights'] = $rightsText;
+        $this->params['rights'] = $rights_text;
     }
 
     public function request($endpoint, $filename)
     {
         $filepath = $this->tempPath . '/' . $filename;
+        $authorization = is_null(mpl_premium_license()) ? mpl_premium_token() : mpl_premium_license();
 
         try
         {
@@ -100,7 +89,7 @@ class PremiumPublisher
                 RequestOptions::HEADERS => [
                     'Accept' => 'application/json',
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $this->getToken()
+                    'Authorization' => 'Bearer ' . $authorization
                 ],
                 RequestOptions::JSON => $this->params,
                 RequestOptions::SINK => $filepath

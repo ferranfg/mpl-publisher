@@ -48,29 +48,29 @@ class WordPublisher implements IPublisher {
         $this->config->setTitle($title);
     }
 
-    public function setAuthor($authorName)
+    public function setAuthor($author_name)
     {
-        if (trim($authorName) == '') return $authorName;
+        if (trim($author_name) == '') return $author_name;
 
-        $this->config->setCreator($authorName);
+        $this->config->setCreator($author_name);
     }
 
-    public function setPublisher($publisherName)
+    public function setPublisher($publisher_name)
     {
-        $this->config->setLastModifiedBy($publisherName);
+        $this->config->setLastModifiedBy($publisher_name);
     }
 
-    public function setCoverImage($filename, $imageData)
+    public function setCoverImage($filename, $image_data)
     {
         $this->coverFile = $this->tempPath . '/' . $filename;
 
-        $image = file_put_contents($this->coverFile, $imageData);
+        $image = file_put_contents($this->coverFile, $image_data);
         $cover = $this->word->addSection();
 
         $cover->addImage($this->coverFile);
     }
 
-    public function setTheme($theme, $customCSS)
+    public function setTheme($theme, $custom_css)
     {
         //
     }
@@ -92,7 +92,7 @@ class WordPublisher implements IPublisher {
         $this->config->setCreated($date);
     }
 
-    public function setRights($rightsText)
+    public function setRights($rights_text)
     {
         //
     }

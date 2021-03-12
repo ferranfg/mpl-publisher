@@ -2,8 +2,8 @@
 /**
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
- * Description: MPL - Publisher is a plugin to create an ebook from your WordPress posts. You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi
- * Version: 1.22.0
+ * Description: MPL - Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
+ * Version: 1.23.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -142,21 +142,45 @@ if ( ! function_exists('mpl_is_premium'))
 {
     /**
      * https://mpl-publisher.ferranfigueredo.com :)
-     * 
+     *
      * We validate the license key on the backend
      */
     function mpl_is_premium()
     {
-        if (file_exists(MPL_BASEPATH . '/mpl-publisher.json')) return true;
+        return ! is_null(mpl_premium_license()) or ! is_null(mpl_premium_token());
+    }
+}
 
+if ( ! function_exists('mpl_premium_license'))
+{
+    function mpl_premium_license()
+    {
         $options = get_option(MPL_OPTION_NAME);
 
         if (is_array($options) and isset($options['data']['license']))
         {
-            return preg_match('/[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}/', $options['data']['license']);
+            if (preg_match('/[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}/', $options['data']['license']))
+            {
+                return $options['data']['license'];
+            }
         }
 
-        return false;
+        return null;
+    }
+}
+
+if ( ! function_exists('mpl_premium_token'))
+{
+    function mpl_premium_token()
+    {
+        if (file_exists(MPL_BASEPATH . '/mpl-publisher.json'))
+        {
+            $content = json_decode(file_get_contents(MPL_BASEPATH . '/mpl-publisher.json'), true);
+
+            if (array_key_exists('token', $content)) return $content['token'];
+        }
+
+        return null;
     }
 }
 
@@ -227,7 +251,9 @@ if ( ! function_exists('mpl_mime_content_type'))
             'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
         );
 
-        $ext = strtolower(array_pop(explode('.', $filename)));
+        $parts = explode('.', $filename);
+        // Only variables should be passed by reference
+        $ext = strtolower(array_pop($parts));
 
         if (array_key_exists($ext, $mime_types))
         {

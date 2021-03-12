@@ -24,7 +24,7 @@
         <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Settings", "publisher"); ?></a></li>
         <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
         <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
-        <?php if ( ! $mpl_is_premium): ?>
+        <?php if (is_null(mpl_premium_token())): ?>
             <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
         <?php endif; ?>
         <?php do_action('mpl_publisher_before_tabs'); ?>
@@ -36,7 +36,7 @@
         <option value="1"><?php _e("Settings", "publisher"); ?></option>
         <option value="2"><?php _e("Links", "publisher"); ?></option>
         <option value="3"><?php _e("Appearance", "publisher"); ?></option>
-        <?php if ( ! $mpl_is_premium): ?>
+        <?php if (is_null(mpl_premium_token())): ?>
             <option value="4"><?php _e("Premium", "publisher"); ?></option>
         <?php endif; ?>
         <?php do_action('mpl_publisher_before_tabs_responsive'); ?>
@@ -109,8 +109,8 @@
 
                         <div class="form-field">
                             <label><?php _e("Cover image", "publisher"); ?></label>
-                            <?php if ($coverSrc):  ?>
-                                <img src="<?php echo $coverSrc; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+                            <?php if ($cover_src):  ?>
+                                <img src="<?php echo $cover_src; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php else: ?>
                                 <img src="https://placehold.it/115x184&amp;text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php endif; ?>
@@ -139,29 +139,28 @@
 
                         <div class="form-field">
                             <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
-                            <input name="landingUrl" id="book-landing" type="text" value="<?php echo $landingUrl; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
+                            <input name="landing_url" id="book-landing" type="text" value="<?php echo $landing_url; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
                             <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
-                            <input name="amazonUrl" id="book-amazon" type="text" value="<?php echo $amazonUrl; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
+                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo $amazon_url; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
                             <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
-                            <input name="ibooksUrl" id="book-ibooks" type="text" value="<?php echo $ibooksUrl; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
+                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo $ibooks_url; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
                         </div>
                     </div>
 
                     <div class="tab-pane clearfix" id="book-appearance">
                         <h3><?php _e("Themes", "publisher"); ?></h3>
-
                         <div class="clearfix">
                             <div class="theme-browser">
                                 <?php foreach ($book_themes as $id => $theme): ?>
                                     <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>">
                                         <div class="theme-screenshot">
-                                            <img src="<?php echo $theme['image']; ?>" />
+                                            <img src="<?php echo $theme['image']; ?>" alt="<?php _e($theme['name'], "publisher"); ?>" />
                                         </div>
                                         <h2 class="theme-name"><?php _e($theme['name'], "publisher"); ?></h2>
                                     </div>
@@ -170,11 +169,23 @@
                             </div>
                         </div>
 
+                        <h3><?php _e("Content images", "publisher"); ?></h3>
+                        <p>
+                            <?php _e("Configure how the plugin will manage your book images", "publisher"); ?>
+                            <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Load images from original URL will result in lighter files but will require an internet connection from the device.", "publisher"); ?>"></span>
+                        </p>
+                        <div class="form-field">
+                            <select name="images_load" style="width: 100%">
+                                <option value="default" <?php echo $images_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Load images from original URL", "publisher"); ?></option>
+                                <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images (Experimental)", "publisher"); ?></option>
+                            </select>
+                        </div>
+
                         <h3><?php _e("Custom Theme", "publisher"); ?></h3>
                         <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?>
 
                         <div class="form-field" id="template">
-                            <textarea rows="6" name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $customCss; ?></textarea>
+                            <textarea name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $custom_css; ?></textarea>
                         </div>
                     </div>
 
@@ -183,8 +194,8 @@
                         <p><?php _e("If you already bought our premium version, you received a license key on the confirmation email. Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
 
                         <div class="form-field">
-                            <label for="book-license"><?php _e("License key", "publisher"); ?></label>
-                            <input name="license" id="book-license" type="text" value="<?php echo $license; ?>" placeholder="<?php _e('License key', 'publisher'); ?>">
+                            <label for="license"><?php _e("License key", "publisher"); ?></label>
+                            <input name="license" id="license" type="text" value="<?php echo $license; ?>" placeholder="<?php _e('License key', 'publisher'); ?>">
                         </div>
                     </div>
 
@@ -289,7 +300,7 @@
                                 <th class="manage-column column-cb check-column">
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
-                                <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></span></th>
+                                <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </thead>

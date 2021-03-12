@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-03-04 18:28+0100\n"
-"PO-Revision-Date: 2021-03-04 18:28+0100\n"
+"POT-Creation-Date: 2021-03-12 16:22+0100\n"
+"PO-Revision-Date: 2021-03-12 16:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -26,72 +26,72 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Une boîte avec des informations sur votre eBook"
 
-#: libs/PublisherBase.php:34
+#: libs/PublisherBase.php:35
 #, php-format
 msgid "Submitted on %s"
 msgstr "Soumis sur %s"
 
-#: libs/PublisherBase.php:99
+#: libs/PublisherBase.php:101
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:111
+#: libs/PublisherBase.php:113
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:148
+#: libs/PublisherBase.php:150
 msgid "January"
 msgstr "Janvier"
 
-#: libs/PublisherBase.php:149
+#: libs/PublisherBase.php:151
 msgid "February"
 msgstr "Février"
 
-#: libs/PublisherBase.php:150
+#: libs/PublisherBase.php:152
 msgid "March"
 msgstr "Mars"
 
-#: libs/PublisherBase.php:151
+#: libs/PublisherBase.php:153
 msgid "April"
 msgstr "Avril"
 
-#: libs/PublisherBase.php:152
+#: libs/PublisherBase.php:154
 msgid "May"
 msgstr "Mai"
 
-#: libs/PublisherBase.php:153
+#: libs/PublisherBase.php:155
 msgid "June"
 msgstr "Juin"
 
-#: libs/PublisherBase.php:154
+#: libs/PublisherBase.php:156
 msgid "July"
 msgstr "Juillet"
 
-#: libs/PublisherBase.php:155
+#: libs/PublisherBase.php:157
 msgid "August"
 msgstr "Août"
 
-#: libs/PublisherBase.php:156
+#: libs/PublisherBase.php:158
 msgid "September"
 msgstr "Septembre"
 
-#: libs/PublisherBase.php:157
+#: libs/PublisherBase.php:159
 msgid "October"
 msgstr "Octobre"
 
-#: libs/PublisherBase.php:158
+#: libs/PublisherBase.php:160
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:159
+#: libs/PublisherBase.php:161
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:236
+#: libs/PublisherBase.php:238
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:284
+#: libs/PublisherBase.php:290
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -104,12 +104,12 @@ msgstr "Modifications bien enregistrées."
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:29 views/index.php:232
+#: mpl-publisher.php:29 views/index.php:243
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
 #: mpl-publisher.php:30 mpl-publisher.php:31 mpl-publisher.php:32
-#: views/index.php:293 views/index.php:349
+#: views/index.php:304 views/index.php:360
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
@@ -311,11 +311,35 @@ msgstr "URL iBooks"
 msgid "Themes"
 msgstr "Thèmes"
 
-#: views/index.php:173
+#: views/index.php:172
+msgid "Content images"
+msgstr "Images de contenu"
+
+#: views/index.php:174
+msgid "Configure how the plugin will manage your book images"
+msgstr "Configurez la façon dont le plugin gérera vos images de livres"
+
+#: views/index.php:175
+msgid ""
+"Load images from original URL will result in lighter files but will require "
+"an internet connection from the device."
+msgstr ""
+"Charger des images à partir de l’URL d’origine se traduira par des fichiers "
+"plus légers, mais nécessitera une connexion Internet à partir de l’appareil."
+
+#: views/index.php:179
+msgid "Load images from original URL"
+msgstr "Charger des images à partir de l’URL d’origine"
+
+#: views/index.php:180
+msgid "Embed images (Experimental)"
+msgstr "Images d’intégration (Expérimentale)"
+
+#: views/index.php:184
 msgid "Custom Theme"
 msgstr "Thème personnalisé"
 
-#: views/index.php:174
+#: views/index.php:185
 msgid ""
 "You can publish your book with your custom CSS, overriding the default file "
 "included with our themes."
@@ -323,11 +347,11 @@ msgstr ""
 "Vous pouvez publier votre livre avec votre CSS personnalisé, en dominant le "
 "fichier par défaut inclus dans nos thèmes."
 
-#: views/index.php:182 views/index.php:186 views/index.php:187
+#: views/index.php:193 views/index.php:197 views/index.php:198
 msgid "License key"
 msgstr "Numéro de licence"
 
-#: views/index.php:183
+#: views/index.php:194
 msgid ""
 "If you already bought our premium version, you received a license key on the "
 "confirmation email. Please, paste the value on the following field and click "
@@ -338,11 +362,11 @@ msgstr ""
 "le champ suivant et cliquez sur « 💾 Enregistrer » pour activer votre version "
 "premium."
 
-#: views/index.php:196
+#: views/index.php:207
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: views/index.php:206
+#: views/index.php:217
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best). If you encounter any format error, please use the"
@@ -351,60 +375,60 @@ msgstr ""
 "clair» fonctionne le mieux). Si vous rencontrez une erreur de format, "
 "veuillez utiliser le"
 
-#: views/index.php:210 views/index.php:355
+#: views/index.php:221 views/index.php:366
 msgid "Publish eBook"
 msgstr "Publier eBook"
 
-#: views/index.php:211 views/index.php:356
+#: views/index.php:222 views/index.php:367
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: views/index.php:220
+#: views/index.php:231
 msgid "Text"
 msgstr "Texte"
 
-#: views/index.php:224
+#: views/index.php:235
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:226 views/index.php:320
+#: views/index.php:237 views/index.php:331
 msgid "Post"
 msgstr "Article"
 
-#: views/index.php:229 views/index.php:318
+#: views/index.php:240 views/index.php:329
 msgid "Page"
 msgstr "Page"
 
-#: views/index.php:235
+#: views/index.php:246
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:242
+#: views/index.php:253
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:249
+#: views/index.php:260
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:256
+#: views/index.php:267
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:282
+#: views/index.php:293
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
-#: views/index.php:285
+#: views/index.php:296
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: views/index.php:292 views/index.php:348
+#: views/index.php:303 views/index.php:359
 msgid "Contents"
 msgstr "Contenus"
 
-#: views/index.php:301
+#: views/index.php:312
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -412,23 +436,23 @@ msgstr ""
 "Votre recherche actuelle a trop de résultats et elle n’est pas encore "
 "disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
 
-#: views/index.php:302
+#: views/index.php:313
 msgid "Current results"
 msgstr "Résultats actuels"
 
-#: views/index.php:303
+#: views/index.php:314
 msgid "Max results"
 msgstr "Résultats max"
 
-#: views/index.php:316
+#: views/index.php:327
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: views/index.php:328
+#: views/index.php:339
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/index.php:336
+#: views/index.php:347
 msgid "Your search did not match any posts."
 msgstr "Votre recherche ne correspondait à aucun poste."
 
@@ -466,12 +490,16 @@ msgstr "https://mpl-publisher.ferranfigueredo.com/"
 
 #. Description of the plugin/theme
 msgid ""
-"MPL - Publisher is a plugin to create an ebook from your WordPress posts. "
-"You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi"
+"MPL - Publisher 📚 helps you self-publishing an ebook or audiobook from your "
+"WordPress posts. The plugin is here to help authors ✍️ solving the \"how to "
+"publish my digital book\" problem the simplest possible way 👌, easing the "
+"process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc."
 msgstr ""
-"MPL - Publisher est un plugin pour créer un ebook à partir de vos "
-"publications WordPress. Vous pouvez publier votre ebook comme: ePub, pdf, "
-"livres kindle, ebook iPad, Mobi"
+"MPL - Publisher 📚 vous aide à auto-publier un ebook ou un livre audio à "
+"partir de vos publications WordPress. Le plugin est là pour aider les "
+"auteurs ✍️ résoudre le problème « comment publier mon livre numérique » la "
+"façon la plus simple possible 👌, faciliter le processus de conversion de "
+"votre ebook en ePub, PDF, mp3, livres kindle, Mobi ... Etc."
 
 #. Author of the plugin/theme
 msgid "Ferran Figueredo"
@@ -480,6 +508,14 @@ msgstr "Ferran Figueredo"
 #. Author URI of the plugin/theme
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
+
+#~ msgid ""
+#~ "MPL - Publisher is a plugin to create an ebook from your WordPress posts. "
+#~ "You can publish your ebook like: ePub, pdf, kindle books, iPad ebook, Mobi"
+#~ msgstr ""
+#~ "MPL - Publisher est un plugin pour créer un ebook à partir de vos "
+#~ "publications WordPress. Vous pouvez publier votre ebook comme: ePub, pdf, "
+#~ "livres kindle, ebook iPad, Mobi"
 
 #~ msgid "Default"
 #~ msgstr "Par défaut"
