@@ -349,6 +349,9 @@ class PublisherBase {
             'q' => array(),
             'cite' => array(),
             'hr' => array(),
+            'figure' => array(
+                'class' => array()
+            ),
             // Styles
             'u' => array(),
             'i' => array(),

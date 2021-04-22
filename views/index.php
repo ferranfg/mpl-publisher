@@ -1,4 +1,4 @@
-<div class="wrap mpl" id="mpl-wrapper">
+<div class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $thickbox_url; ?>">
 
     <h1 id="mpl-logo">
         <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($mpl_is_premium): ?>Premium ⭐<?php endif; ?><span class="release-notes"></span>
@@ -218,7 +218,7 @@
                     </div>
 
                     <p class="submit hidden-xs">
-                        <button type="submit" name="generate" class="button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
                         <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
@@ -363,7 +363,7 @@
                     </table>
 
                     <p class="submit visible-xs">
-                        <button type="submit" name="generate" class="button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
                         <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>

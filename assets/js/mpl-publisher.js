@@ -8,6 +8,10 @@
     };
 
     $(document).ready(function () {
+        var $mpl = $('#mpl-wrapper');
+
+        // Disable on other pages
+        if ($mpl.length == 0) return;
 
         $('.chosen').chosen();
 
@@ -44,9 +48,22 @@
             $('input[name="theme_id"]').val($el.data('theme-id'));
         });
 
-        if (typeof twemoji === 'object' && $('#mpl-wrapper').length) {
-            twemoji.parse($('#mpl-wrapper').get(0));
+        if (typeof twemoji === 'object') {
+            twemoji.parse($mpl.get(0));
         }
+
+        $('.generate-button').on('click', function (e) {
+            var width = Math.min(window.innerWidth - 40, 750);
+            var height = Math.min(window.innerHeight - 180, 600);
+            var isChrome = /chrome/i.test(navigator.userAgent);
+            var iframe = $mpl.data('thickbox-url');
+
+            if (isChrome) {
+                tb_show('', iframe + '&TB_iframe=true&width=' + width + '&height=' + height);
+            } else {
+                window.open(iframe, '', 'width=' + width + ',height=' + height);
+            }
+        });
     });
 
 })(window.jQuery);

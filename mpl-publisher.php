@@ -3,7 +3,7 @@
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
  * Description: MPL - Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
- * Version: 1.23.0
+ * Version: 1.24.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -12,6 +12,7 @@
 define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
 define('MPL_ENDPOINT', 'https://api.ferranfigueredo.com');
+define('MPL_MARKETPLACE', 'https://mpl-marketplace.ferranfigueredo.com');
 define('MPL_MAX_POSTS', 100);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
 
@@ -60,6 +61,7 @@ add_action('admin_enqueue_scripts', function ()
 {
     wp_enqueue_script('jquery-ui-sortable');
     wp_enqueue_media();
+    add_thickbox();
 
     wp_enqueue_script('chosen', MPL_BASEURL . 'assets/js/chosen.jquery.min.js');
     wp_enqueue_style('chosen', MPL_BASEURL . 'assets/css/chosen.min.css');
@@ -100,6 +102,14 @@ add_action('add_meta_boxes', function ()
 add_action('widgets_init', function()
 {
     register_widget('\MPL\Publisher\DownloadWidget');
+});
+
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($actions)
+{
+    $actions[] = '<a href="'. esc_url(get_admin_url(null, 'admin.php?page=publisher')) . '">' . __('Settings', 'publisher') . '</a>';
+    $actions[] = '<a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=settings" target="_blank"><b>Premium</b></a>';
+
+    return $actions;
 });
 
 add_shortcode('mpl', function ($attr, $content)

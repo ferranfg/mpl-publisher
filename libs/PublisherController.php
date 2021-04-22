@@ -24,6 +24,10 @@ class PublisherController extends PublisherBase {
 
         $this->data['mpl_is_premium']  = mpl_is_premium();
         $this->data['admin_notice']    = array_key_exists('msg', $_GET) ? $_GET['msg'] : null;
+        $this->data['thickbox_url']    = MPL_MARKETPLACE . '?' . http_build_query([
+            'is_premium' => mpl_is_premium() ? 'true' : 'false',
+            'locale'     => get_locale()
+        ]);
 
         wp_reset_postdata();
 
@@ -39,7 +43,10 @@ class PublisherController extends PublisherBase {
 
         $params = ['page' => 'publisher'];
 
-        if (isset($_POST['save'])) $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
+        if (isset($_POST['save']))
+        {
+            $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
+        }
 
         try
         {

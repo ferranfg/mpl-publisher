@@ -1,22 +1,22 @@
 === MPL-Publisher - Self-publish your eBook ===
 Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
-Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author
+Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author, print
 Requires at least: 3.5.0
 Tested up to: 5.7
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL – Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
+MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 == Description ==
 
-MPL – Publisher 📚 helps you self-publishing an ebook or audiobook from your WordPress posts. The plugin is here to help authors ✍️ solving the "how to publish my digital book" problem the simplest possible way 👌, easing the process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc.
+MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with kindle direct publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
-It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazom or .ePub for the other stores.
+It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazom, .ePub for the other stores or .PDF for print-ready books.
 
 With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
 
@@ -29,7 +29,7 @@ For now, these are the current features:
 - Unlimited books and unlimited exports.
 - Select chapters (posts, pages and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (docx), Mobi, PDF and Audiobook (mp3).
+- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (docx), Mobi, print-ready PDF and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
 - Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
@@ -78,7 +78,7 @@ If you have any other error, please use the [MPL - Publisher support forum](http
 
 = Which output formats are supported? =
 
-Currently we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, PDF and Audiobook (mp3). You can choose it from the Output format's select menu.
+Currently we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -93,6 +93,11 @@ In future releases we will add further improvements to our current formats. Keep
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.24.0 =
+- Introducing Marketplace: resources and ideas to help you boost your book sales
+- Fix parsing date error on Word file generation
+- Add image styles to keep alignment with Wordpress editor
 
 = 1.23.0 =
 - Added experimental feature to embed images into book contents
@@ -119,13 +124,13 @@ In future releases we will add further improvements to our current formats. Keep
 = 1.20.0 =
 - Updated search filters (filter posts and chapters by month)
 - Added spanish, french and catalan translations
-- Premium publishers (PDF and Audiobook) generation improvements
+- Premium publishers (print-ready PDF and Audiobook) generation improvements
 
 = 1.19.0 =
 - Fix EPUB 2.0 and EPUB 3.0 validation errors
 - Clean HTML tags from content to prevent design errors
 - Change default content sorting to OLDER chapters first
-- Premium publishers (PDF and Audiobook) generation improvements
+- Premium publishers (print-ready PDF and Audiobook) generation improvements
 
 = 1.18.0 =
 - Move menu position outside the "Tools" section
@@ -136,7 +141,7 @@ In future releases we will add further improvements to our current formats. Keep
 - Fix annoying count error. Thanks [lholfve](https://wordpress.org/support/topic/warning-count-parameter-must-be/)!
 
 = 1.17.0 =
-- Added PDF print-ready as output format
+- Added print-ready PDF as output format
 
 = 1.16.0 =
 - [MPL-Publisher Premium](https://mpl-publisher.ferranfigueredo.com) ⭐ it's available!
@@ -237,8 +242,3 @@ In future releases we will add further improvements to our current formats. Keep
 
 = 1.0.0 =
 - Initial release.
-
-== Upgrade Notice ==
-
-= 1.23.0 =
-- Tested up to WordPress 5.7 and PHP 8.0. Bugfixing 🎉🥳

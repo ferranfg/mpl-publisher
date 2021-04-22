@@ -89,7 +89,7 @@ class WordPublisher implements IPublisher {
 
     public function setDate($date)
     {
-        $this->config->setCreated($date);
+        $this->config->setCreated(strtotime($date));
     }
 
     public function setRights($rights_text)
