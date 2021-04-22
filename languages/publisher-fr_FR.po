@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
 "POT-Creation-Date: 2021-03-12 16:22+0100\n"
-"PO-Revision-Date: 2021-03-12 16:22+0100\n"
+"PO-Revision-Date: 2021-04-22 19:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -236,7 +236,7 @@ msgstr "Langue"
 
 #: views/index.php:97
 msgid "Use the RFC3066 Language codes, such as en, es, fr…"
-msgstr "Utilisez les codes linguistiques RFC3066, tels que en, es, fr..."
+msgstr "Utilisez les codes linguistiques RFC3066, tels que en, es, fr…"
 
 #: views/index.php:104
 msgid "Publication date"

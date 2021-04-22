@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
 "POT-Creation-Date: 2021-03-12 16:19+0100\n"
-"PO-Revision-Date: 2021-03-12 16:21+0100\n"
+"PO-Revision-Date: 2021-04-22 19:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: views/index.php:193 views/index.php:197 views/index.php:198
 msgid "License key"
-msgstr "Licencia:"
+msgstr "Licencia"
 
 #: views/index.php:194
 msgid ""

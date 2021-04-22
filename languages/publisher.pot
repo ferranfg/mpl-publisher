@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-03-12 16:19+0100\n"
+"POT-Creation-Date: 2021-04-22 19:42+0200\n"
 "PO-Revision-Date: 2021-01-12 18:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -95,48 +95,52 @@ msgstr ""
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 
-#: libs/PublisherController.php:42
+#: libs/PublisherController.php:48
 msgid "Changes successfully saved."
 msgstr ""
 
-#: mpl-publisher.php:28
+#: mpl-publisher.php:29
 msgid "Book Chapters"
 msgstr ""
 
-#: mpl-publisher.php:29 views/index.php:243
+#: mpl-publisher.php:30 views/index.php:243
 msgid "Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:30 mpl-publisher.php:31 mpl-publisher.php:32
+#: mpl-publisher.php:31 mpl-publisher.php:32 mpl-publisher.php:33
 #: views/index.php:304 views/index.php:360
 msgid "Add New Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:33
+#: mpl-publisher.php:34
 msgid "Edit Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:34
+#: mpl-publisher.php:35
 msgid "View Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:87
+#: mpl-publisher.php:89
 msgid "Back to Book Settings"
 msgstr ""
 
-#: mpl-publisher.php:91
+#: mpl-publisher.php:93
 msgid "How book chapters works"
 msgstr ""
 
-#: mpl-publisher.php:93
+#: mpl-publisher.php:95
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
 "publish your chapter and it will be visible only from the Book Settings page."
 msgstr ""
 
+#: mpl-publisher.php:109 views/index.php:24 views/index.php:36
+msgid "Settings"
+msgstr ""
+
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:122
+#: mpl-publisher.php:132
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -151,10 +155,6 @@ msgstr ""
 
 #: views/index.php:23 views/index.php:35
 msgid "General details"
-msgstr ""
-
-#: views/index.php:24 views/index.php:36
-msgid "Settings"
 msgstr ""
 
 #: views/index.php:25 views/index.php:37
@@ -455,10 +455,11 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"MPL - Publisher 📚 helps you self-publishing an ebook or audiobook from your "
-"WordPress posts. The plugin is here to help authors ✍️ solving the \"how to "
-"publish my digital book\" problem the simplest possible way 👌, easing the "
-"process of convert your ebook to ePub, PDF, mp3, kindle books, Mobi… etc."
+"MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, "
+"or audiobook from your WordPress posts. If you are an author ✍️, it will "
+"solve the \"how to publish my digital book\" problem, doing it the simplest "
+"possible way 👌, easing the process of converting your book or ebook to ePub, "
+"print-ready PDF, mp3, Kindle, Mobi… etc."
 msgstr ""
 
 #. Author of the plugin/theme
