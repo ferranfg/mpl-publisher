@@ -96,8 +96,10 @@ In future releases we will add further improvements to our current formats. Keep
 
 = 1.24.0 =
 - Introducing Marketplace: resources and ideas to help you boost your book sales
+- Add image styles to keep alignment with WordPress editor
+- Remove custom styles on the "Download my eBook" widget
 - Fix parsing date error on Word file generation
-- Add image styles to keep alignment with Wordpress editor
+- Fix loading plugin translations and update them
 
 = 1.23.0 =
 - Added experimental feature to embed images into book contents
