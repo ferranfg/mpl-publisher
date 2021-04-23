@@ -21,7 +21,9 @@
 			<?php echo $title; ?>
 		<?php endif; ?>
 	</h5>
-	<p itemprop="description"><?php echo $description; ?></p>
+	<?php if ($description): ?>
+		<p itemprop="description"><?php echo $description; ?></p>
+	<?php endif; ?>
 	<?php if ($authors): ?>
 		<p itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e("By", "publisher"); ?> <span itemprop="name"><?php echo $authors; ?></span></p>
 	<?php endif; ?>

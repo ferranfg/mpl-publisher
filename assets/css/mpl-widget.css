@@ -1,63 +1,35 @@
 .shortcode_mpl_publisher {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .widget_mpl_publisher > section {
-	text-align: center;
-	line-height: 1.42857143;
-	font-weight: 400;
+  text-align: center;
+  line-height: 1.42857143;
+  font-weight: 400;
 }
 
 .widget_mpl_publisher > section > h5 {
-	margin: 5px 0;
+  margin: 5px 0;
 }
 
 .widget_mpl_publisher > section > form,
 .widget_mpl_publisher > section > p {
-	margin: 0 0 5px;
-	font-size: 90%;
+  margin: 0 0 5px;
+  font-size: 90%;
 }
 
 .widget_mpl_publisher > section > p.book-links > a {
-	display: inline-block;
-	margin: 0 auto;
-	text-decoration: none;
-	border: 0;
+  display: inline-block;
+  margin: 0 auto;
+  text-decoration: none;
+  border: 0;
 }
 
 .widget_mpl_publisher > section img.book-cover {
-	border: thin grey solid;
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .widget_mpl_publisher > section button.btn {
-	padding: 8px 10px 9px;
-	display: inline-block;
-	margin-bottom: 0;
-	font-size: 14px;
-	white-space: nowrap;
-	vertical-align: middle;
-	-ms-touch-action: manipulation;
-	touch-action: manipulation;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	background-image: none;
-	border: 1px solid transparent;
-	border-radius: 4px;
-}
-
-.widget_mpl_publisher > section button.btn-default {
-	border-color: #ee4035;
-	background-color: #ee4035;
-	color: #fff;
-}
-
-.widget_mpl_publisher > section button.btn-default:hover {
-	border-color: #be362d;
-	background-color: #be362d;
-	color: #fff;
-	text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0;
 }
