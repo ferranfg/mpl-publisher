@@ -1,7 +1,7 @@
 === MPL-Publisher - Self-publish your eBook ===
 Contributors: ferranfg
 Donate link: https://ferranfigueredo.com/
-Tags: ebook, epub, book, pdf, kindle, mobi, ibook, publish, writer, selfpub, self-publish, author, print
+Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
 Requires at least: 3.5.0
 Tested up to: 5.7
 Stable tag: trunk

@@ -57,12 +57,18 @@
             var height = Math.min(window.innerHeight - 180, 600);
             var isChrome = /chrome/i.test(navigator.userAgent);
             var iframe = $mpl.data('thickbox-url');
+            var title = 'Almost ready 📚 Your book is being downloaded…';
 
             if (isChrome) {
-                tb_show('', iframe + '&TB_iframe=true&width=' + width + '&height=' + height);
+                tb_show(title, iframe + '&TB_iframe=true&width=' + width + '&height=' + height);
             } else {
-                window.open(iframe, '', 'width=' + width + ',height=' + height);
+                var w = window.open(iframe, '', 'width=' + width + ',height=' + height);
+                w.document.title = title;
             }
+        });
+
+        $('#marketplace-iframe').on('load', function () {
+            $(this).iFrameResize();
         });
     });
 

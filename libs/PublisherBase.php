@@ -22,7 +22,7 @@ class PublisherBase {
     public function __construct()
     {
         $this->filter = $_GET;
-        $this->data   = $this->getBookDefaults();
+        $this->data   = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
         $status = $this->getStatus();
 
@@ -59,6 +59,18 @@ class PublisherBase {
         $files      = new Filesystem;
 
         return new View($factory, new PhpEngine($files), $file, MPL_BASEPATH . "/views/" . $file, $data);
+    }
+
+    public function getPluginDefaults()
+    {
+        return array(
+            'mpl_is_premium'  => mpl_is_premium(),
+            'admin_notice'    => array_key_exists('msg', $_GET) ? $_GET['msg'] : null,
+            'marketplace_url' => MPL_MARKETPLACE . '?' . http_build_query([
+                'is_premium'  => mpl_is_premium() ? 'true' : 'false',
+                'locale'      => get_locale()
+            ])
+        );
     }
 
     public function getBookDefaults()

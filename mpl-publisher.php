@@ -3,7 +3,7 @@
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
  * Description: MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
- * Version: 1.24.0
+ * Version: 1.24.1
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -50,6 +50,15 @@ add_action('admin_menu', function ()
 
         $controller->getIndex();
     }, 'dashicons-book', 76);
+
+    add_submenu_page('publisher', 'MPL - Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
+
+    add_submenu_page('publisher', 'MPL - Publisher', __('Resources', 'publisher'), 'manage_options', 'mpl-extensions', function ()
+    {
+        $controller = new \MPL\Publisher\PublisherController();
+
+        $controller->getMarketplace();
+    });
 });
 
 add_action('admin_post_publish_ebook', function ()
@@ -70,13 +79,14 @@ add_action('admin_enqueue_scripts', function ()
 
     wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
 
+    wp_enqueue_script('headwayapp', 'https://cdn.headwayapp.co/widget.js');
+    wp_enqueue_script('tweemoji', 'https://twemoji.maxcdn.com/v/latest/twemoji.min.js');
+    wp_enqueue_script('iframe-resizer', MPL_BASEURL . 'assets/js/iframeResizer.min.js');
+
     $own = get_plugin_data(__FILE__);
 
     wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
     wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
-
-    wp_enqueue_script('headwayapp', 'https://cdn.headwayapp.co/widget.js');
-    wp_enqueue_script('tweemoji', 'https://twemoji.maxcdn.com/v/latest/twemoji.min.js');
 });
 
 add_action('wp_enqueue_scripts', function ()

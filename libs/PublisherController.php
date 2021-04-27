@@ -22,13 +22,6 @@ class PublisherController extends PublisherBase {
         $this->data['form_action']     = admin_url('admin-post.php');
         $this->data['wp_nonce_field']  = wp_nonce_field('publish_ebook', '_wpnonce', true, false);
 
-        $this->data['mpl_is_premium']  = mpl_is_premium();
-        $this->data['admin_notice']    = array_key_exists('msg', $_GET) ? $_GET['msg'] : null;
-        $this->data['thickbox_url']    = MPL_MARKETPLACE . '?' . http_build_query([
-            'is_premium' => mpl_is_premium() ? 'true' : 'false',
-            'locale'     => get_locale()
-        ]);
-
         wp_reset_postdata();
 
         echo $this->view('index.php', $this->data);
@@ -58,5 +51,10 @@ class PublisherController extends PublisherBase {
         }
 
         return wp_safe_redirect(admin_url('admin.php?' . http_build_query($params)));
+    }
+
+    public function getMarketplace()
+    {
+        echo $this->view('marketplace.php', $this->data);
     }
 }

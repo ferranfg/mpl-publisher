@@ -1,4 +1,4 @@
-<div class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $thickbox_url; ?>">
+<div class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>">
 
     <h1 id="mpl-logo">
         <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($mpl_is_premium): ?>Premium ⭐<?php endif; ?><span class="release-notes"></span>
@@ -20,13 +20,14 @@
 
     <ul class="nav-tab-wrapper nav-tabs hidden-xs">
         <?php do_action('mpl_publisher_after_tabs'); ?>
-        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("General details", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Settings", "publisher"); ?></a></li>
+        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
+        <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
         <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
         <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
         <?php if (is_null(mpl_premium_token())): ?>
             <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
         <?php endif; ?>
+        <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>">🚀 <?php _e("Resources", "publisher"); ?></a></li>
         <?php do_action('mpl_publisher_before_tabs'); ?>
     </ul>
 
