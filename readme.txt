@@ -1,6 +1,6 @@
 === MPL-Publisher - Self-publish your eBook ===
 Contributors: ferranfg
-Donate link: https://ferranfigueredo.com/
+Donate link: https://mpl-publisher.ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
 Requires at least: 3.5.0
 Tested up to: 5.7
@@ -16,24 +16,24 @@ MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, o
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with kindle direct publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
-It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazom, .ePub for the other stores or .PDF for print-ready books.
+It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazon, .ePub for the other stores, or PDF for print-ready books.
 
 With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
 
-The plugin is full of features (check the features section and roadmap to future releases) and open to any comments, bugs or issues you may have. Use the MPL-Publisher Support Forum.
+The plugin is full of features (check the features section and roadmap to future releases) and open to any comments, bugs, or issues you may have. Use the MPL-Publisher Support Forum.
 
 = Features =
 
 For now, these are the current features:
 
 - Unlimited books and unlimited exports.
-- Select chapters (posts, pages and "secret chapters") to include in your eBook.
+- Select chapters (posts, pages, and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (docx), Mobi, print-ready PDF and Audiobook (mp3).
+- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), Mobi, print-ready PDF, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
 - Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
-- Add aditional book chapters and edit current content.
+- Add additional book chapters and edit current content.
 - Include your custom CSS styles into your books.
 
 = Roadmap =
@@ -41,7 +41,7 @@ For now, these are the current features:
 Future releases will include, at least, the next functionalities:
 
 - Multiple professional designs available.
-- Sell directly your ebook to your own audience.
+- Sell directly your ebook to your audience.
 
 = Requirements =
 
@@ -49,6 +49,14 @@ Future releases will include, at least, the next functionalities:
 - WordPress 5.0.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
+
+= Alternatives to MPL-Publisher =
+
+There is a fantastic community of plugins available if MPL-Publisher doesn't meet your criteria:
+
+- [Print My Blog](https://printmy.blog/now) - Make printing your blog easy and impressive. For you & your visitors. One post or thousands.
+- [BookPress](https://www.bookpress.net/) - Books on WordPress made easy. Write and display your books: Add chapters, pages, table of contents, track word counts and more.
+- [Anthologize](https://wordpress.org/plugins/search/anthologize/) - Use the power of WordPress to transform your content into a book.
 
 == Installation ==
 
@@ -62,7 +70,7 @@ To include a shortcode in your pages or posts
 
 1. Add the `[mpl]` shortcode into 
 2. Available options are `[mpl download=true]` to include a download button and `[mpl external=true]` to include your book's external links
-3. Modify your shortcode's title usign `[mpl]Download my book[/mpl]`
+3. Modify your shortcode's title using `[mpl]Download my book[/mpl]`
 
 == Frequently Asked Questions ==
 
@@ -72,17 +80,17 @@ If you see something like:
 
 `Parse error: syntax error, unexpected '[' in ../wp-content/plugins/mpl-publisher/vendor/illuminate/support/helpers.php on line 365`
 
-This errors is related with the installed PHP version on your server. Please, make sure you follow the [recommended WordPress requirements](https://wordpress.org/about/requirements/)
+This error is related to the installed PHP version on your server. Please, make sure you follow the [recommended WordPress requirements](https://wordpress.org/about/requirements/)
 
 If you have any other error, please use the [MPL - Publisher support forum](https://wordpress.org/support/plugin/mpl-publisher)
 
 = Which output formats are supported? =
 
-Currently we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF and Audiobook (mp3). You can choose it from the Output format's select menu.
+Currently, we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF, and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
-In future releases we will add further improvements to our current formats. Keep updated.
+In future releases, we will add further improvements to our current formats. Keep updated.
 
 == Screenshots ==
 
@@ -125,7 +133,7 @@ In future releases we will add further improvements to our current formats. Keep
 
 = 1.20.0 =
 - Updated search filters (filter posts and chapters by month)
-- Added spanish, french and catalan translations
+- Added Spanish, French, and Catalan translations
 - Premium publishers (print-ready PDF and Audiobook) generation improvements
 
 = 1.19.0 =
@@ -137,7 +145,7 @@ In future releases we will add further improvements to our current formats. Keep
 = 1.18.0 =
 - Move menu position outside the "Tools" section
 - Limit query results to avoid more than 150 results
-- Minor usability improvements on publish actions
+- Minor usability improvements on publishing actions
 
 = 1.17.1 =
 - Fix annoying count error. Thanks [lholfve](https://wordpress.org/support/topic/warning-count-parameter-must-be/)!
@@ -155,7 +163,7 @@ In future releases we will add further improvements to our current formats. Keep
 - Fixed error related with PHP min version
 
 = 1.15.0 =
-- Update to Wordpress 5.5
+- Update to WordPress 5.5
 
 = 1.14.0 =
 - Allow filter posts by year (https://wordpress.org/support/topic/filter-posts-by-yearmonth/)
@@ -164,15 +172,15 @@ In future releases we will add further improvements to our current formats. Keep
 - Fix Markdown generation to include CSS files and fonts
 
 = 1.13.0 =
-- Added MOBI as output format (Basic field, not ready to production)
+- Added MOBI as output format (Basic field, not ready for production)
 - Fix [Draft Book Posts?](https://wordpress.org/support/topic/draft-book-posts?replies=1) issue
-- Fix "Read More" issue (Posts where printing only excerpts on the genereated eBook)
+- Fix "Read More" issue (Posts where printing only excerpts on the generated eBook)
 - Fix plugin page navbar and table styles
 - Update plugin dependencies
 
 = 1.12.0 =
-- Added Microsoft Word (docx) as output format
-- Custom CSS textarea under the Appearance tab
+- Added Microsoft Word (Docx) as output format
+- Custom CSS text area under the Appearance tab
 
 = 1.11.0 =
 - Add MPL-Download eBook widget to promote your book with your readers
@@ -185,7 +193,7 @@ In future releases we will add further improvements to our current formats. Keep
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)
 - Added Appearance's tab to preview and choose your book design
 - New filter with content type selection
-- Download book as a zip file with chapters in markdown format
+- Download the book as a zip file with chapters in markdown format
 - Fix automatic line breaks into HTML paragraphs
 
 = 1.9.0 =
@@ -206,7 +214,7 @@ In future releases we will add further improvements to our current formats. Keep
 
 = 1.7.0 =
 - Improved admin's page navigation using tabs
-- Add helping blocks to better understanding
+- Add helping blocks to a better understanding
 - Add book publication's date field and editable language field
 - Bug printing post's edit link
 
@@ -214,14 +222,14 @@ In future releases we will add further improvements to our current formats. Keep
 - Added authors filtering to chapter's selection
 - Added tag filtering to chapter's selection
 - Improve readme.txt description to provide server requirements information
-- Pending 1.5.0 spanish and catalan translations
+- Pending 1.5.0 Spanish and Catalan translations
 
 = 1.5.0 =
 - Add Book Description
 - Sets Blog Language as Book Language
 
 = 1.4.4 =
-- Fix "class not found" error
+- Fix "Class not found" error
 
 = 1.4.0 =
 - Chapter's selection filtered by posts categories
@@ -230,13 +238,13 @@ In future releases we will add further improvements to our current formats. Keep
 = 1.3.0 =
 - Added EPUB3.0 as output format
 - Upload a Book Cover
-- Added meta information about the generator
+- Added meta-information about the generator
 - Corrected Spanish and Catalan translations
 
 = 1.2.0 =
 - New default book style
 - Added Spanish and Catalan translation
-- Replace Twig with illuminate/view as view engine
+- Replace Twig with illuminate/view as the view engine
 - Fix duplicate ID chapter
 
 = 1.1.0 =
