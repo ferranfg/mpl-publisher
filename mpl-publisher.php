@@ -3,7 +3,7 @@
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
  * Description: MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
- * Version: 1.24.1
+ * Version: 1.25.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -159,6 +159,18 @@ add_filter('admin_footer_text', function ($text)
 
     return $text;
 });
+
+if ( ! function_exists('mpl_admin_url'))
+{
+    function mpl_admin_url($params = array())
+    {
+        $params = array_merge($params, [
+            'page' => 'publisher'
+        ]);
+
+        return admin_url('admin.php?' . http_build_query($params));
+    }
+}
 
 if ( ! function_exists('mpl_is_premium'))
 {

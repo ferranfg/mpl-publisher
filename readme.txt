@@ -1,20 +1,21 @@
-=== MPL-Publisher - Self-publish your eBook ===
+=== MPL-Publisher - Self-publish your book & ebook ===
 Contributors: ferranfg
 Donate link: https://mpl-publisher.ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
 Requires at least: 3.5.0
 Tested up to: 5.7
+Requires PHP: 7.1.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, HTML for Kindle Direct Publishing, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 == Description ==
 
-MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, HTML for Kindle Direct Publishing, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
-Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with kindle direct publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
+Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
 It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazon, .ePub for the other stores, or PDF for print-ready books.
 
@@ -29,7 +30,7 @@ For now, these are the current features:
 - Unlimited books and unlimited exports.
 - Select chapters (posts, pages, and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), Mobi, print-ready PDF, and Audiobook (mp3).
+- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), Mobi, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
 - Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
@@ -86,7 +87,7 @@ If you have any other error, please use the [MPL - Publisher support forum](http
 
 = Which output formats are supported? =
 
-Currently, we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF, and Audiobook (mp3). You can choose it from the Output format's select menu.
+Currently, we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -101,6 +102,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.25.0 =
+- From now on, you can export multiples books for the same site
 
 = 1.24.0 =
 - Introducing Marketplace: resources and ideas to help you boost your book sales

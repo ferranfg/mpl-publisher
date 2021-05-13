@@ -37,6 +37,11 @@
             $('.nav-tab-wrapper li a').eq($(this).val()).tab('show');
         });
 
+        $('.nav-book-select').on('change', function () {
+            // Redirects to book page
+            window.location = $(this).val();
+        });
+
         var $themes = $('[data-toggle="book-theme"]');
 
         // On click updates hidden field

@@ -32,25 +32,50 @@ class PublisherController extends PublisherBase {
         // http://codex.wordpress.org/Function_Reference/check_admin_referer
         if (empty($_POST) || ! check_admin_referer('publish_ebook', '_wpnonce')) return;
 
-        $this->saveStatus($_POST);
-
         $params = ['page' => 'publisher'];
+
+        if (isset($_POST['clear']))
+        {
+            $this->removeStatus($_POST['book_id']);
+
+            $params['msg'] = 'ℹ️ ' . __('Book successfully removed.', 'publisher');
+        }
+
+        if (isset($_POST['create']))
+        {
+            $book_id = uniqid();
+
+            $this->saveStatus($this->getBookDefaults(), $book_id);
+
+            $params['book_id'] = $book_id;
+            $params['msg'] = '✅ ' . __('Book successfully created.', 'publisher');
+        }
 
         if (isset($_POST['save']))
         {
+            $book_id = $_POST['book_id'];
+
+            $this->saveStatus($_POST, $book_id);
+
+            $params['book_id'] = $book_id;
             $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
         }
 
         try
         {
-            if (isset($_POST['generate'])) return $this->generateBook();
+            if (isset($_POST['generate']))
+            {
+                $this->saveStatus($_POST, $_POST['book_id']);
+
+                return $this->generateBook();
+            }
         }
         catch (Exception $e)
         {
             $params['msg'] = $e->getMessage();
         }
 
-        return wp_safe_redirect(admin_url('admin.php?' . http_build_query($params)));
+        return wp_safe_redirect(mpl_admin_url($params));
     }
 
     public function getMarketplace()

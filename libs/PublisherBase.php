@@ -24,7 +24,7 @@ class PublisherBase {
         $this->filter = $_GET;
         $this->data   = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
-        $status = $this->getStatus();
+        $status = $this->getStatus($this->data['book_id']);
 
         if ($status and isset($status['data']))
         {
@@ -63,7 +63,13 @@ class PublisherBase {
 
     public function getPluginDefaults()
     {
+        $all_books = $this->getAllBooks();
+        // If no param, we select the first book as default
+        $book_id = array_key_exists('book_id', $_GET) ? $_GET['book_id'] : key($all_books);
+
         return array(
+            'book_id'         => $book_id,
+            'all_books'       => $all_books,
             'mpl_is_premium'  => mpl_is_premium(),
             'admin_notice'    => array_key_exists('msg', $_GET) ? $_GET['msg'] : null,
             'marketplace_url' => MPL_MARKETPLACE . '?' . http_build_query([
@@ -305,17 +311,65 @@ class PublisherBase {
         return $publisher->send(sanitize_text_field($_POST['title']));
     }
     
-    public function saveStatus($data)
+    public function saveStatus($data, $book_id)
     {
-        return update_option(MPL_OPTION_NAME, array(
+        $all_books = $this->getAllBooks();
+
+        $all_books[$book_id] = array(
             'time' => current_time('timestamp'),
             'data' => apply_filters('mpl_publisher_save_status', $data)
-        ));
+        );
+
+        return update_option(MPL_OPTION_NAME, $all_books);
     }
 
-    public function getStatus()
+    public function getStatus($book_id)
     {
-        return apply_filters('mpl_publisher_get_status', get_option(MPL_OPTION_NAME));
+        $all_books = $this->getAllBooks();
+        $status = $this->getBookDefaults();
+
+        if (array_key_exists($book_id, $all_books)) $status = $all_books[$book_id];
+
+        return apply_filters('mpl_publisher_get_status', $status);
+    }
+
+    public function removeStatus($book_id)
+    {
+        $all_books = $this->getAllBooks();
+
+        if (array_key_exists($book_id, $all_books))
+        {
+            unset($all_books[$book_id]);
+
+            update_option(MPL_OPTION_NAME, $all_books);
+        }
+
+        return true;
+    }
+
+    public function getAllBooks()
+    {
+        $all_books = get_option(MPL_OPTION_NAME, null);
+
+        if (is_null($all_books))
+        {
+            $all_books[uniqid()] = array(
+                'time' => current_time('timestamp'),
+                'data' => $this->getBookDefaults()
+            );
+
+            update_option(MPL_OPTION_NAME, $all_books);
+        }
+
+        // Updates v1 format to v2
+        if (array_key_exists('time', $all_books))
+        {
+            $all_books[uniqid()] = $all_books;
+
+            update_option(MPL_OPTION_NAME, $all_books);
+        }
+
+        return apply_filters('mpl_publisher_all_books', $all_books);
     }
 
     public function getThemes()
