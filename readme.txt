@@ -46,8 +46,8 @@ Future releases will include, at least, the next functionalities:
 
 = Requirements =
 
-- PHP 7.1.3 or higher
-- WordPress 5.0.0 or higher
+- PHP 7.1.8 or higher
+- WordPress 3.5.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
 
@@ -105,6 +105,9 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 1.25.0 =
 - From now on, you can export multiples books for the same site
+- Added action to clear book information and start from scratch
+- Fix error loading remote placeholder image
+- Update PHP version requirements
 
 = 1.24.0 =
 - Introducing Marketplace: resources and ideas to help you boost your book sales
