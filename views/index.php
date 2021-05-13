@@ -1,7 +1,35 @@
-<div class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>">
+<form class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="publish_ebook">
+    <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
 
-    <h1 id="mpl-logo">
-        <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px"> MPL - Publisher <?php if ($mpl_is_premium): ?>Premium ⭐<?php endif; ?><span class="release-notes"></span>
+    <?php echo $wp_nonce_field; ?>
+
+    <h1 id="mpl-logo" class="clearfix">
+        <div class="float-left hidden-xs">
+            <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px">
+            MPL - Publisher <?php if ($mpl_is_premium): ?>Premium ⭐<?php endif; ?>
+            <span class="release-notes"></span>
+        </div>
+        <div class="float-left visible-xs">
+            <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:40px;height:40px">
+        </div>
+        <div id="book-selector" class="float-right">
+            <select class="nav-book-select">
+                <?php foreach ($all_books as $index => $book): ?>
+                    <option value="<?php echo mpl_admin_url(['book_id' => $index]); ?>" <?php echo $book_id == $index ? "selected='selected'" : ''; ?>>
+                        <?php echo $book['data']['title']; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <?php if (count($all_books) > 1): ?>
+                <button type="submit" name="clear" class="button">🧹 <?php _e('Remove Book', "publisher"); ?></button>
+            <?php endif; ?>
+            <?php if ($mpl_is_premium): ?>
+                <button type="submit" name="create" class="button">📚 <?php _e("Create New Book", "publisher"); ?></button>
+            <?php else: ?>
+                <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Create New Book", "publisher"); ?></span>
+            <?php endif; ?>
+        </div>
     </h1>
 
     <?php if ($admin_notice): ?>
@@ -12,7 +40,7 @@
 
     <?php if ( ! $mpl_is_premium): ?>
         <hr />
-        <p>📚 <?php _e("To get all the available formats and more cool features, download our", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
+        <p>📚 <?php _e("To get all the available formats and more cool features, visit", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
         <hr />
     <?php endif; ?>
 
@@ -45,12 +73,7 @@
 
     <?php do_action('mpl_publisher_before_navbar'); ?>
 
-    <form id="col-container" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
-
-        <input type="hidden" name="action" value="publish_ebook">
-
-        <?php echo $wp_nonce_field; ?>
-
+    <div id="col-container">
         <div id="col-left">
             <div class="col-wrap">
                 <div class="form-wrap tab-content">
@@ -192,7 +215,8 @@
 
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
-                        <p><?php _e("If you already bought our premium version, you received a license key on the confirmation email. Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
+                        <p><?php _e("If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you received a license key on the confirmation email.", "publisher"); ?></p>
+                        <p><?php _e("Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
 
                         <div class="form-field">
                             <label for="license"><?php _e("License key", "publisher"); ?></label>
@@ -212,8 +236,10 @@
                             <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon Mobi</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
-                            <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File<?php if ( ! $mpl_is_premium) echo ' - Premium only'; ?></option>
-                            <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)<?php if ( ! $mpl_is_premium) echo ' - Premium only'; ?></option>
+                            <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
+                                <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File</option>
+                                <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)</option>
+                            </optgroup>
                         </select>
                         <p><?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best). If you encounter any format error, please use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
                     </div>
@@ -370,5 +396,5 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>
