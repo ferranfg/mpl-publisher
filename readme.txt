@@ -104,7 +104,7 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 1.25.0 =
-- From now on, you can export multiples books for the same site
+- From now on, you can manage multiples books for the same site
 - Added action to clear book information and start from scratch
 - Fix error loading remote placeholder image
 - Update PHP version requirements
