@@ -17,6 +17,7 @@ define('MPL_ENDPOINT', 'https://api.ferranfigueredo.com');
 define('MPL_MARKETPLACE', 'https://mpl-marketplace.ferranfigueredo.com');
 define('MPL_MAX_POSTS', 100);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
+define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
 
 require 'vendor/autoload.php';
 
@@ -189,14 +190,11 @@ if ( ! function_exists('mpl_premium_license'))
 {
     function mpl_premium_license()
     {
-        $options = get_option(MPL_OPTION_NAME);
+        $license = get_option(MPL_OPTION_LICENSE, null);
 
-        if (is_array($options) and isset($options['data']['license']))
+        if ( ! is_null($license) and preg_match('/[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}/', $license))
         {
-            if (preg_match('/[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}-[A-Z0-9]{8}/', $options['data']['license']))
-            {
-                return $options['data']['license'];
-            }
+            return $license;
         }
 
         return null;

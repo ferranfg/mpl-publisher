@@ -34,6 +34,13 @@ class PublisherController extends PublisherBase {
 
         $params = ['page' => 'publisher'];
 
+        if (array_key_exists('license', $_POST))
+        {
+            $this->saveLicense($_POST['license']);
+
+            unset($_POST['license']);
+        }
+
         if (isset($_POST['clear']))
         {
             $this->removeStatus($_POST['book_id']);

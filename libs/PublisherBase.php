@@ -68,6 +68,7 @@ class PublisherBase {
         $book_id = array_key_exists('book_id', $_GET) ? $_GET['book_id'] : key($all_books);
 
         return array(
+            'license'         => mpl_premium_license(),
             'book_id'         => $book_id,
             'all_books'       => $all_books,
             'mpl_is_premium'  => mpl_is_premium(),
@@ -106,8 +107,7 @@ class PublisherBase {
             'year_selected'   => array(),
             'month_selected'  => array(),
             'selected_posts'  => false,
-            'format'          => 'epub2',
-            'license'         => ''
+            'format'          => 'epub2'
         );
     }
 
@@ -310,7 +310,14 @@ class PublisherBase {
 
         return $publisher->send(sanitize_text_field($_POST['title']));
     }
-    
+
+    public function saveLicense($license)
+    {
+        if (is_string($license)) return update_option(MPL_OPTION_LICENSE, $license);
+
+        return false;
+    }
+
     public function saveStatus($data, $book_id)
     {
         $all_books = $this->getAllBooks();
@@ -351,20 +358,29 @@ class PublisherBase {
     {
         $all_books = get_option(MPL_OPTION_NAME, null);
 
+        // If first time, creates a dummy entry
         if (is_null($all_books))
         {
-            $all_books[uniqid()] = array(
-                'time' => current_time('timestamp'),
-                'data' => $this->getBookDefaults()
+            $all_books = array(
+                uniqid() => array(
+                    'time' => current_time('timestamp'),
+                    'data' => $this->getBookDefaults()
+                )
             );
 
             update_option(MPL_OPTION_NAME, $all_books);
         }
-
         // Updates v1 format to v2
-        if (array_key_exists('time', $all_books))
+        else if (array_key_exists('time', $all_books) and array_key_exists('data', $all_books))
         {
-            $all_books[uniqid()] = $all_books;
+            if (isset($all_books['data']['license']))
+            {
+                update_option(MPL_OPTION_LICENSE, $all_books['data']['license']);
+            }
+
+            $all_books = array(
+                uniqid() => $all_books
+            );
 
             update_option(MPL_OPTION_NAME, $all_books);
         }
