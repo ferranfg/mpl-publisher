@@ -215,8 +215,13 @@
 
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
-                        <p><?php _e("If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you received a license key on the confirmation email.", "publisher"); ?></p>
-                        <p><?php _e("Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
+                        <?php if ($mpl_is_premium): ?>
+                            <p><?php _e("Your <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been successfully activated 🎉. You now have access to all the available formats and more cool features.", "publisher"); ?></p>
+                            <p><?php _e("To make any change to your license, edit the following field and click \"💾 Save\" to confirm the changes.", "publisher"); ?></p>
+                        <?php else: ?>
+                            <p><?php _e("If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you received a license key on the confirmation email.", "publisher"); ?></p>
+                            <p><?php _e("Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
+                        <?php endif; ?>
 
                         <div class="form-field">
                             <label for="license"><?php _e("License key", "publisher"); ?></label>

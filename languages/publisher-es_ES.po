@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-05-12 16:09+0200\n"
-"PO-Revision-Date: 2021-05-12 16:11+0200\n"
+"POT-Creation-Date: 2021-05-17 09:55+0200\n"
+"PO-Revision-Date: 2021-05-17 09:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -95,56 +95,56 @@ msgstr "No se ha seleccionado ningún formato de salida válido."
 msgid "Please, select at least one chapter to publish your book."
 msgstr "Por favor, seleccione al menos un capítulo para publicar su libro."
 
-#: libs/PublisherController.php:41
+#: libs/PublisherController.php:48
 msgid "Book successfully removed."
 msgstr "Libro eliminado correctamente."
 
-#: libs/PublisherController.php:51
+#: libs/PublisherController.php:58
 msgid "Book successfully created."
 msgstr "Libro creado con éxito."
 
-#: libs/PublisherController.php:61
+#: libs/PublisherController.php:68
 msgid "Changes successfully saved."
 msgstr "﻿Los cambios se han guardado correctamente."
 
-#: mpl-publisher.php:31
+#: mpl-publisher.php:32
 msgid "Book Chapters"
 msgstr "Capítulos"
 
-#: mpl-publisher.php:32 views/index.php:270
+#: mpl-publisher.php:33 views/index.php:275
 msgid "Book Chapter"
 msgstr "Capítulo"
 
-#: mpl-publisher.php:33 mpl-publisher.php:34 mpl-publisher.php:35
-#: views/index.php:331 views/index.php:387
+#: mpl-publisher.php:34 mpl-publisher.php:35 mpl-publisher.php:36
+#: views/index.php:336 views/index.php:392
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
-#: mpl-publisher.php:36
+#: mpl-publisher.php:37
 msgid "Edit Book Chapter"
 msgstr "Editar Capítulo"
 
-#: mpl-publisher.php:37
+#: mpl-publisher.php:38
 msgid "View Book Chapter"
 msgstr "Ver Capítulo"
 
-#: mpl-publisher.php:54 views/index.php:248 views/index.php:393
+#: mpl-publisher.php:55 views/index.php:253 views/index.php:398
 msgid "Publish eBook"
 msgstr "Publicar eBook"
 
-#: mpl-publisher.php:56 views/index.php:58
+#: mpl-publisher.php:57 views/index.php:58
 msgid "Resources"
 msgstr "Recursos"
 
-#: mpl-publisher.php:101
+#: mpl-publisher.php:102
 msgid "Back to Book Settings"
 msgstr "Volver a Detalles Generales"
 
-#: mpl-publisher.php:105
+#: mpl-publisher.php:106
 msgid "How book chapters works"
 msgstr "Cómo funcionan los capítulos"
 
-#: mpl-publisher.php:107
+#: mpl-publisher.php:108
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
@@ -155,12 +155,12 @@ msgstr ""
 "publicar el capítulo y éste será visible únicamente desde la página de "
 "Detalles Generales."
 
-#: mpl-publisher.php:121 views/index.php:65
+#: mpl-publisher.php:122 views/index.php:65
 msgid "Settings"
 msgstr "Detalles"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:144
+#: mpl-publisher.php:145
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -181,7 +181,7 @@ msgstr "Eliminar libro"
 msgid "Create New Book"
 msgstr "Create Nuevo Libro"
 
-#: views/index.php:30 views/index.php:239
+#: views/index.php:30 views/index.php:244
 msgid "Premium only"
 msgstr "Sólo Premium"
 
@@ -382,11 +382,31 @@ msgstr ""
 "Puedes publicar tu libro con estilos personalizados, sobrescribiendo los "
 "estilos predeterminados de nuestros temas."
 
-#: views/index.php:217 views/index.php:222 views/index.php:223
+#: views/index.php:217 views/index.php:227 views/index.php:228
 msgid "License key"
 msgstr "Licencia"
 
-#: views/index.php:218
+#: views/index.php:219
+msgid ""
+"Your <a href='https://mpl-publisher.ferranfigueredo.com?"
+"utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
+"successfully activated 🎉. You now have access to all the available formats "
+"and more cool features."
+msgstr ""
+"Su <a href='https://mpl-publisher.ferranfigueredo.com?"
+"utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ se ha "
+"activado correctamente 🎉. Ahora tienes acceso a todos los formatos "
+"disponibles y características más interesantes."
+
+#: views/index.php:220
+msgid ""
+"To make any change to your license, edit the following field and click \"💾 "
+"Save\" to confirm the changes."
+msgstr ""
+"Para realizar cualquier cambio en su licencia, edite el siguiente campo y "
+"haga clic en \"💾 Guardar\" para confirmar los cambios."
+
+#: views/index.php:222
 msgid ""
 "If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?"
 "utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
@@ -396,7 +416,7 @@ msgstr ""
 "utm_source=plugin&utm_campaign=license’>MPL-Publisher Premium</a> ⭐, "
 "recibiste una clave de licencia en el correo electrónico de confirmación."
 
-#: views/index.php:219
+#: views/index.php:223
 msgid ""
 "Please, paste the value on the following field and click \"💾 Save\" to "
 "activate your premium version."
@@ -404,11 +424,11 @@ msgstr ""
 "Por favor, pegue el valor en el siguiente campo y haga clic en \"💾 Guardar\" "
 "para activar su versión premium."
 
-#: views/index.php:232
+#: views/index.php:237
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: views/index.php:244
+#: views/index.php:249
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best). If you encounter any format error, please use the"
@@ -417,55 +437,55 @@ msgstr ""
 "\"texto sin formato\" funciona mejor). Si encuentra algún error de formato, "
 "utilice el"
 
-#: views/index.php:249 views/index.php:394
+#: views/index.php:254 views/index.php:399
 msgid "Save"
 msgstr "Guardar"
 
-#: views/index.php:258
+#: views/index.php:263
 msgid "Text"
 msgstr "Texto"
 
-#: views/index.php:262
+#: views/index.php:267
 msgid "All types"
 msgstr "Todos los tipos"
 
-#: views/index.php:264 views/index.php:358
+#: views/index.php:269 views/index.php:363
 msgid "Post"
 msgstr "Entrada"
 
-#: views/index.php:267 views/index.php:356
+#: views/index.php:272 views/index.php:361
 msgid "Page"
 msgstr "Página"
 
-#: views/index.php:273
+#: views/index.php:278
 msgid "All statuses"
 msgstr "Todos los estados"
 
-#: views/index.php:280
+#: views/index.php:285
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: views/index.php:287
+#: views/index.php:292
 msgid "All months"
 msgstr "Todos los meses"
 
-#: views/index.php:294
+#: views/index.php:299
 msgid "All years"
 msgstr "Todos los años"
 
-#: views/index.php:320
+#: views/index.php:325
 msgid "Filter content"
 msgstr "Filtrar contenido"
 
-#: views/index.php:323
+#: views/index.php:328
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: views/index.php:330 views/index.php:386
+#: views/index.php:335 views/index.php:391
 msgid "Contents"
 msgstr "Índice"
 
-#: views/index.php:339
+#: views/index.php:344
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -473,23 +493,23 @@ msgstr ""
 "Su búsqueda actual tiene demasiados resultados y aún no está disponible. Por "
 "favor, utilice nuestros filtros para limitar su solicitud."
 
-#: views/index.php:340
+#: views/index.php:345
 msgid "Current results"
 msgstr "Resultados actuales"
 
-#: views/index.php:341
+#: views/index.php:346
 msgid "Max results"
 msgstr "Resultados máximos"
 
-#: views/index.php:354
+#: views/index.php:359
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: views/index.php:366
+#: views/index.php:371
 msgid "Edit"
 msgstr "Editar"
 
-#: views/index.php:374
+#: views/index.php:379
 msgid "Your search did not match any posts."
 msgstr "Tu búsqueda no coincide con ninguna publicación."
 
