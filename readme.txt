@@ -2,7 +2,7 @@
 Contributors: ferranfg
 Donate link: https://mpl-publisher.ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
-Requires at least: 3.5.0
+Requires at least: 5.5
 Tested up to: 5.7
 Requires PHP: 7.1.8
 Stable tag: trunk
@@ -47,7 +47,7 @@ Future releases will include, at least, the next functionalities:
 = Requirements =
 
 - PHP 7.1.8 or higher
-- WordPress 3.5.0 or higher
+- WordPress 5.5.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
 
