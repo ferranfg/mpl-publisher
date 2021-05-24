@@ -389,12 +389,12 @@ msgstr "Licencia"
 #: views/index.php:219
 msgid ""
 "Your <a href='https://mpl-publisher.ferranfigueredo.com?"
-"utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
+"utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
 "successfully activated 🎉. You now have access to all the available formats "
 "and more cool features."
 msgstr ""
 "Su <a href='https://mpl-publisher.ferranfigueredo.com?"
-"utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ se ha "
+"utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ se ha "
 "activado correctamente 🎉. Ahora tienes acceso a todos los formatos "
 "disponibles y características más interesantes."
 
@@ -409,11 +409,11 @@ msgstr ""
 #: views/index.php:222
 msgid ""
 "If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?"
-"utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
+"utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
 "received a license key on the confirmation email."
 msgstr ""
 "Si ya compraste <a href=‘https://mpl-publisher.ferranfigueredo.com?"
-"utm_source=plugin&utm_campaign=license’>MPL-Publisher Premium</a> ⭐, "
+"utm_medium=plugin&utm_campaign=license’>MPL-Publisher Premium</a> ⭐, "
 "recibiste una clave de licencia en el correo electrónico de confirmación."
 
 #: views/index.php:223

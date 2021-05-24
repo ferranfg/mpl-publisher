@@ -1,4 +1,4 @@
-<form class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
+<form class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>&utm_campaign=publish" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="action" value="publish_ebook">
     <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
 
@@ -25,9 +25,9 @@
                 <button type="submit" name="clear" class="button">🧹 <?php _e('Remove Book', "publisher"); ?></button>
             <?php endif; ?>
             <?php if ($mpl_is_premium): ?>
-                <button type="submit" name="create" class="button">📚 <?php _e("Create New Book", "publisher"); ?></button>
+                <button type="submit" name="create" class="button">📚 <?php _e("Add New Book", "publisher"); ?></button>
             <?php else: ?>
-                <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Create New Book", "publisher"); ?></span>
+                <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
             <?php endif; ?>
         </div>
     </h1>

@@ -17,6 +17,6 @@
         <hr />
     <?php endif; ?>
 
-    <iframe src="<?php echo $marketplace_url; ?>" id="marketplace-iframe" style="width:100%"></iframe>
+    <iframe src="<?php echo $marketplace_url; ?>&utm_campaign=resources" id="marketplace-iframe" style="width:100%"></iframe>
 
 </div>
