@@ -40,7 +40,7 @@
 
     <?php if ( ! $mpl_is_premium): ?>
         <hr />
-        <p>📚 <?php _e("To get all the available formats and more cool features, visit", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
+        <p>📚 <?php _e("To get all the available formats and more cool features, visit", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
         <hr />
     <?php endif; ?>
 
@@ -216,10 +216,10 @@
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
                         <?php if ($mpl_is_premium): ?>
-                            <p><?php _e("Your <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been successfully activated 🎉. You now have access to all the available formats and more cool features.", "publisher"); ?></p>
+                            <p><?php _e("Your <a href='https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been successfully activated 🎉. You now have access to all the available formats and more cool features.", "publisher"); ?></p>
                             <p><?php _e("To make any change to your license, edit the following field and click \"💾 Save\" to confirm the changes.", "publisher"); ?></p>
                         <?php else: ?>
-                            <p><?php _e("If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you received a license key on the confirmation email.", "publisher"); ?></p>
+                            <p><?php _e("If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you received a license key on the confirmation email.", "publisher"); ?></p>
                             <p><?php _e("Please, paste the value on the following field and click \"💾 Save\" to activate your premium version.", "publisher"); ?></p>
                         <?php endif; ?>
 
