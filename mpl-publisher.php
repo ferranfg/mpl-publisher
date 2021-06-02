@@ -22,6 +22,8 @@ define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
 require 'vendor/autoload.php';
 
 use Illuminate\Support\Str;
+use MPL\Publisher\DownloadWidget;
+use MPL\Publisher\PublisherController;
 
 add_action('init', function ()
 {
@@ -47,25 +49,23 @@ add_action('admin_menu', function ()
 {
     add_menu_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
     {
-        $controller = new \MPL\Publisher\PublisherController();
-
+        $controller = new PublisherController();
         $controller->getIndex();
+
     }, 'dashicons-book', 76);
 
     add_submenu_page('publisher', 'MPL - Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
 
     add_submenu_page('publisher', 'MPL - Publisher', __('Resources', 'publisher'), 'manage_options', 'mpl-extensions', function ()
     {
-        $controller = new \MPL\Publisher\PublisherController();
-
+        $controller = new PublisherController();
         $controller->getMarketplace();
     });
 });
 
 add_action('admin_post_publish_ebook', function ()
 {
-    $controller = new \MPL\Publisher\PublisherController();
-
+    $controller = new PublisherController();
     $controller->postIndex();
 });
 
@@ -120,14 +120,14 @@ add_action('widgets_init', function()
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($actions)
 {
     $actions[] = '<a href="'. esc_url(get_admin_url(null, 'admin.php?page=publisher')) . '">' . __('Settings', 'publisher') . '</a>';
-    $actions[] = '<a href="https://mpl-publisher.ferranfigueredo.com?utm_source=plugin&utm_campaign=settings" target="_blank"><b>Premium</b></a>';
+    $actions[] = '<a href="https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=settings" target="_blank"><b>Premium</b></a>';
 
     return $actions;
 });
 
 add_shortcode('mpl', function ($attr, $content)
 {
-    $download = new \MPL\Publisher\DownloadWidget();
+    $download = new DownloadWidget();
 
     return $download->shortcode($attr, $content);
 });

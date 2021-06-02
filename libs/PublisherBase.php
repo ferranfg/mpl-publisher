@@ -75,7 +75,8 @@ class PublisherBase {
             'admin_notice'    => array_key_exists('msg', $_GET) ? $_GET['msg'] : null,
             'marketplace_url' => MPL_MARKETPLACE . '?' . http_build_query([
                 'is_premium'  => mpl_is_premium() ? 'true' : 'false',
-                'locale'      => get_locale()
+                'locale'      => get_locale(),
+                'utm_medium'  => 'plugin',
             ])
         );
     }
