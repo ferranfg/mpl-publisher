@@ -41,7 +41,8 @@ add_action('init', function ()
         ),
         'public'        => true,
         'show_in_menu'  => false,
-        'supports'      => array('title', 'editor', 'author', 'revisions')
+        'supports'      => array('title', 'editor', 'author', 'revisions'),
+        'show_in_rest'  => true
     ));
 });
 
@@ -97,15 +98,10 @@ add_action('wp_enqueue_scripts', function ()
 
 add_action('add_meta_boxes', function ()
 {
-    add_meta_box('mpl_chapter_back', "&nbsp;", function ()
-    {
-        echo '<p class="mpl"><a href="' . admin_url('admin.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
-    },
-    'mpl_chapter', 'side', 'high');
-
     add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
     {
         echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
+        echo '<p class="mpl"><a href="' . admin_url('admin.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
     },
     'mpl_chapter', 'side', 'high');
 
