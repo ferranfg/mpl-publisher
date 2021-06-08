@@ -109,8 +109,8 @@ class PremiumPublisher
         catch (ClientException $e)
         {
             $msg = [
-                "This is a premium feature and it is not available on the free version.",
-                "Please, visit our homepage and get access to this and more features"
+                __('This is a premium feature and it is not available on the free version.', 'publisher'),
+                __('Please, visit our homepage and get access to this and more features.', 'publisher')
             ];
 
             if ($e->getResponse()->getStatusCode() == 422)
