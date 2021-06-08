@@ -27,7 +27,8 @@
 }
 
 body {
-    font: normal 1rem 'Merriweather', serif;
+    font-family: 'Merriweather', serif;
+    font-weight: normal;
     color:#222;
 }
 

@@ -1,4 +1,8 @@
-<form class="wrap mpl" id="mpl-wrapper" data-thickbox-url="<?php echo $marketplace_url; ?>&utm_campaign=publish" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data">
+<form class="wrap mpl" id="mpl-wrapper" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data"
+    data-thickbox-url="<?php echo $marketplace_url; ?>&utm_campaign=publish"
+    data-is-premium="<?php echo $mpl_is_premium ? 'true' : 'false'; ?>"
+    data-alert-premium="<?php echo __('This is a premium feature and it is not available on the free version.', 'publisher'); ?> <?php echo __('Please, visit our homepage and get access to this and more features.', 'publisher'); ?>">
+
     <input type="hidden" name="action" value="publish_ebook">
     <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
 
@@ -182,7 +186,7 @@
                         <div class="clearfix">
                             <div class="theme-browser">
                                 <?php foreach ($book_themes as $id => $theme): ?>
-                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>">
+                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>" data-theme-slug="<?php echo $theme['slug']; ?>">
                                         <div class="theme-screenshot">
                                             <img src="<?php echo $theme['image']; ?>" alt="<?php _e($theme['name'], "publisher"); ?>" />
                                         </div>

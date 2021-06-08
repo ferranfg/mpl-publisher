@@ -46,11 +46,17 @@
 
         // On click updates hidden field
         $themes.on('click', function () {
-            $themes.removeClass('active');
-            // Mark current theme as selected
-            var $el = $(this).addClass('active');
-            // Updates hidden field
-            $('input[name="theme_id"]').val($el.data('theme-id'));
+            var $el = $(this);
+
+            if ($el.data('theme-slug').startsWith('premium') && ! $mpl.data('is-premium')) {
+                alert($mpl.data('alert-premium'));
+            } else {
+                $themes.removeClass('active');
+                $el.addClass('active');
+
+                // Updates hidden field
+                $('input[name="theme_id"]').val($el.data('theme-id'));
+            }
         });
 
         if (typeof twemoji === 'object') {

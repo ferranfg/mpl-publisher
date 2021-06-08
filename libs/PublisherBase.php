@@ -116,7 +116,7 @@ class PublisherBase {
     {
         return array(
             array(
-                'id'    => 'default',
+                'slug'  => 'default',
                 'name'  => __('Lato & Merriweather', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-default.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-default.css',
@@ -128,7 +128,7 @@ class PublisherBase {
                 )
             ),
             array(
-                'id'    => 'crimson',
+                'slug'  => 'crimson',
                 'name'  => __('Montserrat & Crimson', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-crimson.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-crimson.css',
@@ -139,7 +139,30 @@ class PublisherBase {
                     'montserrat-bold' => MPL_BASEPATH . '/assets/fonts/montserrat-bold.ttf'
                 )
             ),
-
+            array(
+                'slug'  => 'premium-romance',
+                'name'  => __('Romance ⭐', 'publisher'),
+                'image' => MPL_BASEURL . 'assets/imgs/theme-romance.png',
+                'style' => MPL_BASEPATH . '/assets/css/theme-romance.css',
+                'fonts' => array(
+                    'sourcesans-regular' => MPL_BASEPATH . '/assets/fonts/sourcesans-regular.ttf',
+                    'sourcesans-bold'    => MPL_BASEPATH . '/assets/fonts/sourcesans-bold.ttf',
+                    'sourcesans-italic'  => MPL_BASEPATH . '/assets/fonts/sourcesans-italic.ttf',
+                    'playfair-bold'      => MPL_BASEPATH . '/assets/fonts/playfair-bold.ttf'
+                )
+            ),
+            array(
+                'slug'  => 'premium-future',
+                'name'  => __('Future ⭐', 'publisher'),
+                'image' => MPL_BASEURL . 'assets/imgs/theme-future.png',
+                'style' => MPL_BASEPATH . '/assets/css/theme-future.css',
+                'fonts' => array(
+                    'poppins-regular' => MPL_BASEPATH . '/assets/fonts/poppins-regular.ttf',
+                    'poppins-bold'    => MPL_BASEPATH . '/assets/fonts/poppins-bold.ttf',
+                    'poppins-italic'  => MPL_BASEPATH . '/assets/fonts/poppins-italic.ttf',
+                    'orbitron-bold'   => MPL_BASEPATH . '/assets/fonts/orbitron-bold.ttf'
+                )
+            ),
         );
     }
 

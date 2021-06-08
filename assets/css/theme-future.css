@@ -1,39 +1,39 @@
 @font-face {
-    font-family: 'Crimson';
+    font-family: 'Poppins';
     font-weight: normal;
     font-style: normal;
-    src: url('./crimson-regular.ttf');
+    src: url('./poppins-regular.ttf');
 }
 
 @font-face {
-    font-family: 'Crimson';
+    font-family: 'Poppins';
     font-weight: 700;
     font-style: normal;
-    src: url('./crimson-bold.ttf');
+    src: url('./poppins-bold.ttf');
 }
 
 @font-face {
-    font-family: 'Crimson';
+    font-family: 'Poppins';
     font-weight: normal;
     font-style: italic;
-    src: url('./crimson-italic.ttf');
+    src: url('./poppins-italic.ttf');
 }
 
 @font-face {
-    font-family: 'Montserrat';
+    font-family: 'Orbitron';
     font-weight: 500;
     font-style: normal;
-    src: url('./montserrat-bold.ttf');
+    src: url('./orbitron-bold.ttf');
 }
 
 body {
-    font-family: 'Crimson', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: normal;
     color:#222;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Orbitron', serif;
     font-weight: 500;
 }
 
@@ -44,8 +44,13 @@ h1.chapter-title {
 }
 
 h2 {
+    color: #ba3925;
     font-size: 1.4rem;
     margin: 1.8rem 0 1rem;
+}
+
+a {
+    color: #ba3925;
 }
 
 p {
