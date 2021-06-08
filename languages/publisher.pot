@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-05-17 09:54+0200\n"
+"POT-Creation-Date: 2021-06-07 15:47+0200\n"
 "PO-Revision-Date: 2021-01-12 18:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -31,67 +31,75 @@ msgstr ""
 msgid "Submitted on %s"
 msgstr ""
 
-#: libs/PublisherBase.php:119
+#: libs/PublisherBase.php:120
+msgid "Romance ⭐"
+msgstr ""
+
+#: libs/PublisherBase.php:132
+msgid "Future ⭐"
+msgstr ""
+
+#: libs/PublisherBase.php:144
 msgid "Lato & Merriweather"
 msgstr ""
 
-#: libs/PublisherBase.php:131
+#: libs/PublisherBase.php:156
 msgid "Montserrat & Crimson"
 msgstr ""
 
-#: libs/PublisherBase.php:168
+#: libs/PublisherBase.php:193
 msgid "January"
 msgstr ""
 
-#: libs/PublisherBase.php:169
+#: libs/PublisherBase.php:194
 msgid "February"
 msgstr ""
 
-#: libs/PublisherBase.php:170
+#: libs/PublisherBase.php:195
 msgid "March"
 msgstr ""
 
-#: libs/PublisherBase.php:171
+#: libs/PublisherBase.php:196
 msgid "April"
 msgstr ""
 
-#: libs/PublisherBase.php:172
+#: libs/PublisherBase.php:197
 msgid "May"
 msgstr ""
 
-#: libs/PublisherBase.php:173
+#: libs/PublisherBase.php:198
 msgid "June"
 msgstr ""
 
-#: libs/PublisherBase.php:174
+#: libs/PublisherBase.php:199
 msgid "July"
 msgstr ""
 
-#: libs/PublisherBase.php:175
+#: libs/PublisherBase.php:200
 msgid "August"
 msgstr ""
 
-#: libs/PublisherBase.php:176
+#: libs/PublisherBase.php:201
 msgid "September"
 msgstr ""
 
-#: libs/PublisherBase.php:177
+#: libs/PublisherBase.php:202
 msgid "October"
 msgstr ""
 
-#: libs/PublisherBase.php:178
+#: libs/PublisherBase.php:203
 msgid "November"
 msgstr ""
 
-#: libs/PublisherBase.php:179
+#: libs/PublisherBase.php:204
 msgid "December"
 msgstr ""
 
-#: libs/PublisherBase.php:256
+#: libs/PublisherBase.php:281
 msgid "No valid output format selected."
 msgstr ""
 
-#: libs/PublisherBase.php:308
+#: libs/PublisherBase.php:333
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 
@@ -107,56 +115,56 @@ msgstr ""
 msgid "Changes successfully saved."
 msgstr ""
 
-#: mpl-publisher.php:32
+#: mpl-publisher.php:34
 msgid "Book Chapters"
 msgstr ""
 
-#: mpl-publisher.php:33 views/index.php:275
+#: mpl-publisher.php:35 views/index.php:275
 msgid "Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:34 mpl-publisher.php:35 mpl-publisher.php:36
+#: mpl-publisher.php:36 mpl-publisher.php:37 mpl-publisher.php:38
 #: views/index.php:336 views/index.php:392
 msgid "Add New Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:37
+#: mpl-publisher.php:39
 msgid "Edit Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:38
+#: mpl-publisher.php:40
 msgid "View Book Chapter"
 msgstr ""
 
-#: mpl-publisher.php:55 views/index.php:253 views/index.php:398
+#: mpl-publisher.php:58 views/index.php:253 views/index.php:398
 msgid "Publish eBook"
 msgstr ""
 
-#: mpl-publisher.php:57 views/index.php:58
+#: mpl-publisher.php:60 views/index.php:58
 msgid "Resources"
 msgstr ""
 
-#: mpl-publisher.php:102
-msgid "Back to Book Settings"
-msgstr ""
-
-#: mpl-publisher.php:106
+#: mpl-publisher.php:101
 msgid "How book chapters works"
 msgstr ""
 
-#: mpl-publisher.php:108
+#: mpl-publisher.php:103
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
 "publish your chapter and it will be visible only from the Book Settings page."
 msgstr ""
 
-#: mpl-publisher.php:122 views/index.php:65
+#: mpl-publisher.php:104
+msgid "Back to Book Settings"
+msgstr ""
+
+#: mpl-publisher.php:118 views/index.php:65
 msgid "Settings"
 msgstr ""
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:145
+#: mpl-publisher.php:141
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -170,7 +178,7 @@ msgid "Remove Book"
 msgstr ""
 
 #: views/index.php:28 views/index.php:30
-msgid "Create New Book"
+msgid "Add New Book"
 msgstr ""
 
 #: views/index.php:30 views/index.php:244
