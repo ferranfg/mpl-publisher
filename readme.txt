@@ -103,6 +103,10 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 1.26.0 =
+- Added 2 new premium themes: Future and Romance ⭐
+- Enable Gutenberg editor for book chapter post type
+
 = 1.25.0 =
 - From now on, you can manage multiples books for the same site
 - Added action to clear book information and start from scratch
