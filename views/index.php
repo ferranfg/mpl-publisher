@@ -186,7 +186,7 @@
                         <div class="clearfix">
                             <div class="theme-browser">
                                 <?php foreach ($book_themes as $id => $theme): ?>
-                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>" data-theme-slug="<?php echo $theme['slug']; ?>">
+                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>" data-theme-slug="<?php echo $theme['id']; ?>">
                                         <div class="theme-screenshot">
                                             <img src="<?php echo $theme['image']; ?>" alt="<?php _e($theme['name'], "publisher"); ?>" />
                                         </div>

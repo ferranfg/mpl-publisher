@@ -116,7 +116,7 @@ class PublisherBase {
     {
         return array(
             array(
-                'slug'  => 'default',
+                'id'    => 'default',
                 'name'  => __('Lato & Merriweather', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-default.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-default.css',
@@ -128,7 +128,7 @@ class PublisherBase {
                 )
             ),
             array(
-                'slug'  => 'crimson',
+                'id'    => 'crimson',
                 'name'  => __('Montserrat & Crimson', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-crimson.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-crimson.css',
@@ -140,7 +140,7 @@ class PublisherBase {
                 )
             ),
             array(
-                'slug'  => 'premium-romance',
+                'id'    => 'premium-romance',
                 'name'  => __('Romance ⭐', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-romance.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-romance.css',
@@ -152,7 +152,7 @@ class PublisherBase {
                 )
             ),
             array(
-                'slug'  => 'premium-future',
+                'id'    => 'premium-future',
                 'name'  => __('Future ⭐', 'publisher'),
                 'image' => MPL_BASEURL . 'assets/imgs/theme-future.png',
                 'style' => MPL_BASEPATH . '/assets/css/theme-future.css',
