@@ -41,14 +41,14 @@ class PublisherController extends PublisherBase {
             unset($_POST['license']);
         }
 
-        if (isset($_POST['clear']))
+        if (array_key_exists('clear', $_POST))
         {
             $this->removeStatus($_POST['book_id']);
 
             $params['msg'] = 'ℹ️ ' . __('Book successfully removed.', 'publisher');
         }
 
-        if (isset($_POST['create']))
+        if (array_key_exists('create', $_POST))
         {
             $book_id = uniqid();
 
@@ -58,19 +58,23 @@ class PublisherController extends PublisherBase {
             $params['msg'] = '✅ ' . __('Book successfully created.', 'publisher');
         }
 
-        if (isset($_POST['save']))
+        if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST))
         {
             $book_id = $_POST['book_id'];
 
             $this->saveStatus($_POST, $book_id);
 
             $params['book_id'] = $book_id;
-            $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
+
+            if (array_key_exists('save', $_POST)) 
+            {
+                $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
+            }
         }
 
         try
         {
-            if (isset($_POST['generate']))
+            if (array_key_exists('generate', $_POST))
             {
                 $this->saveStatus($_POST, $_POST['book_id']);
 
