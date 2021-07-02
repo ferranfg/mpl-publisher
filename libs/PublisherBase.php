@@ -455,6 +455,7 @@ class PublisherBase {
             'q' => array(),
             'cite' => array(),
             'hr' => array(),
+            'br' => array(),
             'figure' => array(
                 'class' => array()
             ),
