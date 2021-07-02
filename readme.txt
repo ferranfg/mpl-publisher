@@ -106,6 +106,8 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.27.0 =
 - Fix error related with filter button not filtering results
 - Downgrade min WordPress version to 5.0
+- Allow br tags in book content
+- List chapters even if there are over max results
 
 = 1.26.0 =
 - Added 2 new premium themes: Future and Romance ⭐
