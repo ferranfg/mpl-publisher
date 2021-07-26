@@ -72,7 +72,9 @@ class PlainPublisher implements IPublisher {
         $chapter_id = str_pad($id, 3, '0', STR_PAD_LEFT);
         $chapter_title = $chapter_id . '-' . Str::slug($title) . '.txt';
 
-        $this->zip->addFile(new Html2Text($content), $chapter_title);
+        $content = new Html2Text($content);
+
+        $this->zip->addFile($content->getText(), $chapter_title);
     }
 
     public function send($filename)
