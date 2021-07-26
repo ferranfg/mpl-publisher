@@ -13,6 +13,8 @@
         // Disable on other pages
         if ($mpl.length == 0) return;
 
+        $mpl.areYouSure();
+
         $('.chosen').chosen();
 
         $('#chapter-list').sortable();
