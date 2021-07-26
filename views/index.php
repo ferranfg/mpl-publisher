@@ -117,7 +117,7 @@
 
                     <div class="tab-pane clearfix" id="book-settings">
                         <h3><?php _e("Metadata settings", "publisher"); ?></h3>
-                        <p><?php _e("The more metadata you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
+                        <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
 
                         <div class="form-field">
                             <label for="book-language">
@@ -245,6 +245,7 @@
                             <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon Mobi</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (docx)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
+                            <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (txt)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>PDF File</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (mp3)</option>

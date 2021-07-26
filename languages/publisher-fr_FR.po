@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-06-08 09:30+0200\n"
-"PO-Revision-Date: 2021-06-08 09:31+0200\n"
+"POT-Creation-Date: 2021-07-26 09:27+0200\n"
+"PO-Revision-Date: 2021-07-26 09:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -107,11 +107,11 @@ msgstr "Novembre"
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:280
+#: libs/PublisherBase.php:283
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:332
+#: libs/PublisherBase.php:335
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -124,7 +124,7 @@ msgstr "Livre retiré avec succès."
 msgid "Book successfully created."
 msgstr "Livre créé avec succès."
 
-#: libs/PublisherController.php:68
+#: libs/PublisherController.php:71
 msgid "Changes successfully saved."
 msgstr "Modifications bien enregistrées."
 
@@ -132,12 +132,12 @@ msgstr "Modifications bien enregistrées."
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:35 views/index.php:279
+#: mpl-publisher.php:35 views/index.php:280
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
 #: mpl-publisher.php:36 mpl-publisher.php:37 mpl-publisher.php:38
-#: views/index.php:340 views/index.php:396
+#: views/index.php:341 views/index.php:400
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
@@ -149,7 +149,7 @@ msgstr "Modifier le chapitre du livre"
 msgid "View Book Chapter"
 msgstr "Voir le chapitre livre"
 
-#: mpl-publisher.php:58 views/index.php:257 views/index.php:402
+#: mpl-publisher.php:58
 msgid "Publish eBook"
 msgstr "Publier eBook"
 
@@ -157,11 +157,11 @@ msgstr "Publier eBook"
 msgid "Resources"
 msgstr "Ressources"
 
-#: mpl-publisher.php:101
+#: mpl-publisher.php:102
 msgid "How book chapters works"
 msgstr "Fonctionnement des chapitres de livres"
 
-#: mpl-publisher.php:103
+#: mpl-publisher.php:104
 msgid ""
 "MPL - Publisher allows authors to write custom content specific for your "
 "book without the needed to be accessible from the public. You just have to "
@@ -172,16 +172,16 @@ msgstr ""
 "n’avez qu’à publier votre chapitre et il ne sera visible qu’à partir de la "
 "page Paramètres du livre."
 
-#: mpl-publisher.php:104
+#: mpl-publisher.php:105
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: mpl-publisher.php:118 views/index.php:69
+#: mpl-publisher.php:119 views/index.php:69
 msgid "Settings"
 msgstr "Paramètres"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:141
+#: mpl-publisher.php:142
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -202,7 +202,7 @@ msgstr "Supprimer le livre"
 msgid "Add New Book"
 msgstr "Ajouter un Nouveau Livre"
 
-#: views/index.php:34 views/index.php:248
+#: views/index.php:34 views/index.php:249
 msgid "Premium only"
 msgstr "Prime seulement"
 
@@ -280,11 +280,14 @@ msgstr "Champs supplémentaires"
 
 #: views/index.php:120
 msgid ""
-"The more metadata you provide, the easier it will be for readers to discover "
-"your book."
+"Metadata is the information about your book. It is what allows your ebooks "
+"reading app to organize or filter the ebooks. The more information you "
+"provide, the easier it will be for readers to discover your book."
 msgstr ""
-"Plus vous fournissez de métadonnées, plus il sera facile pour les lecteurs "
-"de découvrir votre livre."
+"Les métadonnées sont les informations sur votre livre. C’est ce qui permet à "
+"votre application de lecture de livres électroniques d’organiser ou de "
+"filtrer les livres. Plus vous fournissez d’informations, plus il sera facile "
+"pour les lecteurs de découvrir votre livre."
 
 #: views/index.php:124 views/index.php:127
 msgid "Language"
@@ -449,7 +452,7 @@ msgstr ""
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: views/index.php:253
+#: views/index.php:254
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best). If you encounter any format error, please use the"
@@ -458,56 +461,60 @@ msgstr ""
 "clair» fonctionne le mieux). Si vous rencontrez une erreur de format, "
 "veuillez utiliser le"
 
-#: views/index.php:258 views/index.php:403
+#: views/index.php:258 views/index.php:406
+msgid "Download eBook"
+msgstr "Télécharger eBook"
+
+#: views/index.php:259 views/index.php:407
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: views/index.php:267
+#: views/index.php:268
 msgid "Text"
 msgstr "Texte"
 
-#: views/index.php:271
+#: views/index.php:272
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:273 views/index.php:367
+#: views/index.php:274 views/index.php:370
 msgid "Post"
 msgstr "Article"
 
-#: views/index.php:276 views/index.php:365
+#: views/index.php:277 views/index.php:368
 msgid "Page"
 msgstr "Page"
 
-#: views/index.php:282
+#: views/index.php:283
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:289
+#: views/index.php:290
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:296
+#: views/index.php:297
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:303
+#: views/index.php:304
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:329
+#: views/index.php:330
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
-#: views/index.php:332
+#: views/index.php:333
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: views/index.php:339 views/index.php:395
+#: views/index.php:340 views/index.php:399
 msgid "Contents"
 msgstr "Contenus"
 
-#: views/index.php:348
+#: views/index.php:349
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -515,23 +522,23 @@ msgstr ""
 "Votre recherche actuelle a trop de résultats et elle n’est pas encore "
 "disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
 
-#: views/index.php:349
+#: views/index.php:350
 msgid "Current results"
 msgstr "Résultats actuels"
 
-#: views/index.php:350
+#: views/index.php:351
 msgid "Max results"
 msgstr "Résultats max"
 
-#: views/index.php:363
+#: views/index.php:366
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: views/index.php:375
+#: views/index.php:378
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/index.php:383
+#: views/index.php:388
 msgid "Your search did not match any posts."
 msgstr "Votre recherche ne correspondait à aucun poste."
 
@@ -588,6 +595,13 @@ msgstr "Ferran Figueredo"
 #. Author URI of the plugin/theme
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
+
+#~ msgid ""
+#~ "The more metadata you provide, the easier it will be for readers to "
+#~ "discover your book."
+#~ msgstr ""
+#~ "Plus vous fournissez de métadonnées, plus il sera facile pour les "
+#~ "lecteurs de découvrir votre livre."
 
 #~ msgid "Create New Book"
 #~ msgstr "Créer un nouveau livre"
