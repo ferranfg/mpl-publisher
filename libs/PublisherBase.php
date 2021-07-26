@@ -275,6 +275,9 @@ class PublisherBase {
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
             break;
+            case 'plain':
+                $publisher = new PlainPublisher();
+            break;
         }
 
         if ( ! $publisher) throw new Exception('⚠️ ' . __('No valid output format selected.', 'publisher'));

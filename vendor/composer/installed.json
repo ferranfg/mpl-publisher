@@ -496,6 +496,48 @@
             "install-path": "../guzzlehttp/psr7"
         },
         {
+            "name": "html2text/html2text",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mtibben/html2text.git",
+                "reference": "7c427fc24f579f15162d1bdb73d44bd0942a27b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mtibben/html2text/zipball/7c427fc24f579f15162d1bdb73d44bd0942a27b5",
+                "reference": "7c427fc24f579f15162d1bdb73d44bd0942a27b5",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4|^9.0"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance",
+                "symfony/polyfill-mbstring": "If you can't install ext-mbstring"
+            },
+            "time": "2021-05-09T23:54:18+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Html2Text\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Converts HTML to formatted plain text",
+            "support": {
+                "issues": "https://github.com/mtibben/html2text/issues",
+                "source": "https://github.com/mtibben/html2text/tree/master"
+            },
+            "install-path": "../html2text/html2text"
+        },
+        {
             "name": "illuminate/container",
             "version": "5.8.x-dev",
             "version_normalized": "5.8.9999999.9999999-dev",

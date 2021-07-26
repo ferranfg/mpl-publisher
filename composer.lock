@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80f5ae84e3c5ad225972478deeb40308",
+    "content-hash": "df6ea8dfc9dba6cfbe18459e91334a1a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -507,6 +507,45 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.x"
             },
             "time": "2021-03-02T18:57:24+00:00"
+        },
+        {
+            "name": "html2text/html2text",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mtibben/html2text.git",
+                "reference": "7c427fc24f579f15162d1bdb73d44bd0942a27b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mtibben/html2text/zipball/7c427fc24f579f15162d1bdb73d44bd0942a27b5",
+                "reference": "7c427fc24f579f15162d1bdb73d44bd0942a27b5",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4|^9.0"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance",
+                "symfony/polyfill-mbstring": "If you can't install ext-mbstring"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Html2Text\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Converts HTML to formatted plain text",
+            "support": {
+                "issues": "https://github.com/mtibben/html2text/issues",
+                "source": "https://github.com/mtibben/html2text/tree/master"
+            },
+            "time": "2021-05-09T23:54:18+00:00"
         },
         {
             "name": "illuminate/container",
@@ -2686,7 +2725,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "guzzlehttp/guzzle": 20,
-        "simplehtmldom/simplehtmldom": 20
+        "simplehtmldom/simplehtmldom": 20,
+        "html2text/html2text": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

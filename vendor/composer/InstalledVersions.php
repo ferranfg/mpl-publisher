@@ -119,6 +119,16 @@ private static $installed = array (
       ),
       'reference' => '2f3e4f6cf8fd4aad7624c90a94f0ab38fde25976',
     ),
+    'html2text/html2text' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => '7c427fc24f579f15162d1bdb73d44bd0942a27b5',
+    ),
     'illuminate/container' => 
     array (
       'pretty_version' => '5.8.x-dev',
