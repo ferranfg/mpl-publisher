@@ -19,6 +19,8 @@ class WordPublisher implements IPublisher {
 
     private $coverFile;
 
+    private $toc = null;
+
     public function __construct()
     {
         $this->word   = new PhpWord();
@@ -99,6 +101,12 @@ class WordPublisher implements IPublisher {
     
     public function addChapter($id, $title, $content)
     {
+        if (is_null($this->toc))
+        {
+            $this->toc = $this->word->addSection();
+            $this->toc->addTOC();
+        }
+
         $section = $this->word->addSection();
 
         $section->addTitle($title, 1);
@@ -110,9 +118,6 @@ class WordPublisher implements IPublisher {
     public function send($filename)
     {
         $filepath = $this->tempPath . '/' . $filename . '.docx';
-
-        $toc = $this->word->addSection();
-        $toc->addTOC();
 
         $writer = IOFactory::createWriter($this->word, 'Word2007');
         $writer->save($filepath);
