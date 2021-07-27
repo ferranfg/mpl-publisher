@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: https://mpl-publisher.ferranfigueredo.com/
 Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.1.8
 Stable tag: trunk
 License: GPLv2 or later
@@ -102,6 +102,12 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.28.0 =
+- Added Plain Text (txt) output format
+- Warning message before leaving page without saving changes
+- Include TOC at the beginning of the document on Microsoft Word export
+- Support for WordPress 5.8
 
 = 1.27.0 =
 - Fix error related with filter button not filtering results
