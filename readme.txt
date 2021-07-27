@@ -104,8 +104,9 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 1.28.0 =
-- Added Plain Text (txt) output format
-- Warning message before leaving page without saving changes
+- Added Plain Text (txt) as new output format
+- Added tutorial/help section explaining main plugin features
+- Warning message before leaving the page without saving changes
 - Include TOC at the beginning of the document on Microsoft Word export
 - Support for WordPress 5.8
 

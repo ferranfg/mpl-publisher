@@ -65,18 +65,18 @@
             twemoji.parse($mpl.get(0));
         }
 
-        if (typeof introJs === 'function') {
+        if (typeof introJs === 'function' && window.localStorage) {
             var mplIntroJs = introJs();
 
             mplIntroJs.oncomplete(function() {
-                localStorage.setItem('mpl_introjs', true);
+                localStorage.setItem('mpl_introjs_v1', true);
             });
 
             mplIntroJs.onexit(function() {
-                localStorage.setItem('mpl_introjs', true);
+                localStorage.setItem('mpl_introjs_v1', true);
             });
 
-            if (localStorage.getItem('mpl_introjs') === null) {
+            if (localStorage.getItem('mpl_introjs_v1') === null) {
                 mplIntroJs.start();
             }
 
