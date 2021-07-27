@@ -33,6 +33,7 @@
             <?php else: ?>
                 <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
             <?php endif; ?>
+            <button type="button" id="mpl-introjs" class="button" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
         </div>
     </h1>
 
@@ -48,34 +49,36 @@
         <hr />
     <?php endif; ?>
 
-    <?php do_action('mpl_publisher_after_navbar'); ?>
+    <div data-step="2" data-intro="<?php _e('This is the main navbar. You can navigate across the tabs to configure your ebook settings. You can edit your book details, adding a cover image, or changing your book design.', 'publisher'); ?>">
+        <?php do_action('mpl_publisher_after_navbar'); ?>
 
-    <ul class="nav-tab-wrapper nav-tabs hidden-xs">
-        <?php do_action('mpl_publisher_after_tabs'); ?>
-        <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
-        <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
-        <?php if (is_null(mpl_premium_token())): ?>
-            <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
-        <?php endif; ?>
-        <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>">🚀 <?php _e("Resources", "publisher"); ?></a></li>
-        <?php do_action('mpl_publisher_before_tabs'); ?>
-    </ul>
+        <ul class="nav-tab-wrapper nav-tabs hidden-xs">
+            <?php do_action('mpl_publisher_after_tabs'); ?>
+            <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
+            <?php if (is_null(mpl_premium_token())): ?>
+                <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
+            <?php endif; ?>
+            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>">🚀 <?php _e("Resources", "publisher"); ?></a></li>
+            <?php do_action('mpl_publisher_before_tabs'); ?>
+        </ul>
 
-    <select class="nav-tabs nav-tab-select visible-xs">
-        <?php do_action('mpl_publisher_after_tabs_responsive'); ?>
-        <option value="0"><?php _e("General details", "publisher"); ?></option>
-        <option value="1"><?php _e("Settings", "publisher"); ?></option>
-        <option value="2"><?php _e("Links", "publisher"); ?></option>
-        <option value="3"><?php _e("Appearance", "publisher"); ?></option>
-        <?php if (is_null(mpl_premium_token())): ?>
-            <option value="4"><?php _e("Premium", "publisher"); ?></option>
-        <?php endif; ?>
-        <?php do_action('mpl_publisher_before_tabs_responsive'); ?>
-    </select>
+        <select class="nav-tabs nav-tab-select visible-xs">
+            <?php do_action('mpl_publisher_after_tabs_responsive'); ?>
+            <option value="0"><?php _e("General details", "publisher"); ?></option>
+            <option value="1"><?php _e("Settings", "publisher"); ?></option>
+            <option value="2"><?php _e("Links", "publisher"); ?></option>
+            <option value="3"><?php _e("Appearance", "publisher"); ?></option>
+            <?php if (is_null(mpl_premium_token())): ?>
+                <option value="4"><?php _e("Premium", "publisher"); ?></option>
+            <?php endif; ?>
+            <?php do_action('mpl_publisher_before_tabs_responsive'); ?>
+        </select>
 
-    <?php do_action('mpl_publisher_before_navbar'); ?>
+        <?php do_action('mpl_publisher_before_navbar'); ?>
+    </div>
 
     <div id="col-container">
         <div id="col-left">
@@ -96,7 +99,7 @@
                             <input name="identifier" id="book-identifier" type="text" value="<?php echo $identifier; ?>" placeholder="ej: 9788494138805 E">
                         </div>
 
-                        <div class="form-field">
+                        <div class="form-field" data-step="3" data-intro="<?php _e('For example, you can change your book title in this field. The title is the first thing the reader sees or hears about your book. Getting it right is the single most important book marketing decision you\'ll make!', 'publisher'); ?>">
                             <label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
                             <input name="title" id="book-title" type="text" value="<?php echo $title; ?>" placeholder="<?php _e('Book Title'); ?>">
                         </div>
@@ -237,7 +240,7 @@
 
                     <hr class="mt-30 mb-20" />
 
-                    <div class="form-field">
+                    <div class="form-field" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
                         <label for="format"><?php _e("Output format", "publisher"); ?></label>
                         <select name="format" id="format">
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
@@ -255,7 +258,7 @@
                     </div>
 
                     <p class="submit hidden-xs">
-                        <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="generate" class="generate-button button button-primary" data-step="8" data-intro="<?php _e('Finally, if everything looks good, you can click Download, and we will generate a file for you. All set and you are ready to go. Enjoy!', 'publisher'); ?>">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
                         <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
@@ -268,7 +271,7 @@
                 <h3><?php _e("Text", "publisher"); ?></h3>
 
                 <div class="form-wrap">
-                    <div class="clearfix filter-bar">
+                    <div class="clearfix filter-bar" data-step="5" data-intro="<?php _e('Remember that you can use the filters for a more refined search. It will be helpful if you want to publish a book from a specific category or date.', 'publisher'); ?>">
                         <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
                             <option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
                                 <?php _e("Post", "publisher"); ?>
@@ -334,11 +337,11 @@
                     <table class="wp-list-table widefat striped posts">
                         <thead>
                             <tr>
-                                <th class="manage-column column-cb check-column">
+                                <th class="manage-column column-cb check-column" data-step="4" data-intro="<?php _e('Use these checkboxes to select the content you want to include in your book (all by once or individually). Also, you can use drag & drop to sort them according to your preferences.', 'publisher'); ?>">
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -403,7 +406,7 @@
                     </table>
 
                     <p class="submit visible-xs">
-                        <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Publish eBook', "publisher"); ?></button>
+                        <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
                         <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>

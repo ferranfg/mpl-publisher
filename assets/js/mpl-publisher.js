@@ -65,6 +65,27 @@
             twemoji.parse($mpl.get(0));
         }
 
+        if (typeof introJs === 'function') {
+            var mplIntroJs = introJs();
+
+            mplIntroJs.oncomplete(function() {
+                localStorage.setItem('mpl_introjs', true);
+            });
+
+            mplIntroJs.onexit(function() {
+                localStorage.setItem('mpl_introjs', true);
+            });
+
+            if (localStorage.getItem('mpl_introjs') === null) {
+                mplIntroJs.start();
+            }
+
+            $('#mpl-introjs').on('click', function(e) {
+                e.preventDefault();
+                mplIntroJs.start();
+            });
+        }
+
         $('.generate-button').on('click', function (e) {
             var width = Math.min(window.innerWidth - 40, 750);
             var height = Math.min(window.innerHeight - 180, 600);

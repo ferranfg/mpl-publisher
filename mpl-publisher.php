@@ -86,6 +86,9 @@ add_action('admin_enqueue_scripts', function ()
     wp_enqueue_script('iframe-resizer', MPL_BASEURL . 'assets/js/iframeResizer.min.js');
     wp_enqueue_script('jquery.are-you-sure', MPL_BASEURL . 'assets/js/jquery.are-you-sure.min.js');
 
+    wp_enqueue_script('introjs', MPL_BASEURL . 'assets/js/intro.min.js');
+    wp_enqueue_style('introjs', MPL_BASEURL . 'assets/css/introjs.min.css');
+
     $own = get_plugin_data(__FILE__);
 
     wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
