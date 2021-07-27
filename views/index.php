@@ -258,7 +258,7 @@
                     </div>
 
                     <p class="submit hidden-xs">
-                        <button type="submit" name="generate" class="generate-button button button-primary" data-step="8" data-intro="<?php _e('Finally, if everything looks good, you can click Download, and we will generate a file for you. All set and you are ready to go. Enjoy!', 'publisher'); ?>">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
+                        <button type="submit" name="generate" class="generate-button button button-primary" data-step="8" data-intro="<?php _e('Finally, if everything looks good, you can click Download, and we will generate a file for you. You are ready to go. Enjoy!', 'publisher'); ?>">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
                         <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
