@@ -57,6 +57,12 @@ add_action('admin_menu', function ()
 
     add_submenu_page('publisher', 'MPL - Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
 
+    add_submenu_page('publisher', 'MPL - Publisher', __('Cover Editor', 'publisher'), 'manage_options', 'mpl-cover', function ()
+    {
+        $controller = new PublisherController();
+        $controller->getCoverEditor();
+    });
+
     add_submenu_page('publisher', 'MPL - Publisher', __('Resources', 'publisher'), 'manage_options', 'mpl-extensions', function ()
     {
         $controller = new PublisherController();
@@ -93,6 +99,15 @@ add_action('admin_enqueue_scripts', function ()
 
     wp_enqueue_style('mpl-publisher', MPL_BASEURL . 'assets/css/mpl-publisher.css?mpl=' . $own['Version']);
     wp_enqueue_script('mpl-publisher', MPL_BASEURL . 'assets/js/mpl-publisher.js?mpl=' . $own['Version']);
+
+    wp_enqueue_style('tui-editor-color-picker', MPL_BASEURL . 'assets/tui-editor/tui-color-picker.min.css');
+    wp_enqueue_style('tui-editor-image-editor', MPL_BASEURL . 'assets/tui-editor/tui-image-editor.min.css');
+
+    wp_enqueue_script('tui-editor-fabric', MPL_BASEURL . 'assets/tui-editor/fabric.min.js');
+    wp_enqueue_script('tui-editor-code-snippet', MPL_BASEURL . 'assets/tui-editor/tui-code-snippet.min.js');
+    wp_enqueue_script('tui-color-picker', MPL_BASEURL . 'assets/tui-editor/tui-color-picker.min.js');
+    wp_enqueue_script('tui-editor-file-saver', MPL_BASEURL . 'assets/tui-editor/FileSaver.min.js');
+    wp_enqueue_script('tui-editor-image-editor', MPL_BASEURL . 'assets/tui-editor/tui-image-editor.min.js');
 });
 
 add_action('wp_enqueue_scripts', function ()

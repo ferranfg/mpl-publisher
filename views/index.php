@@ -9,14 +9,7 @@
     <?php echo $wp_nonce_field; ?>
 
     <h1 id="mpl-logo" class="clearfix">
-        <div class="float-left hidden-xs">
-            <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:30px;height:30px">
-            MPL - Publisher <?php if ($mpl_is_premium): ?>Premium ⭐<?php endif; ?>
-            <span class="release-notes"></span>
-        </div>
-        <div class="float-left visible-xs">
-            <img src="<?php echo MPL_BASEURL; ?>assets/imgs/mpl-logo-60x60.png" alt="MPL - Publisher" style="width:40px;height:40px">
-        </div>
+        <?php include MPL_BASEPATH . '/views/logo.php'; ?>
         <div id="book-selector" class="float-right">
             <select class="nav-book-select">
                 <?php foreach ($all_books as $index => $book): ?>
@@ -29,7 +22,7 @@
                 <button type="submit" name="clear" class="button">🧹 <?php _e('Remove Book', "publisher"); ?></button>
             <?php endif; ?>
             <?php if ($mpl_is_premium): ?>
-                <button type="submit" name="create" class="button">📚 <?php _e("Add New Book", "publisher"); ?></button>
+                <button type="submit" name="create" class="button" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
             <?php else: ?>
                 <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
             <?php endif; ?>
@@ -37,16 +30,12 @@
         </div>
     </h1>
 
+    <?php include MPL_BASEPATH . '/views/alert.php'; ?>
+
     <?php if ($admin_notice): ?>
         <div class="notice notice-info is-dismissible">
             <p><?php echo $admin_notice; ?></p>
         </div>
-    <?php endif; ?>
-
-    <?php if ( ! $mpl_is_premium): ?>
-        <hr />
-        <p>📚 <?php _e("To get all the available formats and more cool features, visit", "publisher"); ?> <a href="https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=premium" target="_blank">MPL-Publisher Premium</a> ⭐</p>
-        <hr />
     <?php endif; ?>
 
     <div data-step="2" data-intro="<?php _e('This is the main navbar. You can navigate across the tabs to configure your ebook settings. You can edit your book details, adding a cover image, or changing your book design.', 'publisher'); ?>">
@@ -55,9 +44,9 @@
         <ul class="nav-tab-wrapper nav-tabs hidden-xs">
             <?php do_action('mpl_publisher_after_tabs'); ?>
             <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-cover" data-toggle="tab">📔 <?php _e("Cover", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Design", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-links" data-toggle="tab">🔗 <?php _e("Links", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Appearance", "publisher"); ?></a></li>
             <?php if (is_null(mpl_premium_token())): ?>
                 <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
             <?php endif; ?>
@@ -67,10 +56,10 @@
 
         <select class="nav-tabs nav-tab-select visible-xs">
             <?php do_action('mpl_publisher_after_tabs_responsive'); ?>
-            <option value="0"><?php _e("General details", "publisher"); ?></option>
-            <option value="1"><?php _e("Settings", "publisher"); ?></option>
-            <option value="2"><?php _e("Links", "publisher"); ?></option>
-            <option value="3"><?php _e("Appearance", "publisher"); ?></option>
+            <option value="0"><?php _e("Details", "publisher"); ?></option>
+            <option value="1"><?php _e("Cover", "publisher"); ?></option>
+            <option value="2"><?php _e("Design", "publisher"); ?></option>
+            <option value="3"><?php _e("Meta", "publisher"); ?></option>
             <?php if (is_null(mpl_premium_token())): ?>
                 <option value="4"><?php _e("Premium", "publisher"); ?></option>
             <?php endif; ?>
@@ -118,70 +107,22 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane clearfix" id="book-settings">
-                        <h3><?php _e("Metadata settings", "publisher"); ?></h3>
-                        <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
+                    <div class="tab-pane clearfix" id="book-cover">
+                        <h3><?php _e("Cover image", "publisher"); ?></h3>
+                        <p><?php _e("Strong cover design will catch a reader's eye, capture their interest and communicate what the book is about. These things inspire someone to buy your book.", "publisher"); ?></p>
 
-                        <div class="form-field">
-                            <label for="book-language">
-                                <?php _e("Language", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
-                            </label>
-                            <input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-date">
-                                <?php _e("Publication date", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
-                            </label>
-                            <input name="date" id="book-date" type="text" value="<?php echo $date; ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
-                        </div>
-
-                        <div class="form-field">
+                        <div class="form-field mb-20">
                             <label><?php _e("Cover image", "publisher"); ?></label>
-                            <?php if ($cover_src):  ?>
+                            <?php if ($cover_src): ?>
                                 <img src="<?php echo $cover_src; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php else: ?>
                                 <img src="https://via.placeholder.com/115x184&text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php endif; ?>
                             <input type="hidden" name="cover" id="book-cover" value="<?php echo $cover; ?>">
-                            <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Upload Image', 'publisher'); ?>">
+                            <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Select Image', 'publisher'); ?>">
                             <p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
                         </div>
-
-                        <div class="form-field">
-                            <label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
-                            <input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-copyright">
-                                <?php _e("Copyright Information", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
-                            </label>
-                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane clearfix" id="book-links">
-                        <h3><?php _e("External links", "publisher"); ?></h3>
-                        <p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
-
-                        <div class="form-field">
-                            <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
-                            <input name="landing_url" id="book-landing" type="text" value="<?php echo $landing_url; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
-                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo $amazon_url; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
-                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo $ibooks_url; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
-                        </div>
+                        <a href="<?php echo admin_url('admin.php?page=mpl-cover'); ?>" class="button button-primary">🎨 <?php _e('Try our Cover Editor', 'publisher'); ?></a>
                     </div>
 
                     <div class="tab-pane clearfix" id="book-appearance">
@@ -220,6 +161,58 @@
                         </div>
                     </div>
 
+                    <div class="tab-pane clearfix" id="book-settings">
+                        <h3><?php _e("Metadata settings", "publisher"); ?></h3>
+                        <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
+
+                        <div class="form-field">
+                            <label for="book-language">
+                                <?php _e("Language", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
+                            </label>
+                            <input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-date">
+                                <?php _e("Publication date", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
+                            </label>
+                            <input name="date" id="book-date" type="text" value="<?php echo $date; ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
+                            <input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-copyright">
+                                <?php _e("Copyright Information", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
+                            </label>
+                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
+                        </div>
+
+                        <h3><?php _e("External links", "publisher"); ?></h3>
+                        <p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
+
+                        <div class="form-field">
+                            <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
+                            <input name="landing_url" id="book-landing" type="text" value="<?php echo $landing_url; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
+                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo $amazon_url; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
+                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo $ibooks_url; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
+                        </div>
+                    </div>
+
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
                         <?php if ($mpl_is_premium): ?>
@@ -240,7 +233,7 @@
 
                     <hr class="mt-30 mb-20" />
 
-                    <div class="form-field" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
+                    <div class="form-field mb-20" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
                         <label for="format"><?php _e("Output format", "publisher"); ?></label>
                         <select name="format" id="format">
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
@@ -330,7 +323,7 @@
                         <?php endif; ?>
                         */ ?>
                         <div class="chosen-container text-right">
-                            <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <?php _e('Filter content'); ?></button>
+                            <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
@@ -341,7 +334,7 @@
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -382,7 +375,7 @@
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
-                            <tbody>
+                            </tbody>
                         <?php else: ?>
                             <tbody>
                                 <tr>
@@ -400,7 +393,7 @@
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
                                 <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <?php echo _e("Add New Book Chapter", "publisher"); ?></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
                     </table>

@@ -104,6 +104,59 @@
         $('#marketplace-iframe').on('load', function () {
             $(this).iFrameResize();
         });
+
+        var $editorContainer = $('#tui-image-editor-container');
+
+        if ($editorContainer.length && typeof tui === 'object') {
+            var height = Math.min(window.innerHeight - 180, 650);
+
+            if ( ! $mpl.data('is-premium')) {
+                var coverPremium = introJs().setOptions({
+                    showButtons: false,
+                    showBullets: false,
+                    steps: [{
+                        title: $mpl.data('title-premium'),
+                        intro: $mpl.data('alert-premium'),
+                    }]
+                }).start();
+
+                coverPremium.onexit(function() {
+                    window.history.back();
+                });
+            }
+
+            var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
+                includeUI: {
+                    loadImage: {
+                        path: $mpl.data('base-url') + './assets/imgs/cover-placeholder.png',
+                        name: 'SampleImage',
+                    },
+                    theme: {
+                        'common.bi.image': $mpl.data('base-url') + './assets/imgs/mpl-logo-60x60.png',
+                        'common.bisize.width': '26px',
+                        'common.bisize.height': '26px',
+                        'common.backgroundColor': '#ffff',
+                        'common.border': '0px',
+                        // Download
+                        'downloadButton.backgroundColor': '#EE4035',
+                        'downloadButton.border': '1px solid #EE4035',
+                        // Submenu
+                        'submenu.backgroundColor': '#1d2327',
+                    },
+                    menuBarPosition: 'bottom',
+                    uiSize: {
+                        height: height
+                    }
+                },
+                cssMaxWidth: 312,
+                cssMaxHeight: 500,
+                usageStatistics: false,
+            });
+
+            window.onresize = function () {
+                imageEditor.ui.resizeEditor();
+            };
+        }
     });
 
 })(window.jQuery);

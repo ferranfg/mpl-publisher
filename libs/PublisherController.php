@@ -93,4 +93,9 @@ class PublisherController extends PublisherBase {
     {
         echo $this->view('marketplace.php', $this->data);
     }
+
+    public function getCoverEditor()
+    {
+        echo $this->view('cover-editor.php', $this->data);
+    }
 }

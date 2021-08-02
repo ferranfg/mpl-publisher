@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.mpl.wrap {
+  margin-top: 20px;
+  margin-left: 0;
+}
+
 .mpl .clearfix:before,
 .mpl .clearfix:after {
   display: table;
@@ -31,7 +36,7 @@
 }
 
 .mpl .mb-20 {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .mpl .alert {
@@ -57,6 +62,10 @@
   display: block !important;
 }
 
+.mpl .hidden-inline-xs {
+  display: inline !important;
+}
+
 .mpl .visible-xs {
   display: none !important;
 }
@@ -65,7 +74,11 @@
   .mpl .hidden-xs {
     display: none !important;
   }
-  
+
+  .mpl .hidden-inline-xs {
+    display: none !important;
+  }
+
   .mpl .visible-xs {
     display: block !important;
   }
@@ -73,6 +86,8 @@
 
 .mpl #mpl-logo {
   line-height: 1;
+  padding-top: 0;
+  margin-bottom: 16px;
 }
 
 .mpl #mpl-logo .float-left {
@@ -161,7 +176,7 @@
 }
 
 .mpl .nav-tabs {
-  margin: 14px 0 12px;
+  margin: 0 0 12px;
   width: 100%;
 }
 
@@ -251,26 +266,32 @@
 
   line-break: auto;
 }
+
 .mpl .tooltip.in {
   filter: alpha(opacity=90);
   opacity: .9;
 }
+
 .mpl .tooltip.top {
   padding: 5px 0;
   margin-top: -3px;
 }
+
 .mpl .tooltip.right {
   padding: 0 5px;
   margin-left: 3px;
 }
+
 .mpl .tooltip.bottom {
   padding: 5px 0;
   margin-top: 3px;
 }
+
 .mpl .tooltip.left {
   padding: 0 5px;
   margin-left: -3px;
 }
+
 .mpl .tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
@@ -279,6 +300,7 @@
   background-color: #000;
   border-radius: 4px;
 }
+
 .mpl .tooltip-arrow {
   position: absolute;
   width: 0;
@@ -286,6 +308,7 @@
   border-color: transparent;
   border-style: solid;
 }
+
 .mpl .tooltip.top .tooltip-arrow {
   bottom: 0;
   left: 50%;
@@ -293,6 +316,7 @@
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
+
 .mpl .tooltip.top-left .tooltip-arrow {
   right: 5px;
   bottom: 0;
@@ -300,6 +324,7 @@
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
+
 .mpl .tooltip.top-right .tooltip-arrow {
   bottom: 0;
   left: 5px;
@@ -307,6 +332,7 @@
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
+
 .mpl .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
@@ -314,6 +340,7 @@
   border-width: 5px 5px 5px 0;
   border-right-color: #000;
 }
+
 .mpl .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
@@ -321,6 +348,7 @@
   border-width: 5px 0 5px 5px;
   border-left-color: #000;
 }
+
 .mpl .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
@@ -328,6 +356,7 @@
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
+
 .mpl .tooltip.bottom-left .tooltip-arrow {
   top: 0;
   right: 5px;
@@ -335,10 +364,15 @@
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
+
 .mpl .tooltip.bottom-right .tooltip-arrow {
   top: 0;
   left: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
   border-bottom-color: #000;
+}
+
+.mpl .tui-image-editor-container .tui-image-editor-controls {
+  background-color: #1d2327;
 }

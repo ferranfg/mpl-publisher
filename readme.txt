@@ -27,8 +27,9 @@ The plugin is full of features (check the features section and roadmap to future
 
 For now, these are the current features:
 
-- Unlimited books and unlimited exports.
-- Select chapters (posts, pages, and "secret chapters") to include in your eBook.
+- Unlimited books per site with unlimited exports per book.
+- Advanced cover editor included (only available for premium).
+- Select indivicual chapters (posts, pages, and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
 - Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), Mobi, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
@@ -102,6 +103,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.29.0 =
+- Added new cover editor (only for MPL-Publisher premium)
+- Change tabs literals and modified content (Links are now part of Metadata)
+- Responsive improvements (buttons on XS and text-size)
 
 = 1.28.0 =
 - Added Plain Text (txt) as new output format
