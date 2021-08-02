@@ -106,6 +106,7 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 1.29.0 =
 - Added new cover editor (only for MPL-Publisher premium)
+- Fix Word cover alignment and image size
 - Change tabs literals and modified content (Links are now part of Metadata)
 - Responsive improvements (buttons on XS and text-size)
 

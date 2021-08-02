@@ -6,6 +6,7 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Shared\Html;
+use PhpOffice\PhpWord\SimpleType\Jc as Align;
 
 class WordPublisher implements IPublisher {
 
@@ -27,6 +28,8 @@ class WordPublisher implements IPublisher {
         $this->config = $this->word->getDocInfo();
 
         $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/');
+
+        Settings::setDefaultPaper('Letter');
     }
 
     public function setTmpPath($tempPath)
@@ -69,7 +72,10 @@ class WordPublisher implements IPublisher {
         $image = file_put_contents($this->coverFile, $image_data);
         $cover = $this->word->addSection();
 
-        $cover->addImage($this->coverFile);
+        $cover->addImage($this->coverFile, array(
+            'width' => 460,
+            'alignment' => Align::CENTER
+        ));
     }
 
     public function setTheme($theme, $custom_css)
