@@ -8,7 +8,9 @@ class PublisherController extends PublisherBase {
 
     public function getIndex()
     {
-        $this->data['query'] = $this->getQuery();
+        $this->data['query'] = $this->getQuery(
+            array_key_exists('order_asc', $this->data) ? $this->data['order_asc'] : true
+        );
 
         $this->data['blog_categories'] = $this->getCategories();
         $this->data['blog_authors']    = $this->getAuthors();
@@ -58,9 +60,12 @@ class PublisherController extends PublisherBase {
             $params['msg'] = '✅ ' . __('Book successfully created.', 'publisher');
         }
 
-        if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST))
+        if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST))
         {
             $book_id = $_POST['book_id'];
+
+            // Toggle current order value
+            if (array_key_exists('order', $_POST)) $_POST['order_asc'] = ! $_POST['order_asc'];
 
             $this->saveStatus($_POST, $book_id);
 

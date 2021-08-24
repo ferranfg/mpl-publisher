@@ -108,6 +108,7 @@ class PublisherBase {
             'year_selected'   => array(),
             'month_selected'  => array(),
             'selected_posts'  => false,
+            'order_asc'       => true,
             'format'          => 'epub2'
         );
     }
@@ -219,7 +220,7 @@ class PublisherBase {
         return array_filter(explode('%', $stripped));
     }
 
-    public function getQuery()
+    public function getQuery($order_asc = true)
     {
         if (array_key_exists('month', $this->filter))
         {
@@ -234,7 +235,7 @@ class PublisherBase {
 
         $query = http_build_query(array_merge(array(
             'posts_per_page' => mpl_max_posts(),
-            'order' => 'ASC'
+            'order' => $order_asc ? 'ASC' : 'DESC'
         ), $this->filter));
 
         return new WP_Query($query);
@@ -360,9 +361,15 @@ class PublisherBase {
     public function getStatus($book_id)
     {
         $all_books = $this->getAllBooks();
-        $status = $this->getBookDefaults();
+        $status = [
+            'time' => current_time('timestamp'),
+            'data' => $this->getBookDefaults()
+        ];
 
-        if (array_key_exists($book_id, $all_books)) $status = $all_books[$book_id];
+        if (array_key_exists($book_id, $all_books))
+        {
+            $status = array_merge($status, $all_books[$book_id]);
+        }
 
         return apply_filters('mpl_publisher_get_status', $status);
     }

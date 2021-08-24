@@ -104,6 +104,10 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 1.29.1 =
+- Fix cover image not being saved appropriately
+- Added order option (ASC/DESC) on chapters list
+
 = 1.29.0 =
 - Added new cover editor (only for MPL-Publisher premium)
 - Fix Word cover alignment and image size

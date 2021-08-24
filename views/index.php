@@ -5,6 +5,7 @@
 
     <input type="hidden" name="action" value="publish_ebook">
     <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+    <input type="hidden" name="order_asc" value="<?php echo $order_asc; ?>" />
 
     <?php echo $wp_nonce_field; ?>
 
@@ -118,7 +119,7 @@
                             <?php else: ?>
                                 <img src="https://via.placeholder.com/115x184&text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php endif; ?>
-                            <input type="hidden" name="cover" id="book-cover" value="<?php echo $cover; ?>">
+                            <input type="hidden" name="cover" id="book-cover-id" value="<?php echo $cover; ?>">
                             <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Select Image', 'publisher'); ?>">
                             <p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
                         </div>
@@ -333,7 +334,10 @@
                                 <th class="manage-column column-cb check-column" data-step="4" data-intro="<?php _e('Use these checkboxes to select the content you want to include in your book (all by once or individually). Also, you can use drag & drop to sort them according to your preferences.', 'publisher'); ?>">
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
-                                <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
+                                <th class="manage-column column-name">
+                                    <?php _e("Contents", "publisher"); ?>
+                                    (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
+                                </th>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
@@ -392,7 +396,10 @@
                                 <th class="manage-column column-cb check-column">
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
-                                <th class="manage-column column-name"><?php _e("Contents", "publisher"); ?></th>
+                                <th class="manage-column column-name">
+                                    <?php _e("Contents", "publisher"); ?>
+                                    (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
+                                </th>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>

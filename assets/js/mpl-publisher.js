@@ -24,7 +24,7 @@
             var image = window.wp.media().open().on('select', function() {
                 var selected = image.state().get('selection').first();
                 // hidden field
-                $('#book-cover').val(selected.get('id'));
+                $('#book-cover-id').val(selected.get('id'));
                 // image next button
                 $('#book-cover-placeholder').attr('src', selected.get('url'));
             });
