@@ -1,7 +1,7 @@
 === MPL-Publisher - Self-publish your book & ebook ===
 Contributors: ferranfg
 Donate link: https://mpl-publisher.ferranfigueredo.com/
-Tags: ebook, epub, book, pdf, kindle, mobi, ibook, self-publish, author, print, digital-publishing, kdp
+Tags: ebook, epub, kindle, kdp, mobi, word, self-publish, wattpad
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.1.8
@@ -104,7 +104,7 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
-= 1.29.1 =
+= 1.29.2 =
 - Fix cover image not being saved appropriately
 - Added order option (ASC/DESC) on chapters list
 
