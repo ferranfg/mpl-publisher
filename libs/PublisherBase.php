@@ -41,12 +41,12 @@ class PublisherBase {
                 $this->data['cover_src'] = $cover_src[0];
             }
 
-            if (!empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
-            if (!empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
-            if (!empty($this->data['tag_selected']))    $this->filter['tag']         = implode(',', $this->data['tag_selected']);
-            if (!empty($this->data['status_selected'])) $this->filter['post_status'] = implode(',', $this->data['status_selected']);
-            if (!empty($this->data['year_selected']))   $this->filter['year']        = implode(',', $this->data['year_selected']);
-            if (!empty($this->data['month_selected']))  $this->filter['month']       = implode(',', $this->data['month_selected']);
+            if ( ! empty($this->data['cat_selected']))    $this->filter['cat']         = implode(',', $this->data['cat_selected']);
+            if ( ! empty($this->data['author_selected'])) $this->filter['author']      = implode(',', $this->data['author_selected']);
+            if ( ! empty($this->data['tag_selected']))    $this->filter['tag']         = implode(',', $this->data['tag_selected']);
+            if ( ! empty($this->data['status_selected'])) $this->filter['post_status'] = implode(',', $this->data['status_selected']);
+            if ( ! empty($this->data['year_selected']))   $this->filter['year']        = implode(',', $this->data['year_selected']);
+            if ( ! empty($this->data['month_selected']))  $this->filter['month']       = implode(',', $this->data['month_selected']);
         }
 
         $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'page', 'mpl_chapter');
@@ -220,7 +220,7 @@ class PublisherBase {
         return array_filter(explode('%', $stripped));
     }
 
-    public function getQuery($order_asc = true)
+    public function getQuery($order_asc = true, $selected_posts = array())
     {
         if (array_key_exists('month', $this->filter))
         {
@@ -233,12 +233,27 @@ class PublisherBase {
             }, explode(',', $this->filter['month']));
         }
 
-        $query = http_build_query(array_merge(array(
-            'posts_per_page' => mpl_max_posts(),
+        $posts_query = new WP_Query(array(
+            'ignore_sticky_posts' => 1,
+            'post__in'       => $selected_posts,
+            'orderby'        => 'post__in',
+            'posts_per_page' => '-1',
+            'post_status'    => 'any',
+            'post_type'      => 'any',
+            'no_found_rows'  => true
+        ));
+
+        $search_query = new WP_Query(array_merge(array(
+            'post__not_in' => $selected_posts,
+            'posts_per_page' => mpl_max_posts() - count($selected_posts),
             'order' => $order_asc ? 'ASC' : 'DESC'
         ), $this->filter));
 
-        return new WP_Query($query);
+        $wp_query = new WP_Query();
+        $wp_query->posts = array_merge($posts_query->posts, $search_query->posts);
+        $wp_query->post_count = $posts_query->post_count + $search_query->post_count;
+
+        return $wp_query;
     }
 
     public function generateBook($forceGenerate = false)
