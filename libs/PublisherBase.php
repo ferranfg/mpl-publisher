@@ -239,19 +239,19 @@ class PublisherBase {
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
             'post_status'    => 'any',
-            'post_type'      => 'any',
-            'no_found_rows'  => true
+            'post_type'      => 'any'
         ));
 
         $search_query = new WP_Query(array_merge(array(
             'post__not_in' => $selected_posts,
-            'posts_per_page' => mpl_max_posts() - count($selected_posts),
+            'posts_per_page' => mpl_max_posts() - $posts_query->post_count,
             'order' => $order_asc ? 'ASC' : 'DESC'
         ), $this->filter));
 
         $wp_query = new WP_Query();
         $wp_query->posts = array_merge($posts_query->posts, $search_query->posts);
         $wp_query->post_count = $posts_query->post_count + $search_query->post_count;
+        $wp_query->found_posts = $posts_query->found_posts + $search_query->found_posts;
 
         return $wp_query;
     }
