@@ -104,6 +104,12 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 1.30.0 =
+- Selected chapters will be kept and ordered on filtered results
+- Security risks avoided using Transient API to show admin notices
+- Updated Amazon Kindle Direct Publishing (KDP) Mobi generation library
+- Fix: Detect premium users on additional resources
+
 = 1.29.2 =
 - Fix cover image not being saved appropriately
 - Added order option (ASC/DESC) on chapters list

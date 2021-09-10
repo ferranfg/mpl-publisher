@@ -27,6 +27,8 @@ class PublisherController extends PublisherBase {
 
         wp_reset_postdata();
 
+        set_transient('mpl_msg', null);
+
         echo $this->view('index.php', $this->data);
     }
 
@@ -48,7 +50,7 @@ class PublisherController extends PublisherBase {
         {
             $this->removeStatus($_POST['book_id']);
 
-            $params['msg'] = 'ℹ️ ' . __('Book successfully removed.', 'publisher');
+            set_transient('mpl_msg', 'ℹ️ ' . __('Book successfully removed.', 'publisher'));
         }
 
         if (array_key_exists('create', $_POST))
@@ -58,7 +60,7 @@ class PublisherController extends PublisherBase {
             $this->saveStatus($this->getBookDefaults(), $book_id);
 
             $params['book_id'] = $book_id;
-            $params['msg'] = '✅ ' . __('Book successfully created.', 'publisher');
+            set_transient('mpl_msg', '✅ ' . __('Book successfully created.', 'publisher'));
         }
 
         if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST))
@@ -74,7 +76,7 @@ class PublisherController extends PublisherBase {
 
             if (array_key_exists('save', $_POST))
             {
-                $params['msg'] = '✅ ' . __('Changes successfully saved.', 'publisher');
+                set_transient('mpl_msg', '✅ ' . __('Changes successfully saved.', 'publisher'));
             }
         }
 
@@ -89,7 +91,7 @@ class PublisherController extends PublisherBase {
         }
         catch (Exception $e)
         {
-            $params['msg'] = $e->getMessage();
+            set_transient('mpl_msg', $e->getMessage());
         }
 
         return wp_safe_redirect(mpl_admin_url($params));

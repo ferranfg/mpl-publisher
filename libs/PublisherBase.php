@@ -22,7 +22,7 @@ class PublisherBase {
     public function __construct()
     {
         $this->filter = $_GET;
-        $this->data   = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
+        $this->data = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
         $status = $this->getStatus($this->data['book_id']);
 
@@ -72,7 +72,7 @@ class PublisherBase {
             'book_id'         => $book_id,
             'all_books'       => $all_books,
             'mpl_is_premium'  => mpl_is_premium(),
-            'admin_notice'    => array_key_exists('msg', $_GET) ? $_GET['msg'] : null,
+            'admin_notice'    => get_transient('mpl_msg'),
             'marketplace_url' => MPL_MARKETPLACE . '?' . http_build_query([
                 'is_premium'  => mpl_is_premium() ? 'true' : 'false',
                 'locale'      => get_locale(),
