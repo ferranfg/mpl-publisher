@@ -413,7 +413,7 @@ msgstr ""
 
 #: views/index.php:220
 msgid ""
-"Your <a href='https://mpl-publisher.ferranfigueredo.com?"
+"Your <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
 "successfully activated 🎉. You now have access to all the available formats "
 "and more cool features."
@@ -427,7 +427,7 @@ msgstr ""
 
 #: views/index.php:223
 msgid ""
-"If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?"
+"If you already bought <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
 "received a license key on the confirmation email."
 msgstr ""
@@ -591,7 +591,7 @@ msgid "MPL - Publisher"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://mpl-publisher.ferranfigueredo.com/"
+msgid "https://wordpress.mpl-publisher.com/"
 msgstr ""
 
 #. Description of the plugin/theme

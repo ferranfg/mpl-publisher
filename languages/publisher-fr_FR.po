@@ -457,12 +457,12 @@ msgstr "Numéro de licence"
 
 #: views/index.php:220
 msgid ""
-"Your <a href='https://mpl-publisher.ferranfigueredo.com?"
+"Your <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
 "successfully activated 🎉. You now have access to all the available formats "
 "and more cool features."
 msgstr ""
-"Votre <a href='https://mpl-publisher.ferranfigueredo.com?"
+"Votre <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ été "
 "activé avec succès 🎉. Vous avez maintenant accès à tous les formats "
 "disponibles et des fonctionnalités plus cool."
@@ -477,11 +477,11 @@ msgstr ""
 
 #: views/index.php:223
 msgid ""
-"If you already bought <a href='https://mpl-publisher.ferranfigueredo.com?"
+"If you already bought <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
 "received a license key on the confirmation email."
 msgstr ""
-"Si vous avez déjà acheté <a href=‘https://mpl-publisher.ferranfigueredo.com?"
+"Si vous avez déjà acheté <a href=‘https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license’>MPL-Publisher Premium</a> ⭐, vous "
 "avez reçu une clé de licence sur l’e-mail de confirmation."
 
@@ -668,8 +668,8 @@ msgid "MPL - Publisher"
 msgstr "MPL - Publisher"
 
 #. Plugin URI of the plugin/theme
-msgid "https://mpl-publisher.ferranfigueredo.com/"
-msgstr "https://mpl-publisher.ferranfigueredo.com/"
+msgid "https://wordpress.mpl-publisher.com/"
+msgstr "https://wordpress.mpl-publisher.com/"
 
 #. Description of the plugin/theme
 msgid ""

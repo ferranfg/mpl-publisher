@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: MPL - Publisher
- * Plugin URI: https://mpl-publisher.ferranfigueredo.com/
+ * Plugin URI: https://wordpress.mpl-publisher.com/
  * Description: MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
- * Version: 1.30.0
+ * Version: 1.30.1
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -13,8 +13,8 @@
 
 define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
-define('MPL_ENDPOINT', 'https://api.ferranfigueredo.com');
-define('MPL_MARKETPLACE', 'https://mpl-marketplace.ferranfigueredo.com');
+define('MPL_ENDPOINT', 'https://mpl-publisher.com');
+define('MPL_MARKETPLACE', 'https://marketplace.mpl-publisher.com');
 define('MPL_MAX_POSTS', 100);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
 define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
@@ -135,7 +135,7 @@ add_action('widgets_init', function()
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($actions)
 {
     $actions[] = '<a href="'. esc_url(get_admin_url(null, 'admin.php?page=publisher')) . '">' . __('Settings', 'publisher') . '</a>';
-    $actions[] = '<a href="https://mpl-publisher.ferranfigueredo.com?utm_medium=plugin&utm_campaign=settings" target="_blank"><b>Premium</b></a>';
+    $actions[] = '<a href="https://wordpress.mpl-publisher.com?utm_medium=plugin&utm_campaign=settings" target="_blank"><b>Premium</b></a>';
 
     return $actions;
 });
@@ -191,7 +191,7 @@ if ( ! function_exists('mpl_admin_url'))
 if ( ! function_exists('mpl_is_premium'))
 {
     /**
-     * https://mpl-publisher.ferranfigueredo.com :)
+     * https://wordpress.mpl-publisher.com :)
      *
      * We validate the license key on the backend
      */

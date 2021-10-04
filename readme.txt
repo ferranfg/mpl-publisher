@@ -1,6 +1,6 @@
 === MPL-Publisher - Self-publish your book & ebook ===
 Contributors: ferranfg
-Donate link: https://mpl-publisher.ferranfigueredo.com/
+Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, epub, kindle, kdp, mobi, word, self-publish, wattpad
 Requires at least: 5.0
 Tested up to: 5.8
@@ -50,7 +50,7 @@ Future releases will include, at least, the next functionalities:
 - PHP 7.1.8 or higher
 - WordPress 5.0 or higher
 
-For further information, visit the [MPL-Publisher plugin's homepage](https://mpl-publisher.ferranfigueredo.com/)
+For further information, visit the [MPL-Publisher plugin's homepage](https://wordpress.mpl-publisher.com/)
 
 = Alternatives to MPL-Publisher =
 
@@ -104,11 +104,14 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
-= 1.30.0 - 10 September 2021 =
-- Selected chapters now are kept and ordered with filtered results
+= 1.30.1 =
+- Update plugin URLs with brand new MPL-Publisher v2
+
+= 1.30.0 =
+- Selected chapters will be kept and ordered on filtered results
 - Security risks avoided using Transient API to show admin notices
-- Updated Kindle Direct Publishing (KDP) Mobi generation library
-- Detect premium users on additional resources
+- Updated Amazon Kindle Direct Publishing (KDP) Mobi generation library
+- Fix: Detect premium users on additional resources
 
 = 1.29.2 =
 - Fix cover image not being saved appropriately
@@ -195,7 +198,7 @@ In future releases, we will add further improvements to our current formats. Kee
 - Added print-ready PDF as output format
 
 = 1.16.0 =
-- [MPL-Publisher Premium](https://mpl-publisher.ferranfigueredo.com) ⭐ it's available!
+- [MPL-Publisher Premium](https://wordpress.mpl-publisher.com) ⭐ it's available!
 - Added Audiobook (mp3) as output format
 - Pages can now be attached as book chapters
 - UX improvements and lots of emojis

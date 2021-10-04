@@ -16,7 +16,7 @@ class EpubPublisher implements IPublisher {
         $this->format = $format == 'epub3' ? EPub::BOOK_VERSION_EPUB3 : EPub::BOOK_VERSION_EPUB2;
 
         $this->epub = new EPub($this->format);
-        $this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/");
+        $this->epub->setGenerator("MPL-Publisher by Ferran Figueredo, https://wordpress.mpl-publisher.com/");
     }
 
     public function setIdentifier($id)

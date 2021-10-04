@@ -27,7 +27,7 @@ class WordPublisher implements IPublisher {
         $this->word   = new PhpWord();
         $this->config = $this->word->getDocInfo();
 
-        $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://mpl-publisher.ferranfigueredo.com/');
+        $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://wordpress.mpl-publisher.com/');
 
         Settings::setDefaultPaper('Letter');
     }
