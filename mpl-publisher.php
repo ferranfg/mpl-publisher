@@ -15,7 +15,7 @@ define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
 define('MPL_ENDPOINT', 'https://mpl-publisher.com');
 define('MPL_MARKETPLACE', 'https://marketplace.mpl-publisher.com');
-define('MPL_MAX_POSTS', 100);
+define('MPL_MAX_POSTS', 500);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
 define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
 
