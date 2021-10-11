@@ -3,7 +3,7 @@
  * Plugin Name: MPL - Publisher
  * Plugin URI: https://wordpress.mpl-publisher.com/
  * Description: MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
- * Version: 1.30.1
+ * Version: 1.30.2
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -15,7 +15,7 @@ define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
 define('MPL_ENDPOINT', 'https://mpl-publisher.com');
 define('MPL_MARKETPLACE', 'https://marketplace.mpl-publisher.com');
-define('MPL_MAX_POSTS', 500);
+define('MPL_MAX_POSTS', 100);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
 define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
 
@@ -176,6 +176,18 @@ add_filter('admin_footer_text', function ($text)
     return $text;
 });
 
+register_deactivation_hook(__FILE__, 'mpl_uninstall_hook');
+register_uninstall_hook(__FILE__, 'mpl_uninstall_hook');
+
+if ( ! function_exists('mpl_uninstall_hook'))
+{
+    function mpl_uninstall_hook()
+    {
+        delete_option(MPL_OPTION_NAME);
+        delete_option(MPL_OPTION_LICENSE);
+    }
+}
+
 if ( ! function_exists('mpl_admin_url'))
 {
     function mpl_admin_url($params = array())
@@ -235,7 +247,7 @@ if ( ! function_exists('mpl_max_posts'))
 {
     function mpl_max_posts()
     {
-        return MPL_MAX_POSTS;
+        return mpl_is_premium() ? (int) ceil(MPL_MAX_POSTS * 0x5) : MPL_MAX_POSTS;
     }
 }
 

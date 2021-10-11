@@ -104,6 +104,11 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 1.30.2 =
+- Increase posts results number limitation
+- Update resources for self-publishers
+- Fix cleaning options on plugin deactivation
+
 = 1.30.1 =
 - Update plugin URLs with brand new MPL-Publisher v2
 
