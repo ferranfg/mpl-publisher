@@ -104,6 +104,9 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 1.30.3 =
+- Validate, Sanitize and Escape User Data
+
 = 1.30.2 =
 - Increase posts results number limitation
 - Update resources for self-publishers
