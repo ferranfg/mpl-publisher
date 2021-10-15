@@ -1,11 +1,11 @@
-<form class="wrap mpl" id="mpl-wrapper" action="<?php echo $form_action; ?>" method="POST" enctype="multipart/form-data"
-    data-thickbox-url="<?php echo $marketplace_url; ?>&utm_campaign=publish"
+<form class="wrap mpl" id="mpl-wrapper" action="<?php echo esc_url($form_action); ?>" method="POST" enctype="multipart/form-data"
+    data-thickbox-url="<?php echo esc_url($marketplace_url); ?>&utm_campaign=publish"
     data-is-premium="<?php echo $mpl_is_premium ? 'true' : 'false'; ?>"
     data-alert-premium="<?php echo __('This is a premium feature and it is not available on the free version.', 'publisher'); ?> <?php echo __('Please, visit our homepage and get access to this and more features.', 'publisher'); ?>">
 
     <input type="hidden" name="action" value="publish_ebook">
-    <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
-    <input type="hidden" name="order_asc" value="<?php echo $order_asc; ?>" />
+    <input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>">
+    <input type="hidden" name="order_asc" value="<?php echo esc_attr($order_asc); ?>" />
 
     <?php echo $wp_nonce_field; ?>
 
@@ -15,7 +15,7 @@
             <select class="nav-book-select">
                 <?php foreach ($all_books as $index => $book): ?>
                     <option value="<?php echo mpl_admin_url(['book_id' => $index]); ?>" <?php echo $book_id == $index ? "selected='selected'" : ''; ?>>
-                        <?php echo $book['data']['title']; ?>
+                        <?php echo esc_html($book['data']['title']); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -35,7 +35,7 @@
 
     <?php if ($admin_notice): ?>
         <div class="notice notice-info is-dismissible">
-            <p><?php echo $admin_notice; ?></p>
+            <p><?php echo esc_html($admin_notice); ?></p>
         </div>
     <?php endif; ?>
 
@@ -86,17 +86,17 @@
                                 <?php _e("Identifier (ISBN)", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?>"></span>
                             </label>
-                            <input name="identifier" id="book-identifier" type="text" value="<?php echo $identifier; ?>" placeholder="ej: 9788494138805 E">
+                            <input name="identifier" id="book-identifier" type="text" value="<?php echo esc_attr($identifier); ?>" placeholder="ej: 9788494138805 E">
                         </div>
 
                         <div class="form-field" data-step="3" data-intro="<?php _e('For example, you can change your book title in this field. The title is the first thing the reader sees or hears about your book. Getting it right is the single most important book marketing decision you\'ll make!', 'publisher'); ?>">
                             <label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
-                            <input name="title" id="book-title" type="text" value="<?php echo $title; ?>" placeholder="<?php _e('Book Title'); ?>">
+                            <input name="title" id="book-title" type="text" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e('Book Title'); ?>">
                         </div>
 
                         <div class="form-field">
                             <label for="book-description"><?php _e("Book Description", "publisher"); ?></label>
-                            <textarea name="description" id="book-description" rows="8"><?php echo $description; ?></textarea>
+                            <textarea name="description" id="book-description" rows="8"><?php echo esc_textarea($description); ?></textarea>
                         </div>
 
                         <div class="form-field">
@@ -104,7 +104,7 @@
                                 <?php _e("Book authors", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Separate multiple authors with commas", "publisher"); ?>"></span>
                             </label>
-                            <input name="authors" id="book-authors" type="text" value="<?php echo $authors; ?>" placeholder="<?php _e('Book authors'); ?>">
+                            <input name="authors" id="book-authors" type="text" value="<?php echo esc_attr($authors); ?>" placeholder="<?php _e('Book authors'); ?>">
                         </div>
                     </div>
 
@@ -115,11 +115,11 @@
                         <div class="form-field mb-20">
                             <label><?php _e("Cover image", "publisher"); ?></label>
                             <?php if ($cover_src): ?>
-                                <img src="<?php echo $cover_src; ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+                                <img src="<?php echo esc_url($cover_src); ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php else: ?>
                                 <img src="https://via.placeholder.com/115x184&text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php endif; ?>
-                            <input type="hidden" name="cover" id="book-cover-id" value="<?php echo $cover; ?>">
+                            <input type="hidden" name="cover" id="book-cover-id" value="<?php echo esc_attr($cover); ?>">
                             <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Select Image', 'publisher'); ?>">
                             <p><?php _e("Recommended size is 625x1000", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2J0TRG6OPX0VM" target="_blank">[?]</a></p>
                         </div>
@@ -131,14 +131,14 @@
                         <div class="clearfix">
                             <div class="theme-browser">
                                 <?php foreach ($book_themes as $id => $theme): ?>
-                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo $id; ?>" data-theme-slug="<?php echo $theme['id']; ?>">
+                                    <div class="theme <?php echo $id == $theme_id ? 'active' : ''; ?>" data-toggle="book-theme" data-theme-id="<?php echo esc_attr($id); ?>" data-theme-slug="<?php echo esc_attr($theme['id']); ?>">
                                         <div class="theme-screenshot">
-                                            <img src="<?php echo $theme['image']; ?>" alt="<?php _e($theme['name'], "publisher"); ?>" />
+                                            <img src="<?php echo esc_url($theme['image']); ?>" alt="<?php _e($theme['name'], "publisher"); ?>" />
                                         </div>
                                         <h2 class="theme-name"><?php _e($theme['name'], "publisher"); ?></h2>
                                     </div>
                                 <?php endforeach; ?>
-                                <input type="hidden" name="theme_id" value="<?php echo $theme_id; ?>">
+                                <input type="hidden" name="theme_id" value="<?php echo esc_attr($theme_id); ?>">
                             </div>
                         </div>
 
@@ -158,7 +158,7 @@
                         <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?>
 
                         <div class="form-field" id="template">
-                            <textarea name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo $custom_css; ?></textarea>
+                            <textarea name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo esc_textarea($custom_css); ?></textarea>
                         </div>
                     </div>
 
@@ -171,7 +171,7 @@
                                 <?php _e("Language", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
                             </label>
-                            <input name="language" id="book-language" type="text" value="<?php echo $language; ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
+                            <input name="language" id="book-language" type="text" value="<?php echo esc_attr($language); ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
@@ -179,12 +179,12 @@
                                 <?php _e("Publication date", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
                             </label>
-                            <input name="date" id="book-date" type="text" value="<?php echo $date; ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+                            <input name="date" id="book-date" type="text" value="<?php echo esc_attr($date); ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
                         </div>
 
                         <div class="form-field">
                             <label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
-                            <input name="editor" id="book-editor" type="text" value="<?php echo $editor; ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
+                            <input name="editor" id="book-editor" type="text" value="<?php echo esc_attr($editor); ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
@@ -192,7 +192,7 @@
                                 <?php _e("Copyright Information", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
                             </label>
-                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo $copyright; ?></textarea>
+                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo esc_textarea($copyright); ?></textarea>
                         </div>
 
                         <h3><?php _e("External links", "publisher"); ?></h3>
@@ -200,17 +200,17 @@
 
                         <div class="form-field">
                             <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
-                            <input name="landing_url" id="book-landing" type="text" value="<?php echo $landing_url; ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
+                            <input name="landing_url" id="book-landing" type="text" value="<?php echo esc_attr($landing_url); ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
                             <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
-                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo $amazon_url; ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
+                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo esc_attr($amazon_url); ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
                         </div>
 
                         <div class="form-field">
                             <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
-                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo $ibooks_url; ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
+                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo esc_attr($ibooks_url); ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
                         </div>
                     </div>
 
@@ -226,7 +226,7 @@
 
                         <div class="form-field">
                             <label for="license"><?php _e("License key", "publisher"); ?></label>
-                            <input name="license" id="license" type="text" value="<?php echo $license; ?>" placeholder="<?php _e('License key', 'publisher'); ?>">
+                            <input name="license" id="license" type="text" value="<?php echo esc_attr($license); ?>" placeholder="<?php _e('License key', 'publisher'); ?>">
                         </div>
                     </div>
 
@@ -279,50 +279,32 @@
                         </select>
                         <select name="status_selected[]" id="status" class="chosen" multiple data-placeholder="<?php _e("All statuses", "publisher"); ?>">
                             <?php foreach ($blog_statuses as $status => $statusName): ?>
-                                <option value="<?php echo $status; ?>" <?php echo in_array($status, $status_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo get_post_status_object($status)->label; ?>
+                                <option value="<?php echo esc_attr($status); ?>" <?php echo in_array($status, $status_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo esc_html(get_post_status_object($status)->label); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         <select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
                             <?php foreach ($blog_categories as $category): ?>
-                                <option value="<?php echo $category->cat_ID; ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $category->name; ?>
+                                <option value="<?php echo esc_attr($category->cat_ID); ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo esc_html($category->name); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         <select name="month_selected[]" id="month" class="chosen" multiple data-placeholder="<?php _e("All months", "publisher"); ?>">
                             <?php foreach ($blog_months as $key => $month): ?>
-                                <option value="<?php echo $key; ?>" <?php echo in_array($key, $month_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $month; ?>
+                                <option value="<?php echo esc_attr($key); ?>" <?php echo in_array($key, $month_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo esc_html($month); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         <select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
                             <?php foreach ($blog_years as $year): ?>
-                                <option value="<?php echo $year; ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $year; ?>
+                                <option value="<?php echo esc_attr($year); ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
+                                    <?php echo esc_html($year); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <?php /*
-                        <select name="author_selected[]" id="author" class="chosen" multiple data-placeholder="<?php _e("All authors", "publisher"); ?>">
-                            <?php foreach ($blog_authors as $author): ?>
-                                <option value="<?php echo $author->ID; ?>" <?php echo in_array($author->ID, $author_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo $author->data->display_name; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <?php if (count($blog_tags)): ?>
-                            <select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
-                                <?php foreach ($blog_tags as $tag): ?>
-                                    <option value="<?php echo $tag->slug; ?>" <?php echo in_array($tag->slug, $tag_selected) ? "selected='selected'" : ""; ?>>
-                                        <?php echo $tag->name; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        <?php endif; ?>
-                        */ ?>
                         <div class="chosen-container text-right">
                             <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
                         </div>
