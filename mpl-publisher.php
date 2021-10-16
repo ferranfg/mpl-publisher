@@ -338,6 +338,8 @@ if ( ! function_exists('mpl_sanitize_array'))
 {
     function mpl_sanitize_array($array)
     {
+        if ( ! is_array($array)) return $array;
+
         foreach ($array as $key => $item)
         {
             if (is_string($item))
