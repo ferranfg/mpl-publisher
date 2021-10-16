@@ -1,13 +1,13 @@
 <form class="wrap mpl" id="mpl-wrapper" action="<?php echo esc_url($form_action); ?>" method="POST" enctype="multipart/form-data"
     data-thickbox-url="<?php echo esc_url($marketplace_url); ?>&utm_campaign=publish"
     data-is-premium="<?php echo $mpl_is_premium ? 'true' : 'false'; ?>"
-    data-alert-premium="<?php echo __('This is a premium feature and it is not available on the free version.', 'publisher'); ?> <?php echo __('Please, visit our homepage and get access to this and more features.', 'publisher'); ?>">
+    data-alert-premium="<?php _e('This is a premium feature and it is not available on the free version.', 'publisher'); ?> <?php _e('Please, visit our homepage and get access to this and more features.', 'publisher'); ?>">
 
     <input type="hidden" name="action" value="publish_ebook">
     <input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>">
     <input type="hidden" name="order_asc" value="<?php echo esc_attr($order_asc); ?>" />
 
-    <?php echo $wp_nonce_field; ?>
+    <?php echo esc_html($wp_nonce_field); ?>
 
     <h1 id="mpl-logo" class="clearfix">
         <?php include MPL_BASEPATH . '/views/logo.php'; ?>
@@ -169,7 +169,7 @@
                         <div class="form-field">
                             <label for="book-language">
                                 <?php _e("Language", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
                             </label>
                             <input name="language" id="book-language" type="text" value="<?php echo esc_attr($language); ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
                         </div>
@@ -177,9 +177,9 @@
                         <div class="form-field">
                             <label for="book-date">
                                 <?php _e("Publication date", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("This information won't affect the book's availability", "publisher"); ?>"></span>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("This information won't affect the book's availability", "publisher"); ?>"></span>
                             </label>
-                            <input name="date" id="book-date" type="text" value="<?php echo esc_attr($date); ?>" placeholder="<?php echo _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+                            <input name="date" id="book-date" type="text" value="<?php echo esc_attr($date); ?>" placeholder="<?php _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
                         </div>
 
                         <div class="form-field">
@@ -190,7 +190,7 @@
                         <div class="form-field">
                             <label for="book-copyright">
                                 <?php _e("Copyright Information", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php echo _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
                             </label>
                             <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo esc_textarea($copyright); ?></textarea>
                         </div>
@@ -320,7 +320,7 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -382,7 +382,7 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php echo _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
                     </table>

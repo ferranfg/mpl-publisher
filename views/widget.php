@@ -37,12 +37,12 @@
 		<p class="book-links">
 			<?php if ($amazon_url): ?>
 				<a href="<?php echo esc_url($amazon_url); ?>">
-					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/amazon-apps-store-us-black.png" />
+					<img src="<?php echo esc_url(MPL_BASEURL . "assets/imgs/amazon-apps-store-us-black.png"); ?>" />
 				</a>
 			<?php endif; ?>
 			<?php if ($ibooks_url): ?>
 				<a href="<?php echo esc_url($ibooks_url); ?>">
-					<img src="<?php echo MPL_BASEURL; ?>assets/imgs/iBooks_icon_large.png" />
+					<img src="<?php echo esc_url(MPL_BASEURL . "assets/imgs/iBooks_icon_large.png"); ?>" />
 				</a>
 			<?php endif; ?>
 		</p>

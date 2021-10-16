@@ -21,7 +21,7 @@ class PublisherBase {
 
     public function __construct()
     {
-        $this->filter = $_GET;
+        $this->filter = array_map('sanitize_text_field', $_GET);
         $this->data = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
         $status = $this->getStatus($this->data['book_id']);
@@ -65,7 +65,9 @@ class PublisherBase {
     {
         $all_books = $this->getAllBooks();
         // If no param, we select the first book as default
-        $book_id = array_key_exists('book_id', $_GET) ? $_GET['book_id'] : key($all_books);
+        $book_id = array_key_exists('book_id', $_GET) ?
+            sanitize_text_field($_GET['book_id']) :
+            key($all_books);
 
         return array(
             'license'         => mpl_premium_license(),
@@ -258,18 +260,18 @@ class PublisherBase {
 
     public function generateBook($forceGenerate = false)
     {
-        if ($forceGenerate) $_POST = $this->data;
+        $data = $forceGenerate ? $this->data : array_map('sanitize_text_field', $_POST);
 
-        $_POST = apply_filters('mpl_publisher_generate_book', $_POST);
+        $data = apply_filters('mpl_publisher_generate_book', $data);
 
         $publisher = false;
 
-        switch ($_POST['format'])
+        switch ($data['format'])
         {
             case 'epub2':
             case 'epub3':
                 $publisher = new EpubPublisher();
-                $publisher->setFormat($_POST['format']);
+                $publisher->setFormat($data['format']);
             break;
             case 'mobi':
                 $publisher = new MobiPublisher();
@@ -298,30 +300,30 @@ class PublisherBase {
 
         if ( ! $publisher) throw new Exception('⚠️ ' . __('No valid output format selected.', 'publisher'));
 
-        $publisher->setIdentifier(sanitize_text_field($_POST['identifier']));
-        $publisher->setTitle(sanitize_text_field($_POST['title']));
-        $publisher->setAuthor(sanitize_text_field($_POST['authors']));
-        $publisher->setPublisher(sanitize_text_field($_POST['editor']));
-        $publisher->setDescription(sanitize_text_field($_POST['description']));
-        $publisher->setDate(sanitize_text_field($_POST['date']));
+        $publisher->setIdentifier(sanitize_text_field($data['identifier']));
+        $publisher->setTitle(sanitize_text_field($data['title']));
+        $publisher->setAuthor(sanitize_text_field($data['authors']));
+        $publisher->setPublisher(sanitize_text_field($data['editor']));
+        $publisher->setDescription(sanitize_text_field($data['description']));
+        $publisher->setDate(sanitize_text_field($data['date']));
 
-        $language = isset($_POST['language']) ? sanitize_text_field($_POST['language']) : substr(get_locale(), 0, 2);
+        $language = isset($data['language']) ? sanitize_text_field($data['language']) : substr(get_locale(), 0, 2);
         $publisher->setLanguage($language);
 
-        if (!empty($_POST['cover']) and $imageId = intval($_POST['cover']))
+        if ( ! empty($data['cover']) and $imageId = intval($data['cover']))
         {
             $publisher->setCoverImage('cover.jpg', file_get_contents(get_attached_file($imageId)));
         }
 
-        $publisher->setRights(sanitize_text_field($_POST['copyright']));
+        $publisher->setRights(sanitize_text_field($data['copyright']));
         $publisher->setTheme(
-            $this->getTheme(sanitize_text_field($_POST['theme_id'])),
-            sanitize_text_field($_POST['custom_css'])
+            $this->getTheme(sanitize_text_field($data['theme_id'])),
+            sanitize_text_field($data['custom_css'])
         );
 
         $query = new WP_Query(array(
             'ignore_sticky_posts' => 1,
-            'post__in'       => isset($_POST['selected_posts']) ? $_POST['selected_posts'] : [0],
+            'post__in'       => isset($data['selected_posts']) ? $data['selected_posts'] : [0],
             'orderby'        => 'post__in',
             'posts_per_page' => '-1',
             'post_status'    => 'any',
@@ -339,7 +341,7 @@ class PublisherBase {
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($post->post_content);
                 // Embeds images as base64 into the book content
-                if ($_POST['images_load'] == 'embed') $content = $this->parseImages($content);
+                if ($data['images_load'] == 'embed') $content = $this->parseImages($content);
 
                 $publisher->addChapter($chapter, $post->post_title, $content);
 
@@ -351,7 +353,7 @@ class PublisherBase {
             throw new Exception('⚠️ ' . __('Please, select at least one chapter to publish your book.', 'publisher'));
         }
 
-        return $publisher->send(sanitize_text_field($_POST['title']));
+        return $publisher->send(sanitize_text_field($data['title']));
     }
 
     public function saveLicense($license)

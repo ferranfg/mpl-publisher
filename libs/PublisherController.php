@@ -41,14 +41,14 @@ class PublisherController extends PublisherBase {
 
         if (array_key_exists('license', $_POST))
         {
-            $this->saveLicense($_POST['license']);
+            $this->saveLicense(sanitize_text_field($_POST['license']));
 
             unset($_POST['license']);
         }
 
         if (array_key_exists('clear', $_POST))
         {
-            $this->removeStatus($_POST['book_id']);
+            $this->removeStatus(sanitize_text_field($_POST['book_id']));
 
             set_transient('mpl_msg', 'ℹ️ ' . __('Book successfully removed.', 'publisher'));
         }
@@ -65,12 +65,13 @@ class PublisherController extends PublisherBase {
 
         if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST))
         {
-            $book_id = $_POST['book_id'];
-
             // Toggle current order value
             if (array_key_exists('order', $_POST)) $_POST['order_asc'] = ! $_POST['order_asc'];
 
-            $this->saveStatus($_POST, $book_id);
+            $clean_data = array_map('sanitize_text_field', $_POST);
+            $book_id = sanitize_text_field($_POST['book_id']);
+
+            $this->saveStatus($clean_data, $book_id);
 
             $params['book_id'] = $book_id;
 
@@ -84,7 +85,10 @@ class PublisherController extends PublisherBase {
         {
             if (array_key_exists('generate', $_POST))
             {
-                $this->saveStatus($_POST, $_POST['book_id']);
+                $clean_data = array_map('sanitize_text_field', $_POST);
+                $book_id = sanitize_text_field($_POST['book_id']);
+
+                $this->saveStatus($clean_data, $book_id);
 
                 return $this->generateBook();
             }
