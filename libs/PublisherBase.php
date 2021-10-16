@@ -21,7 +21,7 @@ class PublisherBase {
 
     public function __construct()
     {
-        $this->filter = array_map('sanitize_text_field', $_GET);
+        $this->filter = mpl_sanitize_array($_GET);
         $this->data = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
         $status = $this->getStatus($this->data['book_id']);
@@ -260,7 +260,7 @@ class PublisherBase {
 
     public function generateBook($forceGenerate = false)
     {
-        $data = $forceGenerate ? $this->data : array_map('sanitize_text_field', $_POST);
+        $data = $forceGenerate ? $this->data : mpl_sanitize_array($_POST);
 
         $data = apply_filters('mpl_publisher_generate_book', $data);
 

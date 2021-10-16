@@ -68,7 +68,7 @@ class PublisherController extends PublisherBase {
             // Toggle current order value
             if (array_key_exists('order', $_POST)) $_POST['order_asc'] = ! $_POST['order_asc'];
 
-            $clean_data = array_map('sanitize_text_field', $_POST);
+            $clean_data = mpl_sanitize_array($_POST);
             $book_id = sanitize_text_field($_POST['book_id']);
 
             $this->saveStatus($clean_data, $book_id);
@@ -85,7 +85,7 @@ class PublisherController extends PublisherBase {
         {
             if (array_key_exists('generate', $_POST))
             {
-                $clean_data = array_map('sanitize_text_field', $_POST);
+                $clean_data = mpl_sanitize_array($_POST);
                 $book_id = sanitize_text_field($_POST['book_id']);
 
                 $this->saveStatus($clean_data, $book_id);

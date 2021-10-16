@@ -333,3 +333,23 @@ if ( ! function_exists('mpl_mime_content_type'))
         }
     }
 }
+
+if ( ! function_exists('mpl_sanitize_array'))
+{
+    function mpl_sanitize_array($array)
+    {
+        foreach ($array as $key => $item)
+        {
+            if (is_string($item))
+            {
+                $array[$key] = sanitize_text_field($item);
+            }
+            else
+            {
+                $array[$key] = mpl_sanitize_array($item);
+            }
+        }
+
+        return $array;
+    }
+}
