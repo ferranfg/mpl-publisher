@@ -7,7 +7,7 @@
     <input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>">
     <input type="hidden" name="order_asc" value="<?php echo esc_attr($order_asc); ?>" />
 
-    <?php echo esc_html($wp_nonce_field); ?>
+    <?php echo $wp_nonce_field; ?>
 
     <h1 id="mpl-logo" class="clearfix">
         <?php include MPL_BASEPATH . '/views/logo.php'; ?>
