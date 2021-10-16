@@ -5,7 +5,7 @@ Tags: ebook, epub, kindle, kdp, mobi, word, self-publish, wattpad
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.1.8
-Stable tag: trunk
+Stable tag: 1.30.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.30.4 =
+- Update following plugin recommendations
 
 = 1.30.3 =
 - Validate, Sanitize and Escape User Data
