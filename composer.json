@@ -13,7 +13,6 @@
         "symfony/yaml": "^4.4",
         "phpoffice/phpword": "0.18.0",
         "wallabag/php-mobi": "1.1.0",
-        "paragonie/random_compat": "2.0.19",
         "guzzlehttp/guzzle": "6.5.x-dev",
         "simplehtmldom/simplehtmldom": "dev-master",
         "html2text/html2text": "dev-master"
