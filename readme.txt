@@ -1,11 +1,11 @@
-=== MPL-Publisher - Self-publish your book & ebook ===
+=== MPL-Publisher - Self-publish your ebook & audiobook ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
-Tags: ebook, epub, kindle, kdp, mobi, word, self-publish, wattpad
+Tags: ebook, audiobook, epub, kdp, mobi, self-publish
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.1.8
-Stable tag: 1.30.4
+Stable tag: 1.31.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.31.0 =
+- Change UX on chapters list to look similar to MPL v2
+- Remove get_authors and get_tags queries as they were unused
+- Audiobook format now allows up to 20k words
 
 = 1.30.4 =
 - Update following plugin recommendations
