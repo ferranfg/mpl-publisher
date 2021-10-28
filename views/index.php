@@ -313,6 +313,7 @@
                     <table class="wp-list-table widefat striped posts">
                         <thead>
                             <tr>
+                                <th class="check-column"></th>
                                 <th class="manage-column column-cb check-column" data-step="4" data-intro="<?php _e('Use these checkboxes to select the content you want to include in your book (all by once or individually). Also, you can use drag & drop to sort them according to your preferences.', 'publisher'); ?>">
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
@@ -326,7 +327,7 @@
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="alert alert-info">
                                             ℹ️ <?php _e("Your current search has too many results and it's not available yet. Please, use our filters to limit your request.", "publisher"); ?>
                                             <?php _e("Current results", "publisher"); ?>: <b><?php echo $query->found_posts; ?></b>.
@@ -340,24 +341,32 @@
                             <tbody id="chapter-list">
                                 <?php while ($query->have_posts()): $query->the_post(); ?>
                                     <tr style="cursor: move">
+                                        <th scope="row" class="check-column" style="padding:9px 0 0 10px;opacity:0.5">
+                                            <span class="dashicons dashicons-menu" style="margin-right:0"></span>
+                                        </th>
                                         <th scope="row" class="check-column">
                                             <input type="checkbox" name="selected_posts[]" value="<?php the_ID(); ?>" id="cb-select-<?php the_ID(); ?>" <?php echo ($selected_posts and in_array(get_the_ID(), $selected_posts)) ? 'checked="checked"' : ''; ?> >
                                         </th>
                                         <td class="name column-name">
-                                            <?php if (get_post_type() == 'mpl_chapter'): ?>
-                                                <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
-                                            <?php elseif (get_post_type() == 'page'): ?>
-                                                <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
-                                            <?php else: ?>
-                                                <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
-                                            <?php endif; ?>
-                                            <strong>
-                                                <a href="<?php echo get_edit_post_link(); ?>"><?php the_title(); ?></a>
-                                                <?php if (get_post_status() != "publish"): ?> — <span class="post-state"><?php echo get_post_status_object(get_post_status())->label; ?></span><?php endif; ?>
-                                            </strong>
+                                            <div style="margin-bottom:4px">
+                                                <?php if (get_post_type() == 'mpl_chapter'): ?>
+                                                    <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
+                                                <?php elseif (get_post_type() == 'page'): ?>
+                                                    <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
+                                                <?php endif; ?>
+                                                <strong style="line-height:20px">
+                                                    <a href="<?php echo get_edit_post_link(); ?>" target="_blank">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                    <?php if (get_post_status() != "publish"): ?> — <span class="post-state"><?php echo get_post_status_object(get_post_status())->label; ?></span><?php endif; ?>
+                                                </strong>
+                                            </div>
+                                            <small><a href="<?php echo get_permalink(); ?>" target="_blank">View</a> | <a href="<?php echo get_edit_post_link(); ?>" target="_blank">Edit</a></small>
                                         </td>
                                         <td class="text-right" style="display:table-cell">
-                                            <a href="<?php echo get_edit_post_link(); ?>"><?php _e("Edit", "publisher"); ?></a>
+                                            <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -365,7 +374,7 @@
                         <?php else: ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="alert alert-warning">
                                             😞 <?php _e("Your search did not match any posts.", "publisher"); ?>
                                         </div>
@@ -375,6 +384,7 @@
                         <?php endif; ?>
                         <tfoot>
                             <tr>
+                                <th class="check-column"></th>
                                 <th class="manage-column column-cb check-column">
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
