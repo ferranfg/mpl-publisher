@@ -174,16 +174,6 @@ class PublisherBase {
         return get_categories('orderby=post_count&order=DESC');
     }
 
-    public function getAuthors()
-    {
-        return get_users('orderby=post_count&order=DESC&who=authors');
-    }
-
-    public function getTags()
-    {
-        return get_tags();
-    }
-
     public function getStatuses()
     {
         return get_post_stati();
@@ -537,6 +527,14 @@ class PublisherBase {
         }
 
         return (string) $html;
+    }
+
+    public static function getContentStats($content)
+    {
+        $words = str_word_count(strip_tags($content));
+        $read_time = ceil($words / 200);
+
+        return "{$words} words • {$read_time} min read";
     }
 
 }

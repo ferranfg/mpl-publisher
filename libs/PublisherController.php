@@ -14,8 +14,6 @@ class PublisherController extends PublisherBase {
         );
 
         $this->data['blog_categories'] = $this->getCategories();
-        $this->data['blog_authors']    = $this->getAuthors();
-        $this->data['blog_tags']       = $this->getTags();
         $this->data['blog_statuses']   = $this->getStatuses();
         $this->data['blog_years']      = $this->getYears();
         $this->data['blog_months']     = $this->getMonths();
