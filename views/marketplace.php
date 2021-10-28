@@ -6,6 +6,6 @@
 
     <?php include MPL_BASEPATH . '/views/alert.php'; ?>
 
-    <iframe src="<?php echo $marketplace_url; ?>&utm_campaign=resources" id="marketplace-iframe" style="width:100%"></iframe>
+    <iframe src="<?php echo esc_url($marketplace_url . "&utm_campaign=resources"); ?>" id="marketplace-iframe" style="width:100%"></iframe>
 
 </div>
