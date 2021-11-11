@@ -77,16 +77,6 @@ class MobiPublisher implements IPublisher {
 
     public function send($filename)
     {
-        if ( ! mpl_is_premium())
-        {
-            $msg = [
-                __('This is a premium feature and it is not available on the free version.', 'publisher'),
-                __('Please, visit our homepage and get access to this and more features.', 'publisher')
-            ];
-
-            throw new Exception("⚠️ " . implode(" ", $msg));
-        }
-
         $this->mobi->setContentProvider($this->content);
         $this->mobi->download($filename . '.mobi');
     }

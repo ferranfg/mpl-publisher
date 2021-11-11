@@ -258,33 +258,38 @@ class PublisherBase {
 
         switch ($data['format'])
         {
+            case 'audio':
+                $publisher = new AudiobookPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
+                $publisher->setTmpPath(get_temp_dir());
+            break;
             case 'epub2':
             case 'epub3':
                 $publisher = new EpubPublisher();
                 $publisher->setFormat($data['format']);
             break;
-            case 'mobi':
-                $publisher = new MobiPublisher();
-            break;
-            case 'wdocx':
-                $publisher = new WordPublisher();
+            case 'json':
+                $publisher = new JsonPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
             break;
             case 'markd':
                 $publisher = new MarkdownPublisher();
+            break;
+            case 'mobi':
+                $publisher = new MobiPublisher();
+            break;
+            case 'plain':
+                $publisher = new PlainPublisher();
             break;
             case 'print':
                 $publisher = new PrintPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
             break;
-            case 'audio':
-                $publisher = new AudiobookPublisher();
-                $publisher->setEmail(wp_get_current_user()->user_email);
+            case 'wdocx':
+                $publisher = new WordPublisher();
                 $publisher->setTmpPath(get_temp_dir());
-            break;
-            case 'plain':
-                $publisher = new PlainPublisher();
             break;
         }
 

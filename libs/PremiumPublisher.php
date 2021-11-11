@@ -108,10 +108,7 @@ class PremiumPublisher
         }
         catch (ClientException $e)
         {
-            $msg = [
-                __('This is a premium feature and it is not available on the free version.', 'publisher'),
-                __('Please, visit our homepage and get access to this and more features.', 'publisher')
-            ];
+            $msg = [];
 
             if ($e->getResponse()->getStatusCode() == 422)
             {
@@ -125,7 +122,17 @@ class PremiumPublisher
                 }
             }
 
-            throw new Exception("⚠️ " . implode(" ", $msg));
+            $this->throwPremiumAlert($msg);
         }
+    }
+
+    protected function throwPremiumAlert($msg = [])
+    {
+        if (empty($msg)) $msg = [
+            __('This is a premium feature and it is not available on the free version.', 'publisher'),
+            __('Please, visit our homepage and get access to this and more features.', 'publisher')
+        ];
+
+        throw new Exception("⚠️ " . implode(" ", $msg));
     }
 }

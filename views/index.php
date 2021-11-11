@@ -235,20 +235,21 @@
                     <hr class="mt-30 mb-20" />
 
                     <div class="form-field mb-20" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
-                        <label for="format"><?php _e("Output format", "publisher"); ?></label>
+                        <label for="format"><?php _e("Output format", "publisher"); ?>¹</label>
                         <select name="format" id="format">
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
                             <option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (DOCX)</option>
-                            <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown</option>
+                            <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon MOBI</option>
                             <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (TXT)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
-                                <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon MOBI</option>
+                                <option value="json"  <?php echo $format == "json" ? "selected='selected'" : ''; ?>>MPL-Publisher (JSON)²</option>
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe PDF File</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
                             </optgroup>
                         </select>
-                        <p><?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best). If you encounter any format error, please use the", "publisher"); ?> <a href="https://wordpress.org/support/plugin/mpl-publisher" target="_blank">MPL-Publisher Support Forum</a></p>
+                        <p>¹ <?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best).", "publisher"); ?></p>
+                        <p>² <?php _e("<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our brand new <a href='https://mpl-publisher.com?utm_medium=plugin&utm_campaign=tools'>self-publishing tools</a>.", "publisher"); ?></p>
                     </div>
 
                     <p class="submit hidden-xs">
