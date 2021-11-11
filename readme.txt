@@ -5,15 +5,15 @@ Tags: ebook, audiobook, epub, kdp, mobi, self-publish
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.1.8
-Stable tag: 1.31.0
+Stable tag: 1.32.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, HTML for Kindle Direct Publishing, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL - Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-published author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 == Description ==
 
-MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, HTML for Kindle Direct Publishing, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL - Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-published author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, Convert your posts to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
@@ -103,6 +103,12 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.32.0 =
+- Action to duplicate your posts as chapters and avoid editing original content
+- Added JSON format to improve cross-compatibily with MPL-Publisher tools
+- Removed Markdown format as it was mostly unused and unknown
+- Update Spanish, French and Catalan translations + plugin readme description
 
 = 1.31.0 =
 - Change UX on chapters list to look similar to MPL v2

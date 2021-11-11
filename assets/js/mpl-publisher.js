@@ -157,6 +157,23 @@
                 imageEditor.ui.resizeEditor();
             };
         }
+
+        $('.mpl-duplicate-post').on( 'click', function( e ) {
+            e.preventDefault();
+            var $spinner = $(this).next('.spinner');
+            $spinner.css('visibility', 'visible');
+
+            // Create the data to pass
+            var data = {
+                action: 'mpl_duplicate_post',
+                original_id: $(this).data('post-id'),
+                security: $(this).attr('rel')
+            };
+
+            $.post(ajaxurl, data, function(response) {
+                window.location.href = window.location.href + '&mpl_duplicated_id=' + response;
+            });
+        });
     });
 
 })(window.jQuery);

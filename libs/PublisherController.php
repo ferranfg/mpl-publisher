@@ -108,4 +108,33 @@ class PublisherController extends PublisherBase {
     {
         echo $this->view('cover-editor.php', $this->data);
     }
+
+    public function postAjaxDuplicate()
+    {
+        // Check the nonce
+        check_ajax_referer('mpl_ajax_file_nonce', 'security');
+
+        // Get variables
+        $original_id = sanitize_text_field($_POST['original_id']);
+
+        // Get the post as an array
+        $duplicate = get_post($original_id, 'ARRAY_A');
+
+        $duplicate['post_type'] = 'mpl_chapter';
+
+        // Remove some of the keys
+        unset($duplicate['ID']);
+        unset($duplicate['guid']);
+        unset($duplicate['comment_count']);
+
+        // Handles guttenburg escaping in returns for blocks
+        $duplicate['post_content'] = str_replace(array('\r\n', '\r', '\n'), '<br />', $duplicate['post_content']);
+
+        // Insert the post into the database
+        $duplicate_id = wp_insert_post( $duplicate );
+
+        echo $duplicate_id;
+
+        die(); // this is required to return a proper result
+    }
 }
