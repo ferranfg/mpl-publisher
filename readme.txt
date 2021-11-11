@@ -9,11 +9,11 @@ Stable tag: 1.32.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL - Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-published author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL-Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 == Description ==
 
-MPL - Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-published author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, Convert your posts to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL-Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
