@@ -370,7 +370,7 @@
                                                 <a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php _e('Edit', 'publisher'); ?></a>
                                                 <?php if (get_post_type() != 'mpl_chapter'): ?>
                                                     <span> | </span>
-                                                    <a href="<?php echo get_permalink(); ?>" class="mpl-duplicate-post" rel="<?php echo wp_create_nonce('mpl_ajax_file_nonce'); ?>" data-post-id="<?php echo get_the_ID(); ?>">
+                                                    <a href="<?php echo get_edit_post_link(); ?>" class="mpl-duplicate-post" rel="<?php echo wp_create_nonce('mpl_ajax_file_nonce'); ?>" data-post-id="<?php echo get_the_ID(); ?>">
                                                         <?php _e('Duplicate and Edit', 'publisher'); ?>
                                                     </a>
                                                     <span class="spinner" style="float:none;margin-top:-4px;margin-left:2px;"></span>

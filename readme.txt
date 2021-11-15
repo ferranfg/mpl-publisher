@@ -3,7 +3,7 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kdp, mobi, self-publish
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.1.8
 Stable tag: 1.32.0
 License: GPLv2 or later
@@ -109,6 +109,7 @@ In future releases, we will add further improvements to our current formats. Kee
 - Added JSON format to improve cross-compatibily with MPL-Publisher tools
 - Removed Markdown format as it was mostly unused and unknown
 - Update Spanish, French and Catalan translations + plugin readme description
+- Increase tested up to WordPress 5.9
 
 = 1.31.0 =
 - Change UX on chapters list to look similar to MPL v2
