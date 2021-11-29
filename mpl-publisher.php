@@ -106,6 +106,7 @@ add_action('admin_enqueue_scripts', function ()
     wp_enqueue_script('bootstrap', MPL_BASEURL . 'assets/js/bootstrap.js');
 
     wp_enqueue_script('headwayapp', 'https://cdn.headwayapp.co/widget.js');
+    wp_enqueue_script('tweemoji', 'https://twemoji.maxcdn.com/v/latest/twemoji.min.js');
     wp_enqueue_script('iframe-resizer', MPL_BASEURL . 'assets/js/iframeResizer.min.js');
     wp_enqueue_script('jquery.are-you-sure', MPL_BASEURL . 'assets/js/jquery.are-you-sure.min.js');
 

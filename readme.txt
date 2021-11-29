@@ -1,7 +1,7 @@
 === MPL-Publisher — Create your Ebook & Audiobook ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
-Tags: ebook, audiobook, epub, kdp, mobi, self-publish
+Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8

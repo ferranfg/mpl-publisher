@@ -333,14 +333,20 @@ class PublisherBase {
 
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
+                $content = $post->post_content;
 
                 // @see https://developer.wordpress.org/reference/hooks/the_content/
-                $content = apply_filters('the_content', $post->post_content);
+                $content = apply_filters('the_content', $content);
                 $content = str_replace(']]>', ']]&gt;', $content);
+
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
+
                 // Embeds images as base64 into the book content
-                if ($data['images_load'] == 'embed') $content = $this->parseImages($content);
+                if (array_key_exists('images_load', $data) and $data['images_load'] == 'embed')
+                {
+                    $content = $this->parseImages($content);
+                }
 
                 $publisher->addChapter($chapter, $post->post_title, $content);
 
