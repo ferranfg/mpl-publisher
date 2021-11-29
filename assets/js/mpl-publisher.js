@@ -87,6 +87,9 @@
         }
 
         $('.generate-button').on('click', function (e) {
+            // Ad free experience for premium users
+            if ($mpl.data('is-premium')) return;
+
             var width = Math.min(window.innerWidth - 40, 750);
             var height = Math.min(window.innerHeight - 180, 600);
             var isChrome = /chrome/i.test(navigator.userAgent);

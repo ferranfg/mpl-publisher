@@ -46,7 +46,7 @@ class DownloadWidget extends WP_Widget {
         $data['externalId']   = $this->get_field_id('external');
         $data['externalName'] = $this->get_field_name('external');
 
-        echo $this->base->view('widget-form.php', $data);
+        echo $this->base->view('widget-form.php', stripslashes_deep($data));
     }
 
     public function widget($args, $instance, $return = false)
@@ -56,7 +56,7 @@ class DownloadWidget extends WP_Widget {
 
         $this->base->data['wp_nonce_field'] = wp_nonce_field('download_ebook', '_wpnonce', true, false);
 
-        $widget = $this->base->view('widget.php', $this->base->data);
+        $widget = $this->base->view('widget.php', stripslashes_deep($this->base->data));
 
         if ($return) return $widget;
 

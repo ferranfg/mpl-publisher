@@ -1,19 +1,21 @@
-=== MPL-Publisher - Self-publish your ebook & audiobook ===
+=== MPL-Publisher — Create your Ebook & Audiobook ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kdp, mobi, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 1.32.0
+Stable tag: 1.32.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL-Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
 
 == Description ==
 
-MPL-Publisher 📚 creates from your posts an ebook, print-ready PDF book, EPUB for Kindle Direct Publishing, or audiobook. If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
+
+If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
@@ -84,7 +86,7 @@ If you see something like:
 
 This error is related to the installed PHP version on your server. Please, make sure you follow the [recommended WordPress requirements](https://wordpress.org/about/requirements/)
 
-If you have any other error, please use the [MPL - Publisher support forum](https://wordpress.org/support/plugin/mpl-publisher)
+If you have any other error, please use the [MPL-Publisher support forum](https://wordpress.org/support/plugin/mpl-publisher)
 
 = Which output formats are supported? =
 
@@ -103,6 +105,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.32.1 =
+- Apply "the_content" filter to mimic content displayed
+- Fix "Apostrophe in description is repeatedly escaped"
+- Remove banners and ads on premium version
 
 = 1.32.0 =
 - Action to duplicate your posts as chapters and avoid editing original content

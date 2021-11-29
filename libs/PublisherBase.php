@@ -252,6 +252,7 @@ class PublisherBase {
     {
         $data = $forceGenerate ? $this->data : mpl_sanitize_array($_POST);
 
+        $data = stripslashes_deep($data);
         $data = apply_filters('mpl_publisher_generate_book', $data);
 
         $publisher = false;
@@ -333,8 +334,11 @@ class PublisherBase {
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
 
+                // @see https://developer.wordpress.org/reference/hooks/the_content/
+                $content = apply_filters('the_content', $post->post_content);
+                $content = str_replace(']]>', ']]&gt;', $content);
                 // Cleans tags, spaces, comments, attributes...
-                $content = $this->parseText($post->post_content);
+                $content = $this->parseText($content);
                 // Embeds images as base64 into the book content
                 if ($data['images_load'] == 'embed') $content = $this->parseImages($content);
 
@@ -448,14 +452,22 @@ class PublisherBase {
         return reset($themes);
     }
 
-    private function parseText($post_content)
+    private function parseText($content)
     {
-        // Remove shortcodes
-        $content = strip_shortcodes($post_content);
         // Remove HTML comments
         $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
         // Remove properties from allowed HTML tags (except <p>)
         $content = wp_kses($content, array(
+            // Desktop version
+            'p' => array(
+                'class' => array(),
+            ),
+            'div' => array(
+                'class' => array()
+            ),
+            'span' => array(
+                'class' => array()
+            ),
             // Headings
             'h1' => array(),
             'h2' => array(),
@@ -466,11 +478,10 @@ class PublisherBase {
             // Global
             'a' => array(
                 'href' => array(),
-                'title' => array(),
+                'class' => array()
             ),
             'img' => array(
                 'src' => array(),
-                'alt' => array(),
                 'class' => array()
             ),
             'blockquote' => array(),
@@ -502,8 +513,6 @@ class PublisherBase {
             'td' => array(),
             'th' => array()
         ));
-        // Use autop to generate p
-        $content = wpautop($content);
         // Remove new lines: https://stackoverflow.com/a/3760830
         $content = preg_replace('/\s+/', ' ', $content);
         // Remove unnecesary spaces

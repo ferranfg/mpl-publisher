@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: MPL - Publisher
+ * Plugin Name: MPL-Publisher
  * Plugin URI: https://wordpress.mpl-publisher.com/
- * Description: MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, or audiobook from your WordPress posts. If you are an author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌, easing the process of converting your book or ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc.
+ * Description: MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
  * Version: 1.32.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
@@ -49,22 +49,22 @@ add_action('init', function ()
 
 add_action('admin_menu', function ()
 {
-    add_menu_page('MPL - Publisher', 'MPL - Publisher', 'manage_options', 'publisher', function ()
+    add_menu_page('MPL-Publisher', 'MPL-Publisher', 'manage_options', 'publisher', function ()
     {
         $controller = new PublisherController();
         $controller->getIndex();
 
     }, 'dashicons-book', 76);
 
-    add_submenu_page('publisher', 'MPL - Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
+    add_submenu_page('publisher', 'MPL-Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
 
-    add_submenu_page('publisher', 'MPL - Publisher', __('Cover Editor', 'publisher'), 'manage_options', 'mpl-cover', function ()
+    add_submenu_page('publisher', 'MPL-Publisher', __('Cover Editor', 'publisher'), 'manage_options', 'mpl-cover', function ()
     {
         $controller = new PublisherController();
         $controller->getCoverEditor();
     });
 
-    add_submenu_page('publisher', 'MPL - Publisher', __('Resources', 'publisher'), 'manage_options', 'mpl-extensions', function ()
+    add_submenu_page('publisher', 'MPL-Publisher', __('Resources', 'publisher'), 'manage_options', 'mpl-extensions', function ()
     {
         $controller = new PublisherController();
         $controller->getMarketplace();

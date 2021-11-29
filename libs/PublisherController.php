@@ -27,7 +27,7 @@ class PublisherController extends PublisherBase {
 
         set_transient('mpl_msg', null);
 
-        echo $this->view('index.php', $this->data);
+        echo $this->view('index.php', stripslashes_deep($this->data));
     }
 
     public function postIndex()
@@ -101,12 +101,12 @@ class PublisherController extends PublisherBase {
 
     public function getMarketplace()
     {
-        echo $this->view('marketplace.php', $this->data);
+        echo $this->view('marketplace.php', stripslashes_deep($this->data));
     }
 
     public function getCoverEditor()
     {
-        echo $this->view('cover-editor.php', $this->data);
+        echo $this->view('cover-editor.php', stripslashes_deep($this->data));
     }
 
     public function postAjaxDuplicate()
