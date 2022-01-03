@@ -3,7 +3,7 @@
  * Plugin Name: MPL-Publisher
  * Plugin URI: https://wordpress.mpl-publisher.com/
  * Description: MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
- * Version: 1.32.1
+ * Version: 1.33.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -15,9 +15,10 @@ define('MPL_BASEPATH', __DIR__);
 define('MPL_BASEURL', plugin_dir_url(__FILE__));
 define('MPL_ENDPOINT', 'https://mpl-publisher.com');
 define('MPL_MARKETPLACE', 'https://marketplace.mpl-publisher.com');
-define('MPL_MAX_POSTS', 100);
+define('MPL_MAX_POSTS', 50);
 define('MPL_OPTION_NAME', 'mpl_publisher_status');
 define('MPL_OPTION_LICENSE', 'mpl_publisher_license');
+define('MPL_OPTION_MAX_POSTS', 'mpl_publisher_max_posts');
 
 require 'vendor/autoload.php';
 require 'helpers.php';
@@ -137,7 +138,7 @@ add_action('add_meta_boxes', function ()
 {
     add_meta_box('mpl_chapter_help', __("How book chapters works", "publisher"), function ()
     {
-        echo '<p>' . __("MPL - Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
+        echo '<p>' . __("MPL-Publisher allows authors to write custom content specific for your book without the needed to be accessible from the public. You just have to publish your chapter and it will be visible only from the Book Settings page.", "publisher") . '</p>';
         echo '<p class="mpl"><a href="' . admin_url('admin.php?page=publisher') . '"><span class="dashicons dashicons-arrow-left-alt2"></span>' . __("Back to Book Settings", "publisher") . '</a></p>';
     },
     'mpl_chapter', 'side', 'high');

@@ -6,6 +6,7 @@ if ( ! function_exists('mpl_uninstall_hook'))
     {
         delete_option(MPL_OPTION_NAME);
         delete_option(MPL_OPTION_LICENSE);
+        delete_option(MPL_OPTION_MAX_POSTS);
     }
 }
 
@@ -68,7 +69,9 @@ if ( ! function_exists('mpl_max_posts'))
 {
     function mpl_max_posts()
     {
-        return mpl_is_premium() ? (int) ceil(MPL_MAX_POSTS * 0x5) : MPL_MAX_POSTS;
+        if ( ! mpl_is_premium()) return (int) MPL_MAX_POSTS;
+
+        return (int) get_option(MPL_OPTION_MAX_POSTS, ceil(MPL_MAX_POSTS * 0x4));
     }
 }
 

@@ -44,6 +44,13 @@ class PublisherController extends PublisherBase {
             unset($_POST['license']);
         }
 
+        if (array_key_exists('max_posts', $_POST))
+        {
+            $this->saveMaxPosts(sanitize_text_field($_POST['max_posts']));
+
+            unset($_POST['max_posts']);
+        }
+
         if (array_key_exists('clear', $_POST))
         {
             $this->removeStatus(sanitize_text_field($_POST['book_id']));

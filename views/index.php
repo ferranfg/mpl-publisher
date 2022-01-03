@@ -228,6 +228,22 @@
                             <label for="license"><?php _e("License key", "publisher"); ?></label>
                             <input name="license" id="license" type="text" value="<?php echo esc_attr($license); ?>" placeholder="<?php _e('License key', 'publisher'); ?>">
                         </div>
+
+                        <hr class="mt-30 mb-20" />
+
+                        <h3>
+                            <?php _e("Max Results", "publisher"); ?>
+                            <?php if ( ! $mpl_is_premium): ?>
+                                <span data-toggle="tooltip" title="<?php _e("Premium only", "publisher"); ?>">⭐</span>
+                            <?php endif; ?>
+                        </h3>
+                        <p><?php _e("You can change this setting to increase the current limitation to the number you choose.", "publisher"); ?></p>
+                        <p><?php _e("Remember that increasing this number too much will affect the performance, so it's recommended to keep it as low as needed.", "publisher"); ?></p>
+
+                        <div class="form-field">
+                            <label for="max_posts"><?php _e("Max Results", "publisher"); ?></label>
+                            <input name="max_posts" id="max_posts" type="number" value="<?php echo esc_attr($max_posts); ?>" placeholder="<?php _e('Max Results', 'publisher'); ?>">
+                        </div>
                     </div>
 
                     <?php do_action('mpl_publisher_after_tabs_content'); ?>
@@ -242,8 +258,8 @@
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (DOCX)</option>
                             <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon MOBI</option>
                             <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (TXT)</option>
+                            <option value="json"  <?php echo $format == "json"  ? "selected='selected'" : ''; ?>>MPL-Publisher (JSON)²</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
-                                <option value="json"  <?php echo $format == "json" ? "selected='selected'" : ''; ?>>MPL-Publisher (JSON)²</option>
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe PDF File</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
                             </optgroup>
@@ -333,6 +349,7 @@
                                             ℹ️ <?php _e("Your current search has too many results and it's not available yet. Please, use our filters to limit your request.", "publisher"); ?>
                                             <?php _e("Current results", "publisher"); ?>: <b><?php echo $query->found_posts; ?></b>.
                                             <?php _e("Max results", "publisher"); ?>: <b><?php echo mpl_max_posts(); ?></b>.
+                                            <a href="#book-license" data-toggle="change-tab"><?php _e("Change settings", "publisher"); ?>.</a>
                                         </div>
                                     </th>
                                 </tr>

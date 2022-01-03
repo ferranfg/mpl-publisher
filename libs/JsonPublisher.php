@@ -16,8 +16,6 @@ class JsonPublisher extends PremiumPublisher implements IPublisher {
 
     public function send($filename)
     {
-        if ( ! mpl_is_premium()) $this->throwPremiumAlert();
-
         $filepath = $this->tempPath . '/' . $filename . '.json';
 
         file_put_contents($filepath, json_encode($this->params));

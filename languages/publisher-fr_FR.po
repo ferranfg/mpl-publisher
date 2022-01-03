@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2021-11-11 08:40+0100\n"
-"PO-Revision-Date: 2021-11-11 08:40+0100\n"
+"POT-Creation-Date: 2022-01-03 19:06+0100\n"
+"PO-Revision-Date: 2022-01-03 19:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -43,149 +43,149 @@ msgstr ""
 msgid "Submitted on %s"
 msgstr "Soumis sur %s"
 
-#: libs/PublisherBase.php:123
+#: libs/PublisherBase.php:124
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:135
+#: libs/PublisherBase.php:136
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:147
+#: libs/PublisherBase.php:148
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:159
+#: libs/PublisherBase.php:160
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:185
+#: libs/PublisherBase.php:186
 msgid "January"
 msgstr "Janvier"
 
-#: libs/PublisherBase.php:186
+#: libs/PublisherBase.php:187
 msgid "February"
 msgstr "Février"
 
-#: libs/PublisherBase.php:187
+#: libs/PublisherBase.php:188
 msgid "March"
 msgstr "Mars"
 
-#: libs/PublisherBase.php:188
+#: libs/PublisherBase.php:189
 msgid "April"
 msgstr "Avril"
 
-#: libs/PublisherBase.php:189
+#: libs/PublisherBase.php:190
 msgid "May"
 msgstr "Mai"
 
-#: libs/PublisherBase.php:190
+#: libs/PublisherBase.php:191
 msgid "June"
 msgstr "Juin"
 
-#: libs/PublisherBase.php:191
+#: libs/PublisherBase.php:192
 msgid "July"
 msgstr "Juillet"
 
-#: libs/PublisherBase.php:192
+#: libs/PublisherBase.php:193
 msgid "August"
 msgstr "Août"
 
-#: libs/PublisherBase.php:193
+#: libs/PublisherBase.php:194
 msgid "September"
 msgstr "Septembre"
 
-#: libs/PublisherBase.php:194
+#: libs/PublisherBase.php:195
 msgid "October"
 msgstr "Octobre"
 
-#: libs/PublisherBase.php:195
+#: libs/PublisherBase.php:196
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:196
+#: libs/PublisherBase.php:197
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:296
+#: libs/PublisherBase.php:298
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:348
+#: libs/PublisherBase.php:359
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
 
-#: libs/PublisherController.php:51
+#: libs/PublisherController.php:58
 msgid "Book successfully removed."
 msgstr "Livre retiré avec succès."
 
-#: libs/PublisherController.php:61
+#: libs/PublisherController.php:68
 msgid "Book successfully created."
 msgstr "Livre créé avec succès."
 
-#: libs/PublisherController.php:78
+#: libs/PublisherController.php:85
 msgid "Changes successfully saved."
 msgstr "Modifications bien enregistrées."
 
-#: mpl-publisher.php:35
+#: mpl-publisher.php:36
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:36 views/index.php:278
+#: mpl-publisher.php:37 views/index.php:294
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
-#: mpl-publisher.php:37 mpl-publisher.php:38 mpl-publisher.php:39
-#: views/index.php:325 views/index.php:407
+#: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
+#: views/index.php:341 views/index.php:424
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
-#: mpl-publisher.php:40
+#: mpl-publisher.php:41
 msgid "Edit Book Chapter"
 msgstr "Modifier le chapitre du livre"
 
-#: mpl-publisher.php:41
+#: mpl-publisher.php:42
 msgid "View Book Chapter"
 msgstr "Voir le chapitre livre"
 
-#: mpl-publisher.php:59
+#: mpl-publisher.php:60
 msgid "Publish eBook"
 msgstr "Publier eBook"
 
-#: mpl-publisher.php:61
+#: mpl-publisher.php:62
 msgid "Cover Editor"
 msgstr "Éditeur de couverture"
 
-#: mpl-publisher.php:67 views/index.php:54
+#: mpl-publisher.php:68 views/index.php:54
 msgid "Resources"
 msgstr "Ressources"
 
-#: mpl-publisher.php:137
+#: mpl-publisher.php:139
 msgid "How book chapters works"
 msgstr "Fonctionnement des chapitres de livres"
 
-#: mpl-publisher.php:139
+#: mpl-publisher.php:141
 msgid ""
-"MPL - Publisher allows authors to write custom content specific for your "
-"book without the needed to be accessible from the public. You just have to "
+"MPL-Publisher allows authors to write custom content specific for your book "
+"without the needed to be accessible from the public. You just have to "
 "publish your chapter and it will be visible only from the Book Settings page."
 msgstr ""
-"MPL - Publisher permet aux auteurs d’écrire du contenu personnalisé "
-"spécifique à votre livre sans avoir besoin d’être accessible au public. Vous "
-"n’avez qu’à publier votre chapitre et il ne sera visible qu’à partir de la "
-"page Paramètres du livre."
+"MPL-Publisher permet aux auteurs d’écrire du contenu personnalisé spécifique "
+"à votre livre sans avoir besoin d’être accessible au public. Vous n’avez "
+"qu’à publier votre chapitre et il ne sera visible qu’à partir de la page "
+"Paramètres du livre."
 
-#: mpl-publisher.php:140
+#: mpl-publisher.php:142
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: mpl-publisher.php:154
+#: mpl-publisher.php:156
 msgid "Settings"
 msgstr "Paramètres"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:177
+#: mpl-publisher.php:179
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -204,7 +204,8 @@ msgstr ""
 "Pour obtenir tous les formats disponibles et des fonctionnalités plus cool, "
 "visitez"
 
-#: views/cover-editor.php:3 views/index.php:28 views/index.php:245
+#: views/cover-editor.php:3 views/index.php:28 views/index.php:237
+#: views/index.php:262
 msgid "Premium only"
 msgstr "Prime seulement"
 
@@ -493,7 +494,27 @@ msgstr ""
 "S’il vous plaît, coller la valeur sur le champ suivant et cliquez sur « 💾 "
 "Enregistrer » pour activer votre version premium."
 
-#: views/index.php:237
+#: views/index.php:235 views/index.php:244 views/index.php:245
+msgid "Max Results"
+msgstr "Résultats max"
+
+#: views/index.php:240
+msgid ""
+"You can change this setting to increase the current limitation to the number "
+"you choose."
+msgstr ""
+"Vous pouvez modifier ce paramètre pour augmenter la limitation actuelle au "
+"nombre que vous choisissez."
+
+#: views/index.php:241
+msgid ""
+"Remember that increasing this number too much will affect the performance, "
+"so it's recommended to keep it as low as needed."
+msgstr ""
+"Rappelez-vous qu’augmenter ce nombre trop affectera les performances, il est "
+"donc recommandé de le garder aussi bas que nécessaire."
+
+#: views/index.php:253
 msgid ""
 "We are almost there. We offer a good number of formats to download your "
 "book. We support the main extensions depending on your distribution platform."
@@ -502,11 +523,11 @@ msgstr ""
 "télécharger votre livre. Nous prenons en charge les principales extensions "
 "en fonction de votre plate-forme de distribution."
 
-#: views/index.php:238
+#: views/index.php:254
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: views/index.php:251
+#: views/index.php:267
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best)."
@@ -514,7 +535,7 @@ msgstr ""
 "Le résultat sera affecté par la complexité de votre contenu (c.-à-d. «texte "
 "clair» fonctionne le mieux)."
 
-#: views/index.php:252
+#: views/index.php:268
 msgid ""
 "<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our "
 "brand new <a href='https://mpl-publisher.com?"
@@ -524,7 +545,7 @@ msgstr ""
 "nos tout nouveaux <a href='https://mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=tools'>outils d’auto-édition.</a>"
 
-#: views/index.php:256
+#: views/index.php:272
 msgid ""
 "Finally, if everything looks good, you can click Download, and we will "
 "generate a file for you. You are ready to go. Enjoy!"
@@ -532,19 +553,19 @@ msgstr ""
 "Enfin, si tout semble bien, vous pouvez cliquer sur Télécharger et nous "
 "générerons un fichier pour vous. Vous êtes prêt à partir. jouir!"
 
-#: views/index.php:256 views/index.php:413
+#: views/index.php:272 views/index.php:430
 msgid "Download eBook"
 msgstr "Télécharger eBook"
 
-#: views/index.php:257 views/index.php:414
+#: views/index.php:273 views/index.php:431
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: views/index.php:266
+#: views/index.php:282
 msgid "Text"
 msgstr "Texte"
 
-#: views/index.php:269
+#: views/index.php:285
 msgid ""
 "Remember that you can use the filters for a more refined search. It will be "
 "helpful if you want to publish a book from a specific category or date."
@@ -553,44 +574,44 @@ msgstr ""
 "raffinée. Cela sera utile si vous souhaitez publier un livre à partir d’une "
 "catégorie ou d’une date spécifique."
 
-#: views/index.php:270
+#: views/index.php:286
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:272 views/index.php:358
+#: views/index.php:288 views/index.php:375
 msgid "Post"
 msgstr "Article"
 
-#: views/index.php:275 views/index.php:356
+#: views/index.php:291 views/index.php:373
 msgid "Page"
 msgstr "Page"
 
-#: views/index.php:281
+#: views/index.php:297
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:288
+#: views/index.php:304
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:295
+#: views/index.php:311
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:302
+#: views/index.php:318
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:310
+#: views/index.php:326
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
-#: views/index.php:313
+#: views/index.php:329
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: views/index.php:318
+#: views/index.php:334
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -601,15 +622,15 @@ msgstr ""
 "vous pouvez utiliser le glisser-déposer pour les trier en fonction de vos "
 "préférences."
 
-#: views/index.php:322 views/index.php:404
+#: views/index.php:338 views/index.php:421
 msgid "Contents"
 msgstr "Contenus"
 
-#: views/index.php:323 views/index.php:405
+#: views/index.php:339 views/index.php:422
 msgid "Order"
 msgstr "Ordre"
 
-#: views/index.php:325
+#: views/index.php:341
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -620,7 +641,7 @@ msgstr ""
 "disponibles pour vos livres, c’est donc un moyen de récompenser vos lecteurs "
 "avec un contenu exclusif."
 
-#: views/index.php:333
+#: views/index.php:349
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -628,31 +649,35 @@ msgstr ""
 "Votre recherche actuelle a trop de résultats et elle n’est pas encore "
 "disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
 
-#: views/index.php:334
+#: views/index.php:350
 msgid "Current results"
 msgstr "Résultats actuels"
 
-#: views/index.php:335
+#: views/index.php:351
 msgid "Max results"
 msgstr "Résultats max"
 
-#: views/index.php:354
+#: views/index.php:352
+msgid "Change settings"
+msgstr "Modifier les paramètres"
+
+#: views/index.php:371
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: views/index.php:368
+#: views/index.php:385
 msgid "View"
 msgstr "Voir"
 
-#: views/index.php:370
+#: views/index.php:387
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/index.php:374
+#: views/index.php:391
 msgid "Duplicate and Edit"
 msgstr "Dupliquer et Modifier"
 
-#: views/index.php:391
+#: views/index.php:408
 msgid "Your search did not match any posts."
 msgstr "Votre recherche ne correspondait à aucun poste."
 
@@ -681,8 +706,8 @@ msgid "Get your eBook!"
 msgstr "Obtenez votre eBook!"
 
 #. Plugin Name of the plugin/theme
-msgid "MPL - Publisher"
-msgstr "MPL - Publisher"
+msgid "MPL-Publisher"
+msgstr "MPL-Publisher"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.mpl-publisher.com/"
@@ -690,17 +715,11 @@ msgstr "https://wordpress.mpl-publisher.com/"
 
 #. Description of the plugin/theme
 msgid ""
-"MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF book, "
-"or audiobook from your WordPress posts. If you are an author ✍️, it will "
-"solve the \"how to publish my digital book\" problem, doing it the simplest "
-"possible way 👌, easing the process of converting your book or ebook to ePub, "
-"print-ready PDF, mp3, Kindle, Mobi… etc."
+"MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or "
+"Audiobook MP3 directly from your WordPress posts."
 msgstr ""
-"MPL - Publisher 📚 vous aide à auto-publier un ebook ou un livre audio à "
-"partir de vos publications WordPress. Le plugin est là pour aider les "
-"auteurs ✍️ résoudre le problème “comment publier mon livre numérique” la "
-"façon la plus simple possible 👌, faciliter le processus de conversion de "
-"votre ebook en ePub, PDF, mp3, livres kindle, Mobi ... Etc."
+"MPL-Publisher 📚 crée un ebook, un livre PDF prêt à imprimer, EPUB pour KDP "
+"ou Audiobook MP3 directement à partir de vos publications WordPress."
 
 #. Author of the plugin/theme
 msgid "Ferran Figueredo"
@@ -709,6 +728,19 @@ msgstr "Ferran Figueredo"
 #. Author URI of the plugin/theme
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
+
+#~ msgid ""
+#~ "MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF "
+#~ "book, or audiobook from your WordPress posts. If you are an author ✍️, it "
+#~ "will solve the \"how to publish my digital book\" problem, doing it the "
+#~ "simplest possible way 👌, easing the process of converting your book or "
+#~ "ebook to ePub, print-ready PDF, mp3, Kindle, Mobi… etc."
+#~ msgstr ""
+#~ "MPL - Publisher 📚 vous aide à auto-publier un ebook ou un livre audio à "
+#~ "partir de vos publications WordPress. Le plugin est là pour aider les "
+#~ "auteurs ✍️ résoudre le problème “comment publier mon livre numérique” la "
+#~ "façon la plus simple possible 👌, faciliter le processus de conversion de "
+#~ "votre ebook en ePub, PDF, mp3, livres kindle, Mobi ... Etc."
 
 #~ msgid "Links"
 #~ msgstr "Liens"

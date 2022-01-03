@@ -34,6 +34,14 @@
 
         $('[data-toggle=tooltip]').tooltip();
 
+        $('[data-toggle=change-tab]').on('click', function(e) {
+            var href = $(this).attr('href');
+            // Triggers the original tab change
+            $('.nav-tab-wrapper').find('a[href=' + href + ']').tab('show');
+
+            e.preventDefault();
+        });
+
         $('.nav-tab-select').on('change', function () {
             // Triggers the original tab change
             $('.nav-tab-wrapper li a').eq($(this).val()).tab('show');

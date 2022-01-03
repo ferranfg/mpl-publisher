@@ -71,6 +71,7 @@ class PublisherBase {
 
         return array(
             'license'         => mpl_premium_license(),
+            'max_posts'       => mpl_max_posts(),
             'book_id'         => $book_id,
             'all_books'       => $all_books,
             'mpl_is_premium'  => mpl_is_premium(),
@@ -364,6 +365,13 @@ class PublisherBase {
     public function saveLicense($license)
     {
         if (is_string($license)) return update_option(MPL_OPTION_LICENSE, $license);
+
+        return false;
+    }
+
+    public function saveMaxPosts($max_posts)
+    {
+        if (is_numeric($max_posts)) return update_option(MPL_OPTION_MAX_POSTS, $max_posts);
 
         return false;
     }

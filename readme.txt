@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 1.32.1
+Stable tag: 1.33.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.33.0 =
+- Decrease posts limitation to 50 results to improve performance
+- Allow Premium users to edit max results per book
+- Non-premium users can download a free PDF and MP3 sample
+- MPL-Publisher JSON format is now available for all users
 
 = 1.32.1 =
 - Apply "the_content" filter to mimic content displayed
