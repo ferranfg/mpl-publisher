@@ -371,6 +371,8 @@ class PublisherBase {
 
     public function saveMaxPosts($max_posts)
     {
+        if ( ! mpl_is_premium()) return false;
+
         if (is_numeric($max_posts)) return update_option(MPL_OPTION_MAX_POSTS, $max_posts);
 
         return false;
