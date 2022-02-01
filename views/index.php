@@ -284,15 +284,22 @@
                 <div class="form-wrap">
                     <div class="clearfix filter-bar" data-step="5" data-intro="<?php _e('Remember that you can use the filters for a more refined search. It will be helpful if you want to publish a book from a specific category or date.', 'publisher'); ?>">
                         <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
-                            <option value="post" <?php echo in_array('post', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Post", "publisher"); ?>
-                            </option>
-                            <option value="page" <?php echo in_array('page', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Page", "publisher"); ?>
-                            </option>
-                            <option value="mpl_chapter" <?php echo in_array('mpl_chapter', $post_type) ? "selected='selected'": ""; ?>>
-                                <?php _e("Book Chapter", "publisher"); ?>
-                            </option>
+                            <optgroup label="<?php _e("Default", "publisher"); ?>">
+                                <?php foreach (mpl_default_post_types() as $default_type): ?>
+                                    <option value="<?php echo $default_type; ?>" <?php echo in_array($default_type, $post_type) ? "selected='selected'": ""; ?>>
+                                        <?php echo mpl_post_type_label($default_type); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </optgroup>
+                            <?php if (count(mpl_other_post_types())): ?>
+                                <optgroup label="<?php _e("Other", "publisher"); ?>">
+                                    <?php foreach (mpl_other_post_types() as $other_type): ?>
+                                        <option value="<?php echo $other_type; ?>" <?php echo in_array($other_type, $post_type) ? "selected='selected'": ""; ?>>
+                                            <?php echo mpl_post_type_label($other_type); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </optgroup>
+                            <?php endif; ?>
                         </select>
                         <select name="status_selected[]" id="status" class="chosen" multiple data-placeholder="<?php _e("All statuses", "publisher"); ?>">
                             <?php foreach ($blog_statuses as $status => $statusName): ?>
@@ -367,13 +374,7 @@
                                         </th>
                                         <td class="name column-name">
                                             <div style="margin-bottom:4px">
-                                                <?php if (get_post_type() == 'mpl_chapter'): ?>
-                                                    <span class="dashicons dashicons-book" data-toggle="tooltip" title="<?php _e('Chapter', 'publisher'); ?>"></span>
-                                                <?php elseif (get_post_type() == 'page'): ?>
-                                                    <span class="dashicons dashicons-admin-page" data-toggle="tooltip" title="<?php _e('Page', 'publisher'); ?>"></span>
-                                                <?php else: ?>
-                                                    <span class="dashicons dashicons-admin-post" data-toggle="tooltip" title="<?php _e('Post', 'publisher'); ?>"></span>
-                                                <?php endif; ?>
+                                                <span class="<?php echo mpl_post_type_icon(get_post_type()); ?>" data-toggle="tooltip" title="<?php echo mpl_post_type_label(get_post_type()); ?>"></span>
                                                 <strong style="line-height:20px">
                                                     <a href="<?php echo get_edit_post_link(); ?>" target="_blank">
                                                         <?php the_title(); ?>
@@ -383,10 +384,10 @@
                                             </div>
                                             <small>
                                                 <a href="<?php echo get_permalink(); ?>" target="_blank"><?php _e('View', 'publisher'); ?></a>
-                                                <span> | </span>
+                                                <span> | </span>
                                                 <a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php _e('Edit', 'publisher'); ?></a>
                                                 <?php if (get_post_type() != 'mpl_chapter'): ?>
-                                                    <span> | </span>
+                                                    <span> | </span>
                                                     <a href="<?php echo get_edit_post_link(); ?>" class="mpl-duplicate-post" rel="<?php echo wp_create_nonce('mpl_ajax_file_nonce'); ?>" data-post-id="<?php echo get_the_ID(); ?>">
                                                         <?php _e('Duplicate and Edit', 'publisher'); ?>
                                                     </a>

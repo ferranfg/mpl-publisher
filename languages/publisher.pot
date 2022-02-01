@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-01-03 19:05+0100\n"
+"POT-Creation-Date: 2022-02-01 09:22+0100\n"
 "PO-Revision-Date: 2021-01-12 18:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -127,12 +127,12 @@ msgstr ""
 msgid "Book Chapters"
 msgstr ""
 
-#: mpl-publisher.php:37 views/index.php:294
+#: mpl-publisher.php:37
 msgid "Book Chapter"
 msgstr ""
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:341 views/index.php:424
+#: views/index.php:348 views/index.php:425
 msgid "Add New Book Chapter"
 msgstr ""
 
@@ -484,11 +484,11 @@ msgid ""
 "generate a file for you. You are ready to go. Enjoy!"
 msgstr ""
 
-#: views/index.php:272 views/index.php:430
+#: views/index.php:272 views/index.php:431
 msgid "Download eBook"
 msgstr ""
 
-#: views/index.php:273 views/index.php:431
+#: views/index.php:273 views/index.php:432
 msgid "Save"
 msgstr ""
 
@@ -506,95 +506,91 @@ msgstr ""
 msgid "All types"
 msgstr ""
 
-#: views/index.php:288 views/index.php:375
-msgid "Post"
+#: views/index.php:287
+msgid "Default"
 msgstr ""
 
-#: views/index.php:291 views/index.php:373
-msgid "Page"
-msgstr ""
-
-#: views/index.php:297
-msgid "All statuses"
+#: views/index.php:295
+msgid "Other"
 msgstr ""
 
 #: views/index.php:304
-msgid "All categories"
+msgid "All statuses"
 msgstr ""
 
 #: views/index.php:311
-msgid "All months"
+msgid "All categories"
 msgstr ""
 
 #: views/index.php:318
+msgid "All months"
+msgstr ""
+
+#: views/index.php:325
 msgid "All years"
 msgstr ""
 
-#: views/index.php:326
+#: views/index.php:333
 msgid "Filter content"
 msgstr ""
 
-#: views/index.php:329
+#: views/index.php:336
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 
-#: views/index.php:334
+#: views/index.php:341
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
 "according to your preferences."
 msgstr ""
 
-#: views/index.php:338 views/index.php:421
+#: views/index.php:345 views/index.php:422
 msgid "Contents"
 msgstr ""
 
-#: views/index.php:339 views/index.php:422
+#: views/index.php:346 views/index.php:423
 msgid "Order"
 msgstr ""
 
-#: views/index.php:341
+#: views/index.php:348
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
 "reward your readers with exclusive content."
 msgstr ""
 
-#: views/index.php:349
+#: views/index.php:356
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
 msgstr ""
 
-#: views/index.php:350
+#: views/index.php:357
 msgid "Current results"
 msgstr ""
 
-#: views/index.php:351
+#: views/index.php:358
 msgid "Max results"
 msgstr ""
 
-#: views/index.php:352
+#: views/index.php:359
 msgid "Change settings"
 msgstr ""
 
-#: views/index.php:371
-msgid "Chapter"
-msgstr ""
-
-#: views/index.php:385
+#: views/index.php:386
 msgid "View"
 msgstr ""
 
-#: views/index.php:387
+#: views/index.php:388
 msgid "Edit"
 msgstr ""
 
-#: views/index.php:391
+#: views/index.php:392
 msgid "Duplicate and Edit"
 msgstr ""
 
-#: views/index.php:408
+#: views/index.php:409
 msgid "Your search did not match any posts."
 msgstr ""
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-01-03 19:06+0100\n"
-"PO-Revision-Date: 2022-01-03 19:06+0100\n"
+"POT-Creation-Date: 2022-02-01 09:22+0100\n"
+"PO-Revision-Date: 2022-02-01 09:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -132,12 +132,12 @@ msgstr "Modifications bien enregistrées."
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:37 views/index.php:294
+#: mpl-publisher.php:37
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:341 views/index.php:424
+#: views/index.php:348 views/index.php:425
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
@@ -553,11 +553,11 @@ msgstr ""
 "Enfin, si tout semble bien, vous pouvez cliquer sur Télécharger et nous "
 "générerons un fichier pour vous. Vous êtes prêt à partir. jouir!"
 
-#: views/index.php:272 views/index.php:430
+#: views/index.php:272 views/index.php:431
 msgid "Download eBook"
 msgstr "Télécharger eBook"
 
-#: views/index.php:273 views/index.php:431
+#: views/index.php:273 views/index.php:432
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -578,40 +578,40 @@ msgstr ""
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:288 views/index.php:375
-msgid "Post"
-msgstr "Article"
+#: views/index.php:287
+msgid "Default"
+msgstr "Par défaut"
 
-#: views/index.php:291 views/index.php:373
-msgid "Page"
-msgstr "Page"
+#: views/index.php:295
+msgid "Other"
+msgstr "Autres"
 
-#: views/index.php:297
+#: views/index.php:304
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:304
+#: views/index.php:311
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:311
+#: views/index.php:318
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:318
+#: views/index.php:325
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:326
+#: views/index.php:333
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
-#: views/index.php:329
+#: views/index.php:336
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: views/index.php:334
+#: views/index.php:341
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -622,15 +622,15 @@ msgstr ""
 "vous pouvez utiliser le glisser-déposer pour les trier en fonction de vos "
 "préférences."
 
-#: views/index.php:338 views/index.php:421
+#: views/index.php:345 views/index.php:422
 msgid "Contents"
 msgstr "Contenus"
 
-#: views/index.php:339 views/index.php:422
+#: views/index.php:346 views/index.php:423
 msgid "Order"
 msgstr "Ordre"
 
-#: views/index.php:341
+#: views/index.php:348
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -641,7 +641,7 @@ msgstr ""
 "disponibles pour vos livres, c’est donc un moyen de récompenser vos lecteurs "
 "avec un contenu exclusif."
 
-#: views/index.php:349
+#: views/index.php:356
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -649,35 +649,31 @@ msgstr ""
 "Votre recherche actuelle a trop de résultats et elle n’est pas encore "
 "disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
 
-#: views/index.php:350
+#: views/index.php:357
 msgid "Current results"
 msgstr "Résultats actuels"
 
-#: views/index.php:351
+#: views/index.php:358
 msgid "Max results"
 msgstr "Résultats max"
 
-#: views/index.php:352
+#: views/index.php:359
 msgid "Change settings"
 msgstr "Modifier les paramètres"
 
-#: views/index.php:371
-msgid "Chapter"
-msgstr "Chapitre"
-
-#: views/index.php:385
+#: views/index.php:386
 msgid "View"
 msgstr "Voir"
 
-#: views/index.php:387
+#: views/index.php:388
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/index.php:391
+#: views/index.php:392
 msgid "Duplicate and Edit"
 msgstr "Dupliquer et Modifier"
 
-#: views/index.php:408
+#: views/index.php:409
 msgid "Your search did not match any posts."
 msgstr "Votre recherche ne correspondait à aucun poste."
 
@@ -729,6 +725,15 @@ msgstr "Ferran Figueredo"
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
 
+#~ msgid "Post"
+#~ msgstr "Article"
+
+#~ msgid "Page"
+#~ msgstr "Page"
+
+#~ msgid "Chapter"
+#~ msgstr "Chapitre"
+
 #~ msgid ""
 #~ "MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF "
 #~ "book, or audiobook from your WordPress posts. If you are an author ✍️, it "
@@ -771,9 +776,6 @@ msgstr "https://ferranfigueredo.com"
 #~ "MPL - Publisher est un plugin pour créer un ebook à partir de vos "
 #~ "publications WordPress. Vous pouvez publier votre ebook comme: ePub, pdf, "
 #~ "livres kindle, ebook iPad, Mobi"
-
-#~ msgid "Default"
-#~ msgstr "Par défaut"
 
 #~ msgid "Remove affiliate tracking from external links"
 #~ msgstr "Supprimer le suivi des affiliés à partir de liens externes"

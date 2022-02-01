@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-01-03 19:07+0100\n"
-"PO-Revision-Date: 2022-01-03 19:07+0100\n"
+"POT-Creation-Date: 2022-02-01 09:22+0100\n"
+"PO-Revision-Date: 2022-02-01 09:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca_ES\n"
@@ -131,12 +131,12 @@ msgstr "Els canvis s'han desat correctament."
 msgid "Book Chapters"
 msgstr "Capítols del llibre"
 
-#: mpl-publisher.php:37 views/index.php:294
+#: mpl-publisher.php:37
 msgid "Book Chapter"
 msgstr "Capítol de llibre"
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:341 views/index.php:424
+#: views/index.php:348 views/index.php:425
 msgid "Add New Book Chapter"
 msgstr "Afegeix un nou capítol de llibre"
 
@@ -549,11 +549,11 @@ msgstr ""
 "Finalment, si tot es veu bé, podeu fer clic a Baixa, i generarem un fitxer "
 "per a vosaltres. Estàs preparat per continuar. Gaudeix!"
 
-#: views/index.php:272 views/index.php:430
+#: views/index.php:272 views/index.php:431
 msgid "Download eBook"
 msgstr "Descarregar eBook"
 
-#: views/index.php:273 views/index.php:431
+#: views/index.php:273 views/index.php:432
 msgid "Save"
 msgstr "Desar"
 
@@ -573,39 +573,39 @@ msgstr ""
 msgid "All types"
 msgstr "Tots els tipus"
 
-#: views/index.php:288 views/index.php:375
-msgid "Post"
-msgstr "Entrada"
+#: views/index.php:287
+msgid "Default"
+msgstr "Per defecte"
 
-#: views/index.php:291 views/index.php:373
-msgid "Page"
-msgstr "Pàgina"
+#: views/index.php:295
+msgid "Other"
+msgstr "Altres"
 
-#: views/index.php:297
+#: views/index.php:304
 msgid "All statuses"
 msgstr "Tots els estats"
 
-#: views/index.php:304
+#: views/index.php:311
 msgid "All categories"
 msgstr "Totes les categories"
 
-#: views/index.php:311
+#: views/index.php:318
 msgid "All months"
 msgstr "Tots els mesos"
 
-#: views/index.php:318
+#: views/index.php:325
 msgid "All years"
 msgstr "Tots els anys"
 
-#: views/index.php:326
+#: views/index.php:333
 msgid "Filter content"
 msgstr "Filtrar contingut"
 
-#: views/index.php:329
+#: views/index.php:336
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrossegueu els resultats filtrats per ordenar els capítols del llibre"
 
-#: views/index.php:334
+#: views/index.php:341
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -616,15 +616,15 @@ msgstr ""
 "utilitzar arrossegar i deixar anar per ordenar-los segons les vostres "
 "preferències."
 
-#: views/index.php:338 views/index.php:421
+#: views/index.php:345 views/index.php:422
 msgid "Contents"
 msgstr "Continguts"
 
-#: views/index.php:339 views/index.php:422
+#: views/index.php:346 views/index.php:423
 msgid "Order"
 msgstr "Ordre"
 
-#: views/index.php:341
+#: views/index.php:348
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -635,7 +635,7 @@ msgstr ""
 "llibres, de manera que és una manera de recompensar els vostres lectors amb "
 "contingut exclusiu."
 
-#: views/index.php:349
+#: views/index.php:356
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -643,35 +643,31 @@ msgstr ""
 "La cerca actual té massa resultats i encara no està disponible. Si us plau, "
 "utilitzeu els nostres filtres per limitar la vostra sol·licitud."
 
-#: views/index.php:350
+#: views/index.php:357
 msgid "Current results"
 msgstr "Resultats actuals"
 
-#: views/index.php:351
+#: views/index.php:358
 msgid "Max results"
 msgstr "Resultats màxims"
 
-#: views/index.php:352
+#: views/index.php:359
 msgid "Change settings"
 msgstr "Canvia la configuració"
 
-#: views/index.php:371
-msgid "Chapter"
-msgstr "Capítol"
-
-#: views/index.php:385
+#: views/index.php:386
 msgid "View"
 msgstr "Veure"
 
-#: views/index.php:387
+#: views/index.php:388
 msgid "Edit"
 msgstr "Edita"
 
-#: views/index.php:391
+#: views/index.php:392
 msgid "Duplicate and Edit"
 msgstr "Duplica i Edita"
 
-#: views/index.php:408
+#: views/index.php:409
 msgid "Your search did not match any posts."
 msgstr "La cerca no ha coincidit amb cap resultat."
 
@@ -724,6 +720,15 @@ msgstr "Ferran Figueredo"
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
 
+#~ msgid "Post"
+#~ msgstr "Entrada"
+
+#~ msgid "Page"
+#~ msgstr "Pàgina"
+
+#~ msgid "Chapter"
+#~ msgstr "Capítol"
+
 #~ msgid ""
 #~ "MPL - Publisher 📚 helps you self-publishing an ebook, print-ready PDF "
 #~ "book, or audiobook from your WordPress posts. If you are an author ✍️, it "
@@ -767,9 +772,6 @@ msgstr "https://ferranfigueredo.com"
 #~ "MPL - Publisher és un plugin per crear un llibre electrònic a partir de "
 #~ "les vostres publicacions de WordPress. Pots publicar el teu ebook com: "
 #~ "ePub, pdf, kindl books, iPad ebook, Mobi"
-
-#~ msgid "Default"
-#~ msgstr "Per defecte"
 
 #~ msgid "Remove affiliate tracking from external links"
 #~ msgstr "Suprimir el seguiment d'afiliats d'enllaços externs"

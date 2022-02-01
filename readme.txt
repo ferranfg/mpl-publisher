@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 1.33.0
+Stable tag: 1.34.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,20 +47,27 @@ Future releases will include, at least, the next functionalities:
 - Multiple professional designs available.
 - Sell directly your ebook to your audience.
 
+= Other Plugins Support =
+
+We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher supports other plugins custom post types. This will allow you to create ebooks & audiobooks without changing your current tools.
+
+Some of these plugins have been tested by ourselves and guarantee proper compatibility. This list includes:
+
+- [Better Docs](https://wordpress.org/plugins/betterdocs/) - Reduce your support pressure immediately creating a stunning and resourceful knowledge base for your customers.
+- [Echo Knowledge Base](https://wordpress.org/plugins/echo-knowledge-base/) - Instantly create an online self-service Knowledge Base for your users, customers and employees.
+
+Also, there is a fantastic community of plugins available if MPL-Publisher doesn't meet your criteria:
+
+- [Print My Blog](https://wordpress.org/plugins/print-my-blog/) - Make printing your blog easy and impressive. For you & your visitors. One post or thousands.
+- [DK PDF](https://wordpress.org/plugins/dk-pdf/) - DK PDF allows site visitors convert posts and pages to PDF using a button.
+- [Anthologize](https://wordpress.org/plugins/search/anthologize/) - Use the power of WordPress to transform your content into a book.
+
 = Requirements =
 
 - PHP 7.1.8 or higher
 - WordPress 5.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://wordpress.mpl-publisher.com/)
-
-= Alternatives to MPL-Publisher =
-
-There is a fantastic community of plugins available if MPL-Publisher doesn't meet your criteria:
-
-- [Print My Blog](https://printmy.blog/now) - Make printing your blog easy and impressive. For you & your visitors. One post or thousands.
-- [BookPress](https://www.bookpress.net/) - Books on WordPress made easy. Write and display your books: Add chapters, pages, table of contents, track word counts and more.
-- [Anthologize](https://wordpress.org/plugins/search/anthologize/) - Use the power of WordPress to transform your content into a book.
 
 == Installation ==
 
@@ -105,6 +112,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.34.0 =
+- Add support for more post types other than post, page and book chapter
+- Testing compatibility with other knowledge base plugins
+- Retesting for WordPress 5.9 and PHP 8.0
 
 = 1.33.0 =
 - Decrease posts limitation to 50 results to improve performance

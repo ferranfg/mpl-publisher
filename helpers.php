@@ -179,3 +179,65 @@ if ( ! function_exists('mpl_sanitize_array'))
         return $array;
     }
 }
+
+if ( ! function_exists('mpl_all_post_types'))
+{
+    function mpl_all_post_types()
+    {
+        return array_merge(mpl_default_post_types(), mpl_other_post_types());
+    }
+}
+
+if ( ! function_exists('mpl_default_post_types'))
+{
+    function mpl_default_post_types()
+    {
+        return array('post', 'page', 'mpl_chapter');
+    }
+}
+
+if ( ! function_exists('mpl_other_post_types'))
+{
+    function mpl_other_post_types()
+    {
+        $all_post_types = get_post_types(array('public' => true));
+        $other_post_types = array();
+        $excluded_post_types = array_merge(mpl_default_post_types(), array(
+            'attachment',
+            'revision',
+            'nav_menu_item'
+        ));
+
+        foreach ($all_post_types as $post_type )
+        {
+            if ( ! in_array($post_type, $excluded_post_types ))
+            {
+                $other_post_types[] = $post_type;
+            }
+        }
+
+        return $other_post_types;
+    }
+}
+
+if ( ! function_exists('mpl_post_type_icon'))
+{
+    function mpl_post_type_icon($post_type)
+    {
+        switch ($post_type):
+            case 'page':        return 'dashicons dashicons-admin-page';
+            case 'post':        return 'dashicons dashicons-admin-post';
+            case 'mpl_chapter': return 'dashicons dashicons-book';
+            case 'docs':        return 'dashicons dashicons-welcome-learn-more';
+            default:            return 'dashicons dashicons-media-default';
+        endswitch;
+    }
+}
+
+if ( ! function_exists('mpl_post_type_label'))
+{
+    function mpl_post_type_label($post_type)
+    {
+        return get_post_type_object($post_type)->label;
+    }
+}

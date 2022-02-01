@@ -49,7 +49,7 @@ class PublisherBase {
             if ( ! empty($this->data['month_selected']))  $this->filter['month']       = implode(',', $this->data['month_selected']);
         }
 
-        $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : array('post', 'page', 'mpl_chapter');
+        $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : mpl_all_post_types();
     }
 
     public function view($file, $data = array())
