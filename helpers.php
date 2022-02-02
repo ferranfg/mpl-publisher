@@ -238,6 +238,15 @@ if ( ! function_exists('mpl_post_type_label'))
 {
     function mpl_post_type_label($post_type)
     {
-        return get_post_type_object($post_type)->label;
+        $post_type_object = get_post_type_object($post_type);
+
+        if (is_object($post_type_object) and property_exists($post_type_object, 'label'))
+        {
+            return $post_type_object->label;
+        }
+        else
+        {
+            return $post_type;
+        }
     }
 }

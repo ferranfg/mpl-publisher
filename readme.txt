@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 1.34.0
+Stable tag: 1.34.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,13 +47,13 @@ Future releases will include, at least, the next functionalities:
 - Multiple professional designs available.
 - Sell directly your ebook to your audience.
 
-= Other Plugins Support =
+= Other Plugins Compatibility =
 
-We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher supports other plugins custom post types. This will allow you to create ebooks & audiobooks without changing your current tools.
+We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher is compatible with other plugins custom post types. This will allow you to create ebooks & audiobooks without changing your current tools.
 
 Some of these plugins have been tested by ourselves and guarantee proper compatibility. This list includes:
 
-- [Better Docs](https://wordpress.org/plugins/betterdocs/) - Reduce your support pressure immediately creating a stunning and resourceful knowledge base for your customers.
+- [weDocs](https://wordpress.org/plugins/wedocs/) - Create great looking documentation for your products. Organize your product documentation in your site, beautifully!
 - [Echo Knowledge Base](https://wordpress.org/plugins/echo-knowledge-base/) - Instantly create an online self-service Knowledge Base for your users, customers and employees.
 
 Also, there is a fantastic community of plugins available if MPL-Publisher doesn't meet your criteria:
@@ -112,6 +112,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 1.34.1 =
+- Fix error when custom post type is not available anymore
 
 = 1.34.0 =
 - Add support for more post types other than post, page and book chapter

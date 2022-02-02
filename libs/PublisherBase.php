@@ -49,7 +49,17 @@ class PublisherBase {
             if ( ! empty($this->data['month_selected']))  $this->filter['month']       = implode(',', $this->data['month_selected']);
         }
 
-        $this->filter['post_type'] = !empty($this->data['post_type']) ? $this->data['post_type'] : mpl_all_post_types();
+        if ( ! empty($this->data['post_type']) and is_array($this->data['post_type']))
+        {
+            // If the selected post type has been disabled, we reset the filters
+            $array_diff = array_diff($this->data['post_type'], mpl_all_post_types());
+
+            $this->filter['post_type'] = count($array_diff) ? mpl_all_post_types() : $this->data['post_type'];
+        }
+        else
+        {
+            $this->filter['post_type'] = mpl_all_post_types();
+        }
     }
 
     public function view($file, $data = array())
