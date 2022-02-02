@@ -31,6 +31,13 @@
   float: left;
 }
 
+.mpl hr {
+  width: 50%;
+  border: 0;
+  height: 2px;
+  background-color: #F2F2F2;
+}
+
 .mpl .mt-30 {
   margin-top: 30px;
 }
@@ -88,6 +95,9 @@
   line-height: 1;
   padding-top: 0;
   margin-bottom: 16px;
+  padding: 20px 15px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mpl #mpl-logo .float-left {
@@ -96,6 +106,12 @@
 
 .mpl #mpl-logo img {
   vertical-align: top;
+}
+
+.mpl #premium-notice {
+  background: #fff;
+  border: none;
+  padding: 10px 15px;
 }
 
 .mpl .release-notes {
@@ -108,6 +124,11 @@
 
 .mpl a .dashicons {
   text-decoration: none;
+}
+
+.mpl #col-container {
+  background: #fff;
+  padding: 30px;
 }
 
 .mpl #col-left {
@@ -131,9 +152,24 @@
   margin-bottom: 0;
 }
 
+.mpl .form-wrap input[type="text"],
+.mpl .form-wrap input[type="number"],
+.mpl .form-wrap select,
+.mpl .form-wrap textarea {
+  background-color: #f2f2f2;
+  border: 1px solid rgba(0,0,0, .05);
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  padding: 8px 10px;
+}
+
 .mpl .form-wrap > p.submit {
   margin-top: 10px;
   display: block;
+}
+
+.mpl .form-wrap .submit .button {
+  padding: 13px 25px;
+  letter-spacing: 1px;
 }
 
 .mpl #format {
@@ -148,12 +184,18 @@
   width: 100%;
   margin: 0;
 }
+
+.mpl .filter-bar {
+  margin-bottom: 20px;
+}
+
 .mpl select[multiple].chosen {
   width:33%;
   float: left;
   height:29px;
   margin:0 0 5px !important;
 }
+
 .mpl .chosen-container {
   width:33% !important;
   float: left;
@@ -161,8 +203,11 @@
   margin:0 0 5px;
   vertical-align: top;
 }
+
 .mpl .chosen-container-multi .chosen-choices {
-  border-color: #ddd;
+  background: #f2f2f2;
+  border-color: rgba(0,0,0, .05);
+  border-radius: 4px;
 }
 
 .mpl .widefat thead th.check-column,
@@ -176,19 +221,19 @@
 }
 
 .mpl .nav-tabs {
-  margin: 0 0 12px;
+  margin: 0 0 15px;
   width: 100%;
 }
 
 .mpl ul.nav-tabs {
-  border-bottom: 1px solid #ccc;
+  background-color: #f8fafb;
+  border-bottom: 0;
   padding: 0;
 }
 
 .mpl ul.nav-tabs li {
   display: inline-block;
-  margin-bottom: -1px;
-  line-height: 35px;
+  margin: 0;
 }
 
 .mpl .nav-tab {
@@ -196,12 +241,15 @@
   padding: 0;
   margin-left: 0;
   margin-right: 0.5em;
+  border: 0;
+  border-top: 2px solid transparent;
+  background: none;
 }
 
 .mpl .nav-tab > a {
-  color: #000;
+  color: #516378;
   text-decoration: none;
-  padding: 0 14px;
+  padding: 15px 20px;
   display: block;
 }
 
@@ -209,10 +257,9 @@
   box-shadow: none;
 }
 
-.mpl .nav-tab.active,
-.mpl .nav-tab:hover {
-  border-bottom: 1px solid #f1f1f1;
-  background: #f1f1f1;
+.mpl .nav-tab.active {
+  border-top: 2px solid #2271b1;
+  background: #fff;
 }
 
 .mpl .tab-content > .tab-pane { display: none; }

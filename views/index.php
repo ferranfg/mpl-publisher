@@ -20,14 +20,14 @@
                 <?php endforeach; ?>
             </select>
             <?php if (count($all_books) > 1): ?>
-                <button type="submit" name="clear" class="button">🧹 <?php _e('Remove Book', "publisher"); ?></button>
+                <button type="submit" name="clear" class="button button-secondary">🧹 <?php _e('Remove Book', "publisher"); ?></button>
             <?php endif; ?>
             <?php if ($mpl_is_premium): ?>
-                <button type="submit" name="create" class="button" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
+                <button type="submit" name="create" class="button button-secondary" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
             <?php else: ?>
-                <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
+                <span disabled="disabled" class="button button-secondary" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
             <?php endif; ?>
-            <button type="button" id="mpl-introjs" class="button" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
+            <button type="button" id="mpl-introjs" class="button button-secondary" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
         </div>
     </h1>
 
@@ -44,14 +44,14 @@
 
         <ul class="nav-tab-wrapper nav-tabs hidden-xs">
             <?php do_action('mpl_publisher_after_tabs'); ?>
-            <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-cover" data-toggle="tab">📔 <?php _e("Cover", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Design", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
+            <li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("Details", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-cover" data-toggle="tab"><?php _e("Cover", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Design", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <?php if (is_null(mpl_premium_token())): ?>
-                <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
+                <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <?php endif; ?>
-            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>">🚀 <?php _e("Resources", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>"><?php _e("Resources", "publisher"); ?></a></li>
             <?php do_action('mpl_publisher_before_tabs'); ?>
         </ul>
 
@@ -70,7 +70,7 @@
         <?php do_action('mpl_publisher_before_navbar'); ?>
     </div>
 
-    <div id="col-container">
+    <div id="col-container" class="clearfix">
         <div id="col-left">
             <div class="col-wrap">
                 <div class="form-wrap tab-content">
@@ -270,7 +270,7 @@
 
                     <p class="submit hidden-xs">
                         <button type="submit" name="generate" class="generate-button button button-primary" data-step="8" data-intro="<?php _e('Finally, if everything looks good, you can click Download, and we will generate a file for you. You are ready to go. Enjoy!', 'publisher'); ?>">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
-                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button button-secondary">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>
@@ -278,9 +278,6 @@
 
         <div id="col-right">
             <div class="col-wrap">
-
-                <h3><?php _e("Text", "publisher"); ?></h3>
-
                 <div class="form-wrap">
                     <div class="clearfix filter-bar" data-step="5" data-intro="<?php _e('Remember that you can use the filters for a more refined search. It will be helpful if you want to publish a book from a specific category or date.', 'publisher'); ?>">
                         <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
@@ -330,7 +327,7 @@
                             <?php endforeach; ?>
                         </select>
                         <div class="chosen-container text-right">
-                            <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
+                            <button type="submit" name="filter" id="post-query-submit" class="button button-secondary">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
@@ -345,7 +342,7 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -422,14 +419,14 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
                     </table>
 
                     <p class="submit visible-xs">
                         <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
-                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button button-secondary">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>
