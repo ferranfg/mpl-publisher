@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-02-01 09:22+0100\n"
-"PO-Revision-Date: 2022-02-01 09:22+0100\n"
+"POT-Creation-Date: 2022-02-03 16:39+0100\n"
+"PO-Revision-Date: 2022-02-03 16:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -43,75 +43,75 @@ msgstr ""
 msgid "Submitted on %s"
 msgstr "Soumis sur %s"
 
-#: libs/PublisherBase.php:124
+#: libs/PublisherBase.php:134
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:136
+#: libs/PublisherBase.php:146
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:148
+#: libs/PublisherBase.php:158
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:160
+#: libs/PublisherBase.php:170
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:186
+#: libs/PublisherBase.php:196
 msgid "January"
 msgstr "Janvier"
 
-#: libs/PublisherBase.php:187
+#: libs/PublisherBase.php:197
 msgid "February"
 msgstr "Février"
 
-#: libs/PublisherBase.php:188
+#: libs/PublisherBase.php:198
 msgid "March"
 msgstr "Mars"
 
-#: libs/PublisherBase.php:189
+#: libs/PublisherBase.php:199
 msgid "April"
 msgstr "Avril"
 
-#: libs/PublisherBase.php:190
+#: libs/PublisherBase.php:200
 msgid "May"
 msgstr "Mai"
 
-#: libs/PublisherBase.php:191
+#: libs/PublisherBase.php:201
 msgid "June"
 msgstr "Juin"
 
-#: libs/PublisherBase.php:192
+#: libs/PublisherBase.php:202
 msgid "July"
 msgstr "Juillet"
 
-#: libs/PublisherBase.php:193
+#: libs/PublisherBase.php:203
 msgid "August"
 msgstr "Août"
 
-#: libs/PublisherBase.php:194
+#: libs/PublisherBase.php:204
 msgid "September"
 msgstr "Septembre"
 
-#: libs/PublisherBase.php:195
+#: libs/PublisherBase.php:205
 msgid "October"
 msgstr "Octobre"
 
-#: libs/PublisherBase.php:196
+#: libs/PublisherBase.php:206
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:197
+#: libs/PublisherBase.php:207
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:298
+#: libs/PublisherBase.php:305
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:359
+#: libs/PublisherBase.php:366
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -161,11 +161,11 @@ msgstr "Éditeur de couverture"
 msgid "Resources"
 msgstr "Ressources"
 
-#: mpl-publisher.php:139
+#: mpl-publisher.php:138
 msgid "How book chapters works"
 msgstr "Fonctionnement des chapitres de livres"
 
-#: mpl-publisher.php:141
+#: mpl-publisher.php:140
 msgid ""
 "MPL-Publisher allows authors to write custom content specific for your book "
 "without the needed to be accessible from the public. You just have to "
@@ -176,16 +176,16 @@ msgstr ""
 "qu’à publier votre chapitre et il ne sera visible qu’à partir de la page "
 "Paramètres du livre."
 
-#: mpl-publisher.php:142
+#: mpl-publisher.php:141
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: mpl-publisher.php:156
+#: mpl-publisher.php:155
 msgid "Settings"
 msgstr "Paramètres"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:179
+#: mpl-publisher.php:178
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -205,9 +205,55 @@ msgstr ""
 "visitez"
 
 #: views/cover-editor.php:3 views/index.php:28 views/index.php:237
-#: views/index.php:262
+#: views/index.php:261
 msgid "Premium only"
 msgstr "Prime seulement"
+
+#: views/footer.php:4 views/footer.php:6
+msgid "Documentation"
+msgstr "Documentation"
+
+#: views/footer.php:5
+msgid ""
+"Get started by spending some time with the documentation to get familiar "
+"with our plugin. Create an awesome book for your readers with ease."
+msgstr ""
+"Commencez par passer du temps avec la documentation pour vous familiariser "
+"avec notre plugin. Créez un livre génial pour vos lecteurs en toute "
+"simplicité."
+
+#: views/footer.php:9
+msgid "Community"
+msgstr "Community"
+
+#: views/footer.php:10
+msgid ""
+"Join the Facebook community and discuss with fellow authors and readers. "
+"Best way to connect with people and get feedback on your books."
+msgstr ""
+"Rejoignez la communauté Facebook et discutez avec d’autres auteurs et "
+"lecteurs. Le meilleur moyen de se connecter avec les gens et d’obtenir des "
+"commentaires sur vos livres."
+
+#: views/footer.php:11
+msgid "Join now"
+msgstr "Devenir Membre"
+
+#: views/footer.php:14
+msgid "Show Your Love"
+msgstr "Montre ton amour"
+
+#: views/footer.php:15
+msgid ""
+"We are making this plugin more awesome everyday. Take your 2 minutes to "
+"review the plugin and spread the love to encourage us to keep it going."
+msgstr ""
+"Nous rendons ce plugin plus génial chaque jour. Prenez vos 2 minutes pour "
+"revoir le plugin et répandre l’amour pour nous encourager à le maintenir."
+
+#: views/footer.php:16
+msgid "Leave a review"
+msgstr "Laisser un commentaire"
 
 #: views/index.php:23
 msgid "Remove Book"
@@ -527,7 +573,7 @@ msgstr ""
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: views/index.php:267
+#: views/index.php:266
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best)."
@@ -535,7 +581,7 @@ msgstr ""
 "Le résultat sera affecté par la complexité de votre contenu (c.-à-d. «texte "
 "clair» fonctionne le mieux)."
 
-#: views/index.php:268
+#: views/index.php:267
 msgid ""
 "<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our "
 "brand new <a href='https://mpl-publisher.com?"
@@ -545,7 +591,7 @@ msgstr ""
 "nos tout nouveaux <a href='https://mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=tools'>outils d’auto-édition.</a>"
 
-#: views/index.php:272
+#: views/index.php:271
 msgid ""
 "Finally, if everything looks good, you can click Download, and we will "
 "generate a file for you. You are ready to go. Enjoy!"
@@ -553,19 +599,15 @@ msgstr ""
 "Enfin, si tout semble bien, vous pouvez cliquer sur Télécharger et nous "
 "générerons un fichier pour vous. Vous êtes prêt à partir. jouir!"
 
-#: views/index.php:272 views/index.php:431
+#: views/index.php:271 views/index.php:431
 msgid "Download eBook"
 msgstr "Télécharger eBook"
 
-#: views/index.php:273 views/index.php:432
+#: views/index.php:272 views/index.php:432
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: views/index.php:282
-msgid "Text"
-msgstr "Texte"
-
-#: views/index.php:285
+#: views/index.php:281
 msgid ""
 "Remember that you can use the filters for a more refined search. It will be "
 "helpful if you want to publish a book from a specific category or date."
@@ -574,35 +616,35 @@ msgstr ""
 "raffinée. Cela sera utile si vous souhaitez publier un livre à partir d’une "
 "catégorie ou d’une date spécifique."
 
-#: views/index.php:286
+#: views/index.php:283
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:287
+#: views/index.php:284
 msgid "Default"
 msgstr "Par défaut"
 
-#: views/index.php:295
+#: views/index.php:292
 msgid "Other"
 msgstr "Autres"
 
-#: views/index.php:304
+#: views/index.php:301
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:311
+#: views/index.php:308
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:318
+#: views/index.php:317
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:325
+#: views/index.php:324
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:333
+#: views/index.php:332
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
@@ -724,6 +766,9 @@ msgstr "Ferran Figueredo"
 #. Author URI of the plugin/theme
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
+
+#~ msgid "Text"
+#~ msgstr "Texte"
 
 #~ msgid "Post"
 #~ msgstr "Article"
