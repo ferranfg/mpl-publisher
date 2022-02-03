@@ -288,9 +288,6 @@ class PublisherBase {
             case 'markd':
                 $publisher = new MarkdownPublisher();
             break;
-            case 'mobi':
-                $publisher = new MobiPublisher();
-            break;
             case 'plain':
                 $publisher = new PlainPublisher();
             break;

@@ -23,10 +23,6 @@ class MarkdownPublisher implements IPublisher {
                 'epub' => array(
                     'format' => 'epub'
                 ),
-                'mobi' => array(
-                    'extends' => 'ebook',
-                    'format' => 'mobi'
-                ),
                 'pdf' => array(
                     'format' => 'pdf'
                 )

@@ -15,11 +15,11 @@ MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audi
 
 MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
 
-If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, mp3, Kindle, Mobi… etc.
+If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, MS Word (Docx), Audiobook (MP3)… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
-It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .mobi for Amazon, .ePub for the other stores, or PDF for print-ready books.
+It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .ePub for Amazon and other stores, or PDF for print-ready books.
 
 With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
 
@@ -33,7 +33,7 @@ For now, these are the current features:
 - Advanced cover editor included (only available for premium).
 - Select indivicual chapters (posts, pages, and "secret chapters") to include in your eBook.
 - Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), Mobi, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
+- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
 - Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
@@ -97,7 +97,7 @@ If you have any other error, please use the [MPL-Publisher support forum](https:
 
 = Which output formats are supported? =
 
-Currently, we support EPUB2.0, EPUB3.0, Mobi, Microsoft Word (docx), Markdown, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3). You can choose it from the Output format's select menu.
+Currently, we support EPUB2.0, EPUB3.0, Microsoft Word (docx), Markdown, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -115,6 +115,7 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 2.0.0 =
 - New design
+- Remove MOBI
 
 = 1.34.1 =
 - Fix error when custom post type is not available anymore
