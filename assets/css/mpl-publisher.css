@@ -5,8 +5,9 @@
 }
 
 .mpl.wrap {
-  margin-top: 20px;
-  margin-left: 0;
+  position: relative;
+  padding-top: 55px;
+  margin-top: 0;
 }
 
 .mpl .clearfix:before,
@@ -35,7 +36,7 @@
   width: 50%;
   border: 0;
   height: 2px;
-  background-color: #F2F2F2;
+  background-color: #e4e4e4;
 }
 
 .mpl .mt-30 {
@@ -97,7 +98,6 @@
   margin-bottom: 16px;
   padding: 20px 15px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mpl #mpl-logo .float-left {
@@ -109,9 +109,20 @@
 }
 
 .mpl #premium-notice {
-  background: #fff;
+  background: #ddd;
+  color: #777;
   border: none;
-  padding: 10px 15px;
+  border-top: 3px solid #EE4135;
+  padding: 7px;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.mpl #premium-notice a {
+  color: #EE4135;
 }
 
 .mpl .release-notes {
@@ -126,17 +137,13 @@
   text-decoration: none;
 }
 
-.mpl #col-container {
-  background: #fff;
-  padding: 30px;
-}
-
 .mpl #col-left {
   float: left;
 }
 
 .mpl #col-right {
   overflow: visible;
+  margin-top: 20px;
 }
 
 .mpl .form-wrap label {
@@ -156,10 +163,11 @@
 .mpl .form-wrap input[type="number"],
 .mpl .form-wrap select,
 .mpl .form-wrap textarea {
-  background-color: #f2f2f2;
-  border: 1px solid rgba(0,0,0, .05);
+  background-color: #fff;
+  border: 1px solid #ccc;
   transition: border linear 0.2s, box-shadow linear 0.2s;
-  padding: 8px 10px;
+  padding: 7px 12px;
+  color: #333;
 }
 
 .mpl .form-wrap > p.submit {
@@ -205,9 +213,11 @@
 }
 
 .mpl .chosen-container-multi .chosen-choices {
-  background: #f2f2f2;
-  border-color: rgba(0,0,0, .05);
-  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  border-radius: 3px;
+  box-shadow: none;
 }
 
 .mpl .widefat thead th.check-column,
@@ -223,12 +233,12 @@
 .mpl .nav-tabs {
   margin: 0 0 15px;
   width: 100%;
+  background-color: #fff;
 }
 
 .mpl ul.nav-tabs {
-  background-color: #f8fafb;
   border-bottom: 0;
-  padding: 0;
+  padding: 0 15px;
 }
 
 .mpl ul.nav-tabs li {
@@ -237,17 +247,17 @@
 }
 
 .mpl .nav-tab {
-  font-weight: 700;
+  font-weight: 400;
   padding: 0;
   margin-left: 0;
   margin-right: 0.5em;
   border: 0;
-  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
   background: none;
 }
 
 .mpl .nav-tab > a {
-  color: #516378;
+  color: #666;
   text-decoration: none;
   padding: 15px 20px;
   display: block;
@@ -257,9 +267,12 @@
   box-shadow: none;
 }
 
+.mpl .nav-tab:hover {
+  border-color: #999;
+}
+
 .mpl .nav-tab.active {
-  border-top: 2px solid #2271b1;
-  background: #fff;
+  border-color: #EE4135;
 }
 
 .mpl .tab-content > .tab-pane { display: none; }
