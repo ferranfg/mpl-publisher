@@ -114,8 +114,9 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.0.0 =
-- New design
-- Remove MOBI
+- New admin page design
+- Remove MOBI from supported formats as it's outdated
+- Improve UX on responsive, filters and tutorial intro
 
 = 1.34.1 =
 - Fix error when custom post type is not available anymore

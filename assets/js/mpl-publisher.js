@@ -2,11 +2,6 @@
 
     'use strict';
 
-    window.HW_config = {
-        selector: ".release-notes",
-        account: "7NBro7"
-    };
-
     $(document).ready(function () {
         var $mpl = $('#mpl-wrapper');
 
@@ -78,10 +73,12 @@
 
             mplIntroJs.oncomplete(function() {
                 localStorage.setItem('mpl_introjs_v1', true);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
 
             mplIntroJs.onexit(function() {
                 localStorage.setItem('mpl_introjs_v1', true);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
 
             if (localStorage.getItem('mpl_introjs_v1') === null) {
