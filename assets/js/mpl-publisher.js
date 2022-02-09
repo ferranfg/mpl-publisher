@@ -2,11 +2,6 @@
 
     'use strict';
 
-    window.HW_config = {
-        selector: ".release-notes",
-        account: "7NBro7"
-    };
-
     $(document).ready(function () {
         var $mpl = $('#mpl-wrapper');
 
@@ -77,14 +72,16 @@
             var mplIntroJs = introJs();
 
             mplIntroJs.oncomplete(function() {
-                localStorage.setItem('mpl_introjs_v1', true);
+                localStorage.setItem('mpl_introjs_v2', true);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
 
             mplIntroJs.onexit(function() {
-                localStorage.setItem('mpl_introjs_v1', true);
+                localStorage.setItem('mpl_introjs_v2', true);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
 
-            if (localStorage.getItem('mpl_introjs_v1') === null) {
+            if (localStorage.getItem('mpl_introjs_v2') === null) {
                 mplIntroJs.start();
             }
 

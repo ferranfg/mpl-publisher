@@ -20,14 +20,14 @@
                 <?php endforeach; ?>
             </select>
             <?php if (count($all_books) > 1): ?>
-                <button type="submit" name="clear" class="button">🧹 <?php _e('Remove Book', "publisher"); ?></button>
+                <button type="submit" name="clear" class="button button-secondary">🧹 <?php _e('Remove Book', "publisher"); ?></button>
             <?php endif; ?>
             <?php if ($mpl_is_premium): ?>
-                <button type="submit" name="create" class="button" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
+                <button type="submit" name="create" class="button button-secondary" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
             <?php else: ?>
-                <span disabled="disabled" class="button" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <?php _e("Add New Book", "publisher"); ?></span>
+                <span disabled="disabled" class="button button-secondary" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></span>
             <?php endif; ?>
-            <button type="button" id="mpl-introjs" class="button" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
+            <button type="button" id="mpl-introjs" class="button button-secondary" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
         </div>
     </h1>
 
@@ -44,14 +44,14 @@
 
         <ul class="nav-tab-wrapper nav-tabs hidden-xs">
             <?php do_action('mpl_publisher_after_tabs'); ?>
-            <li class="nav-tab active"><a href="#book-details" data-toggle="tab">📖 <?php _e("Details", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-cover" data-toggle="tab">📔 <?php _e("Cover", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab">🎨 <?php _e("Design", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-settings" data-toggle="tab">⚙️ <?php _e("Meta", "publisher"); ?></a></li>
+            <li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("Details", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-cover" data-toggle="tab"><?php _e("Cover", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Design", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <?php if (is_null(mpl_premium_token())): ?>
-                <li class="nav-tab"><a href="#book-license" data-toggle="tab">⭐ <?php _e("Premium", "publisher"); ?></a></li>
+                <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <?php endif; ?>
-            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>">🚀 <?php _e("Resources", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>"><?php _e("Resources", "publisher"); ?></a></li>
             <?php do_action('mpl_publisher_before_tabs'); ?>
         </ul>
 
@@ -70,7 +70,7 @@
         <?php do_action('mpl_publisher_before_navbar'); ?>
     </div>
 
-    <div id="col-container">
+    <div id="col-container" class="clearfix">
         <div id="col-left">
             <div class="col-wrap">
                 <div class="form-wrap tab-content">
@@ -256,7 +256,6 @@
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
                             <option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (DOCX)</option>
-                            <option value="mobi"  <?php echo $format == "mobi"  ? "selected='selected'" : ''; ?>>Amazon MOBI</option>
                             <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (TXT)</option>
                             <option value="json"  <?php echo $format == "json"  ? "selected='selected'" : ''; ?>>MPL-Publisher (JSON)²</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
@@ -270,7 +269,7 @@
 
                     <p class="submit hidden-xs">
                         <button type="submit" name="generate" class="generate-button button button-primary" data-step="8" data-intro="<?php _e('Finally, if everything looks good, you can click Download, and we will generate a file for you. You are ready to go. Enjoy!', 'publisher'); ?>">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
-                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button button-secondary">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>
@@ -278,59 +277,60 @@
 
         <div id="col-right">
             <div class="col-wrap">
-
-                <h3><?php _e("Text", "publisher"); ?></h3>
-
                 <div class="form-wrap">
                     <div class="clearfix filter-bar" data-step="5" data-intro="<?php _e('Remember that you can use the filters for a more refined search. It will be helpful if you want to publish a book from a specific category or date.', 'publisher'); ?>">
-                        <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
-                            <optgroup label="<?php _e("Default", "publisher"); ?>">
-                                <?php foreach (mpl_default_post_types() as $default_type): ?>
-                                    <option value="<?php echo $default_type; ?>" <?php echo in_array($default_type, $post_type) ? "selected='selected'": ""; ?>>
-                                        <?php echo mpl_post_type_label($default_type); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </optgroup>
-                            <?php if (count(mpl_other_post_types())): ?>
-                                <optgroup label="<?php _e("Other", "publisher"); ?>">
-                                    <?php foreach (mpl_other_post_types() as $other_type): ?>
-                                        <option value="<?php echo $other_type; ?>" <?php echo in_array($other_type, $post_type) ? "selected='selected'": ""; ?>>
-                                            <?php echo mpl_post_type_label($other_type); ?>
+                        <div class="clearfix">
+                            <select name="post_type[]" id="type" class="chosen" multiple data-placeholder="<?php _e("All types", "publisher"); ?>">
+                                <optgroup label="<?php _e("Default", "publisher"); ?>">
+                                    <?php foreach (mpl_default_post_types() as $default_type): ?>
+                                        <option value="<?php echo $default_type; ?>" <?php echo in_array($default_type, $post_type) ? "selected='selected'": ""; ?>>
+                                            <?php echo mpl_post_type_label($default_type); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </optgroup>
-                            <?php endif; ?>
-                        </select>
-                        <select name="status_selected[]" id="status" class="chosen" multiple data-placeholder="<?php _e("All statuses", "publisher"); ?>">
-                            <?php foreach ($blog_statuses as $status => $statusName): ?>
-                                <option value="<?php echo esc_attr($status); ?>" <?php echo in_array($status, $status_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo esc_html(get_post_status_object($status)->label); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
-                            <?php foreach ($blog_categories as $category): ?>
-                                <option value="<?php echo esc_attr($category->cat_ID); ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo esc_html($category->name); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select name="month_selected[]" id="month" class="chosen" multiple data-placeholder="<?php _e("All months", "publisher"); ?>">
-                            <?php foreach ($blog_months as $key => $month): ?>
-                                <option value="<?php echo esc_attr($key); ?>" <?php echo in_array($key, $month_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo esc_html($month); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
-                            <?php foreach ($blog_years as $year): ?>
-                                <option value="<?php echo esc_attr($year); ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
-                                    <?php echo esc_html($year); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div class="chosen-container text-right">
-                            <button type="submit" name="filter" id="post-query-submit" class="button">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
+                                <?php if (count(mpl_other_post_types())): ?>
+                                    <optgroup label="<?php _e("Other", "publisher"); ?>">
+                                        <?php foreach (mpl_other_post_types() as $other_type): ?>
+                                            <option value="<?php echo $other_type; ?>" <?php echo in_array($other_type, $post_type) ? "selected='selected'": ""; ?>>
+                                                <?php echo mpl_post_type_label($other_type); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </optgroup>
+                                <?php endif; ?>
+                            </select>
+                            <select name="status_selected[]" id="status" class="chosen" multiple data-placeholder="<?php _e("All statuses", "publisher"); ?>">
+                                <?php foreach ($blog_statuses as $status => $statusName): ?>
+                                    <option value="<?php echo esc_attr($status); ?>" <?php echo in_array($status, $status_selected) ? "selected='selected'" : ""; ?>>
+                                        <?php echo esc_html(get_post_status_object($status)->label); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <select name="cat_selected[]" id="cat" class="chosen" multiple data-placeholder="<?php _e("All categories", "publisher"); ?>">
+                                <?php foreach ($blog_categories as $category): ?>
+                                    <option value="<?php echo esc_attr($category->cat_ID); ?>" <?php echo in_array($category->cat_ID, $cat_selected) ? "selected='selected'" : ""; ?>>
+                                        <?php echo esc_html($category->name); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="clearfix">
+                            <select name="month_selected[]" id="month" class="chosen" multiple data-placeholder="<?php _e("All months", "publisher"); ?>">
+                                <?php foreach ($blog_months as $key => $month): ?>
+                                    <option value="<?php echo esc_attr($key); ?>" <?php echo in_array($key, $month_selected) ? "selected='selected'" : ""; ?>>
+                                        <?php echo esc_html($month); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <select name="year_selected[]" id="year" class="chosen" multiple data-placeholder="<?php _e("All years", "publisher"); ?>">
+                                <?php foreach ($blog_years as $year): ?>
+                                    <option value="<?php echo esc_attr($year); ?>" <?php echo in_array($year, $year_selected) ? "selected='selected'" : ""; ?>>
+                                        <?php echo esc_html($year); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="chosen-container text-right">
+                                <button type="submit" name="filter" id="post-query-submit" class="button button-secondary">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
+                            </div>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
@@ -345,7 +345,7 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -382,7 +382,7 @@
                                                     <?php if (get_post_status() != "publish"): ?> — <span class="post-state"><?php echo get_post_status_object(get_post_status())->label; ?></span><?php endif; ?>
                                                 </strong>
                                             </div>
-                                            <small>
+                                            <div class="row-actions">
                                                 <a href="<?php echo get_permalink(); ?>" target="_blank"><?php _e('View', 'publisher'); ?></a>
                                                 <span> | </span>
                                                 <a href="<?php echo get_edit_post_link(); ?>" target="_blank"><?php _e('Edit', 'publisher'); ?></a>
@@ -393,7 +393,7 @@
                                                     </a>
                                                     <span class="spinner" style="float:none;margin-top:-4px;margin-left:2px;"></span>
                                                 <?php endif; ?>
-                                            </small>
+                                            </div>
                                         </td>
                                         <td class="text-right" style="display:table-cell">
                                             <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
@@ -422,17 +422,20 @@
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
                     </table>
 
                     <p class="submit visible-xs">
                         <button type="submit" name="generate" class="generate-button button button-primary">🖨️ <?php _e('Download eBook', "publisher"); ?></button>
-                        <button type="submit" name="save" class="button">💾 <?php _e('Save', "publisher"); ?></button>
+                        <button type="submit" name="save" class="button button-secondary">💾 <?php _e('Save', "publisher"); ?></button>
                     </p>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php include MPL_BASEPATH . '/views/footer.php'; ?>
+
 </form>

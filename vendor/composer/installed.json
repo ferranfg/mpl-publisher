@@ -2575,53 +2575,6 @@
             "install-path": "../symfony/yaml"
         },
         {
-            "name": "wallabag/php-mobi",
-            "version": "1.1.0",
-            "version_normalized": "1.1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wallabag/php-mobi.git",
-                "reference": "bfe9c18d038e5ca24664cfdab107a645ac57c9b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wallabag/php-mobi/zipball/bfe9c18d038e5ca24664cfdab107a645ac57c9b5",
-                "reference": "bfe9c18d038e5ca24664cfdab107a645ac57c9b5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/polyfill-mbstring": "^1.12"
-            },
-            "time": "2019-08-08T12:26:23+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "MOBIClass/MOBI.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Sander Kromwijk",
-                    "email": "s.kromwijk@gmail.co",
-                    "role": "Original developer"
-                },
-                {
-                    "name": "Nicolas Lœuillet",
-                    "email": "nicolas@loeuillet.org",
-                    "homepage": "http://www.cdetc.fr"
-                }
-            ],
-            "description": "A Mobipocket file (.mobi) creator in PHP.",
-            "homepage": "https://github.com/wallabag/php-mobi",
-            "install-path": "../wallabag/php-mobi"
-        },
-        {
             "name": "wallabag/phpepub",
             "version": "4.0.7.2",
             "version_normalized": "4.0.7.2",
