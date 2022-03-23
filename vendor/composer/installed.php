@@ -409,15 +409,6 @@
             'reference' => '29e61305e1c79d25f71060903982ead8f533e267',
             'dev_requirement' => false,
         ),
-        'wallabag/php-mobi' => array(
-            'pretty_version' => '1.1.0',
-            'version' => '1.1.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../wallabag/php-mobi',
-            'aliases' => array(),
-            'reference' => 'bfe9c18d038e5ca24664cfdab107a645ac57c9b5',
-            'dev_requirement' => false,
-        ),
         'wallabag/phpepub' => array(
             'pretty_version' => '4.0.7.2',
             'version' => '4.0.7.2',

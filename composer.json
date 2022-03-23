@@ -1,6 +1,6 @@
 {
     "name": "ferranfg/mpl-publisher",
-    "description": "MPL-Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Mobi... etc.",
+    "description": "MPL-Publisher is a plugin to help you publish your WordPress posts as an elegant eBooks. Choose your format: PDF, ePub, Docx, MP3... etc.",
     "keywords": ["wordpress", "ebook", "epub"],
     "license": "MIT",
     "require": {
@@ -12,7 +12,6 @@
         "league/html-to-markdown": "4.10.0",
         "symfony/yaml": "^4.4",
         "phpoffice/phpword": "0.18.0",
-        "wallabag/php-mobi": "1.1.0",
         "guzzlehttp/guzzle": "6.5.x-dev",
         "simplehtmldom/simplehtmldom": "dev-master",
         "html2text/html2text": "dev-master"
