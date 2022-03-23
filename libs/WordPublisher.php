@@ -16,20 +16,28 @@ class WordPublisher implements IPublisher {
 
     private $config;
 
-    private $bookTitle;
-
     private $coverFile;
 
-    private $toc = null;
+    private $is_first_chapter = true;
+
+    private $title;
+
+    private $author_name;
+
+    private $section_style = array(
+        'paperSize' => 'Letter',
+        'Orientation' => 'portrait'
+    );
 
     public function __construct()
     {
-        $this->word   = new PhpWord();
+        $this->word = new PhpWord();
         $this->config = $this->word->getDocInfo();
 
         $this->config->setCompany('MPL-Publisher by Ferran Figueredo, https://wordpress.mpl-publisher.com/');
 
-        Settings::setDefaultPaper('Letter');
+        $this->word->addTitleStyle(1, array('size' => 20, 'bold' => true), array('align' => Align::CENTER));
+        $this->word->getSettings()->setUpdateFields(true);
     }
 
     public function setTmpPath($tempPath)
@@ -48,7 +56,7 @@ class WordPublisher implements IPublisher {
     {
         if (trim($title) == '') return;
 
-        $this->bookTitle = $title;
+        $this->title = $title;
 
         $this->config->setTitle($title);
     }
@@ -56,6 +64,8 @@ class WordPublisher implements IPublisher {
     public function setAuthor($author_name)
     {
         if (trim($author_name) == '') return $author_name;
+
+        $this->author_name = $author_name;
 
         $this->config->setCreator($author_name);
     }
@@ -69,13 +79,16 @@ class WordPublisher implements IPublisher {
     {
         $this->coverFile = $this->tempPath . '/' . $filename;
 
-        $image = file_put_contents($this->coverFile, $image_data);
-        $cover = $this->word->addSection();
+        file_put_contents($this->coverFile, $image_data);
+
+        $cover = $this->word->addSection($this->section_style);
 
         $cover->addImage($this->coverFile, array(
             'width' => 460,
             'alignment' => Align::CENTER
         ));
+
+        $cover->addPageBreak();
     }
 
     public function setTheme($theme, $custom_css)
@@ -107,18 +120,14 @@ class WordPublisher implements IPublisher {
     
     public function addChapter($id, $title, $content)
     {
-        if (is_null($this->toc))
-        {
-            $this->toc = $this->word->addSection();
-            $this->toc->addTOC();
-        }
+        if ($this->is_first_chapter) $this->initSections();
 
-        $section = $this->word->addSection();
+        $this->section->addTitle($title, 1);
+        $this->section->addTextBreak(4);
 
-        $section->addTitle($title, 1);
-        Html::addHtml($section, $content);
+        Html::addHtml($this->section, $content);
 
-        $this->addHeader($section);
+        $this->section->addPageBreak();
     }
 
     public function send($filename)
@@ -144,13 +153,39 @@ class WordPublisher implements IPublisher {
         unlink($filepath);
     }
 
-    private function addHeader($section)
+    private function initSections()
     {
-        if ($this->bookTitle)
+        $p_style = array('align' => Align::CENTER);
+        $h1_style = array('size' => '24', 'bold' => true);
+        $h2_style = array('size' => '20', 'bold' => true);
+
+        if ($this->title and $this->author_name)
         {
-            $header = $section->addHeader();
-            $header->addText($this->bookTitle);
+            $text_cover = $this->word->addSection($this->section_style);
+
+            $text_cover->addText($this->author_name, $h2_style, $p_style);
+            $text_cover->addTextBreak(2);
+            $text_cover->addText($this->title, $h1_style, $p_style);
+            $text_cover->addPageBreak();
         }
+
+        $toc_section = $this->word->addSection($this->section_style);
+
+        $toc_section->addText('Contents', $h2_style, $p_style);
+        $toc_section->addTextBreak(2);
+        $toc_section->addTOC(array('size' => 12), array(), 1, 1);
+
+        $this->section = $this->word->addSection(array_merge($this->section_style, array(
+            'pageNumberingStart' => '1'
+        )));
+
+        $header = $this->section->addHeader();
+        $header->addText($this->title, array(), $p_style);
+
+        $footer = $this->section->addFooter();
+        $footer->addPreserveText('{PAGE}', array(), $p_style);
+
+        $this->is_first_chapter = false;
     }
 
 }

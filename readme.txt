@@ -113,6 +113,15 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 2.1.0 =
+- Word: Improve TOC generation: link to titles and page number.
+- Word: Add book title and Author after cover image.
+
+= 2.0.0 =
+- New admin page design
+- Removed MOBI from supported formats as it's outdated
+- Improved UX on responsive, filters and tutorial intro
+
 = 1.34.1 =
 - Fix error when custom post type is not available anymore
 
