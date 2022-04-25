@@ -122,6 +122,7 @@ class PublisherBase {
             'month_selected'  => array(),
             'selected_posts'  => false,
             'order_asc'       => true,
+            'validate_html'   => false,
             'format'          => 'epub2'
         );
     }
@@ -354,6 +355,23 @@ class PublisherBase {
                 if (array_key_exists('images_load', $data) and $data['images_load'] == 'embed')
                 {
                     $content = $this->parseImages($content);
+                }
+
+                if (array_key_exists('validate_html', $data))
+                {
+                    $html_errors = HtmlValidator::validate($content);
+
+                    if ($html_errors)
+                    {
+                        $validation_notice = [
+                            '_VALIDATION_ERROR_',
+                            __('On chapter', 'publisher') . ": ",
+                            "{$post->post_title}\n",
+                            $html_errors
+                        ];
+
+                        throw new Exception(implode('', $validation_notice));
+                    }
                 }
 
                 $publisher->addChapter($chapter, $post->post_title, $content);

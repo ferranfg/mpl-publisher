@@ -33,7 +33,12 @@
 
     <?php include MPL_BASEPATH . '/views/alert.php'; ?>
 
-    <?php if ($admin_notice): ?>
+    <?php if ($admin_notice and mpl_starts_with($admin_notice, '_VALIDATION_ERROR_')): ?>
+        <div class="notice notice-info is-dismissible">
+            <p>⚠️ <b><?php _e("Validation errors were found:", "publisher"); ?></b></p>
+            <pre><?php echo esc_html(str_replace('_VALIDATION_ERROR_', '', $admin_notice)); ?></pre>
+        </div>
+    <?php elseif ($admin_notice): ?>
         <div class="notice notice-info is-dismissible">
             <p><?php echo esc_html($admin_notice); ?></p>
         </div>
@@ -250,7 +255,7 @@
 
                     <hr class="mt-30 mb-20" />
 
-                    <div class="form-field mb-20" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
+                    <div class="form-field" data-step="7" data-intro="<?php _e('We are almost there. We offer a good number of formats to download your book. We support the main extensions depending on your distribution platform.', 'publisher'); ?>">
                         <label for="format"><?php _e("Output format", "publisher"); ?>¹</label>
                         <select name="format" id="format">
                             <option value="epub2" <?php echo $format == "epub2" ? "selected='selected'" : ''; ?>>EPUB 2.0</option>
@@ -263,6 +268,11 @@
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
                             </optgroup>
                         </select>
+                    </div>
+                    <div class="form-field mt-0 mb-10">
+                        <label for="validate_html"><input type="checkbox" name="validate_html" id="validate_html" <?php echo $validate_html ? 'checked="checked"' : '' ?> /><?php _e("Validate content before download", "publisher"); ?> <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Validating content before generation ensures your eBook will contain no HTML errors and will be compatible with all checkers.", "publisher"); ?>"></span></label>
+                    </div>
+                    <div class="mb-20">
                         <p>¹ <?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best).", "publisher"); ?></p>
                         <p>² <?php _e("<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our brand new <a href='https://mpl-publisher.com?utm_medium=plugin&utm_campaign=tools'>self-publishing tools</a>.", "publisher"); ?></p>
                     </div>

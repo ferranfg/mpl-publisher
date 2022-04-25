@@ -250,3 +250,13 @@ if ( ! function_exists('mpl_post_type_label'))
         }
     }
 }
+
+if ( ! function_exists('mpl_starts_with'))
+{
+    function mpl_starts_with($haystack, $needle)
+    {
+        $length = strlen($needle);
+
+        return (substr($haystack, 0, $length) === $needle);
+    }
+}

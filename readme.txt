@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 2.0.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,11 +15,11 @@ MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audi
 
 MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
 
-If you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, print-ready PDF, MS Word (Docx), Audiobook (MP3)… etc.
+If you are looking for a WordPress ebook generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, posts to PDF print-ready, posts to docx (MS Word), posts to Audiobook (MP3)… etc.
 
 Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
-It is free to self-publish on the most popular ebook platforms. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .ePub for Amazon and other stores, or PDF for print-ready books.
+It is free to self-publish on the most popular ebook platforms, like Kindle Direct Publishing (KDP), NOOK Press or KOBO. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .ePub for Amazon KDP and other stores, or PDF for print-ready books.
 
 With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
 
@@ -112,6 +112,10 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.2.0 =
+- Added content validation before eBook generation. Validating content before generation ensures your eBook will contain no HTML errors and will be compatible with all EPUB checkers.
+- Change README tags, description and content
 
 = 2.1.0 =
 - Word: Improve TOC generation: link to titles and page number.
