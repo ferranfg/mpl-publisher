@@ -114,8 +114,8 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.3.0 =
-- Add "Book Subtitle" field to all formats
-- Update tabs disposition and move ISBN field to Meta tab
+- Add "Book Subtitle" field and compatible to all output formats
+- Update tabs disposition and move "ISBN" field to "Meta" tab
 - Tested up to PHP 8.1
 
 = 2.2.0 =
