@@ -27,6 +27,13 @@ class PlainPublisher implements IPublisher {
         $this->meta['Title'] = $title;
     }
 
+    public function setSubtitle($subtitle)
+    {
+        if ($subtitle == '') return;
+
+        $this->setTitle($this->meta['Title'] . ': ' . $subtitle);
+    }
+
     public function setAuthor($author_name)
     {
         $this->meta['Author'] = $author_name;

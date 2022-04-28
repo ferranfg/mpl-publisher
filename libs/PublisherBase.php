@@ -99,6 +99,7 @@ class PublisherBase {
         return array(
             'identifier'  => '',
             'title'       => get_bloginfo('site_name'),
+            'subtitle'    => '',
             'description' => get_bloginfo('site_description'),
             'authors'     => wp_get_current_user()->display_name,
             'language'    => get_locale(),
@@ -307,6 +308,7 @@ class PublisherBase {
 
         $publisher->setIdentifier(sanitize_text_field($data['identifier']));
         $publisher->setTitle(sanitize_text_field($data['title']));
+        $publisher->setSubtitle(sanitize_text_field($data['subtitle']));
         $publisher->setAuthor(sanitize_text_field($data['authors']));
         $publisher->setPublisher(sanitize_text_field($data['editor']));
         $publisher->setDescription(sanitize_text_field($data['description']));

@@ -50,6 +50,13 @@ class MarkdownPublisher implements IPublisher {
         $this->config['book']['title'] = $title;
     }
 
+    public function setSubtitle($subtitle)
+    {
+        if ($subtitle == '') return;
+
+        $this->setTitle($this->config['book']['title'] . ': ' . $subtitle);
+    }
+
     public function setAuthor($author_name)
     {
         $this->config['book']['author'] = $author_name;

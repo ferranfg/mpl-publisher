@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, book, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.1.8
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.3.0 =
+- Add "Book Subtitle" field to all formats
+- Update tabs disposition and move ISBN field to Meta tab
+- Tested up to PHP 8.1
 
 = 2.2.0 =
 - Added content validation before eBook generation. Validating content before generation ensures your eBook will contain no HTML errors and will be compatible with all EPUB checkers.

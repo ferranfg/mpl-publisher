@@ -33,6 +33,13 @@ class PremiumPublisher
         $this->params['title'] = $title;
     }
 
+    public function setSubtitle($subtitle)
+    {
+        if ($subtitle == '') return;
+
+        $this->setTitle($this->params['title'] . ': ' . $subtitle);
+    }
+
     public function setAuthor($author_name)
     {
         $this->params['author'] = $author_name;

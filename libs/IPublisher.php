@@ -8,6 +8,8 @@ interface IPublisher {
 
     public function setTitle($title);
 
+    public function setSubtitle($subtitle);
+
     public function setAuthor($author_name);
 
     public function setPublisher($publisher_name);

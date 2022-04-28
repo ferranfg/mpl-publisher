@@ -31,6 +31,13 @@ class EpubPublisher implements IPublisher {
         return $this->epub->setTitle($title);
     }
 
+    public function setSubtitle($subtitle)
+    {
+        if ($subtitle == '') return;
+
+        return $this->setTitle($this->epub->getTitle() . ': ' . $subtitle);
+    }
+
     public function setAuthor($author_name)
     {
         return $this->epub->setAuthor($author_name, $author_name);

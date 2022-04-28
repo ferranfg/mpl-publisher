@@ -50,9 +50,9 @@
         <ul class="nav-tab-wrapper nav-tabs hidden-xs">
             <?php do_action('mpl_publisher_after_tabs'); ?>
             <li class="nav-tab active"><a href="#book-details" data-toggle="tab"><?php _e("Details", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-cover" data-toggle="tab"><?php _e("Cover", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Design", "publisher"); ?></a></li>
-            <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <?php if (is_null(mpl_premium_token())): ?>
                 <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <?php endif; ?>
@@ -63,9 +63,9 @@
         <select class="nav-tabs nav-tab-select visible-xs">
             <?php do_action('mpl_publisher_after_tabs_responsive'); ?>
             <option value="0"><?php _e("Details", "publisher"); ?></option>
-            <option value="1"><?php _e("Cover", "publisher"); ?></option>
-            <option value="2"><?php _e("Design", "publisher"); ?></option>
-            <option value="3"><?php _e("Meta", "publisher"); ?></option>
+            <option value="1"><?php _e("Meta", "publisher"); ?></option>
+            <option value="2"><?php _e("Cover", "publisher"); ?></option>
+            <option value="3"><?php _e("Design", "publisher"); ?></option>
             <?php if (is_null(mpl_premium_token())): ?>
                 <option value="4"><?php _e("Premium", "publisher"); ?></option>
             <?php endif; ?>
@@ -86,6 +86,34 @@
                         <h3><?php _e("Book details", "publisher"); ?></h3>
                         <p><?php _e("Enter your book details, including title, description, and authors. We encourage you to complete as many fields as possible, as richer data could help readers discover your books.", "publisher"); ?></p>
 
+                        <div class="form-field" data-step="3" data-intro="<?php _e('For example, you can change your book title in this field. The title is the first thing the reader sees or hears about your book. Getting it right is the single most important book marketing decision you\'ll make!', 'publisher'); ?>">
+                            <label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
+                            <input name="title" id="book-title" type="text" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e('Book Title'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-subtitle"><?php _e("Book Subtitle (Optional)", "publisher"); ?></label>
+                            <input name="subtitle" id="book-subtitle" type="text" value="<?php echo esc_attr($subtitle); ?>" placeholder="<?php _e('Book Subtitle (Optional)'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-authors">
+                                <?php _e("Book Authors", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Separate multiple authors with commas", "publisher"); ?>"></span>
+                            </label>
+                            <input name="authors" id="book-authors" type="text" value="<?php echo esc_attr($authors); ?>" placeholder="<?php _e('Book Authors'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-description"><?php _e("Book Description", "publisher"); ?></label>
+                            <textarea name="description" id="book-description" rows="8"><?php echo esc_textarea($description); ?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane clearfix" id="book-settings">
+                        <h3><?php _e("Metadata settings", "publisher"); ?></h3>
+                        <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
+
                         <div class="form-field">
                             <label for="book-identifier">
                                 <?php _e("Identifier (ISBN)", "publisher"); ?>
@@ -94,22 +122,51 @@
                             <input name="identifier" id="book-identifier" type="text" value="<?php echo esc_attr($identifier); ?>" placeholder="ej: 9788494138805 E">
                         </div>
 
-                        <div class="form-field" data-step="3" data-intro="<?php _e('For example, you can change your book title in this field. The title is the first thing the reader sees or hears about your book. Getting it right is the single most important book marketing decision you\'ll make!', 'publisher'); ?>">
-                            <label for="book-title"><?php _e("Book Title", "publisher"); ?></label>
-                            <input name="title" id="book-title" type="text" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e('Book Title'); ?>">
-                        </div>
-
                         <div class="form-field">
-                            <label for="book-description"><?php _e("Book Description", "publisher"); ?></label>
-                            <textarea name="description" id="book-description" rows="8"><?php echo esc_textarea($description); ?></textarea>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-authors">
-                                <?php _e("Book authors", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Separate multiple authors with commas", "publisher"); ?>"></span>
+                            <label for="book-language">
+                                <?php _e("Language", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
                             </label>
-                            <input name="authors" id="book-authors" type="text" value="<?php echo esc_attr($authors); ?>" placeholder="<?php _e('Book authors'); ?>">
+                            <input name="language" id="book-language" type="text" value="<?php echo esc_attr($language); ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-date">
+                                <?php _e("Publication date", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("This information won't affect the book's availability", "publisher"); ?>"></span>
+                            </label>
+                            <input name="date" id="book-date" type="text" value="<?php echo esc_attr($date); ?>" placeholder="<?php _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
+                            <input name="editor" id="book-editor" type="text" value="<?php echo esc_attr($editor); ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-copyright">
+                                <?php _e("Copyright Information", "publisher"); ?>
+                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
+                            </label>
+                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo esc_textarea($copyright); ?></textarea>
+                        </div>
+
+                        <h3><?php _e("External links", "publisher"); ?></h3>
+                        <p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
+
+                        <div class="form-field">
+                            <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
+                            <input name="landing_url" id="book-landing" type="text" value="<?php echo esc_attr($landing_url); ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
+                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo esc_attr($amazon_url); ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
+                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo esc_attr($ibooks_url); ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
                         </div>
                     </div>
 
@@ -164,58 +221,6 @@
 
                         <div class="form-field" id="template">
                             <textarea name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo esc_textarea($custom_css); ?></textarea>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane clearfix" id="book-settings">
-                        <h3><?php _e("Metadata settings", "publisher"); ?></h3>
-                        <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
-
-                        <div class="form-field">
-                            <label for="book-language">
-                                <?php _e("Language", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Use the RFC3066 Language codes, such as en, es, fr…", "publisher"); ?>"></span>
-                            </label>
-                            <input name="language" id="book-language" type="text" value="<?php echo esc_attr($language); ?>" placeholder="<?php _e('Language', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-date">
-                                <?php _e("Publication date", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("This information won't affect the book's availability", "publisher"); ?>"></span>
-                            </label>
-                            <input name="date" id="book-date" type="text" value="<?php echo esc_attr($date); ?>" placeholder="<?php _e('YYYY-MM-DD', 'publisher'); ?>" style="width:95%">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-editor"><?php _e("Publisher Name", "publisher"); ?></label>
-                            <input name="editor" id="book-editor" type="text" value="<?php echo esc_attr($editor); ?>" placeholder="<?php _e('Publisher Name', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-copyright">
-                                <?php _e("Copyright Information", "publisher"); ?>
-                                <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Copyright information includes a statement about various property rights associated with the resource, including intellectual property rights", "publisher"); ?>"></span>
-                            </label>
-                            <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo esc_textarea($copyright); ?></textarea>
-                        </div>
-
-                        <h3><?php _e("External links", "publisher"); ?></h3>
-                        <p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
-
-                        <div class="form-field">
-                            <label for="book-landing"><?php _e("Landing Page URL", "publisher"); ?></label>
-                            <input name="landing_url" id="book-landing" type="text" value="<?php echo esc_attr($landing_url); ?>" placeholder="<?php _e('Landing Page URL', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-amazon"><?php _e("Amazon URL", "publisher"); ?> <a href="https://kdp.amazon.com/help?topicId=A2GF0UFHIYG9VQ" target="_blank">[?]</a></label>
-                            <input name="amazon_url" id="book-amazon" type="text" value="<?php echo esc_attr($amazon_url); ?>" placeholder="<?php _e('Amazon URL', 'publisher'); ?>">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
-                            <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo esc_attr($ibooks_url); ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
                         </div>
                     </div>
 

@@ -61,6 +61,13 @@ class WordPublisher implements IPublisher {
         $this->config->setTitle($title);
     }
 
+    public function setSubtitle($subtitle)
+    {
+        if ($subtitle == '') return;
+
+        $this->setTitle($this->title . ': ' . $subtitle);
+    }
+
     public function setAuthor($author_name)
     {
         if (trim($author_name) == '') return $author_name;
@@ -72,7 +79,7 @@ class WordPublisher implements IPublisher {
 
     public function setPublisher($publisher_name)
     {
-        $this->config->setLastModifiedBy($publisher_name);
+        $this->config->setCompany($publisher_name);
     }
 
     public function setCoverImage($filename, $image_data)
