@@ -129,6 +129,11 @@
   margin-bottom: 0;
 }
 
+.mpl #premium-notice a {
+  color: #1d2327;
+  font-weight: 700;
+}
+
 .mpl .notice {
   margin: 20px;
 }

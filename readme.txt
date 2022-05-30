@@ -1,27 +1,27 @@
-=== MPL-Publisher — Create your Ebook & Audiobook ===
+=== MPL-Publisher — WordPress Book & Audiobook Creator ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
-Tags: ebook, audiobook, epub, book, kindle, self-publish
+Tags: ebook, audiobook, PDF, kindle, self-publish
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 7.1.8
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 converting your WordPress posts.
 
 == Description ==
 
-MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 converting your WordPress posts.
 
-If you are looking for a WordPress ebook generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it the simplest possible way 👌. Convert your posts to EPUB, posts to PDF print-ready, posts to docx (MS Word), posts to Audiobook (MP3)… etc.
+If you are looking for a WordPress book generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it in the simplest possible way 👌. Convert your posts to book, posts to PDF print-ready, posts to MS Word (Docx), posts to Audiobook (MP3)… etc.
 
-Writing a book successfully is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
+Writing a successful book is a challenge by itself and publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing, Amazon publishing, and other forms of self-publishing, publishing an ebook or audiobook can even be easy.
 
-It is free to self-publish on the most popular ebook platforms, like Kindle Direct Publishing (KDP), NOOK Press or KOBO. You just need a formatted ebook file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .ePub for Amazon KDP and other stores, or PDF for print-ready books.
+It is free to self-publish on the most popular book platforms, like Kindle Direct Publishing (KDP), NOOK Press or KOBO. You just need a formatted book file to load to the publishing platforms. This is your completed, edited manuscript in specific formats: .ePub for Amazon KDP and other stores, or PDF for print-ready books.
 
-With our plugin, you can download in a matter of seconds your eBook from your WordPress blog in these formats. If you already have a WordPress site, you are ready to start selling online your self-published book.
+With our plugin, you can create an ebook from your WordPress posts in a matter of seconds. If you already have a WordPress site, you are ready to start selling online your self-published book.
 
 The plugin is full of features (check the features section and roadmap to future releases) and open to any comments, bugs, or issues you may have. Use the MPL-Publisher Support Forum.
 
@@ -29,11 +29,11 @@ The plugin is full of features (check the features section and roadmap to future
 
 For now, these are the current features:
 
-- Unlimited books per site with unlimited exports per book.
+- Convert your WordPress blog to unlimited books per site with unlimited exports per book.
 - Advanced cover editor included (only available for premium).
-- Select indivicual chapters (posts, pages, and "secret chapters") to include in your eBook.
-- Set basic information about your book: Title, Description, Authors, ISBN, Publisher, Book Cover.
-- Download your eBook as EPUB2.0, EPUB3.0, Markdown, Microsoft Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
+- Select indivicual chapters (posts, pages, and "secret chapters") to include in your book.
+- Set basic information about your book: Title, Description, Authors, ISBN, Publisher, book Cover.
+- Create your book as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your book with your readers.
 - Promote your book using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
@@ -45,11 +45,11 @@ For now, these are the current features:
 Future releases will include, at least, the next functionalities:
 
 - Multiple professional designs available.
-- Sell directly your ebook to your audience.
+- Sell directly your book to your audience.
 
 = Other Plugins Compatibility =
 
-We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher is compatible with other plugins custom post types. This will allow you to create ebooks & audiobooks without changing your current tools.
+We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher is compatible with other plugins custom post types. This will allow you to create books & audiobooks without changing your current tools.
 
 Some of these plugins have been tested by ourselves and guarantee proper compatibility. This list includes:
 
@@ -81,7 +81,7 @@ To include a shortcode in your pages or posts
 
 1. Add the `[mpl]` shortcode into 
 2. Available options are `[mpl download=true]` to include a download button and `[mpl external=true]` to include your book's external links
-3. Modify your shortcode's title using `[mpl]Download my book[/mpl]`
+3. Modify your shortcode's title using `[mpl]Download My Book[/mpl]`
 
 == Frequently Asked Questions ==
 
@@ -97,7 +97,7 @@ If you have any other error, please use the [MPL-Publisher support forum](https:
 
 = Which output formats are supported? =
 
-Currently, we support EPUB2.0, EPUB3.0, Microsoft Word (docx), Markdown, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3). You can choose it from the Output format's select menu.
+Currently, we support EPUB 2.0 and EPUB 3.0, MS Word (Docx), Markdown, print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3). You can choose it from the Output format's select menu.
 
 = What about other formats? =
 
@@ -113,13 +113,18 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 2.3.1 =
+- Clean DIVI shortcodes. Fix: https://wordpress.org/support/topic/tags-divi-theme/
+- Add support for WordPress 6.0
+- Update Readme.txt description
+
 = 2.3.0 =
 - Add "Book Subtitle" field and compatible to all output formats
 - Update tabs disposition and move "ISBN" field to "Meta" tab
 - Tested up to PHP 8.1
 
 = 2.2.0 =
-- Added content validation before eBook generation. Validating content before generation ensures your eBook will contain no HTML errors and will be compatible with all EPUB checkers.
+- Added content validation before creating a book. Validating content before book creation ensures your book will contain no HTML errors and will be compatible with all EPUB checkers.
 - Change README tags, description and content
 
 = 2.1.0 =
@@ -142,7 +147,7 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.33.0 =
 - Decrease posts limitation to 50 results to improve performance
 - Allow Premium users to edit max results per book
-- Non-premium users can download a free PDF and MP3 sample
+- Non-premium users can create a PDF and MP3 sample
 - MPL-Publisher JSON format is now available for all users
 
 = 1.32.1 =
@@ -196,7 +201,7 @@ In future releases, we will add further improvements to our current formats. Kee
 - Added Plain Text (txt) as new output format
 - Added tutorial/help section explaining main plugin features
 - Warning message before leaving the page without saving changes
-- Include TOC at the beginning of the document on Microsoft Word export
+- Include TOC at the beginning of the document on MS Word (Docx) export
 - Support for WordPress 5.8
 
 = 1.27.0 =
@@ -218,7 +223,7 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.24.0 =
 - Introducing Marketplace: resources and ideas to help you boost your book sales
 - Add image styles to keep alignment with WordPress editor
-- Remove custom styles on the "Download my eBook" widget
+- Remove custom styles on the "Download my Book" widget
 - Fix parsing date error on Word file generation
 - Fix loading plugin translations and update them
 
@@ -287,17 +292,17 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.13.0 =
 - Added MOBI as output format (Basic field, not ready for production)
 - Fix [Draft Book Posts?](https://wordpress.org/support/topic/draft-book-posts?replies=1) issue
-- Fix "Read More" issue (Posts where printing only excerpts on the generated eBook)
+- Fix "Read More" issue (Posts where printing only excerpts on the created book)
 - Fix plugin page navbar and table styles
 - Update plugin dependencies
 
 = 1.12.0 =
-- Added Microsoft Word (Docx) as output format
+- Added MS Word (Docx) as output format
 - Custom CSS text area under the Appearance tab
 
 = 1.11.0 =
-- Add MPL-Download eBook widget to promote your book with your readers
-- Shortcode to include your MPL-Download eBook using `[mpl]`
+- Add MPL-Download Book widget to promote your book with your readers
+- Shortcode to include your MPL-Download book using `[mpl]`
 - Added a "Links" tab to include related pages with your book, like Amazon or iBooks links
 - Improved tab navigation on responsive mobile
 - Fix language load_plugin_textdomain path
@@ -306,14 +311,14 @@ In future releases, we will add further improvements to our current formats. Kee
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)
 - Added Appearance's tab to preview and choose your book design
 - New filter with content type selection
-- Download the book as a zip file with chapters in markdown format
+- Create a book as zip file with chapters in markdown format
 - Fix automatic line breaks into HTML paragraphs
 
 = 1.9.0 =
 - Added French translation. Thanks to [zebulong](https://profiles.wordpress.org/zebulong)
 - You can add specific content as a chapter to your book without needing to be an existing published post
 - Added Copyright information field about your book
-- Added default CSS classes to book.css to ensure styles on images once the book is published
+- Added default CSS classes to ebook.css to ensure styles on images once the book is published
 - Added multiple tooltips to increase information about how the plugin works
 - Fix CSS mpl-pubisher.css namespace
 - Fix local timestamp on save information
@@ -338,8 +343,8 @@ In future releases, we will add further improvements to our current formats. Kee
 - Pending 1.5.0 Spanish and Catalan translations
 
 = 1.5.0 =
-- Add Book Description
-- Sets Blog Language as Book Language
+- Add book Description
+- Sets Blog Language as book Language
 
 = 1.4.4 =
 - Fix "Class not found" error
@@ -349,8 +354,8 @@ In future releases, we will add further improvements to our current formats. Kee
 - Fix HTTPS image request
 
 = 1.3.0 =
-- Added EPUB3.0 as output format
-- Upload a Book Cover
+- Added EPUB 3.0 as output format
+- Upload a book Cover
 - Added meta-information about the generator
 - Corrected Spanish and Catalan translations
 

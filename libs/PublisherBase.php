@@ -344,11 +344,10 @@ class PublisherBase {
 
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
-                $content = $post->post_content;
+                $content = get_the_content();
 
                 // @see https://developer.wordpress.org/reference/hooks/the_content/
                 $content = apply_filters('the_content', $content);
-                $content = str_replace(']]>', ']]&gt;', $content);
 
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
@@ -497,6 +496,9 @@ class PublisherBase {
 
     private function parseText($content)
     {
+        $content = str_replace(']]>', ']]&gt;', $content);
+        // TODO: Find a way to remove all shortcodes (only for DIVI)
+        $content = preg_replace('/\[\/?et_pb.*?\]/', '', $content);
         // Remove HTML comments
         $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
         // Remove properties from allowed HTML tags (except <p>)
