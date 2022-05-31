@@ -1,11 +1,11 @@
-=== MPL-Publisher — WordPress Book & Audiobook Creator ===
+=== MPL-Publisher — Book & Audiobook Creator ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, PDF, kindle, self-publish
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.1.8
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,7 +113,7 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
-= 2.3.1 =
+= 2.3.2 =
 - Clean DIVI shortcodes. Fix: https://wordpress.org/support/topic/tags-divi-theme/
 - Add support for WordPress 6.0
 - Update Readme.txt description
