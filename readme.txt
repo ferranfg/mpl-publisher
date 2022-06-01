@@ -1,7 +1,7 @@
-=== MPL-Publisher — Book & Audiobook Creator ===
+=== MPL-Publisher — Book, Ebook & Audiobook Creator ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
-Tags: ebook, audiobook, PDF, kindle, self-publish
+Tags: book, ebook, audiobook, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.1.8
