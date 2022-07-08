@@ -6,9 +6,9 @@
             <a href="https://docs.mpl-publisher.com" class="button button-secondary" target="_blank"><?php _e("Documentation", "publisher"); ?></a>
         </div>
         <div class="mplblock">
-            <h3>🌍 <?php _e("Community", "publisher"); ?></h3>
-            <p><?php _e("Join the Facebook community and discuss with fellow authors and readers. Best way to connect with people and get feedback on your books.", "publisher"); ?></p>
-            <a href="https://facebook.com/MPLPublisher" class="button button-secondary" target="_blank"><?php _e("Join now", "publisher"); ?></a>
+            <h3>📨 <?php _e("Support", "publisher"); ?></h3>
+            <p><?php _e("If you're already a user, the fastest way to get help is through the WordPress support system. Connect with us and get support for your queries.", "publisher"); ?></p>
+            <a href="https://wordpress.org/support/plugin/mpl-publisher/" class="button button-secondary" target="_blank"><?php _e("Support", "publisher"); ?></a>
         </div>
         <div class="mplblock">
             <h3>❤️ <?php _e("Show Your Love", "publisher"); ?></h3>
