@@ -26,7 +26,7 @@ interface IPublisher {
 
     public function setRights($rights_text);
 
-    public function addChapter($id, $title, $content);
+    public function addChapter($id, $title, $content, $image = null);
 
     public function send($filename);
 

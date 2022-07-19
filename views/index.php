@@ -204,6 +204,17 @@
                             </div>
                         </div>
 
+                        <h3><?php _e("Post featured image", "publisher"); ?></h3>
+                        <p>
+                            <?php _e("Configure how the plugin will manager your post's featured image in every chapter.", "publisher"); ?>
+                        </p>
+                        <div class="form-field">
+                            <select name="thumbnail_load" style="width: 100%">
+                                <option value="default" <?php echo $thumbnail_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Don't include featured image in chapter content", "publisher"); ?></option>
+                                <option value="before"  <?php echo $thumbnail_load == "before"  ? "selected='selected'" : ''; ?>><?php _e("Include featured image before chapter title", "publisher"); ?></option>
+                            </select>
+                        </div>
+
                         <h3><?php _e("Content images", "publisher"); ?></h3>
                         <p>
                             <?php _e("Configure how the plugin will manage your book images", "publisher"); ?>

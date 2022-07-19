@@ -125,12 +125,14 @@ class WordPublisher implements IPublisher {
         //
     }
     
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         if ($this->is_first_chapter) $this->initSections();
 
         $this->section->addTitle($title, 1);
         $this->section->addTextBreak(4);
+
+        if ( ! is_null($image)) $this->section->addImage($image);
 
         Html::addHtml($this->section, $content);
 

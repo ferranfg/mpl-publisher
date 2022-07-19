@@ -126,7 +126,7 @@ class MarkdownPublisher implements IPublisher {
         );
     }
     
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         if (trim($content) == '') return;
 
@@ -143,7 +143,8 @@ class MarkdownPublisher implements IPublisher {
             'element' => 'chapter',
             'number'  => $this->count,
             'content' => $chapterTitle,
-            'title'   => $title
+            'title'   => $title,
+            'image'   => $image,
         );
 
         $this->count++;

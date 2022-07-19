@@ -111,9 +111,10 @@ class PublisherBase {
             'landing_url' => false,
             'amazon_url'  => false,
             'ibooks_url'  => false,
+            'theme_id'    => 0,
             'custom_css'  => '',
             'images_load' => 'default',
-            'theme_id'    => 0,
+            'thumbnail_load'  => 'default',
             'cat_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
@@ -345,12 +346,26 @@ class PublisherBase {
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
                 $content = get_the_content();
+                $image = null;
 
                 // @see https://developer.wordpress.org/reference/hooks/the_content/
                 $content = apply_filters('the_content', $content);
 
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
+
+                // Embed featured image before chapter title
+                if (array_key_exists('thumbnail_load', $data) and $data['thumbnail_load'] == 'before')
+                {
+                    $post_thumbnail_id = get_post_thumbnail_id($post);
+
+                    if ($post_thumbnail_id)
+                    {
+                        $image_data = wp_get_attachment_image_src($post_thumbnail_id, 'full');
+
+                        if (is_array($image_data)) $image = $image_data[0];
+                    }
+                }
 
                 // Embeds images as base64 into the book content
                 if (array_key_exists('images_load', $data) and $data['images_load'] == 'embed')
@@ -375,7 +390,7 @@ class PublisherBase {
                     }
                 }
 
-                $publisher->addChapter($chapter, $post->post_title, $content);
+                $publisher->addChapter($chapter, $post->post_title, $content, $image);
 
                 $chapter++;
             endwhile;
@@ -523,11 +538,13 @@ class PublisherBase {
             // Global
             'a' => array(
                 'href' => array(),
-                'class' => array()
+                'class' => array(),
+                'title' => array(),
             ),
             'img' => array(
                 'src' => array(),
-                'class' => array()
+                'class' => array(),
+                'alt' => array(),
             ),
             'blockquote' => array(),
             'q' => array(),

@@ -90,7 +90,7 @@ class EpubPublisher implements IPublisher {
         return $this->epub->setRights($rights_text);
     }
 
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         $doctype = $this->format == EPub::BOOK_VERSION_EPUB3 ?
             "<!DOCTYPE html>\n" :
@@ -106,11 +106,17 @@ class EpubPublisher implements IPublisher {
         . "<link href=\"./Style.css\" rel=\"stylesheet\" type=\"text/css\" />\n"
         . "</head>\n"
         . "<body>\n";
-        $bookEnd = "</body>\n</html>\n";
+        $content_end = "</body>\n</html>\n";
 
-        $xmlContent = $content_start . '<h1 class="chapter-title">' . $title . '</h1>' . $content . $bookEnd;
+        $html_content = implode('', array(
+            $content_start,
+            $image ? "<img src=\"{$image}\" alt=\"{$title}\" />" : '',
+            "<h1 class=\"chapter-title\">{$title}</h1>",
+            $content,
+            $content_end
+        ));
 
-        return $this->epub->addChapter($title, $id . ".xhtml", $xmlContent);
+        return $this->epub->addChapter($title, $id . ".xhtml", $html_content);
     }
 
     public function send($filename)

@@ -4,13 +4,14 @@ namespace MPL\Publisher;
 
 class JsonPublisher extends PremiumPublisher implements IPublisher {
 
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         if ( ! array_key_exists('chapters', $this->params)) $this->params['chapters'] = array();
 
         array_push($this->params['chapters'], array(
             'title' => $title,
-            'content' => $content
+            'content' => $content,
+            'image' => $image,
         ));
     }
 

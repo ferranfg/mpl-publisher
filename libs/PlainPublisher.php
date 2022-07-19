@@ -74,7 +74,7 @@ class PlainPublisher implements IPublisher {
         $this->meta['Copyrights'] = $rights;
     }
 
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         $chapter_id = str_pad($id, 3, '0', STR_PAD_LEFT);
         $chapter_title = $chapter_id . '-' . Str::slug($title) . '.txt';

@@ -4,7 +4,7 @@ namespace MPL\Publisher;
 
 class AudiobookPublisher extends PremiumPublisher implements IPublisher
 {
-    public function addChapter($id, $title, $content)
+    public function addChapter($id, $title, $content, $image = null)
     {
         if ( ! array_key_exists('content', $this->params)) $this->params['content'] = '';
 
