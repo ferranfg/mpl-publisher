@@ -12,7 +12,6 @@
         "league/html-to-markdown": "4.10.0",
         "symfony/yaml": "^4.4",
         "phpoffice/phpword": "0.18.0",
-        "guzzlehttp/guzzle": "6.5.x-dev",
         "simplehtmldom/simplehtmldom": "dev-master",
         "html2text/html2text": "dev-master"
     },

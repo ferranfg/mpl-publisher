@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'trunk',
-        'version' => 'dev-trunk',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,8 +20,8 @@
             'dev_requirement' => false,
         ),
         'ferranfg/mpl-publisher' => array(
-            'pretty_version' => 'trunk',
-            'version' => 'dev-trunk',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -66,35 +66,6 @@
             'install_path' => __DIR__ . '/../grandt/relativepath',
             'aliases' => array(),
             'reference' => '19541133c24143b6295688472c54dd6ed15a5462',
-            'dev_requirement' => false,
-        ),
-        'guzzlehttp/guzzle' => array(
-            'pretty_version' => '6.5.x-dev',
-            'version' => '6.5.9999999.9999999-dev',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
-            'aliases' => array(),
-            'reference' => 'e8ed4dbf49b260ff129ff0e0400718c3269971bf',
-            'dev_requirement' => false,
-        ),
-        'guzzlehttp/promises' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../guzzlehttp/promises',
-            'aliases' => array(
-                0 => '1.4.x-dev',
-            ),
-            'reference' => 'ddfeedfff2a52661429437da0702979f708e6ac6',
-            'dev_requirement' => false,
-        ),
-        'guzzlehttp/psr7' => array(
-            'pretty_version' => '1.x-dev',
-            'version' => '1.9999999.9999999.9999999-dev',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../guzzlehttp/psr7',
-            'aliases' => array(),
-            'reference' => '2f3e4f6cf8fd4aad7624c90a94f0ab38fde25976',
             'dev_requirement' => false,
         ),
         'html2text/html2text' => array(
@@ -233,23 +204,6 @@
             'reference' => 'b7ce3b176482dbbc1245ebf52b181af44c2cf55f',
             'dev_requirement' => false,
         ),
-        'psr/http-message' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../psr/http-message',
-            'aliases' => array(
-                0 => '1.0.x-dev',
-            ),
-            'reference' => 'efd67d1dc14a7ef4fc4e518e7dee91c271d524e4',
-            'dev_requirement' => false,
-        ),
-        'psr/http-message-implementation' => array(
-            'dev_requirement' => false,
-            'provided' => array(
-                0 => '1.0',
-            ),
-        ),
         'psr/log' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -270,15 +224,6 @@
                 0 => '1.0.x-dev',
             ),
             'reference' => '5a7b96b1dda5d957e01bc1bfe77dcca09c5a7474',
-            'dev_requirement' => false,
-        ),
-        'ralouphie/getallheaders' => array(
-            'pretty_version' => '3.0.3',
-            'version' => '3.0.3.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../ralouphie/getallheaders',
-            'aliases' => array(),
-            'reference' => '120b605dfeb996808c31b6477290a714d356e822',
             'dev_requirement' => false,
         ),
         'simplehtmldom/simplehtmldom' => array(
@@ -321,28 +266,6 @@
             'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
             'dev_requirement' => false,
         ),
-        'symfony/polyfill-intl-idn' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-intl-idn',
-            'aliases' => array(
-                0 => '1.22.x-dev',
-            ),
-            'reference' => '3709eb82b37c8d6eb23cf10ef19b27b3312d1632',
-            'dev_requirement' => false,
-        ),
-        'symfony/polyfill-intl-normalizer' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-intl-normalizer',
-            'aliases' => array(
-                0 => '1.22.x-dev',
-            ),
-            'reference' => '43a0283138253ed1d48d352ab6d0bdb3f809f248',
-            'dev_requirement' => false,
-        ),
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
@@ -352,17 +275,6 @@
                 0 => '1.22.x-dev',
             ),
             'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
-            'dev_requirement' => false,
-        ),
-        'symfony/polyfill-php72' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-php72',
-            'aliases' => array(
-                0 => '1.22.x-dev',
-            ),
-            'reference' => 'cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php80' => array(

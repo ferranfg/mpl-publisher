@@ -3,9 +3,6 @@
 namespace MPL\Publisher;
 
 use Exception;
-use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Exception\ClientException;
 
 class PremiumPublisher
 {
@@ -90,18 +87,22 @@ class PremiumPublisher
         $filepath = $this->tempPath . '/' . $filename;
         $authorization = is_null(mpl_premium_license()) ? mpl_premium_token() : mpl_premium_license();
 
-        try
-        {
-            (new Client)->post(MPL_ENDPOINT . '/mpl-publisher/' . $endpoint, [
-                RequestOptions::HEADERS => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $authorization
-                ],
-                RequestOptions::JSON => $this->params,
-                RequestOptions::SINK => $filepath
-            ]);
+        $request = wp_remote_post(MPL_ENDPOINT . '/mpl-publisher/' . $endpoint, [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $authorization
+            ],
+            'body' => json_encode($this->params),
+            'data_format' => 'body',
+            'stream' => true,
+            'filename' => $filepath
+        ]);
 
+        if (is_wp_error($request)) $this->throwAlert([$request->get_error_message()]);
+
+        if ($request['http_response']->get_status() == 200)
+        {
             header('Content-Description: File Transfer');
             header('Content-Disposition: attachment; filename=' . $filename);
             header('Content-Transfer-Encoding: binary');
@@ -113,13 +114,13 @@ class PremiumPublisher
 
             unlink($filepath);
         }
-        catch (ClientException $e)
+        else
         {
             $msg = [];
 
-            if ($e->getResponse()->getStatusCode() == 422)
+            if ($request['http_response']->get_status() == 422)
             {
-                $response = json_decode((string) $e->getResponse()->getBody());
+                $response = json_decode((string) file_get_contents($filepath));
 
                 if (property_exists($response, 'message') and property_exists($response, 'errors'))
                 {
@@ -129,11 +130,11 @@ class PremiumPublisher
                 }
             }
 
-            $this->throwPremiumAlert($msg);
+            $this->throwAlert($msg);
         }
     }
 
-    protected function throwPremiumAlert($msg = [])
+    protected function throwAlert($msg = [])
     {
         if (empty($msg)) $msg = [
             __('This is a premium feature and it is not available on the free version.', 'publisher'),
