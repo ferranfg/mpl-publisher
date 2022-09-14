@@ -1,11 +1,11 @@
-=== MPL-Publisher — Book, Ebook & Audiobook Creator ===
+=== MPL-Publisher — Ebook & Audiobook Creator ===
 Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
-Tags: book, ebook, audiobook, kindle, docx
+Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.1.8
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,23 +29,23 @@ The plugin is full of features (check the features section and roadmap to future
 
 For now, these are the current features:
 
-- Convert your WordPress blog to unlimited books per site with unlimited exports per book.
+- Convert your WordPress blog to unlimited ebooks per site with unlimited exports per ebook.
 - Included advanced cover editor (only available for premium).
-- Select individual chapters (posts, pages, and "secret chapters") to include in your book.
-- Set basic information about your book: Title, Description, Authors, ISBN, Publisher and Book Cover.
+- Select individual chapters (posts, pages, and "secret chapters") to include in your ebook.
+- Set basic information about your ebook: Title, Description, Authors, ISBN, Publisher and Book Cover.
 - Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
-- Add a widget to your sidebar to promote your book to your readers.
-- Promote your book using the shortcode [mpl] and their available options.
+- Add a widget to your sidebar to promote your ebook to your readers.
+- Promote your ebook using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
-- Add additional book chapters and edit current content.
-- Include your custom CSS styles in your books.
+- Add additional ebook chapters and edit current content.
+- Include your custom CSS styles in your ebooks.
 
 = Roadmap =
 
 Future releases will include, at least, the next functionalities:
 
 - Multiple professional designs are available.
-- Sell directly your book to your audience.
+- Sell directly your ebook to your audience.
 
 = Other Plugins Compatibility =
 
@@ -60,7 +60,7 @@ Also, there is a fantastic community of plugins available if MPL-Publisher doesn
 
 - [Print My Blog](https://wordpress.org/plugins/print-my-blog/) - Make printing your blog easy and impressive. For you & your visitors. One post or thousands.
 - [DK PDF](https://wordpress.org/plugins/dk-pdf/) - DK PDF allows site visitors to convert posts and pages to PDF using a button.
-- [Anthologize](https://wordpress.org/plugins/search/anthologize/) - Use the power of WordPress to transform your content into a book.
+- [Anthologize](https://wordpress.org/plugins/search/anthologize/) - Use the power of WordPress to transform your content into an ebook.
 
 = Requirements =
 
@@ -80,7 +80,7 @@ This section describes how to install the plugin and get it working.
 To include a shortcode in your pages or posts
 
 1. Add the `[mpl]` shortcode into 
-2. Available options are `[mpl download=true]` to include a download button and `[mpl external=true]` to include your book's external links
+2. Available options are `[mpl download=true]` to include a download button and `[mpl external=true]` to include your ebook's external links
 3. Modify your shortcode's title using `[mpl]Download My Book[/mpl]`
 
 == Frequently Asked Questions ==
@@ -113,6 +113,9 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 2.4.1 =
+- Remove Guzzle HTTP Client and replace with `wp_remote_post`
+
 = 2.4.0 =
 - Post featured image can be included in corresponding ebook chapter.
 - Fix: Image alt attribute was removed and caused a validation error
@@ -129,12 +132,12 @@ In future releases, we will add further improvements to our current formats. Kee
 - Tested up to PHP 8.1
 
 = 2.2.0 =
-- Added content validation before creating a book. Validating content before book creation ensures your book will contain no HTML errors and will be compatible with all EPUB checkers.
+- Added content validation before creating an ebook. Validating content before ebook creation ensures your ebook will contain no HTML errors and will be compatible with all EPUB checkers.
 - Change README tags, descriptions, and content
 
 = 2.1.0 =
 - Word: Improve TOC generation: link to titles and the page number.
-- Word: Add book title and Author after cover image.
+- Word: Add ebook title and Author after cover image.
 
 = 2.0.0 =
 - New admin page design
@@ -145,13 +148,13 @@ In future releases, we will add further improvements to our current formats. Kee
 - Fix error when custom post type is not available anymore
 
 = 1.34.0 =
-- Add support for more post types other than post, page, and book chapter
+- Add support for more post types other than post, page, and ebook chapter
 - Testing compatibility with other knowledge base plugins
 - Retesting for WordPress 5.9 and PHP 8.0
 
 = 1.33.0 =
 - Decrease posts limitation to 50 results to improve performance
-- Allow Premium users to edit max results per book
+- Allow Premium users to edit max results per ebook
 - Non-premium users can create a PDF and MP3 sample
 - MPL-Publisher JSON format is now available for all users
 
@@ -212,29 +215,29 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.27.0 =
 - Fix error related to filter button not filtering results
 - Downgrade min WordPress version to 5.0
-- Allow br tags in book content
+- Allow br tags in ebook content
 - List chapters even if there are over max results
 
 = 1.26.0 =
 - Added 2 new premium themes: Future and Romance ⭐
-- Enable Gutenberg editor for book chapter post type
+- Enable Gutenberg editor for ebook chapter post type
 
 = 1.25.0 =
-- From now on, you can manage multiples books for the same site
-- Added action to clear book information and start from scratch
+- From now on, you can manage multiples ebooks for the same site
+- Added action to clear ebook information and start from scratch
 - Fix error loading remote placeholder image
 - Update PHP version requirements
 
 = 1.24.0 =
-- Introducing Marketplace: resources and ideas to help you boost your book sales
+- Introducing Marketplace: resources and ideas to help you boost your ebook sales
 - Add image styles to keep alignment with WordPress editor
 - Remove custom styles on the "Download my Book" widget
 - Fix parsing date error on Word file generation
 - Fix loading plugin translations and update them
 
 = 1.23.0 =
-- Added experimental feature to embed images into book contents
-- Use `rem` instead of `px` on book styles
+- Added experimental feature to embed images into ebook contents
+- Use `rem` instead of `px` on ebook styles
 - Fix error on saving premium license key
 
 = 1.22.0 =
@@ -242,7 +245,7 @@ In future releases, we will add further improvements to our current formats. Kee
 - Optimize database query when loading chapters
 
 = 1.21.0 =
-- Added a new book theme! Check it out at our "🎨 Appearance" tab
+- Added a new ebook theme! Check it out at our "🎨 Appearance" tab
 - Premium ⭐ version doesn't require a direct FTP upload anymore
 - Better usability messages on saving and error ✅
 - Improvements on our print-ready PDF premium formatting 📘
@@ -279,7 +282,7 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.16.0 =
 - [MPL-Publisher Premium](https://wordpress.mpl-publisher.com) ⭐ it's available!
 - Added Audiobook (mp3) as output format
-- Pages can now be attached as book chapters
+- Pages can now be attached as ebook chapters
 - UX improvements and lots of emojis
 
 = 1.15.1 =
@@ -297,7 +300,7 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.13.0 =
 - Added MOBI as output format (Basic field, not ready for production)
 - Fix [Draft Book Posts?](https://wordpress.org/support/topic/draft-book-posts?replies=1) issue
-- Fix "Read More" issue (Posts where printing only excerpts on the created book)
+- Fix "Read More" issue (Posts where printing only excerpts on the created ebook)
 - Fix plugin page navbar and table styles
 - Update plugin dependencies
 
@@ -306,24 +309,24 @@ In future releases, we will add further improvements to our current formats. Kee
 - Custom CSS text area under the Appearance tab
 
 = 1.11.0 =
-- Add MPL-Download Book widget to promote your book to your readers
-- Shortcode to include your MPL-Download book using `[mpl]`
-- Added a "Links" tab to include related pages with your book, like Amazon or iBooks links
+- Add MPL-Download Book widget to promote your ebook to your readers
+- Shortcode to include your MPL-Download ebook using `[mpl]`
+- Added a "Links" tab to include related pages with your ebook, like Amazon or iBooks links
 - Improved tab navigation on responsive mobile
 - Fix language load_plugin_textdomain path
 
 = 1.10.0 =
 - Added Serbian translation. Thanks to Andrijana from [Web Hosting Geeks](http://webhostinggeeks.com/)
-- Added Appearance tab to preview and choose your book design
+- Added Appearance tab to preview and choose your ebook design
 - New filter with content type selection
-- Create a book as a zip file with chapters in markdown format
+- Create an ebook as a zip file with chapters in markdown format
 - Fix automatic line breaks into HTML paragraphs
 
 = 1.9.0 =
 - Added French translation. Thanks to [zebulong](https://profiles.wordpress.org/zebulong)
-- You can add specific content as a chapter to your book without needing to be an existing published post
-- Added Copyright information field about your book
-- Added default CSS classes to ebook.css to ensure styles on images once the book is published
+- You can add specific content as a chapter to your ebook without needing to be an existing published post
+- Added Copyright information field about your ebook
+- Added default CSS classes to ebook.css to ensure styles on images once the ebook is published
 - Added multiple tooltips to increase information about how the plugin works
 - Fix CSS mpl-pubisher.css namespace
 - Fix local timestamp on save information
@@ -338,7 +341,7 @@ In future releases, we will add further improvements to our current formats. Kee
 = 1.7.0 =
 - Improved admin's page navigation using tabs
 - Add helping blocks to a better understanding
-- Add book publication's date field and editable language field
+- Add ebook publication's date field and editable language field
 - Bug printing post's edit link
 
 = 1.6.0 =
@@ -348,8 +351,8 @@ In future releases, we will add further improvements to our current formats. Kee
 - Pending 1.5.0 Spanish and Catalan translations
 
 = 1.5.0 =
-- Add book Description
-- Sets Blog Language as book Language
+- Add ebook Description
+- Sets Blog Language as ebook Language
 
 = 1.4.4 =
 - Fix "Class not found" error
@@ -360,12 +363,12 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 1.3.0 =
 - Added EPUB 3.0 as output format
-- Upload a book Cover
+- Upload an ebook Cover
 - Added meta-information about the generator
 - Corrected Spanish and Catalan translations
 
 = 1.2.0 =
-- New default book style
+- New default ebook style
 - Added Spanish and Catalan translation
 - Replace Twig with illuminate/view as the view engine
 - Fix duplicate ID chapter
