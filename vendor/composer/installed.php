@@ -68,6 +68,15 @@
             'reference' => '19541133c24143b6295688472c54dd6ed15a5462',
             'dev_requirement' => false,
         ),
+        'guzzlehttp/psr7' => array(
+            'pretty_version' => '1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/psr7',
+            'aliases' => array(),
+            'reference' => 'e98e3e6d4f86621a9b75f623996e6bbdeb4b9318',
+            'dev_requirement' => false,
+        ),
         'html2text/html2text' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -131,6 +140,15 @@
             'install_path' => __DIR__ . '/../illuminate/view',
             'aliases' => array(),
             'reference' => 'c859919bc3be97a3f114377d5d812f047b8ea90d',
+            'dev_requirement' => false,
+        ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(
@@ -204,6 +222,23 @@
             'reference' => 'b7ce3b176482dbbc1245ebf52b181af44c2cf55f',
             'dev_requirement' => false,
         ),
+        'psr/http-message' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-message',
+            'aliases' => array(
+                0 => '1.0.x-dev',
+            ),
+            'reference' => 'efd67d1dc14a7ef4fc4e518e7dee91c271d524e4',
+            'dev_requirement' => false,
+        ),
+        'psr/http-message-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
         'psr/log' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -224,6 +259,15 @@
                 0 => '1.0.x-dev',
             ),
             'reference' => '5a7b96b1dda5d957e01bc1bfe77dcca09c5a7474',
+            'dev_requirement' => false,
+        ),
+        'ralouphie/getallheaders' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ralouphie/getallheaders',
+            'aliases' => array(),
+            'reference' => '120b605dfeb996808c31b6477290a714d356e822',
             'dev_requirement' => false,
         ),
         'simplehtmldom/simplehtmldom' => array(
