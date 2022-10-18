@@ -223,7 +223,7 @@
                         <div class="form-field">
                             <select name="images_load" style="width: 100%">
                                 <option value="default" <?php echo $images_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Load images from original URL", "publisher"); ?></option>
-                                <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images (Experimental)", "publisher"); ?></option>
+                                <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images (Slower generation)", "publisher"); ?></option>
                             </select>
                         </div>
 
