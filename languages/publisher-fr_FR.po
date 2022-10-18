@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-07-08 14:57+0200\n"
-"PO-Revision-Date: 2022-07-08 14:58+0200\n"
+"POT-Creation-Date: 2022-10-17 20:55+0200\n"
+"PO-Revision-Date: 2022-10-17 20:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -26,96 +26,96 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Une boîte avec des informations sur votre eBook"
 
-#: libs/PremiumPublisher.php:139 views/cover-editor.php:4 views/index.php:4
+#: libs/PremiumPublisher.php:140 views/cover-editor.php:4 views/index.php:4
 msgid "This is a premium feature and it is not available on the free version."
 msgstr ""
 "Il s’agit d’une fonctionnalité premium et elle n’est pas disponible sur la "
 "version gratuite."
 
-#: libs/PremiumPublisher.php:140 views/cover-editor.php:4 views/index.php:4
+#: libs/PremiumPublisher.php:141 views/cover-editor.php:4 views/index.php:4
 msgid "Please, visit our homepage and get access to this and more features."
 msgstr ""
 "S’il vous plaît, visitez notre page d’accueil et accédez à cette "
 "fonctionnalité et à d’autres."
 
-#: libs/PublisherBase.php:35
+#: libs/PublisherBase.php:36
 #, php-format
 msgid "Submitted on %s"
 msgstr "Soumis sur %s"
 
-#: libs/PublisherBase.php:137
+#: libs/PublisherBase.php:138
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:149
+#: libs/PublisherBase.php:150
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:161
+#: libs/PublisherBase.php:162
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:173
+#: libs/PublisherBase.php:174
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:199
+#: libs/PublisherBase.php:200
 msgid "January"
 msgstr "Janvier"
 
-#: libs/PublisherBase.php:200
+#: libs/PublisherBase.php:201
 msgid "February"
 msgstr "Février"
 
-#: libs/PublisherBase.php:201
+#: libs/PublisherBase.php:202
 msgid "March"
 msgstr "Mars"
 
-#: libs/PublisherBase.php:202
+#: libs/PublisherBase.php:203
 msgid "April"
 msgstr "Avril"
 
-#: libs/PublisherBase.php:203
+#: libs/PublisherBase.php:204
 msgid "May"
 msgstr "Mai"
 
-#: libs/PublisherBase.php:204
+#: libs/PublisherBase.php:205
 msgid "June"
 msgstr "Juin"
 
-#: libs/PublisherBase.php:205
+#: libs/PublisherBase.php:206
 msgid "July"
 msgstr "Juillet"
 
-#: libs/PublisherBase.php:206
+#: libs/PublisherBase.php:207
 msgid "August"
 msgstr "Août"
 
-#: libs/PublisherBase.php:207
+#: libs/PublisherBase.php:208
 msgid "September"
 msgstr "Septembre"
 
-#: libs/PublisherBase.php:208
+#: libs/PublisherBase.php:209
 msgid "October"
 msgstr "Octobre"
 
-#: libs/PublisherBase.php:209
+#: libs/PublisherBase.php:210
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:210
+#: libs/PublisherBase.php:211
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:308
+#: libs/PublisherBase.php:309
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:371
+#: libs/PublisherBase.php:385
 msgid "On chapter"
 msgstr "Sur le chapitre"
 
-#: libs/PublisherBase.php:387
+#: libs/PublisherBase.php:401
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -132,44 +132,44 @@ msgstr "Livre créé avec succès."
 msgid "Changes successfully saved."
 msgstr "Modifications bien enregistrées."
 
-#: mpl-publisher.php:36
+#: mpl-publisher.php:37
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:37
+#: mpl-publisher.php:38
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
-#: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
+#: mpl-publisher.php:39 mpl-publisher.php:40 mpl-publisher.php:41
 #: views/index.php:374 views/index.php:451
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
-#: mpl-publisher.php:41
+#: mpl-publisher.php:42
 msgid "Edit Book Chapter"
 msgstr "Modifier le chapitre du livre"
 
-#: mpl-publisher.php:42
+#: mpl-publisher.php:43
 msgid "View Book Chapter"
 msgstr "Voir le chapitre livre"
 
-#: mpl-publisher.php:60
+#: mpl-publisher.php:61
 msgid "Publish eBook"
 msgstr "Publier eBook"
 
-#: mpl-publisher.php:62
+#: mpl-publisher.php:63
 msgid "Cover Editor"
 msgstr "Éditeur de couverture"
 
-#: mpl-publisher.php:68 views/index.php:59
+#: mpl-publisher.php:69 views/index.php:59
 msgid "Resources"
 msgstr "Ressources"
 
-#: mpl-publisher.php:138
+#: mpl-publisher.php:139
 msgid "How book chapters works"
 msgstr "Fonctionnement des chapitres de livres"
 
-#: mpl-publisher.php:140
+#: mpl-publisher.php:141
 msgid ""
 "MPL-Publisher allows authors to write custom content specific for your book "
 "without the needed to be accessible from the public. You just have to "
@@ -180,16 +180,16 @@ msgstr ""
 "qu’à publier votre chapitre et il ne sera visible qu’à partir de la page "
 "Paramètres du livre."
 
-#: mpl-publisher.php:141
+#: mpl-publisher.php:142
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: mpl-publisher.php:155
+#: mpl-publisher.php:156
 msgid "Settings"
 msgstr "Paramètres"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:178
+#: mpl-publisher.php:179
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -471,14 +471,16 @@ msgid "Themes"
 msgstr "Thèmes"
 
 #: views/index.php:207
-msgid "Featured images"
+msgid "Post featured image"
 msgstr "Images à la une"
 
 #: views/index.php:209
-msgid "Configure how the plugin will manager your chapter's featured image"
+msgid ""
+"Configure how the plugin will manager your post's featured image in every "
+"chapter."
 msgstr ""
 "Configurez la façon dont le plugin gérera l’image en vedette de votre "
-"chapitre"
+"chapitre."
 
 #: views/index.php:213
 msgid "Don't include featured image in chapter content"
@@ -509,8 +511,8 @@ msgid "Load images from original URL"
 msgstr "Charger des images à partir de l’URL d’origine"
 
 #: views/index.php:226
-msgid "Embed images (Experimental)"
-msgstr "Images d’intégration (Expérimentale)"
+msgid "Embed images (Slower generation)"
+msgstr "Images d’intégration (Génération plus lente)"
 
 #: views/index.php:230
 msgid "Custom Theme"
