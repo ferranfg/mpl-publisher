@@ -11,6 +11,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\View\FileViewFinder;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Engines\PhpEngine;
+use Intervention\Image\ImageManagerStatic;
 use Illuminate\View\Engines\EngineResolver;
 
 class PublisherBase {
@@ -368,10 +369,10 @@ class PublisherBase {
                 }
 
                 // Embeds images as base64 into the book content
-                if (array_key_exists('images_load', $data) and $data['images_load'] == 'embed')
-                {
-                    $content = $this->parseImages($content);
-                }
+                $content = $this->parseImages(
+                    $content,
+                    array_key_exists('images_load', $data) and $data['images_load'] == 'embed'
+                );
 
                 if (array_key_exists('validate_html', $data))
                 {
@@ -545,6 +546,8 @@ class PublisherBase {
                 'src' => array(),
                 'class' => array(),
                 'alt' => array(),
+                // 'width' => array(), // Fix MS Word
+                // 'height' => array() // Fix MS Word
             ),
             'blockquote' => array(),
             'q' => array(),
@@ -554,6 +557,7 @@ class PublisherBase {
             'figure' => array(
                 'class' => array()
             ),
+            'figcaption' => array(),
             // Styles
             'u' => array(),
             'i' => array(),
@@ -575,30 +579,43 @@ class PublisherBase {
             'td' => array(),
             'th' => array()
         ));
-        // Remove new lines: https://stackoverflow.com/a/3760830
-        $content = preg_replace('/\s+/', ' ', $content);
+
         // Remove unnecesary spaces
         $content = str_replace('&nbsp;', ' ', $content);
+        $content = str_replace(' ', ' ', $content); // &nbsp;
+        // Remove new lines: https://stackoverflow.com/a/3760830
+        $content = preg_replace('/\s+/', ' ', $content);
+        // Convierte múltiples espacios en uno solo (por error o caracteres eliminados)
+        $content = preg_replace('!\s+!', ' ', $content);
+        // Relative images load from https by default
+        $content = str_replace("src=\"//", "src=\"https://", $content);
+        // Close img tags: https://forums.phpfreaks.com/topic/163409-regex-or-preg_replace-to-close-img-tags
+        $content = preg_replace('/(<img[^>]+)(?<!\/)>/' , '$1 />', $content);
+        $content = preg_replace('/<(hr|br)>/', '<$1 />', $content);
 
         return $content;
     }
 
-    private function parseImages($content)
+    private function parseImages($content, $embed = false)
     {
-        if ( ! extension_loaded('iconv')) return $content;
+        if ( ! extension_loaded('iconv') or ! extension_loaded('fileinfo')) return $content;
 
         $html = new HtmlDocument($content);
 
-        foreach ($html->find('img') as $image)
+        foreach ($html->find('img') as $id => $img)
         {
-            $post_id = attachment_url_to_postid($image->src);
+            if ( ! $img->alt) $img->alt = "Image #{$id}";
 
-            if ($post_id)
+            if ($embed)
             {
-                $encoded64 = file_get_contents(get_attached_file($post_id));
-                $mime_type = mpl_mime_content_type($image->src);
+                $image = ImageManagerStatic::make($img->src);
 
-                $image->src = "data:{$mime_type};base64," . base64_encode($encoded64);
+                if ($image->width() > 500) $image->resize(500, null, function ($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+
+                $img->src = $image->encode('data-url');
             }
         }
 
