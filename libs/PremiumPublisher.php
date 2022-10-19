@@ -96,13 +96,7 @@ class PremiumPublisher
 
     public function addFile($id, $name, $data, $mime_type)
     {
-        if ( ! array_key_exists('files', $this->params)) $this->params['files'] = array();
-
-        $this->params['files'][$id] = array(
-            'name' => $name,
-            'data' => $data,
-            'mime_type' => $mime_type,
-        );
+        // NOTHING TO IMPLEMENT
     }
 
     public function request($endpoint, $filename)

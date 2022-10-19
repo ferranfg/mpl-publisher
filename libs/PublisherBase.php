@@ -114,7 +114,7 @@ class PublisherBase {
             'ibooks_url'  => false,
             'theme_id'    => 0,
             'custom_css'  => '',
-            'images_load' => 'default',
+            'images_load' => 'insert',
             'thumbnail_load'  => 'default',
             'cat_selected'    => array(),
             'author_selected' => array(),
@@ -618,13 +618,16 @@ class PublisherBase {
                 $constraint->aspectRatio();
             });
 
+            // PremiumPublisher will override insert as it's sending the same content but easier to handle
+            if ($publisher instanceof PremiumPublisher and $images_load == 'insert') $images_load = 'embed';
+
             // Embed will update original image src
             if ($images_load == 'embed') $img->src = $image->encode('data-url');
 
             // Add will update original image src + add file into the ouput
             if ($images_load == 'insert')
             {
-                $img->src = "/{$file_id}.jpg";
+                $img->src = "{$file_id}.jpg";
 
                 $publisher->addFile($file_id, "{$file_id}.jpg", $image->encode('jpg'), 'image/jpg');
             }
