@@ -84,6 +84,13 @@ class PlainPublisher implements IPublisher {
         $this->zip->addFile($content->getText(), $chapter_title);
     }
 
+    public function addFile($id, $name, $data, $mime_type)
+    {
+        $compress = (strpos($mime_type, "image/") !== 0);
+
+        $this->zip->addFile($data, $name, 0, null, $compress);
+    }
+
     public function send($filename)
     {
         $metadata = '';

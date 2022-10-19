@@ -369,10 +369,7 @@ class PublisherBase {
                 }
 
                 // Embeds images as base64 into the book content
-                $content = $this->parseImages(
-                    $content,
-                    array_key_exists('images_load', $data) and $data['images_load'] == 'embed'
-                );
+                list($publisher, $content) = $this->parseImages($publisher, $content, $data['images_load']);
 
                 if (array_key_exists('validate_html', $data))
                 {
@@ -596,30 +593,44 @@ class PublisherBase {
         return $content;
     }
 
-    private function parseImages($content, $embed = false)
+    private function parseImages($publisher, $content, $images_load = 'default')
     {
-        if ( ! extension_loaded('iconv') or ! extension_loaded('fileinfo')) return $content;
-
-        $html = new HtmlDocument($content);
-
-        foreach ($html->find('img') as $id => $img)
+        if ( ! extension_loaded('iconv') or ! extension_loaded('fileinfo'))
         {
-            if ( ! $img->alt) $img->alt = "Image #{$id}";
+            return array($publisher, $content);
+        }
 
-            if ($embed)
+        $content = new HtmlDocument($content);
+
+        foreach ($content->find('img') as $id => $img)
+        {
+            $filename = "image_" . time();
+
+            if ( ! $img->alt) $img->alt = $filename;
+
+            // If there is nothing to do, continue
+            if ($images_load == 'default') continue;
+
+            $image = ImageManagerStatic::make($img->src);
+
+            if ($image->width() > 500) $image->resize(500, null, function ($constraint)
             {
-                $image = ImageManagerStatic::make($img->src);
+                $constraint->aspectRatio();
+            });
 
-                if ($image->width() > 500) $image->resize(500, null, function ($constraint)
-                {
-                    $constraint->aspectRatio();
-                });
+            // Embed will update original image src
+            if ($images_load == 'embed') $img->src = $image->encode('data-url');
 
-                $img->src = $image->encode('data-url');
+            // Add will update original image src + add file into the ouput
+            if ($images_load == 'insert')
+            {
+                $image->src = "/{$filename}.jpg";
+
+                $publisher->addFile($filename, "{$filename}.jpg", $image->encode('jpg'), 'image/jpg');
             }
         }
 
-        return (string) $html;
+        return array($publisher, (string) $content);
     }
 
     public static function getContentStats($content)

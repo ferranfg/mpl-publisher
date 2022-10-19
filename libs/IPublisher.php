@@ -28,6 +28,8 @@ interface IPublisher {
 
     public function addChapter($id, $title, $content, $image = null);
 
+    public function addFile($id, $name, $data, $mime_type);
+
     public function send($filename);
 
 }

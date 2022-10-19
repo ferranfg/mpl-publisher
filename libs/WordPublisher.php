@@ -139,6 +139,11 @@ class WordPublisher implements IPublisher {
         $this->section->addPageBreak();
     }
 
+    public function addFile($id, $name, $data, $mime_type)
+    {
+        // NOTHING TO IMPLEMENT
+    }
+
     public function send($filename)
     {
         $filepath = $this->tempPath . '/' . $filename . '.docx';

@@ -150,6 +150,13 @@ class MarkdownPublisher implements IPublisher {
         $this->count++;
     }
 
+    public function addFile($id, $name, $data, $mime_type)
+    {
+        $compress = (strpos($mime_type, "image/") !== 0);
+
+        $this->zip->addFile($data, 'Contents/' . $name, 0, null, $compress);
+    }
+
     public function send($filename)
     {
         $this->zip->addFile(Yaml::dump($this->config), 'config.yml');
