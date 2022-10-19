@@ -131,6 +131,17 @@ class PremiumPublisher
 
             unlink($filepath);
         }
+        else if ($request['http_response']->get_status() == 201)
+        {
+            $response = json_decode((string) file_get_contents($filepath));
+
+            unlink($filepath);
+
+            throw new Exception("✅ " . implode(" ", [
+                __('Your book is available at the following link:', 'publisher'),
+                $response->canonical_url
+            ]));
+        }
         else
         {
             $msg = [];

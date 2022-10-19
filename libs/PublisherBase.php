@@ -284,8 +284,8 @@ class PublisherBase {
                 $publisher = new EpubPublisher();
                 $publisher->setFormat($data['format']);
             break;
-            case 'json':
-                $publisher = new JsonPublisher();
+            case 'novel':
+                $publisher = new NovelPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
             break;

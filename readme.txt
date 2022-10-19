@@ -3,9 +3,9 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 7.1.8
-Stable tag: 2.4.1
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,14 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.5.0 =
+- Added an option to include images into the generated file
+- Include images into the book is the default option
+- Removed JSON format and restored Markdown format
+- Silently add Web Novel format for internal testing
+- Automatically fixes img tags without alt attribute to avoid validation errors
+- Tested up to WordPress 6.1
 
 = 2.4.1 =
 - Remove Guzzle HTTP Client and replace with `wp_remote_post`
