@@ -602,11 +602,11 @@ class PublisherBase {
 
         $content = new HtmlDocument($content);
 
-        foreach ($content->find('img') as $id => $img)
+        foreach ($content->find('img') as $img)
         {
-            $filename = "image_" . time();
+            $file_id = "image_" . time();
 
-            if ( ! $img->alt) $img->alt = $filename;
+            if ( ! $img->alt) $img->alt = $file_id;
 
             // If there is nothing to do, continue
             if ($images_load == 'default') continue;
@@ -624,9 +624,9 @@ class PublisherBase {
             // Add will update original image src + add file into the ouput
             if ($images_load == 'insert')
             {
-                $image->src = "/{$filename}.jpg";
+                $img->src = "/{$file_id}.jpg";
 
-                $publisher->addFile($filename, "{$filename}.jpg", $image->encode('jpg'), 'image/jpg');
+                $publisher->addFile($file_id, "{$file_id}.jpg", $image->encode('jpg'), 'image/jpg');
             }
         }
 

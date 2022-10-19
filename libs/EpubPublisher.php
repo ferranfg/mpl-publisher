@@ -121,7 +121,7 @@ class EpubPublisher implements IPublisher {
 
     public function addFile($id, $name, $data, $mime_type)
     {
-        return $this->epub->addFile($id, $name, $data, $mime_type);
+        return $this->epub->addFile($name, $id, $data, $mime_type);
     }
 
     public function send($filename)
