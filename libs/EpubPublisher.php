@@ -126,6 +126,7 @@ class EpubPublisher implements IPublisher {
 
     public function send($filename)
     {
+        $this->epub->setisReferencesAddedToToc(false);
         $this->epub->finalize();
         $this->epub->sendBook($filename);
     }
