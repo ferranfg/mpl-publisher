@@ -574,7 +574,7 @@ class PublisherBase {
             'table' => array(),
             'tbody' => array(),
             'thead' => array(),
-            'tfooter' => array(),
+            'tfoot' => array(),
             'tr' => array(),
             'td' => array(),
             'th' => array()
