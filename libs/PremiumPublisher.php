@@ -82,6 +82,18 @@ class PremiumPublisher
         $this->params['rights'] = $rights_text;
     }
 
+    public function addChapter($id, $title, $content, $image = null)
+    {
+        if ( ! array_key_exists('chapters', $this->params)) $this->params['chapters'] = array();
+
+        array_push($this->params['chapters'], array(
+            'id' => $id,
+            'title' => $title,
+            'content' => $content,
+            'image' => $image,
+        ));
+    }
+
     public function addFile($id, $name, $data, $mime_type)
     {
         if ( ! array_key_exists('files', $this->params)) $this->params['files'] = array();

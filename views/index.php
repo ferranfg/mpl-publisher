@@ -223,7 +223,7 @@
                         <div class="form-field">
                             <select name="images_load" style="width: 100%">
                                 <option value="default" <?php echo $images_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Load images from original URL (Faster - Less compatible)", "publisher"); ?></option>
-                                <option value="insert"  <?php echo $images_load == "insert"  ? "selected='selected'" : ''; ?>><?php _e("Include images into output file (Medium - Relative compatible)", "publisher"); ?></option>
+                                <option value="insert"  <?php echo $images_load == "insert"  ? "selected='selected'" : ''; ?>><?php _e("Insert images into output file (Medium - More compatible)", "publisher"); ?></option>
                                 <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images into chapter content (Slower - More compatible)", "publisher"); ?></option>
                             </select>
                         </div>
@@ -279,7 +279,7 @@
                             <option value="epub3" <?php echo $format == "epub3" ? "selected='selected'" : ''; ?>>EPUB 3.0</option>
                             <option value="wdocx" <?php echo $format == "wdocx" ? "selected='selected'" : ''; ?>>Microsoft Word (DOCX)</option>
                             <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (TXT)</option>
-                            <option value="json"  <?php echo $format == "json"  ? "selected='selected'" : ''; ?>>MPL-Publisher (JSON)²</option>
+                            <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown (MD)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe PDF File</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
