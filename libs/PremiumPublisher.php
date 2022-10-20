@@ -137,10 +137,14 @@ class PremiumPublisher
 
             unlink($filepath);
 
-            throw new Exception("✅ " . implode(" ", [
-                __('Your book is available at the following link:', 'publisher'),
-                $response->canonical_url
-            ]));
+            if (is_object($response) and property_exists($response, 'canonical_url'))
+            {
+                throw new Exception("_SHARING_LINK_{$response->canonical_url}");
+            }
+            else
+            {
+                $this->throwAlert();
+            }
         }
         else
         {
