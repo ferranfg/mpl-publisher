@@ -608,6 +608,9 @@ class PublisherBase {
 
             if ( ! $img->alt) $img->alt = $file_id;
 
+            // PremiumPublisher will override insert as it's remote content but easier to handle
+            if ($publisher instanceof PremiumPublisher) $images_load = 'default';
+
             // If there is nothing to do, continue
             if ($images_load == 'default') continue;
 
@@ -617,9 +620,6 @@ class PublisherBase {
             {
                 $constraint->aspectRatio();
             });
-
-            // PremiumPublisher will override insert as it's sending the same content but easier to handle
-            if ($publisher instanceof PremiumPublisher and $images_load == 'insert') $images_load = 'embed';
 
             // Embed will update original image src
             if ($images_load == 'embed') $img->src = $image->encode('data-url');
