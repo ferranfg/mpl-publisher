@@ -114,11 +114,11 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.5.0 =
-- Added an option to include images into the generated file
+- Add Online Book as a new output format
+- Added an option to include images in the generated file
 - Include images into the book is the default option
 - Removed JSON format and restored Markdown format
-- Silently add Web Novel format for internal testing
-- Automatically fixes img tags without alt attribute to avoid validation errors
+- Automatically fixes IMG tags without alt attribute to avoid validation errors
 - Tested up to WordPress 6.1
 
 = 2.4.1 =

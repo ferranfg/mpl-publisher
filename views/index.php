@@ -56,7 +56,7 @@
             <?php if (is_null(mpl_premium_token())): ?>
                 <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <?php endif; ?>
-            <li class="nav-tab"><a href="<?php echo admin_url('admin.php?page=mpl-extensions'); ?>"><?php _e("Resources", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="https://docs.mpl-publisher.com/docs/faq/" target="_blank">FAQ</a></li>
             <?php do_action('mpl_publisher_before_tabs'); ?>
         </ul>
 
@@ -282,8 +282,8 @@
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown (MD)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe File (PDF)</option>
-                                <option value="online" <?php echo $format == "online" ? "selected='selected'" : ''; ?>>Online Book (Public URL)²</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
+                                <option value="online" <?php echo $format == "online" ? "selected='selected'" : ''; ?>>Online Book (URL)²</option>
                             </optgroup>
                         </select>
                     </div>
@@ -292,7 +292,7 @@
                     </div>
                     <div class="mb-20">
                         <p>¹ <?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best).", "publisher"); ?></p>
-                        <p>² <?php _e("<b>Online Book (Public URL)</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/online-book-wordpress'>Learn more about what you can do with Online Books</a>.", "publisher"); ?></p>
+                        <p>² <?php _e("<b>Online Book</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/online-book-wordpress' target='_blank'>Learn more about what you can do with Online Books</a>.", "publisher"); ?></p>
                     </div>
 
                     <p class="submit hidden-xs">

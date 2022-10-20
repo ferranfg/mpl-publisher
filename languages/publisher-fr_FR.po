@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-10-17 20:55+0200\n"
-"PO-Revision-Date: 2022-10-17 20:55+0200\n"
+"POT-Creation-Date: 2022-10-20 09:17+0200\n"
+"PO-Revision-Date: 2022-10-20 09:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -26,13 +26,17 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Une boîte avec des informations sur votre eBook"
 
-#: libs/PremiumPublisher.php:140 views/cover-editor.php:4 views/index.php:4
+#: libs/PremiumPublisher.php:141
+msgid "Your book is available at the following link:"
+msgstr "Votre livre est disponible sur le lien suivant :"
+
+#: libs/PremiumPublisher.php:168 views/cover-editor.php:4 views/index.php:4
 msgid "This is a premium feature and it is not available on the free version."
 msgstr ""
 "Il s’agit d’une fonctionnalité premium et elle n’est pas disponible sur la "
 "version gratuite."
 
-#: libs/PremiumPublisher.php:141 views/cover-editor.php:4 views/index.php:4
+#: libs/PremiumPublisher.php:169 views/cover-editor.php:4 views/index.php:4
 msgid "Please, visit our homepage and get access to this and more features."
 msgstr ""
 "S’il vous plaît, visitez notre page d’accueil et accédez à cette "
@@ -111,11 +115,11 @@ msgstr "Décembre"
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:385
+#: libs/PublisherBase.php:382
 msgid "On chapter"
 msgstr "Sur le chapitre"
 
-#: libs/PublisherBase.php:401
+#: libs/PublisherBase.php:398
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -132,44 +136,44 @@ msgstr "Livre créé avec succès."
 msgid "Changes successfully saved."
 msgstr "Modifications bien enregistrées."
 
-#: mpl-publisher.php:37
+#: mpl-publisher.php:36
 msgid "Book Chapters"
 msgstr "Chapitres de livres"
 
-#: mpl-publisher.php:38
+#: mpl-publisher.php:37
 msgid "Book Chapter"
 msgstr "Chapitre du livre"
 
-#: mpl-publisher.php:39 mpl-publisher.php:40 mpl-publisher.php:41
-#: views/index.php:374 views/index.php:451
+#: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
+#: views/index.php:376 views/index.php:453
 msgid "Add New Book Chapter"
 msgstr "Ajouter un nouveau chapitre de livre"
 
-#: mpl-publisher.php:42
+#: mpl-publisher.php:41
 msgid "Edit Book Chapter"
 msgstr "Modifier le chapitre du livre"
 
-#: mpl-publisher.php:43
+#: mpl-publisher.php:42
 msgid "View Book Chapter"
 msgstr "Voir le chapitre livre"
 
-#: mpl-publisher.php:61
+#: mpl-publisher.php:60
 msgid "Publish eBook"
 msgstr "Publier eBook"
 
-#: mpl-publisher.php:63
+#: mpl-publisher.php:62
 msgid "Cover Editor"
 msgstr "Éditeur de couverture"
 
-#: mpl-publisher.php:69 views/index.php:59
+#: mpl-publisher.php:68 views/index.php:59
 msgid "Resources"
 msgstr "Ressources"
 
-#: mpl-publisher.php:139
+#: mpl-publisher.php:138
 msgid "How book chapters works"
 msgstr "Fonctionnement des chapitres de livres"
 
-#: mpl-publisher.php:141
+#: mpl-publisher.php:140
 msgid ""
 "MPL-Publisher allows authors to write custom content specific for your book "
 "without the needed to be accessible from the public. You just have to "
@@ -180,16 +184,16 @@ msgstr ""
 "qu’à publier votre chapitre et il ne sera visible qu’à partir de la page "
 "Paramètres du livre."
 
-#: mpl-publisher.php:142
+#: mpl-publisher.php:141
 msgid "Back to Book Settings"
 msgstr "Retour aux paramètres du livre"
 
-#: mpl-publisher.php:156
+#: mpl-publisher.php:155
 msgid "Settings"
 msgstr "Paramètres"
 
 #. translators: $1$s - MPL-Publisher plugin name; $2$s - WP.org review link; $3$s - WP.org review link.
-#: mpl-publisher.php:179
+#: mpl-publisher.php:178
 #, php-format
 msgid ""
 "Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
@@ -208,8 +212,8 @@ msgstr ""
 "Pour obtenir tous les formats disponibles et des fonctionnalités plus cool, "
 "visitez"
 
-#: views/cover-editor.php:3 views/index.php:28 views/index.php:258
-#: views/index.php:282
+#: views/cover-editor.php:3 views/index.php:28 views/index.php:259
+#: views/index.php:283
 msgid "Premium only"
 msgstr "Prime seulement"
 
@@ -507,18 +511,24 @@ msgstr ""
 "plus légers, mais nécessitera une connexion Internet à partir de l’appareil."
 
 #: views/index.php:225
-msgid "Load images from original URL"
-msgstr "Charger des images à partir de l’URL d’origine"
+msgid "Load images from original URL (Faster - Less compatible)"
+msgstr ""
+"Charger des images à partir de l’URL d’origine (Rapide - moins compatible)"
 
 #: views/index.php:226
-msgid "Embed images (Slower generation)"
-msgstr "Images d’intégration (Génération plus lente)"
+msgid "Insert images into output file (Medium - More compatible)"
+msgstr "Insérer des images dans le fichier de sortie (Moyen - Plus compatible)"
 
-#: views/index.php:230
+#: views/index.php:227
+msgid "Embed images into chapter content (Slower - More compatible)"
+msgstr ""
+"Intégrer des images dans le contenu du chapitre (Lent - plus compatible)"
+
+#: views/index.php:231
 msgid "Custom Theme"
 msgstr "Thème personnalisé"
 
-#: views/index.php:231
+#: views/index.php:232
 msgid ""
 "You can publish your book with your custom CSS, overriding the default file "
 "included with our themes."
@@ -526,11 +536,11 @@ msgstr ""
 "Vous pouvez publier votre livre avec votre CSS personnalisé, en dominant le "
 "fichier par défaut inclus dans nos thèmes."
 
-#: views/index.php:239 views/index.php:249 views/index.php:250
+#: views/index.php:240 views/index.php:250 views/index.php:251
 msgid "License key"
 msgstr "Numéro de licence"
 
-#: views/index.php:241
+#: views/index.php:242
 msgid ""
 "Your <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
@@ -542,7 +552,7 @@ msgstr ""
 "activé avec succès 🎉. Vous avez maintenant accès à tous les formats "
 "disponibles et des fonctionnalités plus cool."
 
-#: views/index.php:242
+#: views/index.php:243
 msgid ""
 "To make any change to your license, edit the following field and click \"💾 "
 "Save\" to confirm the changes."
@@ -550,7 +560,7 @@ msgstr ""
 "Pour apporter toute modification à votre licence, modifiez le champ suivant "
 "et cliquez sur “💾 Enregistrer” pour confirmer les modifications."
 
-#: views/index.php:244
+#: views/index.php:245
 msgid ""
 "If you already bought <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐, you "
@@ -560,7 +570,7 @@ msgstr ""
 "utm_medium=plugin&utm_campaign=license’>MPL-Publisher Premium</a> ⭐, vous "
 "avez reçu une clé de licence sur l’e-mail de confirmation."
 
-#: views/index.php:245
+#: views/index.php:246
 msgid ""
 "Please, paste the value on the following field and click \"💾 Save\" to "
 "activate your premium version."
@@ -568,11 +578,11 @@ msgstr ""
 "S’il vous plaît, coller la valeur sur le champ suivant et cliquez sur « 💾 "
 "Enregistrer » pour activer votre version premium."
 
-#: views/index.php:256 views/index.php:265 views/index.php:266
+#: views/index.php:257 views/index.php:266 views/index.php:267
 msgid "Max Results"
 msgstr "Résultats max"
 
-#: views/index.php:261
+#: views/index.php:262
 msgid ""
 "You can change this setting to increase the current limitation to the number "
 "you choose."
@@ -580,7 +590,7 @@ msgstr ""
 "Vous pouvez modifier ce paramètre pour augmenter la limitation actuelle au "
 "nombre que vous choisissez."
 
-#: views/index.php:262
+#: views/index.php:263
 msgid ""
 "Remember that increasing this number too much will affect the performance, "
 "so it's recommended to keep it as low as needed."
@@ -588,7 +598,7 @@ msgstr ""
 "Rappelez-vous qu’augmenter ce nombre trop affectera les performances, il est "
 "donc recommandé de le garder aussi bas que nécessaire."
 
-#: views/index.php:274
+#: views/index.php:275
 msgid ""
 "We are almost there. We offer a good number of formats to download your "
 "book. We support the main extensions depending on your distribution platform."
@@ -597,15 +607,15 @@ msgstr ""
 "télécharger votre livre. Nous prenons en charge les principales extensions "
 "en fonction de votre plate-forme de distribution."
 
-#: views/index.php:275
+#: views/index.php:276
 msgid "Output format"
 msgstr "Format de sortie"
 
-#: views/index.php:289
+#: views/index.php:291
 msgid "Validate content before download"
 msgstr "Valider le contenu avant le téléchargement"
 
-#: views/index.php:289
+#: views/index.php:291
 msgid ""
 "Validating content before generation ensures your eBook will contain no HTML "
 "errors and will be compatible with all checkers."
@@ -613,7 +623,7 @@ msgstr ""
 "La validation du contenu avant la génération garantit que votre eBook ne "
 "contiendra aucune erreur HTML et sera compatible avec tous les vérificateurs."
 
-#: views/index.php:292
+#: views/index.php:294
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best)."
@@ -621,17 +631,18 @@ msgstr ""
 "Le résultat sera affecté par la complexité de votre contenu (c.-à-d. «texte "
 "clair» fonctionne le mieux)."
 
-#: views/index.php:293
+#: views/index.php:295
 msgid ""
-"<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our "
-"brand new <a href='https://mpl-publisher.com?"
-"utm_medium=plugin&utm_campaign=tools'>self-publishing tools</a>."
+"<b>Online Book</b> will provide you a public URL to share within your "
+"readers. <a href='https://mpl-publisher.com/online-book-wordpress' "
+"target='_blank'>Learn more about what you can do with Online Books</a>."
 msgstr ""
-"Le format <b>MPL-Publisher (JSON)</b> vous permettra la compatibilité avec "
-"nos tout nouveaux <a href='https://mpl-publisher.com?"
-"utm_medium=plugin&utm_campaign=tools'>outils d’auto-édition.</a>"
+"<b>Online Book</b> vous fournira une URL publique à partager avec vos "
+"lecteurs. <a href='https://mpl-publisher.com/online-book-wordpress' "
+"target='_blank'>En savoir plus sur ce que vous pouvez faire avec les livres "
+"en ligne</a>."
 
-#: views/index.php:297
+#: views/index.php:299
 msgid ""
 "Finally, if everything looks good, you can click Download, and we will "
 "generate a file for you. You are ready to go. Enjoy!"
@@ -639,15 +650,15 @@ msgstr ""
 "Enfin, si tout semble bien, vous pouvez cliquer sur Télécharger et nous "
 "générerons un fichier pour vous. Vous êtes prêt à partir. jouir!"
 
-#: views/index.php:297 views/index.php:457
+#: views/index.php:299 views/index.php:459
 msgid "Download eBook"
 msgstr "Télécharger eBook"
 
-#: views/index.php:298 views/index.php:458
+#: views/index.php:300 views/index.php:460
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: views/index.php:307
+#: views/index.php:309
 msgid ""
 "Remember that you can use the filters for a more refined search. It will be "
 "helpful if you want to publish a book from a specific category or date."
@@ -656,44 +667,44 @@ msgstr ""
 "raffinée. Cela sera utile si vous souhaitez publier un livre à partir d’une "
 "catégorie ou d’une date spécifique."
 
-#: views/index.php:309
+#: views/index.php:311
 msgid "All types"
 msgstr "Tous les types"
 
-#: views/index.php:310
+#: views/index.php:312
 msgid "Default"
 msgstr "Par défaut"
 
-#: views/index.php:318
+#: views/index.php:320
 msgid "Other"
 msgstr "Autres"
 
-#: views/index.php:327
+#: views/index.php:329
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: views/index.php:334
+#: views/index.php:336
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: views/index.php:343
+#: views/index.php:345
 msgid "All months"
 msgstr "Tous les mois"
 
-#: views/index.php:350
+#: views/index.php:352
 msgid "All years"
 msgstr "Toutes les années"
 
-#: views/index.php:358
+#: views/index.php:360
 msgid "Filter content"
 msgstr "Filtrer le contenu"
 
-#: views/index.php:362
+#: views/index.php:364
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr ""
 "Faites glisser vos résultats filtrés pour trier les chapitres de votre livre"
 
-#: views/index.php:367
+#: views/index.php:369
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -704,15 +715,15 @@ msgstr ""
 "vous pouvez utiliser le glisser-déposer pour les trier en fonction de vos "
 "préférences."
 
-#: views/index.php:371 views/index.php:448
+#: views/index.php:373 views/index.php:450
 msgid "Contents"
 msgstr "Contenus"
 
-#: views/index.php:372 views/index.php:449
+#: views/index.php:374 views/index.php:451
 msgid "Order"
 msgstr "Ordre"
 
-#: views/index.php:374
+#: views/index.php:376
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -723,7 +734,7 @@ msgstr ""
 "disponibles pour vos livres, c’est donc un moyen de récompenser vos lecteurs "
 "avec un contenu exclusif."
 
-#: views/index.php:382
+#: views/index.php:384
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -731,31 +742,31 @@ msgstr ""
 "Votre recherche actuelle a trop de résultats et elle n’est pas encore "
 "disponible. S’il vous plaît, utilisez nos filtres pour limiter votre demande."
 
-#: views/index.php:383
+#: views/index.php:385
 msgid "Current results"
 msgstr "Résultats actuels"
 
-#: views/index.php:384
+#: views/index.php:386
 msgid "Max results"
 msgstr "Résultats max"
 
-#: views/index.php:385
+#: views/index.php:387
 msgid "Change settings"
 msgstr "Modifier les paramètres"
 
-#: views/index.php:412
+#: views/index.php:414
 msgid "View"
 msgstr "Voir"
 
-#: views/index.php:414
+#: views/index.php:416
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/index.php:418
+#: views/index.php:420
 msgid "Duplicate and Edit"
 msgstr "Dupliquer et Modifier"
 
-#: views/index.php:435
+#: views/index.php:437
 msgid "Your search did not match any posts."
 msgstr "Votre recherche ne correspondait à aucun poste."
 
@@ -806,6 +817,18 @@ msgstr "Ferran Figueredo"
 #. Author URI of the plugin/theme
 msgid "https://ferranfigueredo.com"
 msgstr "https://ferranfigueredo.com"
+
+#~ msgid "Embed images (Slower generation)"
+#~ msgstr "Images d’intégration (Génération plus lente)"
+
+#~ msgid ""
+#~ "<b>MPL-Publisher (JSON)</b> format will allow you compatibility with our "
+#~ "brand new <a href='https://mpl-publisher.com?"
+#~ "utm_medium=plugin&utm_campaign=tools'>self-publishing tools</a>."
+#~ msgstr ""
+#~ "Le format <b>MPL-Publisher (JSON)</b> vous permettra la compatibilité "
+#~ "avec nos tout nouveaux <a href='https://mpl-publisher.com?"
+#~ "utm_medium=plugin&utm_campaign=tools'>outils d’auto-édition.</a>"
 
 #~ msgid "Community"
 #~ msgstr "Community"
