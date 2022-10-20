@@ -282,7 +282,7 @@
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown (MD)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe File (PDF)</option>
-                                <option value="novel" <?php echo $format == "novel" ? "selected='selected'" : ''; ?>>Web Novel (Public URL)²</option>
+                                <option value="online" <?php echo $format == "online" ? "selected='selected'" : ''; ?>>Online Book (Public URL)²</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
                             </optgroup>
                         </select>
@@ -292,7 +292,7 @@
                     </div>
                     <div class="mb-20">
                         <p>¹ <?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best).", "publisher"); ?></p>
-                        <p>² <?php _e("<b>Web Novel (Public URL)</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/webnovel-wordpress'>Learn more about what you can do with Web Novels</a>.", "publisher"); ?></p>
+                        <p>² <?php _e("<b>Online Book (Public URL)</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/online-book-wordpress'>Learn more about what you can do with Online Books</a>.", "publisher"); ?></p>
                     </div>
 
                     <p class="submit hidden-xs">
