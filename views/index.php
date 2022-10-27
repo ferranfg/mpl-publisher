@@ -212,7 +212,7 @@
 
                         <h3><?php _e("Post featured image", "publisher"); ?></h3>
                         <p>
-                            <?php _e("Configure how the plugin will manager your post's featured image in every chapter.", "publisher"); ?>
+                            <?php _e("Configure how the plugin will manage your post's featured image in every chapter.", "publisher"); ?>
                         </p>
                         <div class="form-field">
                             <select name="thumbnail_load" style="width: 100%">
@@ -221,11 +221,8 @@
                             </select>
                         </div>
 
-                        <h3><?php _e("Content images", "publisher"); ?></h3>
-                        <p>
-                            <?php _e("Configure how the plugin will manage your book images", "publisher"); ?>
-                            <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("Load images from original URL will result in lighter files but will require an internet connection from the device.", "publisher"); ?>"></span>
-                        </p>
+                        <h3><?php _e("Content images", "publisher"); ?><a href="https://docs.mpl-publisher.com/docs/book-options/book-details/#content-images" target="_blank"><span class="dashicons dashicons-editor-help"></span></a></h3>
+                        <p><?php _e("Configure how the plugin will manage your book images.", "publisher"); ?></p>
                         <div class="form-field">
                             <select name="images_load" style="width: 100%">
                                 <option value="default" <?php echo $images_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Load images from original URL (Faster - Less compatible)", "publisher"); ?></option>
@@ -234,9 +231,8 @@
                             </select>
                         </div>
 
-                        <h3><?php _e("Custom Theme", "publisher"); ?></h3>
-                        <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?>
-
+                        <h3><?php _e("Custom Theme", "publisher"); ?><a href="https://docs.mpl-publisher.com/docs/book-options/book-details/#custom-css" target="_blank"><span class="dashicons dashicons-editor-help"></span></a></h3>
+                        <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?></p>
                         <div class="form-field" id="template">
                             <textarea name="custom_css" id="newcontent" placeholder="/* Paste your CSS here */"><?php echo esc_textarea($custom_css); ?></textarea>
                         </div>

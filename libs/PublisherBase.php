@@ -214,17 +214,25 @@ class PublisherBase {
 
     public function getYears()
     {
-        $archive = wp_get_archives(array(
-            'type'   => 'yearly',
-            'echo'   => false,
-            'format' => 'custom',
-            'before' => '',
-            'after'  => '%'
-        ));
+        $years = [];
 
-        $stripped = preg_replace('/\s+/', '', strip_tags($archive));
+        foreach ($this->filter['post_type'] as $post_type)
+        {
+            $archive = wp_get_archives(array(
+                'type' => 'yearly',
+                'echo' => false,
+                'format' => 'custom',
+                'before' => '',
+                'after' => '%',
+                'post_type' => $post_type
+            ));
 
-        return array_filter(explode('%', $stripped));
+            $stripped = preg_replace('/\s+/', '', strip_tags($archive));
+
+            $years = array_merge($years, explode('%', $stripped));
+        }
+
+        return array_unique(array_filter($years));
     }
 
     public function getQuery($order_asc = true, $selected_posts = array())
@@ -388,7 +396,7 @@ class PublisherBase {
                     }
                 }
 
-                $publisher->addChapter($chapter, $post->post_title, $content, $image);
+                $publisher->addChapter($chapter, mpl_xml_entities($post->post_title), $content, $image);
 
                 $chapter++;
             endwhile;

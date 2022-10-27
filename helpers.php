@@ -260,3 +260,17 @@ if ( ! function_exists('mpl_starts_with'))
         return (substr($haystack, 0, $length) === $needle);
     }
 }
+
+if ( ! function_exists('mpl_xml_entities'))
+{
+    function mpl_xml_entities($string)
+    {
+        $string = str_replace(
+            array("<", ">", '"'),
+            array("﹤", "﹥", "''"),
+            $string
+        );
+
+        return htmlentities($string);
+    }
+}
