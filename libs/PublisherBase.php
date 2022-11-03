@@ -271,9 +271,9 @@ class PublisherBase {
         return $wp_query;
     }
 
-    public function generateBook($forceGenerate = false)
+    public function generateBook($book_id = false)
     {
-        $data = $forceGenerate ? $this->data : mpl_sanitize_array($_POST);
+        $data = $book_id ? $this->data['all_books'][$book_id]['data'] : mpl_sanitize_array($_POST);
 
         $data = stripslashes_deep($data);
         $data = apply_filters('mpl_publisher_generate_book', $data);

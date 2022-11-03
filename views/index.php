@@ -121,6 +121,11 @@
                         <p><?php _e("Metadata is the information about your book. It is what allows your ebooks reading app to organize or filter the ebooks. The more information you provide, the easier it will be for readers to discover your book.", "publisher"); ?></p>
 
                         <div class="form-field">
+                            <label for="book-id"><?php _e("Book ID", "publisher"); ?></label>
+                            <input id="book-id" type="text" value="<?php echo esc_attr($book_id); ?>" readonly style="background:#eee">
+                        </div>
+
+                        <div class="form-field">
                             <label for="book-identifier">
                                 <?php _e("Identifier (ISBN)", "publisher"); ?>
                                 <span class="dashicons dashicons-info" data-toggle="tooltip" title="<?php _e("If your book doesn't have an ISBN, use a unique identifier", "publisher"); ?>"></span>
