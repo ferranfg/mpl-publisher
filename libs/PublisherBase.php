@@ -215,8 +215,9 @@ class PublisherBase {
     public function getYears()
     {
         $years = [];
+        $post_types = array_key_exists('post_type', $this->filter) ? $this->filter['post_type'] : mpl_all_post_types();
 
-        foreach ($this->filter['post_type'] as $post_type)
+        foreach ($post_types as $post_type)
         {
             $archive = wp_get_archives(array(
                 'type' => 'yearly',
@@ -273,7 +274,12 @@ class PublisherBase {
 
     public function generateBook($book_id = false)
     {
-        $data = $book_id ? $this->data['all_books'][$book_id]['data'] : mpl_sanitize_array($_POST);
+        $data = mpl_sanitize_array($_POST);
+
+        if ($book_id and $status = $this->getStatus($book_id) and array_key_exists('data', $status))
+        {
+            $data = $status['data'];
+        }
 
         $data = stripslashes_deep($data);
         $data = apply_filters('mpl_publisher_generate_book', $data);

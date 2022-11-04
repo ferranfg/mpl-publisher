@@ -14,7 +14,9 @@ class DownloadWidget extends WP_Widget {
 
         if (isset($_POST['download_ebook']) and wp_verify_nonce($_POST['_wpnonce'], 'download_ebook'))
         {
-            $this->base->generateBook($_POST['book_id']);
+            $book_id = array_key_exists('book_id', $_POST) ? sanitize_text_field($_POST['book_id']) : null;
+
+            $this->base->generateBook($book_id);
         }
 
         parent::__construct('mpl_publisher', 'MPL - Download eBook', array(
@@ -53,7 +55,7 @@ class DownloadWidget extends WP_Widget {
     {
         $this->base->data['args'] = $args;
         $this->base->data['instance'] = $instance;
-        $this->base->data['book_id'] = $instance['book_id'];
+        $this->base->data['book_id'] = array_key_exists('book_id', $instance) ? $instance['book_id'] : null;
 
         $this->base->data['wp_nonce_field'] = wp_nonce_field('download_ebook', '_wpnonce', true, false);
 

@@ -114,9 +114,9 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.5.1 =
-- Fix EPUB validation when title contains quotes
-- Fix filters by year
-- Fix shortcode widget
+- Fix EPUB validation when the title contains quotes, less-than, greater-than signs
+- Fix filters by year to include all post types (only "post" types were considered)
+- Fix shortcode widget: add book-id parameter and extend documentation
 
 = 2.5.0 =
 - Add Online Book as a new output format
