@@ -25,15 +25,15 @@ class PublisherBase {
         $this->filter = mpl_sanitize_array($_GET);
         $this->data = array_merge($this->getPluginDefaults(), $this->getBookDefaults());
 
-        $status = $this->getStatus($this->data['book_id']);
+        list('time' => $time, 'data' => $data) = $this->getStatus($this->data['book_id']);
 
-        if ($status and isset($status['data']))
+        if ($time and $data)
         {
-            $this->data = array_merge($this->data, $status['data']);
+            $this->data = array_merge($this->data, $data);
 
             $format = get_option('date_format') . ' ' . get_option('time_format');
 
-            $this->data['message'] = sprintf(__('Submitted on %s' , "publisher"), date($format, $status['time']));
+            $this->data['message'] = sprintf(__('Submitted on %s' , "publisher"), date($format, $time));
 
             $cover_src = wp_get_attachment_image_src($this->data['cover'], 'full');
 
@@ -274,11 +274,13 @@ class PublisherBase {
 
     public function generateBook($book_id = false)
     {
-        $data = mpl_sanitize_array($_POST);
-
-        if ($book_id and $status = $this->getStatus($book_id) and array_key_exists('data', $status))
+        if (is_string($book_id))
         {
-            $data = $status['data'];
+            list('time' => $time, 'data' => $data) = $this->getStatus($book_id);
+        }
+        else
+        {
+            $data = mpl_sanitize_array($_POST);
         }
 
         $data = stripslashes_deep($data);

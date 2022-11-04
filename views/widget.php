@@ -4,6 +4,8 @@
 	<?php echo $args['before_title'] . apply_filters('widget_title', $instance['title']). $args['after_title']; ?>
 <?php endif; ?>
 
+<?php include MPL_BASEPATH . '/views/alert.php'; ?>
+
 <section itemscope="" itemtype="http://schema.org/Book">
 	<?php if ($cover_src): ?>
 		<?php if ($landing_url): ?>

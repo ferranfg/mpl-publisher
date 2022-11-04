@@ -2,6 +2,7 @@
 
 namespace MPL\Publisher;
 
+use Exception;
 use WP_Widget;
 
 class DownloadWidget extends WP_Widget {
@@ -14,9 +15,16 @@ class DownloadWidget extends WP_Widget {
 
         if (isset($_POST['download_ebook']) and wp_verify_nonce($_POST['_wpnonce'], 'download_ebook'))
         {
-            $book_id = array_key_exists('book_id', $_POST) ? sanitize_text_field($_POST['book_id']) : null;
+            try
+            {
+                $book_id = array_key_exists('book_id', $_POST) ? sanitize_text_field($_POST['book_id']) : null;
 
-            $this->base->generateBook($book_id);
+                $this->base->generateBook($book_id);
+            }
+            catch (Exception $e)
+            {
+                set_transient('mpl_msg', $e->getMessage());
+            }
         }
 
         parent::__construct('mpl_publisher', 'MPL - Download eBook', array(
@@ -39,7 +47,7 @@ class DownloadWidget extends WP_Widget {
     {
         $data = $this->base->data;
 
-        $data['instance']   = $instance;
+        $data['instance'] = $instance;
 
         $data['titleId']      = $this->get_field_id('title');
         $data['titleName']    = $this->get_field_name('title');
@@ -56,6 +64,7 @@ class DownloadWidget extends WP_Widget {
         $this->base->data['args'] = $args;
         $this->base->data['instance'] = $instance;
         $this->base->data['book_id'] = array_key_exists('book_id', $instance) ? $instance['book_id'] : null;
+        $this->base->data['admin_notice'] = get_transient('mpl_msg');
 
         $this->base->data['wp_nonce_field'] = wp_nonce_field('download_ebook', '_wpnonce', true, false);
 
