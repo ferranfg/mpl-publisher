@@ -620,7 +620,7 @@ class PublisherBase {
 
         foreach ($content->find('img') as $img)
         {
-            $file_id = "image_" . time();
+            $file_id = "image_" . time() . '_' . rand();
 
             if ( ! $img->alt) $img->alt = $file_id;
 

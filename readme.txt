@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 7.1.8
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.5.2 =
+- Fix error with duplicated images. Closes https://wordpress.org/support/topic/images-repeat-throughout-post/
 
 = 2.5.1 =
 - Fix EPUB validation when the title contains quotes, less-than, greater-than signs
