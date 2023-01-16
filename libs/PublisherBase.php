@@ -531,6 +531,9 @@ class PublisherBase {
         $content = preg_replace('/\[\/?et_pb.*?\]/', '', $content);
         // Remove HTML comments
         $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
+        // Remove inline script and noscript inline tags
+        $content = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $content);
+        $content = preg_replace('#<noscript(.*?)>(.*?)</noscript>#is', '', $content);
         // Remove properties from allowed HTML tags (except <p>)
         $content = wp_kses($content, array(
             // Desktop version
@@ -646,6 +649,9 @@ class PublisherBase {
             {
                 $constraint->aspectRatio();
             });
+
+            // Fixes https://wordpress.org/support/topic/could-not-load-image-when-exporting-docx/
+            if ($publisher instanceof WordPublisher) $images_load = 'embed';
 
             // Embed will update original image src
             if ($images_load == 'embed') $img->src = $image->encode('data-url');
