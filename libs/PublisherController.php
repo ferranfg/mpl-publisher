@@ -88,6 +88,11 @@ class PublisherController extends PublisherBase {
 
         try
         {
+            if ( ! wp_is_writable(get_temp_dir()))
+            {
+                throw new Exception(__('Missing a temporary folder.'));
+            }
+
             if (array_key_exists('generate', $_POST))
             {
                 $clean_data = mpl_sanitize_array($_POST);
