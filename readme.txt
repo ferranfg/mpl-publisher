@@ -113,6 +113,10 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
+= 2.6.0 =
+- Fix error with ordered lists starting number. Closes https://wordpress.org/support/topic/ordered-lists-start-value-is-ignored/
+- Update MPL-Publisher Premium ⭐ pricing model
+
 = 2.5.2 =
 - Fix error with duplicated images. Closes https://wordpress.org/support/topic/images-repeat-throughout-post/
 

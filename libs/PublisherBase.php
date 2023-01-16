@@ -13,6 +13,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Engines\PhpEngine;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\View\Engines\EngineResolver;
+use Intervention\Image\Exception\NotReadableException;
 
 class PublisherBase {
 
@@ -581,7 +582,9 @@ class PublisherBase {
             'strike' => array(),
             // Lists
             'ul' => array(),
-            'ol' => array(),
+            'ol' => array(
+                'start' => array(),
+            ),
             'li' => array(),
             // Tables
             'table' => array(),
@@ -630,7 +633,14 @@ class PublisherBase {
             // If there is nothing to do, continue
             if ($images_load == 'default') continue;
 
-            $image = ImageManagerStatic::make($img->src);
+            try
+            {
+                $image = ImageManagerStatic::make($img->src);
+            }
+            catch (NotReadableException $e)
+            {
+                continue;
+            }
 
             if ($image->width() > 500) $image->resize(500, null, function ($constraint)
             {
