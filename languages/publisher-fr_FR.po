@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2022-11-04 15:30+0100\n"
-"PO-Revision-Date: 2022-11-04 15:40+0100\n"
+"POT-Creation-Date: 2023-01-17 07:30+0100\n"
+"PO-Revision-Date: 2023-01-17 07:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -26,96 +26,94 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Une boîte avec des informations sur votre eBook"
 
-#: libs/PremiumPublisher.php:172 views/cover-editor.php:4 views/index.php:4
-msgid "This is a premium feature and it is not available on the free version."
+#: libs/PremiumPublisher.php:172
+msgid "This is a server error and it is not working as expected."
 msgstr ""
-"Il s’agit d’une fonctionnalité premium et elle n’est pas disponible sur la "
-"version gratuite."
+"Il s’agit d’une erreur de serveur et cela ne fonctionne pas comme prévu."
 
-#: libs/PremiumPublisher.php:173 views/cover-editor.php:4 views/index.php:4
-msgid "Please, visit our homepage and get access to this and more features."
+#: libs/PremiumPublisher.php:173
+msgid "Please, connect with us and get support for your queries."
 msgstr ""
-"S’il vous plaît, visitez notre page d’accueil et accédez à cette "
-"fonctionnalité et à d’autres."
+"S’il vous plaît, connectez avec nous et obtenez de l’aide pour vos questions."
 
-#: libs/PublisherBase.php:36
+#: libs/PublisherBase.php:37
 #, php-format
 msgid "Submitted on %s"
 msgstr "Soumis sur %s"
 
-#: libs/PublisherBase.php:138
+#: libs/PublisherBase.php:139
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:150
+#: libs/PublisherBase.php:151
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:162
+#: libs/PublisherBase.php:163
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:174
+#: libs/PublisherBase.php:175
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:200
+#: libs/PublisherBase.php:201
 msgid "January"
 msgstr "Janvier"
 
-#: libs/PublisherBase.php:201
+#: libs/PublisherBase.php:202
 msgid "February"
 msgstr "Février"
 
-#: libs/PublisherBase.php:202
+#: libs/PublisherBase.php:203
 msgid "March"
 msgstr "Mars"
 
-#: libs/PublisherBase.php:203
+#: libs/PublisherBase.php:204
 msgid "April"
 msgstr "Avril"
 
-#: libs/PublisherBase.php:204
+#: libs/PublisherBase.php:205
 msgid "May"
 msgstr "Mai"
 
-#: libs/PublisherBase.php:205
+#: libs/PublisherBase.php:206
 msgid "June"
 msgstr "Juin"
 
-#: libs/PublisherBase.php:206
+#: libs/PublisherBase.php:207
 msgid "July"
 msgstr "Juillet"
 
-#: libs/PublisherBase.php:207
+#: libs/PublisherBase.php:208
 msgid "August"
 msgstr "Août"
 
-#: libs/PublisherBase.php:208
+#: libs/PublisherBase.php:209
 msgid "September"
 msgstr "Septembre"
 
-#: libs/PublisherBase.php:209
+#: libs/PublisherBase.php:210
 msgid "October"
 msgstr "Octobre"
 
-#: libs/PublisherBase.php:210
+#: libs/PublisherBase.php:211
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:211
+#: libs/PublisherBase.php:212
 msgid "December"
 msgstr "Décembre"
 
-#: libs/PublisherBase.php:325
+#: libs/PublisherBase.php:326
 msgid "No valid output format selected."
 msgstr "Aucun format de sortie valide sélectionné."
 
-#: libs/PublisherBase.php:398
+#: libs/PublisherBase.php:399
 msgid "On chapter"
 msgstr "Sur le chapitre"
 
-#: libs/PublisherBase.php:414
+#: libs/PublisherBase.php:415
 msgid "Please, select at least one chapter to publish your book."
 msgstr ""
 "S’il vous plaît, sélectionnez au moins un chapitre pour publier votre livre."
@@ -131,6 +129,10 @@ msgstr "Livre créé avec succès."
 #: libs/PublisherController.php:85
 msgid "Changes successfully saved."
 msgstr "Modifications bien enregistrées."
+
+#: libs/PublisherController.php:93
+msgid "Missing a temporary folder."
+msgstr "Il manque un répertoire temporaire."
 
 #: mpl-publisher.php:36
 msgid "Book Chapters"
@@ -192,15 +194,15 @@ msgstr "Paramètres"
 #: mpl-publisher.php:178
 #, php-format
 msgid ""
-"Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer"
-"\" style=\"text-decoration:none\">⭐⭐⭐⭐⭐</a> on <a href=\"%3$s\" target="
-"\"_blank\" rel=\"noopener\">WordPress.org</a> to help us spread the word. "
-"Thank you!"
+"Please rate %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener "
+"noreferrer\" style=\"text-decoration:none\">⭐⭐⭐⭐⭐</a> on <a "
+"href=\"%3$s\" target=\"_blank\" rel=\"noopener\">WordPress.org</a> to help "
+"us spread the word. Thank you!"
 msgstr ""
 "S’il %1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\" "
-"style=\"text-decoration:none\">vous ⭐⭐⭐⭐⭐</a> noter <a href=\"%3$s\" target="
-"\"_blank\" rel=\"noopener\">WordPress.org pour</a> nous aider à passer le "
-"mot. Merci!"
+"style=\"text-decoration:none\">vous ⭐⭐⭐⭐⭐</a> noter <a href=\"%3$s\" "
+"target=\"_blank\" rel=\"noopener\">WordPress.org pour</a> nous aider à "
+"passer le mot. Merci!"
 
 #: views/alert.php:3
 msgid "Validation errors were found:"
@@ -225,6 +227,18 @@ msgstr ""
 #: views/index.php:275
 msgid "Premium only"
 msgstr "Prime seulement"
+
+#: views/cover-editor.php:4 views/index.php:4
+msgid "This is a premium feature and it is not available on the free version."
+msgstr ""
+"Il s’agit d’une fonctionnalité premium et elle n’est pas disponible sur la "
+"version gratuite."
+
+#: views/cover-editor.php:4 views/index.php:4
+msgid "Please, visit our homepage and get access to this and more features."
+msgstr ""
+"S’il vous plaît, visitez notre page d’accueil et accédez à cette "
+"fonctionnalité et à d’autres."
 
 #: views/footer.php:4 views/footer.php:6
 msgid "Documentation"
@@ -544,9 +558,9 @@ msgstr "Numéro de licence"
 #: views/index.php:234
 msgid ""
 "Your <a href='https://wordpress.mpl-publisher.com?"
-"utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has been "
-"successfully activated 🎉. You now have access to all the available formats "
-"and more cool features."
+"utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ has "
+"been successfully activated 🎉. You now have access to all the available "
+"formats and more cool features."
 msgstr ""
 "Votre <a href='https://wordpress.mpl-publisher.com?"
 "utm_medium=plugin&utm_campaign=license'>MPL-Publisher Premium</a> ⭐ été "
@@ -782,11 +796,11 @@ msgstr "Modifier les liens"
 msgid "Include download button"
 msgstr "Inclure le bouton de téléchargement"
 
-#: views/widget.php:28
+#: views/widget.php:30
 msgid "By"
 msgstr "Par"
 
-#: views/widget.php:34
+#: views/widget.php:36
 msgid "Get your eBook!"
 msgstr "Obtenez votre eBook!"
 

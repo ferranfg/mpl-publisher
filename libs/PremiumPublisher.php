@@ -169,8 +169,8 @@ class PremiumPublisher
     protected function throwAlert($msg = [])
     {
         if (empty($msg)) $msg = [
-            __('This is a premium feature and it is not available on the free version.', 'publisher'),
-            __('Please, visit our homepage and get access to this and more features.', 'publisher')
+            __('This is a server error and it is not working as expected.', 'publisher'),
+            __('Please, connect with us and get support for your queries.', 'publisher')
         ];
 
         throw new Exception("⚠️ " . implode(" ", $msg));
