@@ -24,6 +24,8 @@ class WordPublisher implements IPublisher {
 
     private $author_name;
 
+    private $section;
+
     private $section_style = array(
         'paperSize' => 'Letter',
         'Orientation' => 'portrait'

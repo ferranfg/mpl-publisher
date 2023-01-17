@@ -111,7 +111,7 @@ class BinStringStatic {
             }
             return mb_strlen($string, 'latin1');
         } else {
-            return strlen($string);
+            return strlen((string) $string);
         }
     }
 
