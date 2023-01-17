@@ -116,6 +116,8 @@ In future releases, we will add further improvements to our current formats. Kee
 = 2.6.0 =
 - Fix error with ordered lists starting number. Closes https://wordpress.org/support/topic/ordered-lists-start-value-is-ignored/
 - Fix error "Could not load image" when exporting DOCX https://wordpress.org/support/topic/could-not-load-image-when-exporting-docx/
+- Remove inline `<script>` and `<noscript>` tags from content
+- Better server error and image not found error handling
 - Tested up to PHP 8.2
 - Update MPL-Publisher Premium ⭐ pricing model
 
