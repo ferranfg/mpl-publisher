@@ -113,7 +113,8 @@ class PremiumPublisher
             'body' => json_encode($this->params),
             'data_format' => 'body',
             'stream' => true,
-            'filename' => $filepath
+            'filename' => $filepath,
+            'timeout' => 60,
         ]);
 
         if (is_wp_error($request)) $this->throwAlert([$request->get_error_message()]);
