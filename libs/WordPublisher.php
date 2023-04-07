@@ -40,6 +40,8 @@ class WordPublisher implements IPublisher {
 
         $this->word->addTitleStyle(1, array('size' => 20, 'bold' => true), array('align' => Align::CENTER));
         $this->word->getSettings()->setUpdateFields(true);
+
+        Settings::setOutputEscapingEnabled(true);
     }
 
     public function setTmpPath($tempPath)
