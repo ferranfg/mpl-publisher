@@ -84,7 +84,7 @@ class Head extends AbstractPart
 
         // Default styles
         $defaultStyles = array(
-            '*' => array(
+            'html' => array(
                 'font-family' => Settings::getDefaultFontName(),
                 'font-size'   => Settings::getDefaultFontSize() . 'pt',
             ),

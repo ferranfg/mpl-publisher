@@ -20,6 +20,7 @@ namespace PhpOffice\PhpWord\Shared;
 use PhpOffice\PhpWord\Element\AbstractContainer;
 use PhpOffice\PhpWord\Element\Row;
 use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\NumberFormat;
@@ -302,12 +303,18 @@ class Html
      * @todo Think of a clever way of defining header styles, now it is only based on the assumption, that
      * Heading1 - Heading6 are already defined somewhere
      */
-    protected static function parseHeading($element, &$styles, $argument1)
+    protected static function parseHeading(AbstractContainer $element, array &$styles, string $headingStyle): TextRun
     {
-        $styles['paragraph'] = $argument1;
-        $newElement = $element->addTextRun($styles['paragraph']);
+        // Create a TextRun to hold styles and text
+        $styles['paragraph'] = $headingStyle;
+        $textRun = new TextRun($styles['paragraph']);
 
-        return $newElement;
+        // Create a title with level corresponding to number in heading style
+        // (Eg, Heading1 = 1)
+        $element->addTitle($textRun, (int) ltrim($headingStyle, 'Heading'));
+
+        // Return TextRun so children are parsed
+        return $textRun;
     }
 
     /**
