@@ -4,7 +4,7 @@ namespace MPL\Publisher;
 
 use Exception;
 
-class PremiumPublisher
+abstract class PremiumPublisher
 {
     protected $tempPath;
 

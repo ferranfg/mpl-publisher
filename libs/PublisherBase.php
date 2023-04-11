@@ -301,6 +301,11 @@ class PublisherBase {
                 $publisher = new EpubPublisher();
                 $publisher->setFormat($data['format']);
             break;
+            case 'flipbook':
+                $publisher = new FlipbookPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
+                $publisher->setTmpPath(get_temp_dir());
+	    break;
             case 'online':
                 $publisher = new OnlinePublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);

@@ -276,6 +276,7 @@
                                 <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe File (PDF)</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
                                 <option value="online" <?php echo $format == "online" ? "selected='selected'" : ''; ?>>Online Book (URL)²</option>
+                                <option value="flipbook" <?php echo $format == "flipbook" ? "selected='selected'" : ''; ?>>Flipbook (URL)²</option>
                             </optgroup>
                         </select>
                     </div>
