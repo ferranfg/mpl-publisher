@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2023-01-17 07:30+0100\n"
-"PO-Revision-Date: 2023-01-17 07:31+0100\n"
+"POT-Creation-Date: 2023-04-11 09:23+0200\n"
+"PO-Revision-Date: 2023-04-11 09:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -26,11 +26,11 @@ msgstr ""
 msgid "A box with information about your eBook"
 msgstr "Una caja con información sobre tu eBook"
 
-#: libs/PremiumPublisher.php:172
+#: libs/PremiumPublisher.php:173
 msgid "This is a server error and it is not working as expected."
 msgstr "Este es un error del servidor y no funciona como se esperaba."
 
-#: libs/PremiumPublisher.php:173
+#: libs/PremiumPublisher.php:174
 msgid "Please, connect with us and get support for your queries."
 msgstr "Por favor, contacte con nosotros y obtenga soporte para sus consultas."
 
@@ -103,15 +103,15 @@ msgstr "Noviembre"
 msgid "December"
 msgstr "Diciembre"
 
-#: libs/PublisherBase.php:326
+#: libs/PublisherBase.php:331
 msgid "No valid output format selected."
 msgstr "No se ha seleccionado ningún formato de salida válido."
 
-#: libs/PublisherBase.php:399
+#: libs/PublisherBase.php:404
 msgid "On chapter"
 msgstr "En el capítulo"
 
-#: libs/PublisherBase.php:415
+#: libs/PublisherBase.php:420
 msgid "Please, select at least one chapter to publish your book."
 msgstr "Por favor, seleccione al menos un capítulo para publicar su libro."
 
@@ -129,7 +129,7 @@ msgstr "﻿Los cambios se han guardado correctamente."
 
 #: libs/PublisherController.php:93
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Falta una carpeta temporal."
 
 #: mpl-publisher.php:36
 msgid "Book Chapters"
@@ -140,7 +140,7 @@ msgid "Book Chapter"
 msgstr "Capítulo"
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:368 views/index.php:445
+#: views/index.php:369 views/index.php:446
 msgid "Add New Book Chapter"
 msgstr "Añadir Nuevo Capítulo"
 
@@ -209,7 +209,7 @@ msgstr "Se encontraron errores de validación:"
 msgid "Your book is available at the following link:"
 msgstr "Su libro está disponible en el siguiente enlace:"
 
-#: views/alert.php:10 views/index.php:287
+#: views/alert.php:10
 msgid ""
 "<b>Online Book</b> will provide you a public URL to share within your "
 "readers. <a href='https://mpl-publisher.com/online-book-wordpress' "
@@ -620,11 +620,11 @@ msgstr ""
 msgid "Output format"
 msgstr "Formato de salida"
 
-#: views/index.php:283
+#: views/index.php:284
 msgid "Validate content before download"
 msgstr "Validar el contenido antes de descargarlo"
 
-#: views/index.php:283
+#: views/index.php:284
 msgid ""
 "Validating content before generation ensures your eBook will contain no HTML "
 "errors and will be compatible with all checkers."
@@ -633,7 +633,7 @@ msgstr ""
 "electrónico no contendrá errores HTML y será compatible con todos los "
 "verificadores."
 
-#: views/index.php:286
+#: views/index.php:287
 msgid ""
 "Output result will be affected by the complexity of your content (ie. "
 "\"plain text\" works best)."
@@ -641,7 +641,19 @@ msgstr ""
 "El resultado se verá afectado por la complejidad de su contenido (es decir, "
 "\"texto sin formato\" funciona mejor)."
 
-#: views/index.php:291
+#: views/index.php:288
+msgid ""
+"<b>Online Book and Flipbook</b> will provide you a public URL to share "
+"within your readers. <a href='https://mpl-publisher.com/online-book-"
+"wordpress' target='_blank'>Learn more about what you can do with Online "
+"Books and Flipbooks</a>."
+msgstr ""
+"<b>Online Book y Flipbook</b> le proporcionará una URL pública para "
+"compartir con sus lectores. <a href='https://mpl-publisher.com/online-book-"
+"wordpress' target='_blank'>Obtén más información sobre lo que puedes hacer "
+"con los libros en línea y Flipbooks</a>."
+
+#: views/index.php:292
 msgid ""
 "Finally, if everything looks good, you can click Download, and we will "
 "generate a file for you. You are ready to go. Enjoy!"
@@ -649,15 +661,15 @@ msgstr ""
 "Finalmente, si todo se ve bien, puede hacer clic en Descargar, y generaremos "
 "un archivo para ti. Estás listo para continuar. ¡Disfruta!"
 
-#: views/index.php:291 views/index.php:451
+#: views/index.php:292 views/index.php:452
 msgid "Download eBook"
 msgstr "Descargar eBook"
 
-#: views/index.php:292 views/index.php:452
+#: views/index.php:293 views/index.php:453
 msgid "Save"
 msgstr "Guardar"
 
-#: views/index.php:301
+#: views/index.php:302
 msgid ""
 "Remember that you can use the filters for a more refined search. It will be "
 "helpful if you want to publish a book from a specific category or date."
@@ -665,43 +677,43 @@ msgstr ""
 "Recuerde que puede utilizar los filtros para una búsqueda más refinada. Será "
 "útil si desea publicar un libro de una categoría o fecha específica."
 
-#: views/index.php:303
+#: views/index.php:304
 msgid "All types"
 msgstr "Todos los tipos"
 
-#: views/index.php:304
+#: views/index.php:305
 msgid "Default"
 msgstr "Predeterminado"
 
-#: views/index.php:312
+#: views/index.php:313
 msgid "Other"
 msgstr "Otros"
 
-#: views/index.php:321
+#: views/index.php:322
 msgid "All statuses"
 msgstr "Todos los estados"
 
-#: views/index.php:328
+#: views/index.php:329
 msgid "All categories"
 msgstr "Todas las categorías"
 
-#: views/index.php:337
+#: views/index.php:338
 msgid "All months"
 msgstr "Todos los meses"
 
-#: views/index.php:344
+#: views/index.php:345
 msgid "All years"
 msgstr "Todos los años"
 
-#: views/index.php:352
+#: views/index.php:353
 msgid "Filter content"
 msgstr "Filtrar contenido"
 
-#: views/index.php:356
+#: views/index.php:357
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrastra los resultados para ordenar los capítulos de tu libro"
 
-#: views/index.php:361
+#: views/index.php:362
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -711,15 +723,15 @@ msgstr ""
 "libro (todo por una vez o individualmente). Además, puede usar arrastrar y "
 "soltar para ordenarlos de acuerdo con sus preferencias."
 
-#: views/index.php:365 views/index.php:442
+#: views/index.php:366 views/index.php:443
 msgid "Contents"
 msgstr "Índice"
 
-#: views/index.php:366 views/index.php:443
+#: views/index.php:367 views/index.php:444
 msgid "Order"
 msgstr "Orden"
 
-#: views/index.php:368
+#: views/index.php:369
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -729,7 +741,7 @@ msgstr ""
 "libro. Serán publicaciones privadas solo disponibles para tus libros, por lo "
 "que es una forma de recompensar a tus lectores con contenido exclusivo."
 
-#: views/index.php:376
+#: views/index.php:377
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -737,31 +749,31 @@ msgstr ""
 "Su búsqueda actual tiene demasiados resultados y aún no está disponible. Por "
 "favor, utilice nuestros filtros para limitar su solicitud."
 
-#: views/index.php:377
+#: views/index.php:378
 msgid "Current results"
 msgstr "Resultados actuales"
 
-#: views/index.php:378
+#: views/index.php:379
 msgid "Max results"
 msgstr "Resultados máximos"
 
-#: views/index.php:379
+#: views/index.php:380
 msgid "Change settings"
 msgstr "Cambiar ajustes"
 
-#: views/index.php:406
+#: views/index.php:407
 msgid "View"
 msgstr "Ver"
 
-#: views/index.php:408
+#: views/index.php:409
 msgid "Edit"
 msgstr "Editar"
 
-#: views/index.php:412
+#: views/index.php:413
 msgid "Duplicate and Edit"
 msgstr "Duplicar y Editar"
 
-#: views/index.php:429
+#: views/index.php:430
 msgid "Your search did not match any posts."
 msgstr "Tu búsqueda no coincide con ninguna publicación."
 

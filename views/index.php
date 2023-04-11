@@ -285,7 +285,7 @@
                     </div>
                     <div class="mb-20">
                         <p>¹ <?php _e("Output result will be affected by the complexity of your content (ie. \"plain text\" works best).", "publisher"); ?></p>
-                        <p>² <?php _e("<b>Online Book</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/online-book-wordpress' target='_blank'>Learn more about what you can do with Online Books</a>.", "publisher"); ?></p>
+                        <p>² <?php _e("<b>Online Book and Flipbook</b> will provide you a public URL to share within your readers. <a href='https://mpl-publisher.com/online-book-wordpress' target='_blank'>Learn more about what you can do with Online Books and Flipbooks</a>.", "publisher"); ?></p>
                     </div>
 
                     <p class="submit hidden-xs">
