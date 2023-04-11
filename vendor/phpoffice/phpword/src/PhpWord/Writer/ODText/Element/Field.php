@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 // Not fully implemented
@@ -23,7 +23,7 @@
 namespace PhpOffice\PhpWord\Writer\ODText\Element;
 
 /**
- * Field element writer.
+ * Field element writer
  *
  * @since 0.11.0
  */
@@ -32,7 +32,7 @@ class Field extends Text
     /**
      * Write field element.
      */
-    public function write(): void
+    public function write()
     {
         $element = $this->getElement();
         if (!$element instanceof \PhpOffice\PhpWord\Element\Field) {
@@ -45,12 +45,11 @@ class Field extends Text
             case 'page':
             case 'numpages':
                 $this->writeDefault($element, $type);
-
                 break;
         }
     }
 
-    private function writeDefault(\PhpOffice\PhpWord\Element\Field $element, $type): void
+    private function writeDefault(\PhpOffice\PhpWord\Element\Field $element, $type)
     {
         $xmlWriter = $this->getXmlWriter();
 
@@ -66,18 +65,15 @@ class Field extends Text
                 $xmlWriter->startElement('text:date');
                 $xmlWriter->writeAttribute('text:fixed', 'false');
                 $xmlWriter->endElement();
-
                 break;
             case 'page':
                 $xmlWriter->startElement('text:page-number');
                 $xmlWriter->writeAttribute('text:fixed', 'false');
                 $xmlWriter->endElement();
-
                 break;
             case 'numpages':
                 $xmlWriter->startElement('text:page-count');
                 $xmlWriter->endElement();
-
                 break;
         }
         $xmlWriter->endElement(); // text:span

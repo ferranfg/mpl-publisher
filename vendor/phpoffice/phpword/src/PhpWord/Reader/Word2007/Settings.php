@@ -11,26 +11,25 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Reader\Word2007;
 
-use DOMElement;
 use PhpOffice\PhpWord\ComplexType\TrackChangesView;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\XMLReader;
 use PhpOffice\PhpWord\Style\Language;
 
 /**
- * Settings reader.
+ * Settings reader
  *
  * @since 0.14.0
  */
 class Settings extends AbstractPart
 {
-    private static $booleanProperties = [
+    private static $booleanProperties = array(
         'mirrorMargins',
         'hideSpellingErrors',
         'hideGrammaticalErrors',
@@ -41,12 +40,14 @@ class Settings extends AbstractPart
         'updateFields',
         'autoHyphenation',
         'doNotHyphenateCaps',
-    ];
+    );
 
     /**
      * Read settings.xml.
+     *
+     * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
-    public function read(PhpWord $phpWord): void
+    public function read(PhpWord $phpWord)
     {
         $xmlReader = new XMLReader();
         $xmlReader->getDomFromZip($this->docFile, $this->xmlFile);
@@ -76,9 +77,13 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Sets the document Language.
+     * Sets the document Language
+     *
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
      */
-    protected function setThemeFontLang(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    protected function setThemeFontLang(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $val = $xmlReader->getAttribute('w:val', $node);
         $eastAsia = $xmlReader->getAttribute('w:eastAsia', $node);
@@ -93,9 +98,13 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Sets the document protection.
+     * Sets the document protection
+     *
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
      */
-    protected function setDocumentProtection(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    protected function setDocumentProtection(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $documentProtection = $phpWord->getSettings()->getDocumentProtection();
 
@@ -106,9 +115,13 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Sets the proof state.
+     * Sets the proof state
+     *
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
      */
-    protected function setProofState(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    protected function setProofState(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $proofState = $phpWord->getSettings()->getProofState();
 
@@ -124,9 +137,13 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Sets the proof state.
+     * Sets the proof state
+     *
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
      */
-    protected function setZoom(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    protected function setZoom(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $percent = $xmlReader->getAttribute('w:percent', $node);
         $val = $xmlReader->getAttribute('w:val', $node);
@@ -137,9 +154,13 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Set the Revision view.
+     * Set the Revision view
+     *
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
      */
-    protected function setRevisionView(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    protected function setRevisionView(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $revisionView = new TrackChangesView();
         $revisionView->setMarkup(filter_var($xmlReader->getAttribute('w:markup', $node), FILTER_VALIDATE_BOOLEAN));
@@ -150,7 +171,12 @@ class Settings extends AbstractPart
         $phpWord->getSettings()->setRevisionView($revisionView);
     }
 
-    protected function setConsecutiveHyphenLimit(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    /**
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
+     */
+    protected function setConsecutiveHyphenLimit(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $value = $xmlReader->getAttribute('w:val', $node);
 
@@ -159,7 +185,12 @@ class Settings extends AbstractPart
         }
     }
 
-    protected function setHyphenationZone(XMLReader $xmlReader, PhpWord $phpWord, DOMElement $node): void
+    /**
+     * @param XMLReader $xmlReader
+     * @param PhpWord $phpWord
+     * @param \DOMElement $node
+     */
+    protected function setHyphenationZone(XMLReader $xmlReader, PhpWord $phpWord, \DOMElement $node)
     {
         $value = $xmlReader->getAttribute('w:val', $node);
 

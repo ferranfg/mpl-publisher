@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -30,21 +30,21 @@ use PhpOffice\PhpWord\Writer\RTF\Style\Font as FontStyleWriter;
 use PhpOffice\PhpWord\Writer\RTF\Style\Paragraph as ParagraphStyleWriter;
 
 /**
- * Abstract RTF element writer.
+ * Abstract RTF element writer
  *
  * @since 0.11.0
  */
 abstract class AbstractElement extends HTMLAbstractElement
 {
     /**
-     * Font style.
+     * Font style
      *
      * @var \PhpOffice\PhpWord\Style\Font
      */
     protected $fontStyle;
 
     /**
-     * Paragraph style.
+     * Paragraph style
      *
      * @var \PhpOffice\PhpWord\Style\Paragraph
      */
@@ -60,7 +60,7 @@ abstract class AbstractElement extends HTMLAbstractElement
     /**
      * Get font and paragraph styles.
      */
-    protected function getStyles(): void
+    protected function getStyles()
     {
         /** @var \PhpOffice\PhpWord\Writer\RTF $parentWriter Type hint */
         $parentWriter = $this->parentWriter;
@@ -98,7 +98,7 @@ abstract class AbstractElement extends HTMLAbstractElement
     }
 
     /**
-     * Write opening.
+     * Write opening
      *
      * @return string
      */
@@ -115,10 +115,9 @@ abstract class AbstractElement extends HTMLAbstractElement
     }
 
     /**
-     * Write text.
+     * Write text
      *
      * @param string $text
-     *
      * @return string
      */
     protected function writeText($text)
@@ -131,7 +130,7 @@ abstract class AbstractElement extends HTMLAbstractElement
     }
 
     /**
-     * Write closing.
+     * Write closing
      *
      * @return string
      */
@@ -145,7 +144,7 @@ abstract class AbstractElement extends HTMLAbstractElement
     }
 
     /**
-     * Write font style.
+     * Write font style
      *
      * @return string
      */

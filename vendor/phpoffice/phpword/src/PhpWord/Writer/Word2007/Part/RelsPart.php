@@ -11,44 +11,43 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Part;
 
 /**
- * Word2007 part relationship writer: word/_rels/(header|footer|footnotes|endnotes)*.xml.rels.
+ * Word2007 part relationship writer: word/_rels/(header|footer|footnotes|endnotes)*.xml.rels
  *
  * @since 0.11.0
  */
 class RelsPart extends Rels
 {
     /**
-     * Media relationships.
+     * Media relationships
      *
      * @var array
      */
-    private $media = [];
+    private $media = array();
 
     /**
-     * Write part.
+     * Write part
      *
      * @return string
      */
     public function write()
     {
         $xmlWriter = $this->getXmlWriter();
-        $this->writeRels($xmlWriter, [], $this->media);
+        $this->writeRels($xmlWriter, array(), $this->media);
 
         return $xmlWriter->getData();
     }
 
     /**
-     * Set media.
+     * Set media
      *
      * @param array $media
-     *
      * @return self
      */
     public function setMedia($media)

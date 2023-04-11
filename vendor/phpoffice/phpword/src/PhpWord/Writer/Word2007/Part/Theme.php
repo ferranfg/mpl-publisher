@@ -11,23 +11,22 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Part;
 
 /**
- * Word2007 theme writer: word/theme/theme1.xml.
+ * Word2007 theme writer: word/theme/theme1.xml
  *
  * @todo Generate content dynamically
- *
  * @since 0.10.0
  */
 class Theme extends AbstractPart
 {
     /**
-     * Write part.
+     * Write part
      *
      * @return string
      */
@@ -50,7 +49,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write color scheme.
+     * Write color scheme
      *
      * @return string
      */
@@ -101,7 +100,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write font scheme.
+     * Write font scheme
      *
      * @return string
      */
@@ -187,7 +186,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write format scheme.
+     * Write format scheme
      *
      * @return string
      */
@@ -206,7 +205,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write fill format scheme.
+     * Write fill format scheme
      *
      * @return string
      */
@@ -270,7 +269,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write line format scheme.
+     * Write line format scheme
      *
      * @return string
      */
@@ -306,7 +305,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write effect format scheme.
+     * Write effect format scheme
      *
      * @return string
      */
@@ -359,7 +358,7 @@ class Theme extends AbstractPart
     }
 
     /**
-     * Write background format scheme.
+     * Write background format scheme
      *
      * @return string
      */

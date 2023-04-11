@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -22,33 +22,33 @@ use PhpOffice\PhpWord\Style\Font;
 use PhpOffice\PhpWord\Style\Paragraph;
 
 /**
- * Text element.
+ * Text element
  */
 class Text extends AbstractElement
 {
     /**
-     * Text content.
+     * Text content
      *
      * @var string
      */
     protected $text;
 
     /**
-     * Text style.
+     * Text style
      *
-     * @var \PhpOffice\PhpWord\Style\Font|string
+     * @var string|\PhpOffice\PhpWord\Style\Font
      */
     protected $fontStyle;
 
     /**
-     * Paragraph style.
+     * Paragraph style
      *
-     * @var \PhpOffice\PhpWord\Style\Paragraph|string
+     * @var string|\PhpOffice\PhpWord\Style\Paragraph
      */
     protected $paragraphStyle;
 
     /**
-     * Create a new Text Element.
+     * Create a new Text Element
      *
      * @param string $text
      * @param mixed $fontStyle
@@ -62,12 +62,11 @@ class Text extends AbstractElement
     }
 
     /**
-     * Set Text style.
+     * Set Text style
      *
-     * @param array|\PhpOffice\PhpWord\Style\Font|string $style
-     * @param array|\PhpOffice\PhpWord\Style\Paragraph|string $paragraphStyle
-     *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @param string|array|\PhpOffice\PhpWord\Style\Font $style
+     * @param string|array|\PhpOffice\PhpWord\Style\Paragraph $paragraphStyle
+     * @return string|\PhpOffice\PhpWord\Style\Font
      */
     public function setFontStyle($style = null, $paragraphStyle = null)
     {
@@ -88,9 +87,9 @@ class Text extends AbstractElement
     }
 
     /**
-     * Get Text style.
+     * Get Text style
      *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @return string|\PhpOffice\PhpWord\Style\Font
      */
     public function getFontStyle()
     {
@@ -98,11 +97,10 @@ class Text extends AbstractElement
     }
 
     /**
-     * Set Paragraph style.
+     * Set Paragraph style
      *
-     * @param array|\PhpOffice\PhpWord\Style\Paragraph|string $style
-     *
-     * @return \PhpOffice\PhpWord\Style\Paragraph|string
+     * @param string|array|\PhpOffice\PhpWord\Style\Paragraph $style
+     * @return string|\PhpOffice\PhpWord\Style\Paragraph
      */
     public function setParagraphStyle($style = null)
     {
@@ -121,9 +119,9 @@ class Text extends AbstractElement
     }
 
     /**
-     * Get Paragraph style.
+     * Get Paragraph style
      *
-     * @return \PhpOffice\PhpWord\Style\Paragraph|string
+     * @return string|\PhpOffice\PhpWord\Style\Paragraph
      */
     public function getParagraphStyle()
     {
@@ -131,10 +129,9 @@ class Text extends AbstractElement
     }
 
     /**
-     * Set text content.
+     * Set text content
      *
      * @param string $text
-     *
      * @return self
      */
     public function setText($text)
@@ -145,7 +142,7 @@ class Text extends AbstractElement
     }
 
     /**
-     * Get Text content.
+     * Get Text content
      *
      * @return string
      */

@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -21,34 +21,34 @@ use PhpOffice\PhpWord\Media;
 use PhpOffice\PhpWord\PhpWord;
 
 /**
- * ODText writer.
+ * ODText writer
  *
  * @since 0.7.0
  */
 class ODText extends AbstractWriter implements WriterInterface
 {
     /**
-     * Create new ODText writer.
+     * Create new ODText writer
      *
      * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
-    public function __construct(?PhpWord $phpWord = null)
+    public function __construct(PhpWord $phpWord = null)
     {
         // Assign PhpWord
         $this->setPhpWord($phpWord);
 
         // Create parts
-        $this->parts = [
-            'Mimetype' => 'mimetype',
-            'Content' => 'content.xml',
-            'Meta' => 'meta.xml',
-            'Styles' => 'styles.xml',
-            'Manifest' => 'META-INF/manifest.xml',
-        ];
+        $this->parts = array(
+            'Mimetype'  => 'mimetype',
+            'Content'   => 'content.xml',
+            'Meta'      => 'meta.xml',
+            'Styles'    => 'styles.xml',
+            'Manifest'  => 'META-INF/manifest.xml',
+        );
         foreach (array_keys($this->parts) as $partName) {
-            $partClass = static::class . '\\Part\\' . $partName;
+            $partClass = get_class($this) . '\\Part\\' . $partName;
             if (class_exists($partClass)) {
-                /** @var \PhpOffice\PhpWord\Writer\ODText\Part\AbstractPart $partObject Type hint */
+                /** @var $partObject \PhpOffice\PhpWord\Writer\ODText\Part\AbstractPart Type hint */
                 $partObject = new $partClass();
                 $partObject->setParentWriter($this);
                 $this->writerParts[strtolower($partName)] = $partObject;
@@ -56,7 +56,7 @@ class ODText extends AbstractWriter implements WriterInterface
         }
 
         // Set package paths
-        $this->mediaPaths = ['image' => 'Pictures/'];
+        $this->mediaPaths = array('image' => 'Pictures/');
     }
 
     /**
@@ -64,7 +64,7 @@ class ODText extends AbstractWriter implements WriterInterface
      *
      * @param string $filename
      */
-    public function save($filename = null): void
+    public function save($filename = null)
     {
         $filename = $this->getTempFile($filename);
         $zip = $this->getZipArchive($filename);

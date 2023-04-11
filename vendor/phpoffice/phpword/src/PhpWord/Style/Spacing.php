@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -20,7 +20,7 @@ namespace PhpOffice\PhpWord\Style;
 use PhpOffice\PhpWord\SimpleType\LineSpacingRule;
 
 /**
- * Spacing between lines and above/below paragraph style.
+ * Spacing between lines and above/below paragraph style
  *
  * @see  http://www.datypic.com/sc/ooxml/t-w_CT_Spacing.html
  * @since 0.10.0
@@ -28,47 +28,47 @@ use PhpOffice\PhpWord\SimpleType\LineSpacingRule;
 class Spacing extends AbstractStyle
 {
     /**
-     * Spacing above paragraph (twip).
+     * Spacing above paragraph (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $before;
 
     /**
-     * Spacing below paragraph (twip).
+     * Spacing below paragraph (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $after;
 
     /**
-     * Spacing between lines in paragraph (twip).
+     * Spacing between lines in paragraph (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $line;
 
     /**
-     * Type of spacing between lines.
+     * Type of spacing between lines
      *
      * @var string
      */
     private $lineRule = LineSpacingRule::AUTO;
 
     /**
-     * Create a new instance.
+     * Create a new instance
      *
      * @param array $style
      */
-    public function __construct($style = [])
+    public function __construct($style = array())
     {
         $this->setStyleByArray($style);
     }
 
     /**
-     * Get before.
+     * Get before
      *
-     * @return float|int
+     * @return int|float
      */
     public function getBefore()
     {
@@ -76,10 +76,9 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Set before.
+     * Set before
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBefore($value = null)
@@ -90,9 +89,9 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Get after.
+     * Get after
      *
-     * @return float|int
+     * @return int|float
      */
     public function getAfter()
     {
@@ -100,10 +99,9 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Set after.
+     * Set after
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setAfter($value = null)
@@ -114,9 +112,9 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Get line.
+     * Get line
      *
-     * @return float|int
+     * @return int|float
      */
     public function getLine()
     {
@@ -124,10 +122,9 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Set distance.
+     * Set distance
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setLine($value = null)
@@ -138,7 +135,7 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Get line rule.
+     * Get line rule
      *
      * @return string
      */
@@ -148,15 +145,41 @@ class Spacing extends AbstractStyle
     }
 
     /**
-     * Set line rule.
+     * Set line rule
      *
      * @param string $value
-     *
      * @return self
      */
     public function setLineRule($value = null)
     {
         LineSpacingRule::validate($value);
+        $this->lineRule = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get line rule
+     *
+     * @return string
+     * @deprecated Use getLineRule() instead
+     * @codeCoverageIgnore
+     */
+    public function getRule()
+    {
+        return $this->lineRule;
+    }
+
+    /**
+     * Set line rule
+     *
+     * @param string $value
+     * @return self
+     * @deprecated Use setLineRule() instead
+     * @codeCoverageIgnore
+     */
+    public function setRule($value = null)
+    {
         $this->lineRule = $value;
 
         return $this;

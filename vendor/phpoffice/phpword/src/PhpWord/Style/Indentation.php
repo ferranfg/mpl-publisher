@@ -11,14 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * Paragraph indentation style.
+ * Paragraph indentation style
  *
  * @see  http://www.schemacentral.com/sc/ooxml/t-w_CT_Ind.html
  * @since 0.10.0
@@ -26,47 +26,47 @@ namespace PhpOffice\PhpWord\Style;
 class Indentation extends AbstractStyle
 {
     /**
-     * Left indentation (twip).
+     * Left indentation (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $left = 0;
 
     /**
-     * Right indentation (twip).
+     * Right indentation (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $right = 0;
 
     /**
-     * Additional first line indentation (twip).
+     * Additional first line indentation (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $firstLine;
 
     /**
-     * Indentation removed from first line (twip).
+     * Indentation removed from first line (twip)
      *
-     * @var float|int
+     * @var int|float
      */
     private $hanging;
 
     /**
-     * Create a new instance.
+     * Create a new instance
      *
      * @param array $style
      */
-    public function __construct($style = [])
+    public function __construct($style = array())
     {
         $this->setStyleByArray($style);
     }
 
     /**
-     * Get left.
+     * Get left
      *
-     * @return float|int
+     * @return int|float
      */
     public function getLeft()
     {
@@ -74,10 +74,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Set left.
+     * Set left
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setLeft($value = null)
@@ -88,9 +87,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Get right.
+     * Get right
      *
-     * @return float|int
+     * @return int|float
      */
     public function getRight()
     {
@@ -98,10 +97,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Set right.
+     * Set right
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setRight($value = null)
@@ -112,9 +110,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Get first line.
+     * Get first line
      *
-     * @return float|int
+     * @return int|float
      */
     public function getFirstLine()
     {
@@ -122,10 +120,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Set first line.
+     * Set first line
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setFirstLine($value = null)
@@ -136,9 +133,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Get hanging.
+     * Get hanging
      *
-     * @return float|int
+     * @return int|float
      */
     public function getHanging()
     {
@@ -146,10 +143,9 @@ class Indentation extends AbstractStyle
     }
 
     /**
-     * Set hanging.
+     * Set hanging
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setHanging($value = null)

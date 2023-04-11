@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PhpWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -22,7 +22,7 @@ use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Writer\WriterInterface;
 
 /**
- * MPDF writer.
+ * MPDF writer
  *
  * @see  http://www.mpdf1.com/
  * @since 0.11.0
@@ -30,9 +30,10 @@ use PhpOffice\PhpWord\Writer\WriterInterface;
 class MPDF extends AbstractRenderer implements WriterInterface
 {
     /**
-     * Overridden to set the correct includefile, only needed for MPDF 5.
+     * Overridden to set the correct includefile, only needed for MPDF 5
      *
      * @codeCoverageIgnore
+     * @param PhpWord $phpWord
      */
     public function __construct(PhpWord $phpWord)
     {
@@ -60,7 +61,7 @@ class MPDF extends AbstractRenderer implements WriterInterface
      *
      * @param string $filename Name of the file to save as
      */
-    public function save($filename = null): void
+    public function save($filename = null)
     {
         $fileHandle = parent::prepareForSave($filename);
 
@@ -91,10 +92,9 @@ class MPDF extends AbstractRenderer implements WriterInterface
     }
 
     /**
-     * Return classname of MPDF to instantiate.
+     * Return classname of MPDF to instantiate
      *
      * @codeCoverageIgnore
-     *
      * @return string
      */
     private function getMPdfClassName()

@@ -11,26 +11,38 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * TOC style.
+ * TOC style
  */
 class TOC extends Tab
 {
     /**
-     * Indent.
+     * Tab leader types for backward compatibility
      *
-     * @var float|int (twip)
+     * @deprecated 0.11.0
+     *
+     * @const string
+     */
+    const TABLEADER_DOT = self::TAB_LEADER_DOT;
+    const TABLEADER_UNDERSCORE = self::TAB_LEADER_UNDERSCORE;
+    const TABLEADER_LINE = self::TAB_LEADER_HYPHEN;
+    const TABLEADER_NONE = self::TAB_LEADER_NONE;
+
+    /**
+     * Indent
+     *
+     * @var int|float (twip)
      */
     private $indent = 200;
 
     /**
-     * Create a new TOC Style.
+     * Create a new TOC Style
      */
     public function __construct()
     {
@@ -38,9 +50,9 @@ class TOC extends Tab
     }
 
     /**
-     * Get Tab Position.
+     * Get Tab Position
      *
-     * @return float|int
+     * @return int|float
      */
     public function getTabPos()
     {
@@ -48,10 +60,9 @@ class TOC extends Tab
     }
 
     /**
-     * Set Tab Position.
+     * Set Tab Position
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setTabPos($value)
@@ -60,7 +71,7 @@ class TOC extends Tab
     }
 
     /**
-     * Get Tab Leader.
+     * Get Tab Leader
      *
      * @return string
      */
@@ -70,10 +81,9 @@ class TOC extends Tab
     }
 
     /**
-     * Set Tab Leader.
+     * Set Tab Leader
      *
      * @param string $value
-     *
      * @return self
      */
     public function setTabLeader($value = self::TAB_LEADER_DOT)
@@ -82,9 +92,9 @@ class TOC extends Tab
     }
 
     /**
-     * Get Indent.
+     * Get Indent
      *
-     * @return float|int
+     * @return int|float
      */
     public function getIndent()
     {
@@ -92,10 +102,9 @@ class TOC extends Tab
     }
 
     /**
-     * Set Indent.
+     * Set Indent
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setIndent($value)

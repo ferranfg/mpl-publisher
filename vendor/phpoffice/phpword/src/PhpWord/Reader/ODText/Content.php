@@ -11,19 +11,18 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Reader\ODText;
 
-use DateTime;
 use PhpOffice\PhpWord\Element\TrackChange;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\XMLReader;
 
 /**
- * Content reader.
+ * Content reader
  *
  * @since 0.10.0
  */
@@ -31,13 +30,15 @@ class Content extends AbstractPart
 {
     /**
      * Read content.xml.
+     *
+     * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
-    public function read(PhpWord $phpWord): void
+    public function read(PhpWord $phpWord)
     {
         $xmlReader = new XMLReader();
         $xmlReader->getDomFromZip($this->docFile, $this->xmlFile);
 
-        $trackedChanges = [];
+        $trackedChanges = array();
 
         $nodes = $xmlReader->getElements('office:body/office:text/*');
         if ($nodes->length > 0) {
@@ -48,7 +49,6 @@ class Content extends AbstractPart
                     case 'text:h': // Heading
                         $depth = $xmlReader->getAttribute('text:outline-level', $node);
                         $section->addTitle($node->nodeValue, $depth);
-
                         break;
                     case 'text:p': // Paragraph
                         $children = $node->childNodes;
@@ -59,18 +59,15 @@ class Content extends AbstractPart
                                     if (isset($trackedChanges[$changeId])) {
                                         $changed = $trackedChanges[$changeId];
                                     }
-
                                     break;
                                 case 'text:change-end':
                                     unset($changed);
-
                                     break;
                                 case 'text:change':
                                     $changeId = $child->getAttribute('text:change-id');
                                     if (isset($trackedChanges[$changeId])) {
                                         $changed = $trackedChanges[$changeId];
                                     }
-
                                     break;
                             }
                         }
@@ -85,7 +82,6 @@ class Content extends AbstractPart
                                 }
                             }
                         }
-
                         break;
                     case 'text:list': // List
                         $listItems = $xmlReader->getElements('text:list-item/text:p', $node);
@@ -93,7 +89,6 @@ class Content extends AbstractPart
                             // $listStyleName = $xmlReader->getAttribute('text:style-name', $listItem);
                             $section->addListItem($listItem->nodeValue, 0);
                         }
-
                         break;
                     case 'text:tracked-changes':
                         $changedRegions = $xmlReader->getElements('text:changed-region', $node);
@@ -104,12 +99,11 @@ class Content extends AbstractPart
                             $dateNode = $xmlReader->getElements('office:change-info/dc:date', $changedRegion->firstChild);
                             $date = $dateNode[0]->nodeValue;
                             $date = preg_replace('/\.\d+$/', '', $date);
-                            $date = DateTime::createFromFormat('Y-m-d\TH:i:s', $date);
+                            $date = \DateTime::createFromFormat('Y-m-d\TH:i:s', $date);
                             $changed = new TrackChange($type, $author, $date);
                             $textNodes = $xmlReader->getElements('text:deletion/text:p', $changedRegion);
-                            $trackedChanges[$changedRegion->getAttribute('text:id')] = ['changed' => $changed, 'textNodes' => $textNodes];
+                            $trackedChanges[$changedRegion->getAttribute('text:id')] = array('changed'  => $changed, 'textNodes'=> $textNodes);
                         }
-
                         break;
                 }
             }

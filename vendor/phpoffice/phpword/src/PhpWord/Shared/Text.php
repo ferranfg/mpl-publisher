@@ -11,28 +11,28 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Shared;
 
 /**
- * Text.
+ * Text
  */
 class Text
 {
     /**
-     * Control characters array.
+     * Control characters array
      *
      * @var string[]
      */
-    private static $controlCharacters = [];
+    private static $controlCharacters = array();
 
     /**
-     * Build control characters array.
+     * Build control characters array
      */
-    private static function buildControlCharacters(): void
+    private static function buildControlCharacters()
     {
         for ($i = 0; $i <= 19; ++$i) {
             if ($i != 9 && $i != 10 && $i != 13) {
@@ -44,7 +44,7 @@ class Text
     }
 
     /**
-     * Convert from PHP control character to OpenXML escaped control character.
+     * Convert from PHP control character to OpenXML escaped control character
      *
      * Excel 2007 team:
      * ----------------
@@ -55,7 +55,6 @@ class Text
      * element or in the shared string <t> element.
      *
      * @param  string $value Value to escape
-     *
      * @return string
      */
     public static function controlCharacterPHP2OOXML($value = '')
@@ -68,11 +67,9 @@ class Text
     }
 
     /**
-     * Return a number formatted for being integrated in xml files.
-     *
+     * Return a number formatted for being integrated in xml files
      * @param float $number
      * @param int $decimals
-     *
      * @return string
      */
     public static function numberFormat($number, $decimals)
@@ -82,11 +79,8 @@ class Text
 
     /**
      * @param int $dec
-     *
      * @see http://stackoverflow.com/a/7153133/2235790
-     *
      * @author velcrow
-     *
      * @return string
      */
     public static function chr($dec)
@@ -108,10 +102,9 @@ class Text
     }
 
     /**
-     * Convert from OpenXML escaped control character to PHP control character.
+     * Convert from OpenXML escaped control character to PHP control character
      *
      * @param string $value Value to unescape
-     *
      * @return string
      */
     public static function controlCharacterOOXML2PHP($value = '')
@@ -124,10 +117,9 @@ class Text
     }
 
     /**
-     * Check if a string contains UTF-8 data.
+     * Check if a string contains UTF-8 data
      *
      * @param string $value
-     *
      * @return bool
      */
     public static function isUTF8($value = '')
@@ -136,30 +128,27 @@ class Text
     }
 
     /**
-     * Return UTF8 encoded value.
+     * Return UTF8 encoded value
      *
      * @param string $value
-     *
      * @return string
      */
     public static function toUTF8($value = '')
     {
-        if (null !== $value && !self::isUTF8($value)) {
-            $value = utf8_encode($value);
+        if (!is_null($value) && !self::isUTF8($value)) {
+            $value = mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
         }
 
         return $value;
     }
 
     /**
-     * Returns unicode from UTF8 text.
+     * Returns unicode from UTF8 text
      *
      * The function is splitted to reduce cyclomatic complexity
      *
      * @param string $text UTF8 text
-     *
      * @return string Unicode text
-     *
      * @since 0.11.0
      */
     public static function toUnicode($text)
@@ -168,23 +157,21 @@ class Text
     }
 
     /**
-     * Returns unicode array from UTF8 text.
+     * Returns unicode array from UTF8 text
      *
      * @param string $text UTF8 text
-     *
      * @return array
-     *
      * @since 0.11.0
      * @see http://www.randomchaos.com/documents/?source=php_and_unicode
      */
     public static function utf8ToUnicode($text)
     {
-        $unicode = [];
-        $values = [];
+        $unicode = array();
+        $values = array();
         $lookingFor = 1;
 
         // Gets unicode for each character
-        for ($i = 0; $i < strlen($text); ++$i) {
+        for ($i = 0; $i < strlen($text); $i++) {
             $thisValue = ord($text[$i]);
             if ($thisValue < 128) {
                 $unicode[] = $thisValue;
@@ -200,7 +187,7 @@ class Text
                         $number = (($values[0] % 32) * 64) + ($values[1] % 64);
                     }
                     $unicode[] = $number;
-                    $values = [];
+                    $values = array();
                     $lookingFor = 1;
                 }
             }
@@ -210,12 +197,10 @@ class Text
     }
 
     /**
-     * Returns entites from unicode array.
+     * Returns entites from unicode array
      *
      * @param array $unicode
-     *
      * @return string
-     *
      * @since 0.11.0
      * @see http://www.randomchaos.com/documents/?source=php_and_unicode
      */
@@ -233,15 +218,14 @@ class Text
     }
 
     /**
-     * Return name without underscore for < 0.10.0 variable name compatibility.
+     * Return name without underscore for < 0.10.0 variable name compatibility
      *
      * @param string $value
-     *
      * @return string
      */
     public static function removeUnderscorePrefix($value)
     {
-        if (null !== $value) {
+        if (!is_null($value)) {
             if (substr($value, 0, 1) == '_') {
                 $value = substr($value, 1);
             }

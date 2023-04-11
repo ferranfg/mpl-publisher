@@ -11,14 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Element;
 
 /**
- * Form field element.
+ * Form field element
  *
  * @since 0.12.0
  * @see  http://www.datypic.com/sc/ooxml/t-w_CT_FFData.html
@@ -26,46 +26,46 @@ namespace PhpOffice\PhpWord\Element;
 class FormField extends Text
 {
     /**
-     * Form field type: textinput|checkbox|dropdown.
+     * Form field type: textinput|checkbox|dropdown
      *
      * @var string
      */
     private $type = 'textinput';
 
     /**
-     * Form field name.
+     * Form field name
      *
-     * @var bool|int|string
+     * @var string|bool|int
      */
     private $name;
 
     /**
-     * Default value.
+     * Default value
      *
      * - TextInput: string
      * - CheckBox: bool
      * - DropDown: int Index of entries (zero based)
      *
-     * @var bool|int|string
+     * @var string|bool|int
      */
     private $default;
 
     /**
-     * Value.
+     * Value
      *
-     * @var bool|int|string
+     * @var string|bool|int
      */
     private $value;
 
     /**
-     * Dropdown entries.
+     * Dropdown entries
      *
      * @var array
      */
-    private $entries = [];
+    private $entries = array();
 
     /**
-     * Create new instance.
+     * Create new instance
      *
      * @param string $type
      * @param mixed $fontStyle
@@ -78,7 +78,7 @@ class FormField extends Text
     }
 
     /**
-     * Get type.
+     * Get type
      *
      * @return string
      */
@@ -88,22 +88,21 @@ class FormField extends Text
     }
 
     /**
-     * Set type.
+     * Set type
      *
      * @param string $value
-     *
      * @return self
      */
     public function setType($value)
     {
-        $enum = ['textinput', 'checkbox', 'dropdown'];
+        $enum = array('textinput', 'checkbox', 'dropdown');
         $this->type = $this->setEnumVal($value, $enum, $this->type);
 
         return $this;
     }
 
     /**
-     * Get name.
+     * Get name
      *
      * @return string
      */
@@ -113,10 +112,9 @@ class FormField extends Text
     }
 
     /**
-     * Set name.
+     * Set name
      *
-     * @param bool|int|string $value
-     *
+     * @param string|bool|int $value
      * @return self
      */
     public function setName($value)
@@ -127,9 +125,9 @@ class FormField extends Text
     }
 
     /**
-     * Get default.
+     * Get default
      *
-     * @return bool|int|string
+     * @return string|bool|int
      */
     public function getDefault()
     {
@@ -137,10 +135,9 @@ class FormField extends Text
     }
 
     /**
-     * Set default.
+     * Set default
      *
-     * @param bool|int|string $value
-     *
+     * @param string|bool|int $value
      * @return self
      */
     public function setDefault($value)
@@ -151,9 +148,9 @@ class FormField extends Text
     }
 
     /**
-     * Get value.
+     * Get value
      *
-     * @return bool|int|string
+     * @return string|bool|int
      */
     public function getValue()
     {
@@ -161,10 +158,9 @@ class FormField extends Text
     }
 
     /**
-     * Set value.
+     * Set value
      *
-     * @param bool|int|string $value
-     *
+     * @param string|bool|int $value
      * @return self
      */
     public function setValue($value)
@@ -175,7 +171,7 @@ class FormField extends Text
     }
 
     /**
-     * Get entries.
+     * Get entries
      *
      * @return array
      */
@@ -185,10 +181,9 @@ class FormField extends Text
     }
 
     /**
-     * Set entries.
+     * Set entries
      *
      * @param array $value
-     *
      * @return self
      */
     public function setEntries($value)

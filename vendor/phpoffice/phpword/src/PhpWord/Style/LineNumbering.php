@@ -11,14 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * Line numbering style.
+ * Line numbering style
  *
  * @see  http://www.schemacentral.com/sc/ooxml/t-w_CT_LineNumber.html
  * @since 0.10.0
@@ -31,47 +31,46 @@ class LineNumbering extends AbstractStyle
     const LINE_NUMBERING_NEW_SECTION = 'newSection';
 
     /**
-     * Line numbering starting value.
+     * Line numbering starting value
      *
      * @var int
      */
     private $start = 1;
 
     /**
-     * Line number increments.
+     * Line number increments
      *
      * @var int
      */
     private $increment = 1;
 
     /**
-     * Distance between text and line numbering in twip.
+     * Distance between text and line numbering in twip
      *
-     * @var float|int
+     * @var int|float
      */
     private $distance;
 
     /**
-     * Line numbering restart setting continuous|newPage|newSection.
+     * Line numbering restart setting continuous|newPage|newSection
      *
      * @var string
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/a-w_restart-1.html
      */
     private $restart;
 
     /**
-     * Create a new instance.
+     * Create a new instance
      *
      * @param array $style
      */
-    public function __construct($style = [])
+    public function __construct($style = array())
     {
         $this->setStyleByArray($style);
     }
 
     /**
-     * Get start.
+     * Get start
      *
      * @return int
      */
@@ -81,10 +80,9 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Set start.
+     * Set start
      *
      * @param int $value
-     *
      * @return self
      */
     public function setStart($value = null)
@@ -95,7 +93,7 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Get increment.
+     * Get increment
      *
      * @return int
      */
@@ -105,10 +103,9 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Set increment.
+     * Set increment
      *
      * @param int $value
-     *
      * @return self
      */
     public function setIncrement($value = null)
@@ -119,9 +116,9 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Get distance.
+     * Get distance
      *
-     * @return float|int
+     * @return int|float
      */
     public function getDistance()
     {
@@ -129,10 +126,9 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Set distance.
+     * Set distance
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setDistance($value = null)
@@ -143,7 +139,7 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Get restart.
+     * Get restart
      *
      * @return string
      */
@@ -153,15 +149,14 @@ class LineNumbering extends AbstractStyle
     }
 
     /**
-     * Set distance.
+     * Set distance
      *
      * @param string $value
-     *
      * @return self
      */
     public function setRestart($value = null)
     {
-        $enum = [self::LINE_NUMBERING_CONTINUOUS, self::LINE_NUMBERING_NEW_PAGE, self::LINE_NUMBERING_NEW_SECTION];
+        $enum = array(self::LINE_NUMBERING_CONTINUOUS, self::LINE_NUMBERING_NEW_PAGE, self::LINE_NUMBERING_NEW_SECTION);
         $this->restart = $this->setEnumVal($value, $enum, $this->restart);
 
         return $this;

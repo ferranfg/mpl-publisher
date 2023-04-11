@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -23,7 +23,7 @@ use PhpOffice\PhpWord\SimpleType\Zoom;
 use PhpOffice\PhpWord\Style\Language;
 
 /**
- * Setting class.
+ * Setting class
  *
  * @since 0.14.0
  * @see  http://www.datypic.com/sc/ooxml/t-w_CT_Settings.html
@@ -31,74 +31,72 @@ use PhpOffice\PhpWord\Style\Language;
 class Settings
 {
     /**
-     * Magnification Setting.
+     * Magnification Setting
      *
      * @see  http://www.datypic.com/sc/ooxml/e-w_zoom-1.html
-     *
      * @var mixed either integer, in which case it treated as a percent, or one of PhpOffice\PhpWord\SimpleType\Zoom
      */
     private $zoom = 100;
 
     /**
-     * Mirror Page Margins.
+     * Mirror Page Margins
      *
      * @see http://www.datypic.com/sc/ooxml/e-w_mirrorMargins-1.html
-     *
      * @var bool
      */
     private $mirrorMargins;
 
     /**
-     * Hide spelling errors.
+     * Hide spelling errors
      *
      * @var bool
      */
     private $hideSpellingErrors = false;
 
     /**
-     * Hide grammatical errors.
+     * Hide grammatical errors
      *
      * @var bool
      */
     private $hideGrammaticalErrors = false;
 
     /**
-     * Visibility of Annotation Types.
+     * Visibility of Annotation Types
      *
      * @var TrackChangesView
      */
     private $revisionView;
 
     /**
-     * Track Revisions to Document.
+     * Track Revisions to Document
      *
      * @var bool
      */
     private $trackRevisions = false;
 
     /**
-     * Do Not Use Move Syntax When Tracking Revisions.
+     * Do Not Use Move Syntax When Tracking Revisions
      *
      * @var bool
      */
     private $doNotTrackMoves = false;
 
     /**
-     * Do Not Track Formatting Revisions When Tracking Revisions.
+     * Do Not Track Formatting Revisions When Tracking Revisions
      *
      * @var bool
      */
     private $doNotTrackFormatting = false;
 
     /**
-     * Spelling and Grammatical Checking State.
+     * Spelling and Grammatical Checking State
      *
      * @var \PhpOffice\PhpWord\ComplexType\ProofState
      */
     private $proofState;
 
     /**
-     * Document Editing Restrictions.
+     * Document Editing Restrictions
      *
      * @var \PhpOffice\PhpWord\Metadata\Protection
      */
@@ -112,51 +110,49 @@ class Settings
     private $evenAndOddHeaders = false;
 
     /**
-     * Theme Font Languages.
+     * Theme Font Languages
      *
      * @var Language
      */
     private $themeFontLang;
 
     /**
-     * Automatically Recalculate Fields on Open.
+     * Automatically Recalculate Fields on Open
      *
      * @var bool
      */
     private $updateFields = false;
 
     /**
-     * Radix Point for Field Code Evaluation.
+     * Radix Point for Field Code Evaluation
      *
      * @var string
      */
     private $decimalSymbol = '.';
 
     /**
-     * Automatically hyphenate document contents when displayed.
+     * Automatically hyphenate document contents when displayed
      *
-     * @var null|bool
+     * @var bool|null
      */
     private $autoHyphenation;
 
     /**
-     * Maximum number of consecutively hyphenated lines.
+     * Maximum number of consecutively hyphenated lines
      *
-     * @var null|int
+     * @var int|null
      */
     private $consecutiveHyphenLimit;
 
     /**
-     * The allowed amount of whitespace before hyphenation is applied.
-     *
-     * @var null|float
+     * The allowed amount of whitespace before hyphenation is applied
+     * @var float|null
      */
     private $hyphenationZone;
 
     /**
-     * Do not hyphenate words in all capital letters.
-     *
-     * @var null|bool
+     * Do not hyphenate words in all capital letters
+     * @var bool|null
      */
     private $doNotHyphenateCaps;
 
@@ -175,7 +171,7 @@ class Settings
     /**
      * @param Protection $documentProtection
      */
-    public function setDocumentProtection($documentProtection): void
+    public function setDocumentProtection($documentProtection)
     {
         $this->documentProtection = $documentProtection;
     }
@@ -195,13 +191,13 @@ class Settings
     /**
      * @param ProofState $proofState
      */
-    public function setProofState($proofState): void
+    public function setProofState($proofState)
     {
         $this->proofState = $proofState;
     }
 
     /**
-     * Are spelling errors hidden.
+     * Are spelling errors hidden
      *
      * @return bool
      */
@@ -211,17 +207,17 @@ class Settings
     }
 
     /**
-     * Hide spelling errors.
+     * Hide spelling errors
      *
      * @param bool $hideSpellingErrors
      */
-    public function setHideSpellingErrors($hideSpellingErrors): void
+    public function setHideSpellingErrors($hideSpellingErrors)
     {
         $this->hideSpellingErrors = $hideSpellingErrors === null ? true : $hideSpellingErrors;
     }
 
     /**
-     * Are grammatical errors hidden.
+     * Are grammatical errors hidden
      *
      * @return bool
      */
@@ -231,11 +227,11 @@ class Settings
     }
 
     /**
-     * Hide grammatical errors.
+     * Hide grammatical errors
      *
      * @param bool $hideGrammaticalErrors
      */
-    public function setHideGrammaticalErrors($hideGrammaticalErrors): void
+    public function setHideGrammaticalErrors($hideGrammaticalErrors)
     {
         $this->hideGrammaticalErrors = $hideGrammaticalErrors === null ? true : $hideGrammaticalErrors;
     }
@@ -251,13 +247,13 @@ class Settings
     /**
      * @param bool $evenAndOddHeaders
      */
-    public function setEvenAndOddHeaders($evenAndOddHeaders): void
+    public function setEvenAndOddHeaders($evenAndOddHeaders)
     {
         $this->evenAndOddHeaders = $evenAndOddHeaders === null ? true : $evenAndOddHeaders;
     }
 
     /**
-     * Get the Visibility of Annotation Types.
+     * Get the Visibility of Annotation Types
      *
      * @return \PhpOffice\PhpWord\ComplexType\TrackChangesView
      */
@@ -267,11 +263,11 @@ class Settings
     }
 
     /**
-     * Set the Visibility of Annotation Types.
+     * Set the Visibility of Annotation Types
      *
      * @param TrackChangesView $trackChangesView
      */
-    public function setRevisionView(?TrackChangesView $trackChangesView = null): void
+    public function setRevisionView(TrackChangesView $trackChangesView = null)
     {
         $this->revisionView = $trackChangesView;
     }
@@ -287,7 +283,7 @@ class Settings
     /**
      * @param bool $trackRevisions
      */
-    public function setTrackRevisions($trackRevisions): void
+    public function setTrackRevisions($trackRevisions)
     {
         $this->trackRevisions = $trackRevisions === null ? true : $trackRevisions;
     }
@@ -303,7 +299,7 @@ class Settings
     /**
      * @param bool $doNotTrackMoves
      */
-    public function setDoNotTrackMoves($doNotTrackMoves): void
+    public function setDoNotTrackMoves($doNotTrackMoves)
     {
         $this->doNotTrackMoves = $doNotTrackMoves === null ? true : $doNotTrackMoves;
     }
@@ -319,7 +315,7 @@ class Settings
     /**
      * @param bool $doNotTrackFormatting
      */
-    public function setDoNotTrackFormatting($doNotTrackFormatting): void
+    public function setDoNotTrackFormatting($doNotTrackFormatting)
     {
         $this->doNotTrackFormatting = $doNotTrackFormatting === null ? true : $doNotTrackFormatting;
     }
@@ -335,7 +331,7 @@ class Settings
     /**
      * @param mixed $zoom
      */
-    public function setZoom($zoom): void
+    public function setZoom($zoom)
     {
         if (is_numeric($zoom)) {
             // zoom is a percentage
@@ -357,13 +353,13 @@ class Settings
     /**
      * @param bool $mirrorMargins
      */
-    public function setMirrorMargins($mirrorMargins): void
+    public function setMirrorMargins($mirrorMargins)
     {
         $this->mirrorMargins = $mirrorMargins;
     }
 
     /**
-     * Returns the Language.
+     * Returns the Language
      *
      * @return Language
      */
@@ -373,11 +369,11 @@ class Settings
     }
 
     /**
-     * sets the Language for this document.
+     * sets the Language for this document
      *
      * @param Language $themeFontLang
      */
-    public function setThemeFontLang($themeFontLang): void
+    public function setThemeFontLang($themeFontLang)
     {
         $this->themeFontLang = $themeFontLang;
     }
@@ -393,13 +389,13 @@ class Settings
     /**
      * @param bool $updateFields
      */
-    public function setUpdateFields($updateFields): void
+    public function setUpdateFields($updateFields)
     {
         $this->updateFields = $updateFields === null ? false : $updateFields;
     }
 
     /**
-     * Returns the Radix Point for Field Code Evaluation.
+     * Returns the Radix Point for Field Code Evaluation
      *
      * @return string
      */
@@ -409,17 +405,17 @@ class Settings
     }
 
     /**
-     * sets the Radix Point for Field Code Evaluation.
+     * sets the Radix Point for Field Code Evaluation
      *
      * @param string $decimalSymbol
      */
-    public function setDecimalSymbol($decimalSymbol): void
+    public function setDecimalSymbol($decimalSymbol)
     {
         $this->decimalSymbol = $decimalSymbol;
     }
 
     /**
-     * @return null|bool
+     * @return bool|null
      */
     public function hasAutoHyphenation()
     {
@@ -429,13 +425,13 @@ class Settings
     /**
      * @param bool $autoHyphenation
      */
-    public function setAutoHyphenation($autoHyphenation): void
+    public function setAutoHyphenation($autoHyphenation)
     {
         $this->autoHyphenation = (bool) $autoHyphenation;
     }
 
     /**
-     * @return null|int
+     * @return int|null
      */
     public function getConsecutiveHyphenLimit()
     {
@@ -445,13 +441,13 @@ class Settings
     /**
      * @param int $consecutiveHyphenLimit
      */
-    public function setConsecutiveHyphenLimit($consecutiveHyphenLimit): void
+    public function setConsecutiveHyphenLimit($consecutiveHyphenLimit)
     {
         $this->consecutiveHyphenLimit = (int) $consecutiveHyphenLimit;
     }
 
     /**
-     * @return null|float
+     * @return float|null
      */
     public function getHyphenationZone()
     {
@@ -461,7 +457,7 @@ class Settings
     /**
      * @param float $hyphenationZone Measurement unit is twip
      */
-    public function setHyphenationZone($hyphenationZone): void
+    public function setHyphenationZone($hyphenationZone)
     {
         $this->hyphenationZone = $hyphenationZone;
     }
@@ -477,7 +473,7 @@ class Settings
     /**
      * @param bool $doNotHyphenateCaps
      */
-    public function setDoNotHyphenateCaps($doNotHyphenateCaps): void
+    public function setDoNotHyphenateCaps($doNotHyphenateCaps)
     {
         $this->doNotHyphenateCaps = (bool) $doNotHyphenateCaps;
     }

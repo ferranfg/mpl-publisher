@@ -11,17 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Element;
 
-use DateTime;
-
 /**
- * TrackChange element.
- *
+ * TrackChange element
  * @see http://datypic.com/sc/ooxml/t-w_CT_TrackChange.html
  * @see http://datypic.com/sc/ooxml/t-w_CT_RunTrackChange.html
  */
@@ -36,44 +33,44 @@ class TrackChange extends AbstractContainer
     protected $container = 'TrackChange';
 
     /**
-     * The type of change, (insert or delete), not applicable for PhpOffice\PhpWord\Element\Comment.
+     * The type of change, (insert or delete), not applicable for PhpOffice\PhpWord\Element\Comment
      *
      * @var string
      */
     private $changeType;
 
     /**
-     * Author.
+     * Author
      *
      * @var string
      */
     private $author;
 
     /**
-     * Date.
+     * Date
      *
-     * @var DateTime
+     * @var \DateTime
      */
     private $date;
 
     /**
-     * Create a new TrackChange Element.
+     * Create a new TrackChange Element
      *
      * @param string $changeType
      * @param string $author
-     * @param null|bool|DateTime|int $date
+     * @param null|int|bool|\DateTime $date
      */
     public function __construct($changeType = null, $author = null, $date = null)
     {
         $this->changeType = $changeType;
         $this->author = $author;
         if ($date !== null && $date !== false) {
-            $this->date = ($date instanceof DateTime) ? $date : new DateTime('@' . $date);
+            $this->date = ($date instanceof \DateTime) ? $date : new \DateTime('@' . $date);
         }
     }
 
     /**
-     * Get TrackChange Author.
+     * Get TrackChange Author
      *
      * @return string
      */
@@ -83,9 +80,9 @@ class TrackChange extends AbstractContainer
     }
 
     /**
-     * Get TrackChange Date.
+     * Get TrackChange Date
      *
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -93,7 +90,7 @@ class TrackChange extends AbstractContainer
     }
 
     /**
-     * Get the Change type.
+     * Get the Change type
      *
      * @return string
      */

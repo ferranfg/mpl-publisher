@@ -11,14 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * Numbering style.
+ * Numbering style
  *
  * @see  http://www.schemacentral.com/sc/ooxml/e-w_numbering.html
  * @see  http://www.schemacentral.com/sc/ooxml/e-w_abstractNum-1.html
@@ -28,32 +28,30 @@ namespace PhpOffice\PhpWord\Style;
 class Numbering extends AbstractStyle
 {
     /**
-     * Numbering definition instance ID.
+     * Numbering definition instance ID
      *
      * @var int
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/e-w_num-1.html
      */
     private $numId;
 
     /**
-     * Multilevel type singleLevel|multilevel|hybridMultilevel.
+     * Multilevel type singleLevel|multilevel|hybridMultilevel
      *
      * @var string
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/a-w_val-67.html
      */
     private $type;
 
     /**
-     * Numbering levels.
+     * Numbering levels
      *
      * @var NumberingLevel[]
      */
-    private $levels = [];
+    private $levels = array();
 
     /**
-     * Get Id.
+     * Get Id
      *
      * @return int
      */
@@ -63,10 +61,9 @@ class Numbering extends AbstractStyle
     }
 
     /**
-     * Set Id.
+     * Set Id
      *
      * @param int $value
-     *
      * @return self
      */
     public function setNumId($value)
@@ -77,7 +74,7 @@ class Numbering extends AbstractStyle
     }
 
     /**
-     * Get multilevel type.
+     * Get multilevel type
      *
      * @return string
      */
@@ -87,22 +84,21 @@ class Numbering extends AbstractStyle
     }
 
     /**
-     * Set multilevel type.
+     * Set multilevel type
      *
      * @param string $value
-     *
      * @return self
      */
     public function setType($value)
     {
-        $enum = ['singleLevel', 'multilevel', 'hybridMultilevel'];
+        $enum = array('singleLevel', 'multilevel', 'hybridMultilevel');
         $this->type = $this->setEnumVal($value, $enum, $this->type);
 
         return $this;
     }
 
     /**
-     * Get levels.
+     * Get levels
      *
      * @return NumberingLevel[]
      */
@@ -112,10 +108,9 @@ class Numbering extends AbstractStyle
     }
 
     /**
-     * Set multilevel type.
+     * Set multilevel type
      *
      * @param array $values
-     *
      * @return self
      */
     public function setLevels($values)

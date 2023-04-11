@@ -11,51 +11,50 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Element;
 
-use InvalidArgumentException;
 use PhpOffice\PhpWord\Shared\Text as SharedText;
 use PhpOffice\PhpWord\Style;
 
 /**
- * Title element.
+ * Title element
  */
 class Title extends AbstractElement
 {
     /**
-     * Title Text content.
+     * Title Text content
      *
      * @var string|TextRun
      */
     private $text;
 
     /**
-     * Title depth.
+     * Title depth
      *
      * @var int
      */
     private $depth = 1;
 
     /**
-     * Name of the heading style, e.g. 'Heading1'.
+     * Name of the heading style, e.g. 'Heading1'
      *
      * @var string
      */
     private $style;
 
     /**
-     * Is part of collection.
+     * Is part of collection
      *
      * @var bool
      */
     protected $collectionRelation = true;
 
     /**
-     * Create a new Title Element.
+     * Create a new Title Element
      *
      * @param string|TextRun $text
      * @param int $depth
@@ -67,7 +66,7 @@ class Title extends AbstractElement
         } elseif ($text instanceof TextRun) {
             $this->text = $text;
         } else {
-            throw new InvalidArgumentException('Invalid text, should be a string or a TextRun');
+            throw new \InvalidArgumentException('Invalid text, should be a string or a TextRun');
         }
 
         $this->depth = $depth;
@@ -78,7 +77,7 @@ class Title extends AbstractElement
     }
 
     /**
-     * Get Title Text content.
+     * Get Title Text content
      *
      * @return string
      */
@@ -88,7 +87,7 @@ class Title extends AbstractElement
     }
 
     /**
-     * Get depth.
+     * Get depth
      *
      * @return int
      */
@@ -98,7 +97,7 @@ class Title extends AbstractElement
     }
 
     /**
-     * Get Title style.
+     * Get Title style
      *
      * @return string
      */

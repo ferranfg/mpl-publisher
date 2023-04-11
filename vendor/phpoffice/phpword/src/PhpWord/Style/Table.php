@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -24,15 +24,28 @@ use PhpOffice\PhpWord\SimpleType\TblWidth;
 
 class Table extends Border
 {
+    /**
+     * @deprecated Use \PhpOffice\PhpWord\SimpleType\TblWidth::AUTO instead
+     */
+    const WIDTH_AUTO = 'auto'; // Automatically determined width
+    /**
+     * @deprecated Use \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT instead
+     */
+    const WIDTH_PERCENT = 'pct'; // Width in fiftieths (1/50) of a percent (1% = 50 unit)
+    /**
+     * @deprecated Use \PhpOffice\PhpWord\SimpleType\TblWidth::TWIP instead
+     */
+    const WIDTH_TWIP = 'dxa'; // Width in twentieths (1/20) of a point (twip)
+
     //values for http://www.datypic.com/sc/ooxml/t-w_ST_TblLayoutType.html
     /**
-     * AutoFit Table Layout.
+     * AutoFit Table Layout
      *
      * @var string
      */
     const LAYOUT_AUTO = 'autofit';
     /**
-     * Fixed Width Table Layout.
+     * Fixed Width Table Layout
      *
      * @var string
      */
@@ -46,70 +59,70 @@ class Table extends Border
     private $isFirstRow = false;
 
     /**
-     * Style for first row.
+     * Style for first row
      *
      * @var \PhpOffice\PhpWord\Style\Table
      */
     private $firstRowStyle;
 
     /**
-     * Cell margin top.
+     * Cell margin top
      *
      * @var int
      */
     private $cellMarginTop;
 
     /**
-     * Cell margin left.
+     * Cell margin left
      *
      * @var int
      */
     private $cellMarginLeft;
 
     /**
-     * Cell margin right.
+     * Cell margin right
      *
      * @var int
      */
     private $cellMarginRight;
 
     /**
-     * Cell margin bottom.
+     * Cell margin bottom
      *
      * @var int
      */
     private $cellMarginBottom;
 
     /**
-     * Border size inside horizontal.
+     * Border size inside horizontal
      *
      * @var int
      */
     private $borderInsideHSize;
 
     /**
-     * Border color inside horizontal.
+     * Border color inside horizontal
      *
      * @var string
      */
     private $borderInsideHColor;
 
     /**
-     * Border size inside vertical.
+     * Border size inside vertical
      *
      * @var int
      */
     private $borderInsideVSize;
 
     /**
-     * Border color inside vertical.
+     * Border color inside vertical
      *
      * @var string
      */
     private $borderInsideVColor;
 
     /**
-     * Shading.
+     * Shading
      *
      * @var \PhpOffice\PhpWord\Style\Shading
      */
@@ -121,7 +134,7 @@ class Table extends Border
     private $alignment = '';
 
     /**
-     * @var float|int Width value
+     * @var int|float Width value
      */
     private $width = 0;
 
@@ -131,9 +144,9 @@ class Table extends Border
     private $unit = TblWidth::AUTO;
 
     /**
-     * @var float|int cell spacing value
+     * @var int|float cell spacing value
      */
-    protected $cellSpacing;
+    protected $cellSpacing = null;
 
     /**
      * @var string Table Layout
@@ -141,33 +154,32 @@ class Table extends Border
     private $layout = self::LAYOUT_AUTO;
 
     /**
-     * Position.
+     * Position
      *
      * @var \PhpOffice\PhpWord\Style\TablePosition
      */
     private $position;
 
-    /** @var null|TblWidthComplexType */
+    /** @var TblWidthComplexType|null */
     private $indent;
 
     /**
-     * The width of each column, computed based on the max cell width of each column.
+     * The width of each column, computed based on the max cell width of each column
      *
      * @var int[]
      */
     private $columnWidths;
 
     /**
-     * Visually Right to Left Table.
+     * Visually Right to Left Table
      *
      * @see  http://www.datypic.com/sc/ooxml/e-w_bidiVisual-1.html
-     *
      * @var bool
      */
     private $bidiVisual = false;
 
     /**
-     * Create new table style.
+     * Create new table style
      *
      * @param mixed $tableStyle
      * @param mixed $firstRowStyle
@@ -190,7 +202,7 @@ class Table extends Border
     /**
      * @param float|int $cellSpacing
      */
-    public function setCellSpacing($cellSpacing = null): void
+    public function setCellSpacing($cellSpacing = null)
     {
         $this->cellSpacing = $cellSpacing;
     }
@@ -204,7 +216,7 @@ class Table extends Border
     }
 
     /**
-     * Set first row.
+     * Set first row
      *
      * @return \PhpOffice\PhpWord\Style\Table
      */
@@ -214,7 +226,7 @@ class Table extends Border
     }
 
     /**
-     * Get background.
+     * Get background
      *
      * @return string
      */
@@ -228,41 +240,39 @@ class Table extends Border
     }
 
     /**
-     * Set background.
+     * Set background
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBgColor($value = null)
     {
-        $this->setShading(['fill' => $value]);
+        $this->setShading(array('fill' => $value));
 
         return $this;
     }
 
     /**
-     * Get TLRBHV Border Size.
+     * Get TLRBHV Border Size
      *
      * @return int[]
      */
     public function getBorderSize()
     {
-        return [
+        return array(
             $this->getBorderTopSize(),
             $this->getBorderLeftSize(),
             $this->getBorderRightSize(),
             $this->getBorderBottomSize(),
             $this->getBorderInsideHSize(),
             $this->getBorderInsideVSize(),
-        ];
+        );
     }
 
     /**
-     * Set TLRBHV Border Size.
+     * Set TLRBHV Border Size
      *
      * @param int $value Border size in eighths of a point (1/8 point)
-     *
      * @return self
      */
     public function setBorderSize($value = null)
@@ -278,27 +288,26 @@ class Table extends Border
     }
 
     /**
-     * Get TLRBHV Border Color.
+     * Get TLRBHV Border Color
      *
      * @return string[]
      */
     public function getBorderColor()
     {
-        return [
+        return array(
             $this->getBorderTopColor(),
             $this->getBorderLeftColor(),
             $this->getBorderRightColor(),
             $this->getBorderBottomColor(),
             $this->getBorderInsideHColor(),
             $this->getBorderInsideVColor(),
-        ];
+        );
     }
 
     /**
-     * Set TLRBHV Border Color.
+     * Set TLRBHV Border Color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderColor($value = null)
@@ -314,7 +323,7 @@ class Table extends Border
     }
 
     /**
-     * Get border size inside horizontal.
+     * Get border size inside horizontal
      *
      * @return int
      */
@@ -324,10 +333,9 @@ class Table extends Border
     }
 
     /**
-     * Set border size inside horizontal.
+     * Set border size inside horizontal
      *
      * @param int $value
-     *
      * @return self
      */
     public function setBorderInsideHSize($value = null)
@@ -336,7 +344,7 @@ class Table extends Border
     }
 
     /**
-     * Get border color inside horizontal.
+     * Get border color inside horizontal
      *
      * @return string
      */
@@ -346,10 +354,9 @@ class Table extends Border
     }
 
     /**
-     * Set border color inside horizontal.
+     * Set border color inside horizontal
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderInsideHColor($value = null)
@@ -358,7 +365,7 @@ class Table extends Border
     }
 
     /**
-     * Get border size inside vertical.
+     * Get border size inside vertical
      *
      * @return int
      */
@@ -368,10 +375,9 @@ class Table extends Border
     }
 
     /**
-     * Set border size inside vertical.
+     * Set border size inside vertical
      *
      * @param int $value
-     *
      * @return self
      */
     public function setBorderInsideVSize($value = null)
@@ -380,7 +386,7 @@ class Table extends Border
     }
 
     /**
-     * Get border color inside vertical.
+     * Get border color inside vertical
      *
      * @return string
      */
@@ -390,10 +396,9 @@ class Table extends Border
     }
 
     /**
-     * Set border color inside vertical.
+     * Set border color inside vertical
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderInsideVColor($value = null)
@@ -402,7 +407,7 @@ class Table extends Border
     }
 
     /**
-     * Get cell margin top.
+     * Get cell margin top
      *
      * @return int
      */
@@ -412,10 +417,9 @@ class Table extends Border
     }
 
     /**
-     * Set cell margin top.
+     * Set cell margin top
      *
      * @param int $value
-     *
      * @return self
      */
     public function setCellMarginTop($value = null)
@@ -424,7 +428,7 @@ class Table extends Border
     }
 
     /**
-     * Get cell margin left.
+     * Get cell margin left
      *
      * @return int
      */
@@ -434,10 +438,9 @@ class Table extends Border
     }
 
     /**
-     * Set cell margin left.
+     * Set cell margin left
      *
      * @param int $value
-     *
      * @return self
      */
     public function setCellMarginLeft($value = null)
@@ -446,7 +449,7 @@ class Table extends Border
     }
 
     /**
-     * Get cell margin right.
+     * Get cell margin right
      *
      * @return int
      */
@@ -456,10 +459,9 @@ class Table extends Border
     }
 
     /**
-     * Set cell margin right.
+     * Set cell margin right
      *
      * @param int $value
-     *
      * @return self
      */
     public function setCellMarginRight($value = null)
@@ -468,7 +470,7 @@ class Table extends Border
     }
 
     /**
-     * Get cell margin bottom.
+     * Get cell margin bottom
      *
      * @return int
      */
@@ -478,10 +480,9 @@ class Table extends Border
     }
 
     /**
-     * Set cell margin bottom.
+     * Set cell margin bottom
      *
      * @param int $value
-     *
      * @return self
      */
     public function setCellMarginBottom($value = null)
@@ -490,25 +491,24 @@ class Table extends Border
     }
 
     /**
-     * Get cell margin.
+     * Get cell margin
      *
      * @return int[]
      */
     public function getCellMargin()
     {
-        return [
+        return array(
             $this->cellMarginTop,
             $this->cellMarginLeft,
             $this->cellMarginRight,
             $this->cellMarginBottom,
-        ];
+        );
     }
 
     /**
-     * Set TLRB cell margin.
+     * Set TLRB cell margin
      *
      * @param int $value Margin in twips
-     *
      * @return self
      */
     public function setCellMargin($value = null)
@@ -522,7 +522,7 @@ class Table extends Border
     }
 
     /**
-     * Check if any of the margin is not null.
+     * Check if any of the margin is not null
      *
      * @return bool
      */
@@ -534,7 +534,7 @@ class Table extends Border
     }
 
     /**
-     * Get shading.
+     * Get shading
      *
      * @return \PhpOffice\PhpWord\Style\Shading
      */
@@ -544,10 +544,9 @@ class Table extends Border
     }
 
     /**
-     * Set shading.
+     * Set shading
      *
      * @param mixed $value
-     *
      * @return self
      */
     public function setShading($value = null)
@@ -584,9 +583,35 @@ class Table extends Border
     }
 
     /**
-     * Get width.
+     * @deprecated 0.13.0 Use the `getAlignment` method instead.
      *
-     * @return float|int
+     * @return string
+     *
+     * @codeCoverageIgnore
+     */
+    public function getAlign()
+    {
+        return $this->getAlignment();
+    }
+
+    /**
+     * @deprecated 0.13.0 Use the `setAlignment` method instead.
+     *
+     * @param string $value
+     *
+     * @return self
+     *
+     * @codeCoverageIgnore
+     */
+    public function setAlign($value = null)
+    {
+        return $this->setAlignment($value);
+    }
+
+    /**
+     * Get width
+     *
+     * @return int|float
      */
     public function getWidth()
     {
@@ -594,10 +619,9 @@ class Table extends Border
     }
 
     /**
-     * Set width.
+     * Set width
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setWidth($value = null)
@@ -608,7 +632,7 @@ class Table extends Border
     }
 
     /**
-     * Get width unit.
+     * Get width unit
      *
      * @return string
      */
@@ -618,10 +642,9 @@ class Table extends Border
     }
 
     /**
-     * Set width unit.
+     * Set width unit
      *
      * @param string $value
-     *
      * @return self
      */
     public function setUnit($value = null)
@@ -633,7 +656,7 @@ class Table extends Border
     }
 
     /**
-     * Get layout.
+     * Get layout
      *
      * @return string
      */
@@ -643,29 +666,27 @@ class Table extends Border
     }
 
     /**
-     * Set layout.
+     * Set layout
      *
      * @param string $value
-     *
      * @return self
      */
     public function setLayout($value = null)
     {
-        $enum = [self::LAYOUT_AUTO, self::LAYOUT_FIXED];
+        $enum = array(self::LAYOUT_AUTO, self::LAYOUT_FIXED);
         $this->layout = $this->setEnumVal($value, $enum, $this->layout);
 
         return $this;
     }
 
     /**
-     * Get table style only property by checking if it's a firstRow.
+     * Get table style only property by checking if it's a firstRow
      *
      * This is necessary since firstRow style is cloned from table style but
      * without certain properties activated, e.g. margins
      *
      * @param string $property
-     *
-     * @return null|int|string
+     * @return int|string|null
      */
     private function getTableOnlyProperty($property)
     {
@@ -677,7 +698,7 @@ class Table extends Border
     }
 
     /**
-     * Set table style only property by checking if it's a firstRow.
+     * Set table style only property by checking if it's a firstRow
      *
      * This is necessary since firstRow style is cloned from table style but
      * without certain properties activated, e.g. margins
@@ -685,7 +706,6 @@ class Table extends Border
      * @param string $property
      * @param int|string $value
      * @param bool $isNumeric
-     *
      * @return self
      */
     private function setTableOnlyProperty($property, $value, $isNumeric = true)
@@ -702,7 +722,7 @@ class Table extends Border
     }
 
     /**
-     * Get position.
+     * Get position
      *
      * @return \PhpOffice\PhpWord\Style\TablePosition
      */
@@ -712,10 +732,9 @@ class Table extends Border
     }
 
     /**
-     * Set position.
+     * Set position
      *
      * @param mixed $value
-     *
      * @return self
      */
     public function setPosition($value = null)
@@ -734,8 +753,8 @@ class Table extends Border
     }
 
     /**
+     * @param TblWidthComplexType $indent
      * @return self
-     *
      * @see http://www.datypic.com/sc/ooxml/e-w_tblInd-1.html
      */
     public function setIndent(TblWidthComplexType $indent)
@@ -746,7 +765,7 @@ class Table extends Border
     }
 
     /**
-     * Get the columnWidths.
+     * Get the columnWidths
      *
      * @return null|int[]
      */
@@ -756,17 +775,17 @@ class Table extends Border
     }
 
     /**
-     * The column widths.
+     * The column widths
      *
      * @param int[] $value
      */
-    public function setColumnWidths(?array $value = null): void
+    public function setColumnWidths(array $value = null)
     {
         $this->columnWidths = $value;
     }
 
     /**
-     * Get bidiVisual.
+     * Get bidiVisual
      *
      * @return bool
      */
@@ -776,11 +795,10 @@ class Table extends Border
     }
 
     /**
-     * Set bidiVisual.
+     * Set bidiVisual
      *
      * @param bool $bidi
      *            Set to true to visually present table as Right to Left
-     *
      * @return self
      */
     public function setBidiVisual($bidi)

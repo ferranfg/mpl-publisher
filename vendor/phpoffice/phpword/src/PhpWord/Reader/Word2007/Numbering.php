@@ -11,18 +11,17 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Reader\Word2007;
 
-use DOMElement;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\XMLReader;
 
 /**
- * Numbering reader.
+ * Numbering reader
  *
  * @since 0.10.0
  */
@@ -30,11 +29,13 @@ class Numbering extends AbstractPart
 {
     /**
      * Read numbering.xml.
+     *
+     * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
-    public function read(PhpWord $phpWord): void
+    public function read(PhpWord $phpWord)
     {
-        $abstracts = [];
-        $numberings = [];
+        $abstracts = array();
+        $numberings = array();
         $xmlReader = new XMLReader();
         $xmlReader->getDomFromZip($this->docFile, $this->xmlFile);
 
@@ -43,19 +44,17 @@ class Numbering extends AbstractPart
         if ($nodes->length > 0) {
             foreach ($nodes as $node) {
                 $abstractId = $xmlReader->getAttribute('w:abstractNumId', $node);
-                $abstracts[$abstractId] = ['levels' => []];
+                $abstracts[$abstractId] = array('levels' => array());
                 $abstract = &$abstracts[$abstractId];
                 $subnodes = $xmlReader->getElements('*', $node);
                 foreach ($subnodes as $subnode) {
                     switch ($subnode->nodeName) {
                         case 'w:multiLevelType':
                             $abstract['type'] = $xmlReader->getAttribute('w:val', $subnode);
-
                             break;
                         case 'w:lvl':
                             $levelId = $xmlReader->getAttribute('w:ilvl', $subnode);
                             $abstract['levels'][$levelId] = $this->readLevel($xmlReader, $subnode, $levelId);
-
                             break;
                     }
                 }
@@ -88,15 +87,16 @@ class Numbering extends AbstractPart
     }
 
     /**
-     * Read numbering level definition from w:abstractNum and w:num.
+     * Read numbering level definition from w:abstractNum and w:num
      *
+     * @param \PhpOffice\PhpWord\Shared\XMLReader $xmlReader
+     * @param \DOMElement $subnode
      * @param int $levelId
-     *
      * @return array
      */
-    private function readLevel(XMLReader $xmlReader, DOMElement $subnode, $levelId)
+    private function readLevel(XMLReader $xmlReader, \DOMElement $subnode, $levelId)
     {
-        $level = [];
+        $level = array();
 
         $level['level'] = $levelId;
         $level['start'] = $xmlReader->getAttribute('w:val', $subnode, 'w:start');
@@ -112,7 +112,7 @@ class Numbering extends AbstractPart
         $level['hint'] = $xmlReader->getAttribute('w:hint', $subnode, 'w:rPr/w:rFonts');
 
         foreach ($level as $key => $value) {
-            if (null === $value) {
+            if (is_null($value)) {
                 unset($level[$key]);
             }
         }

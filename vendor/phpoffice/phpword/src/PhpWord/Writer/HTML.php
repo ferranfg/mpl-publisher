@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -20,10 +20,9 @@ namespace PhpOffice\PhpWord\Writer;
 use PhpOffice\PhpWord\PhpWord;
 
 /**
- * HTML writer.
+ * HTML writer
  *
  * Not supported: PreserveText, PageBreak, Object
- *
  * @since 0.10.0
  */
 class HTML extends AbstractWriter implements WriterInterface
@@ -36,20 +35,20 @@ class HTML extends AbstractWriter implements WriterInterface
     protected $isPdf = false;
 
     /**
-     * Footnotes and endnotes collection.
+     * Footnotes and endnotes collection
      *
      * @var array
      */
-    protected $notes = [];
+    protected $notes = array();
 
     /**
-     * Create new instance.
+     * Create new instance
      */
-    public function __construct(?PhpWord $phpWord = null)
+    public function __construct(PhpWord $phpWord = null)
     {
         $this->setPhpWord($phpWord);
 
-        $this->parts = ['Head', 'Body'];
+        $this->parts = array('Head', 'Body');
         foreach ($this->parts as $partName) {
             $partClass = 'PhpOffice\\PhpWord\\Writer\\HTML\\Part\\' . $partName;
             if (class_exists($partClass)) {
@@ -65,17 +64,18 @@ class HTML extends AbstractWriter implements WriterInterface
      * Save PhpWord to file.
      *
      * @param string $filename
+     *
+     * @throws \PhpOffice\PhpWord\Exception\Exception
      */
-    public function save($filename = null): void
+    public function save($filename = null)
     {
         $this->writeFile($this->openFile($filename), $this->getContent());
     }
 
     /**
-     * Get content.
+     * Get content
      *
      * @return string
-     *
      * @since 0.11.0
      */
     public function getContent()
@@ -93,7 +93,7 @@ class HTML extends AbstractWriter implements WriterInterface
     }
 
     /**
-     * Get is PDF.
+     * Get is PDF
      *
      * @return bool
      */
@@ -103,7 +103,7 @@ class HTML extends AbstractWriter implements WriterInterface
     }
 
     /**
-     * Get notes.
+     * Get notes
      *
      * @return array
      */
@@ -118,8 +118,22 @@ class HTML extends AbstractWriter implements WriterInterface
      * @param int $noteId
      * @param string $noteMark
      */
-    public function addNote($noteId, $noteMark): void
+    public function addNote($noteId, $noteMark)
     {
         $this->notes[$noteId] = $noteMark;
+    }
+
+    /**
+     * Write document
+     *
+     * @deprecated 0.11.0
+     *
+     * @return string
+     *
+     * @codeCoverageIgnore
+     */
+    public function writeDocument()
+    {
+        return $this->getContent();
     }
 }

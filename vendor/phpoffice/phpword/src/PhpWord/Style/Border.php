@@ -11,121 +11,120 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * Border style.
+ * Border style
  */
 class Border extends AbstractStyle
 {
     /**
-     * Border Top Size.
+     * Border Top Size
      *
-     * @var float|int
+     * @var int|float
      */
     protected $borderTopSize;
 
     /**
-     * Border Top Color.
+     * Border Top Color
      *
      * @var string
      */
     protected $borderTopColor;
 
     /**
-     * Border Top Style.
+     * Border Top Style
      *
      * @var string
      */
     protected $borderTopStyle;
 
     /**
-     * Border Left Size.
+     * Border Left Size
      *
-     * @var float|int
+     * @var int|float
      */
     protected $borderLeftSize;
 
     /**
-     * Border Left Color.
+     * Border Left Color
      *
      * @var string
      */
     protected $borderLeftColor;
 
     /**
-     * Border Left Style.
+     * Border Left Style
      *
      * @var string
      */
     protected $borderLeftStyle;
 
     /**
-     * Border Right Size.
+     * Border Right Size
      *
-     * @var float|int
+     * @var int|float
      */
     protected $borderRightSize;
 
     /**
-     * Border Right Color.
+     * Border Right Color
      *
      * @var string
      */
     protected $borderRightColor;
 
     /**
-     * Border Right Style.
+     * Border Right Style
      *
      * @var string
      */
     protected $borderRightStyle;
 
     /**
-     * Border Bottom Size.
+     * Border Bottom Size
      *
-     * @var float|int
+     * @var int|float
      */
     protected $borderBottomSize;
 
     /**
-     * Border Bottom Color.
+     * Border Bottom Color
      *
      * @var string
      */
     protected $borderBottomColor;
 
     /**
-     * Border Bottom Style.
+     * Border Bottom Style
      *
      * @var string
      */
     protected $borderBottomStyle;
 
     /**
-     * Get border size.
+     * Get border size
      *
      * @return int[]
      */
     public function getBorderSize()
     {
-        return [
+        return array(
             $this->getBorderTopSize(),
             $this->getBorderLeftSize(),
             $this->getBorderRightSize(),
             $this->getBorderBottomSize(),
-        ];
+        );
     }
 
     /**
-     * Set border size.
+     * Set border size
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBorderSize($value = null)
@@ -139,25 +138,24 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border color.
+     * Get border color
      *
      * @return string[]
      */
     public function getBorderColor()
     {
-        return [
+        return array(
             $this->getBorderTopColor(),
             $this->getBorderLeftColor(),
             $this->getBorderRightColor(),
             $this->getBorderBottomColor(),
-        ];
+        );
     }
 
     /**
-     * Set border color.
+     * Set border color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderColor($value = null)
@@ -171,25 +169,24 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border style.
+     * Get border style
      *
      * @return string[]
      */
     public function getBorderStyle()
     {
-        return [
+        return array(
             $this->getBorderTopStyle(),
             $this->getBorderLeftStyle(),
             $this->getBorderRightStyle(),
             $this->getBorderBottomStyle(),
-        ];
+        );
     }
 
     /**
-     * Set border style.
+     * Set border style
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderStyle($value = null)
@@ -203,9 +200,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border top size.
+     * Get border top size
      *
-     * @return float|int
+     * @return int|float
      */
     public function getBorderTopSize()
     {
@@ -213,10 +210,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border top size.
+     * Set border top size
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBorderTopSize($value = null)
@@ -227,7 +223,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border top color.
+     * Get border top color
      *
      * @return string
      */
@@ -237,10 +233,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border top color.
+     * Set border top color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderTopColor($value = null)
@@ -251,7 +246,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border top style.
+     * Get border top style
      *
      * @return string
      */
@@ -261,10 +256,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border top Style.
+     * Set border top Style
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderTopStyle($value = null)
@@ -275,9 +269,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border left size.
+     * Get border left size
      *
-     * @return float|int
+     * @return int|float
      */
     public function getBorderLeftSize()
     {
@@ -285,10 +279,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border left size.
+     * Set border left size
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBorderLeftSize($value = null)
@@ -299,7 +292,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border left color.
+     * Get border left color
      *
      * @return string
      */
@@ -309,10 +302,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border left color.
+     * Set border left color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderLeftColor($value = null)
@@ -323,7 +315,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border left style.
+     * Get border left style
      *
      * @return string
      */
@@ -333,10 +325,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border left style.
+     * Set border left style
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderLeftStyle($value = null)
@@ -347,9 +338,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border right size.
+     * Get border right size
      *
-     * @return float|int
+     * @return int|float
      */
     public function getBorderRightSize()
     {
@@ -357,10 +348,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border right size.
+     * Set border right size
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBorderRightSize($value = null)
@@ -371,7 +361,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border right color.
+     * Get border right color
      *
      * @return string
      */
@@ -381,10 +371,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border right color.
+     * Set border right color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderRightColor($value = null)
@@ -395,7 +384,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border right style.
+     * Get border right style
      *
      * @return string
      */
@@ -405,10 +394,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border right style.
+     * Set border right style
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderRightStyle($value = null)
@@ -419,9 +407,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border bottom size.
+     * Get border bottom size
      *
-     * @return float|int
+     * @return int|float
      */
     public function getBorderBottomSize()
     {
@@ -429,10 +417,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border bottom size.
+     * Set border bottom size
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setBorderBottomSize($value = null)
@@ -443,7 +430,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border bottom color.
+     * Get border bottom color
      *
      * @return string
      */
@@ -453,10 +440,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border bottom color.
+     * Set border bottom color
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderBottomColor($value = null)
@@ -467,7 +453,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Get border bottom style.
+     * Get border bottom style
      *
      * @return string
      */
@@ -477,10 +463,9 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Set border bottom style.
+     * Set border bottom style
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBorderBottomStyle($value = null)
@@ -491,7 +476,7 @@ class Border extends AbstractStyle
     }
 
     /**
-     * Check if any of the border is not null.
+     * Check if any of the border is not null
      *
      * @return bool
      */

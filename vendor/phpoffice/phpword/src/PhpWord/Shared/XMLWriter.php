@@ -11,17 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Shared;
 
-use Exception;
-use ReturnTypeWillChange;
-
 /**
- * XMLWriter.
+ * XMLWriter
  *
  * @method bool endElement()
  * @method mixed flush(bool $empty = null)
@@ -43,14 +40,14 @@ class XMLWriter extends \XMLWriter
     const STORAGE_DISK = 2;
 
     /**
-     * Temporary filename.
+     * Temporary filename
      *
      * @var string
      */
     private $tempFileName = '';
 
     /**
-     * Create a new \PhpOffice\PhpWord\Shared\XMLWriter instance.
+     * Create a new \PhpOffice\PhpWord\Shared\XMLWriter instance
      *
      * @param int $pTemporaryStorage Temporary storage location
      * @param string $pTemporaryStorageDir Temporary storage folder
@@ -62,7 +59,7 @@ class XMLWriter extends \XMLWriter
         if ($pTemporaryStorage == self::STORAGE_MEMORY) {
             $this->openMemory();
         } else {
-            if (!$pTemporaryStorageDir || !is_dir($pTemporaryStorageDir)) {
+            if (!is_dir($pTemporaryStorageDir)) {
                 $pTemporaryStorageDir = sys_get_temp_dir();
             }
             // Create temporary filename
@@ -82,7 +79,7 @@ class XMLWriter extends \XMLWriter
     }
 
     /**
-     * Destructor.
+     * Destructor
      */
     public function __destruct()
     {
@@ -91,12 +88,12 @@ class XMLWriter extends \XMLWriter
             return;
         }
         if (PHP_OS != 'WINNT' && @unlink($this->tempFileName) === false) {
-            throw new Exception('The file ' . $this->tempFileName . ' could not be deleted.');
+            throw new \Exception('The file ' . $this->tempFileName . ' could not be deleted.');
         }
     }
 
     /**
-     * Get written data.
+     * Get written data
      *
      * @return string
      */
@@ -112,21 +109,21 @@ class XMLWriter extends \XMLWriter
     }
 
     /**
-     * Write simple element and attribute(s) block.
+     * Write simple element and attribute(s) block
      *
      * There are two options:
      * 1. If the `$attributes` is an array, then it's an associative array of attributes
      * 2. If not, then it's a simple attribute-value pair
      *
      * @param string $element
-     * @param array|string $attributes
+     * @param string|array $attributes
      * @param string $value
      */
-    public function writeElementBlock($element, $attributes, $value = null): void
+    public function writeElementBlock($element, $attributes, $value = null)
     {
         $this->startElement($element);
         if (!is_array($attributes)) {
-            $attributes = [$attributes => $value];
+            $attributes = array($attributes => $value);
         }
         foreach ($attributes as $attribute => $value) {
             $this->writeAttribute($attribute, $value);
@@ -142,10 +139,10 @@ class XMLWriter extends \XMLWriter
      * @param string $attribute
      * @param mixed $value
      */
-    public function writeElementIf($condition, $element, $attribute = null, $value = null): void
+    public function writeElementIf($condition, $element, $attribute = null, $value = null)
     {
         if ($condition == true) {
-            if (null === $attribute) {
+            if (is_null($attribute)) {
                 $this->writeElement($element, $value);
             } else {
                 $this->startElement($element);
@@ -162,7 +159,7 @@ class XMLWriter extends \XMLWriter
      * @param string $attribute
      * @param mixed $value
      */
-    public function writeAttributeIf($condition, $attribute, $value): void
+    public function writeAttributeIf($condition, $attribute, $value)
     {
         if ($condition == true) {
             $this->writeAttribute($attribute, $value);
@@ -172,16 +169,14 @@ class XMLWriter extends \XMLWriter
     /**
      * @param string $name
      * @param mixed $value
-     *
      * @return bool
      */
-    #[ReturnTypeWillChange]
-    public function writeAttribute($name, $value)
+    public function writeAttribute($name, $value): bool
     {
         if (is_float($value)) {
             $value = json_encode($value);
         }
 
-        return parent::writeAttribute($name, $value ?? '');
+        return parent::writeAttribute($name, $value);
     }
 }

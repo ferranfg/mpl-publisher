@@ -11,30 +11,30 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord;
 
 /**
- * PHPWord settings class.
+ * PHPWord settings class
  *
  * @since 0.8.0
  */
 class Settings
 {
     /**
-     * Zip libraries.
+     * Zip libraries
      *
      * @const string
      */
     const ZIPARCHIVE = 'ZipArchive';
     const PCLZIP = 'PclZip';
-    const OLD_LIB = \PhpOffice\PhpWord\Shared\ZipArchive::class; // @deprecated 0.11
+    const OLD_LIB = 'PhpOffice\\PhpWord\\Shared\\ZipArchive'; // @deprecated 0.11
 
     /**
-     * PDF rendering libraries.
+     * PDF rendering libraries
      *
      * @const string
      */
@@ -43,7 +43,7 @@ class Settings
     const PDF_RENDERER_MPDF = 'MPDF';
 
     /**
-     * Measurement units multiplication factor.
+     * Measurement units multiplication factor
      *
      * Applied to:
      * - Section: margins, header/footer height, gutter, column spacing
@@ -61,7 +61,7 @@ class Settings
     const UNIT_PICA = 'pica'; // = 1/6 inch = 12 points
 
     /**
-     * Default font settings.
+     * Default font settings
      *
      * OOXML defined font size values in halfpoints, i.e. twice of what PhpWord
      * use, and the conversion will be conducted during XML writing.
@@ -73,57 +73,55 @@ class Settings
     const DEFAULT_PAPER = 'A4';
 
     /**
-     * Compatibility option for XMLWriter.
+     * Compatibility option for XMLWriter
      *
      * @var bool
      */
     private static $xmlWriterCompatibility = true;
 
     /**
-     * Name of the class used for Zip file management.
+     * Name of the class used for Zip file management
      *
      * @var string
      */
     private static $zipClass = self::ZIPARCHIVE;
 
     /**
-     * Name of the external Library used for rendering PDF files.
+     * Name of the external Library used for rendering PDF files
      *
      * @var string
      */
-    private static $pdfRendererName;
+    private static $pdfRendererName = null;
 
     /**
-     * Directory Path to the external Library used for rendering PDF files.
+     * Directory Path to the external Library used for rendering PDF files
      *
      * @var string
      */
-    private static $pdfRendererPath;
+    private static $pdfRendererPath = null;
 
     /**
-     * Measurement unit.
+     * Measurement unit
      *
-     * @var float|int
+     * @var int|float
      */
     private static $measurementUnit = self::UNIT_TWIP;
 
     /**
-     * Default font name.
+     * Default font name
      *
      * @var string
      */
     private static $defaultFontName = self::DEFAULT_FONT_NAME;
 
     /**
-     * Default font size.
-     *
+     * Default font size
      * @var int
      */
     private static $defaultFontSize = self::DEFAULT_FONT_SIZE;
 
     /**
-     * Default paper.
-     *
+     * Default paper
      * @var string
      */
     private static $defaultPaper = self::DEFAULT_PAPER;
@@ -144,7 +142,7 @@ class Settings
     private static $outputEscapingEnabled = false;
 
     /**
-     * Return the compatibility option used by the XMLWriter.
+     * Return the compatibility option used by the XMLWriter
      *
      * @return bool Compatibility
      */
@@ -154,12 +152,11 @@ class Settings
     }
 
     /**
-     * Set the compatibility option used by the XMLWriter.
+     * Set the compatibility option used by the XMLWriter
      *
      * This sets the setIndent and setIndentString for better compatibility
      *
      * @param bool $compatibility
-     *
      * @return bool
      */
     public static function setCompatibility($compatibility)
@@ -171,7 +168,7 @@ class Settings
     }
 
     /**
-     * Get zip handler class.
+     * Get zip handler class
      *
      * @return string
      */
@@ -181,15 +178,14 @@ class Settings
     }
 
     /**
-     * Set zip handler class.
+     * Set zip handler class
      *
      * @param  string $zipClass
-     *
      * @return bool
      */
     public static function setZipClass($zipClass)
     {
-        if (in_array($zipClass, [self::PCLZIP, self::ZIPARCHIVE, self::OLD_LIB])) {
+        if (in_array($zipClass, array(self::PCLZIP, self::ZIPARCHIVE, self::OLD_LIB))) {
             self::$zipClass = $zipClass;
 
             return true;
@@ -199,11 +195,10 @@ class Settings
     }
 
     /**
-     * Set details of the external library for rendering PDF files.
+     * Set details of the external library for rendering PDF files
      *
      * @param string $libraryName
      * @param string $libraryBaseDir
-     *
      * @return bool Success or failure
      */
     public static function setPdfRenderer($libraryName, $libraryBaseDir)
@@ -226,15 +221,14 @@ class Settings
     }
 
     /**
-     * Identify the external library to use for rendering PDF files.
+     * Identify the external library to use for rendering PDF files
      *
      * @param string $libraryName
-     *
      * @return bool
      */
     public static function setPdfRendererName($libraryName)
     {
-        $pdfRenderers = [self::PDF_RENDERER_DOMPDF, self::PDF_RENDERER_TCPDF, self::PDF_RENDERER_MPDF];
+        $pdfRenderers = array(self::PDF_RENDERER_DOMPDF, self::PDF_RENDERER_TCPDF, self::PDF_RENDERER_MPDF);
         if (!in_array($libraryName, $pdfRenderers)) {
             return false;
         }
@@ -254,15 +248,14 @@ class Settings
     }
 
     /**
-     * Location of external library to use for rendering PDF files.
+     * Location of external library to use for rendering PDF files
      *
      * @param string $libraryBaseDir Directory path to the library's base folder
-     *
      * @return bool Success or failure
      */
     public static function setPdfRendererPath($libraryBaseDir)
     {
-        if (!$libraryBaseDir || false === file_exists($libraryBaseDir) || false === is_readable($libraryBaseDir)) {
+        if (false === file_exists($libraryBaseDir) || false === is_readable($libraryBaseDir)) {
             return false;
         }
         self::$pdfRendererPath = $libraryBaseDir;
@@ -271,7 +264,7 @@ class Settings
     }
 
     /**
-     * Get measurement unit.
+     * Get measurement unit
      *
      * @return string
      */
@@ -281,16 +274,15 @@ class Settings
     }
 
     /**
-     * Set measurement unit.
+     * Set measurement unit
      *
      * @param string $value
-     *
      * @return bool
      */
     public static function setMeasurementUnit($value)
     {
-        $units = [self::UNIT_TWIP, self::UNIT_CM, self::UNIT_MM, self::UNIT_INCH,
-            self::UNIT_POINT, self::UNIT_PICA, ];
+        $units = array(self::UNIT_TWIP, self::UNIT_CM, self::UNIT_MM, self::UNIT_INCH,
+            self::UNIT_POINT, self::UNIT_PICA, );
         if (!in_array($value, $units)) {
             return false;
         }
@@ -306,7 +298,7 @@ class Settings
      *
      * @param string $tempDir The user defined path to temporary directory
      */
-    public static function setTempDir($tempDir): void
+    public static function setTempDir($tempDir)
     {
         self::$tempDir = $tempDir;
     }
@@ -344,13 +336,13 @@ class Settings
      *
      * @param bool $outputEscapingEnabled
      */
-    public static function setOutputEscapingEnabled($outputEscapingEnabled): void
+    public static function setOutputEscapingEnabled($outputEscapingEnabled)
     {
         self::$outputEscapingEnabled = $outputEscapingEnabled;
     }
 
     /**
-     * Get default font name.
+     * Get default font name
      *
      * @return string
      */
@@ -360,10 +352,9 @@ class Settings
     }
 
     /**
-     * Set default font name.
+     * Set default font name
      *
      * @param string $value
-     *
      * @return bool
      */
     public static function setDefaultFontName($value)
@@ -378,7 +369,7 @@ class Settings
     }
 
     /**
-     * Get default font size.
+     * Get default font size
      *
      * @return int
      */
@@ -388,10 +379,9 @@ class Settings
     }
 
     /**
-     * Set default font size.
+     * Set default font size
      *
      * @param int $value
-     *
      * @return bool
      */
     public static function setDefaultFontSize($value)
@@ -407,10 +397,9 @@ class Settings
     }
 
     /**
-     * Load setting from phpword.yml or phpword.yml.dist.
+     * Load setting from phpword.yml or phpword.yml.dist
      *
      * @param string $filename
-     *
      * @return array
      */
     public static function loadConfig($filename = null)
@@ -419,42 +408,39 @@ class Settings
         $configFile = null;
         $configPath = __DIR__ . '/../../';
         if ($filename !== null) {
-            $files = [$filename];
+            $files = array($filename);
         } else {
-            $files = ["{$configPath}phpword.ini", "{$configPath}phpword.ini.dist"];
+            $files = array("{$configPath}phpword.ini", "{$configPath}phpword.ini.dist");
         }
         foreach ($files as $file) {
             if (file_exists($file)) {
                 $configFile = realpath($file);
-
                 break;
             }
         }
 
         // Parse config file
-        $config = [];
+        $config = array();
         if ($configFile !== null) {
             $config = @parse_ini_file($configFile);
             if ($config === false) {
-                return [];
+                return $config;
             }
         }
 
         // Set config value
-        $appliedConfig = [];
         foreach ($config as $key => $value) {
             $method = "set{$key}";
             if (method_exists(__CLASS__, $method)) {
                 self::$method($value);
-                $appliedConfig[$key] = $value;
             }
         }
 
-        return $appliedConfig;
+        return $config;
     }
 
     /**
-     * Get default paper.
+     * Get default paper
      *
      * @return string
      */
@@ -464,10 +450,9 @@ class Settings
     }
 
     /**
-     * Set default paper.
+     * Set default paper
      *
      * @param string $value
-     *
      * @return bool
      */
     public static function setDefaultPaper($value)
@@ -479,5 +464,17 @@ class Settings
         }
 
         return false;
+    }
+
+    /**
+     * Return the compatibility option used by the XMLWriter
+     *
+     * @deprecated 0.10.0
+     *
+     * @codeCoverageIgnore
+     */
+    public static function getCompatibility()
+    {
+        return self::hasCompatibility();
     }
 }

@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -23,10 +23,9 @@ use PhpOffice\PhpWord\Style\Shape as ShapeStyle;
 use PhpOffice\PhpWord\Writer\Word2007\Style\Shape as ShapeStyleWriter;
 
 /**
- * Shape element writer.
+ * Shape element writer
  *
  * @since 0.12.0
- *
  * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
  */
 class Shape extends AbstractElement
@@ -34,7 +33,7 @@ class Shape extends AbstractElement
     /**
      * Write element.
      */
-    public function write(): void
+    public function write()
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
@@ -77,8 +76,11 @@ class Shape extends AbstractElement
 
     /**
      * Write arc.
+     *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \PhpOffice\PhpWord\Style\Shape $style
      */
-    private function writeArc(XMLWriter $xmlWriter, ShapeStyle $style): void
+    private function writeArc(XMLWriter $xmlWriter, ShapeStyle $style)
     {
         $points = $this->getPoints('arc', $style->getPoints());
 
@@ -88,8 +90,11 @@ class Shape extends AbstractElement
 
     /**
      * Write curve.
+     *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \PhpOffice\PhpWord\Style\Shape $style
      */
-    private function writeCurve(XMLWriter $xmlWriter, ShapeStyle $style): void
+    private function writeCurve(XMLWriter $xmlWriter, ShapeStyle $style)
     {
         $points = $this->getPoints('curve', $style->getPoints());
 
@@ -100,8 +105,11 @@ class Shape extends AbstractElement
 
     /**
      * Write line.
+     *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \PhpOffice\PhpWord\Style\Shape $style
      */
-    private function writeLine(XMLWriter $xmlWriter, ShapeStyle $style): void
+    private function writeLine(XMLWriter $xmlWriter, ShapeStyle $style)
     {
         $points = $this->getPoints('line', $style->getPoints());
 
@@ -111,45 +119,48 @@ class Shape extends AbstractElement
 
     /**
      * Write polyline.
+     *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \PhpOffice\PhpWord\Style\Shape $style
      */
-    private function writePolyline(XMLWriter $xmlWriter, ShapeStyle $style): void
+    private function writePolyline(XMLWriter $xmlWriter, ShapeStyle $style)
     {
         $xmlWriter->writeAttributeIf($style->getPoints() !== null, 'points', $style->getPoints());
     }
 
     /**
      * Write rectangle.
+     *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \PhpOffice\PhpWord\Style\Shape $style
      */
-    private function writeRoundRect(XMLWriter $xmlWriter, ShapeStyle $style): void
+    private function writeRoundRect(XMLWriter $xmlWriter, ShapeStyle $style)
     {
         $xmlWriter->writeAttribute('arcsize', $style->getRoundness());
     }
 
     /**
-     * Set points.
+     * Set points
      *
      * @param string $type
      * @param string $value
-     *
      * @return array
      */
     private function getPoints($type, $value)
     {
-        $points = [];
+        $points = array();
 
         switch ($type) {
             case 'arc':
             case 'line':
                 $points = explode(' ', $value);
-                [$start, $end] = array_pad($points, 2, null);
-                $points = ['start' => $start, 'end' => $end];
-
+                list($start, $end) = array_pad($points, 2, null);
+                $points = array('start' => $start, 'end' => $end);
                 break;
             case 'curve':
                 $points = explode(' ', $value);
-                [$start, $end, $point1, $point2] = array_pad($points, 4, null);
-                $points = ['start' => $start, 'end' => $end, 'point1' => $point1, 'point2' => $point2];
-
+                list($start, $end, $point1, $point2) = array_pad($points, 4, null);
+                $points = array('start' => $start, 'end' => $end, 'point1' => $point1, 'point2' => $point2);
                 break;
         }
 

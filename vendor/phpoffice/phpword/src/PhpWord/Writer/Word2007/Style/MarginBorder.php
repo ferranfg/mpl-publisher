@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -20,48 +20,48 @@ namespace PhpOffice\PhpWord\Writer\Word2007\Style;
 use PhpOffice\PhpWord\Shared\XMLWriter;
 
 /**
- * Margin border style writer.
+ * Margin border style writer
  *
  * @since 0.10.0
  */
 class MarginBorder extends AbstractStyle
 {
     /**
-     * Sizes.
+     * Sizes
      *
      * @var int[]
      */
-    private $sizes = [];
+    private $sizes = array();
 
     /**
-     * Colors.
+     * Colors
      *
      * @var string[]
      */
-    private $colors = [];
+    private $colors = array();
 
     /**
-     * Border styles.
+     * Border styles
      *
      * @var string[]
      */
-    private $styles = [];
+    private $styles = array();
 
     /**
-     * Other attributes.
+     * Other attributes
      *
      * @var array
      */
-    private $attributes = [];
+    private $attributes = array();
 
     /**
      * Write style.
      */
-    public function write(): void
+    public function write()
     {
         $xmlWriter = $this->getXmlWriter();
 
-        $sides = ['top', 'left', 'right', 'bottom', 'insideH', 'insideV'];
+        $sides = array('top', 'left', 'right', 'bottom', 'insideH', 'insideV');
 
         foreach ($this->sizes as $i => $size) {
             if ($size !== null) {
@@ -69,7 +69,7 @@ class MarginBorder extends AbstractStyle
                 if (isset($this->colors[$i])) {
                     $color = $this->colors[$i];
                 }
-                $style = $this->styles[$i] ?? 'single';
+                $style = isset($this->styles[$i]) ? $this->styles[$i] : 'single';
                 $this->writeSide($xmlWriter, $sides[$i], $this->sizes[$i], $color, $style);
             }
         }
@@ -78,12 +78,13 @@ class MarginBorder extends AbstractStyle
     /**
      * Write side.
      *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
      * @param string $side
      * @param int $width
      * @param string $color
      * @param string $borderStyle
      */
-    private function writeSide(XMLWriter $xmlWriter, $side, $width, $color = null, $borderStyle = 'solid'): void
+    private function writeSide(XMLWriter $xmlWriter, $side, $width, $color = null, $borderStyle = 'solid')
     {
         $xmlWriter->startElement('w:' . $side);
         if (!empty($this->colors)) {
@@ -112,7 +113,7 @@ class MarginBorder extends AbstractStyle
      *
      * @param int[] $value
      */
-    public function setSizes($value): void
+    public function setSizes($value)
     {
         $this->sizes = $value;
     }
@@ -122,7 +123,7 @@ class MarginBorder extends AbstractStyle
      *
      * @param string[] $value
      */
-    public function setColors($value): void
+    public function setColors($value)
     {
         $this->colors = $value;
     }
@@ -132,7 +133,7 @@ class MarginBorder extends AbstractStyle
      *
      * @param string[] $value
      */
-    public function setStyles($value): void
+    public function setStyles($value)
     {
         $this->styles = $value;
     }
@@ -142,7 +143,7 @@ class MarginBorder extends AbstractStyle
      *
      * @param array $value
      */
-    public function setAttributes($value): void
+    public function setAttributes($value)
     {
         $this->attributes = $value;
     }

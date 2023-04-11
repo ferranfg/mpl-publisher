@@ -11,14 +11,14 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
 namespace PhpOffice\PhpWord\Style;
 
 /**
- * Shading style.
+ * Shading style
  *
  * @see  http://www.schemacentral.com/sc/ooxml/t-w_CT_Shd.html
  * @since 0.10.0
@@ -26,10 +26,9 @@ namespace PhpOffice\PhpWord\Style;
 class Shading extends AbstractStyle
 {
     /**
-     * Pattern constants (partly).
+     * Pattern constants (partly)
      *
      * @const string
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/t-w_ST_Shd.html
      */
     const PATTERN_CLEAR = 'clear'; // No pattern
@@ -41,40 +40,39 @@ class Shading extends AbstractStyle
     const PATTERN_DCROSS = 'diagCross'; // Diagonal cross pattern
 
     /**
-     * Shading pattern.
+     * Shading pattern
      *
      * @var string
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/t-w_ST_Shd.html
      */
     private $pattern = self::PATTERN_CLEAR;
 
     /**
-     * Shading pattern color.
+     * Shading pattern color
      *
      * @var string
      */
     private $color;
 
     /**
-     * Shading background color.
+     * Shading background color
      *
      * @var string
      */
     private $fill;
 
     /**
-     * Create a new instance.
+     * Create a new instance
      *
      * @param array $style
      */
-    public function __construct($style = [])
+    public function __construct($style = array())
     {
         $this->setStyleByArray($style);
     }
 
     /**
-     * Get pattern.
+     * Get pattern
      *
      * @return string
      */
@@ -84,25 +82,24 @@ class Shading extends AbstractStyle
     }
 
     /**
-     * Set pattern.
+     * Set pattern
      *
      * @param string $value
-     *
      * @return self
      */
     public function setPattern($value = null)
     {
-        $enum = [
+        $enum = array(
             self::PATTERN_CLEAR, self::PATTERN_SOLID, self::PATTERN_HSTRIPE,
             self::PATTERN_VSTRIPE, self::PATTERN_DSTRIPE, self::PATTERN_HCROSS, self::PATTERN_DCROSS,
-        ];
+        );
         $this->pattern = $this->setEnumVal($value, $enum, $this->pattern);
 
         return $this;
     }
 
     /**
-     * Get color.
+     * Get color
      *
      * @return string
      */
@@ -112,10 +109,9 @@ class Shading extends AbstractStyle
     }
 
     /**
-     * Set pattern.
+     * Set pattern
      *
      * @param string $value
-     *
      * @return self
      */
     public function setColor($value = null)
@@ -126,7 +122,7 @@ class Shading extends AbstractStyle
     }
 
     /**
-     * Get fill.
+     * Get fill
      *
      * @return string
      */
@@ -136,10 +132,9 @@ class Shading extends AbstractStyle
     }
 
     /**
-     * Set fill.
+     * Set fill
      *
      * @param string $value
-     *
      * @return self
      */
     public function setFill($value = null)

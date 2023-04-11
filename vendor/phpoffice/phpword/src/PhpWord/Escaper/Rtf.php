@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -46,7 +46,6 @@ class Rtf extends AbstractEscaper
 
     /**
      * @see http://www.randomchaos.com/documents/?source=php_and_unicode
-     *
      * @param string $input
      */
     protected function escapeSingleValue($input)
@@ -54,7 +53,7 @@ class Rtf extends AbstractEscaper
         $escapedValue = '';
 
         $numberOfBytes = 1;
-        $bytes = [];
+        $bytes = array();
         for ($i = 0; $i < strlen($input); ++$i) {
             $character = $input[$i];
             $asciiCode = ord($character);
@@ -88,7 +87,7 @@ class Rtf extends AbstractEscaper
                     }
 
                     $numberOfBytes = 1;
-                    $bytes = [];
+                    $bytes = array();
                 }
             }
         }

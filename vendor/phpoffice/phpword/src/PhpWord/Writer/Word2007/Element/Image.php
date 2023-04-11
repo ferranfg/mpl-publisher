@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -25,7 +25,7 @@ use PhpOffice\PhpWord\Writer\Word2007\Style\Font as FontStyleWriter;
 use PhpOffice\PhpWord\Writer\Word2007\Style\Image as ImageStyleWriter;
 
 /**
- * Image element writer.
+ * Image element writer
  *
  * @since 0.10.0
  */
@@ -34,7 +34,7 @@ class Image extends AbstractElement
     /**
      * Write element.
      */
-    public function write(): void
+    public function write()
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
@@ -52,7 +52,7 @@ class Image extends AbstractElement
     /**
      * Write image element.
      */
-    private function writeImage(XMLWriter $xmlWriter, ImageElement $element): void
+    private function writeImage(XMLWriter $xmlWriter, ImageElement $element)
     {
         $rId = $element->getRelationId() + ($element->isInSection() ? 6 : 0);
         $style = $element->getStyle();
@@ -78,7 +78,6 @@ class Image extends AbstractElement
         $xmlWriter->startElement('w:pict');
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('stroked', 'f');
 
         $styleWriter->write();
 
@@ -97,7 +96,7 @@ class Image extends AbstractElement
     /**
      * Write watermark element.
      */
-    private function writeWatermark(XMLWriter $xmlWriter, ImageElement $element): void
+    private function writeWatermark(XMLWriter $xmlWriter, ImageElement $element)
     {
         $rId = $element->getRelationId();
         $style = $element->getStyle();
@@ -111,7 +110,6 @@ class Image extends AbstractElement
         $xmlWriter->startElement('w:pict');
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('stroked', 'f');
 
         $styleWriter->write();
 

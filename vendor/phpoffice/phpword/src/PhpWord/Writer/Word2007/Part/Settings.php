@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -23,21 +23,21 @@ use PhpOffice\PhpWord\Shared\Microsoft\PasswordEncoder;
 use PhpOffice\PhpWord\Style\Language;
 
 /**
- * Word2007 settings part writer: word/settings.xml.
+ * Word2007 settings part writer: word/settings.xml
  *
  * @see  http://www.schemacentral.com/sc/ooxml/t-w_CT_Settings.html
  */
 class Settings extends AbstractPart
 {
     /**
-     * Settings value.
+     * Settings value
      *
      * @var array
      */
-    private $settings = [];
+    private $settings = array();
 
     /**
-     * Write part.
+     * Write part
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class Settings extends AbstractPart
      * @param string $settingKey
      * @param array|string $settingValue
      */
-    protected function writeSetting($xmlWriter, $settingKey, $settingValue): void
+    protected function writeSetting($xmlWriter, $settingKey, $settingValue)
     {
         if ($settingValue == '') {
             $xmlWriter->writeElement($settingKey);
@@ -97,49 +97,49 @@ class Settings extends AbstractPart
     /**
      * Get settings.
      */
-    private function getSettings(): void
+    private function getSettings()
     {
         /** @var \PhpOffice\PhpWord\Metadata\Settings $documentSettings */
         $documentSettings = $this->getParentWriter()->getPhpWord()->getSettings();
 
         // Default settings
-        $this->settings = [
-            'w:defaultTabStop' => ['@attributes' => ['w:val' => '708']],
-            'w:hyphenationZone' => ['@attributes' => ['w:val' => '425']],
-            'w:characterSpacingControl' => ['@attributes' => ['w:val' => 'doNotCompress']],
-            'w:decimalSymbol' => ['@attributes' => ['w:val' => $documentSettings->getDecimalSymbol()]],
-            'w:listSeparator' => ['@attributes' => ['w:val' => ';']],
-            'w:compat' => [],
-            'm:mathPr' => [
-                'm:mathFont' => ['@attributes' => ['m:val' => 'Cambria Math']],
-                'm:brkBin' => ['@attributes' => ['m:val' => 'before']],
-                'm:brkBinSub' => ['@attributes' => ['m:val' => '--']],
-                'm:smallFrac' => ['@attributes' => ['m:val' => 'off']],
-                'm:dispDef' => '',
-                'm:lMargin' => ['@attributes' => ['m:val' => '0']],
-                'm:rMargin' => ['@attributes' => ['m:val' => '0']],
-                'm:defJc' => ['@attributes' => ['m:val' => 'centerGroup']],
-                'm:wrapIndent' => ['@attributes' => ['m:val' => '1440']],
-                'm:intLim' => ['@attributes' => ['m:val' => 'subSup']],
-                'm:naryLim' => ['@attributes' => ['m:val' => 'undOvr']],
-            ],
-            'w:clrSchemeMapping' => [
-                '@attributes' => [
-                    'w:bg1' => 'light1',
-                    'w:t1' => 'dark1',
-                    'w:bg2' => 'light2',
-                    'w:t2' => 'dark2',
-                    'w:accent1' => 'accent1',
-                    'w:accent2' => 'accent2',
-                    'w:accent3' => 'accent3',
-                    'w:accent4' => 'accent4',
-                    'w:accent5' => 'accent5',
-                    'w:accent6' => 'accent6',
-                    'w:hyperlink' => 'hyperlink',
+        $this->settings = array(
+            'w:defaultTabStop'          => array('@attributes' => array('w:val' => '708')),
+            'w:hyphenationZone'         => array('@attributes' => array('w:val' => '425')),
+            'w:characterSpacingControl' => array('@attributes' => array('w:val' => 'doNotCompress')),
+            'w:decimalSymbol'           => array('@attributes' => array('w:val' => $documentSettings->getDecimalSymbol())),
+            'w:listSeparator'           => array('@attributes' => array('w:val' => ';')),
+            'w:compat'                  => array(),
+            'm:mathPr'                  => array(
+                'm:mathFont'   => array('@attributes' => array('m:val' => 'Cambria Math')),
+                'm:brkBin'     => array('@attributes' => array('m:val' => 'before')),
+                'm:brkBinSub'  => array('@attributes' => array('m:val' => '--')),
+                'm:smallFrac'  => array('@attributes' => array('m:val' => 'off')),
+                'm:dispDef'    => '',
+                'm:lMargin'    => array('@attributes' => array('m:val' => '0')),
+                'm:rMargin'    => array('@attributes' => array('m:val' => '0')),
+                'm:defJc'      => array('@attributes' => array('m:val' => 'centerGroup')),
+                'm:wrapIndent' => array('@attributes' => array('m:val' => '1440')),
+                'm:intLim'     => array('@attributes' => array('m:val' => 'subSup')),
+                'm:naryLim'    => array('@attributes' => array('m:val' => 'undOvr')),
+            ),
+            'w:clrSchemeMapping' => array(
+                '@attributes' => array(
+                    'w:bg1'               => 'light1',
+                    'w:t1'                => 'dark1',
+                    'w:bg2'               => 'light2',
+                    'w:t2'                => 'dark2',
+                    'w:accent1'           => 'accent1',
+                    'w:accent2'           => 'accent2',
+                    'w:accent3'           => 'accent3',
+                    'w:accent4'           => 'accent4',
+                    'w:accent5'           => 'accent5',
+                    'w:accent6'           => 'accent6',
+                    'w:hyperlink'         => 'hyperlink',
                     'w:followedHyperlink' => 'followedHyperlink',
-                ],
-            ],
-        ];
+                ),
+            ),
+        );
 
         $this->setOnOffValue('w:mirrorMargins', $documentSettings->hasMirrorMargins());
         $this->setOnOffValue('w:hideSpellingErrors', $documentSettings->hasHideSpellingErrors());
@@ -163,19 +163,19 @@ class Settings extends AbstractPart
     }
 
     /**
-     * Adds a boolean attribute to the settings array.
+     * Adds a boolean attribute to the settings array
      *
      * @param string $settingName
-     * @param null|bool $booleanValue
+     * @param bool|null $booleanValue
      */
-    private function setOnOffValue($settingName, $booleanValue): void
+    private function setOnOffValue($settingName, $booleanValue)
     {
         if (!is_bool($booleanValue)) {
             return;
         }
 
         $value = $booleanValue ? 'true' : 'false';
-        $this->settings[$settingName] = ['@attributes' => ['w:val' => $value]];
+        $this->settings[$settingName] = array('@attributes' => array('w:val' => $value));
     }
 
     /**
@@ -183,146 +183,146 @@ class Settings extends AbstractPart
      *
      * @param \PhpOffice\PhpWord\Metadata\Protection $documentProtection
      */
-    private function setDocumentProtection($documentProtection): void
+    private function setDocumentProtection($documentProtection)
     {
         if ($documentProtection->getEditing() !== null) {
             if ($documentProtection->getPassword() == null) {
-                $this->settings['w:documentProtection'] = [
-                    '@attributes' => [
+                $this->settings['w:documentProtection'] = array(
+                    '@attributes' => array(
                         'w:enforcement' => 1,
-                        'w:edit' => $documentProtection->getEditing(),
-                    ],
-                ];
+                        'w:edit'        => $documentProtection->getEditing(),
+                    ),
+                );
             } else {
                 if ($documentProtection->getSalt() == null) {
                     $documentProtection->setSalt(openssl_random_pseudo_bytes(16));
                 }
                 $passwordHash = PasswordEncoder::hashPassword($documentProtection->getPassword(), $documentProtection->getAlgorithm(), $documentProtection->getSalt(), $documentProtection->getSpinCount());
-                $this->settings['w:documentProtection'] = [
-                    '@attributes' => [
-                        'w:enforcement' => 1,
-                        'w:edit' => $documentProtection->getEditing(),
-                        'w:cryptProviderType' => 'rsaFull',
+                $this->settings['w:documentProtection'] = array(
+                    '@attributes' => array(
+                        'w:enforcement'         => 1,
+                        'w:edit'                => $documentProtection->getEditing(),
+                        'w:cryptProviderType'   => 'rsaFull',
                         'w:cryptAlgorithmClass' => 'hash',
-                        'w:cryptAlgorithmType' => 'typeAny',
-                        'w:cryptAlgorithmSid' => PasswordEncoder::getAlgorithmId($documentProtection->getAlgorithm()),
-                        'w:cryptSpinCount' => $documentProtection->getSpinCount(),
-                        'w:hash' => $passwordHash,
-                        'w:salt' => base64_encode($documentProtection->getSalt()),
-                    ],
-                ];
+                        'w:cryptAlgorithmType'  => 'typeAny',
+                        'w:cryptAlgorithmSid'   => PasswordEncoder::getAlgorithmId($documentProtection->getAlgorithm()),
+                        'w:cryptSpinCount'      => $documentProtection->getSpinCount(),
+                        'w:hash'                => $passwordHash,
+                        'w:salt'                => base64_encode($documentProtection->getSalt()),
+                    ),
+                );
             }
         }
     }
 
     /**
-     * Set the Proof state.
+     * Set the Proof state
      *
      * @param ProofState $proofState
      */
-    private function setProofState(?ProofState $proofState = null): void
+    private function setProofState(ProofState $proofState = null)
     {
         if ($proofState != null && $proofState->getGrammar() !== null && $proofState->getSpelling() !== null) {
-            $this->settings['w:proofState'] = [
-                '@attributes' => [
+            $this->settings['w:proofState'] = array(
+                '@attributes' => array(
                     'w:spelling' => $proofState->getSpelling(),
-                    'w:grammar' => $proofState->getGrammar(),
-                ],
-            ];
+                    'w:grammar'  => $proofState->getGrammar(),
+                ),
+            );
         }
     }
 
     /**
-     * Set the Revision View.
+     * Set the Revision View
      *
      * @param TrackChangesView $trackChangesView
      */
-    private function setRevisionView(?TrackChangesView $trackChangesView = null): void
+    private function setRevisionView(TrackChangesView $trackChangesView = null)
     {
         if ($trackChangesView != null) {
-            $revisionView = [];
+            $revisionView = array();
             $revisionView['w:markup'] = $trackChangesView->hasMarkup() ? 'true' : 'false';
             $revisionView['w:comments'] = $trackChangesView->hasComments() ? 'true' : 'false';
             $revisionView['w:insDel'] = $trackChangesView->hasInsDel() ? 'true' : 'false';
             $revisionView['w:formatting'] = $trackChangesView->hasFormatting() ? 'true' : 'false';
             $revisionView['w:inkAnnotations'] = $trackChangesView->hasInkAnnotations() ? 'true' : 'false';
 
-            $this->settings['w:revisionView'] = ['@attributes' => $revisionView];
+            $this->settings['w:revisionView'] = array('@attributes' => $revisionView);
         }
     }
 
     /**
-     * Sets the language.
+     * Sets the language
      *
      * @param Language $language
      */
-    private function setThemeFontLang(?Language $language = null): void
+    private function setThemeFontLang(Language $language = null)
     {
         $latinLanguage = ($language == null || $language->getLatin() === null) ? 'en-US' : $language->getLatin();
-        $lang = [];
+        $lang = array();
         $lang['w:val'] = $latinLanguage;
         if ($language != null) {
             $lang['w:eastAsia'] = $language->getEastAsia() === null ? 'x-none' : $language->getEastAsia();
             $lang['w:bidi'] = $language->getBidirectional() === null ? 'x-none' : $language->getBidirectional();
         }
-        $this->settings['w:themeFontLang'] = ['@attributes' => $lang];
+        $this->settings['w:themeFontLang'] = array('@attributes' => $lang);
     }
 
     /**
-     * Set the magnification.
+     * Set the magnification
      *
      * @param mixed $zoom
      */
-    private function setZoom($zoom = null): void
+    private function setZoom($zoom = null)
     {
         if ($zoom !== null) {
             $attr = is_int($zoom) ? 'w:percent' : 'w:val';
-            $this->settings['w:zoom'] = ['@attributes' => [$attr => $zoom]];
+            $this->settings['w:zoom'] = array('@attributes' => array($attr => $zoom));
         }
     }
 
     /**
-     * @param null|int $consecutiveHyphenLimit
+     * @param int|null $consecutiveHyphenLimit
      */
-    private function setConsecutiveHyphenLimit($consecutiveHyphenLimit): void
+    private function setConsecutiveHyphenLimit($consecutiveHyphenLimit)
     {
         if ($consecutiveHyphenLimit === null) {
             return;
         }
 
-        $this->settings['w:consecutiveHyphenLimit'] = [
-            '@attributes' => ['w:val' => $consecutiveHyphenLimit],
-        ];
+        $this->settings['w:consecutiveHyphenLimit'] = array(
+            '@attributes' => array('w:val' => $consecutiveHyphenLimit),
+        );
     }
 
     /**
-     * @param null|float $hyphenationZone
+     * @param float|null $hyphenationZone
      */
-    private function setHyphenationZone($hyphenationZone): void
+    private function setHyphenationZone($hyphenationZone)
     {
         if ($hyphenationZone === null) {
             return;
         }
 
-        $this->settings['w:hyphenationZone'] = [
-            '@attributes' => ['w:val' => $hyphenationZone],
-        ];
+        $this->settings['w:hyphenationZone'] = array(
+            '@attributes' => array('w:val' => $hyphenationZone),
+        );
     }
 
     /**
      * Get compatibility setting.
      */
-    private function setCompatibility(): void
+    private function setCompatibility()
     {
         $compatibility = $this->getParentWriter()->getPhpWord()->getCompatibility();
         if ($compatibility->getOoxmlVersion() !== null) {
-            $this->settings['w:compat']['w:compatSetting'] = [
-                '@attributes' => [
+            $this->settings['w:compat']['w:compatSetting'] = array(
+                '@attributes' => array(
                     'w:name' => 'compatibilityMode',
-                    'w:uri' => 'http://schemas.microsoft.com/office/word',
-                    'w:val' => $compatibility->getOoxmlVersion(),
-                ],
-            ];
+                    'w:uri'  => 'http://schemas.microsoft.com/office/word',
+                    'w:val'  => $compatibility->getOoxmlVersion(),
+                ),
+            );
         }
     }
 }

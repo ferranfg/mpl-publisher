@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -21,12 +21,12 @@ use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\VerticalJc;
 
 /**
- * Section settings.
+ * Section settings
  */
 class Section extends Border
 {
     /**
-     * Page orientation.
+     * Page orientation
      *
      * @const string
      */
@@ -34,7 +34,7 @@ class Section extends Border
     const ORIENTATION_LANDSCAPE = 'landscape';
 
     /**
-     * Page default constants.
+     * Page default constants
      *
      * @const int|float
      */
@@ -48,109 +48,107 @@ class Section extends Border
     const DEFAULT_COLUMN_SPACING = 720;    // In twips.
 
     /**
-     * Page Orientation.
+     * Page Orientation
      *
      * @var string
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/a-w_orient-1.html
      */
     private $orientation = self::ORIENTATION_PORTRAIT;
 
     /**
-     * Paper size.
+     * Paper size
      *
      * @var \PhpOffice\PhpWord\Style\Paper
      */
     private $paper;
 
     /**
-     * Page Size Width.
+     * Page Size Width
      *
-     * @var float|int
+     * @var int|float
      */
     private $pageSizeW = self::DEFAULT_WIDTH;
 
     /**
-     * Page Size Height.
+     * Page Size Height
      *
-     * @var float|int
+     * @var int|float
      */
     private $pageSizeH = self::DEFAULT_HEIGHT;
 
     /**
-     * Top margin spacing.
+     * Top margin spacing
      *
-     * @var float|int
+     * @var int|float
      */
     private $marginTop = self::DEFAULT_MARGIN;
 
     /**
-     * Left margin spacing.
+     * Left margin spacing
      *
-     * @var float|int
+     * @var int|float
      */
     private $marginLeft = self::DEFAULT_MARGIN;
 
     /**
-     * Right margin spacing.
+     * Right margin spacing
      *
-     * @var float|int
+     * @var int|float
      */
     private $marginRight = self::DEFAULT_MARGIN;
 
     /**
-     * Bottom margin spacing.
+     * Bottom margin spacing
      *
-     * @var float|int
+     * @var int|float
      */
     private $marginBottom = self::DEFAULT_MARGIN;
 
     /**
-     * Page gutter spacing.
+     * Page gutter spacing
      *
-     * @var float|int
-     *
+     * @var int|float
      * @see  http://www.schemacentral.com/sc/ooxml/e-w_pgMar-1.html
      */
     private $gutter = self::DEFAULT_GUTTER;
 
     /**
-     * Header height.
+     * Header height
      *
-     * @var float|int
+     * @var int|float
      */
     private $headerHeight = self::DEFAULT_HEADER_HEIGHT;
 
     /**
-     * Footer height.
+     * Footer height
      *
-     * @var float|int
+     * @var int|float
      */
     private $footerHeight = self::DEFAULT_FOOTER_HEIGHT;
 
     /**
-     * Page Numbering Start.
+     * Page Numbering Start
      *
      * @var int
      */
     private $pageNumberingStart;
 
     /**
-     * Section columns count.
+     * Section columns count
      *
      * @var int
      */
     private $colsNum = self::DEFAULT_COLUMN_COUNT;
 
     /**
-     * Section spacing between columns.
+     * Section spacing between columns
      *
-     * @var float|int
+     * @var int|float
      */
     private $colsSpace = self::DEFAULT_COLUMN_SPACING;
 
     /**
-     * Section break type.
+     * Section break type
      *
      * Options:
      * - nextPage: Next page section break
@@ -164,24 +162,23 @@ class Section extends Border
     private $breakType;
 
     /**
-     * Line numbering.
+     * Line numbering
      *
      * @var \PhpOffice\PhpWord\Style\LineNumbering
-     *
      * @see  http://www.schemacentral.com/sc/ooxml/e-w_lnNumType-1.html
      */
     private $lineNumbering;
 
     /**
      * Vertical Text Alignment on Page
-     * One of \PhpOffice\PhpWord\SimpleType\VerticalJc.
+     * One of \PhpOffice\PhpWord\SimpleType\VerticalJc
      *
      * @var string
      */
     private $vAlign;
 
     /**
-     * Create new instance.
+     * Create new instance
      */
     public function __construct()
     {
@@ -189,7 +186,7 @@ class Section extends Border
     }
 
     /**
-     * Get paper size.
+     * Get paper size
      *
      * @return string
      */
@@ -199,10 +196,9 @@ class Section extends Border
     }
 
     /**
-     * Set paper size.
+     * Set paper size
      *
      * @param string $value
-     *
      * @return self
      */
     public function setPaperSize($value = '')
@@ -221,11 +217,10 @@ class Section extends Border
     }
 
     /**
-     * Set Setting Value.
+     * Set Setting Value
      *
      * @param string $key
      * @param string $value
-     *
      * @return self
      */
     public function setSettingValue($key, $value)
@@ -234,21 +229,20 @@ class Section extends Border
     }
 
     /**
-     * Set orientation.
+     * Set orientation
      *
      * @param string $value
-     *
      * @return self
      */
     public function setOrientation($value = null)
     {
-        $enum = [self::ORIENTATION_PORTRAIT, self::ORIENTATION_LANDSCAPE];
+        $enum = array(self::ORIENTATION_PORTRAIT, self::ORIENTATION_LANDSCAPE);
         $this->orientation = $this->setEnumVal($value, $enum, $this->orientation);
 
-        /** @var float|int $longSide Type hint */
+        /** @var int|float $longSide Type hint */
         $longSide = $this->pageSizeW >= $this->pageSizeH ? $this->pageSizeW : $this->pageSizeH;
 
-        /** @var float|int $shortSide Type hint */
+        /** @var int|float $shortSide Type hint */
         $shortSide = $this->pageSizeW < $this->pageSizeH ? $this->pageSizeW : $this->pageSizeH;
 
         if ($this->orientation == self::ORIENTATION_PORTRAIT) {
@@ -263,7 +257,7 @@ class Section extends Border
     }
 
     /**
-     * Get Page Orientation.
+     * Get Page Orientation
      *
      * @return string
      */
@@ -273,7 +267,7 @@ class Section extends Border
     }
 
     /**
-     * Set Portrait Orientation.
+     * Set Portrait Orientation
      *
      * @return self
      */
@@ -283,7 +277,7 @@ class Section extends Border
     }
 
     /**
-     * Set Landscape Orientation.
+     * Set Landscape Orientation
      *
      * @return self
      */
@@ -293,9 +287,9 @@ class Section extends Border
     }
 
     /**
-     * Get Page Size Width.
+     * Get Page Size Width
      *
-     * @return null|float|int
+     * @return int|float|null
      *
      * @since 0.12.0
      */
@@ -305,7 +299,7 @@ class Section extends Border
     }
 
     /**
-     * @param null|float|int $value
+     * @param int|float|null $value
      *
      * @return \PhpOffice\PhpWord\Style\Section
      *
@@ -319,9 +313,9 @@ class Section extends Border
     }
 
     /**
-     * Get Page Size Height.
+     * Get Page Size Height
      *
-     * @return null|float|int
+     * @return int|float|null
      *
      * @since 0.12.0
      */
@@ -331,7 +325,7 @@ class Section extends Border
     }
 
     /**
-     * @param null|float|int $value
+     * @param int|float|null $value
      *
      * @return \PhpOffice\PhpWord\Style\Section
      *
@@ -345,9 +339,9 @@ class Section extends Border
     }
 
     /**
-     * Get Margin Top.
+     * Get Margin Top
      *
-     * @return float|int
+     * @return int|float
      */
     public function getMarginTop()
     {
@@ -355,10 +349,9 @@ class Section extends Border
     }
 
     /**
-     * Set Margin Top.
+     * Set Margin Top
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setMarginTop($value = null)
@@ -369,9 +362,9 @@ class Section extends Border
     }
 
     /**
-     * Get Margin Left.
+     * Get Margin Left
      *
-     * @return float|int
+     * @return int|float
      */
     public function getMarginLeft()
     {
@@ -379,10 +372,9 @@ class Section extends Border
     }
 
     /**
-     * Set Margin Left.
+     * Set Margin Left
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setMarginLeft($value = null)
@@ -393,9 +385,9 @@ class Section extends Border
     }
 
     /**
-     * Get Margin Right.
+     * Get Margin Right
      *
-     * @return float|int
+     * @return int|float
      */
     public function getMarginRight()
     {
@@ -403,10 +395,9 @@ class Section extends Border
     }
 
     /**
-     * Set Margin Right.
+     * Set Margin Right
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setMarginRight($value = null)
@@ -417,9 +408,9 @@ class Section extends Border
     }
 
     /**
-     * Get Margin Bottom.
+     * Get Margin Bottom
      *
-     * @return float|int
+     * @return int|float
      */
     public function getMarginBottom()
     {
@@ -427,10 +418,9 @@ class Section extends Border
     }
 
     /**
-     * Set Margin Bottom.
+     * Set Margin Bottom
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setMarginBottom($value = null)
@@ -441,9 +431,9 @@ class Section extends Border
     }
 
     /**
-     * Get gutter.
+     * Get gutter
      *
-     * @return float|int
+     * @return int|float
      */
     public function getGutter()
     {
@@ -451,10 +441,9 @@ class Section extends Border
     }
 
     /**
-     * Set gutter.
+     * Set gutter
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setGutter($value = null)
@@ -465,9 +454,9 @@ class Section extends Border
     }
 
     /**
-     * Get Header Height.
+     * Get Header Height
      *
-     * @return float|int
+     * @return int|float
      */
     public function getHeaderHeight()
     {
@@ -475,10 +464,9 @@ class Section extends Border
     }
 
     /**
-     * Set Header Height.
+     * Set Header Height
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setHeaderHeight($value = null)
@@ -489,9 +477,9 @@ class Section extends Border
     }
 
     /**
-     * Get Footer Height.
+     * Get Footer Height
      *
-     * @return float|int
+     * @return int|float
      */
     public function getFooterHeight()
     {
@@ -499,10 +487,9 @@ class Section extends Border
     }
 
     /**
-     * Set Footer Height.
+     * Set Footer Height
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setFooterHeight($value = null)
@@ -513,7 +500,7 @@ class Section extends Border
     }
 
     /**
-     * Get page numbering start.
+     * Get page numbering start
      *
      * @return null|int
      */
@@ -523,10 +510,9 @@ class Section extends Border
     }
 
     /**
-     * Set page numbering start.
+     * Set page numbering start
      *
      * @param null|int $pageNumberingStart
-     *
      * @return self
      */
     public function setPageNumberingStart($pageNumberingStart = null)
@@ -537,7 +523,7 @@ class Section extends Border
     }
 
     /**
-     * Get Section Columns Count.
+     * Get Section Columns Count
      *
      * @return int
      */
@@ -547,10 +533,9 @@ class Section extends Border
     }
 
     /**
-     * Set Section Columns Count.
+     * Set Section Columns Count
      *
      * @param int $value
-     *
      * @return self
      */
     public function setColsNum($value = null)
@@ -561,9 +546,9 @@ class Section extends Border
     }
 
     /**
-     * Get Section Space Between Columns.
+     * Get Section Space Between Columns
      *
-     * @return float|int
+     * @return int|float
      */
     public function getColsSpace()
     {
@@ -571,10 +556,9 @@ class Section extends Border
     }
 
     /**
-     * Set Section Space Between Columns.
+     * Set Section Space Between Columns
      *
-     * @param float|int $value
-     *
+     * @param int|float $value
      * @return self
      */
     public function setColsSpace($value = null)
@@ -585,7 +569,7 @@ class Section extends Border
     }
 
     /**
-     * Get Break Type.
+     * Get Break Type
      *
      * @return string
      */
@@ -595,10 +579,9 @@ class Section extends Border
     }
 
     /**
-     * Set Break Type.
+     * Set Break Type
      *
      * @param string $value
-     *
      * @return self
      */
     public function setBreakType($value = null)
@@ -609,7 +592,7 @@ class Section extends Border
     }
 
     /**
-     * Get line numbering.
+     * Get line numbering
      *
      * @return \PhpOffice\PhpWord\Style\LineNumbering
      */
@@ -619,10 +602,9 @@ class Section extends Border
     }
 
     /**
-     * Set line numbering.
+     * Set line numbering
      *
      * @param mixed $value
-     *
      * @return self
      */
     public function setLineNumbering($value = null)
@@ -633,7 +615,7 @@ class Section extends Border
     }
 
     /**
-     * Get vertical alignment.
+     * Get vertical alignment
      *
      * @return string
      */
@@ -643,10 +625,9 @@ class Section extends Border
     }
 
     /**
-     * Set vertical alignment.
+     * Set vertical alignment
      *
      * @param string $value
-     *
      * @return self
      */
     public function setVAlign($value = null)

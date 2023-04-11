@@ -11,7 +11,7 @@
  * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
  *
  * @see         https://github.com/PHPOffice/PHPWord
- *
+ * @copyright   2010-2018 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
@@ -23,21 +23,21 @@ use PhpOffice\PhpWord\Style\Paragraph as ParagraphStyle;
 use PhpOffice\PhpWord\Writer\Word2007\Element\ParagraphAlignment;
 
 /**
- * Paragraph style writer.
+ * Paragraph style writer
  *
  * @since 0.10.0
  */
 class Paragraph extends AbstractStyle
 {
     /**
-     * Without w:pPr.
+     * Without w:pPr
      *
      * @var bool
      */
     private $withoutPPR = false;
 
     /**
-     * Is inline in element.
+     * Is inline in element
      *
      * @var bool
      */
@@ -46,11 +46,11 @@ class Paragraph extends AbstractStyle
     /**
      * Write style.
      */
-    public function write(): void
+    public function write()
     {
         $xmlWriter = $this->getXmlWriter();
 
-        $isStyleName = $this->isInline && null !== $this->style && is_string($this->style);
+        $isStyleName = $this->isInline && !is_null($this->style) && is_string($this->style);
         if ($isStyleName) {
             if (!$this->withoutPPR) {
                 $xmlWriter->startElement('w:pPr');
@@ -69,7 +69,7 @@ class Paragraph extends AbstractStyle
     /**
      * Write full style.
      */
-    private function writeStyle(): void
+    private function writeStyle()
     {
         $style = $this->getStyle();
         if (!$style instanceof ParagraphStyle) {
@@ -147,9 +147,10 @@ class Paragraph extends AbstractStyle
     /**
      * Write tabs.
      *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
      * @param \PhpOffice\PhpWord\Style\Tab[] $tabs
      */
-    private function writeTabs(XMLWriter $xmlWriter, $tabs): void
+    private function writeTabs(XMLWriter $xmlWriter, $tabs)
     {
         if (!empty($tabs)) {
             $xmlWriter->startElement('w:tabs');
@@ -164,9 +165,10 @@ class Paragraph extends AbstractStyle
     /**
      * Write numbering.
      *
+     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
      * @param array $numbering
      */
-    private function writeNumbering(XMLWriter $xmlWriter, $numbering): void
+    private function writeNumbering(XMLWriter $xmlWriter, $numbering)
     {
         $numStyle = $numbering['style'];
         $numLevel = $numbering['level'];
@@ -194,7 +196,7 @@ class Paragraph extends AbstractStyle
      *
      * @param bool $value
      */
-    public function setWithoutPPR($value): void
+    public function setWithoutPPR($value)
     {
         $this->withoutPPR = $value;
     }
@@ -204,7 +206,7 @@ class Paragraph extends AbstractStyle
      *
      * @param bool $value
      */
-    public function setIsInline($value): void
+    public function setIsInline($value)
     {
         $this->isInline = $value;
     }
