@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.2
 Requires PHP: 7.1.8
-Stable tag: 2.6.1
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.7.0 =
+- Added Flipbook format
+- Update MSWord library generation
+- Fix https://wordpress.org/support/topic/error-opening-docx-file/
 
 = 2.6.1 =
 - Increased 5 seconds default timeout to 60 seconds when requesting premium endpoints
