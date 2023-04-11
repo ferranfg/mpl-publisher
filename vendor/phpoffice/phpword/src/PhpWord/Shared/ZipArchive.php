@@ -86,7 +86,7 @@ class ZipArchive
             if (!defined('PCLZIP_TEMPORARY_DIR')) {
                 define('PCLZIP_TEMPORARY_DIR', Settings::getTempDir() . '/');
             }
-            require_once 'PCLZip/pclzip.lib.php';
+            require_once ABSPATH . 'wp-admin/includes/class-pclzip.php';
         }
     }
 

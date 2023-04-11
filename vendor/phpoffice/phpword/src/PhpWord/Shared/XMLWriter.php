@@ -176,7 +176,7 @@ class XMLWriter extends \XMLWriter
      * @return bool
      */
     #[ReturnTypeWillChange]
-    public function writeAttribute($name, $value)
+    public function writeAttribute($name, $value): bool
     {
         if (is_float($value)) {
             $value = json_encode($value);
