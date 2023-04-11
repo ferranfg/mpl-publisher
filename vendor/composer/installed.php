@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'trunk',
-        'version' => 'dev-trunk',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,8 +20,8 @@
             'dev_requirement' => false,
         ),
         'ferranfg/mpl-publisher' => array(
-            'pretty_version' => 'trunk',
-            'version' => 'dev-trunk',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -161,13 +161,10 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-zendframework-bridge' => array(
-            'pretty_version' => '1.1.x-dev',
-            'version' => '1.1.9999999.9999999-dev',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../laminas/laminas-zendframework-bridge',
-            'aliases' => array(),
-            'reference' => '69d7803570f4da0bf396d25cd5a6b0665afb717b',
             'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'league/html-to-markdown' => array(
             'pretty_version' => '4.10.0',
@@ -199,12 +196,12 @@
             'dev_requirement' => false,
         ),
         'phpoffice/phpword' => array(
-            'pretty_version' => '1.0.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => '0.18.0',
+            'version' => '0.18.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpword',
             'aliases' => array(),
-            'reference' => '8521612b39edeec9055d3688ad555342a40857dd',
+            'reference' => '1bd7cd62381051db6d6c7174d3c95a3ada48bc0f',
             'dev_requirement' => false,
         ),
         'phpzip/phpzip' => array(

@@ -11,7 +11,7 @@
         "phpzip/phpzip": "2.0.8",
         "league/html-to-markdown": "4.10.0",
         "symfony/yaml": "^4.4",
-        "phpoffice/phpword": "1.0.0",
+        "phpoffice/phpword": "0.18.0",
         "simplehtmldom/simplehtmldom": "dev-master",
         "html2text/html2text": "dev-master",
         "intervention/image": "^2.7"
