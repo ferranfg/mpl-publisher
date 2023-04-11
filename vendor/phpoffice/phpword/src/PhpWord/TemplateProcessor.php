@@ -253,7 +253,7 @@ class TemplateProcessor
     protected static function ensureUtf8Encoded($subject)
     {
         if (!Text::isUTF8($subject) && null !== $subject) {
-            $subject = mb_convert_encoding($subject, 'UTF-8', 'ISO-8859-1');
+            $subject = utf8_encode($subject);
         }
 
         return (null !== $subject) ? $subject : '';
