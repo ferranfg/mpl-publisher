@@ -9,15 +9,15 @@ Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 converting your WordPress posts.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, Flipbook, or Audiobook MP3 converting your WordPress posts.
 
 == Description ==
 
-MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 converting your WordPress posts.
+MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, Flipbook, or Audiobook MP3 converting your WordPress posts.
 
-If you are looking for a WordPress ebook generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it in the simplest possible way 👌. Convert your posts to book, posts to ebook (EPUB compatible with Amazon Kindle Direct Publishing KDP), posts to PDF print-ready, posts to MS Word (Docx), posts to Audiobook (MP3)… etc.
+If you are looking for a WordPress ebook generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it in the simplest possible way 👌. Convert your posts to book, posts to ebook (EPUB compatible with Amazon Kindle Direct Publishing KDP), posts to PDF print-ready, posts to MS Word (Docx), posts to Flipbook, posts to Audiobook (MP3)… etc.
 
-Writing a successful book is a challenge by itself and self-publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing (Amazon's self-publishing platform), and other platforms of self-publishing, self-publishing a book, ebook, or audiobook can even be easy.
+Writing a successful book is a challenge by itself and self-publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing (Amazon's self-publishing platform), and other platforms of self-publishing, self-publishing a book, ebook, flipbook, or audiobook can even be easy.
 
 It is free to self-publish on the most popular book and ebook platforms, like Amazon Kindle Direct Publishing (KDP), NOOK Press, or KOBO. You just need a formatted ebook file to load to the self-publishing platforms. This is your completed, edited manuscript in specific formats: .epub for Amazon Kindle Direct Publishing (KDP) and other stores, or PDF for print-ready books.
 
@@ -33,7 +33,7 @@ For now, these are the current features:
 - Included advanced cover editor (only available for premium).
 - Select individual chapters (posts, pages, and "secret chapters") to include in your ebook.
 - Set basic information about your ebook: Title, Description, Authors, ISBN, Publisher and Book Cover.
-- Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, and Audiobook (mp3).
+- Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, Flipbook, and Audiobook (mp3).
 - Add a widget to your sidebar to promote your ebook to your readers.
 - Promote your ebook using the shortcode [mpl] and their available options.
 - Basic filter and sort your chapters individually.
@@ -49,7 +49,7 @@ Future releases will include, at least, the next functionalities:
 
 = Other Plugins Compatibility =
 
-We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher is compatible with other plugin's custom post types. This will allow you to create books, ebooks and audiobooks without changing your current tools.
+We believe in WordPress as the tool for creating the web and, for this reason, MPL-Publisher is compatible with other plugin's custom post types. This will allow you to create books, ebooks, flipbooks, and audiobooks without changing your current tools.
 
 Some of these plugins have been tested by ourselves and guarantee proper compatibility. This list includes:
 
@@ -114,9 +114,9 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.7.0 =
-- Added Flipbook format
-- Update MSWord library generation
-- Fix https://wordpress.org/support/topic/error-opening-docx-file/
+- Added Flipbook as new output format
+- Updated MS Word (Docx) library generation
+- Fixed https://wordpress.org/support/topic/error-opening-docx-file/
 
 = 2.6.1 =
 - Increased 5 seconds default timeout to 60 seconds when requesting premium endpoints
