@@ -636,7 +636,10 @@ class PublisherBase {
             if ( ! $img->alt) $img->alt = $file_id;
 
             // PremiumPublisher will override insert as it's remote content but easier to handle
-            if ($publisher instanceof PremiumPublisher) $images_load = 'default';
+            if ($publisher instanceof PremiumPublisher and $images_load == 'insert')
+            {
+                $images_load = 'default';
+            }
 
             // If there is nothing to do, continue
             if ($images_load == 'default') continue;
