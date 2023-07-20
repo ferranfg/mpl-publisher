@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2023-04-11 09:23+0200\n"
-"PO-Revision-Date: 2023-04-11 09:23+0200\n"
+"POT-Creation-Date: 2023-07-20 12:20+0200\n"
+"PO-Revision-Date: 2023-07-20 12:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -34,84 +34,84 @@ msgstr "Este es un error del servidor y no funciona como se esperaba."
 msgid "Please, connect with us and get support for your queries."
 msgstr "Por favor, contacte con nosotros y obtenga soporte para sus consultas."
 
-#: libs/PublisherBase.php:37
+#: libs/PublisherBase.php:30
 #, php-format
 msgid "Submitted on %s"
 msgstr "Enviado el %s"
 
-#: libs/PublisherBase.php:139
+#: libs/PublisherBase.php:130
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:151
+#: libs/PublisherBase.php:142
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:163
+#: libs/PublisherBase.php:154
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:175
+#: libs/PublisherBase.php:166
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:201
+#: libs/PublisherBase.php:192
 msgid "January"
 msgstr "Enero"
 
-#: libs/PublisherBase.php:202
+#: libs/PublisherBase.php:193
 msgid "February"
 msgstr "Febrero"
 
-#: libs/PublisherBase.php:203
+#: libs/PublisherBase.php:194
 msgid "March"
 msgstr "Marzo"
 
-#: libs/PublisherBase.php:204
+#: libs/PublisherBase.php:195
 msgid "April"
 msgstr "Abril"
 
-#: libs/PublisherBase.php:205
+#: libs/PublisherBase.php:196
 msgid "May"
 msgstr "Mayo"
 
-#: libs/PublisherBase.php:206
+#: libs/PublisherBase.php:197
 msgid "June"
 msgstr "Junio"
 
-#: libs/PublisherBase.php:207
+#: libs/PublisherBase.php:198
 msgid "July"
 msgstr "Julio"
 
-#: libs/PublisherBase.php:208
+#: libs/PublisherBase.php:199
 msgid "August"
 msgstr "Agosto"
 
-#: libs/PublisherBase.php:209
+#: libs/PublisherBase.php:200
 msgid "September"
 msgstr "Septiembre"
 
-#: libs/PublisherBase.php:210
+#: libs/PublisherBase.php:201
 msgid "October"
 msgstr "Octubre"
 
-#: libs/PublisherBase.php:211
+#: libs/PublisherBase.php:202
 msgid "November"
 msgstr "Noviembre"
 
-#: libs/PublisherBase.php:212
+#: libs/PublisherBase.php:203
 msgid "December"
 msgstr "Diciembre"
 
-#: libs/PublisherBase.php:331
+#: libs/PublisherBase.php:322
 msgid "No valid output format selected."
 msgstr "No se ha seleccionado ningún formato de salida válido."
 
-#: libs/PublisherBase.php:404
+#: libs/PublisherBase.php:395
 msgid "On chapter"
 msgstr "En el capítulo"
 
-#: libs/PublisherBase.php:420
+#: libs/PublisherBase.php:411
 msgid "Please, select at least one chapter to publish your book."
 msgstr "Por favor, seleccione al menos un capítulo para publicar su libro."
 
