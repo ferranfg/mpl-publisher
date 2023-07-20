@@ -4,7 +4,6 @@ namespace MPL\Publisher;
 
 use PHPZip\Zip\File\Zip;
 use Html2Text\Html2Text;
-use Illuminate\Support\Str;
 
 class PlainPublisher implements IPublisher {
 

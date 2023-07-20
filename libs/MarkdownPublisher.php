@@ -3,7 +3,6 @@
 namespace MPL\Publisher;
 
 use PHPZip\Zip\File\Zip;
-use Illuminate\Support\Str;
 use Symfony\Component\Yaml\Yaml;
 use League\HTMLToMarkdown\HtmlConverter;
 

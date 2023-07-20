@@ -3,9 +3,9 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
-Tested up to: 6.2
-Requires PHP: 7.1.8
-Stable tag: 2.7.1
+Tested up to: 6.3
+Requires PHP: 7.4
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,7 +64,7 @@ Also, there is a fantastic community of plugins available if MPL-Publisher doesn
 
 = Requirements =
 
-- PHP 7.1.8 or higher
+- PHP 7.4 or higher
 - WordPress 5.0 or higher
 
 For further information, visit the [MPL-Publisher plugin's homepage](https://wordpress.mpl-publisher.com/).
@@ -113,9 +113,10 @@ In future releases, we will add further improvements to our current formats. Kee
 
 == Changelog ==
 
-= 2.7.1 =
-- Allow PDF output to include embedded images
-- Fix PDF apostrophes and accents encoding errors
+= 2.8.0 =
+- Tested compatibility with WordPress 6.3
+- Increased min PHP version to 7.4
+- Replaced with custom template engine instead of illuminate/view
 
 = 2.7.0 =
 - Added Flipbook as new output format

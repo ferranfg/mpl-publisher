@@ -4,15 +4,8 @@ namespace MPL\Publisher;
 
 use WP_Query;
 use Exception;
-use Illuminate\View\View;
-use Illuminate\View\Factory;
 use simplehtmldom\HtmlDocument;
-use Illuminate\Events\Dispatcher;
-use Illuminate\View\FileViewFinder;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Engines\PhpEngine;
 use Intervention\Image\ImageManagerStatic;
-use Illuminate\View\Engines\EngineResolver;
 use Intervention\Image\Exception\NotReadableException;
 
 class PublisherBase {
@@ -66,11 +59,9 @@ class PublisherBase {
 
     public function view($file, $data = array())
     {
-        $viewFinder = new FileViewFinder(new Filesystem, array(MPL_BASEPATH));
-        $factory    = new Factory(new EngineResolver, $viewFinder, new Dispatcher);
-        $files      = new Filesystem;
+        $template = new TemplateEngine(MPL_BASEPATH . "/views/", []);
 
-        return new View($factory, new PhpEngine($files), $file, MPL_BASEPATH . "/views/" . $file, $data);
+        return $template->render($file, $data);
     }
 
     public function getPluginDefaults()
