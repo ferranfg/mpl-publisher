@@ -120,17 +120,19 @@
 }
 
 .mpl #premium-notice {
-  background: #ddd;
-  color: #777;
+  background: #EE4135;
+  color: #fff;
   border: none;
-  padding: 7px;
+  padding: 16px 6px 18px;
+  line-height: 20px;
+  font-size: 16px;
   text-align: center;
   margin: 0;
   margin-bottom: 0;
 }
 
 .mpl #premium-notice a {
-  color: #1d2327;
+  color: #fff;
   font-weight: 700;
 }
 
