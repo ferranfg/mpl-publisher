@@ -359,7 +359,7 @@ class PublisherBase {
 
             while ($query->have_posts()): $query->the_post();
                 $post = get_post(get_the_ID());
-                $content = get_the_content();
+                $content = $post->post_content;
                 $image = null;
 
                 // @see https://developer.wordpress.org/reference/hooks/the_content/
