@@ -67,3 +67,5 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto }
 figure.alignright { float:right; margin:0 0 1em 1em }
 figure.alignleft { float:left; margin:0 1em 1em 0 }
 figure.aligncenter { display: block; margin-left: auto; margin-right: auto }
+
+.zp-Zotpress > span { display: none; }
