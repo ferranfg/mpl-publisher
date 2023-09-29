@@ -401,6 +401,9 @@ class PublisherBase {
                     }
                 }
 
+                // Replace amperstand
+                $content = str_replace(' & ', " &amp; ", $content);
+
                 $publisher->addChapter($chapter, mpl_xml_entities($post->post_title), $content, $image);
 
                 $chapter++;
