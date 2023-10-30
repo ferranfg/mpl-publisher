@@ -265,6 +265,8 @@ if ( ! function_exists('mpl_xml_entities'))
 {
     function mpl_xml_entities($string)
     {
+        $string = sanitize_text_field($string);
+
         $string = str_replace(
             array("<", ">", '"'),
             array("﹤", "﹥", "''"),

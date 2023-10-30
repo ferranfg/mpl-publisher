@@ -321,15 +321,15 @@ class PublisherBase {
 
         if ( ! $publisher) throw new Exception('⚠️ ' . __('No valid output format selected.', 'publisher'));
 
-        $publisher->setIdentifier(sanitize_text_field($data['identifier']));
-        $publisher->setTitle(sanitize_text_field($data['title']));
-        $publisher->setSubtitle(sanitize_text_field($data['subtitle']));
-        $publisher->setAuthor(sanitize_text_field($data['authors']));
-        $publisher->setPublisher(sanitize_text_field($data['editor']));
-        $publisher->setDescription(sanitize_text_field($data['description']));
-        $publisher->setDate(sanitize_text_field($data['date']));
+        $publisher->setIdentifier(mpl_xml_entities($data['identifier']));
+        $publisher->setTitle(mpl_xml_entities($data['title']));
+        $publisher->setSubtitle(mpl_xml_entities($data['subtitle']));
+        $publisher->setAuthor(mpl_xml_entities($data['authors']));
+        $publisher->setPublisher(mpl_xml_entities($data['editor']));
+        $publisher->setDescription(mpl_xml_entities($data['description']));
+        $publisher->setDate(mpl_xml_entities($data['date']));
 
-        $language = isset($data['language']) ? sanitize_text_field($data['language']) : substr(get_locale(), 0, 2);
+        $language = isset($data['language']) ? mpl_xml_entities($data['language']) : substr(get_locale(), 0, 2);
         $publisher->setLanguage($language);
 
         if ( ! empty($data['cover']) and $imageId = intval($data['cover']))
