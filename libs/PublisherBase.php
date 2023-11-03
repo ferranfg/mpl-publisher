@@ -367,6 +367,7 @@ class PublisherBase {
 
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
+                $content = $this->parseLinks($content, $post);
 
                 // Embed featured image before chapter title
                 if (array_key_exists('thumbnail_load', $data) and $data['thumbnail_load'] == 'before')
@@ -384,7 +385,8 @@ class PublisherBase {
                 // Embeds images as base64 into the book content
                 list($publisher, $content) = $this->parseImages($publisher, $content, $data['images_load']);
 
-                $content = $this->parseLinks($post, $content);
+                // Replace amperstand
+                $content = str_replace(' & ', " &amp; ", $content);
 
                 if (array_key_exists('validate_html', $data))
                 {
@@ -402,9 +404,6 @@ class PublisherBase {
                         throw new Exception(implode('', $validation_notice));
                     }
                 }
-
-                // Replace amperstand
-                $content = str_replace(' & ', " &amp; ", $content);
 
                 $publisher->addChapter($chapter, mpl_xml_entities($post->post_title), $content, $image);
 
@@ -631,6 +630,22 @@ class PublisherBase {
         return $content;
     }
 
+    private function parseLinks($content, $post)
+    {
+        $content = new HtmlDocument($content);
+
+        foreach ($content->find('a') as $a)
+        {
+            // Check if a href is a post URL and convert it to a relative URL
+            if (Str::startsWith($a->href, get_permalink($post) . '#'))
+            {
+                $a->href = str_replace(get_permalink($post), '', $a->href);
+            }
+        }
+
+        return (string) $content;
+    }
+
     private function parseImages($publisher, $content, $images_load = 'default')
     {
         if ( ! extension_loaded('iconv') or ! extension_loaded('fileinfo'))
@@ -685,22 +700,6 @@ class PublisherBase {
         }
 
         return array($publisher, (string) $content);
-    }
-
-    private function parseLinks($post, $content)
-    {
-        $content = new HtmlDocument($content);
-
-        foreach ($content->find('a') as $a)
-        {
-            // Check if a href is a post URL and convert it to a relative URL
-            if (Str::startsWith($a->href, get_permalink($post) . '#'))
-            {
-                $a->href = str_replace(get_permalink($post), '', $a->href);
-            }
-        }
-
-        return (string) $content;
     }
 
     public static function getContentStats($content)
