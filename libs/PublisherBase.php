@@ -384,6 +384,8 @@ class PublisherBase {
                 // Embeds images as base64 into the book content
                 list($publisher, $content) = $this->parseImages($publisher, $content, $data['images_load']);
 
+                $content = $this->parseLinks($post, $content);
+
                 if (array_key_exists('validate_html', $data))
                 {
                     $html_errors = HtmlValidator::validate($content);
@@ -537,21 +539,36 @@ class PublisherBase {
         $content = wp_kses($content, array(
             // Desktop version
             'p' => array(
+                'id' => array(),
                 'class' => array(),
             ),
             'div' => array(
+                'id' => array(),
                 'class' => array()
             ),
             'span' => array(
-                'class' => array()
+                'id' => array(),
+                'class' => array(),
             ),
             // Headings
-            'h1' => array(),
-            'h2' => array(),
-            'h3' => array(),
-            'h4' => array(),
-            'h5' => array(),
-            'h6' => array(),
+            'h1' => array(
+                'id' => array(),
+            ),
+            'h2' => array(
+                'id' => array(),
+            ),
+            'h3' => array(
+                'id' => array(),
+            ),
+            'h4' => array(
+                'id' => array(),
+            ),
+            'h5' => array(
+                'id' => array(),
+            ),
+            'h6' => array(
+                'id' => array(),
+            ),
             // Global
             'a' => array(
                 'href' => array(),
@@ -668,6 +685,22 @@ class PublisherBase {
         }
 
         return array($publisher, (string) $content);
+    }
+
+    private function parseLinks($post, $content)
+    {
+        $content = new HtmlDocument($content);
+
+        foreach ($content->find('a') as $a)
+        {
+            // Check if a href is a post URL and convert it to a relative URL
+            if (Str::startsWith($a->href, get_permalink($post) . '#'))
+            {
+                $a->href = str_replace(get_permalink($post), '', $a->href);
+            }
+        }
+
+        return (string) $content;
     }
 
     public static function getContentStats($content)

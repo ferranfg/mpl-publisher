@@ -50,4 +50,17 @@ class Str
     {
         return (strpos($haystack, $needle) !== false);
     }
+
+    /**
+     * Check if string starts with substring
+     *
+     * @param $haystack
+     * @param $needle
+     *
+     * @return bool
+     */
+    public static function startsWith($haystack, $needle)
+    {
+        return (strpos($haystack, $needle) === 0);
+    }
 }
