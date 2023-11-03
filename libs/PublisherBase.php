@@ -366,6 +366,7 @@ class PublisherBase {
                 $content = apply_filters('the_content', $content);
 
                 // Cleans tags, spaces, comments, attributes...
+                $content = $this->parseSpecial($content);
                 $content = $this->parseText($content);
                 $content = $this->parseLinks($content, $post);
 
@@ -384,9 +385,6 @@ class PublisherBase {
 
                 // Embeds images as base64 into the book content
                 list($publisher, $content) = $this->parseImages($publisher, $content, $data['images_load']);
-
-                // Replace amperstand
-                $content = str_replace(' & ', " &amp; ", $content);
 
                 if (array_key_exists('validate_html', $data))
                 {
@@ -632,7 +630,7 @@ class PublisherBase {
 
     private function parseLinks($content, $post)
     {
-        $content = new HtmlDocument($content);
+        $content = new HtmlDocument(htmlentities($content));
 
         foreach ($content->find('a') as $a)
         {
@@ -653,7 +651,7 @@ class PublisherBase {
             return array($publisher, $content);
         }
 
-        $content = new HtmlDocument($content);
+        $content = new HtmlDocument(htmlentities($content));
 
         foreach ($content->find('img') as $img)
         {
@@ -700,6 +698,15 @@ class PublisherBase {
         }
 
         return array($publisher, (string) $content);
+    }
+
+    private function parseSpecial($content)
+    {
+        $content = str_replace(' & ', " &amp; ", $content);
+        $content = preg_replace('/ ([!]{0,1})(<)([=]{0,1}) /', '$1 &lt; $3', $content);
+        $content = preg_replace('/ ([!]{0,1})(>)([=]{0,1}) /', '$1 &gt; $3', $content);
+
+        return $content;
     }
 
     public static function getContentStats($content)
