@@ -337,7 +337,7 @@ class PublisherBase {
             $publisher->setCoverImage('cover.jpg', file_get_contents(get_attached_file($imageId)));
         }
 
-        $publisher->setRights(sanitize_text_field($data['copyright']));
+        $publisher->setRights(mpl_xml_entities($data['copyright']));
         $publisher->setTheme(
             $this->getTheme(sanitize_text_field($data['theme_id'])),
             sanitize_text_field($data['custom_css'])
