@@ -628,7 +628,7 @@ class PublisherBase {
         $content = preg_replace('/(<img[^>]+)(?<!\/)>/' , '$1 />', $content);
         $content = preg_replace('/<(hr|br)>/', '<$1 />', $content);
 
-        return $content;
+        return $this->fixHtmlDocument($content);
     }
 
     private function parseLinks($publisher, $content, $post)
