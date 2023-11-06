@@ -114,7 +114,7 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.9.0 =
-- TOC and internal links are now supported for all formats
+- TOC and internal chapter links are now supported for EPUB formats
 - WordPress 6.4 support
 - Fix error when using < > & characters
 

@@ -481,6 +481,9 @@ class PublisherBase {
                     }
                 }
 
+                // Replace amperstand
+                $content = str_replace(' & ', " &amp; ", $content);
+
                 $publisher->addChapter($chapter, mpl_xml_entities($post->post_title), $content, $image);
 
                 $chapter++;
@@ -645,7 +648,7 @@ class PublisherBase {
             }
         }
 
-        return $this->parseSpecial((string) $content);
+        return $this->fixHtmlDocument((string) $content);
     }
 
     private function parseImages($publisher, $content, $images_load = 'default')
@@ -701,12 +704,12 @@ class PublisherBase {
             }
         }
 
-        return array($publisher, $this->parseSpecial((string) $content));
+        return array($publisher, $this->fixHtmlDocument((string) $content));
     }
 
-    private function parseSpecial($content)
+    private function fixHtmlDocument($content)
     {
-        $content = str_replace([' & ', '<'], [" &amp; ", '&lt;'], $content);
+        $content = str_replace('<', '&lt;', $content);
 
         foreach (self::$allowed_tags as $tag => $attributes)
         {
