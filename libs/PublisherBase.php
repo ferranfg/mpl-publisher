@@ -633,10 +633,7 @@ class PublisherBase {
 
     private function parseLinks($publisher, $content, $post)
     {
-        if ( ! ($publisher instanceof EpubPublisher))
-        {
-            return $this->fixHtmlDocument((string) $content);
-        }
+        if ( ! ($publisher instanceof EpubPublisher)) return $content;
 
         $content = new HtmlDocument($content);
 
