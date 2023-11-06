@@ -446,7 +446,7 @@ class PublisherBase {
 
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
-                $content = $this->parseLinks($content, $post);
+                $content = $this->parseLinks($publisher, $content, $post);
 
                 // Embed featured image before chapter title
                 if (array_key_exists('thumbnail_load', $data) and $data['thumbnail_load'] == 'before')
@@ -628,8 +628,10 @@ class PublisherBase {
         return $content;
     }
 
-    private function parseLinks($content, $post)
+    private function parseLinks($publisher, $content, $post)
     {
+        if ( ! ($publisher instanceof EpubPublisher)) return $content;
+
         $content = new HtmlDocument($content);
 
         foreach ($content->find('a') as $a)
