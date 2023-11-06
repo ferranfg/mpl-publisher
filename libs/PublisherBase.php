@@ -14,6 +14,85 @@ class PublisherBase {
 
     public $filter;
 
+    public static $allowed_tags = array(
+        // Desktop version
+        'p' => array(
+            'id' => array(),
+            'class' => array(),
+        ),
+        'div' => array(
+            'id' => array(),
+            'class' => array()
+        ),
+        'span' => array(
+            'id' => array(),
+            'class' => array(),
+        ),
+        // Headings
+        'h1' => array(
+            'id' => array(),
+        ),
+        'h2' => array(
+            'id' => array(),
+        ),
+        'h3' => array(
+            'id' => array(),
+        ),
+        'h4' => array(
+            'id' => array(),
+        ),
+        'h5' => array(
+            'id' => array(),
+        ),
+        'h6' => array(
+            'id' => array(),
+        ),
+        // Global
+        'a' => array(
+            'href' => array(),
+            'class' => array(),
+            'title' => array(),
+        ),
+        'img' => array(
+            'src' => array(),
+            'class' => array(),
+            'alt' => array(),
+            // 'width' => array(), // Fix MS Word
+            // 'height' => array() // Fix MS Word
+        ),
+        'blockquote' => array(),
+        'q' => array(),
+        'cite' => array(),
+        'hr' => array(),
+        'br' => array(),
+        'figure' => array(
+            'class' => array()
+        ),
+        'figcaption' => array(),
+        // Styles
+        'u' => array(),
+        'i' => array(),
+        'b' => array(),
+        'em' => array(),
+        'small' => array(),
+        'strong' => array(),
+        'strike' => array(),
+        // Lists
+        'ul' => array(),
+        'ol' => array(
+            'start' => array(),
+        ),
+        'li' => array(),
+        // Tables
+        'table' => array(),
+        'tbody' => array(),
+        'thead' => array(),
+        'tfoot' => array(),
+        'tr' => array(),
+        'td' => array(),
+        'th' => array()
+    );
+
     public function __construct()
     {
         $this->filter = mpl_sanitize_array($_GET);
@@ -366,7 +445,6 @@ class PublisherBase {
                 $content = apply_filters('the_content', $content);
 
                 // Cleans tags, spaces, comments, attributes...
-                $content = $this->parseSpecial($content);
                 $content = $this->parseText($content);
                 $content = $this->parseLinks($content, $post);
 
@@ -533,85 +611,7 @@ class PublisherBase {
         $content = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $content);
         $content = preg_replace('#<noscript(.*?)>(.*?)</noscript>#is', '', $content);
         // Remove properties from allowed HTML tags (except <p>)
-        $content = wp_kses($content, array(
-            // Desktop version
-            'p' => array(
-                'id' => array(),
-                'class' => array(),
-            ),
-            'div' => array(
-                'id' => array(),
-                'class' => array()
-            ),
-            'span' => array(
-                'id' => array(),
-                'class' => array(),
-            ),
-            // Headings
-            'h1' => array(
-                'id' => array(),
-            ),
-            'h2' => array(
-                'id' => array(),
-            ),
-            'h3' => array(
-                'id' => array(),
-            ),
-            'h4' => array(
-                'id' => array(),
-            ),
-            'h5' => array(
-                'id' => array(),
-            ),
-            'h6' => array(
-                'id' => array(),
-            ),
-            // Global
-            'a' => array(
-                'href' => array(),
-                'class' => array(),
-                'title' => array(),
-            ),
-            'img' => array(
-                'src' => array(),
-                'class' => array(),
-                'alt' => array(),
-                // 'width' => array(), // Fix MS Word
-                // 'height' => array() // Fix MS Word
-            ),
-            'blockquote' => array(),
-            'q' => array(),
-            'cite' => array(),
-            'hr' => array(),
-            'br' => array(),
-            'figure' => array(
-                'class' => array()
-            ),
-            'figcaption' => array(),
-            // Styles
-            'u' => array(),
-            'i' => array(),
-            'b' => array(),
-            'em' => array(),
-            'small' => array(),
-            'strong' => array(),
-            'strike' => array(),
-            // Lists
-            'ul' => array(),
-            'ol' => array(
-                'start' => array(),
-            ),
-            'li' => array(),
-            // Tables
-            'table' => array(),
-            'tbody' => array(),
-            'thead' => array(),
-            'tfoot' => array(),
-            'tr' => array(),
-            'td' => array(),
-            'th' => array()
-        ));
-
+        $content = wp_kses($content, self::$allowed_tags);
         // Remove unnecesary spaces
         $content = str_replace('&nbsp;', ' ', $content);
         $content = str_replace(' ', ' ', $content); // &nbsp;
@@ -630,18 +630,20 @@ class PublisherBase {
 
     private function parseLinks($content, $post)
     {
-        $content = new HtmlDocument(htmlentities($content));
+        $content = new HtmlDocument($content);
 
         foreach ($content->find('a') as $a)
         {
+            $permalink = rtrim(get_permalink($post), '/') . '/';
+
             // Check if a href is a post URL and convert it to a relative URL
-            if (Str::startsWith($a->href, get_permalink($post) . '#'))
+            if (Str::startsWith($a->href, "{$permalink}#"))
             {
-                $a->href = str_replace(get_permalink($post), '', $a->href);
+                $a->href = str_replace($permalink, '', $a->href);
             }
         }
 
-        return (string) $content;
+        return $this->parseSpecial((string) $content);
     }
 
     private function parseImages($publisher, $content, $images_load = 'default')
@@ -651,7 +653,7 @@ class PublisherBase {
             return array($publisher, $content);
         }
 
-        $content = new HtmlDocument(htmlentities($content));
+        $content = new HtmlDocument($content);
 
         foreach ($content->find('img') as $img)
         {
@@ -697,14 +699,21 @@ class PublisherBase {
             }
         }
 
-        return array($publisher, (string) $content);
+        return array($publisher, $this->parseSpecial((string) $content));
     }
 
     private function parseSpecial($content)
     {
-        $content = str_replace(' & ', " &amp; ", $content);
-        $content = preg_replace('/ ([!]{0,1})(<)([=]{0,1}) /', '$1 &lt; $3', $content);
-        $content = preg_replace('/ ([!]{0,1})(>)([=]{0,1}) /', '$1 &gt; $3', $content);
+        $content = str_replace([' & ', '<'], [" &amp; ", '&lt;'], $content);
+
+        foreach (self::$allowed_tags as $tag => $attributes)
+        {
+            $content = str_replace(
+                ['&lt;' . $tag, '&lt;/' . $tag],
+                ['<' . $tag, '</' . $tag],
+                $content
+            );
+        }
 
         return $content;
     }
