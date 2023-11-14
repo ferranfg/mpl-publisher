@@ -3,7 +3,7 @@
  * Plugin Name: MPL-Publisher
  * Plugin URI: https://wordpress.mpl-publisher.com/
  * Description: MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
- * Version: 2.9.0
+ * Version: 2.9.1
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -147,7 +147,7 @@ add_action('add_meta_boxes', function ()
 
 add_action('widgets_init', function()
 {
-    register_widget('\MPL\Publisher\DownloadWidget');
+    if (class_exists('\MPL\Publisher\DownloadWidget')) register_widget('\MPL\Publisher\DownloadWidget');
 });
 
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($actions)
