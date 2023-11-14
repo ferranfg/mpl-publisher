@@ -2,6 +2,7 @@
 
 namespace MPL\Publisher;
 
+use WP_Http;
 use WP_Query;
 use Exception;
 use simplehtmldom\HtmlDocument;
@@ -359,6 +360,9 @@ class PublisherBase {
 
         $publisher = false;
 
+        $language = isset($data['language']) ? mpl_xml_entities($data['language']) : get_locale();
+        $language = substr($language, 0, 2);
+
         switch ($data['format'])
         {
             case 'audio':
@@ -369,7 +373,7 @@ class PublisherBase {
             case 'epub2':
             case 'epub3':
                 $publisher = new EpubPublisher();
-                $publisher->setFormat($data['format']);
+                $publisher->setFormat($data['format'], $language, is_rtl() ? 'rtl' : 'ltr');
             break;
             case 'flipbook':
                 $publisher = new FlipbookPublisher();
@@ -407,8 +411,6 @@ class PublisherBase {
         $publisher->setPublisher(mpl_xml_entities($data['editor']));
         $publisher->setDescription(mpl_xml_entities($data['description']));
         $publisher->setDate(mpl_xml_entities($data['date']));
-
-        $language = isset($data['language']) ? mpl_xml_entities($data['language']) : substr(get_locale(), 0, 2);
         $publisher->setLanguage($language);
 
         if ( ! empty($data['cover']) and $imageId = intval($data['cover']))
@@ -665,6 +667,9 @@ class PublisherBase {
             $file_id = "image_" . time() . '_' . rand();
 
             if ( ! $img->alt) $img->alt = $file_id;
+
+            // Convert relative image URLs to absolute
+            $img->src = WP_Http::make_absolute_url($img->src, get_bloginfo('url'));
 
             // PremiumPublisher will override insert as it's remote content but easier to handle
             if ($publisher instanceof PremiumPublisher and $images_load == 'insert')
