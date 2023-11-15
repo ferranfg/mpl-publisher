@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.9.1 =
+- Fix error registering widget
 
 = 2.9.0 =
 - TOC and internal chapter links are now supported for EPUB formats
