@@ -267,12 +267,10 @@ if ( ! function_exists('mpl_xml_entities'))
     {
         $string = sanitize_text_field($string);
 
-        $string = str_replace(
+        return str_replace(
             array("<", ">", '"'),
             array("﹤", "﹥", "''"),
             $string
         );
-
-        return htmlentities($string);
     }
 }
