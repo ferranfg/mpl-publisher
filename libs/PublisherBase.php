@@ -496,7 +496,7 @@ class PublisherBase {
             throw new Exception('⚠️ ' . __('Please, select at least one chapter to publish your book.', 'publisher'));
         }
 
-        return $publisher->send(sanitize_text_field($data['title']));
+        return $publisher->send(mpl_xml_entities($data['title']));
     }
 
     public function saveLicense($license)

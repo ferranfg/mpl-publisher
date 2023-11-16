@@ -268,8 +268,8 @@ if ( ! function_exists('mpl_xml_entities'))
         $string = sanitize_text_field($string);
 
         return str_replace(
-            array("<", ">", '"'),
-            array("﹤", "﹥", "''"),
+            array("<", ">", "&", '"'),
+            array("﹤", "﹥", "&amp;", "''"),
             $string
         );
     }
