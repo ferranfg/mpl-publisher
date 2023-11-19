@@ -215,6 +215,7 @@
                         <p><?php _e("Configure how the plugin will manage your book images.", "publisher"); ?></p>
                         <div class="form-field">
                             <select name="images_load" style="width: 100%">
+                                <option value="remove"  <?php echo $images_load == "remove"  ? "selected='selected'" : ''; ?>><?php _e("Remove images from chapter content (Instantly - Only text)", "publisher"); ?></option>
                                 <option value="default" <?php echo $images_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Load images from original URL (Faster - Less compatible)", "publisher"); ?></option>
                                 <option value="insert"  <?php echo $images_load == "insert"  ? "selected='selected'" : ''; ?>><?php _e("Insert images into output file (Medium - More compatible)", "publisher"); ?></option>
                                 <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images into chapter content (Slower - More compatible)", "publisher"); ?></option>

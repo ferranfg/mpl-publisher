@@ -664,6 +664,13 @@ class PublisherBase {
 
         foreach ($content->find('img') as $img)
         {
+            if ($images_load == 'remove')
+            {
+                $img->remove();
+
+                continue;
+            }
+
             $file_id = "image_" . time() . '_' . rand();
 
             if ( ! $img->alt) $img->alt = $file_id;
