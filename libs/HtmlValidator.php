@@ -13,9 +13,8 @@ class HtmlValidator
      *
      * @return string
      */
-    public static function validate($html)
+    public static function validate($html, $lang)
     {
-        $lang = substr((string) get_locale(), 0, 2);
         $html = "<!doctype html><html lang=\"{$lang}\"><head><title>Chapter</title></head><body>{$html}</body></html>";
 
         $response = wp_remote_post('https://validator.nu/?out=text&parser=html', [

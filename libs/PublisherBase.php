@@ -468,7 +468,7 @@ class PublisherBase {
 
                 if (array_key_exists('validate_html', $data))
                 {
-                    $html_errors = HtmlValidator::validate($content);
+                    $html_errors = HtmlValidator::validate($content, $language);
 
                     if ($html_errors)
                     {
@@ -721,7 +721,7 @@ class PublisherBase {
 
     private function fixHtmlDocument($content)
     {
-        $content = str_replace('<', '&lt;', $content);
+        $content = str_replace('<', '&lt;', html_entity_decode($content));
 
         foreach (self::$allowed_tags as $tag => $attributes)
         {
