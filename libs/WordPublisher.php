@@ -158,7 +158,7 @@ class WordPublisher implements IPublisher {
         // http://phpword.readthedocs.org/en/latest/recipes.html#download-the-produced-file-automatically
         // https://github.com/PHPOffice/PHPWord/issues/449
         header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename=' . $filename . '.docx');
+        header('Content-Disposition: attachment; filename="' . $filename . '.docx"');
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: ' . filesize($filepath));

@@ -115,9 +115,9 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 2.10.0 =
 - Add basic EPUB support for RTL languages
-- Add Content Images option to remove all images
-- Fix URL to images with relative URLs
-- Fix error with html entities on titles
+- Add option to remove all images in Content Images
+- Fix URL to images loading from relative URLs
+- Fix error with HTML entities on titles
 
 = 2.9.1 =
 - Fix error registering widget
