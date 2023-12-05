@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.10.0
+Stable tag: 2.10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,13 +17,25 @@ MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, Flipboo
 
 If you are looking for a WordPress ebook generator or you are a self-publishing author ✍️, it will solve the "how to publish my digital book" problem, doing it in the simplest possible way 👌. Convert your posts to book, posts to ebook (EPUB compatible with Amazon Kindle Direct Publishing KDP), posts to PDF print-ready, posts to MS Word (Docx), posts to Flipbook, posts to Audiobook (MP3)… etc.
 
-Writing a successful book is a challenge by itself and self-publishing an ebook can be pretty painful without the right tools. But with Kindle Direct Publishing (Amazon's self-publishing platform), and other platforms of self-publishing, self-publishing a book, ebook, flipbook, or audiobook can even be easy.
-
 It is free to self-publish on the most popular book and ebook platforms, like Amazon Kindle Direct Publishing (KDP), NOOK Press, or KOBO. You just need a formatted ebook file to load to the self-publishing platforms. This is your completed, edited manuscript in specific formats: .epub for Amazon Kindle Direct Publishing (KDP) and other stores, or PDF for print-ready books.
 
 With our plugin, you can create an ebook from your WordPress posts in a matter of seconds. If you already have a WordPress site, you are ready to start selling online your self-published books.
 
 The plugin is full of features (check the features section and roadmap to future releases) and open to any comments, bugs, or issues you may have. Use the [MPL-Publisher Support Forum](https://wordpress.org/support/plugin/mpl-publisher/).
+
+= Use cases =
+
+**Lead Magnets:**
+
+Convert your WordPress content into a powerful lead magnet. Easily compile blog posts into an engaging ebook, offering it as a free download to capture valuable visitor information and grow your email list.
+
+For example: ["Más que padel: La guía para entender cómo jugar al padel" by Fantasy Padel Tour](https://fantasypadeltour.com/blog/mas-que-padel)
+
+**Self-Published Books:**
+
+Turn your WordPress site into a self-publishing platform. Effortlessly curate and format your posts into a professional ebook. Whether you're a blogger or an author, showcase your expertise and sell or distribute your self-published book directly from your site.
+
+For example: ["Ciclismo de Calculadora: 7 simples fórmulas que explican tu rendimiento ciclista" by EC(PRO)⁴](https://entrenamientociclista.pro/blog/acerca-de)
 
 = Features =
 
@@ -112,6 +124,9 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.10.1 =
+- Remove style tags inside the content
 
 = 2.10.0 =
 - Add basic EPUB support for RTL languages

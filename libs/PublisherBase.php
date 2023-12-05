@@ -612,7 +612,8 @@ class PublisherBase {
         $content = preg_replace('/\[\/?et_pb.*?\]/', '', $content);
         // Remove HTML comments
         $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
-        // Remove inline script and noscript inline tags
+        // Remove inline style, script and noscript inline tags
+        $content = preg_replace('#<style(.*?)>(.*?)</style>#is', '', $content);
         $content = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $content);
         $content = preg_replace('#<noscript(.*?)>(.*?)</noscript>#is', '', $content);
         // Remove properties from allowed HTML tags (except <p>)
