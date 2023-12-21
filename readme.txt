@@ -5,7 +5,7 @@ Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.10.1
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,13 +29,13 @@ The plugin is full of features (check the features section and roadmap to future
 
 Convert your WordPress content into a powerful lead magnet. Easily compile blog posts into an engaging ebook, offering it as a free download to capture valuable visitor information and grow your email list.
 
-For example: ["Más que padel: La guía para entender cómo jugar al padel" by Fantasy Padel Tour](https://fantasypadeltour.com/blog/mas-que-padel)
+For example: ["Más que Padel: Domina Cómo Jugar al Padel"](https://fantasypadeltour.com/blog/mas-que-padel) by [Fantasy Padel Tour](https://fantasypadeltour.com).
 
 **Self-Published Books:**
 
 Turn your WordPress site into a self-publishing platform. Effortlessly curate and format your posts into a professional ebook. Whether you're a blogger or an author, showcase your expertise and sell or distribute your self-published book directly from your site.
 
-For example: ["Ciclismo de Calculadora: 7 simples fórmulas que explican tu rendimiento ciclista" by EC(PRO)⁴](https://entrenamientociclista.pro/blog/acerca-de)
+For example: ["Ciclismo de Calculadora: 7 simples fórmulas que explican tu rendimiento ciclista"](https://entrenamientociclista.pro/blog/acerca-de) by [EC(PRO)⁴](https://entrenamientociclista.pro).
 
 = Features =
 

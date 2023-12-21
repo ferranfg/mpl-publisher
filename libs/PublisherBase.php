@@ -379,7 +379,7 @@ class PublisherBase {
                 $publisher = new FlipbookPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
-	    break;
+            break;
             case 'online':
                 $publisher = new OnlinePublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
@@ -393,6 +393,11 @@ class PublisherBase {
             break;
             case 'print':
                 $publisher = new PrintPublisher();
+                $publisher->setEmail(wp_get_current_user()->user_email);
+                $publisher->setTmpPath(get_temp_dir());
+            break;
+            case 'quick':
+                $publisher = new QuickPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
             break;
