@@ -45,12 +45,13 @@ For now, these are the current features:
 - Included advanced cover editor (only available for premium).
 - Select individual chapters (posts, pages, and "secret chapters") to include in your ebook.
 - Set basic information about your ebook: Title, Description, Authors, ISBN, Publisher and Book Cover.
-- Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, HTML for Kindle Direct Publishing, Flipbook, and Audiobook (mp3).
+- Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, Flipbook, and Audiobook (mp3).
+- Export/Convert all your posts into PDF (Premium only)
 - Add a widget to your sidebar to promote your ebook to your readers.
 - Promote your ebook using the shortcode [mpl] and their available options.
-- Basic filter and sort your chapters individually.
+- Extended filter and sort your chapters individually.
 - Add additional ebook chapters and edit current content.
-- Include your custom CSS styles in your ebooks.
+- Include your custom CSS styles in your ebooks or choose our designs.
 
 = Roadmap =
 
