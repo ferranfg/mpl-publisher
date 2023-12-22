@@ -274,10 +274,9 @@
                             <option value="plain" <?php echo $format == "plain" ? "selected='selected'" : ''; ?>>Plain Text (TXT)</option>
                             <option value="markd" <?php echo $format == "markd" ? "selected='selected'" : ''; ?>>Markdown (MD)</option>
                             <optgroup label="<?php _e('Premium only', 'publisher'); ?>">
-                                <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Adobe File (PDF)</option>
-                                <option value="quick" <?php echo $format == "quick" ? "selected='selected'" : ''; ?>>Quick Print (PDF)</option>
+                                <option value="print" <?php echo $format == "print" ? "selected='selected'" : ''; ?>>Print-ready File (PDF)</option>
+                                <option value="quick" <?php echo $format == "quick" ? "selected='selected'" : ''; ?>>Posts to PDF (ZIP)</option>
                                 <option value="audio" <?php echo $format == "audio" ? "selected='selected'" : ''; ?>>Audiobook (MP3)</option>
-                                <option value="online" <?php echo $format == "online" ? "selected='selected'" : ''; ?>>Online Book (URL)²</option>
                                 <option value="flipbook" <?php echo $format == "flipbook" ? "selected='selected'" : ''; ?>>Flipbook (URL)²</option>
                             </optgroup>
                         </select>
