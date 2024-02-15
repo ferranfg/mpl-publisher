@@ -3,9 +3,9 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 2.11.0
+Stable tag: 2.12.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,7 +46,7 @@ For now, these are the current features:
 - Select individual chapters (posts, pages, and "secret chapters") to include in your ebook.
 - Set basic information about your ebook: Title, Description, Authors, ISBN, Publisher and Book Cover.
 - Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, Flipbook, and Audiobook (mp3).
-- Export/Convert all your posts into PDF (Premium only)
+- Export/Convert all your posts into individual PDF (Premium only)
 - Add a widget to your sidebar to promote your ebook to your readers.
 - Promote your ebook using the shortcode [mpl] and their available options.
 - Extended filter and sort your chapters individually.
@@ -125,6 +125,13 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.12.0 =
+- Add a "Clone book" button to easily create books based on previous settings
+- Tested up to 6.5
+
+= 2.11.0 =
+- Export/Convert all your posts into individual PDF
 
 = 2.10.1 =
 - Remove style tags inside the content

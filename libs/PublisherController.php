@@ -51,6 +51,7 @@ class PublisherController extends PublisherBase {
             unset($_POST['max_posts']);
         }
 
+        // Remove a book
         if (array_key_exists('clear', $_POST))
         {
             $this->removeStatus(sanitize_text_field($_POST['book_id']));
@@ -58,16 +59,35 @@ class PublisherController extends PublisherBase {
             set_transient('mpl_msg', 'ℹ️ ' . __('Book successfully removed.', 'publisher'));
         }
 
+        // Create a new book
         if (array_key_exists('create', $_POST))
         {
+            $clean_data = $this->getBookDefaults();
             $book_id = uniqid();
 
-            $this->saveStatus($this->getBookDefaults(), $book_id);
-
+            $clean_data['book_id'] = $book_id;
             $params['book_id'] = $book_id;
+
+            $this->saveStatus($clean_data, $book_id);
+
             set_transient('mpl_msg', '✅ ' . __('Book successfully created.', 'publisher'));
         }
 
+        // Clone a book
+        if (array_key_exists('clone', $_POST))
+        {
+            $clean_data = mpl_sanitize_array($_POST);
+            $book_id = uniqid();
+
+            $clean_data['book_id'] = $book_id;
+            $params['book_id'] = $book_id;
+
+            $this->saveStatus($clean_data, $book_id);
+
+            set_transient('mpl_msg', '✅ ' . __('Book successfully cloned.', 'publisher'));
+        }
+
+        // Save the book
         if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST))
         {
             // Toggle current order value
@@ -76,9 +96,10 @@ class PublisherController extends PublisherBase {
             $clean_data = mpl_sanitize_array($_POST);
             $book_id = sanitize_text_field($_POST['book_id']);
 
-            $this->saveStatus($clean_data, $book_id);
-
+            $clean_data['book_id'] = $book_id;
             $params['book_id'] = $book_id;
+
+            $this->saveStatus($clean_data, $book_id);
 
             if (array_key_exists('save', $_POST))
             {

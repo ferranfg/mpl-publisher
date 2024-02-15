@@ -23,8 +23,10 @@
                 <button type="submit" name="clear" class="button button-secondary">🧹 <?php _e('Remove Book', "publisher"); ?></button>
             <?php endif; ?>
             <?php if ($mpl_is_premium): ?>
+                <button type="submit" name="clone" class="button button-secondary" title="<?php _e("Clone Book", "publisher"); ?>">📋 <span class="hidden-inline-xs"><?php _e("Clone Book", "publisher"); ?></span></button>
                 <button type="submit" name="create" class="button button-secondary" title="<?php _e("Add New Book", "publisher"); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></button>
             <?php else: ?>
+                <span disabled="disabled" class="button button-secondary" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📋 <span class="hidden-inline-xs"><?php _e("Clone Book", "publisher"); ?></span></span>
                 <span disabled="disabled" class="button button-secondary" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></span>
             <?php endif; ?>
             <button type="button" id="mpl-introjs" class="button button-secondary" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
