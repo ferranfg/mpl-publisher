@@ -198,7 +198,8 @@ class PublisherBase {
             'selected_posts'  => false,
             'order_asc'       => true,
             'validate_html'   => false,
-            'format'          => 'epub2'
+            'format'          => 'epub2',
+            'voice_name'      => '',
         );
     }
 
@@ -369,6 +370,8 @@ class PublisherBase {
                 $publisher = new AudiobookPublisher();
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
+
+                if (mpl_is_premium()) $publisher->setVoiceName($data['voice_name']);
             break;
             case 'epub2':
             case 'epub3':
@@ -464,7 +467,20 @@ class PublisherBase {
                     {
                         $image_data = wp_get_attachment_image_src($post_thumbnail_id, 'full');
 
-                        if (is_array($image_data)) $image = $image_data[0];
+                        if (is_array($image_data))
+                        {
+                            // Use parseImages to fix the featured image URL
+                            list($publisher, $featured) = $this->parseImages(
+                                $publisher,
+                                htmlentities("<img src=\"{$image_data[0]}\" />"),
+                                $data['images_load']
+                            );
+
+                            $featured = new HtmlDocument($featured);
+                            $img = $featured->find('img', 0);
+
+                            if ($img) $image = $img->src;
+                        }
                     }
                 }
 

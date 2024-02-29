@@ -259,7 +259,22 @@
 
                         <div class="form-field">
                             <label for="max_posts"><?php _e("Max Results", "publisher"); ?></label>
-                            <input name="max_posts" id="max_posts" type="number" value="<?php echo esc_attr($max_posts); ?>" placeholder="<?php _e('Max Results', 'publisher'); ?>">
+                            <input name="max_posts" id="max_posts" type="number" value="<?php echo esc_attr($max_posts); ?>" placeholder="<?php _e('Max Results', 'publisher'); ?>" <?php echo $mpl_is_premium ? '' : 'disabled="disabled"'; ?>>
+                        </div>
+
+                        <hr class="mt-30 mb-20" />
+
+                        <h3>
+                            <?php _e("Audiobook Voice", "publisher"); ?>
+                            <?php if ( ! $mpl_is_premium): ?>
+                                <span data-toggle="tooltip" title="<?php _e("Premium only", "publisher"); ?>">⭐</span>
+                            <?php endif; ?>
+                        </h3>
+                        <p><?php _e("You can change the audiobook voice to match your preferences. You can get the complete list of supported voice names in the following page", "publisher"); ?> <a href="https://cloud.google.com/text-to-speech/docs/voices" target="_blank">[?]</a>.</p>
+
+                        <div class="form-field">
+                            <label for="voice_name"><?php _e("Voice Name", "publisher"); ?></label>
+                            <input name="voice_name" id="voice_name" type="text" value="<?php echo esc_attr($voice_name); ?>" placeholder="en-US-Standard-A" <?php echo $mpl_is_premium ? '' : 'disabled="disabled"'; ?>>
                         </div>
                     </div>
 
