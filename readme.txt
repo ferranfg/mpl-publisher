@@ -42,23 +42,23 @@ For example: ["Ciclismo de Calculadora: 7 simples fórmulas que explican tu rend
 For now, these are the current features:
 
 - Convert your WordPress blog to unlimited ebooks per site with unlimited exports per ebook.
-- Included advanced cover editor (only available for premium).
 - Select individual chapters (posts, pages, and "secret chapters") to include in your ebook.
-- Set basic information about your ebook: Title, Description, Authors, ISBN, Publisher and Book Cover.
+- Set meta-information about your ebook: Title, Description, Authors, ISBN, Publisher, and Book Cover.
 - Create your ebook as EPUB 2.0 or EPUB 3.0, Markdown, MS Word (Docx), print-ready PDF, Flipbook, and Audiobook (mp3).
-- Export/Convert all your posts into individual PDF (Premium only)
 - Add a widget to your sidebar to promote your ebook to your readers.
 - Promote your ebook using the shortcode [mpl] and their available options.
-- Extended filter and sort your chapters individually.
-- Add additional ebook chapters and edit current content.
+- Extended filter to search and sort your chapters individually.
+- Add additional ebook chapters and edit current content to customize your book.
+- Include the post date and post author on every chapter (optional).
+- Include the featured image related to every chapter (optional).
 - Include your custom CSS styles in your ebooks or choose our designs.
 
-= Roadmap =
-
-Future releases will include, at least, the next functionalities:
+= Premium Features =
 
 - Multiple professional designs are available.
-- Sell directly your ebook to your audience.
+- Customize your audiobook voice (more than 100+ available).
+- Export all your posts as individual PDF files.
+- Advanced cover editor included.
 
 = Other Plugins Compatibility =
 
