@@ -202,6 +202,23 @@
                             </div>
                         </div>
 
+                        <hr class="mt-30 mb-20" />
+
+                        <h3><?php _e("Post author and date", "publisher"); ?></h3>
+                        <p>
+                            <?php _e("Add the post author or the post date (or both) at the beginning of every chapter.", "publisher"); ?>
+                        </p>
+                        <div class="form-field">
+                            <select name="author_load" style="width: 100%">
+                                <option value="default" <?php echo $author_load == "default" ? "selected='selected'" : ''; ?>><?php _e("Don't include post author and date", "publisher"); ?></option>
+                                <option value="author"  <?php echo $author_load == "author"  ? "selected='selected'" : ''; ?>><?php _e("Include only post author", "publisher"); ?></option>
+                                <option value="date"    <?php echo $author_load == "date"    ? "selected='selected'" : ''; ?>><?php _e("Include only post date", "publisher"); ?></option>
+                                <option value="both"    <?php echo $author_load == "both"    ? "selected='selected'" : ''; ?>><?php _e("Include both, post author and date", "publisher"); ?></option>
+                            </select>
+                        </div>
+
+                        <hr class="mt-30 mb-20" />
+
                         <h3><?php _e("Post featured image", "publisher"); ?></h3>
                         <p>
                             <?php _e("Configure how the plugin will manage your post's featured image in every chapter.", "publisher"); ?>
@@ -223,6 +240,8 @@
                                 <option value="embed"   <?php echo $images_load == "embed"   ? "selected='selected'" : ''; ?>><?php _e("Embed images into chapter content (Slower - More compatible)", "publisher"); ?></option>
                             </select>
                         </div>
+
+                        <hr class="mt-30 mb-20" />
 
                         <h3><?php _e("Custom Theme", "publisher"); ?><a href="https://docs.mpl-publisher.com/docs/book-options/book-details/#custom-css" target="_blank"><span class="dashicons dashicons-editor-help"></span></a></h3>
                         <p><?php _e("You can publish your book with your custom CSS, overriding the default file included with our themes.", "publisher"); ?></p>

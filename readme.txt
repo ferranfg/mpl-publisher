@@ -128,7 +128,7 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 2.13.0 =
 - Add a "voice name" field to change the default audiobook voice. Fixes: https://wordpress.org/support/topic/audio-book-voice-option/
-- Fix the featured image not displayed in certain circumstances
+- Add Post author and post date at the beginning of every chapter
 
 = 2.12.0 =
 - Add a "Clone book" button to easily create books based on previous settings

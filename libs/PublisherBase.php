@@ -186,8 +186,10 @@ class PublisherBase {
             'ibooks_url'  => false,
             'theme_id'    => 0,
             'custom_css'  => '',
-            'images_load' => 'insert',
+            'author_load' => 'default',
             'thumbnail_load'  => 'default',
+            'images_load'     => 'insert',
+            'voice_name'      => '',
             'cat_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
@@ -198,8 +200,7 @@ class PublisherBase {
             'selected_posts'  => false,
             'order_asc'       => true,
             'validate_html'   => false,
-            'format'          => 'epub2',
-            'voice_name'      => '',
+            'format'          => 'epub2'
         );
     }
 
@@ -371,7 +372,10 @@ class PublisherBase {
                 $publisher->setEmail(wp_get_current_user()->user_email);
                 $publisher->setTmpPath(get_temp_dir());
 
-                if (mpl_is_premium()) $publisher->setVoiceName($data['voice_name']);
+                if (mpl_is_premium() and array_key_exists('voice_name', $data))
+                {
+                    $publisher->setVoiceName($data['voice_name']);
+                }
             break;
             case 'epub2':
             case 'epub3':
@@ -458,6 +462,17 @@ class PublisherBase {
                 $content = $this->parseText($content);
                 $content = $this->parseLinks($publisher, $content, $post);
 
+                // Include author, date info before chapter title
+                if (array_key_exists('author_load', $data) and $data['author_load'] != 'default')
+                {
+                    $author_load = [];
+
+                    if (in_array($data['author_load'], ['author', 'both'])) $author_load[] = get_the_author_meta('display_name', $post->post_author);
+                    if (in_array($data['author_load'], ['date', 'both']))   $author_load[] = get_the_date('', $post);
+
+                    $content = "<p>" . implode(' — ', $author_load) . "<p>{$content}";
+                }
+
                 // Embed featured image before chapter title
                 if (array_key_exists('thumbnail_load', $data) and $data['thumbnail_load'] == 'before')
                 {
@@ -467,20 +482,7 @@ class PublisherBase {
                     {
                         $image_data = wp_get_attachment_image_src($post_thumbnail_id, 'full');
 
-                        if (is_array($image_data))
-                        {
-                            // Use parseImages to fix the featured image URL
-                            list($publisher, $featured) = $this->parseImages(
-                                $publisher,
-                                htmlentities("<img src=\"{$image_data[0]}\" />"),
-                                $data['images_load']
-                            );
-
-                            $featured = new HtmlDocument($featured);
-                            $img = $featured->find('img', 0);
-
-                            if ($img) $image = $img->src;
-                        }
+                        if (is_array($image_data)) $image = $image_data[0];
                     }
                 }
 
