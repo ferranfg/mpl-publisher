@@ -470,7 +470,7 @@ class PublisherBase {
                     if (in_array($data['author_load'], ['author', 'both'])) $author_load[] = get_the_author_meta('display_name', $post->post_author);
                     if (in_array($data['author_load'], ['date', 'both']))   $author_load[] = get_the_date('', $post);
 
-                    $content = "<p>" . implode(' — ', $author_load) . "<p>{$content}";
+                    $content = "<p>" . implode(' — ', $author_load) . "</p>{$content}";
                 }
 
                 // Embed featured image before chapter title
