@@ -3,9 +3,9 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.13.0
+Stable tag: 2.14.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,11 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.14.0 =
+- Add "Root URL" setting to allow different installations between your site and your book
+- Fix validation error "Cannot add Table in TextRun" when including the post date and post author
+- Tested up to 6.6
 
 = 2.13.0 =
 - Add a "voice name" field to change the default audiobook voice. Fixes: https://wordpress.org/support/topic/audio-book-voice-option/

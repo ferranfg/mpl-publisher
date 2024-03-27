@@ -46,9 +46,7 @@
             <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-cover" data-toggle="tab"><?php _e("Cover", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Design", "publisher"); ?></a></li>
-            <?php if (is_null(mpl_premium_token())): ?>
-                <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
-            <?php endif; ?>
+            <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="https://docs.mpl-publisher.com/docs/faq/" target="_blank">FAQ</a></li>
             <?php do_action('mpl_publisher_before_tabs'); ?>
         </ul>
@@ -59,9 +57,7 @@
             <option value="1"><?php _e("Meta", "publisher"); ?></option>
             <option value="2"><?php _e("Cover", "publisher"); ?></option>
             <option value="3"><?php _e("Design", "publisher"); ?></option>
-            <?php if (is_null(mpl_premium_token())): ?>
-                <option value="4"><?php _e("Premium", "publisher"); ?></option>
-            <?php endif; ?>
+            <option value="4"><?php _e("Premium", "publisher"); ?></option>
             <?php do_action('mpl_publisher_before_tabs_responsive'); ?>
         </select>
 
@@ -149,6 +145,8 @@
                             <textarea rows="3" name="copyright" id="book-copyright" placeholder="<?php _e('Copyright Information', 'publisher'); ?>"><?php echo esc_textarea($copyright); ?></textarea>
                         </div>
 
+                        <hr class="mt-30 mb-20" />
+
                         <h3><?php _e("External links", "publisher"); ?></h3>
                         <p><?php _e("Links will appear on your MPL-Download eBook widget extending your book's informations.", "publisher"); ?> <a href="<?php echo admin_url('widgets.php'); ?>" target="_blank"><?php _e("Edit Widgets", "publisher"); ?></a>.</p>
 
@@ -165,6 +163,16 @@
                         <div class="form-field">
                             <label for="book-ibooks"><?php _e("iBooks URL", "publisher"); ?> <a href="http://www.apple.com/itunes/working-itunes/sell-content/books/book-faq.html" target="_blank">[?]</a></label>
                             <input name="ibooks_url" id="book-ibooks" type="text" value="<?php echo esc_attr($ibooks_url); ?>" placeholder="<?php _e('iBooks URL', 'publisher'); ?>">
+                        </div>
+
+                        <hr class="mt-30 mb-20" />
+
+                        <h3><?php _e("Root URL", "publisher"); ?></h3>
+                        <p><?php _e("This value will override your post's root URL. This is useful if your website is in a different WordPress installation from where you are creating your books.", "publisher"); ?></p>
+
+                        <div class="form-field">
+                            <label for="root-url"><?php _e("Root URL", "publisher"); ?></label>
+                            <input name="root_url" id="root-url" type="text" value="<?php echo esc_attr($root_url); ?>" placeholder="<?php _e('Root URL', 'publisher'); ?>">
                         </div>
                     </div>
 

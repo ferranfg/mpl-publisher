@@ -184,6 +184,7 @@ class PublisherBase {
             'landing_url' => false,
             'amazon_url'  => false,
             'ibooks_url'  => false,
+            'root_url'    => false,
             'theme_id'    => 0,
             'custom_css'  => '',
             'author_load' => 'default',
@@ -460,7 +461,7 @@ class PublisherBase {
 
                 // Cleans tags, spaces, comments, attributes...
                 $content = $this->parseText($content);
-                $content = $this->parseLinks($publisher, $content, $post);
+                $content = $this->parseLinks($publisher, $content, $post, (array_key_exists('root_url', $data) ? $data['root_url'] : false));
 
                 // Include author, date info before chapter title
                 if (array_key_exists('author_load', $data) and $data['author_load'] != 'default')
@@ -657,20 +658,30 @@ class PublisherBase {
         return $this->fixHtmlDocument($content);
     }
 
-    private function parseLinks($publisher, $content, $post)
+    private function parseLinks($publisher, $content, $post, $root_url = null)
     {
-        if ( ! ($publisher instanceof EpubPublisher)) return $content;
-
         $content = new HtmlDocument($content);
 
         foreach ($content->find('a') as $a)
         {
+            // Fix relative URLs to absolute (fix mpl-publisher.com links on PDF)
+            if (Str::startsWith($a->href, '/'))
+            {
+                $a->href = WP_Http::make_absolute_url($a->href, get_bloginfo('url'));
+            }
+
             $permalink = rtrim(get_permalink($post), '/') . '/';
 
             // Check if a href is a post URL and convert it to a relative URL
-            if (Str::startsWith($a->href, "{$permalink}#"))
+            if ($publisher instanceof EpubPublisher and Str::startsWith($a->href, "{$permalink}#"))
             {
                 $a->href = str_replace($permalink, '', $a->href);
+            }
+
+            // URL Substitution for external links
+            if ($root_url)
+            {
+                $a->href = str_replace(get_bloginfo('url'), $root_url, $a->href);
             }
         }
 
