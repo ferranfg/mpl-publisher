@@ -710,6 +710,9 @@ class PublisherBase {
 
             if ( ! $img->alt) $img->alt = $file_id;
 
+            // Remove the "-{width}x{height}." part from the image src to get original image
+            $img->src = str_replace('-[0-9]+x[0-9]+\.', '.', $img->src);
+
             // Convert relative image URLs to absolute
             $img->src = WP_Http::make_absolute_url($img->src, get_bloginfo('url'));
 
