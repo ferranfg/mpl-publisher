@@ -129,7 +129,6 @@ In future releases, we will add further improvements to our current formats. Kee
 = 2.14.2 =
 - Fix "Invalid parameters passed." on Word documents
 - Use full-size images instead of resized WordPress images
-- Added nl2br to fix new lines on non-blocks
 
 = 2.14.1 =
 - Fix Tested up to version with a valid one

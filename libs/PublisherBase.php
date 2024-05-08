@@ -640,8 +640,6 @@ class PublisherBase {
         $content = preg_replace('#<style(.*?)>(.*?)</style>#is', '', $content);
         $content = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $content);
         $content = preg_replace('#<noscript(.*?)>(.*?)</noscript>#is', '', $content);
-        // Convert nl2br
-        $content = nl2br($content);
         // Remove properties from allowed HTML tags (except <p>)
         $content = wp_kses($content, self::$allowed_tags);
         // Remove unnecesary spaces
