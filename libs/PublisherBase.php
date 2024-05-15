@@ -699,6 +699,7 @@ class PublisherBase {
 
         foreach ($content->find('img') as $img)
         {
+            // "remove" will remove the image from the content
             if ($images_load == 'remove')
             {
                 $img->remove();
@@ -708,21 +709,22 @@ class PublisherBase {
 
             $file_id = "image_" . time() . '_' . rand();
 
+            // Always: Make sure alt is not empty
             if ( ! $img->alt) $img->alt = $file_id;
 
-            // Remove the "-{width}x{height}." part from the image src to get original image
+            // Always: Remove the "-{width}x{height}." part from the image src to get original image
             $img->src = preg_replace('/-\d+x\d+\./', '.', $img->src);
 
-            // Convert relative image URLs to absolute
+            // Always: Convert relative image URLs to absolute
             $img->src = WP_Http::make_absolute_url($img->src, get_bloginfo('url'));
 
-            // PremiumPublisher will override insert as it's remote content but easier to handle
+            // Override: PremiumPublisher will override "insert" with "default" (load from original URL)
             if ($publisher instanceof PremiumPublisher and $images_load == 'insert')
             {
                 $images_load = 'default';
             }
 
-            // If there is nothing to do, continue
+            // Handling: "default": If images are loaded from original and nothing to do, continue
             if ($images_load == 'default') continue;
 
             try
@@ -734,18 +736,22 @@ class PublisherBase {
                 continue;
             }
 
-            if ($image->width() > 500) $image->resize(500, null, function ($constraint)
-            {
-                $constraint->aspectRatio();
-            });
-
+            // Override: If not "default" WordPublisher will override always with "embed"
             // Fixes https://wordpress.org/support/topic/could-not-load-image-when-exporting-docx/
             if ($publisher instanceof WordPublisher) $images_load = 'embed';
 
-            // Embed will update original image src
-            if ($images_load == 'embed') $img->src = $image->encode('data-url');
+            // Handling: "embed" will resize and update original image src
+            if ($images_load == 'embed')
+            {
+                if ($image->width() > 640) $image->resize(640, null, function ($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
 
-            // Add will update original image src + add file into the ouput
+                $img->src = $image->encode('data-url');
+            }
+
+            // Handling: "insert" will update original image src + add file into the ouput
             if ($images_load == 'insert')
             {
                 $img->src = "{$file_id}.jpg";
