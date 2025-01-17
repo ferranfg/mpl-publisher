@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MPL - Publisher\n"
-"POT-Creation-Date: 2024-03-27 09:18+0100\n"
-"PO-Revision-Date: 2024-03-27 09:20+0100\n"
+"POT-Creation-Date: 2025-01-17 09:43+0100\n"
+"PO-Revision-Date: 2025-01-17 09:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca_ES\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mpl-publisher.php\n"
@@ -41,99 +41,99 @@ msgstr ""
 msgid "Submitted on %s"
 msgstr "Enviada el %s"
 
-#: libs/PublisherBase.php:213
+#: libs/PublisherBase.php:214
 msgid "Lato & Merriweather"
 msgstr "Lato & Merriweather"
 
-#: libs/PublisherBase.php:225
+#: libs/PublisherBase.php:226
 msgid "Montserrat & Crimson"
 msgstr "Montserrat & Crimson"
 
-#: libs/PublisherBase.php:237
+#: libs/PublisherBase.php:238
 msgid "Romance ⭐"
 msgstr "Romance ⭐"
 
-#: libs/PublisherBase.php:249
+#: libs/PublisherBase.php:250
 msgid "Future ⭐"
 msgstr "Future ⭐"
 
-#: libs/PublisherBase.php:275
+#: libs/PublisherBase.php:281
 msgid "January"
 msgstr "Gener"
 
-#: libs/PublisherBase.php:276
+#: libs/PublisherBase.php:282
 msgid "February"
 msgstr "Febrer"
 
-#: libs/PublisherBase.php:277
+#: libs/PublisherBase.php:283
 msgid "March"
 msgstr "Març"
 
-#: libs/PublisherBase.php:278
+#: libs/PublisherBase.php:284
 msgid "April"
 msgstr "Abril"
 
-#: libs/PublisherBase.php:279
+#: libs/PublisherBase.php:285
 msgid "May"
 msgstr "Maig"
 
-#: libs/PublisherBase.php:280
+#: libs/PublisherBase.php:286
 msgid "June"
 msgstr "Juny"
 
-#: libs/PublisherBase.php:281
+#: libs/PublisherBase.php:287
 msgid "July"
 msgstr "Juliol"
 
-#: libs/PublisherBase.php:282
+#: libs/PublisherBase.php:288
 msgid "August"
 msgstr "Agost"
 
-#: libs/PublisherBase.php:283
+#: libs/PublisherBase.php:289
 msgid "September"
 msgstr "Setembre"
 
-#: libs/PublisherBase.php:284
+#: libs/PublisherBase.php:290
 msgid "October"
 msgstr "Octubre"
 
-#: libs/PublisherBase.php:285
+#: libs/PublisherBase.php:291
 msgid "November"
 msgstr "Novembre"
 
-#: libs/PublisherBase.php:286
+#: libs/PublisherBase.php:292
 msgid "December"
 msgstr "Desembre"
 
-#: libs/PublisherBase.php:418
+#: libs/PublisherBase.php:424
 msgid "No valid output format selected."
 msgstr "No s' ha seleccionat cap format de sortida vàlid."
 
-#: libs/PublisherBase.php:501
+#: libs/PublisherBase.php:507
 msgid "On chapter"
 msgstr "Al capítol"
 
-#: libs/PublisherBase.php:520
+#: libs/PublisherBase.php:526
 msgid "Please, select at least one chapter to publish your book."
 msgstr "Seleccioneu com a mínim un capítol per publicar el llibre."
 
-#: libs/PublisherController.php:59
+#: libs/PublisherController.php:60
 msgid "Book successfully removed."
 msgstr "El llibre s'ha suprimit correctament."
 
-#: libs/PublisherController.php:73
+#: libs/PublisherController.php:74
 msgid "Book successfully created."
 msgstr "El llibre s'ha creat correctament."
 
-#: libs/PublisherController.php:87
+#: libs/PublisherController.php:88
 msgid "Book successfully cloned."
 msgstr "El llibre s'ha clonat correctament."
 
-#: libs/PublisherController.php:106
+#: libs/PublisherController.php:107
 msgid "Changes successfully saved."
 msgstr "Els canvis s'han desat correctament."
 
-#: libs/PublisherController.php:114
+#: libs/PublisherController.php:115
 msgid "Missing a temporary folder."
 msgstr "Falta una carpeta temporal."
 
@@ -146,7 +146,7 @@ msgid "Book Chapter"
 msgstr "Capítol de llibre"
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:414 views/index.php:491
+#: views/index.php:421 views/index.php:498
 msgid "Add New Book Chapter"
 msgstr "Afegeix un nou capítol de llibre"
 
@@ -732,11 +732,11 @@ msgstr ""
 "Finalment, si tot es veu bé, podeu fer clic a Baixa, i generarem un fitxer "
 "per a vosaltres. Estàs preparat per continuar. Gaudeix!"
 
-#: views/index.php:337 views/index.php:497
+#: views/index.php:337 views/index.php:504
 msgid "Download eBook"
 msgstr "Descarregar eBook"
 
-#: views/index.php:338 views/index.php:498
+#: views/index.php:338 views/index.php:505
 msgid "Save"
 msgstr "Desar"
 
@@ -776,15 +776,19 @@ msgstr "Tots els mesos"
 msgid "All years"
 msgstr "Tots els anys"
 
-#: views/index.php:398
+#: views/index.php:397
+msgid "All tags"
+msgstr "Tots les etiquetes"
+
+#: views/index.php:406
 msgid "Filter content"
 msgstr "Filtrar contingut"
 
-#: views/index.php:402
+#: views/index.php:409
 msgid "Drag your filtered results to sort your book's chapters"
 msgstr "Arrossegueu els resultats filtrats per ordenar els capítols del llibre"
 
-#: views/index.php:407
+#: views/index.php:414
 msgid ""
 "Use these checkboxes to select the content you want to include in your book "
 "(all by once or individually). Also, you can use drag & drop to sort them "
@@ -795,15 +799,15 @@ msgstr ""
 "utilitzar arrossegar i deixar anar per ordenar-los segons les vostres "
 "preferències."
 
-#: views/index.php:411 views/index.php:488
+#: views/index.php:418 views/index.php:495
 msgid "Contents"
 msgstr "Continguts"
 
-#: views/index.php:412 views/index.php:489
+#: views/index.php:419 views/index.php:496
 msgid "Order"
 msgstr "Ordre"
 
-#: views/index.php:414
+#: views/index.php:421
 msgid ""
 "If you want to add unique content for your book, you can use Book Chapters. "
 "They will be private posts only available to your books, so it's a way to "
@@ -814,7 +818,7 @@ msgstr ""
 "llibres, de manera que és una manera de recompensar els vostres lectors amb "
 "contingut exclusiu."
 
-#: views/index.php:422
+#: views/index.php:429
 msgid ""
 "Your current search has too many results and it's not available yet. Please, "
 "use our filters to limit your request."
@@ -822,31 +826,31 @@ msgstr ""
 "La cerca actual té massa resultats i encara no està disponible. Si us plau, "
 "utilitzeu els nostres filtres per limitar la vostra sol·licitud."
 
-#: views/index.php:423
+#: views/index.php:430
 msgid "Current results"
 msgstr "Resultats actuals"
 
-#: views/index.php:424
+#: views/index.php:431
 msgid "Max results"
 msgstr "Resultats màxims"
 
-#: views/index.php:425
+#: views/index.php:432
 msgid "Change settings"
 msgstr "Canvia la configuració"
 
-#: views/index.php:452
+#: views/index.php:459
 msgid "View"
 msgstr "Veure"
 
-#: views/index.php:454
+#: views/index.php:461
 msgid "Edit"
 msgstr "Edita"
 
-#: views/index.php:458
+#: views/index.php:465
 msgid "Duplicate and Edit"
 msgstr "Duplica i Edita"
 
-#: views/index.php:475
+#: views/index.php:482
 msgid "Your search did not match any posts."
 msgstr "La cerca no ha coincidit amb cap resultat."
 

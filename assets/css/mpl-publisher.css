@@ -175,6 +175,7 @@
   margin-bottom: 0;
 }
 
+.mpl select.nav-tabs,
 .mpl .form-wrap input[type="text"],
 .mpl .form-wrap input[type="number"],
 .mpl .form-wrap select,
@@ -201,11 +202,7 @@
 }
 
 .mpl #post-query-submit {
-  margin-top:0;
-  padding: 0 14px 1px;
-  height: 34px !important;
-  width: 100%;
-  margin: 0;
+  margin-left: 2px;
 }
 
 .mpl .filter-bar {
@@ -250,10 +247,14 @@
   margin-right: 6px;
 }
 
-.mpl .nav-tabs {
+.mpl ul.nav-tabs {
   margin: 0 0 15px;
-  width: 100%;
   background-color: #fff;
+}
+
+.mpl select.nav-tabs {
+  margin: 20px 0 10px 20px;
+  width: 75%;
 }
 
 .mpl ul.nav-tabs {

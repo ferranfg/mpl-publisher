@@ -394,9 +394,16 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <div class="chosen-container text-right">
-                                <button type="submit" name="filter" id="post-query-submit" class="button button-secondary">🔍 <span class="hidden-inline-xs"><?php _e('Filter content'); ?></span></button>
-                            </div>
+                            <select name="tag_selected[]" id="tag" class="chosen" multiple data-placeholder="<?php _e("All tags", "publisher"); ?>">
+                                <?php foreach ($blog_tags as $tag): ?>
+                                    <option value="<?php echo $tag->slug; ?>" <?php echo in_array($tag->slug, $tag_selected) ? "selected='selected'" : ""; ?>>
+                                        <?php echo $tag->name; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="clearfix">
+                            <button type="submit" name="filter" id="post-query-submit" class="button button-secondary">🔍 <span class="hidden-inline-xs"><?php _e('Filter content', 'publisher'); ?></span></button>
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>

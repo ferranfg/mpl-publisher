@@ -192,6 +192,7 @@ class PublisherBase {
             'images_load'     => 'insert',
             'voice_name'      => '',
             'cat_selected'    => array(),
+            'tag_selected'    => array(),
             'author_selected' => array(),
             'tag_selected'    => array(),
             'status_selected' => array(),
@@ -262,6 +263,11 @@ class PublisherBase {
     public function getCategories()
     {
         return get_categories('orderby=post_count&order=DESC');
+    }
+
+    public function getTags()
+    {
+        return get_tags();
     }
 
     public function getStatuses()
