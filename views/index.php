@@ -46,6 +46,7 @@
             <li class="nav-tab"><a href="#book-settings" data-toggle="tab"><?php _e("Meta", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-cover" data-toggle="tab"><?php _e("Cover", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-appearance" data-toggle="tab"><?php _e("Design", "publisher"); ?></a></li>
+            <li class="nav-tab"><a href="#book-audiobook" data-toggle="tab"><?php _e("Audiobook", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="#book-license" data-toggle="tab"><?php _e("Premium", "publisher"); ?></a></li>
             <li class="nav-tab"><a href="https://docs.mpl-publisher.com/docs/faq/" target="_blank">FAQ</a></li>
             <?php do_action('mpl_publisher_before_tabs'); ?>
@@ -57,7 +58,8 @@
             <option value="1"><?php _e("Meta", "publisher"); ?></option>
             <option value="2"><?php _e("Cover", "publisher"); ?></option>
             <option value="3"><?php _e("Design", "publisher"); ?></option>
-            <option value="4"><?php _e("Premium", "publisher"); ?></option>
+            <option value="4"><?php _e("Audiobook", "publisher"); ?></option>
+            <option value="5"><?php _e("Premium", "publisher"); ?></option>
             <?php do_action('mpl_publisher_before_tabs_responsive'); ?>
         </select>
 
@@ -258,6 +260,21 @@
                         </div>
                     </div>
 
+                    <div class="tab-pane clearfix" id="book-audiobook">
+                        <h3>
+                            <?php _e("Audiobook Voice", "publisher"); ?>
+                            <?php if ( ! $mpl_is_premium): ?>
+                                <span data-toggle="tooltip" title="<?php _e("Premium only", "publisher"); ?>">⭐</span>
+                            <?php endif; ?>
+                        </h3>
+                        <p><?php _e("You can change the audiobook voice to match your preferences. You can get the complete list of supported voice names in the following page", "publisher"); ?> <a href="https://cloud.google.com/text-to-speech/docs/voices" target="_blank">[?]</a>.</p>
+
+                        <div class="form-field">
+                            <label for="voice_name"><?php _e("Voice Name", "publisher"); ?></label>
+                            <input name="voice_name" id="voice_name" type="text" value="<?php echo esc_attr($voice_name); ?>" placeholder="en-US-Standard-A" <?php echo $mpl_is_premium ? '' : 'disabled="disabled"'; ?>>
+                        </div>
+                    </div>
+
                     <div class="tab-pane clearfix" id="book-license">
                         <h3><?php _e("License key", "publisher"); ?></h3>
                         <?php if ($mpl_is_premium): ?>
@@ -287,21 +304,6 @@
                         <div class="form-field">
                             <label for="max_posts"><?php _e("Max Results", "publisher"); ?></label>
                             <input name="max_posts" id="max_posts" type="number" value="<?php echo esc_attr($max_posts); ?>" placeholder="<?php _e('Max Results', 'publisher'); ?>" <?php echo $mpl_is_premium ? '' : 'disabled="disabled"'; ?>>
-                        </div>
-
-                        <hr class="mt-30 mb-20" />
-
-                        <h3>
-                            <?php _e("Audiobook Voice", "publisher"); ?>
-                            <?php if ( ! $mpl_is_premium): ?>
-                                <span data-toggle="tooltip" title="<?php _e("Premium only", "publisher"); ?>">⭐</span>
-                            <?php endif; ?>
-                        </h3>
-                        <p><?php _e("You can change the audiobook voice to match your preferences. You can get the complete list of supported voice names in the following page", "publisher"); ?> <a href="https://cloud.google.com/text-to-speech/docs/voices" target="_blank">[?]</a>.</p>
-
-                        <div class="form-field">
-                            <label for="voice_name"><?php _e("Voice Name", "publisher"); ?></label>
-                            <input name="voice_name" id="voice_name" type="text" value="<?php echo esc_attr($voice_name); ?>" placeholder="en-US-Standard-A" <?php echo $mpl_is_premium ? '' : 'disabled="disabled"'; ?>>
                         </div>
                     </div>
 
