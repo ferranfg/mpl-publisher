@@ -107,8 +107,14 @@
 .mpl #mpl-logo {
   line-height: 1;
   margin-bottom: 0;
-  padding: 20px;
+  padding: 50px 20px 20px;
   border-bottom: 2px solid #EE4135;
+}
+
+@media screen and (max-width: 782px) {
+  .mpl #mpl-logo {
+    padding: 0px 20px 20px;
+  }
 }
 
 .mpl #mpl-logo .float-left {
@@ -473,16 +479,16 @@
   margin: 10px;
 }
 
+@media screen and (max-width: 782px) {
+  .mpl .mplrow {
+    flex-direction: column;
+  }
+}
+
 .mpl-fieldset {
   display: flex;
 }
 
 .mpl th.manage-column.column-name {
   min-width: 200px;
-}
-
-@media screen and (max-width: 782px) {
-  .mpl .mplrow {
-    flex-direction: column;
-  }
 }

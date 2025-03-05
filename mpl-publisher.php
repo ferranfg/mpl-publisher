@@ -287,6 +287,7 @@ function save_publisher_screen_options() {
 
         // Redirect to avoid resubmission on page reload
         wp_redirect(add_query_arg('settings-updated', 'true', $_SERVER['HTTP_REFERER']));
+
         exit;
     }
 }
