@@ -128,8 +128,9 @@ In future releases, we will add further improvements to our current formats. Kee
 
 = 2.18.0 =
 - Added Screen Options to customize table columns, including Author, Categories, and Tags.
-- Fixed an issue where DIVI tags were not being parsed correctly.
+- Allow adding Tags and Categories to Book Chapters.
 - Added links to the PDF index for easy navigation between pages.
+- Fixed an issue where DIVI tags were not being parsed correctly.
 - Fixed chapter visibility issues (chapters are now private).
 - Improved error handling for audiobooks.
 
