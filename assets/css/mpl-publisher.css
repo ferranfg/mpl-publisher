@@ -260,7 +260,7 @@
 
 .mpl ul.nav-tabs {
   margin: 0 0 15px;
-  background-color: #F6F7F7;
+  background-color: #fff;
   border-bottom: 0;
   padding: 0 20px;
 }
@@ -462,7 +462,7 @@
 }
 
 .mpl .mplfooter {
-  background: #f6f6f7;
+  background: #fff;
   padding: 10px;
   margin-top: 20px;
   border-bottom: 2px solid #EE4135;
@@ -490,5 +490,5 @@
 }
 
 .mpl th.manage-column.column-name {
-  min-width: 200px;
+  text-wrap: nowrap;
 }
