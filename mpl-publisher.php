@@ -45,6 +45,7 @@ add_action('init', function ()
         'exclude_from_search' => false,
         'show_in_menu'  => false,
         'supports'      => array('title', 'editor', 'author', 'revisions'),
+        'taxonomies'    => array('category', 'post_tag'),
         'show_in_rest'  => true
     ));
 });
@@ -193,6 +194,17 @@ add_filter('admin_footer_text', function ($text)
     }
 
     return $text;
+});
+
+// Enable Divi Builder on MPL-Publisher
+add_filter('et_builder_should_load_framework', function ($should_load)
+{
+    if (array_key_exists('action', $_POST) and $_POST['action'] == 'publish_ebook')
+    {
+        return true;
+    }
+
+    return $should_load;
 });
 
 register_deactivation_hook(__FILE__, 'mpl_uninstall_hook');
