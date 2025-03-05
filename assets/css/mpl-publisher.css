@@ -473,6 +473,14 @@
   margin: 10px;
 }
 
+.mpl-fieldset {
+  display: flex;
+}
+
+.mpl th.manage-column.column-name {
+  min-width: 200px;
+}
+
 @media screen and (max-width: 782px) {
   .mpl .mplrow {
     flex-direction: column;

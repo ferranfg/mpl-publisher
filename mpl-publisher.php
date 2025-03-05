@@ -207,5 +207,89 @@ add_filter('et_builder_should_load_framework', function ($should_load)
     return $should_load;
 });
 
+// Show Author, Categories and Tags in the Screen Options
+add_filter('screen_settings', 'publisher_screen_options', 10, 2);
+
+function publisher_screen_options($settings, $screen)
+{
+    if ($screen->id === 'toplevel_page_publisher')
+    { // Ensure this matches your actual screen ID
+        $user_id = get_current_user_id();
+        $show_author = get_user_meta($user_id, 'show_author_column_publisher', true);
+        $show_category = get_user_meta($user_id, 'show_category_column_publisher', true);
+        $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true);
+
+        // Default unchecked (hidden)
+        $show_author = ($show_author === '' || $show_author == 0) ? 0 : 1;
+        $show_category = ($show_category === '' || $show_category == 0) ? 0 : 1;
+        $show_tags = ($show_tags === '' || $show_tags == 0) ? 0 : 1;
+
+        // Output the settings panel with checkboxes and an Apply button
+        $settings .= '
+        <form method="post" class="mpl-screen-options" action="">
+            ' . wp_nonce_field('publisher_screen_options_save', 'publisher_screen_options_nonce', true, false) . '
+            <fieldset class="mpl-fieldset">
+                <legend>Columns</legend>
+                <label>
+                    <input type="checkbox" name="show_author_column_publisher" value="1" ' . checked($show_author, 1, false) . ' />
+                    Author
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="show_category_column_publisher" value="1" ' . checked($show_category, 1, false) . ' />
+                    Categories
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="show_tags_column_publisher" value="1" ' . checked($show_tags, 1, false) . ' />
+                    Tags
+                </label>
+            </fieldset>
+            <p class="submit">
+                <input type="submit" name="save_publisher_screen_options" class="button button-primary" value="Apply">
+            </p>
+        </form>';
+    }
+
+    return $settings;
+}
+
+add_action('admin_init', 'save_publisher_screen_options');
+
+function save_publisher_screen_options() {
+    if (isset($_POST['save_publisher_screen_options'])) {
+        if (!current_user_can('manage_options') || !isset($_POST['publisher_screen_options_nonce']) || !wp_verify_nonce($_POST['publisher_screen_options_nonce'], 'publisher_screen_options_save')) {
+            return;
+        }
+
+        $user_id = get_current_user_id();
+
+        // Save Author visibility
+        if (isset($_POST['show_author_column_publisher']) && $_POST['show_author_column_publisher'] == 1) {
+            update_user_meta($user_id, 'show_author_column_publisher', 1);
+        } else {
+            delete_user_meta($user_id, 'show_author_column_publisher');
+        }
+
+        // Save Categories visibility
+        if (isset($_POST['show_category_column_publisher']) && $_POST['show_category_column_publisher'] == 1) {
+            update_user_meta($user_id, 'show_category_column_publisher', 1);
+        } else {
+            delete_user_meta($user_id, 'show_category_column_publisher');
+        }
+
+        // Save Tags visibility
+        if (isset($_POST['show_tags_column_publisher']) && $_POST['show_tags_column_publisher'] == 1) {
+            update_user_meta($user_id, 'show_tags_column_publisher', 1);
+        } else {
+            delete_user_meta($user_id, 'show_tags_column_publisher');
+        }
+
+        // Redirect to avoid resubmission on page reload
+        wp_redirect(add_query_arg('settings-updated', 'true', $_SERVER['HTTP_REFERER']));
+        exit;
+    }
+}
+
 register_deactivation_hook(__FILE__, 'mpl_uninstall_hook');
 register_uninstall_hook(__FILE__, 'mpl_uninstall_hook');
