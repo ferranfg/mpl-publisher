@@ -127,9 +127,11 @@ In future releases, we will add further improvements to our current formats. Kee
 == Changelog ==
 
 = 2.18.0 =
-- Fix chapter visibility (now are private)
-- Add links to PDF index
-- Better audiobook error handling
+- Added Screen Options to customize table columns, including Author, Categories, and Tags.
+- Fixed an issue where DIVI tags were not being parsed correctly.
+- Added links to the PDF index for easy navigation between pages.
+- Fixed chapter visibility issues (chapters are now private).
+- Improved error handling for audiobooks.
 
 = 2.17.0 =
 - Added a tag filter for improved content organization.
