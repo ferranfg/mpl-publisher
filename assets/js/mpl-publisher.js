@@ -12,7 +12,9 @@
 
         $('.chosen').chosen();
 
-        $('#chapter-list').sortable();
+        $('#chapter-list').sortable({
+            handle: '.chapter-handle'
+        });
 
         $('#upload-btn').on('click', function(e) {
             // wp media object

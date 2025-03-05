@@ -440,8 +440,8 @@
                         <?php if ($query->have_posts()): ?>
                             <tbody id="chapter-list">
                                 <?php while ($query->have_posts()): $query->the_post(); ?>
-                                    <tr style="cursor: move">
-                                        <th scope="row" class="check-column" style="padding:9px 0 0 10px;opacity:0.5">
+                                    <tr>
+                                        <th scope="row" class="chapter-handle check-column" style="padding:9px 0 0 10px;opacity:0.5;cursor:move">
                                             <span class="dashicons dashicons-menu" style="margin-right:0"></span>
                                         </th>
                                         <th scope="row" class="check-column">
