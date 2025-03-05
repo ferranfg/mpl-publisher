@@ -1,10 +1,3 @@
-<?php 
-$user_id = get_current_user_id();
-$show_author = get_user_meta($user_id, 'show_author_column_publisher', true) ?: 0;
-$show_category = get_user_meta($user_id, 'show_category_column_publisher', true) ?: 0;
-$show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
-
-?>
 <form class="wrap mpl" id="mpl-wrapper" action="<?php echo esc_url($form_action); ?>" method="POST" enctype="multipart/form-data"
     data-thickbox-url="<?php echo esc_url($marketplace_url); ?>&utm_campaign=publish"
     data-is-premium="<?php echo $mpl_is_premium ? 'true' : 'false'; ?>"
@@ -427,25 +420,21 @@ $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
-
-                                <?php if ($show_category): ?>
-                                <th class="manage-column column-categories">
-                                        <?php _e("Categories", "publisher"); ?>
-                                    </th>
-                                <?php endif; ?>
-
-                                <?php if ($show_tags): ?>
-                                    <th class="manage-column column-tags">
-                                        <?php _e("Tags", "publisher"); ?>
-                                    </th>
-                                <?php endif; ?>
-
                                 <?php if ($show_author): ?>
                                     <th class="manage-column column-author">
                                         <?php _e("Author", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
-
+                                <?php if ($show_category): ?>
+                                    <th class="manage-column column-categories">
+                                        <?php _e("Categories", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
+                                <?php if ($show_tags): ?>
+                                    <th class="manage-column column-tags">
+                                        <?php _e("Tags", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
@@ -496,35 +485,27 @@ $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
                                                 <?php endif; ?>
                                             </div>
                                         </td>
-                                            <?php if ($show_category): ?>
-                                            <td class="name column-categories">
-                                                <div style="margin-bottom:4px">
-                                                    <strong style="line-height:20px">
-                                                        <?php the_category(', '); ?>
-                                                    </strong>
-                                                </div>
-                                            </td>
-                                            <?php endif; ?>
-
-                                            <?php if ($show_tags): ?>
-                                            <td class="name column-tags">
-                                                <div style="margin-bottom:4px">
-                                                    <strong style="line-height:20px">
-                                                        <?php the_tags('', ', '); ?>
-                                                    </strong>
-                                                </div>
-                                            </td>
-                                         <?php endif; ?>
-
                                         <?php if ($show_author): ?>
                                             <td class="name column-author">
-                                                <div style="margin-bottom:4px">
-                                                    <strong style="line-height:20px">
-                                                        <?php the_author(); ?>
-                                                    </strong>
+                                                <div style="margin-bottom:4px;line-height:20px">
+                                                    <?php the_author(); ?>
                                                 </div>
                                             </td>
-                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        <?php if ($show_category): ?>
+                                            <td class="name column-categories">
+                                                <div style="margin-bottom:4px;line-height:20px">
+                                                    <?php the_category(', '); ?>
+                                                </div>
+                                            </td>
+                                        <?php endif; ?>
+                                        <?php if ($show_tags): ?>
+                                            <td class="name column-tags">
+                                                <div style="margin-bottom:4px;line-height:20px">
+                                                    <?php the_tags('', ', '); ?>
+                                                </div>
+                                            </td>
+                                        <?php endif; ?>
                                         <td class="text-right" style="display:table-cell">
                                             <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
                                         </td>
@@ -552,6 +533,21 @@ $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
                                     <?php _e("Contents", "publisher"); ?>
                                     (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
                                 </th>
+                                <?php if ($show_author): ?>
+                                    <th class="manage-column column-author">
+                                        <?php _e("Author", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
+                                <?php if ($show_category): ?>
+                                    <th class="manage-column column-categories">
+                                        <?php _e("Categories", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
+                                <?php if ($show_tags): ?>
+                                    <th class="manage-column column-tags">
+                                        <?php _e("Tags", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
