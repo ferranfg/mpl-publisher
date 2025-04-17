@@ -345,7 +345,7 @@ class PublisherBase {
             'order' => $order_asc ? 'ASC' : 'DESC'
         ), $this->filter));
 
-        $wp_query = new WP_Query();
+        $wp_query = new WP_Query(['posts_per_page' => '-1']);
         $wp_query->posts = array_merge($posts_query->posts, $search_query->posts);
         $wp_query->post_count = $posts_query->post_count + $search_query->post_count;
         $wp_query->found_posts = $posts_query->found_posts + $search_query->found_posts;

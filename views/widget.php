@@ -32,7 +32,7 @@
 	<?php if (isset($instance['download']) and $instance['download']): ?>
 		<form method="post" action="">
 			<?php echo $wp_nonce_field; ?>
-			<input type="hidden" name="book_id" value="<?php echo $book_id; ?>" />
+			<input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>" />
 			<button type="submit" name="download_ebook" class="btn btn-default"><?php _e("Get your eBook!", "publisher"); ?></button>
 		</form>
 	<?php endif; ?>
