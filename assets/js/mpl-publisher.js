@@ -13,7 +13,58 @@
         $('.chosen').chosen();
 
         $('#chapter-list').sortable({
-            handle: '.chapter-handle'
+            handle: '.chapter-handle',
+            items: 'tr',
+            helper: function(e, item) {
+                if (!item.hasClass('ui-selected')) {
+                    item.addClass('ui-selected').siblings().removeClass('ui-selected');
+                }
+
+                var $selectedRows = $('#chapter-list tr.ui-selected');
+                var $helperContainer = $('<div/>');
+                var $helperTable = $('<table>').addClass(item.closest('table').attr('class'));
+
+                $selectedRows.each(function() {
+                    $(this).clone().appendTo($helperTable);
+                });
+
+                item.data('multidrag_other', $selectedRows.not(item));
+
+                return $helperContainer.append($helperTable);
+            },
+            start: function(e, ui) {
+                var $otherSelectedRows = ui.item.data('multidrag_other');
+
+                if ($otherSelectedRows && $otherSelectedRows.length > 0) {
+                    $otherSelectedRows.hide();
+                }
+            },
+            stop: function(e, ui) {
+                var $otherSelectedRows = ui.item.data('multidrag_other');
+
+                if ($otherSelectedRows && $otherSelectedRows.length > 0) {
+                    var $currentItem = ui.item;
+
+                    $otherSelectedRows.each(function() {
+                        var $this = $(this);
+                        $this.insertAfter($currentItem);
+                        $this.show();
+                        $currentItem = $this;
+                    });
+                }
+
+                ui.item.removeData('multidrag_other');
+            }
+        });
+
+        // Make the chapter list selectable
+        $("#chapter-list").selectable({
+            filter: 'tr',
+        });
+
+        // Prevent click on checkbox from triggering selectable
+        $('#chapter-list input[type="checkbox"]').on('click', function(e) {
+            e.stopPropagation();
         });
 
         $('#upload-btn').on('click', function(e) {

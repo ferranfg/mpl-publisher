@@ -513,8 +513,8 @@ class PublisherBase {
                     }
                 }
 
-                // Replace amperstand
-                $content = str_replace(' & ', " &amp; ", $content);
+                // Replace amperstand not already encoded
+                $content = preg_replace('/&(?!amp;)/', '&amp;', $content);
 
                 $publisher->addChapter($chapter, mpl_xml_entities($post->post_title), $content, $image);
 

@@ -187,7 +187,7 @@
                             <?php if ($cover_src): ?>
                                 <img src="<?php echo esc_url($cover_src); ?>" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php else: ?>
-                                <img src="https://via.placeholder.com/115x184&text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
+                                <img src="https://dummyimage.com/115x184&text=625x1000" id="book-cover-placeholder" width="115" height="184" alt="<?php _e("Cover image", "publisher"); ?>" />
                             <?php endif; ?>
                             <input type="hidden" name="cover" id="book-cover-id" value="<?php echo esc_attr($cover); ?>">
                             <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php _e('Select Image', 'publisher'); ?>">

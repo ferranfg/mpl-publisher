@@ -492,3 +492,19 @@
 .mpl th.manage-column.column-name {
   text-wrap: nowrap;
 }
+
+/* jQuery UI Selectable Styles */
+.mpl #chapter-list .ui-selecting {
+  background: rgba(254, 202, 64, 0.5); /* WordPress yellow for selecting, with reduced opacity */
+}
+
+.mpl #chapter-list .ui-selected {
+  background: #e0e0e1; /* Slightly darker grey for selected */
+  border: 1px solid #b3b4b7; /* Darker, solid border */
+}
+
+.mpl #chapter-list tr.ui-selected th,
+.mpl #chapter-list tr.ui-selected td {
+  border-top-color: #b3b4b7; /* Match new border color */
+  border-bottom-color: #b3b4b7; /* Match new border color */
+}
