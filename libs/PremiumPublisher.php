@@ -101,7 +101,7 @@ abstract class PremiumPublisher
 
     public function request($endpoint, $filename)
     {
-        $filepath = $this->tempPath . '/' . $filename;
+        $filepath = $this->tempPath . '/' . mpl_sanitize_filename($filename);
         $authorization = is_null(mpl_premium_license()) ? mpl_premium_token() : mpl_premium_license();
 
         $request = wp_remote_post(MPL_ENDPOINT . '/mpl-publisher/' . $endpoint, [
@@ -122,7 +122,7 @@ abstract class PremiumPublisher
         if ($request['http_response']->get_status() == 200)
         {
             header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename="' . $filename . '"');
+            header('Content-Disposition: attachment; filename="' . mpl_sanitize_filename($filename) . '"');
             header('Content-Transfer-Encoding: binary');
             header('Content-Length: ' . filesize($filepath));
             header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

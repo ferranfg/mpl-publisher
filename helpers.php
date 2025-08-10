@@ -274,3 +274,27 @@ if ( ! function_exists('mpl_xml_entities'))
         );
     }
 }
+
+if ( ! function_exists('mpl_sanitize_filename'))
+{
+    function mpl_sanitize_filename($filename)
+    {
+        // Remove or replace characters that are invalid in file names
+        $filename = str_replace(
+            array('/', '\\', ':', '*', '?', '"', "'", '<', '>', '|'),
+            array('-', '-', '-', '-', '-', '', '', '', '', '-'),
+            $filename
+        );
+        
+        // Remove multiple consecutive dashes and trim
+        $filename = preg_replace('/-+/', '-', $filename);
+        $filename = trim($filename, '- ');
+        
+        // Ensure filename is not empty
+        if (empty($filename)) {
+            $filename = 'untitled';
+        }
+        
+        return $filename;
+    }
+}
