@@ -279,10 +279,13 @@ if ( ! function_exists('mpl_sanitize_filename'))
 {
     function mpl_sanitize_filename($filename)
     {
-        // Remove or replace characters that are invalid in file names
+        // Escape forward slash using URL encoding instead of replacing
+        $filename = str_replace('/', '%2F', $filename);
+        
+        // Remove or replace other characters that are invalid in file names
         $filename = str_replace(
-            array('/', '\\', ':', '*', '?', '"', "'", '<', '>', '|'),
-            array('-', '-', '-', '-', '-', '', '', '', '', '-'),
+            array('\\', ':', '*', '?', '"', "'", '<', '>', '|'),
+            array('-', '-', '-', '-', '', '', '', '', '-'),
             $filename
         );
         
