@@ -30,10 +30,52 @@
 		<p itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e("By", "publisher"); ?> <span itemprop="name"><?php echo esc_html($authors); ?></span></p>
 	<?php endif; ?>
 	<?php if (isset($instance['download']) and $instance['download']): ?>
+		<?php if ($mpl_is_premium): ?>
+			<div class="mpl-lead-magnet-notice">
+				<p><small><?php _e('📧 Grow your reader list! Collect emails from your book downloads.', 'publisher'); ?></small></p>
+			</div>
+		<?php endif; ?>
 		<form method="post" action="">
 			<?php echo $wp_nonce_field; ?>
 			<input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>" />
-			<button type="submit" name="download_ebook" class="btn btn-default"><?php _e("Get your eBook!", "publisher"); ?></button>
+			
+			<?php if ($mpl_is_premium): ?>
+				<div class="mpl-email-field">
+					<label for="reader_email_<?php echo esc_attr($book_id); ?>" class="mpl-email-label">
+						<?php _e('Email Address', 'publisher'); ?> <span class="required">*</span>
+					</label>
+					<input 
+						type="email" 
+						id="reader_email_<?php echo esc_attr($book_id); ?>" 
+						name="reader_email" 
+						required 
+						placeholder="<?php esc_attr_e('Enter your email to download', 'publisher'); ?>"
+						class="mpl-email-input"
+					/>
+				</div>
+			<?php else: ?>
+				<div class="mpl-email-field mpl-email-disabled">
+					<label for="reader_email_disabled_<?php echo esc_attr($book_id); ?>" class="mpl-email-label">
+						<?php _e('Email Address', 'publisher'); ?> <span class="mpl-premium-badge">Premium</span>
+					</label>
+					<input 
+						type="email" 
+						id="reader_email_disabled_<?php echo esc_attr($book_id); ?>" 
+						disabled 
+						placeholder="<?php esc_attr_e('Upgrade to Premium to collect reader emails', 'publisher'); ?>"
+						class="mpl-email-input mpl-disabled"
+					/>
+					<p class="mpl-upgrade-notice">
+						<small>
+							<a href="https://wordpress.mpl-publisher.com?utm_medium=plugin&utm_campaign=email_optinwidget" target="_blank">
+								<?php _e('Upgrade to Premium', 'publisher'); ?>
+							</a> <?php _e('to enable email collection and grow your reader list.', 'publisher'); ?>
+						</small>
+					</p>
+				</div>
+			<?php endif; ?>
+			
+			<button type="submit" name="download_ebook" class="btn btn-default mpl-download-btn"><?php _e("Get your eBook!", "publisher"); ?></button>
 		</form>
 	<?php endif; ?>
 	<?php if (isset($instance['external']) and $instance['external'] and ($ibooks_url || $amazon_url)): ?>
