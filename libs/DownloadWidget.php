@@ -119,7 +119,7 @@ class DownloadWidget extends WP_Widget {
 
         // Get WordPress uploads directory
         $upload_dir = wp_upload_dir();
-        $csv_file = $upload_dir['basedir'] . '/mpl-leads/' . sanitize_file_name($book_id) . '_leads.csv';
+        $csv_file = $upload_dir['basedir'] . '/mpl-leads/' . mpl_sanitize_filename($book_id) . '_leads.csv';
         
         // Create directory if it doesn't exist
         $csv_dir = dirname($csv_file);
