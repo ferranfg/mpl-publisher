@@ -67,6 +67,11 @@
             e.stopPropagation();
         });
 
+        // Prevent click on links in row-actions from triggering selectable
+        $('#chapter-list .row-actions a').on('click', function(e) {
+            e.stopPropagation();
+        });
+
         $('#upload-btn').on('click', function(e) {
             // wp media object
             var image = window.wp.media().open().on('select', function() {
