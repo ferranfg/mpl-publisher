@@ -409,6 +409,14 @@
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
+                    <?php
+                    // Calculate total number of columns for colspan
+                    $total_columns = 4; // Base columns: handle, checkbox, content, actions
+                    if ($show_author) $total_columns++;
+                    if ($show_category) $total_columns++;
+                    if ($show_tags) $total_columns++;
+                    if ($show_date) $total_columns++;
+                    ?>
                     <table class="wp-list-table widefat striped posts">
                         <thead>
                             <tr>
@@ -446,7 +454,7 @@
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="<?php echo $total_columns; ?>">
                                         <div class="alert alert-info">
                                             ℹ️ <?php _e("Your current search has too many results and it's not available yet. Please, use our filters to limit your request.", "publisher"); ?>
                                             <?php _e("Current results", "publisher"); ?>: <b><?php echo $query->found_posts; ?></b>.
@@ -527,7 +535,7 @@
                         <?php else: ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="<?php echo $total_columns; ?>">
                                         <div class="alert alert-warning">
                                             😞 <?php _e("Your search did not match any posts.", "publisher"); ?>
                                         </div>
