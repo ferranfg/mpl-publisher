@@ -435,6 +435,11 @@
                                         <?php _e("Tags", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
+                                <?php if ($show_date): ?>
+                                    <th class="manage-column column-date">
+                                        <?php _e("Date", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
@@ -506,6 +511,13 @@
                                                 </div>
                                             </td>
                                         <?php endif; ?>
+                                        <?php if ($show_date): ?>
+                                            <td class="name column-date">
+                                                <div style="margin-bottom:4px;line-height:20px">
+                                                    <?php echo get_the_date(); ?>
+                                                </div>
+                                            </td>
+                                        <?php endif; ?>
                                         <td class="text-right" style="display:table-cell">
                                             <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
                                         </td>
@@ -546,6 +558,11 @@
                                 <?php if ($show_tags): ?>
                                     <th class="manage-column column-tags">
                                         <?php _e("Tags", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
+                                <?php if ($show_date): ?>
+                                    <th class="manage-column column-date">
+                                        <?php _e("Date", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
