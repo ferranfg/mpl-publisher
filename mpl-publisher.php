@@ -219,11 +219,13 @@ function publisher_screen_options($settings, $screen)
         $show_author = get_user_meta($user_id, 'show_author_column_publisher', true);
         $show_category = get_user_meta($user_id, 'show_category_column_publisher', true);
         $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true);
+        $show_date = get_user_meta($user_id, 'show_date_column_publisher', true);
 
         // Default unchecked (hidden)
         $show_author = ($show_author === '' || $show_author == 0) ? 0 : 1;
         $show_category = ($show_category === '' || $show_category == 0) ? 0 : 1;
         $show_tags = ($show_tags === '' || $show_tags == 0) ? 0 : 1;
+        $show_date = ($show_date === '' || $show_date == 0) ? 0 : 1;
 
         // Output the settings panel with checkboxes and an Apply button
         $settings .= '
@@ -244,6 +246,11 @@ function publisher_screen_options($settings, $screen)
                 <label>
                     <input type="checkbox" name="show_tags_column_publisher" value="1" ' . checked($show_tags, 1, false) . ' />
                     Tags
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="show_date_column_publisher" value="1" ' . checked($show_date, 1, false) . ' />
+                    Date
                 </label>
             </fieldset>
             <p class="submit">
@@ -284,6 +291,13 @@ function save_publisher_screen_options() {
             update_user_meta($user_id, 'show_tags_column_publisher', 1);
         } else {
             delete_user_meta($user_id, 'show_tags_column_publisher');
+        }
+
+        // Save Date visibility
+        if (isset($_POST['show_date_column_publisher']) && $_POST['show_date_column_publisher'] == 1) {
+            update_user_meta($user_id, 'show_date_column_publisher', 1);
+        } else {
+            delete_user_meta($user_id, 'show_date_column_publisher');
         }
 
         // Redirect to avoid resubmission on page reload

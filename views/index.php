@@ -409,6 +409,14 @@
                         </div>
                     </div>
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
+                    <?php
+                    // Calculate total number of columns for colspan
+                    $total_columns = 4; // Base columns: handle, checkbox, content, actions
+                    if ($show_author) $total_columns++;
+                    if ($show_category) $total_columns++;
+                    if ($show_tags) $total_columns++;
+                    if ($show_date) $total_columns++;
+                    ?>
                     <table class="wp-list-table widefat striped posts">
                         <thead>
                             <tr>
@@ -435,13 +443,18 @@
                                         <?php _e("Tags", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
+                                <?php if ($show_date): ?>
+                                    <th class="manage-column column-date">
+                                        <?php _e("Date", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="<?php echo $total_columns; ?>">
                                         <div class="alert alert-info">
                                             ℹ️ <?php _e("Your current search has too many results and it's not available yet. Please, use our filters to limit your request.", "publisher"); ?>
                                             <?php _e("Current results", "publisher"); ?>: <b><?php echo $query->found_posts; ?></b>.
@@ -506,6 +519,13 @@
                                                 </div>
                                             </td>
                                         <?php endif; ?>
+                                        <?php if ($show_date): ?>
+                                            <td class="name column-date">
+                                                <div style="margin-bottom:4px;line-height:20px">
+                                                    <?php echo get_the_date(); ?>
+                                                </div>
+                                            </td>
+                                        <?php endif; ?>
                                         <td class="text-right" style="display:table-cell">
                                             <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
                                         </td>
@@ -515,7 +535,7 @@
                         <?php else: ?>
                             <tbody>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="<?php echo $total_columns; ?>">
                                         <div class="alert alert-warning">
                                             😞 <?php _e("Your search did not match any posts.", "publisher"); ?>
                                         </div>
@@ -546,6 +566,11 @@
                                 <?php if ($show_tags): ?>
                                     <th class="manage-column column-tags">
                                         <?php _e("Tags", "publisher"); ?>
+                                    </th>
+                                <?php endif; ?>
+                                <?php if ($show_date): ?>
+                                    <th class="manage-column column-date">
+                                        <?php _e("Date", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
                                 <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>

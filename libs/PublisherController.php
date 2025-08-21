@@ -29,6 +29,7 @@ class PublisherController extends PublisherBase {
         $this->data['show_author'] = get_user_meta($user_id, 'show_author_column_publisher', true) ?: 0;
         $this->data['show_category'] = get_user_meta($user_id, 'show_category_column_publisher', true) ?: 0;
         $this->data['show_tags'] = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
+        $this->data['show_date'] = get_user_meta($user_id, 'show_date_column_publisher', true) ?: 0;
 
         wp_reset_postdata();
 
