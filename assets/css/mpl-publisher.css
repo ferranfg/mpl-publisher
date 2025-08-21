@@ -193,6 +193,15 @@
   color: #333;
 }
 
+.mpl select.nav-tabs:disabled,
+.mpl .form-wrap input[type="text"]:disabled,
+.mpl .form-wrap input[type="number"]:disabled,
+.mpl .form-wrap select:disabled,
+.mpl .form-wrap textarea:disabled {
+  background-color: #dcdcde;
+  color: #999;
+}
+
 .mpl .form-wrap > p.submit {
   margin-top: 10px;
   display: block;

@@ -107,7 +107,7 @@
 
                         <div class="form-field">
                             <label for="book-id"><?php _e("Book ID", "publisher"); ?></label>
-                            <input id="book-id" type="text" value="<?php echo esc_attr($book_id); ?>" readonly style="background:#eee">
+                            <input id="book-id" type="text" value="<?php echo esc_attr($book_id); ?>" disabled>
                         </div>
 
                         <div class="form-field">
