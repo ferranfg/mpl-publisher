@@ -30,6 +30,20 @@
                 <span disabled="disabled" class="button button-secondary" data-toggle="tooltip" data-placement="bottom" title="<?php _e('Premium only', 'publisher'); ?>">📚 <span class="hidden-inline-xs"><?php _e("Add New Book", "publisher"); ?></span></span>
             <?php endif; ?>
             <button type="button" id="mpl-introjs" class="button button-secondary" data-step="1" data-intro="<?php _e('Welcome to <b>MPL-Publisher</b>! Before you start, we will quickly guide you through the main features. Let\'s get started!', 'publisher'); ?>">❓</button>
+            <?php if ($mpl_is_premium): ?>
+                <?php
+                $upload_dir = wp_upload_dir();
+                $csv_file = $upload_dir['basedir'] . '/mpl-leads/' . mpl_sanitize_filename($book_id) . '_leads.csv';
+                if (file_exists($csv_file)):
+                    $csv_url = admin_url('admin-post.php?' . http_build_query([
+                        'action' => 'download_leads_csv',
+                        'book_id' => $book_id,
+                        '_wpnonce' => wp_create_nonce('download_leads_csv')
+                    ]));
+                ?>
+                    <a href="<?php echo esc_url($csv_url); ?>" class="button button-secondary" title="<?php _e('Download email leads collected from this book', 'publisher'); ?>">📧 <span class="hidden-inline-xs"><?php _e('Download Leads', 'publisher'); ?></span></a>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </h1>
 

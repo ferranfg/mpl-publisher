@@ -80,6 +80,35 @@ add_action('admin_post_publish_ebook', function ()
     $controller->postIndex();
 });
 
+add_action('admin_post_download_leads_csv', function ()
+{
+    if (!current_user_can('manage_options') || !wp_verify_nonce($_GET['_wpnonce'], 'download_leads_csv')) {
+        wp_die(__('Unauthorized access.', 'publisher'));
+    }
+    
+    $book_id = sanitize_text_field($_GET['book_id']);
+    if (empty($book_id)) {
+        wp_die(__('Invalid book ID.', 'publisher'));
+    }
+    
+    $upload_dir = wp_upload_dir();
+    $csv_file = $upload_dir['basedir'] . '/mpl-leads/' . mpl_sanitize_filename($book_id) . '_leads.csv';
+    
+    if (!file_exists($csv_file)) {
+        wp_die(__('No email leads found for this book.', 'publisher'));
+    }
+    
+    $filename = mpl_sanitize_filename($book_id) . '_leads_' . date('Y-m-d') . '.csv';
+    
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $filename . '"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    
+    readfile($csv_file);
+    exit;
+});
+
 add_action('wp_ajax_mpl_duplicate_post', function ()
 {
     $controller = new PublisherController();
