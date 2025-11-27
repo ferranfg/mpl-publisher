@@ -20,7 +20,7 @@ See the examples for example usage. The php files have "some" doumentation in th
 ### Import
 Add this requirement to your `composer.json` file:
 ```json
-    "grandt/phpepub": ">=4.0.3"
+    "wallabag/phpepub": "^4.0.3"
 ```
 
 ### Composer
@@ -28,7 +28,7 @@ If you already have Composer installed, skip this part.
 
 [Packagist](https://packagist.org/), the main composer repository has a neat and very short guide.
 Or you can look at the guide at the [Composer site](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
- 
+
 The easiest for first time users, is to have the composer installed in the same directory as your composer.json file, though there are better options.
 
 Run this from the command line:
@@ -42,7 +42,7 @@ Once composer is installed you can create the `composer.json` file to import thi
 ```json
 {
     "require": {
-        "grandt/phpepub": ">=4.0.3",
+        "wallabag/phpepub": "^4.0.3",
         "php": ">=5.3.0"
     }
 }

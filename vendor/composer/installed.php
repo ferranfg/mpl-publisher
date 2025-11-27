@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'ferranfg/mpl-publisher',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'trunk',
+        'version' => 'dev-trunk',
+        'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'ferranfg/mpl-publisher' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'trunk',
+            'version' => 'dev-trunk',
+            'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -88,21 +88,6 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'laminas/laminas-escaper' => array(
-            'pretty_version' => '2.6.x-dev',
-            'version' => '2.6.9999999.9999999-dev',
-            'reference' => '46879b76891c81d154f3f3c8ece7a5dd395015d6',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../laminas/laminas-escaper',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'laminas/laminas-zendframework-bridge' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
         'league/html-to-markdown' => array(
             'pretty_version' => '4.10.0',
             'version' => '4.10.0.0',
@@ -121,10 +106,19 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'phpoffice/math' => array(
+            'pretty_version' => '0.3.0',
+            'version' => '0.3.0.0',
+            'reference' => 'fc31c8f57a7a81f962cbf389fd89f4d9d06fc99a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoffice/math',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'phpoffice/phpword' => array(
-            'pretty_version' => '0.18.0',
-            'version' => '0.18.0.0',
-            'reference' => '1bd7cd62381051db6d6c7174d3c95a3ada48bc0f',
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
+            'reference' => '6d75328229bc93790b37e93741adf70646cea958',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpword',
             'aliases' => array(),
@@ -206,19 +200,13 @@
             'dev_requirement' => false,
         ),
         'wallabag/phpepub' => array(
-            'pretty_version' => '4.0.7.2',
-            'version' => '4.0.7.2',
-            'reference' => 'ae4861e970fed1c6ae9ed85eefe03ac7c0113518',
+            'pretty_version' => '4.0.10',
+            'version' => '4.0.10.0',
+            'reference' => '1f74a5c113ffbea199cfca34e6521a08e6f67445',
             'type' => 'library',
             'install_path' => __DIR__ . '/../wallabag/phpepub',
             'aliases' => array(),
             'dev_requirement' => false,
-        ),
-        'zendframework/zend-escaper' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '^2.6.1',
-            ),
         ),
     ),
 );

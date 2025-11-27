@@ -5,11 +5,11 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
-        "wallabag/phpepub": "4.0.7.2",
+        "wallabag/phpepub": "4.0.10",
         "phpzip/phpzip": "2.0.8",
         "league/html-to-markdown": "4.10.0",
         "symfony/yaml": "^5.4",
-        "phpoffice/phpword": "0.18.0",
+        "phpoffice/phpword": "1.4.0",
         "simplehtmldom/simplehtmldom": "dev-master",
         "html2text/html2text": "dev-master",
         "intervention/image": "^2.7"

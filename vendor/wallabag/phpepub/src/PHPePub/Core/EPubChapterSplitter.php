@@ -174,9 +174,7 @@ class EPubChapterSplitter {
                     $curParent = $curFile;
                     if ($domDepth > 0) {
                         foreach ($domClonedPath as $oneDomClonedPath) {
-                            /** @var $v \DOMNode */
-                            $v = reset($oneDomClonedPath);
-                            $newParent = $v->cloneNode(false);
+                            $newParent = $oneDomClonedPath->cloneNode(false);
                             $curParent->appendChild($newParent);
                             $curParent = $newParent;
                         }

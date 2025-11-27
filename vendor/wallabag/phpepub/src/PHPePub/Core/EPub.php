@@ -297,18 +297,17 @@ class EPub {
             $this->chapterCount++;
 
             foreach ($chapter as $oneChapter) {
-                $v = reset($oneChapter);
                 if ($this->encodeHTML === true) {
-                    $v = StringHelper::encodeHtml($v);
+                    $oneChapter = StringHelper::encodeHtml($oneChapter);
                 }
 
                 if ($externalReferences !== EPub::EXTERNAL_REF_IGNORE) {
-                    $this->processChapterExternalReferences($v, $externalReferences, $baseDir);
+                    $this->processChapterExternalReferences($oneChapter, $externalReferences, $baseDir);
                 }
                 $partCount++;
                 $partName = $name . "_" . $partCount;
-                $this->addFile($partName . "." . $extension, $partName, $v, "application/xhtml+xml");
-                $this->extractIdAttributes($partName, $v);
+                $this->addFile($partName . "." . $extension, $partName, $oneChapter, "application/xhtml+xml");
+                $this->extractIdAttributes($partName, $oneChapter);
 
                 $this->opf->addItemRef($partName);
             }
@@ -1261,6 +1260,9 @@ class EPub {
                 }
             }
             $image = ImageHelper::getImage($this, $fileName);
+            if (false === $image) {
+                return false;
+            }
             $imageData = $image['image'];
             $mimetype = $image['mime'];
             $fileName = preg_replace('#\.[^\.]+$#', "." . $image['ext'], $fileName);
@@ -1455,7 +1457,7 @@ class EPub {
      * @return bool $success
      */
     function setLanguage($language) {
-        if ($this->isFinalized || mb_strlen($language) != 2) {
+        if ($this->isFinalized || 0 === preg_match('/^((?<language>([A-Za-z]{2,3}(-(?<extlang>[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-(?<region>[A-Za-z]{2}|[0-9]{3}))?)$/', $language)) {
             return false;
         }
         $this->language = $language;

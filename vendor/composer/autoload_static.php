@@ -34,6 +34,7 @@ class ComposerStaticInitbc3dcb8f511e25e15873f92ff7f51eee
         array (
             'Psr\\Http\\Message\\' => 17,
             'PhpOffice\\PhpWord\\' => 18,
+            'PhpOffice\\Math\\' => 15,
             'PHPePub\\' => 8,
             'PHPZip\\Zip\\' => 11,
         ),
@@ -45,7 +46,6 @@ class ComposerStaticInitbc3dcb8f511e25e15873f92ff7f51eee
         'L' => 
         array (
             'League\\HTMLToMarkdown\\' => 22,
-            'Laminas\\Escaper\\' => 16,
         ),
         'I' => 
         array (
@@ -98,6 +98,10 @@ class ComposerStaticInitbc3dcb8f511e25e15873f92ff7f51eee
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
         ),
+        'PhpOffice\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/math/src/Math',
+        ),
         'PHPePub\\' => 
         array (
             0 => __DIR__ . '/..' . '/wallabag/phpepub/src/PHPePub',
@@ -117,10 +121,6 @@ class ComposerStaticInitbc3dcb8f511e25e15873f92ff7f51eee
         'League\\HTMLToMarkdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/html-to-markdown/src',
-        ),
-        'Laminas\\Escaper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
         ),
         'Intervention\\Image\\' => 
         array (

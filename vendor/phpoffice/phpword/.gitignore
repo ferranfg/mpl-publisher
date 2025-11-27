@@ -1,3 +1,6 @@
+/composer.lock
+
+
 .DS_Store
 ._*
 .Spotlight-V100
@@ -8,8 +11,8 @@ Desktop.ini
 _build
 /build
 phpunit.xml
-composer.lock
 composer.phar
+composer.lock
 vendor
 /report
 /build
@@ -21,3 +24,5 @@ phpword.ini
 /.project
 /nbproject
 /.php_cs.cache
+/.phpunit.result.cache
+/public
