@@ -3,7 +3,7 @@
  * Plugin Name: MPL-Publisher
  * Plugin URI: https://wordpress.mpl-publisher.com/
  * Description: MPL-Publisher 📚 creates an ebook, print-ready PDF book, EPUB for KDP, or Audiobook MP3 directly from your WordPress posts.
- * Version: 2.21.0
+ * Version: 2.23.0
  * Author: Ferran Figueredo
  * Author URI: https://ferranfigueredo.com
  * License: MIT
@@ -35,9 +35,9 @@ add_action('init', function ()
         'labels' => array(
             'name'          => __('Book Chapters', 'publisher'),
             'singular_name' => __('Book Chapter', 'publisher'),
-            'add_new'       => __('Add New Book Chapter', 'publisher'),
-            'add_new_item'  => __('Add New Book Chapter', 'publisher'),
-            'new_item'      => __('Add New Book Chapter', 'publisher'),
+            'add_new'       => __('Add new chapter', 'publisher'),
+            'add_new_item'  => __('Add new chapter', 'publisher'),
+            'new_item'      => __('Add new chapter', 'publisher'),
             'edit_item'     => __('Edit Book Chapter', 'publisher'),
             'view_item'     => __('View Book Chapter', 'publisher')
         ),
@@ -60,6 +60,8 @@ add_action('admin_menu', function ()
     }, 'dashicons-book', 76);
 
     add_submenu_page('publisher', 'MPL-Publisher', __('Publish eBook', 'publisher'), 'manage_options', 'publisher');
+
+    add_submenu_page('publisher', 'MPL-Publisher', __('Book Chapters', 'publisher'), 'manage_options', 'edit.php?post_type=mpl_chapter', null, 1);
 
     add_submenu_page('publisher', 'MPL-Publisher', __('Cover Editor', 'publisher'), 'manage_options', 'mpl-cover', function ()
     {
@@ -219,13 +221,11 @@ function publisher_screen_options($settings, $screen)
         $show_author = get_user_meta($user_id, 'show_author_column_publisher', true);
         $show_category = get_user_meta($user_id, 'show_category_column_publisher', true);
         $show_tags = get_user_meta($user_id, 'show_tags_column_publisher', true);
-        $show_date = get_user_meta($user_id, 'show_date_column_publisher', true);
 
         // Default unchecked (hidden)
         $show_author = ($show_author === '' || $show_author == 0) ? 0 : 1;
         $show_category = ($show_category === '' || $show_category == 0) ? 0 : 1;
         $show_tags = ($show_tags === '' || $show_tags == 0) ? 0 : 1;
-        $show_date = ($show_date === '' || $show_date == 0) ? 0 : 1;
 
         // Output the settings panel with checkboxes and an Apply button
         $settings .= '
@@ -246,11 +246,6 @@ function publisher_screen_options($settings, $screen)
                 <label>
                     <input type="checkbox" name="show_tags_column_publisher" value="1" ' . checked($show_tags, 1, false) . ' />
                     Tags
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" name="show_date_column_publisher" value="1" ' . checked($show_date, 1, false) . ' />
-                    Date
                 </label>
             </fieldset>
             <p class="submit">
@@ -291,13 +286,6 @@ function save_publisher_screen_options() {
             update_user_meta($user_id, 'show_tags_column_publisher', 1);
         } else {
             delete_user_meta($user_id, 'show_tags_column_publisher');
-        }
-
-        // Save Date visibility
-        if (isset($_POST['show_date_column_publisher']) && $_POST['show_date_column_publisher'] == 1) {
-            update_user_meta($user_id, 'show_date_column_publisher', 1);
-        } else {
-            delete_user_meta($user_id, 'show_date_column_publisher');
         }
 
         // Redirect to avoid resubmission on page reload

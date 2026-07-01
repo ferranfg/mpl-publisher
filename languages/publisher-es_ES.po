@@ -144,8 +144,8 @@ msgid "Book Chapter"
 msgstr "Capítulo"
 
 #: mpl-publisher.php:38 mpl-publisher.php:39 mpl-publisher.php:40
-#: views/index.php:438 views/index.php:551
-msgid "Add New Book Chapter"
+#: views/index.php:458 views/index.php:588
+msgid "Add new chapter"
 msgstr "Añadir Nuevo Capítulo"
 
 #: mpl-publisher.php:41

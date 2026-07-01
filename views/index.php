@@ -6,6 +6,7 @@
     <input type="hidden" name="action" value="publish_ebook">
     <input type="hidden" name="book_id" value="<?php echo esc_attr($book_id); ?>">
     <input type="hidden" name="order_asc" value="<?php echo esc_attr($order_asc); ?>" />
+    <input type="hidden" name="orderby" value="<?php echo esc_attr($orderby); ?>" />
 
     <?php echo $wp_nonce_field; ?>
 
@@ -411,11 +412,10 @@
                     <p><?php _e("Drag your filtered results to sort your book's chapters", "publisher"); ?></p>
                     <?php
                     // Calculate total number of columns for colspan
-                    $total_columns = 4; // Base columns: handle, checkbox, content, actions
+                    $total_columns = 5; // Base columns: handle, checkbox, content, date, actions
                     if ($show_author) $total_columns++;
                     if ($show_category) $total_columns++;
                     if ($show_tags) $total_columns++;
-                    if ($show_date) $total_columns++;
                     ?>
                     <table class="wp-list-table widefat striped posts">
                         <thead>
@@ -424,9 +424,13 @@
                                 <th class="manage-column column-cb check-column" data-step="4" data-intro="<?php _e('Use these checkboxes to select the content you want to include in your book (all by once or individually). Also, you can use drag & drop to sort them according to your preferences.', 'publisher'); ?>">
                                     <input id="cb-select-all-1" type="checkbox">
                                 </th>
-                                <th class="manage-column column-name">
-                                    <?php _e("Contents", "publisher"); ?>
-                                    (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
+                                <th class="manage-column column-name sortable <?php echo $orderby === 'title' ? 'sorted' : ''; ?>">
+                                    <button type="submit" name="sort" value="title" class="button-link" style="font-weight:600;color:inherit;">
+                                        <?php _e("Contents", "publisher"); ?>
+                                        <?php if ($orderby === 'title'): ?>
+                                            <?php echo $order_asc ? "🔼" : "🔽"; ?>
+                                        <?php endif; ?>
+                                    </button>
                                 </th>
                                 <?php if ($show_author): ?>
                                     <th class="manage-column column-author">
@@ -443,12 +447,15 @@
                                         <?php _e("Tags", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
-                                <?php if ($show_date): ?>
-                                    <th class="manage-column column-date">
+                                <th class="manage-column column-date sortable <?php echo $orderby === 'date' ? 'sorted' : ''; ?>">
+                                    <button type="submit" name="sort" value="date" class="button-link" style="font-weight:600;color:inherit;">
                                         <?php _e("Date", "publisher"); ?>
-                                    </th>
-                                <?php endif; ?>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                        <?php if ($orderby === 'date'): ?>
+                                            <?php echo $order_asc ? "🔼" : "🔽"; ?>
+                                        <?php endif; ?>
+                                    </button>
+                                </th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary" data-step="6" data-intro="<?php _e('If you want to add unique content for your book, you can use Book Chapters. They will be private posts only available to your books, so it\'s a way to reward your readers with exclusive content.', 'publisher'); ?>">📑 <span class="hidden-inline-xs"><?php _e("Add new chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </thead>
                         <?php if ($query->found_posts > mpl_max_posts()): ?>
@@ -519,13 +526,11 @@
                                                 </div>
                                             </td>
                                         <?php endif; ?>
-                                        <?php if ($show_date): ?>
-                                            <td class="name column-date">
-                                                <div style="margin-bottom:4px;line-height:20px">
-                                                    <?php echo get_the_date(); ?>
-                                                </div>
-                                            </td>
-                                        <?php endif; ?>
+                                        <td class="name column-date">
+                                            <div style="margin-bottom:4px;line-height:20px">
+                                                <?php echo get_the_date(); ?>
+                                            </div>
+                                        </td>
                                         <td class="text-right" style="display:table-cell">
                                             <?php echo MPL\Publisher\PublisherBase::getContentStats(get_the_content()); ?>
                                         </td>
@@ -549,9 +554,13 @@
                                 <th class="manage-column column-cb check-column">
                                     <input id="cb-select-all-2" type="checkbox">
                                 </th>
-                                <th class="manage-column column-name">
-                                    <?php _e("Contents", "publisher"); ?>
-                                    (<?php _e('Order', 'publisher'); ?>: <button type="submit" name="order" class="button-link"><?php echo $order_asc ? "🔼" : "🔽"; ?></button>)
+                                <th class="manage-column column-name sortable <?php echo $orderby === 'title' ? 'sorted' : ''; ?>">
+                                    <button type="submit" name="sort" value="title" class="button-link" style="font-weight:600;color:inherit;">
+                                        <?php _e("Contents", "publisher"); ?>
+                                        <?php if ($orderby === 'title'): ?>
+                                            <?php echo $order_asc ? "🔼" : "🔽"; ?>
+                                        <?php endif; ?>
+                                    </button>
                                 </th>
                                 <?php if ($show_author): ?>
                                     <th class="manage-column column-author">
@@ -568,12 +577,15 @@
                                         <?php _e("Tags", "publisher"); ?>
                                     </th>
                                 <?php endif; ?>
-                                <?php if ($show_date): ?>
-                                    <th class="manage-column column-date">
+                                <th class="manage-column column-date sortable <?php echo $orderby === 'date' ? 'sorted' : ''; ?>">
+                                    <button type="submit" name="sort" value="date" class="button-link" style="font-weight:600;color:inherit;">
                                         <?php _e("Date", "publisher"); ?>
-                                    </th>
-                                <?php endif; ?>
-                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add New Book Chapter", "publisher"); ?></span></a></th>
+                                        <?php if ($orderby === 'date'): ?>
+                                            <?php echo $order_asc ? "🔼" : "🔽"; ?>
+                                        <?php endif; ?>
+                                    </button>
+                                </th>
+                                <th class="text-right"><a href="<?php echo admin_url('post-new.php?post_type=mpl_chapter'); ?>" class="button button-secondary">📑 <span class="hidden-inline-xs"><?php _e("Add new chapter", "publisher"); ?></span></a></th>
                             </tr>
                         </tfoot>
                     </table>

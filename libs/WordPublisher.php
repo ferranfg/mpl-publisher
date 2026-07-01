@@ -167,7 +167,11 @@ class WordPublisher implements IPublisher {
 
         readfile($filepath);
 
-        unlink($this->coverFile);
+        if ($this->coverFile)
+        {
+            unlink($this->coverFile);
+        }
+
         unlink($filepath);
     }
 

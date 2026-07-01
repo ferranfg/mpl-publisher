@@ -3,9 +3,9 @@ Contributors: ferranfg
 Donate link: https://wordpress.mpl-publisher.com/
 Tags: ebook, audiobook, epub, kindle, docx
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.21.0
+Stable tag: 2.23.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,15 @@ In future releases, we will add further improvements to our current formats. Kee
 5. Android Amazon Kindle
 
 == Changelog ==
+
+= 2.23.0 =
+- Added a "Book Chapters" link under the MPL-Publisher menu to access the chapters list
+- Tested up to WordPress 7.1
+- Fixed PHP 8 deprecation notices (strip_tags, utf8_encode and unlink receiving null)
+
+= 2.22.0 =
+- Added sortable columns for "Contents" and "Date" in the chapter list
+- The "Date" column is now always visible
 
 = 2.21.0 =
 - Updated EPUB and Word dependencies

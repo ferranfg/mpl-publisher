@@ -10,7 +10,8 @@ class PublisherController extends PublisherBase {
     {
         $this->data['query'] = $this->getQuery(
             array_key_exists('order_asc', $this->data) ? $this->data['order_asc'] : true,
-            array_key_exists('selected_posts', $this->data) ? (array) $this->data['selected_posts'] : array()
+            array_key_exists('selected_posts', $this->data) ? (array) $this->data['selected_posts'] : array(),
+            array_key_exists('orderby', $this->data) ? $this->data['orderby'] : 'date'
         );
 
         $this->data['blog_categories'] = $this->getCategories();
@@ -29,7 +30,6 @@ class PublisherController extends PublisherBase {
         $this->data['show_author'] = get_user_meta($user_id, 'show_author_column_publisher', true) ?: 0;
         $this->data['show_category'] = get_user_meta($user_id, 'show_category_column_publisher', true) ?: 0;
         $this->data['show_tags'] = get_user_meta($user_id, 'show_tags_column_publisher', true) ?: 0;
-        $this->data['show_date'] = get_user_meta($user_id, 'show_date_column_publisher', true) ?: 0;
 
         wp_reset_postdata();
 
@@ -96,10 +96,29 @@ class PublisherController extends PublisherBase {
         }
 
         // Save the book
-        if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST))
+        if (array_key_exists('save', $_POST) or array_key_exists('filter', $_POST) or array_key_exists('order', $_POST) or array_key_exists('sort', $_POST))
         {
             // Toggle current order value
             if (array_key_exists('order', $_POST)) $_POST['order_asc'] = ! $_POST['order_asc'];
+
+            // Handle sorting by column (title or date)
+            if (array_key_exists('sort', $_POST))
+            {
+                $sort_by = sanitize_text_field($_POST['sort']);
+                $current_orderby = isset($_POST['orderby']) ? $_POST['orderby'] : 'date';
+
+                // If clicking the same column, toggle order; otherwise set to ASC
+                if ($sort_by === $current_orderby)
+                {
+                    $_POST['order_asc'] = ! $_POST['order_asc'];
+                }
+                else
+                {
+                    $_POST['order_asc'] = true;
+                }
+
+                $_POST['orderby'] = $sort_by;
+            }
 
             $clean_data = mpl_sanitize_array($_POST);
             $book_id = sanitize_text_field($_POST['book_id']);

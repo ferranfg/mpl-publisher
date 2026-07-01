@@ -201,6 +201,7 @@ class PublisherBase {
             'month_selected'  => array(),
             'selected_posts'  => false,
             'order_asc'       => true,
+            'orderby'         => 'date',
             'validate_html'   => false,
             'format'          => 'epub2'
         );
@@ -309,7 +310,7 @@ class PublisherBase {
                 'post_type' => $post_type
             ));
 
-            $stripped = preg_replace('/\s+/', '', strip_tags($archive));
+            $stripped = preg_replace('/\s+/', '', strip_tags((string) $archive));
 
             $years = array_merge($years, explode('%', $stripped));
         }
@@ -317,7 +318,7 @@ class PublisherBase {
         return array_unique(array_filter($years));
     }
 
-    public function getQuery($order_asc = true, $selected_posts = array())
+    public function getQuery($order_asc = true, $selected_posts = array(), $orderby = 'date')
     {
         if (array_key_exists('month', $this->filter))
         {
@@ -342,6 +343,7 @@ class PublisherBase {
         $search_query = new WP_Query(array_merge(array(
             'post__not_in' => $selected_posts,
             'posts_per_page' => mpl_max_posts() - $posts_query->post_count,
+            'orderby' => $orderby,
             'order' => $order_asc ? 'ASC' : 'DESC'
         ), $this->filter));
 
