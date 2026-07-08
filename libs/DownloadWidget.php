@@ -18,6 +18,19 @@ class DownloadWidget extends WP_Widget {
             try
             {
                 $book_id = array_key_exists('book_id', $_POST) ? sanitize_text_field($_POST['book_id']) : null;
+                
+                // Premium feature: Email collection before download
+                if (mpl_is_premium())
+                {
+                    $email = array_key_exists('reader_email', $_POST) ? sanitize_email($_POST['reader_email']) : '';
+                    
+                    if (empty($email) || !is_email($email))
+                    {
+                        throw new Exception(__('Please enter a valid email address to download the ebook.', 'publisher'));
+                    }
+                    
+                    $this->saveEmailToCSV($book_id, $email);
+                }
 
                 $this->base->generateBook($book_id);
             }
@@ -92,5 +105,51 @@ class DownloadWidget extends WP_Widget {
         ), $attr ? $attr : array());
 
         return $this->widget($args, $instance, true);
+    }
+
+    /**
+     * Save email lead to CSV file in uploads directory
+     * Premium feature for lead magnet functionality
+     */
+    private function saveEmailToCSV($book_id, $email)
+    {
+        if (empty($book_id) || empty($email)) {
+            return false;
+        }
+
+        // Get WordPress uploads directory
+        $upload_dir = wp_upload_dir();
+        $csv_file = $upload_dir['basedir'] . '/mpl-leads/' . mpl_sanitize_filename($book_id) . '_leads.csv';
+        
+        // Create directory if it doesn't exist
+        $csv_dir = dirname($csv_file);
+        if (!file_exists($csv_dir)) {
+            wp_mkdir_p($csv_dir);
+        }
+
+        // Prepare CSV data
+        $timestamp = current_time('Y-m-d H:i:s');
+        $csv_data = array($timestamp, $book_id, $email);
+        
+        // Check if file exists to determine if we need headers
+        $file_exists = file_exists($csv_file);
+        
+        // Open file for append
+        $file = fopen($csv_file, 'a');
+        
+        if ($file === false) {
+            throw new Exception(__('Unable to save email. Please try again.', 'publisher'));
+        }
+        
+        // Add headers if this is a new file
+        if (!$file_exists) {
+            fputcsv($file, array('Timestamp', 'Book ID', 'Email'));
+        }
+        
+        // Add the email data
+        fputcsv($file, $csv_data);
+        fclose($file);
+        
+        return true;
     }
 }

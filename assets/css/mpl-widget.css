@@ -33,3 +33,86 @@
   display: inline-block;
   margin-bottom: 0;
 }
+
+/* Premium Email Opt-in Styles */
+.mpl-lead-magnet-notice {
+  background-color: #f0f8ff;
+  border-left: 3px solid #007cba;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.mpl-lead-magnet-notice p {
+  margin: 0;
+  color: #007cba;
+}
+
+.mpl-email-field {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.mpl-email-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.mpl-email-label .required {
+  color: #d63638;
+}
+
+.mpl-premium-badge {
+  background-color: #007cba;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.mpl-email-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.mpl-email-input:focus {
+  border-color: #007cba;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+.mpl-email-input.mpl-disabled {
+  background-color: #f6f7f7;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.mpl-email-disabled {
+  opacity: 0.7;
+}
+
+.mpl-upgrade-notice {
+  margin-top: 8px;
+  color: #666;
+}
+
+.mpl-upgrade-notice a {
+  color: #007cba;
+  text-decoration: none;
+}
+
+.mpl-upgrade-notice a:hover {
+  text-decoration: underline;
+}
+
+.mpl-download-btn {
+  margin-top: 10px;
+}
